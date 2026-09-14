@@ -1,0 +1,61 @@
+---
+title: "W9｜Post-training II: Preference Alignment and Reinforcement Learning"
+subtitle: "Part II — Training · Post-training II：偏好對齊與強化學習"
+toc-depth: 2
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+## 定位
+全課三個數學高峰之一，也是**課程內容半衰期最短的三週之一**（W9、W10、W13）。好消息是 2026 年這個單元的半衰期比 2025 時看起來長：GRPO 的變體大戰已經收斂成「同一個 advantage 正規化的不同選擇」，而不是三套獨立演算法。本週的主要推導是 DPO 的封閉解與 GRPO 的 advantage 正規化；主要批判是 reward hacking 與「可驗證獎勵並不保證可驗證的推理」。
+
+## Learning objectives
+1. 能寫出 RLHF 的三階段流程，並說明每階段的資料形態與失效模式。
+2. 能從 Bradley-Terry 模型推導 reward model 的訓練目標，並說明 reward model 的 overoptimization（Gao et al. 的 scaling law）。
+3. 能完整推導 DPO：從 KL-regularized 目標的封閉解出發，消去 partition function，得到只含 policy 與 reference 的損失。
+4. 能寫出 GRPO 的 advantage 計算，並說明 DAPO、Dr. GRPO、GSPO 各自修的是哪一項偏誤（length bias / std 正規化 / token-vs-sequence 層級的裁剪）。
+5. 能區分 RLHF（人類偏好）與 RLVR（可驗證獎勵）的監督來源差異，並陳述兩者各自的 hacking 形態。
+6. 能說明 2026 年關於 RL 算力的可外推 recipe（ScaleRL、IsoCompute）如何改變「GRPO 的 group size 該設多少」這個問題。
+
+## 參考資料
+
+**RLHF 與 reward model**
+- **JM3** Ch 8 *Post-training*（後半）
+- Ouyang et al., **Training language models to follow instructions with human feedback (InstructGPT)**, NeurIPS 2022（arXiv:2203.02155）
+- Gao, Schulman & Hilton, **Scaling Laws for Reward Model Overoptimization**, arXiv:2210.10760 — **必讀，本週的批判基礎**
+- Wu et al., **Sailing by the Stars: A Survey on Reward Models and Learning Strategies for Learning from Rewards**, arXiv:2505.02686（**注意：arXiv 現行標題已與早期版本不同，引用請用 arXiv 版**）
+
+**DPO 與偏好最佳化**
+- Rafailov et al., **Direct Preference Optimization: Your Language Model is Secretly a Reward Model**, NeurIPS 2023（arXiv:2305.18290）— **本週的推導主文獻**
+- `[題]` DPO 的變體與診斷：檢索 *IPO identity preference optimization*、*KTO Kahneman-Tversky optimization*、*SimPO simple preference optimization*、*DPO likelihood displacement*
+
+**GRPO 家族**
+- Shao et al., **DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models**, arXiv:2402.03300 — **GRPO 的原始出處（是一節，不是獨立論文）**
+- Yu et al., **DAPO: An Open-Source LLM Reinforcement Learning System at Scale**, arXiv:2503.14476
+- Liu et al., **Understanding R1-Zero-Like Training: A Critical Perspective (Dr. GRPO)**, arXiv:2503.20783
+- Zheng et al., **Group Sequence Policy Optimization (GSPO)**, arXiv:2507.18071
+- `[驗]` Bay, **GRPO, Dr. GRPO, and DAPO Are Three Operations on One Number: The Group-Standard-Deviation Identity**, arXiv:2607.00152（2026）— **統一視角，本週的教學結構簡化來源；此篇僅由二手鏡像確認，請覆核**
+- Gao et al., **Soft Adaptive Policy Optimization (SAPO)**, arXiv:2511.20347 — 以 temperature-controlled soft gate 取代 hard clipping
+
+**RLVR、PRM 與 reward hacking**
+- Lambert et al., **Tulu 3: Pushing Frontiers in Open Language Model Post-Training**, arXiv:2411.15124 — **RLVR 名稱來源與完整開源 recipe**
+- Lightman et al., **Let's Verify Step by Step**, arXiv:2305.20050 — PRM800K，ORM vs PRM 的起點
+- Wang et al., **Math-Shepherd: Verify and Reinforce LLMs Step-by-step without Human Annotations**, arXiv:2312.08935
+- Zhang et al., **The Lessons of Developing Process Reward Models in Mathematical Reasoning**, arXiv:2501.07301
+- Shao et al., **Spurious Rewards: Rethinking Training Signals in RLVR**, arXiv:2506.10947 — **failure-first 教材**
+- Yu et al., **Outcome Rewards Do Not Guarantee Verifiable or Causally Important Reasoning**, arXiv:2604.22074（2026）— **2026 新增的必講一篇**
+- Wang et al., **Reward Hacking in the Era of Large Models: Mechanisms, Emergent Misalignment, Challenges**, arXiv:2604.13602（2026）— Proxy Compression Hypothesis，當 survey 指定
+
+**RL 的算力 scaling（2026 的新單元）**
+- Khatri et al., **The Art of Scaling Reinforcement Learning Compute for LLMs (ScaleRL)**, arXiv:2510.13786 — >400k GPU-hours 的可外推 recipe
+- Kumar et al., **IsoCompute Playbook: Optimally Scaling Sampling Compute for LLM RL**, arXiv:2603.12151（2026）— **rollout 數的 compute-optimal 飽和行為，第一篇有原則性地回答 group size 該設多少**
+- Cui et al., **The Entropy Mechanism of Reinforcement Learning for Reasoning Language Models**, arXiv:2505.22617 — Clip-Cov / KL-Cov
+- Zhu et al., **ISO: An RLVR-Native Optimization Stack**, arXiv:2607.19331（2026）
+
+**Distillation（與 W11 共用）**
+- Agarwal et al., **On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes (GKD)**, arXiv:2306.13649 — **on-policy distillation 的學術出處，attribution 更正的依據**
+- Song et al., **A Survey of On-Policy Distillation for Large Language Models**, arXiv:2604.00626（2026）
+- `[驗]` Li et al., **Rethinking On-Policy Distillation of Large Language Models: Phenomenology, Mechanism, and Recipe**, arXiv:2604.13016（2026）
+
+**Survey**
+- Zhang et al., **A Survey of Reinforcement Learning for Large Reasoning Models**, arXiv:2509.08827 — **這領域目前最完整的一本，建議當主 survey**

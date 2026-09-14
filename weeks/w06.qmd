@@ -1,0 +1,50 @@
+---
+title: "W6｜Architecture Routes: MoE, SSMs, and Linear Attention"
+subtitle: "Part I — Architecture · 架構路線：MoE、SSM 與 linear attention"
+toc-depth: 2
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+## 定位
+本週回答 W3–W5 累積下來的兩個成本問題：**FLOPs 太貴**（→ MoE：把參數量與計算量解耦）與 **KV cache 太貴**（→ SSM / linear attention：換掉產生 KV 的機制）。這是全課「證據強度」訓練最密集的一週，因為架構論文的比較條件（iso-FLOPs? iso-params? iso-latency?）幾乎決定了結論。若進度落後，本週可壓縮，但**MoE 的 routing 與 activation ratio 趨勢不能省**，因為它是理解 2026 開源模型的門票。
+
+## Learning objectives
+1. 能寫出 top-$k$ MoE 的前向計算與 load balancing loss，並說明 aux-loss-free 的偏置調整（DeepSeek-V3）在解什麼問題。
+2. 能用「總參數決定記憶體、活化參數決定 FLOPs」解釋 MoE 的成本結構，並說明它把成本從何處搬到何處（→ 通訊與記憶體）。
+3. 能推導 linear attention 的核心恆等式（去掉 softmax 後可交換結合律），並說明它為何等價於一個固定大小的 recurrent state。
+4. 能陳述 Mamba-2 的 state space duality（SSD）：同一個運算可以寫成 recurrence（推論友善）或 matmul（訓練友善）。
+5. 能說明 hybrid 架構（少數 full attention 層 + 多數 linear/SSM 層）為何在 2026 成為主流，並指出它是在補哪一個具體缺陷（precise recall）。
+6. 能診斷一篇架構論文的比較條件是否公平，並指出結論會如何隨條件反轉。
+
+## 參考資料
+
+**MoE**
+- Shazeer et al., **Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer**, ICLR 2017（arXiv:1701.06538）
+- Fedus, Zoph & Shazeer, **Switch Transformers**, JMLR 2022（arXiv:2101.03961）
+- DeepSeek-AI, **DeepSeek-V3 Technical Report**, arXiv:2412.19437 — **aux-loss-free load balancing 與 MTP 的來源，本週主文獻**
+
+**Linear attention 與 SSM**
+- Katharopoulos et al., **Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention**, ICML 2020（arXiv:2006.16236）— 結合律的原始出處
+- Gu, Goel & Ré, **Efficiently Modeling Long Sequences with Structured State Spaces (S4)**, ICLR 2022（arXiv:2111.00396）
+- Gu & Dao, **Mamba: Linear-Time Sequence Modeling with Selective State Spaces**, arXiv:2312.00752
+- Dao & Gu, **Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality (Mamba-2)**, arXiv:2405.21060 — **教 SSM 的必要理論橋樑**
+
+**Hybrid（2026 的收斂點）**
+- Zuo et al., **Falcon-H1: A Family of Hybrid-Head Language Models Redefining Efficiency and Performance**, arXiv:2507.22448 — **有 0.5B/1.5B，Colab 可跑**
+- Du et al., **Kimi Linear: An Expressive, Efficient Attention Architecture**, arXiv:2510.26692 — **本週最該指定的一篇**：KDA（Gated DeltaNet + DPLR）+ MLA 的 layerwise hybrid，且在 fair comparison 下勝過 full attention
+- Wu et al., **MiniMax-01: Scaling Foundation Models with Lightning Attention**, arXiv:2501.08313
+
+**DeepSeek 主線（建議整條指定，這是唯一能把「MLA → 稀疏注意力 → 極端 KV 壓縮」講成連續故事的開源脈絡）**
+- **DeepSeek-V2**, arXiv:2405.04434（MLA 首發）→ **DeepSeek-V3**, arXiv:2412.19437 → **DeepSeek-V3.2**, arXiv:2512.02556（DSA）→ **DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence**, arXiv:2606.19348 `[驗]`（CSA + HCA 混合注意力、mHC、Muon；**注意：此篇的 abs 頁顯示 v1 日期與 ID 前綴不一致，引用日期前請覆核**）
+
+**其他 open-weight 主線（當成 landscape，不必逐篇讀）**
+- Yang et al., **Qwen3 Technical Report**, arXiv:2505.09388 — 0.6B–235B，**Apache 2.0，本課所有 lab 的預設模型家族**
+- Bai et al., **Kimi K2: Open Agentic Intelligence**, arXiv:2507.20534；Kimi Team, **Kimi K3: Open Frontier Intelligence**, arXiv:2607.24653（LatentMoE；**授權為 CC BY-NC-ND 4.0，課堂使用請注意**）
+- Zeng et al., **GLM-4.5: Agentic, Reasoning, and Coding (ARC) Foundation Models**, arXiv:2508.06471
+- Chen et al., **The MiniMax-M2 Series**, arXiv:2605.26494
+
+**Survey**
+- Sun et al., **Speed Always Wins: A Survey on Efficient Architectures for Large Language Models**, arXiv:2508.09834 — **涵蓋 linear/sparse sequence modeling、efficient attention、sparse MoE、hybrid，是這三塊唯一涵蓋度夠的**。2026 尚無更新的架構 survey。
+
+> **兩個要在課堂上講清楚的「不存在」**：**Qwen3-Next 沒有技術報告**（只有 blog / model card），但它在 2026 的論文中被大量當 baseline；**Llama 4 也沒有 arXiv 技術報告**。要教它們的設計只能引 model card，並在投影片上標明出處性質 `[非論文]`。這本身就是一個值得討論的現象：**開源權重不等於開源方法**。

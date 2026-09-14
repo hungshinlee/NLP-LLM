@@ -1,0 +1,53 @@
+---
+title: "W10｜Reasoning and Test-Time Compute"
+subtitle: "Part II — Training · Reasoning 與 test-time compute"
+toc-depth: 2
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+## 定位
+本課程 open problems 最多、也最需要謹慎處理證據強度的一週。核心結構是三層：**(1) 現象**（CoT、self-consistency、long CoT 有效）、**(2) 理論框架**（test-time compute 是第四條 scaling 軸）、**(3) 批判**（CoT 不是模型的思考過程；RL 是否擴展了能力邊界仍有爭議）。第三層是本週的重點，而且是研究所學生最該練的能力。**明確原則：本週不宣告任何一方勝利。**
+
+## Learning objectives
+1. 能說明 CoT 為何有效的兩種候選解釋（增加序列化計算深度 vs. 誘發訓練分布中的推理格式），並指出兩者的可區分實驗。
+2. 能陳述 test-time compute 的 scaling 形式，並比較三種花法（並行取樣 + 投票 / verifier-guided search / 序列化的長 CoT）的成本-效益。
+3. 能說明 R1-Zero 路線（純 RL、無 SFT 冷啟）的實驗設計，以及 Yue et al. 對「RL 是否擴展能力邊界」的反駁論證（pass@k 的視角）。
+4. 能陳述 CoT faithfulness 的實證結論，並說明「monitorability 是可被訓練決策破壞的性質」的因果證據。
+5. 能說明 latent / continuous reasoning 的動機與它在 2026 已被界定的失效邊界。
+6. 能從 memory-bound 的角度（Kinetics）說明 test-time scaling 的真正成本，並連回 W11。
+
+## 參考資料
+
+**現象與方法**
+- Wei et al., **Chain-of-Thought Prompting Elicits Reasoning in Large Language Models**, NeurIPS 2022（arXiv:2201.11903）
+- Wang et al., **Self-Consistency Improves Chain of Thought Reasoning in Language Models**, arXiv:2203.11171
+- Snell et al., **Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters**, arXiv:2408.03314 — **本週的框架文獻**
+- Muennighoff et al., **s1: Simple test-time scaling**, arXiv:2501.19393 — **最好的 lab 素材**：1000 筆資料 + budget forcing，recipe 可用小模型縮小示範
+- DeepSeek-AI, **DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning**, arXiv:2501.12948
+- Agarwal et al., **The Art of Scaling Test-Time Compute for Large Language Models**, arXiv:2512.02008 — 主張無 universal dominant 策略
+- Sadhukhan et al., **Kinetics: Rethinking Test-Time Scaling Laws**, arXiv:2506.05333 — memory/KV-cache bound 的觀點
+- `[驗]` Łańcucki, Staniszewski, Nawrot et al., **Inference-Time Hyper-Scaling with KV Cache Compression**, arXiv:2506.05345 — 把 KV compression 當成換取更多 test-time compute 的手段
+
+**爭點（本週的核心，兩邊都指定）**
+- Yue et al., **Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?**, arXiv:2504.13837 — **pass@k 的反駁論證**
+- Yu et al., **Outcome Rewards Do Not Guarantee Verifiable or Causally Important Reasoning**, arXiv:2604.22074（2026）
+
+**Faithfulness 與 monitorability**
+- `[驗]` Turpin et al., **Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting**, NeurIPS 2023（一般認為是 arXiv:2305.04388，**ID 請覆核**）
+- `[驗]` Lanham et al., **Measuring Faithfulness in Chain-of-Thought Reasoning**（一般認為是 arXiv:2307.13702，**ID 請覆核**）
+- Arcuschin et al., **Chain-of-Thought Reasoning In The Wild Is Not Always Faithful**, arXiv:2503.08679
+- Chen et al., **Reasoning Models Don't Always Say What They Think**, arXiv:2505.05410 — **數字最好教的一篇**
+- Korbak et al., **Chain of Thought Monitorability: A New and Fragile Opportunity for AI Safety**, arXiv:2507.11473
+- `[驗]` Little et al., **Length Penalties Make Chain-of-Thought Less Monitorable**, arXiv:2607.09786（2026）— **2026 對 monitorability 脆弱性最乾淨的因果證據**
+
+**Latent / continuous reasoning**
+- Hao et al., **Training Large Language Models to Reason in a Continuous Latent Space (Coconut)**, arXiv:2412.06769
+- Zhu et al., **A Survey on Latent Reasoning**, arXiv:2507.06203
+- `[驗]` Yerram et al., **Training Continuous Chain of Thought Models: A Tale of Two Regimes**, arXiv:2607.16972（2026）— **界定失效邊界的一篇，今年必須加入**
+
+**Survey**
+- Chen et al., **Towards Reasoning Era: A Survey of Long Chain-of-Thought for Reasoning Large Language Models**, arXiv:2503.09567
+- **RAS-R**（Raschka, *Build a Reasoning Model (From Scratch)*）`[驗]` — 手刻 verifier 與 budget forcing 的材料
+- `[題]` CoT 的計算深度理論：檢索 *chain of thought empowers transformers to solve inherently serial problems*、*expressive power of transformers with chain of thought*
+- `[題]` overthinking：檢索 *overthinking reasoning models token efficiency*、*do not think that much for 2+3*

@@ -1,0 +1,42 @@
+---
+title: "W12｜RAG and Context Engineering"
+subtitle: "Part III — Systems & Scrutiny · RAG 與 context engineering"
+toc-depth: 2
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+## 定位
+本週回答 W1 埋下的問題（壓縮器不存事實，那事實從哪來）與 W5 埋下的問題（1M context 是否讓 RAG 過時）。**本週的教學重點不是 pipeline 的組裝，而是「檢索失敗的分類學」**——因為 RAG 的工程細節半衰期短且多為 folklore，而失敗模式的分類是穩定的。要誠實處理一件事：chunking 與 query rewriting **沒有可指定的代表論文**，這兩塊是 engineering folklore 多於實證文獻，本週用 ablation lab 代替論文。
+
+## Learning objectives
+1. 能說明參數化知識與非參數化知識的三個結構性差異（更新成本、attribution、長尾覆蓋），並據此判斷一個需求該用哪一邊。
+2. 能比較 sparse（BM25）、dense（DPR 類 bi-encoder）、late interaction（ColBERT）三種檢索範式的成本-效果取捨，並說明各自的失效模式。
+3. 能說明 embedding 的 cosine similarity 具體代表什麼（回扣 W1），以及 instruction-following embedding 想解決的問題。
+4. 能陳述 MTEB / MMTEB 的作用與其已知的過擬合風險。
+5. 能設計一個 RAG 系統的失敗歸因流程，區分「檢索沒找到」「找到但沒用」「用了但答錯」三類。
+6. 能陳述 RAG 與 long context 的關係（hybrid 而非取代），並說明 agentic / iterative retrieval 的動機。
+
+## 參考資料
+- **JM3** Ch 11 *Information Retrieval and RAG*（**教學順序上要先講 IR 再講 RAG，此章即如此編排**）
+- **HOLLM** ch 8 *Semantic Search and RAG*（視覺化與操作最順）
+- Lewis et al., **Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks**, NeurIPS 2020（arXiv:2005.11401）— 原始出處
+- Karpukhin et al., **Dense Passage Retrieval for Open-Domain Question Answering**, EMNLP 2020（arXiv:2004.04906）
+- Khattab & Zaharia, **ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT**, SIGIR 2020（arXiv:2004.12832）`[驗]`；Santhanam et al., **ColBERTv2**, NAACL 2022（arXiv:2112.01488）
+- Muennighoff et al., **MTEB: Massive Text Embedding Benchmark**, arXiv:2210.07316；Enevoldsen et al., **MMTEB: Massive Multilingual Text Embedding Benchmark**, ICLR 2025（arXiv:2502.13595）— **多語言與繁中的檢索評估請用 MMTEB**
+- `[驗]` Weller et al., **FollowIR: Evaluating and Teaching Information Retrieval Models to Follow Instructions**, arXiv:2403.15246
+- Asai et al., **Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection**, ICLR 2024（arXiv:2310.11511）
+- Jin et al., **Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning**, arXiv:2503.09516 — **RL 訓練檢索行為，連 W9 與 W13**
+- Edge et al., **From Local to Global: A Graph RAG Approach to Query-Focused Summarization**, arXiv:2404.16130
+- Li et al., **RAG or Long-Context LLMs? A Comprehensive Study and Hybrid Approach**, EMNLP 2024 industry（arXiv:2407.16833）— **破解「long context 取代 RAG」的主文獻**
+- Liu et al., **Lost in the Middle**, TACL 2023（arXiv:2307.03172）— W5 已講，此處是它在 RAG 上的後果
+- Es et al., **Ragas: Automated Evaluation of Retrieval Augmented Generation**, arXiv:2309.15217；Ru et al., **RAGChecker: A Fine-grained Framework for Diagnosing RAG**, NeurIPS 2024 D&B（arXiv:2408.08067）
+- Survey（依用途選）：
+  - Mishra et al., **SoK: Agentic RAG: Taxonomy, Architectures, Evaluation, and Research Directions**, arXiv:2603.07379（2026-03）— **2026 最適合當主 survey**：把 agentic RAG 形式化成 finite-horizon POMDP，並列出 memory poisoning、cascading tool-execution 等 failure modes
+  - Mei et al., **A Survey of Context Engineering for Large Language Models**, arXiv:2507.13334 — 166 頁，**適合當 framing 而非閱讀作業**
+  - Lin et al., **A Comprehensive Survey on RL-based Agentic Search**, arXiv:2510.16724
+  - Gao et al., **Retrieval-Augmented Generation for Large Language Models: A Survey**, arXiv:2312.10997 — **已明顯過時**（Naive/Advanced/Modular 三分法），只適合當歷史脈絡
+- `[題]` HyDE 與 query 擴展：檢索 *precise zero-shot dense retrieval without relevance labels*、*query rewriting for retrieval augmented generation*
+- `[題]` 混合檢索與融合：檢索 *reciprocal rank fusion*、*hybrid sparse dense retrieval*
+
+> **兩個要在課堂上誠實說明的文獻缺口**：**chunking 與 query rewriting 沒有可指定的代表作**——兩者都是 engineering folklore 多於實證文獻，因此本週用 ablation lab 代替論文。**RAG evaluation 在 2026 已碎片化**（RAGBench / MIRAGE-Bench / LiveRAG 各據一方），**沒有出現 RAGAS 的公認 successor**。承認這件事比假裝有標準更有教學價值。

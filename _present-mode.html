@@ -1,0 +1,47 @@
+<!-- 展示模式：隱藏左右導覽，把內容拉滿整個頁寬。CSS 在 styles.scss 的 html.present-mode。
+
+     為什麼不直接用 Quarto 的 reader mode：navbar 那顆按鈕的 inline onclick 呼叫
+     window.quartoToggleReader，而它由 site_libs/quarto-html/quarto.js 定義——那支在本
+     script 之後才載入，會把任何同名覆寫吃掉；而且它的實作只調整過場速度，不會收起側欄。
+     所以這裡 (a) 用自己的函式名，(b) 在 document 的 capture 階段攔截那顆按鈕的點擊
+     （capture 早於 target 階段，stopPropagation 就能讓 inline onclick 不執行），
+     完全不依賴 script 載入順序。
+
+     class 掛在 <html> 而非 <body>：本 script 在 <head> 執行，掛 html 才不會換頁時閃一下。 -->
+<script>
+(function () {
+  var KEY = 'nlpllm-present-mode';
+  var root = document.documentElement;
+
+  // 進站立即套用，早於首次繪製
+  try { if (localStorage.getItem(KEY)) root.classList.add('present-mode'); } catch (e) {}
+
+  window.togglePresentMode = function (on) {
+    if (on === undefined) on = !root.classList.contains('present-mode');
+    root.classList.toggle('present-mode', on);
+    try { on ? localStorage.setItem(KEY, '1') : localStorage.removeItem(KEY); } catch (e) {}
+  };
+
+  // navbar 的按鈕：capture 階段接手，並阻止 Quarto 的 inline onclick
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest && e.target.closest('.quarto-reader-toggle');
+    if (!t) return;
+    e.preventDefault();
+    e.stopPropagation();
+    window.togglePresentMode();
+  }, true);
+
+  // 快捷鍵 z；在輸入框內不攔截
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var t = e.target, tag = (t && t.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || (t && t.isContentEditable)) return;
+    if (e.key === 'z' || e.key === 'Z') { e.preventDefault(); window.togglePresentMode(); }
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.querySelector('.quarto-reader-toggle');
+    if (b) b.setAttribute('title', 'Presentation mode — hide side navigation (z)');
+  });
+})();
+</script>

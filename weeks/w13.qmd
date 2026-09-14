@@ -1,0 +1,55 @@
+---
+title: "W13｜Agentic Systems: Tools, Planning, Failure Modes, and Security"
+subtitle: "Part III — Systems & Scrutiny · Agentic systems：工具、規劃、失效與安全"
+toc-depth: 2
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+## 定位
+本課程**唯一沒有教科書可用的一週**（JM3 ch12 *Agents* 標註 "[not written yet]"），必須完全自備論文與講義。也是半衰期最短的一週：agent benchmark 在 18 個月內換了四代。因此本週的設計原則是**教穩定的骨架與失效分類，用最新的 benchmark 當例子而非教材**。本週的三個穩定物是：**model-harness 分離**的架構觀點、**MAST 的失效分類**、以及 **prompt injection 的結構性論證**。
+
+## Learning objectives
+1. 能給出 agent 的操作性定義（而非行銷定義），並用「誰決定下一步」區分 workflow、agent 與 multi-agent。
+2. 能說明 tool calling 的實作層次：schema 描述、constrained decoding / grammar 約束、錯誤回饋、以及副作用的處理。
+3. 能用 model-harness 分離的框架（observation / context / control / action / state / verification 六種責任）分析一個 agent 系統，並指出效能歸因該歸給模型還是 harness。
+4. 能陳述 MAST 的失效分類（14 種 failure modes / 3 類），並用它診斷一個具體的 multi-agent 失敗案例。
+5. 能論證為何 prompt injection **不是**一個可以靠更好的 prompt 或更強的模型解決的問題，並說明 CaMeL 類設計模式的思路。
+6. 能設計一個 agent 評估方案，並指出常見 benchmark 的具體缺陷（測試案例不足、空回覆被算成功等）。
+
+## 參考資料
+
+> ⚠️ **本週無教科書**。JM3 Ch 12 *Agents* 標註 "[not written yet]"。以下全部為論文與規格文件。
+
+**架構與骨架（穩定的部分）**
+- Yao et al., **ReAct: Synergizing Reasoning and Acting in Language Models**, ICLR 2023（arXiv:2210.03629）
+- Guo et al., **From Question Answering to Task Completion: A Survey on Agent System and Harness Design**, arXiv:2606.20683（2026-06）— **model-harness 分離的六責任框架；2026 講 agent 架構的最佳骨架，本週的主 survey**
+- Hu et al., **OS Agents: A Survey on MLLM-based Agents for General Computing Devices Use**, ACL 2025 Oral（arXiv:2508.04482）
+
+**失效分析（本週的核心）**
+- Cemri et al., **Why Do Multi-Agent LLM Systems Fail?**, arXiv:2503.13657 — **MAST：14 failure modes / 3 類。本週最該指定的一篇**
+- Kapoor et al., **AI Agents That Matter**, arXiv:2407.01502 — 對 agent 研究的評估方法論批判
+
+**安全（本週最有教學價值的一段）**
+- Debenedetti et al., **Defeating Prompt Injections by Design (CaMeL)**, arXiv:2503.18813
+- Beurer-Kellner et al., **Design Patterns for Securing LLM Agents against Prompt Injections**, arXiv:2506.08837
+- Zou et al., **Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition**, arXiv:2507.20526 — **>60,000 次成功注入；robustness 與模型規模／能力幾乎無相關。這個數據點是本單元開場的最佳素材**
+- Hou et al., **MCP: Landscape, Security Threats, and Future Research Directions**, arXiv:2503.23278
+- `[非論文]` **"lethal trifecta"**（私密資料 + 不可信內容 + 對外通訊）出自 Simon Willison 的 blog（2025），**不是同儕審查論文**。可用這個 framing，但投影片必須標明出處性質。
+- `[非論文]` **Model Context Protocol 規格** — **沒有 canonical 的設計論文**，學術文獻幾乎全集中在 security。
+
+**評估（用最新的當例子，不當教材）**
+- Yao et al., **τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains**, arXiv:2406.12045
+- Barres et al., **τ²-Bench: Evaluating Conversational Agents in a Dual-Control Environment**, arXiv:2506.07982
+- Shi et al., **τ^τ-Bench: An Environment for End-To-End, Realistic Agent Construction**, arXiv:2609.04611（2026-09，**發表於本大綱編寫期間，請確認最新版本**）
+- Mialon et al., **GAIA: a benchmark for General AI Assistants**, ICLR 2024（arXiv:2311.12983）；Froger et al., **Gaia2: Benchmarking LLM Agents on Dynamic and Asynchronous Environments**, **ICLR 2026 Oral**（arXiv:2602.11964）
+- Xie et al., **OSWorld**, NeurIPS 2024（arXiv:2404.07972）；Yu et al., **OSWorld 2.0: Benchmarking Computer Use Agents on Long-Horizon Real-World Tasks**, arXiv:2606.29537（2026-06）— **量級整個改變：只有約 108 個 workflow 但平均數百次 tool call，這個「少而長」的轉向本身值得討論**
+- Deng et al., **SWE-Bench Pro: Can AI Agents Solve Long-Horizon Software Engineering Tasks?**, arXiv:2509.16941
+- Badertdinov et al., **SWE-rebench**, NeurIPS 2025（arXiv:2505.20411）— **decontaminated 且持續更新的 pipeline，比固定 benchmark 更適合當長期參照**
+- Zhu et al., **Establishing Best Practices for Building Rigorous Agentic Benchmarks**, arXiv:2507.02825 — **ABC checklist；指出 SWE-bench Verified 測試案例不足、τ-bench 把空回覆算成功，相對誤估可達 100%。本週與 W14 共用**
+
+**Agentic RL**
+- Zhang et al., **The Landscape of Agentic Reinforcement Learning for LLMs: A Survey**, **TMLR**（arXiv:2509.02547）
+- Jin et al., **Search-R1**, arXiv:2503.09516（W12 已講，此處是它的 agent 形態）
+
+> **課堂上要說明的一件事**：本週引用的 benchmark 論文中出現的閉源模型分數（例如 OSWorld 2.0 的 abstract 提到的完成率）**是該論文發表時的量級**，同名模型的行為會隨時間改變。投影片引用時請標注抓取日期。

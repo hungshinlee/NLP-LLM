@@ -1,0 +1,43 @@
+# macOS
+.DS_Store
+._*
+
+# Python / notebooks
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# 模型權重（不進版控）
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.gguf
+data/
+weights/
+
+# 投影片建置產物
+slides/*.pdf
+slides/*.html
+
+# Quarto
+/_site/
+/.quarto/
+*_files/
+
+# Cowork/Claude 桌面版存放輸出用（截圖等），不進版控
+/Claude outputs/
+
+**/*.quarto_ipynb
+
+# 課堂 demo 的下載語料（可由 scripts/make_demo_w01.py 重建）
+/_corpus/
+
+# 課本 PDF（版權材料，不進版控）
+/materials/
+
+# 課程大綱正本在 private repo（Course-Hub）。萬一有人把它複製回來，先擋住。
+docs/course-outline.md
+notes/

@@ -1,0 +1,58 @@
+name: Publish course site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '**.qmd'
+      - '**.md'
+      - '_quarto.yml'
+      - 'styles.scss'
+      - 'scripts/**'
+      - '.github/workflows/publish.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # 課程大綱正本在 private repo，CI 讀不到，所以這裡**不重建**每週頁面。
+      # weeks/ 與 _includes/ 是本機 build_weeks.py 產生後 commit 進來的產物。
+      - name: Guard against leaked teacher-only content
+        run: |
+          if grep -rlE '課堂骨架|常見誤解|卡點提示' weeks/ _includes/ ; then
+            echo "::error::上列檔案含不該公開的教師端內容。請重跑 build_weeks.py 後再 push。"
+            exit 1
+          fi
+          echo "OK：weeks/ 與 _includes/ 沒有教師端內容"
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Render site
+        run: quarto render
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

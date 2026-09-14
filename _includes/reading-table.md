@@ -1,0 +1,22 @@
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+## One Paper per Week
+
+| Week | Topic | If you read only one |
+|:--|:---------------------|:---------------------------------------|
+| [W1](weeks/w01.qmd) | From n-grams to seq2seq | Bahdanau et al., *Neural Machine Translation by Jointly Learning to Align and Translate*, ICLR 2015 |
+| [W2](weeks/w02.qmd) | Tokenization | Limisiewicz et al., *Compute Optimal Tokenization*, arXiv:2605.01188 |
+| [W3](weeks/w03.qmd) | Attention | Vaswani et al., *Attention Is All You Need*, NeurIPS 2017 — with Jain & Wallace, *Attention is not Explanation* |
+| [W4](weeks/w04.qmd) | The full block | Wortsman et al., *Small-scale proxies for large-scale Transformer training instabilities*, arXiv:2309.14322 |
+| [W5](weeks/w05.qmd) | Position and long context | Liu et al., *Lost in the Middle*, TACL 2023 |
+| [W6](weeks/w06.qmd) | Architecture routes | Du et al., *Kimi Linear*, arXiv:2510.26692 — with Dao & Gu, *Mamba-2* |
+| [W7](weeks/w07.qmd) | Pre-training and scaling | Hoffmann et al., *Chinchilla*, arXiv:2203.15556 — with Besiroglu et al.'s replication |
+| [W8](weeks/w08.qmd) | SFT and PEFT | Shuttleworth et al., *LoRA vs Full Fine-tuning: An Illusion of Equivalence*, arXiv:2410.21228 |
+| [W9](weeks/w09.qmd) | Alignment and RL | Rafailov et al., *DPO*, NeurIPS 2023 — with the GRPO section of Shao et al., *DeepSeekMath* |
+| [W10](weeks/w10.qmd) | Reasoning and test-time compute | Yue et al., *Does RL Really Incentivize Reasoning Capacity Beyond the Base Model?*, arXiv:2504.13837 |
+| [W11](weeks/w11.qmd) | Inference efficiency | Leviathan et al., *Fast Inference from Transformers via Speculative Decoding*, ICML 2023 |
+| [W12](weeks/w12.qmd) | RAG | Li et al., *RAG or Long-Context LLMs?*, EMNLP 2024 industry track |
+| [W13](weeks/w13.qmd) | Agentic systems | Cemri et al., *Why Do Multi-Agent LLM Systems Fail?*, arXiv:2503.13657 |
+| [W14](weeks/w14.qmd) | Evaluation and interpretability | Korznikov et al., *Sanity Checks for Sparse Autoencoders*, arXiv:2602.14111 `[驗]` — with Miller, *Adding Error Bars to Evals* |
+
+> **Why these.** The table leans deliberately towards critical work and negative results rather than the paper that first proposed each method. The originals are largely in the textbook — JM3 Vol I covers the spine of W1–W9 — while "here is where this method breaks" has no textbook and is worth far more to a graduate student. If you read one paper for a week, read the critical one.

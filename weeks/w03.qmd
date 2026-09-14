@@ -1,0 +1,32 @@
+---
+title: "W3｜Transformer I: Attention Mechanics, Complexity, and Building It by Hand"
+subtitle: "Part I — Architecture · Transformer I：attention 的機制、複雜度與手刻"
+toc-depth: 2
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+## 定位
+全課的第一個樞紐。本週只做一件事：**把 attention 徹底拆開，並讓學生從零寫一次**。刻意把 LayerNorm、FFN、最佳化留到 W4，避免一次塞太多。KV cache 在本週就要出現（不是留到 W11），因為 W5 與 W6 的整條敘事都建立在「KV 是推論期的記憶體本體」這個認識上。
+
+## Learning objectives
+1. 能從「soft dictionary lookup」與「可微分的檢索」兩個角度分別解釋 QKV，並說明兩者各自的解釋盲點。
+2. 能推導 scaled dot-product 中 $1/\sqrt{d_k}$ 的來源（變異數論證），並說明省略它會造成什麼具體訓練失效。
+3. 能寫出 causal mask 的實作、並解釋 KV cache 為何讓 autoregressive decode 從 $O(n^2)$ 攤銷成每步 $O(n)$。
+4. 能說明 MHA → MQA → GQA → MLA 這條線**只解一個問題**（KV cache 大小），並用算力帳本算出各方案的 KV bytes。
+5. 能說明 FlashAttention 為什麼是 IO 最佳化而非近似，並用 memory-bound 觀點解釋它為何有效。
+6. 能陳述「attention weight 不是解釋」的具體實驗證據，並說明什麼樣的證據才算機制性證據。
+
+## 參考資料
+- **JM3** Ch 7 *Transformers and Pretraining*（前半）
+- **RAS** ch 3（手刻 attention，本週 lab 的骨架）；**XZ** 相關章節可作為推導的補充講義
+- **ZZM** ch 4 *Sequence Generation Models*（self-attention → Transformer 的 encoder / decoder 逐節拆解）
+- Vaswani et al., **Attention Is All You Need**, NeurIPS 2017（arXiv:1706.03762）
+- Shazeer, **Fast Transformer Decoding: One Write-Head is All You Need**, arXiv:1911.02150 — MQA
+- Ainslie et al., **GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints**, EMNLP 2023（arXiv:2305.13245）
+- DeepSeek-AI, **DeepSeek-V2**, arXiv:2405.04434 — **MLA 的原始出處**；KV cache 大幅壓縮的論證在此
+- Dao et al., **FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness**, NeurIPS 2022（arXiv:2205.14135）；與 **FlashAttention-3**, arXiv:2407.08608
+- Jain & Wallace, **Attention is not Explanation**, NAACL 2019（arXiv:1902.10186）`[驗]`（abstract 已確認，metadata 請覆核）；並列 Wiegreffe & Pinter, **Attention is not not Explanation**, EMNLP 2019 `[題]`（檢索標題即可）
+- Xiao et al., **Efficient Streaming Language Models with Attention Sinks**, ICLR 2024（arXiv:2309.17453）— attention sink 的來源，W5 會再用
+- `[題]` induction head 與 head 的功能特化：檢索 *in-context learning and induction heads*、*attention head pruning sixteen heads*
+- `[題]` online softmax：檢索 *online normalizer calculation for softmax*（Milakov & Gimelshein）

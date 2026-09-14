@@ -1,0 +1,33 @@
+---
+title: "W5｜Positional Encoding, Long Context, and the Limits of Context"
+subtitle: "Part I — Architecture · 位置編碼、長文本與 context 的極限"
+toc-depth: 2
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+## 定位
+本週處理一個常被誤解為「已解決」的問題。從「attention 本身是 permutation-equivariant」出發，走到 RoPE 的推導，再走到長度外推與 context 的**有效使用率**。核心訊息：**「能吃進 1M token」與「能用好 1M token」是兩件不同的事，而且業界的宣稱幾乎都在講前者。** 這一週是 W12（RAG 到底還需不需要）的前提。
+
+## Learning objectives
+1. 能說明為何 attention 需要外加位置資訊，並比較 learned absolute / sinusoidal / relative bias (ALiBi) / RoPE / NoPE 五種方案的歸納偏誤。
+2. 能推導 RoPE 的旋轉形式，並證明它使 attention logit 只依賴相對位置差。
+3. 能解釋 position interpolation、NTK-aware scaling 與 YaRN 的共同想法（**改變旋轉頻率的尺度**）以及各自的取捨。
+4. 能說明 attention sink 現象，並解釋 StreamingLLM 為何靠保留少數起始 token 就能維持無限長流的穩定性。
+5. 能陳述 lost-in-the-middle 的實驗設計，並說明為何 needle-in-a-haystack 通過**不足以**證明長文本可用。
+6. 能用 KV cache 公式說明長文本的真正成本瓶頸，並解釋 sparse attention（NSA、DSA）在解哪一段。
+
+## 參考資料
+- **JM3** Ch 7（位置編碼一節）
+- Su et al., **RoFormer: Enhanced Transformer with Rotary Position Embedding**, arXiv:2104.09864 — RoPE 原始出處
+- Press, Smith & Lewis, **Train Short, Test Long: Attention with Linear Biases Enables Input Length Extrapolation**, ICLR 2022（arXiv:2108.12409）— ALiBi
+- Chen et al., **Extending Context Window of Large Language Models via Positional Interpolation**, arXiv:2306.15595
+- Peng et al., **YaRN: Efficient Context Window Extension of Large Language Models**, ICLR 2024（arXiv:2309.00071）
+- Kazemnejad et al., **The Impact of Positional Encoding on Length Generalization in Transformers**, NeurIPS 2023（arXiv:2305.19466）— NoPE 的來源
+- Xiao et al., **Efficient Streaming Language Models with Attention Sinks**, ICLR 2024（arXiv:2309.17453）
+- Liu et al., **Lost in the Middle: How Language Models Use Long Contexts**, TACL 2023（arXiv:2307.03172）— **本週的核心批判文獻**
+- Li et al., **RAG or Long-Context LLMs? A Comprehensive Study and Hybrid Approach**, EMNLP 2024 industry track（arXiv:2407.16833）— 在此埋下，W12 展開
+- Yuan et al., **Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention**, arXiv:2502.11089 — **強調 natively trainable 是重點，不是 inference-only**
+- DeepSeek-AI, **DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models**, arXiv:2512.02556 — DSA (DeepSeek Sparse Attention)
+- Zhang et al., **H2O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models**, arXiv:2306.14048
+- `[題]` 長文本評估：檢索 *RULER what's the real context size of your long-context language models*、*needle in a haystack limitations*、*∞Bench long context benchmark*

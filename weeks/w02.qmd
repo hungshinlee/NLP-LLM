@@ -1,0 +1,35 @@
+---
+title: "W2｜Tokenization: The World the Model Sees"
+subtitle: "Part I — Architecture · Tokenization：模型看到的世界，以及它看不到的"
+toc-depth: 2
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+## 定位
+放在架構之前，因為 **tokenizer 是整個系統中唯一無法在訓練後修正的設計決策**，而且它的下游效應在 2026 才被量化清楚（compute-optimal 配置會隨 tokenizer 改變）。對繁中授課的班級，這一週有額外的重量：token fertility 的落差直接轉換成成本與有效 context 長度的落差。這也是全課第一個「手刻一次」的元件。
+
+## Learning objectives
+1. 能從零實作 BPE 的訓練與編碼，並說明它與 WordPiece（likelihood-based merge）、Unigram LM（自 top-down 剪枝）在**目標函數**上的差異。
+2. 能解釋 byte-level fallback 如何消滅 OOV，以及它對 CJK 造成的 fertility 代價。
+3. 能說明 vocabulary size 為何進入 scaling law，並推導「較大的模型該配較大的 vocab」的直覺論證。
+4. 能診斷至少三種由 tokenization 直接造成的下游失效：算術錯誤、glitch token、跨語言成本不對等。
+5. 能說明為什麼 tokenizer 的選擇會改變 compute-optimal 的參數／資料配置（2026 年的新結論）。
+
+## 參考資料
+- **JM3** Ch 2 *Words and Tokens*（2026-08-19 release 的新章名，正是為此重寫的）
+- **RAS** ch 2（BPE 手刻）；**HOLLM** ch 2 *Tokens and Embeddings*（視覺化最強）
+- **ZZM** ch 7 *Word Segmentation and Tokenization*——含 BPE 實作與**中文分詞**（本課書單中唯一處理中文分詞的）。**注意程式碼是 PaddleNLP，只讀不跑**
+- Sennrich, Haddow & Birch, **Neural Machine Translation of Rare Words with Subword Units**, ACL 2016 — BPE 進入 NLP 的原始出處
+- Kudo, **Subword Regularization: Improving NMT Models with Multiple Subword Candidates**, ACL 2018 — Unigram LM 與取樣
+- Kudo & Richardson, **SentencePiece: A simple and language independent subword tokenizer**, EMNLP 2018 (demo)
+- Tao et al., **Scaling Laws with Vocabulary: Larger Models Deserve Larger Vocabularies**, NeurIPS 2024（arXiv:2407.13623）— **本週的推導主文獻**
+- Limisiewicz et al., **Compute Optimal Tokenization**, arXiv:2605.01188（2026-05）— **本週最新且最重要的一篇**；主張參數量應按以 bytes 計的資料量縮放
+- Liu et al., **SuperBPE: Space Travel for Language Models**, COLM 2025（arXiv:2503.13423）— 跨 whitespace 的 superword token，可當 live demo
+- Pagnoni et al., **Byte Latent Transformer: Patches Scale Better Than Tokens**, arXiv:2412.09871 — tokenizer-free 路線的代表
+- Ali et al., **Tokenizer Choice For LLM Training: Negligible or Crucial?**, arXiv:2310.08754
+- `[題]` 跨語言的 token 不公平性：檢索 *language model tokenizers introduce unfairness between languages*（Petrov et al. 一般認為是 arXiv:2305.15425，**我未能逐篇查證，請勿直接寫 ID**）
+- `[題]` glitch token：檢索 *SolidGoldMagikarp glitch tokens*、*under-trained tokens in large language models*
+- `[題]` 數字表徵與算術：檢索 *tokenization arithmetic digit tokenization*、*right-to-left digit grouping LLM*
+
+> **繁中／台語／客語的文獻缺口（請當成專題題目，不要當成引用）**：我查不到任何專門處理繁體中文 token efficiency 的可驗證論文。相關可用的替代是評測資源而非 tokenizer 研究：Chen et al., **TMLU** (arXiv:2403.20180) 與 Tam et al., **TMMLU+** (arXiv:2403.01858)。因此**繁中 fertility 只能靠你自己現場 demo**——這正好說明這是一個真實的研究機會，而不是我沒查到。

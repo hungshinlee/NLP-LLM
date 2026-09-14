@@ -1,0 +1,320 @@
+{
+ "generations": {
+  "1": "We than me or too: here separation PERDITA I majesty exhales the bring child have, night interchange, our to thereto and dad, kiss thinks a country's the pedigree Thy For they Unless but,. the",
+  "2": "be to each of York, you might reproach your lordship cool your will show it. For thy due to your channel should be furnished with patience but a truth, seven night: He shift a word, my",
+  "4": "wrought To be set high in place, we did: he desires to make atonement Betwixt the Duke of York is there alive but we? And who durst mine when Warwick bent his brow? Lo, now my sovereign speaketh",
+  "8": "well in his person wrought To be set high in place, we did commend To your remembrances: but you have found, Scaling his present bearing with his past, That he's your fixed enemy, and revoke Your sudden approbation. BRUTUS: Say"
+ },
+ "backoff_pct": {
+  "1": 0.0,
+  "2": 0.0,
+  "4": 0.0,
+  "8": 0.0
+ },
+ "sparsity": {
+  "1": 5.2,
+  "2": 36.4,
+  "3": 77.2,
+  "4": 95.0,
+  "5": 99.0
+ },
+ "bpb": {
+  "1": 2.117,
+  "2": 1.861,
+  "3": 2.025,
+  "4": 2.293
+ },
+ "cosines": {
+  "good/bad": 0.228,
+  "love/hate": 0.412,
+  "day/night": 0.337,
+  "life/death": 0.404,
+  "good/evil": 0.146,
+  "friend/enemy": 0.22,
+  "king/queen": 0.401,
+  "good/excellent": 0.212
+ },
+ "neighbours": {
+  "good": [
+   [
+    "you",
+    0.573
+   ],
+   [
+    "sir",
+    0.561
+   ],
+   [
+    "my",
+    0.514
+   ],
+   [
+    "to",
+    0.512
+   ],
+   [
+    "do",
+    0.507
+   ],
+   [
+    "come",
+    0.5
+   ]
+  ],
+  "love": [
+   [
+    "to",
+    0.48
+   ],
+   [
+    "my",
+    0.479
+   ],
+   [
+    "but",
+    0.47
+   ],
+   [
+    "so",
+    0.452
+   ],
+   [
+    "i",
+    0.451
+   ],
+   [
+    "as",
+    0.448
+   ]
+  ],
+  "day": [
+   [
+    "capulet",
+    0.501
+   ],
+   [
+    "woful",
+    0.449
+   ],
+   [
+    "lamentable",
+    0.398
+   ],
+   [
+    "this",
+    0.395
+   ],
+   [
+    "morrow",
+    0.394
+   ],
+   [
+    "hour",
+    0.384
+   ]
+  ],
+  "king": [
+   [
+    "richard",
+    0.781
+   ],
+   [
+    "edward",
+    0.666
+   ],
+   [
+    "iii",
+    0.642
+   ],
+   [
+    "vi",
+    0.63
+   ],
+   [
+    "ii",
+    0.625
+   ],
+   [
+    "iv",
+    0.595
+   ]
+  ]
+ },
+ "corpus": {
+  "tokens": 250371,
+  "types": 14560,
+  "train": 225333,
+  "held": 25038,
+  "emb_vocab": 4000
+ },
+ "seed": "beside well in his person wrought To be",
+ "neighbours_filtered": {
+  "king": [
+   [
+    "richard",
+    0.781
+   ],
+   [
+    "edward",
+    0.666
+   ],
+   [
+    "iii",
+    0.642
+   ],
+   [
+    "vi",
+    0.63
+   ],
+   [
+    "ii",
+    0.625
+   ],
+   [
+    "iv",
+    0.595
+   ]
+  ],
+  "day": [
+   [
+    "capulet",
+    0.501
+   ],
+   [
+    "woful",
+    0.449
+   ],
+   [
+    "lamentable",
+    0.398
+   ],
+   [
+    "morrow",
+    0.394
+   ],
+   [
+    "hour",
+    0.384
+   ],
+   [
+    "dim",
+    0.378
+   ]
+  ],
+  "love": [
+   [
+    "hate",
+    0.412
+   ],
+   [
+    "know",
+    0.405
+   ],
+   [
+    "him",
+    0.405
+   ],
+   [
+    "devotion",
+    0.394
+   ],
+   [
+    "romeo",
+    0.381
+   ],
+   [
+    "heart's",
+    0.378
+   ]
+  ],
+  "sword": [
+   [
+    "bagot",
+    0.411
+   ],
+   [
+    "hands",
+    0.399
+   ],
+   [
+    "stem",
+    0.394
+   ],
+   [
+    "enemies",
+    0.388
+   ],
+   [
+    "swear",
+    0.378
+   ],
+   [
+    "withdraw",
+    0.372
+   ]
+  ],
+  "father": [
+   [
+    "child",
+    0.511
+   ],
+   [
+    "son",
+    0.507
+   ],
+   [
+    "york",
+    0.475
+   ],
+   [
+    "heir",
+    0.465
+   ],
+   [
+    "grandfather",
+    0.458
+   ],
+   [
+    "slew",
+    0.447
+   ]
+  ]
+ },
+ "contrast": [
+  {
+   "kind": "反義",
+   "pair": "love / hate",
+   "cos": 0.412
+  },
+  {
+   "kind": "反義",
+   "pair": "life / death",
+   "cos": 0.404
+  },
+  {
+   "kind": "反義",
+   "pair": "good / bad",
+   "cos": 0.228
+  },
+  {
+   "kind": "反義",
+   "pair": "friend / enemy",
+   "cos": 0.22
+  },
+  {
+   "kind": "同義",
+   "pair": "good / excellent",
+   "cos": 0.212
+  },
+  {
+   "kind": "同義",
+   "pair": "sword / blade",
+   "cos": 0.163
+  },
+  {
+   "kind": "相關",
+   "pair": "king / queen",
+   "cos": 0.401
+  }
+ ]
+}

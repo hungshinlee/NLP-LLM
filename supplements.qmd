@@ -1,0 +1,20 @@
+---
+title: "Supplements"
+subtitle: "Guides for the midterm report, the final paper, and writing them up"
+toc: false
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 supplements/*.md 後重跑腳本。 -->
+
+These guides back the two assessed deliverables — the midterm report (40%) and the final paper (60%) — from picking a topic through to the write-up. They treat both as submissions to ACL / EMNLP / NAACL / COLM / ICLR rather than as coursework, which is the standard the course is aiming at.
+
+**The guides themselves are in Chinese**, matching how the course is taught.
+
+| Guide | What it covers |
+|:-------------------------------|:--------------------------|
+| **[Ten Research Topics for ACL 2027 on a Single Consumer GPU](supplements/topics-for-acl27.qmd)**<br>[鎖定 ACL 2027：基於單張消費級硬體與臺灣本土多語系語料之大型語言模型前沿研究題庫與技術藍圖]{.wk-zh} | Where the field is heading, what a single 16 GB card can and cannot train, ten topic proposals grounded in Taiwan's Sinitic and Austronesian languages, and a six-month path to an ARR submission. |
+| **[Midterm: From Problem Statement to Proof of Concept](supplements/midterm-poc.qmd)**<br>[期中研究計畫與概念驗證（PoC）教戰守策：從問題定義到初期驗證]{.wk-zh} | How to frame a falsifiable hypothesis and position it against prior art, the fatal flaws reviewers look for first, and where AI tools belong in the process. |
+| **[Final Paper: From PoC to a Conference-Ready Manuscript](supplements/final-paper-mvp.qmd)**<br>[期末完整論文（MVP）教戰守策：從 PoC 跨越至 Top Conference 錄取門檻]{.wk-zh} | The section-by-section structure, the experiments that establish soundness, the qualitative error analysis reviewers actually read, and a rubric aligned with ARR's scoring dimensions. |
+| **[Writing and Narrative Logic for Top-Conference Papers](supplements/paper-writing-and-narrative.qmd)**<br>[Top Conference 論文寫作教戰守策：敘事架構、工程實踐與 AI 協同]{.wk-zh} | The narrative arc of a top-conference paper, sentence-level coherence tactics, an AI-assisted writing workflow, and a reviewer's-eye checklist before submission. |
+
+> **On the hardware assumption.** These guides describe the *term project*, not the course. The course itself asks nothing of your hardware — it is lectures, and the demos run in class. The topics here were chosen against a single 16 GB CUDA GPU (an RTX 5070 Ti or similar), which is what a QLoRA run or an activation-steering experiment at 1–8B actually needs. If you have less, say so early and pick a topic that fits: several of the ten are inference-only or work on weights offline, and need almost no GPU time at all.

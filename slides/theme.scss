@@ -1,0 +1,201 @@
+/*-- scss:defaults --*/
+
+// 與課程網站同一組色票，讓網站與投影片看起來是同一套系統
+$presentation-font-size-root: 34px !default;
+$presentation-h1-font-size:   1.62em !default;
+$presentation-h2-font-size:   1.24em !default;
+$presentation-h3-font-size:   1.02em !default;
+$presentation-heading-font-weight: 700 !default;
+$presentation-heading-color: #111827 !default;
+$presentation-line-height:  1.42 !default;
+
+$body-color: #1f2328 !default;
+$body-bg:    #ffffff !default;
+$link-color: #0b5cad !default;
+$code-block-font-size: .58em !default;
+
+$font-family-sans-serif:
+  -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+  "PingFang TC", "Noto Sans TC", sans-serif !default;
+
+/*-- scss:rules --*/
+
+$c-user:  #0b5cad;
+$c-model: #b45309;
+$c-warn:  #dc2626;
+$c-ok:    #15803d;
+$c-muted: #6b7280;
+
+.reveal .slides section {
+  text-align: left;
+}
+
+// 投影機後排看得到：標題留白收緊，換取內容字級
+.reveal h2 {
+  margin-bottom: .55em;
+  padding-bottom: .22em;
+  border-bottom: 2px solid #e5e7eb;
+  line-height: 1.25;
+}
+.reveal h3 { color: #374151; margin-bottom: .4em; }
+
+// ── 主張框：一張投影片只有一句話時用 ────────────────────────
+.reveal .claim {
+  border-left: 6px solid $link-color;
+  background: #f8fafc;
+  padding: .8em 1em;
+  margin: .9em 0;
+  font-size: 1.14em;
+  line-height: 1.4;
+  strong { color: $link-color; }
+}
+.reveal .claim.warn {
+  border-left-color: $c-warn;
+  background: #fef2f2;
+  strong { color: $c-warn; }        // 警示框裡的強調要跟著警示色，不要留藍色
+}
+.reveal .claim.ok   { border-left-color: $c-ok;   background: #f0fdf4; }
+
+// ── 量測數字卡 ──────────────────────────────────────────────
+.reveal .metrics {
+  display: flex;
+  gap: 1.1em;
+  margin: .7em 0;
+  .metric {
+    flex: 1;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 7px;
+    padding: .5em .7em;
+    background: #fff;
+  }
+  .num { display: block; font-size: 1.62em; font-weight: 700; line-height: 1.1; }
+  .lab { display: block; font-size: .68em; color: $c-muted; margin-top: .25em; }
+  .bad  .num { color: $c-warn; }
+  .good .num { color: $c-ok; }
+}
+
+// ── 提問slide：留白讓學生先答 ────────────────────────────────
+.reveal .ask {
+  font-size: 1.34em;
+  font-weight: 600;
+  color: $link-color;
+  margin: 1.2em 0 .6em;
+}
+
+// ── 表格 ────────────────────────────────────────────────────
+// 字級用「絕對值」而非 em：投影片常帶 .smaller，相對字級會相乘，
+// 造成同一份 deck 裡的表格大小不一（W1 曾經全部縮到 19.5px）。
+.reveal table {
+  border-collapse: collapse;
+  font-size: 26px;
+
+  th, td {
+    font-size: 26px;      // 明確覆寫，避免任何祖先的 em 疊乘
+    line-height: 1.34;
+    padding: .42em .62em;
+    vertical-align: top;
+  }
+  th {
+    background: #f6f8fa;
+    font-weight: 650;
+    border-bottom: 2px solid #d1d5db;
+  }
+  tbody tr + tr td { border-top: 1px solid #eef1f4; }
+
+  // 第一欄通常是短標籤，不換行讀起來更整齊
+  td:first-child, th:first-child { white-space: nowrap; }
+}
+
+// ── 引用與出處 ──────────────────────────────────────────────
+// .cite 在被縮放的 .slides 內，用 em 沒問題。
+.reveal .cite {
+  font-size: .6em;
+  color: $c-muted;
+  line-height: 1.35;
+}
+
+// .footer 與頁碼由 reveal 畫在「縮放容器之外」的頁面層，transform 不會作用到它們。
+// 用 em 的話，桌機 scale=1 看起來正常，但手機橫向 scale≈0.51 時就等於放大兩倍，
+// 會蓋住頁碼與板書按鈕。改用 vw 讓它隨視窗寬度縮放。
+.reveal .footer {
+  box-sizing: border-box;     // 少了這行，padding 會加在 100% 寬之外而衝出畫面
+  left: 16% !important;       // 讓出左下角的控制列
+  right: 12% !important;      // 讓出右下角的頁碼
+  bottom: 1.1em !important;
+  padding: 0 !important;
+  text-align: center;
+  white-space: normal !important;   // Quarto 預設 nowrap，長引用會溢出盒子外
+
+  font-size: clamp(10px, 1.55vw, 21px) !important;
+  color: $c-muted;
+  line-height: 1.3;
+}
+.reveal .slide-number {
+  font-size: clamp(9px, 1.1vw, 15px) !important;
+}
+.reveal .small { font-size: .82em; }
+.reveal .dim   { color: $c-muted; }
+.reveal .tag {
+  display: inline-block;
+  font-size: .62em;
+  font-weight: 650;
+  padding: .12em .5em;
+  border-radius: 20px;
+  background: #eef2ff;
+  color: #3730a3;
+  vertical-align: middle;
+}
+
+// ── 音訊播放器：教室裡要一眼看到、一鍵按到 ──────────────────
+.reveal audio {
+  width: 100%;
+  height: 48px;
+  margin: .35em 0 .1em;
+}
+.reveal .audio-label {
+  font-size: .72em;
+  font-weight: 650;
+  color: $c-muted;
+  margin-top: .5em;
+}
+
+// 圖片不要被 reveal 的預設邊框與陰影干擾
+.reveal section img { border: none; box-shadow: none; margin: .3em 0; background: none; }
+
+// ── 章節分隔頁 ──────────────────────────────────────────────
+.reveal .section-title h1 {
+  border-left: 10px solid $link-color;
+  padding-left: .5em;
+  font-size: 1.5em;
+}
+.reveal .section-title { padding-top: 1.2em; }
+
+// 兩欄
+.reveal .columns { align-items: flex-start; }
+
+// ── 模型生成出來的文字樣本（W1 的 n-gram 輸出）─────────────────
+// 用襯線體與淺底把「機器產生的東西」和投影片的論述文字分開，
+// 一眼就看得出哪一段是資料、哪一段是我的話。
+.reveal .gen {
+  font-family: Georgia, "Times New Roman", "Songti TC", serif;
+  background: #fbfaf7;
+  border-left: 5px solid #d6d3ce;
+  padding: .62em .85em;
+  margin: .5em 0;
+  font-size: .84em;
+  line-height: 1.46;
+  color: #2b2b2b;
+}
+.reveal .gen.hit {                 // 逐字複製訓練語料的那一段
+  border-left-color: $c-warn;
+  background: #fdf6f6;
+}
+.reveal .gen .n {                  // 左上角的 n = ? 標記
+  display: block;
+  font-family: inherit;
+  font-size: .74em;
+  font-weight: 700;
+  color: $c-muted;
+  margin-bottom: .2em;
+  letter-spacing: .04em;
+}

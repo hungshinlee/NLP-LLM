@@ -1,0 +1,132 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - syllabus.qmd
+    - resources.qmd
+    - slides.qmd
+    - supplements.qmd
+    - weeks/w*.qmd
+    - slides/*.qmd
+    - supplements/*.qmd
+  resources:
+    - slides/assets/**
+
+# 用 zh-TW 而非 zh-Hant：Quarto 只有 _language-zh-TW.yml，給 zh-Hant 會退回簡體的 _language-zh.yml
+lang: zh-TW
+
+# 網站骨架一律英文：覆寫 Quarto 內建的中文 UI 字串。
+# 頁內 TOC 標題見 format.html 的 toc-title。
+language:
+  search-text-placeholder: "Search"
+  search-label: "Search"
+  repo-action-links-source: "View source"
+  repo-action-links-issue: "Report an issue"
+  back-to-top-title: "Back to top"
+  toggle-reader-mode: "Presentation mode"
+  toggle-section: "Toggle section"
+  toggle-sidebar: "Toggle sidebar navigation"
+  toggle-navigation: "Toggle navigation"
+
+website:
+  title: "自然語言處理與大型語言模型"
+  description: "A graduate course on large language models: every layer from tokenizer to agent, why it looks the way it does, and where it breaks"
+  site-url: https://hungshinlee.github.io/NLP-LLM/
+  repo-url: https://github.com/hungshinlee/NLP-LLM
+  repo-actions: [source, issue]
+  page-navigation: true
+  back-to-top-navigation: true
+  reader-mode: true
+  search:
+    location: navbar
+    type: overlay
+  navbar:
+    logo: ""
+    # 只縮短 navbar 的品牌字；website.title 維持全名，分頁標題與 metadata 才完整
+    title: "NLP & LLM"
+    collapse-below: lg
+    left:
+      - href: index.qmd
+        text: Home
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: slides.qmd
+        text: Slides
+      - href: resources.qmd
+        text: Resources
+      - href: supplements.qmd
+        text: Supplements
+    right:
+      - icon: github
+        href: https://github.com/hungshinlee/NLP-LLM
+        aria-label: GitHub
+  sidebar:
+    style: floating
+    collapse-level: 2
+    search: false
+    contents:
+      - href: index.qmd
+        text: Home
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: slides.qmd
+        text: Slides
+      - section: "Part I — Architecture"
+        contents:
+          - href: weeks/w01.qmd
+          - href: weeks/w02.qmd
+          - href: weeks/w03.qmd
+          - href: weeks/w04.qmd
+          - href: weeks/w05.qmd
+          - href: weeks/w06.qmd
+      - section: "Part II — Training"
+        contents:
+          - href: weeks/w07.qmd
+          - href: weeks/w08.qmd
+          - href: weeks/w09.qmd
+          - href: weeks/w10.qmd
+      - section: "Part III — Systems & Scrutiny"
+        contents:
+          - href: weeks/w11.qmd
+          - href: weeks/w12.qmd
+          - href: weeks/w13.qmd
+          - href: weeks/w14.qmd
+      - href: resources.qmd
+        text: Resources
+      # sidebar 是手維護的：新增一份補充教材時要在這裡加一行 href
+      - section: "Supplements"
+        contents:
+          - href: supplements/topics-for-acl27.qmd
+          - href: supplements/midterm-poc.qmd
+          - href: supplements/final-paper-mvp.qmd
+          - href: supplements/paper-writing-and-narrative.qmd
+  page-footer:
+    left: "自然語言處理與大型語言模型 · Natural Language Processing and Large Language Models · 14 weeks"
+    right: "Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme:
+      - cosmo
+      - styles.scss
+    toc: true
+    toc-depth: 2
+    toc-title: "On this page"
+    toc-expand: true
+    smooth-scroll: true
+    anchor-sections: true
+    link-external-newwindow: true
+    # 釘住版本：Quarto 預設載 katex@latest，上游改版會無聲壞掉
+    html-math-method:
+      method: katex
+      url: "https://cdn.jsdelivr.net/npm/katex@0.18.7/dist/"
+    include-in-header:
+      - _present-mode.html
+    code-copy: true
+    code-overflow: scroll
+    fig-responsive: true
+    grid:
+      sidebar-width: 260px
+      body-width: 960px
+      margin-width: 220px

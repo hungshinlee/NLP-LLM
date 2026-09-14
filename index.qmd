@@ -1,0 +1,36 @@
+---
+title: "自然語言處理與大型語言模型"
+subtitle: "**Natural Language Processing and Large Language Models**"
+toc: false
+---
+
+::: {.lead}
+The course is built around a single discipline: **for every layer of a modern LLM, explain why it looks the way it does — and where it breaks.**
+:::
+
+| | |
+|:-------------|:-----------------------------------------------------|
+| **Lecturer** | [Hung-Shin Lee (李鴻欣)](https://web.ntnu.edu.tw/~hslee/) |
+| **Audience** | Master's / PhD students; no hard prerequisites |
+| **Format** | 14 weeks × 3 hours, lectures throughout |
+| **Language** | Lectures in Mandarin, slides in English |
+| **Compute** | Nothing is required of students — every demo is run live in class |
+| **Project hardware** | The term project assumes a single 16 GB CUDA GPU (RTX 5070 Ti class) |
+| **Assessment** | Midterm report (40%), final paper (60%) |
+| **Requirements** | Group work in teams of 2–4; two online discussion sessions |
+
+## Three Threads Through the Course
+
+Every week comes back to these three questions. They are the coordinate system of the course, and the line that ties the 14 weeks together when you look back from the end.
+
+| Thread | Question |
+|:-----------|:---------------------------------------------------------|
+| **Representation** | What is the unit at this layer — byte, token, hidden state, KV entry, retrieved chunk, latent thought? **Who chose that unit, and what does the choice cost downstream?** |
+| **Compute** | Does this method spend *training* compute or *inference* compute? Is it FLOPs bound or memory-bandwidth bound? |
+| **Supervision** | Where does this capability come from — the pre-training distribution, human preference labels, a verifiable reward, retrieved knowledge, or extra compute at test time? **The same behaviour can come from entirely different sources, and that is the central dispute in W10 and W14.** |
+
+{{< include _includes/coursemap.md >}}
+
+## Weekly Schedule
+
+{{< include _includes/week-index.md >}}

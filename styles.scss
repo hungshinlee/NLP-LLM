@@ -1,0 +1,261 @@
+/*-- scss:defaults --*/
+
+// CJK 優先的字體堆疊：中文用系統黑體，英文與程式碼保留原生字體
+$font-family-sans-serif:
+  -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+  "PingFang TC", "Noto Sans TC", "Microsoft JhengHei",
+  "Hiragino Sans GB", sans-serif !default;
+$font-family-monospace:
+  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+  "DejaVu Sans Mono", "Liberation Mono", monospace !default;
+
+$font-size-root:       17px !default;
+$line-height-base:     1.75 !default;
+$body-color:           #1f2328 !default;
+$link-color:           #0b5cad !default;
+$table-cell-padding-y: .5rem !default;
+$table-cell-padding-x: .7rem !default;
+$toc-font-size:        .85rem !default;
+
+/*-- scss:rules --*/
+
+// ── 中文排版 ──────────────────────────────────────────────
+body {
+  letter-spacing: .01em;
+  text-rendering: optimizeLegibility;
+}
+main p, main li, main td { text-wrap: pretty; }
+
+h1, h2, h3 { letter-spacing: .005em; line-height: 1.4; }
+h2 {
+  margin-top: 2.4rem;
+  padding-bottom: .3rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+h3 { margin-top: 1.8rem; }
+
+// Quarto 有一條 `main.content > section:first-of-type > h2:first-child { margin-top: 0 }`，
+// 用意是讓第一個標題緊接標題區塊。但首頁的第一個 section 前面還有一張表格，
+// 於是「Three Threads…」只離表格 9px，而其他 h2 都是 41px。
+// 只在「表格緊接著第一個 section」時補回間距；選擇器特異度要壓過上面那條 (0,3,3)。
+main.content > table + section.level2 > h2:first-child { margin-top: 2.4rem; }
+
+// ── 表格：桌機正常呈現，窄螢幕改為可橫向捲動 ──────────────
+// 字級用 rem（root 相對）而非 em：表格常出現在 blockquote 或其他有 em 的容器裡，
+// 用 em 會相乘，造成同一站的表格大小不一。表格是內容本體，與正文同級。
+main table {
+  font-size: 1rem;
+  th { background: #f6f8fa; font-weight: 600; white-space: nowrap; }
+  td, th { vertical-align: top; }
+}
+
+// 首頁每週索引：英文標題為主，中文標題作次行
+.wk-zh {
+  color: #6b7280;
+  font-size: .86rem;
+  line-height: 1.5;
+}
+
+// ── 長行 display math 在手機上可橫捲，不溢出頁面 ───────────
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: .35rem 0;
+}
+.katex { font-size: 1.02em; }
+
+// ── ASCII 圖與程式碼：一律不換行，改為橫向捲動 ─────────────
+pre, pre code {
+  white-space: pre;
+  word-wrap: normal;
+}
+pre {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  line-height: 1.5;
+}
+
+// ── 引用區塊（大綱裡的免責聲明與提醒）─────────────────────
+main blockquote {
+  border-left: 3px solid $link-color;
+  background: #f8fafc;
+  padding: .8rem 1rem;
+  margin: 1.4rem 0;
+  font-size: .95rem;
+  color: #374151;
+  > :last-child { margin-bottom: 0; }
+}
+
+// 引用可信度標記與行內識別字
+// 這兩行是必要的：長識別字（torch.nn.functional.scaled_dot_product_attention）
+// 是不可斷詞的單一 token，在 390px 下會把整頁撐開 89px。
+// 上游把行內 code 的 white-space 設成 pre，光給 overflow-wrap 不會生效——
+// 必須先把 white-space 收回 normal。只作用於行內 code，
+// `pre` 仍維持 white-space:pre + 橫向捲動（見上方規則），程式碼區塊不會被折行。
+code:not(pre code) {
+  white-space: normal;
+  background: #f2f4f7;
+  padding: .1em .35em;
+  border-radius: 3px;
+  font-size: .88em;
+  color: #9a3412;
+  overflow-wrap: anywhere;
+}
+
+// ── 手機（≤ 768px）─────────────────────────────────────────
+@media (max-width: 768px) {
+
+  body { font-size: 16.5px; line-height: 1.8; }
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.25rem; margin-top: 2rem; }
+  h3 { font-size: 1.08rem; }
+
+  // 表格改為獨立捲動容器：保留換行可讀性，必要時橫捲
+  main table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    font-size: .95rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+
+    th, td { min-width: 7.5rem; }
+    // 最後一欄通常是長段落（破解方式、內容說明），給多一點寬度
+    th:last-child, td:last-child { min-width: 15rem; }
+    // 兩欄表（誤解／破解）不需要 nowrap 的表頭
+    th { white-space: normal; }
+  }
+
+  // 可橫捲的元素給一個視覺提示
+  main table, pre { box-shadow: inset -8px 0 8px -8px rgba(0,0,0,.18); }
+
+  pre { font-size: .74rem; }
+
+  .katex-display > .katex { font-size: .95em; }
+
+  // 段落與清單縮排收緊，換取閱讀寬度
+  main ul, main ol { padding-left: 1.25rem; }
+  main blockquote { padding: .7rem .8rem; margin: 1.1rem 0; }
+}
+
+// ── 超窄螢幕（≤ 400px）────────────────────────────────────
+@media (max-width: 400px) {
+  pre { font-size: .68rem; }
+  main table { font-size: .9rem; }
+}
+
+// ── 列印（完整大綱頁供列印用）──────────────────────────────
+@media print {
+  #quarto-sidebar, #quarto-margin-sidebar, .navbar, .nav-footer { display: none !important; }
+  main table { display: table; font-size: 9pt; }
+  h2 { page-break-after: avoid; }
+  pre { font-size: 7.5pt; }
+}
+
+// ── 展示模式（按 z 或點 navbar 的按鈕切換）─────────────────
+// 投影時 zoom in 會讓等效視窗變窄，落在「兩側導覽還沒收起、內容卻被擠掉」的區間
+// （實測 1100px 等效寬時內容只剩 570px，而左右佔掉 428px）。這裡把兩側收起、
+// 內容跨滿整個 page 欄位。JS 在 _present-mode.html，class 掛在 <html> 以免換頁閃動。
+html.present-mode {
+
+  #quarto-sidebar,
+  #quarto-margin-sidebar,
+  .quarto-secondary-nav { display: none !important; }
+
+  // Quarto 的版面是 named-line grid；只隱藏元素不會收回欄寬，要讓內容跨滿 page
+  main.content { grid-column: page-start / page-end !important; }
+
+  // 內容變寬後給長行一個上限，避免整行掃視太累；投影時仍比預設寬得多
+  #quarto-document-content { max-width: 62rem; margin-inline: auto; }
+
+  // 收起側欄後不需要那顆展開鈕
+  .quarto-btn-toggle { display: none !important; }
+
+  // 按鈕給一個「已啟用」的視覺提示，否則不知道現在在哪個狀態
+  .quarto-reader-toggle {
+    background: rgba(11, 92, 173, .12);
+    border-radius: 5px;
+  }
+}
+
+// ── 首頁課程地圖（HTML/CSS grid，由 build_weeks.py 產生）────
+// 用 grid 而非 SVG 的三個理由：方塊可點、文字進得了站內搜尋、窄螢幕能疊成一欄。
+// SVG 以 width:100% 縮放時，390px 下 1240 寬的圖會縮到 0.31 倍，25px 的字變成 8px。
+.coursemap { margin: 1.5rem 0 .5rem; }
+
+.cm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.cm-part {
+  font-weight: 700;
+  font-size: .93rem;
+  color: $link-color;
+  letter-spacing: .01em;
+  padding-bottom: .4rem;
+  margin-bottom: .55rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.cm-wk {
+  display: flex;
+  align-items: baseline;
+  gap: .55rem;
+  padding: .46rem .6rem;
+  margin-bottom: .4rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: #fff;
+  text-decoration: none;
+  color: $body-color;
+  line-height: 1.35;
+  transition: border-color .12s, background .12s, transform .12s;
+
+  &:hover {
+    border-color: $link-color;
+    background: #f8fafc;
+    transform: translateX(2px);
+    text-decoration: none;
+  }
+  .cm-n { font-weight: 700; color: $link-color; font-size: .92rem; flex: none; }
+  .cm-t { font-size: .9rem; }
+}
+
+// 樞紐週：W3–W4，Part III 整欄都建立在其上
+.cm-hinge {
+  border-color: $link-color;
+  border-width: 1.6px;
+  background: #eef2ff;
+  .cm-t { font-weight: 600; }
+}
+
+.cm-note {
+  margin: .9rem 0 0;
+  font-size: .9rem;
+  color: #4b5563;
+  em { color: $link-color; font-style: normal; font-weight: 600; }
+}
+
+// 窄螢幕疊成一欄——這正是 grid 勝過 SVG 的地方
+@media (max-width: 820px) {
+  .cm-grid { grid-template-columns: 1fr; gap: 1.3rem; }
+  .cm-wk { padding: .55rem .7rem; }
+}
+
+@media print {
+  .cm-grid { grid-template-columns: repeat(3, 1fr); }
+  .cm-wk { break-inside: avoid; }
+}
+
+// ── 首頁副標的加粗 ────────────────────────────────────────
+// Quarto 的 .subtitle 用了較輕的字重，而 <strong> 的 UA 預設是相對值 bolder，
+// 從輕字重往上只會到 400，看起來完全沒加粗。必須給絕對值。
+// 只有首頁的 subtitle 裡有 <strong>，所以這條規則實際上只作用在首頁。
+.quarto-title .subtitle strong,
+header .subtitle strong,
+p.subtitle strong { font-weight: 700; }

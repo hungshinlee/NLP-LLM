@@ -1,0 +1,33 @@
+---
+title: "W1｜From n-grams to Seq2Seq: A Compressed History"
+subtitle: "Part I — Architecture · 從 n-gram 到 seq2seq：一條被壓縮的技術史"
+toc-depth: 2
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+::: {.callout-note appearance="minimal"}
+[**▶ 本週投影片（English）**](../slides/w01.qmd)
+:::
+
+## 定位
+本課程唯一一週的傳統 NLP，因此要極度節制：**不做完整的 pre-Transformer 導覽，只講「每個元件是為了修哪個具體失效而生」**。目的是讓學生在看 Transformer 時，能指出每個設計對應到哪一個前代的痛點；以及建立「壓縮 = 預測」這個可延伸整學期的比喻。收尾放兩件不屬於任何單一單元的事：算力帳本，和讀論文的四個問題。
+
+## Learning objectives
+1. 能寫出 n-gram LM 的 MLE 估計與 perplexity 定義，並說明 sparsity 為何無法靠更多資料解決（而只能靠 smoothing 或 backoff 的歸納偏誤）。
+2. 能說明 distributional hypothesis 如何被 word2vec 的目標函數具體化，並指出 static embedding 在多義詞上的結構性失效。
+3. 能指出 RNN 的 BPTT 梯度連乘問題、以及 encoder-decoder 的固定長度 bottleneck，並說明 attention 是針對後者的哪一個具體症狀提出的。
+4. 能用 cross-entropy 與 bits-per-byte 說明「語言模型就是壓縮器」，並指出這個等價在哪裡失效。
+
+## 參考資料
+- **JM3** Ch 3 *N-gram Language Models*、Ch 5 *Embeddings*、Ch 14 *RNNs and LSTMs*（三章各取前半即可）
+- **UDL** ch 1–2（給無背景學生的補課指引）；**BB** 相關章節作為機率與最佳化的前置
+- **ZZM** ch 5 *Basic Language Models*（n-gram、smoothing、PPL、FNN-LM、LSTM-LM）與 ch 3 *Distributed Representation*（CBOW / skip-gram / ELMo）——**這兩章幾乎就是本週的骨架，且全書 open access，可直接發給學生**；無背景者加讀 ch 2 *Basics of Neural Network*
+- Bengio et al., **A Neural Probabilistic Language Model**, JMLR 2003 — NPLM，參數共享解 sparsity 的起點
+- Mikolov et al., **Efficient Estimation of Word Representations in Vector Space**, arXiv:1301.3781（2013）；與 **Distributed Representations of Words and Phrases and their Compositionality**, NeurIPS 2013（negative sampling 在此篇）
+- Pennington et al., **GloVe: Global Vectors for Word Representation**, EMNLP 2014
+- Sutskever, Vinyals & Le, **Sequence to Sequence Learning with Neural Networks**, NeurIPS 2014
+- Bahdanau, Cho & Bengio, **Neural Machine Translation by Jointly Learning to Align and Translate**, ICLR 2015（arXiv:1409.0473）
+- Levy & Goldberg, **Neural Word Embedding as Implicit Matrix Factorization**, NeurIPS 2014 — 把 SGNS 連回 PMI 矩陣分解，是講「embedding 的相似度等於訓練目標定義的相似度」最有力的一篇
+- `[題]` 壓縮與 LM 的等價：檢索 *language modeling is compression*、*arithmetic coding neural language model*、*bits per byte evaluation*
+- `[題]` Good-Turing 與 Kneser-Ney 的推導：檢索 *Chen Goodman empirical study of smoothing*

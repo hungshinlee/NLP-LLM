@@ -1,0 +1,44 @@
+---
+title: "W11｜Inference Efficiency: From FLOPs to Memory Bandwidth"
+subtitle: "Part III — Systems & Scrutiny · 推論效率：從 FLOPs 到 memory bandwidth"
+toc-depth: 2
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+## 定位
+本週把散落在 W3（KV cache）、W5（長文本成本）、W6（架構取捨）、W7（precision scaling）、W10（test-time compute 的成本）的算力軸收攏成一整堂。**核心的觀念轉換是：prefill 是 compute bound，decode 是 memory bound，因此兩者的最佳化手段幾乎完全不重疊。** 學生一旦掌握這個二分，2025–2026 的整片推論最佳化文獻就有了地圖。本週也是「什麼情況下會壞掉」素材最豐富的一週。
+
+## Learning objectives
+1. 能用 arithmetic intensity 與 roofline 模型判斷一個運算是 compute bound 還是 memory bound，並據此解釋為何 decode 階段增大 batch 幾乎不增加延遲。
+2. 能量化 KV cache 的大小與頻寬需求，並比較 GQA / MLA / 量化 / 驅逐（H2O、StreamingLLM）四類手段的取捨。
+3. 能說明 PagedAttention 解決的是哪一個具體問題（記憶體碎片與過度保留），以及 continuous batching 與 chunked prefill 各自的作用。
+4. 能說明 prefill–decode disaggregation 的動機，並從 roofline 的角度論證它為何有效。
+5. 能證明 speculative decoding 在正確實作下是 **lossless** 的（分布不變），並推導其期望加速比。
+6. 能比較 PTQ 與 QAT、以及 W8/W16 精度的取捨，並說明 2025–2026 的重心已移到低精度**訓練**。
+7. 能陳述 KV cache 壓縮的已知失效模式，並說明「量化優於低秩」這個 2026 結論的理由。
+
+## 參考資料
+- Kwon et al., **Efficient Memory Management for Large Language Model Serving with PagedAttention**, SOSP 2023（arXiv:2309.06180）— **vLLM 的起源，唯一必讀的 serving 論文**
+- Zheng et al., **SGLang: Efficient Execution of Structured Language Model Programs**, arXiv:2312.07104
+- Ainslie et al., **GQA**, EMNLP 2023（arXiv:2305.13245）；DeepSeek-AI, **DeepSeek-V2**（MLA）, arXiv:2405.04434 — 架構層的 KV 解法（W3 已講，此處回扣）
+- Leviathan, Kalman & Matias, **Fast Inference from Transformers via Speculative Decoding**, ICML 2023 Oral（arXiv:2211.17192）— **lossless 證明的來源，必讀**
+- Cai et al., **Medusa: Simple LLM Inference Acceleration Framework with Multiple Decoding Heads**, arXiv:2401.10774
+- Li et al., **EAGLE**, arXiv:2401.15077；**EAGLE-2**, arXiv:2406.16858；**EAGLE-3**, arXiv:2503.01840 — **教學上 Leviathan + EAGLE-3 兩篇足夠**
+- Fu et al., **Break the Sequential Dependency of LLM Inference Using Lookahead Decoding**, arXiv:2402.02057
+- Frantar et al., **GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers**, ICLR 2023（arXiv:2210.17323）
+- Lin et al., **AWQ: Activation-aware Weight Quantization for On-Device LLM Compression and Acceleration**, MLSys 2024 Best Paper（arXiv:2306.00978）
+- Ma et al., **The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits (BitNet b1.58)**, arXiv:2402.17764；與 **BitNet b1.58 2B4T Technical Report**, arXiv:2504.12285 — **1-bit 路線現在有可下載的實模型，不再只是 claim**
+- Castro et al., **Quartet: Native FP4 Training Can Be Optimal for LLMs**, arXiv:2505.14669
+- NVIDIA, **Pretraining Large Language Models with NVFP4**, arXiv:2509.25149
+- Xiao et al., **Efficient Streaming Language Models with Attention Sinks**, ICLR 2024（arXiv:2309.17453）；Zhang et al., **H2O**, arXiv:2306.14048
+- Chen et al., **The Pitfalls of KV Cache Compression**, ACL 2026（arXiv:2510.00231）— **本單元「什麼情況下會壞掉」的核心文本，強烈建議入課**
+- `[驗]` Salfati et al., **Quantization Dominates Rank Reduction for KV-Cache Compression**, arXiv:2604.11501（2026）— 適合當一頁結論式投影片
+- Dao et al., **FlashAttention-3**, arXiv:2407.08608
+- Zhong et al., **DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving**, OSDI 2024（arXiv:2401.09670）
+- Agrawal et al., **Taming Throughput-Latency Tradeoff in LLM Inference with Sarathi-Serve**, arXiv:2403.02310 — chunked prefill 的來源
+- Qin et al., **Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving**, arXiv:2407.00079
+- Gu et al., **MiniLLM: Knowledge Distillation of Large Language Models**, ICLR 2024（arXiv:2306.08543）
+- Survey（選一）：Li et al., **A Survey on Large Language Model Acceleration based on KV Cache Management**, TMLR 2025（arXiv:2412.19442）；或 Zhen et al., **Taming the Titans: A Survey of Efficient LLM Inference Serving**, arXiv:2504.19720
+- `[非論文]` **vLLM V1 沒有論文**，只有工程 blog。教學上請以 2309.06180 + 官方文件搭配，並在投影片標明。**Orca / continuous batching 為 OSDI 2022 會議論文、無 arXiv 版本，引用前請自行核對。**
+- `[題]` LLM 推論的非決定性：檢索 *defeating nondeterminism in LLM inference*、*batch invariant kernels reproducibility*

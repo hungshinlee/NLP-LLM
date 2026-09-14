@@ -1,0 +1,57 @@
+---
+title: "Syllabus"
+subtitle: "Setup, the compute ledger, citation conventions, and what will go stale"
+---
+
+## Course Setup
+
+| Item | Setting |
+|:------------|:--------------------------------------|
+| Course | 自然語言處理與大型語言模型 · Natural Language Processing and Large Language Models |
+| Lecturer | [Hung-Shin Lee (李鴻欣)](https://web.ntnu.edu.tw/~hslee/) |
+| Audience | Master's / PhD students |
+| Prerequisites | None required; linear algebra, probability and Python are soft expectations |
+| Format | 14 weeks × 3 hours, lectures throughout |
+| Language | Lectures in Mandarin, slides in English |
+| Compute | **Nothing is required of students.** The course is lectures throughout, and every demo is run live in class on the lecturer's machine |
+| Project hardware | The term project assumes a single 16 GB CUDA GPU (RTX 5070 Ti class) — the [Supplements](supplements.qmd) topics were selected against that budget |
+| Assessment | Midterm report (40%), final paper (60%) — see [Supplements](supplements.qmd) for what each one has to contain |
+| Depth | Graduate — derivations, the literature behind each idea, open problems |
+| Requirements | Group work in teams of 2–4; two online discussion sessions |
+
+::: {.callout-note}
+## On "no prerequisites" together with "full derivations"
+The two are in tension, and the course accepts that deliberately. The catch-up load sits in W1 and the first half of W3, and week 1 hands out a two-page list of the mathematics assumed: inner products, projection and the intuition for an SVD; conditional independence, expectation and variance; gradient descent and the chain rule. **W7 (Chinchilla's first-order condition), W9 (the DPO derivation) and W3–W4 (the variance argument and parameter accounting) are the three mathematical peaks**, each needing 40–60 minutes at the board. W9 is the most dangerous week for a student with no RL background, so it carries a second explanation — preference optimization as weighted maximum likelihood — for exactly that reason.
+:::
+
+## Course Structure
+
+| Part | Weeks | Content |
+|:-----------|:---------|:-----------------------------------|
+| **Part I — Architecture** | W1–W6 | A compressed history from n-grams to seq2seq; tokenization; attention's mechanics, built by hand; the full block and training dynamics; positional encoding and long context; MoE, state-space models and linear attention |
+| **Part II — Training** | W7–W10 | Scaling laws and data curation; SFT, PEFT and forgetting; preference alignment and RL; reasoning and test-time compute |
+| **Part III — Systems & Scrutiny** | W11–W14 | Inference efficiency, from FLOPs to memory bandwidth; RAG and context engineering; agentic systems and their failure modes; evaluation, interpretability and safety |
+
+**W3 and W4 are the hinge of the course** — W5, W6 and W11 rest entirely on understanding the residual stream and the KV cache, so neither may be compressed. W2 is a prerequisite for W7, because the tokenizer shifts the compute-optimal configuration; W9 is a prerequisite for W10. If the course runs late, compress W6 (an architecture survey by design) and the engineering detail in W12.
+
+Two metaphors are meant to run the length of the course, and each is introduced with an explanation of where it fails. **Compression** arrives in W1 and returns in W7 (a scaling law is the regularity in the compression ratio), W11 (quantization compresses the compressor) and W12 (RAG declines to compress at all). **The residual stream as a shared bus** arrives in W4 and returns in W6 (swapping out how data is moved), W8 (a low-rank bypass on the bus) and W14 (a circuit is a signal traced along it).
+
+{{< include _includes/ledger.md >}}
+
+{{< include _includes/reading-questions.md >}}
+
+## One Argument, Made Three Times
+
+Question 4 above is the abstract version. Here is the concrete one: the course meets the same mistake in three different places, and naming it is what the last week is for.
+
+| Week | A readable intermediate artifact | Misread as |
+|:--|:-----------------------|:---------------------|
+| W3 | attention weight | importance, or an explanation |
+| W10 | chain of thought | the model's reasoning process |
+| W14 | sparse-autoencoder feature | a concept inside the model |
+
+Each time the answer is the same: ask for an intervention rather than a correlation, and ask what a strong baseline does on the same measurement.
+
+{{< include _includes/disclaimer.md >}}
+
+{{< include _includes/halflife.md >}}

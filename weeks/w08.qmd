@@ -1,0 +1,38 @@
+---
+title: "W8｜Post-training I: SFT, PEFT, and Forgetting"
+subtitle: "Part II — Training · Post-training I：SFT、PEFT 與遺忘"
+toc-depth: 2
+---
+
+<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+
+## 定位
+從「壓縮器」到「可用的助理」的第一步。本週的隱藏主題是**低秩**：LoRA 與 W3 的 MLA 是同一個數學技巧用在完全不同的地方，把這兩個連起來是本週最有價值的一分鐘。本週也是全課方法論訓練最集中的一週：**LoRA 變體的軍備競賽在 2025–2026 被兩份工作大幅收斂（一份是 blog、一份是論文），核心原因是 baseline 沒調 learning rate。** 這是「讀論文的第一個問題」的最佳案例。
+
+## Learning objectives
+1. 能說明 instruction tuning 的資料格式（chat template）、loss masking（只算 assistant token）與 packing 的實作細節，並解釋各自做錯會怎樣。
+2. 能寫出 LoRA 的更新式 $\Delta W = BA$，計算它的可訓練參數量與記憶體節省，並說明為何節省主要來自 **optimizer state 與 activation**、而非權重本身。
+3. 能說明 QLoRA 的三個組件（NF4、double quantization、paged optimizer）各解什麼問題。
+4. 能陳述「LoRA 與 full fine-tuning 不等價」的具體證據（intruder dimensions），並說明它與「LoRA 學得少也忘得少」的關係。
+5. 能陳述 2026 年關於 LoRA 變體的 negative result，並說明它對評估方法論的意涵。
+6. 能說明 model merging 的三種主流做法（task arithmetic、TIES、DARE）與其共同假設。
+
+## 參考資料
+- **JM3** Ch 8 *Post-training*（前半）
+- **RAS** ch 6–7（classification FT 與 instruction FT 的手刻）；**HOLLM** ch 10–12
+- Hu et al., **LoRA: Low-Rank Adaptation of Large Language Models**, arXiv:2106.09685
+- Dettmers et al., **QLoRA: Efficient Finetuning of Quantized LLMs**, arXiv:2305.14314
+- Liu et al., **DoRA: Weight-Decomposed Low-Rank Adaptation**, ICML 2024 (Oral)（arXiv:2402.09353）
+- Biderman et al., **LoRA Learns Less and Forgets Less**, TMLR 2024（arXiv:2405.09673）
+- Shuttleworth et al., **LoRA vs Full Fine-tuning: An Illusion of Equivalence**, arXiv:2410.21228 — **intruder dimensions，本週的機制性證據**
+- Lee et al., **Learning Rate Matters: Vanilla LoRA May Suffice for LLM Fine-tuning**, arXiv:2602.04998（2026-02）— **本週的方法論核心**
+- `[非論文]` Schulman et al., **LoRA Without Regret**, Thinking Machines Lab **blog**, 2025-09-29 — 影響力大但**不是同儕審查文獻**，引用時必須標明。可驗證主張：LoRA 最佳 LR 約為 full FT 的 10×（極短訓練時約 15×）；必須套用到所有層特別是 MLP/MoE；batch size 變大時 LoRA 的 loss penalty 較嚴重；RL 下 rank-1 即可追上 full FT
+- Han et al., **Parameter-Efficient Fine-Tuning for Large Models: A Comprehensive Survey**, arXiv:2403.14608
+- Ibrahim et al., **Simple and Scalable Strategies to Continually Pre-train Large Language Models**, arXiv:2403.08763 — LR re-warming + replay 的實務基線
+- `[驗]` Lai et al., **Reinforcement Fine-Tuning Naturally Mitigates Forgetting in Continual Post-Training**, arXiv:2507.05386 — **這塊最有教學價值的單一結論**
+- `[驗]` Thede, Akata et al., **CapTrack: Multifaceted Evaluation of Forgetting in LLM Post-Training**, arXiv:2603.06610（2026）
+- Ilharco et al., **Editing Models with Task Arithmetic**, ICLR 2023（arXiv:2212.04089）
+- Yadav et al., **TIES-Merging: Resolving Interference When Merging Models**, NeurIPS 2023（arXiv:2306.01708）
+- Yu et al., **Language Models are Super Mario: Absorbing Abilities from Homologous Models as a Free Lunch (DARE)**, ICML 2024（arXiv:2311.03099）
+- Song et al., **Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions**, arXiv:2603.09938（2026-03）— **建議取代 2408.07666 當主 survey**
+- `[題]` 指令資料的品質 > 數量：檢索 *LIMA less is more for alignment*、*instruction tuning data quality scaling*

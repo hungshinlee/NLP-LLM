@@ -1,0 +1,121 @@
+# Top Conference 論文寫作教戰守策：敘事架構、工程實踐與 AI 協同
+<!-- en: Writing and Narrative Logic for Top-Conference Papers -->
+<!-- order: 4 -->
+<!-- summary: The narrative arc of a top-conference paper, sentence-level coherence tactics, an AI-assisted writing workflow, and a reviewer's-eye checklist before submission. -->
+
+在 ACL、EMNLP、NAACL、COLM 或 ICLR 的同儕審查流程中，審稿人平均分配給一篇論文的初審時間通常僅有 30 至 45 分鐘。在這段時間內，審稿人本質上是在尋找**拒稿理由（Reasons to Reject）**。
+
+決定論文生死的核心往往不是實驗多跑了兩三個基準點，而是**敘事邏輯（Narrative Logic）**是否嚴密自洽。若敘事散漫，審稿人極易給予「缺乏足夠動機（Lack of motivation）」、「邊際貢獻（Incremental novelty）」等致命評價。
+
+本指南系統化拆解頂會論文的寫作架構、微觀論證工程與 AI 輔助工作流。
+
+---
+
+## 第一部：頂會論文的「敘事弧線」（The Narrative Arc）
+
+頂尖論文的結構本質上是一個標準的**認知降阻過程**。讀者的心理狀態從「懷疑」到「被說服」，仰賴五個核心區塊的因果推進：
+
+$$\text{[現狀範式]} \longrightarrow \text{[本質結構矛盾 (Tension)]} \longrightarrow \text{[核心洞見 (Insight)]} \longrightarrow \text{[最小必要設計 (Delta)]} \longrightarrow \text{[實證檢驗與邊界]}$$
+
+### 1. Introduction：五段式推進法
+Introduction 是整篇論文最關鍵的章節，必須在第一頁結束前建立不可撼動的邏輯閉環：
+
+* **第 1 段：範式確立（Status Quo）**
+  * 定義研究問題，直接切入當前學術社群的主流解決範式。
+  * *禁忌*：禁止以「近年來深度學習與人工智慧發展迅速」等無資訊量陳詞開頭。
+* **第 2 段：張力與失敗模式（The Tension & Failure Mode）**
+  * 這是整篇論文的發動機。主流方法看似成功，但在何種特定情境下會遭遇**結構性失效**？
+  * *弱論點*：「方法 A 運算成本高，方法 B 準確率不足。」（無機理解釋）
+  * *強論點*：「既有方法仰賴自注意力機制的全局加權，然而在長序列推理中，無關上下文的噪音累積會不可避免地稀釋關鍵 token 的機率質量，導致推論鏈在第 $k$ 步後出現發散。」（指出結構性矛盾）
+* **第 3 段：核心洞見（The Non-obvious Insight）**
+  * 針對上述矛盾，你的核心觀察是什麼？為什麼前人沒有解決、或是前人的修補方向走偏了？
+  * 此處需提出具備理論或實證直覺的假說（Hypothesis），而非直接羅列工程細節。
+* **第 4 段：技術落地（The Concrete Mechanism）**
+  * 基於該洞見，你設計了什麼具體架構、演算法或訓練目標（Objective）？
+  * 簡明扼要點出其運作機制，說明它如何從根源消除第 2 段所指出的結構性矛盾。
+* **第 5 段：實證摘要與貢獻總結（Validation & Explicit Contributions）**
+  * 用 1–2 句話總結主要實驗結論（包含主指標顯著提升與核心消融驗證）。
+  * 隨後以明確條列形式呈現 3 點 Contribution（Conceptual、Methodological、Empirical / Resource）。
+
+### 2. Figure 1：視覺錨點（Visual Anchor）
+* **黃金法則**：Figure 1 必須在讀者剛讀完 Abstract 後立即提供視覺支撐。
+* **佈局規範**：推薦採用「對比架構」（Baseline vs. Ours）。左側揭露現有典型方法的 Failure Mode（如 Attention 彌散、誤差累積傳遞），右側展示提議機制如何針對性修復該缺陷，並附帶微型結果對比。
+* **圖說自明性（Self-contained Caption）**：Caption 必須是獨立完整的微型摘要。即便審稿人完全不閱讀正文，單憑 Figure 1 及其 Caption 就能完全理解論文的核心貢獻。
+
+### 3. Method：機理驅動，拒絕「積木堆疊」
+* **符號體系嚴謹化**：章節起始集中定義 Notations。變數、向量、矩陣字體需全篇一致。
+* **設計的最小必要性（Occam's Razor）**：針對提出的每個模組，都必須能清楚回答：「若拿掉此設計，系統在機理上會遭遇什麼阻礙？」這句話即為後續 Ablation Study 的伏筆。
+
+### 4. Experiments：假說檢驗場，非數字展覽館
+* **拒絕數字炫耀**：實驗章節的唯一目的，在於驗證 Introduction 所宣稱的假設與機制。
+* **公平對齊（Fair Comparison）**：在受限計算資源下，必須明確標注所有對照組是在「同等參數量」或「同等運算預算（Compute Budget）」下評估。
+* **消融分析的深度**：每個核心設計均需對應一組消融行，並伴隨實質的機理解讀，說明分數變化的原因。
+
+---
+
+## 第二部：微觀寫作工程學（Micro-level Coherence）
+
+### 1. 「純 Topic Sentence」檢驗法
+完成初稿後，將正文中每一段落的第一句話抽取出來，按順序連續閱讀。
+* **合格稿件**：僅閱讀這些 Topic Sentences，即可構成一篇語意通暢、因果嚴密的短文。
+* **缺陷特徵**：若段落間出現邏輯斷層或跳躍，即表示段落過渡樞紐（Transitional Pivots）存在缺陷。
+
+### 2. 消除語意膨脹（Eliminate Inflated Claims）
+頂會審稿人對誇飾形容詞高度戒備：
+* **刪除詞彙**：*revolutionary, paradigm-shifting, vastly superior, completely solves, miraculous*.
+* **精確學術表述**：*consistently outperforms by $X\%$, reduces sample complexity from $O(N^2)$ to $O(N)$, mitigating gradient vanishing in deep layers*.
+
+### 3. 術語一致性（Terminology Hygiene）
+全文切忌對同一概念混用多種詞彙。嚴格禁止在同一章節內交替使用 *prompt, instruction, query* 或混用 *backbone, base model, pretrained model*。選定精準術語，全篇統一。
+
+---
+
+## 第三部：AI 輔助寫作工作流與 Prism 深度整合
+
+在頂會寫作中，使用 LLM（如 Gemini 等）或專注於學術協同的工具（如 Google Prism）必須堅守「研究者主導架構，AI 輔助檢驗修飾」之原則。
+
+### 1. Prism 在學術寫作中的核心價值
+Prism 等結構化學術協同工具在論文衝刺期的關鍵作用在於**一致性檢核與論點溯源**：
+
+* **數據與論點連動對齊（Claim-Evidence Alignment）**：
+  * 在論文迭代過程中，實驗數據經常更新。利用 Prism 建立指標與文本的追蹤關聯，確保主實驗表格數值更新時，同步定位並修改 Abstract、Intro 與 Results 中引述的具體數值，杜絕「表格已改、內文仍留舊數值」的審稿硬傷。
+* **逆向大綱審查（Reverse Outlining）**：
+  * 提取各段落的核心論點功能標籤（如：`[指出痛點]` $	o$ `[現有機制缺陷]` $	o$ `[核心假說]`）。若工具反饋某段落標籤為 `[重複論述]` 或 `[偏離主旨之實作細節]`，即為精簡或刪除之依據。
+* **學術誠信與透明揭露（Attribution & Disclosure）**：
+  * 依據 ARR 與頂會政策，誠實記錄並揭露 AI 工具在論文撰寫各階段的協同範疇，確保符合學術倫理規範。
+
+### 2. LLM / Gemini 高級輔助 Prompt 範式
+
+#### 策略 A：扮演挑剔的 Area Chair 進行邏輯壓力測試
+```text
+請閱讀以下論文的 Introduction 與 Method 章節。
+假設你是 ACL Rolling Review 的 Senior Reviewer，請完全忽略文法與拼字問題，專注於邏輯鏈條與論證嚴謹性：
+1. 從第二段指出的 Failure Mode 到第三段提出的 Hypothesis，是否存在非必然的推論跳躍（Non-sequitur）？
+2. 所提出的方法機制是否真正直接解決了該痛點，還是引入了其他混雜變量？
+3. 請指出最致命的 3 個潛在拒稿理由（Reasons to Reject），並提出嚴厲批評。
+```
+
+#### 策略 B：過濾「AI 生成特徵（AI Fluff）」
+```text
+這是一段學術論文初稿。請以頂尖電腦科學論文風格進行重新編輯：
+1. 刪除所有無資訊量的修飾詞、副詞與陳腔濫調（如 "delve into", "paramount", "testament", "comprehensive"）。
+2. 將所有被動語態改為精準的主動語態（以研究者或演算法機制為主詞）。
+3. 將模糊描述替換為對機理或具體數據的直接陳述。
+4. 嚴格保留原有的專業術語與數學符號，不得擅自替換或發明類比。
+```
+
+---
+
+## 第四部：Reviewer 視角終審檢核矩陣
+
+在送出稿件前 48 小時，請對照下表進行逐項自審：
+
+| 檢核維度 | 致命紅線（即刻扣分項） | 達標標準 |
+| :--- | :--- | :--- |
+| **Intro & Motivation** | 痛點為人為製造（Toy Problem）；聲稱前人工作不足卻未引用最新文獻。 | 痛點源於真實結構性缺陷；清晰界定現有 SOTA 的失效邊界與本研究 Delta。 |
+| **Figure 1** | 單純的流程方塊圖；文字過小（< 8pt）；灰階列印時無法辨識。 | 具備對比性；具備自明性 Caption；向量格式（PDF）；灰階可讀。 |
+| **Mathematical Rigor** | 符號未定義即使用；公式上下標混亂；自創非慣用符號。 | 符號集中規範；符合領域慣例；公式推導完備（必要時放於 Appendix）。 |
+| **Baselines** | 僅與過時方法比較；刻意弱化 Baseline 超參數。 | 納入最新競爭力開源模型；給予對照組充分調優或採官方公認最優設定。 |
+| **Ablation Soundness** | 移除模組後僅觀察單一主指標；未回報計算成本代價。 | 逐一隔離關鍵設計；同時回報指標與推論效率（Latency/VRAM）變化。 |
+| **Error Analysis** | 僅有「在某些極端情況下受限」之空泛聲明，無實質數據。 | 抽樣 50–100 個錯誤樣本建立分佈圖；以 Table 展示典型失敗樣例並深入剖析機理。 |
+| **References** | 出現虛構引用；BibTeX 格式混亂（大小寫不全、刊名不全）。 | 全數核對 ACL Anthology / Semantic Scholar；引用欄位齊全規範。 |
