@@ -28,7 +28,7 @@ format:
 
 <!-- 此檔由 bin/publish_slides.py 從投影片正本產生（中文講稿區塊已剝除），請勿直接編輯。正本在 private repo 的 <course>/slides/。 -->
 
-# Four samples {.section-title}
+# Five samples {.section-title}
 
 ## Same corpus. Same prompt. One number changes. {.smaller}
 
@@ -104,7 +104,7 @@ Somewhere between n = 4 and n = 8, the model stopped generalizing and started re
 Corpus: Shakespeare (public domain), the standard `tinyshakespeare` split · figures computed for this course
 :::
 
-## Two numbers explain the whole sweep {.smaller}
+## Two curves explain the whole sweep {.smaller}
 
 ![](assets/w01/curves.svg){width="100%"}
 
@@ -118,6 +118,30 @@ Corpus: Shakespeare (public domain), the standard `tinyshakespeare` split · fig
 ::: {.metric}
 [99.0%]{.num}[unseen at n = 5. More data will not fix this]{.lab}
 :::
+:::
+
+## Same prompt. A 2026 model. Live. {.smaller}
+
+::: {.gen}
+[live · an open model on this laptop, the same seven words]{.n}
+:::
+
+Then one more, in Traditional Chinese, asking for something specific and checkable.
+
+::: {.ask}
+Third failure mode. Name it before I do.
+:::
+
+- n = 1 failed **locally**: the words never combine
+- n = 4 failed **globally**: every clause holds, the passage goes nowhere
+- This one fails at **neither** scale — and will still state something checkable and wrong, in exactly the same even voice
+
+::: {.claim .warn}
+Local, global, and fluent-but-false. The first two are solved problems. The third is why this course runs for fourteen weeks.
+:::
+
+::: {.footer}
+Also your first look at the machine these demos run on: 64 GB of unified memory, no CUDA. What it can and cannot run is itself a topic — W11
 :::
 
 # What this course is {.section-title}
@@ -161,16 +185,56 @@ By W11 the question is no longer "how does attention work" but "how many bytes d
 Item 4 is the one that carries furthest. It comes back in W7, W11 and W12.
 :::
 
+## The ledger we refill every week {.smaller}
+
+![](assets/w01/ledger.svg){width="100%"}
+
+## Two numbers, now, on paper {.smaller}
+
+For a 7B dense model — work these out and keep them:
+
+1. Training FLOPs at Chinchilla-optimal ($D \approx 20N$). Then: how many years on **one consumer GPU** — the 16 GB card your term project will actually run on?
+2. The KV cache at batch 1, 32k context, FP16. Hold it against **two real ceilings**: that same 16 GB card, and the **64 GB of unified memory** these demos run on.
+
+::: {.ask}
+Number 2 is the one that will surprise you. It is the shared motivation for W5, W6 and W11.
+:::
+
+::: {.claim}
+Capacity and bandwidth are different limits. 64 GB removes the first and does nothing at all about the second — which is most of W11, in one sentence.
+:::
+
+::: {.footer}
+A third number — why a 2026 flagship is "trillion total, tens of billions active" — opens W6, where the idea of an *active* parameter arrives
+:::
+
 ## Three questions we ask every single week {.smaller}
 
 | Axis | The question |
 |---|---|
 | **Representation** | What is the unit at this layer — byte, token, hidden state, KV entry, retrieved chunk, latent thought? **Who chose it, and what does the choice cost downstream?** |
-| **Compute** | Does this spend *training* compute or *inference* compute? Is it FLOPs bound or memory-bandwidth bound? |
-| **Supervision** | Where does this capability come from — the pretraining distribution, human preference, a verifiable reward, retrieved knowledge, or extra compute at test time? |
+| **Compute** | Does this spend *training* compute or *inference* compute? Is it FLOPs bound, or memory-bandwidth bound? |
+| **Supervision** | Where does this capability come from? There are five possible answers — and today exactly one of them exists |
 
 ::: {.claim}
 The same observed behaviour can come from entirely different places on the third axis. That is the central dispute of W10 and W14.
+:::
+
+## Today, the third column has one entry {.smaller}
+
+| Where a capability can come from | today | arrives in |
+|---|:---:|---|
+| the **pretraining distribution** | **✓** | — |
+| human demonstrations | | W8 |
+| human preference | | W9 |
+| a verifiable reward | | W9 → W10 |
+| retrieved knowledge | | W12 |
+| extra compute at test time | | W10 |
+
+Everything in today's lecture — n-grams, word2vec, an LSTM language model, seq2seq — is **self-supervised from raw text**. Nothing else is on the menu yet.
+
+::: {.claim .warn}
+**W8 is where that column starts to branch.** You will not feel how large that change is unless you notice how empty the column is today.
 :::
 
 ## Four questions to ask of every paper in this course {.smaller}
@@ -184,16 +248,32 @@ The same observed behaviour can come from entirely different places on the third
 You already used question 3 today: the n = 4 sample read best, and scored worse.
 :::
 
-## Practicalities
+## Practicalities {.smaller}
 
-- Slides in English, taught in Mandarin. The speaker notes are in Mandarin, and you get the slides
+- Slides in English, taught in Mandarin. The speaker notes are mine and stay with me; the slides are yours, and they go up the same day
 - There is an **open-access English companion** for the first three weeks: Zong, Zhao & Ma, *NLP and Large Language Models* (Springer / Tsinghua, 2026). Ch 5 is essentially today's lecture in prose
 - **Assessed on two pieces of writing**: a midterm report (40%) and a final paper (60%), both treated as conference submissions rather than coursework. Group work, plus two online discussions
-- Demos are written for the free Colab tier. Every 2026 flagship is out of reach there, so demos run small and offline, and we read the large numbers out of the reports
-- Everything is on the course site: weekly pages, the reading list, these slides, a half-life map saying which weeks will be out of date next year, and four Chinese guides for the two reports
+- Everything is on the course site: weekly pages, the reading list, these slides, a half-life map saying which weeks go stale next year, and four Chinese guides for the two reports
 
 ::: {.tag}
 hungshinlee.github.io/NLP-LLM
+:::
+
+## What you will run: nothing {.smaller}
+
+Every demo in this course is run **live, in front of you**, on one laptop: **64 GB of unified memory, no CUDA.**
+
+- That buys room — a mid-sized model loads fine. It also rules things out: no `vLLM`, no `bitsandbytes` QLoRA, no FP8 or NVFP4 measurement
+- When a demo cannot run on this machine, **I will say so on the slide** and we read the number out of the paper instead
+
+::: {.claim}
+That gap is not an apology. It is W11's thesis arriving early: **inference optimization is bound to hardware.** Whether the same `transformers` code runs, and how fast, *is* the content of that week.
+:::
+
+Your **term project** is a different machine: one 16 GB consumer GPU. Plan for that, not for what you see at the front of the room.
+
+::: {.footer}
+The KV cache you just computed — 16 GiB — was computed for the project card, not for this laptop
 :::
 
 # A language model is a compressor {.section-title}
@@ -235,23 +315,56 @@ Use **bits-per-byte** instead: total negative log-likelihood in bits, divided by
 :::
 
 ::: {.footer}
-Misconception 1 of 5 · returns with real numbers in W2
+Misconception 1 of 7 · returns with real numbers in W2
 :::
 
-## The ledger we refill every week {.smaller}
+## Live: the same paragraph, two tokenizers {.smaller}
 
-![](assets/w01/ledger.svg){width="100%"}
+One Traditional Chinese paragraph. Two open models whose tokenizers disagree sharply about Chinese. Identical text, identical bytes.
 
-## Three numbers, now, on paper {.smaller}
-
-For a 7B dense model — work these out and keep them:
-
-1. Training FLOPs at Chinchilla-optimal ($D \approx 20N$). Then: how many years on one T4?
-2. The KV cache at batch 1, 32k context, FP16. Compare it with the T4's 16 GB
-3. From a 2026 flagship's activation ratio, why is "trillion total, tens of billions active" the rational design point — and where did that move the cost *to*?
+| | model A | model B |
+|---|---|---|
+| tokens for the passage | | |
+| perplexity | | |
+| **bits-per-byte** | | |
 
 ::: {.ask}
-Number 2 is the one that will surprise you. It is the shared motivation for W5, W6 and W11.
+Predict before I run it: which rows disagree, and which row nearly agrees?
+:::
+
+::: {.footer}
+Run live on the lecture machine · the full five-tokenizer fertility comparison is next week's cold open
+:::
+
+## "Comparable" has three conditions {.smaller}
+
+Bits-per-byte fixes the **denominator**. It does not make the number unconditional.
+
+1. **The tokenizer must be lossless on this text.** One that normalizes away distinctions, or drops a rare character to `UNK`, never pays for those bytes — and therefore scores **artificially low**. For Traditional Chinese this is the easy mistake to make
+2. **The same bytes on both sides.** Different held-out sets are different numbers, whatever the units
+3. **The same context length and document splitting.** The same text scored with 8k of context beats itself at 2k, with no change to the model at all
+
+::: {.claim}
+"The only metric comparable across tokenizers" is a claim about the *denominator*. It is not a claim that the metric is immune to the evaluation setup.
+:::
+
+::: {.footer}
+Condition 1 gets its mechanism next week: byte-level fallback is what keeps a tokenizer lossless on rare CJK characters
+:::
+
+## And a low perplexity does not mean good generations {.smaller}
+
+Even with the denominator fixed, likelihood and sample quality are **largely independent in high dimensions**. Theis, van den Oord & Bethge (2015) construct models that are good at one and bad at the other — in both directions.
+
+::: {.claim .warn}
+You watched this happen forty minutes ago. The **n = 4** sample read best of the four. It scored **worse** in bits-per-byte than n = 2.
+:::
+
+- A model can put its mass in roughly the right place and still generate nothing you would keep
+- And a model can generate beautifully by copying, while assigning poor probability to text it has never seen — which is exactly what n = 8 does
+
+::: {.footer}
+Misconception 2 of 7 · the general form of this argument is all of W14
 :::
 
 # From counting to sharing parameters {.section-title}
@@ -285,6 +398,22 @@ Notice the second row saturating: past n = 3, almost every new n-gram is seen ex
 Counting cannot generalize to unseen contexts, because it has no notion that two contexts might be similar.
 :::
 
+## Why more data cannot fix it: Zipf and Heaps {.smaller}
+
+$V^n$ tells you the space is huge. It does **not** yet tell you that more data fails — the space is fixed while the corpus can keep growing. What closes that gap is the *shape* of the word distribution.
+
+- **Zipf**: word frequency follows a power law. Most *distinct types* live in the tail
+- **Heaps**: distinct types grow as $|V| \propto D^{\beta}$, $\beta < 1$ — sublinear, and yet **never saturating**
+- So the share of **hapax** does not fade away as $D$ grows. Put that into Good–Turing's unseen mass, $\approx N_1/D$:
+
+::: {.claim .warn}
+The probability mass sitting on things you have never seen **does not go to zero as the corpus grows.** Sparsity is a property of language, not a shortage of text.
+:::
+
+::: {.footer}
+The same tail returns in W7 (deduplication, compute-optimal budgets) and W14 (long-tail memorization, contamination)
+:::
+
 ## Two inductive biases for one problem {.smaller}
 
 | | n-gram | Neural LM (Bengio 2003) |
@@ -301,7 +430,7 @@ The move from 2003 onwards was not "neural networks are stronger". It was **repl
 So "an LLM is just a bigger n-gram" is wrong in both directions: the inductive bias is different, **and** at the long tail an LLM does fall back on memorization — which is exactly what we watched happen at n = 8.
 
 ::: {.footer}
-Misconception 2 of 5 · the memorization half returns in W7 and W14
+Misconception 3 of 7 · the memorization half returns in W7 and W14
 :::
 
 ## Where does the n = 8 sample sit on that table? {.smaller}
@@ -382,7 +511,7 @@ Cosine similarity means **"similar under the notion of similarity this model's t
 - W3 fixes polysemy — contextual representations — and does **not** fix the cosine problem
 
 ::: {.footer}
-Misconception 3 of 5 · returns as a retrieval failure in W12
+Misconception 4 of 7 · returns as a retrieval failure in W12
 :::
 
 # Why recurrence died {.section-title}
@@ -413,6 +542,23 @@ $$c_t = \sum_i \alpha_{ti} h_i, \qquad \alpha_{ti} = \mathrm{softmax}_i\big(a(s_
 
 Instead of one vector, let the decoder build **a different weighted read of the source at every output step**.
 
+## That attention is cross-attention, not self-attention {.smaller}
+
+The query is the **decoder** state $s_{t-1}$. The keys and values are the **encoder** states $h_i$. Query and key/value come from **two different sequences**.
+
+Self-attention — one sequence attending to itself — does not appear until 2017.
+
+::: {.claim .warn}
+Keep these apart or W5 will not make sense. *"Why does the model need extra position information?"* is a question that **only arises once a sequence attends to itself.** A decoder already runs in time order; an encoder–decoder alignment never needed to be told what came first.
+:::
+
+- W3's causal mask is a statement about self-attention. It has no counterpart here
+- The weights $\alpha_{ti}$ do look like an alignment, and that resemblance is where a decade of misreading begins — W3
+
+::: {.footer}
+Misconception 5 of 7 · this distinction is doing the work in W3 and W5
+:::
+
 ## Attention is older than the Transformer {.smaller}
 
 Bahdanau attention is 2015. The Transformer is 2017. **What 2017 removed was recurrence, not attention.**
@@ -427,7 +573,7 @@ Two consequences you need today:
 - Once recurrence is gone, the sequence dimension is fully parallel — and that is the actual cause of death
 
 ::: {.footer}
-Misconception 4 of 5
+Misconception 6 of 7
 :::
 
 ## RNNs did not lose on quality. They lost on throughput. {.smaller}
@@ -438,11 +584,19 @@ An RNN's hidden state at step $t$ requires step $t-1$. **The sequence dimension 
 This is the single most important sentence in today's lecture for understanding the rest of the course.
 :::
 
-Because in 2026, recurrence is **back** — Mamba, gated linear attention, the hybrid architectures in W6. What changed is not the recurrence. What changed is that they found a way to parallelize training over the sequence.
-
 ::: {.footer}
-Misconception 5 of 5 · W6 depends on getting this one right
+Misconception 7 of 7 · and the next slide is why W6 exists
 :::
+
+## And what recurrence never lost {.smaller}
+
+At inference an RNN carries a **fixed-size state**. A Transformer carries a KV cache that grows with every token it generates.
+
+::: {.claim .warn}
+So the trade was narrower than the usual story: recurrence lost **training throughput**, and kept its **inference** advantage the whole time.
+:::
+
+Which is why, in 2026, recurrence is **back** — Mamba, gated linear attention, the hybrid architectures of W6. What changed is not the recurrence. Someone solved the training half, and the advantage that had been sitting on the other side all along became collectable.
 
 # Where this goes {.section-title}
 
@@ -467,7 +621,11 @@ Today you built the first row of that ledger with a model you could have written
 - And a 2026 result: the tokenizer shifts the **compute-optimal** parameter/data configuration, which moves it out of preprocessing and into architecture
 
 ::: {.ask}
-Before then: JM3 ch 2 and ch 3, or **ZZM ch 7** for the same ground with Chinese segmentation in it. To review today: **ZZM ch 5**. And bring a laptop with `tokenizers` installed.
+Before then, read: **JM3 Vol I ch 2** *Words and Tokens* (the 2026-08-19 release — pin that one), and **ZZM ch 7**, which covers the same ground with Chinese segmentation in it and is open access. To review today: **ZZM ch 5** and **ch 3**.
+:::
+
+::: {.claim}
+Nothing to install. Every demo in this course runs at the front of the room.
 :::
 
 ## Sources {.smaller}
@@ -477,7 +635,9 @@ Before then: JM3 ch 2 and ch 3, or **ZZM ch 7** for the same ground with Chinese
 
 **Papers** · Bengio, Ducharme, Vincent & Jauvin, *A Neural Probabilistic Language Model*, JMLR 2003 · Mikolov, Chen, Corrado & Dean, *Efficient Estimation of Word Representations in Vector Space*, arXiv:1301.3781 · Mikolov, Sutskever, Chen, Corrado & Dean, *Distributed Representations of Words and Phrases and their Compositionality*, NeurIPS 2013 · Levy & Goldberg, *Neural Word Embedding as Implicit Matrix Factorization*, NeurIPS 2014 · Sutskever, Vinyals & Le, *Sequence to Sequence Learning with Neural Networks*, NeurIPS 2014 · Bahdanau, Cho & Bengio, *Neural Machine Translation by Jointly Learning to Align and Translate*, ICLR 2015 (arXiv:1409.0473) · Vaswani et al., *Attention Is All You Need*, NeurIPS 2017
 
+**Papers, on today's two framing claims** · Bengio, Simard & Frasconi, *Learning Long-Term Dependencies with Gradient Descent is Difficult*, IEEE Transactions on Neural Networks 5(2):157–166, 1994 — the multiplied-gradient argument · Hochreiter & Schmidhuber, *Long Short-Term Memory*, Neural Computation 9(8):1735–1780, 1997 — the additive path · Delétang, Ruoss, Duquenne, Catt, Genewein, Mattern, Grau-Moya, Wenliang, Aitchison, Orseau, Hutter & Veness, *Language Modeling Is Compression*, arXiv:2309.10668 (2023) — compression as a measurement, not only a metaphor · Theis, van den Oord & Bethge, *A note on the evaluation of generative models*, arXiv:1511.01844 (2015) — why a low perplexity does not mean good samples
+
 **Data and figures** · Corpus: the standard `tinyshakespeare` split of Shakespeare's works (public domain). All n-gram generations, sparsity percentages, bits-per-byte values, cosine similarities and nearest-neighbour lists on these slides were computed for this course by `scripts/make_demo_w01.py`; the figures by `scripts/make_figs_w01.py`. Nothing on these slides is a remembered number.
 
-**Search terms, not citations** · language modeling is compression · arithmetic coding neural language model · Chen & Goodman empirical study of smoothing · attention is not not explanation
+**Search terms, not citations** · arithmetic coding neural language model · bits per byte evaluation · Chen & Goodman empirical study of smoothing · Zipf Heaps law vocabulary growth · attention is not not explanation
 :::
