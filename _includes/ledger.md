@@ -20,8 +20,9 @@ $N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ co
 
 **The line worth memorising.** The first two rows are arithmetic problems; the last two are traffic problems. Decode is not short of FLOPs — it is short of bandwidth, and the KV cache is what fills the road. Most of Part III is an attempt to make those two rows cheaper.
 
-Three numbers to work out for yourself in the first session, and to revisit as the course goes:
+Two numbers to work out for yourself in the first session, and to revisit as the course goes:
 
-1. The training FLOPs for a 7B dense model at Chinchilla-optimal ($D \approx 20N$), and how many years that is on a single T4.
-2. The KV cache for that model at batch 1, 32k context, FP16 — in GB, against the T4's 16 GB. **That number is the shared motivation for W5, W6 and W11.**
-3. Working backwards from the activation ratio: why a 2026 flagship is rational at roughly a trillion total parameters and tens of billions active, and where that design moves the cost *to*.
+1. The training FLOPs for a 7B dense model at Chinchilla-optimal ($D \approx 20N$), and how many years that is on a single consumer GPU — an RTX 5070 Ti, say, which is the compute a term project actually has.
+2. The KV cache for that model at batch 1, 32k context, FP16 — in GB, against two real ceilings: the 16 GB on that same card, which cannot hold it, and the 64 GB of unified memory the classroom demos run on, which can, at a fraction of a datacenter GPU's bandwidth. **Capacity and bandwidth are two separate limits, and 64 GB relieves only the first — which is the first hint of the roofline in W11.** That number is the shared motivation for W5, W6 and W11.
+
+A third number, working backwards from the MoE activation ratio to why a 2026 flagship is rational at roughly a trillion total parameters and tens of billions active, opens W6 instead — it needs the idea of an active parameter, which arrives that week.
