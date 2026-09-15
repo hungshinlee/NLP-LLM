@@ -34,6 +34,7 @@ toc-depth: 2
 - Yu et al., **DAPO: An Open-Source LLM Reinforcement Learning System at Scale**, arXiv:2503.14476
 - Liu et al., **Understanding R1-Zero-Like Training: A Critical Perspective (Dr. GRPO)**, arXiv:2503.20783
 - Zheng et al., **Group Sequence Policy Optimization (GSPO)**, arXiv:2507.18071
+- Bay & Yearick, **GRPO, Dr. GRPO, and DAPO Are Three Operations on One Number: The Group-Standard-Deviation Identity**, arXiv:2607.00152（v1 2026-06-30）— **把三者統一起來的形式化**
 - Gao et al., **Soft Adaptive Policy Optimization (SAPO)**, arXiv:2511.20347 — 以 temperature-controlled soft gate 取代 hard clipping
 
 **RLVR、PRM 與 reward hacking**
@@ -54,6 +55,7 @@ toc-depth: 2
 **Distillation（與 W11 共用）**
 - Agarwal et al., **On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes (GKD)**, arXiv:2306.13649 — **on-policy distillation 的學術出處，attribution 更正的依據**
 - Song et al., **A Survey of On-Policy Distillation for Large Language Models**, arXiv:2604.00626（2026）
+- Li et al., **Rethinking On-Policy Distillation of Large Language Models: Phenomenology, Mechanism, and Recipe**, arXiv:2604.13016（2026）
 
 **Survey**
 - Zhang et al., **A Survey of Reinforcement Learning for Large Reasoning Models**, arXiv:2509.08827 — **這領域目前最完整的一本，建議當主 survey**

@@ -27,21 +27,27 @@ toc-depth: 2
 - DeepSeek-AI, **DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning**, arXiv:2501.12948
 - Agarwal et al., **The Art of Scaling Test-Time Compute for Large Language Models**, arXiv:2512.02008 — 主張無 universal dominant 策略
 - Sadhukhan et al., **Kinetics: Rethinking Test-Time Scaling Laws**, arXiv:2506.05333 — memory/KV-cache bound 的觀點
+- Łańcucki, Staniszewski, Nawrot et al., **Inference-Time Hyper-Scaling with KV Cache Compression**, arXiv:2506.05345 — 把 KV compression 當成換取更多 test-time compute 的手段
 
 **爭點（本週的核心，兩邊都指定）**
 - Yue et al., **Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?**, arXiv:2504.13837 — **pass@k 的反駁論證**
 - Yu et al., **Outcome Rewards Do Not Guarantee Verifiable or Causally Important Reasoning**, arXiv:2604.22074（2026）
 
 **Faithfulness 與 monitorability**
+- Turpin, Michael, Perez & Bowman, **Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting**, NeurIPS 2023（arXiv:2305.04388）
+- Lanham et al., **Measuring Faithfulness in Chain-of-Thought Reasoning**（arXiv:2307.13702）
 - Arcuschin et al., **Chain-of-Thought Reasoning In The Wild Is Not Always Faithful**, arXiv:2503.08679
 - Chen et al., **Reasoning Models Don't Always Say What They Think**, arXiv:2505.05410 — **數字最好教的一篇**
 - Korbak et al., **Chain of Thought Monitorability: A New and Fragile Opportunity for AI Safety**, arXiv:2507.11473
+- Little, **Length Penalties Make Chain-of-Thought Less Monitorable**, arXiv:2607.09786（v1 2026-07-08，單一作者）— **2026 對 monitorability 脆弱性最乾淨的因果證據**
 
 **Latent / continuous reasoning**
 - Hao et al., **Training Large Language Models to Reason in a Continuous Latent Space (Coconut)**, arXiv:2412.06769
 - Zhu et al., **A Survey on Latent Reasoning**, arXiv:2507.06203
+- Yerram et al., **Training Continuous Chain of Thought Models: A Tale of Two Regimes**, arXiv:2607.16972（2026）— **界定 latent reasoning 失效邊界的一篇**
 
 **Survey**
 - Chen et al., **Towards Reasoning Era: A Survey of Long Chain-of-Thought for Reasoning Large Language Models**, arXiv:2503.09567
+- **RAS-R**（Raschka, *Build a Reasoning Model (From Scratch)*）— 手刻 verifier 與 budget forcing 的材料
 - CoT 的計算深度理論：檢索 *chain of thought empowers transformers to solve inherently serial problems*、*expressive power of transformers with chain of thought*
 - overthinking：檢索 *overthinking reasoning models token efficiency*、*do not think that much for 2+3*

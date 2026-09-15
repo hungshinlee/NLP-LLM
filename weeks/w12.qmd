@@ -22,7 +22,9 @@ toc-depth: 2
 - **HOLLM** ch 8 *Semantic Search and RAG*（視覺化與操作最順）
 - Lewis et al., **Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks**, NeurIPS 2020（arXiv:2005.11401）— 原始出處
 - Karpukhin et al., **Dense Passage Retrieval for Open-Domain Question Answering**, EMNLP 2020（arXiv:2004.04906）
+- Khattab & Zaharia, **ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT**, SIGIR 2020（arXiv:2004.12832）；Santhanam et al., **ColBERTv2**, NAACL 2022（arXiv:2112.01488）
 - Muennighoff et al., **MTEB: Massive Text Embedding Benchmark**, arXiv:2210.07316；Enevoldsen et al., **MMTEB: Massive Multilingual Text Embedding Benchmark**, ICLR 2025（arXiv:2502.13595）— **多語言與繁中的檢索評估請用 MMTEB**
+- Weller et al., **FollowIR: Evaluating and Teaching Information Retrieval Models to Follow Instructions**, arXiv:2403.15246
 - Asai et al., **Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection**, ICLR 2024（arXiv:2310.11511）
 - Jin et al., **Search-R1: Training LLMs to Reason and Leverage Search Engines with Reinforcement Learning**, arXiv:2503.09516 — **RL 訓練檢索行為，連 W9 與 W13**
 - Edge et al., **From Local to Global: A Graph RAG Approach to Query-Focused Summarization**, arXiv:2404.16130

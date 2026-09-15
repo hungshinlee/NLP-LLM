@@ -33,6 +33,7 @@ toc-depth: 2
 - NVIDIA, **Pretraining Large Language Models with NVFP4**, arXiv:2509.25149
 - Xiao et al., **Efficient Streaming Language Models with Attention Sinks**, ICLR 2024（arXiv:2309.17453）；Zhang et al., **H2O**, arXiv:2306.14048
 - Chen et al., **The Pitfalls of KV Cache Compression**, ACL 2026（arXiv:2510.00231）— **本單元「什麼情況下會壞掉」的核心文本，強烈建議入課**
+- Salfati, **Quantization Dominates Rank Reduction for KV-Cache Compression**, arXiv:2604.11501 **v1**（2026-04-13）
 - Dao et al., **FlashAttention-3**, arXiv:2407.08608
 - Zhong et al., **DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving**, OSDI 2024（arXiv:2401.09670）
 - Agrawal et al., **Taming Throughput-Latency Tradeoff in LLM Inference with Sarathi-Serve**, arXiv:2403.02310 — chunked prefill 的來源

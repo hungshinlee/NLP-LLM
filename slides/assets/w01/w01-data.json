@@ -316,5 +316,96 @@
    "pair": "king / queen",
    "cos": 0.401
   }
- ]
+ ],
+ "types": {
+  "1": 13724,
+  "2": 94817,
+  "3": 181666,
+  "4": 213086,
+  "5": 221527
+ },
+ "heaps": [
+  {
+   "D": 2253,
+   "types": 767,
+   "hapax": 521,
+   "hapax_share": 0.6793,
+   "gt_unseen_mass": 0.2312
+  },
+  {
+   "D": 4506,
+   "types": 1254,
+   "hapax": 816,
+   "hapax_share": 0.6507,
+   "gt_unseen_mass": 0.1811
+  },
+  {
+   "D": 9013,
+   "types": 2020,
+   "hapax": 1283,
+   "hapax_share": 0.6351,
+   "gt_unseen_mass": 0.1423
+  },
+  {
+   "D": 15773,
+   "types": 2852,
+   "hapax": 1756,
+   "hapax_share": 0.6157,
+   "gt_unseen_mass": 0.1113
+  },
+  {
+   "D": 27039,
+   "types": 3905,
+   "hapax": 2309,
+   "hapax_share": 0.5913,
+   "gt_unseen_mass": 0.0854
+  },
+  {
+   "D": 45066,
+   "types": 5520,
+   "hapax": 3113,
+   "hapax_share": 0.5639,
+   "gt_unseen_mass": 0.0691
+  },
+  {
+   "D": 67599,
+   "types": 6942,
+   "hapax": 3740,
+   "hapax_share": 0.5387,
+   "gt_unseen_mass": 0.0553
+  },
+  {
+   "D": 101399,
+   "types": 8822,
+   "hapax": 4417,
+   "hapax_share": 0.5007,
+   "gt_unseen_mass": 0.0436
+  },
+  {
+   "D": 135199,
+   "types": 10354,
+   "hapax": 5136,
+   "hapax_share": 0.496,
+   "gt_unseen_mass": 0.038
+  },
+  {
+   "D": 180266,
+   "types": 12170,
+   "hapax": 5913,
+   "hapax_share": 0.4859,
+   "gt_unseen_mass": 0.0328
+  },
+  {
+   "D": 225333,
+   "types": 13724,
+   "hapax": 6544,
+   "hapax_share": 0.4768,
+   "gt_unseen_mass": 0.029
+  }
+ ],
+ "heaps_fit": {
+  "beta": 0.622,
+  "K": 6.75,
+  "r2": 0.9986
+ }
 }

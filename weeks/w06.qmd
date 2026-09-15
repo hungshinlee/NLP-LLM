@@ -36,6 +36,7 @@ toc-depth: 2
 - Wu et al., **MiniMax-01: Scaling Foundation Models with Lightning Attention**, arXiv:2501.08313
 
 **DeepSeek 主線（建議整條指定，這是唯一能把「MLA → 稀疏注意力 → 極端 KV 壓縮」講成連續故事的開源脈絡）**
+- **DeepSeek-V2**, arXiv:2405.04434（MLA 首發）→ **DeepSeek-V3**, arXiv:2412.19437 → **DeepSeek-V3.2**, arXiv:2512.02556（DSA）→ **DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence**, arXiv:2606.19348（CSA + HCA 混合注意力、mHC、Muon）
 
 **其他 open-weight 主線（當成 landscape，不必逐篇讀）**
 - Yang et al., **Qwen3 Technical Report**, arXiv:2505.09388 — 0.6B–235B，**Apache 2.0，本課所有 lab 的預設模型家族**

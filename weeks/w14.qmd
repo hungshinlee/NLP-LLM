@@ -23,21 +23,29 @@ toc-depth: 2
 
 **評估**
 - Gema et al., **Are We Done with MMLU?**, NAACL 2025（arXiv:2406.04127）— **MMLU 約 6.49% 題目有錯，Virology subset 高達 57%**
+- Wang et al., **MMLU-Pro: A More Robust and Challenging Multi-Task Language Understanding Benchmark**, NeurIPS 2024 D&B（arXiv:2406.01574）
 - Rein et al., **GPQA: A Graduate-Level Google-Proof Q&A Benchmark**, COLM 2024（arXiv:2311.12022）
 - White et al., **LiveBench: A Challenging, Contamination-Limited LLM Benchmark**, **ICLR 2025 Spotlight**（arXiv:2406.19314）
 - Jain et al., **LiveCodeBench: Holistic and Contamination Free Evaluation of Large Language Models for Code**, ICLR 2025（arXiv:2403.07974）
+- Singh et al., **The Leaderboard Illusion**, arXiv:2504.20879 — **Arena 的結構性問題；本週的必讀之一**
+- Zheng et al., **Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena**, NeurIPS 2023（arXiv:2306.05685）
 - Shi et al., **Judging the Judges: A Systematic Study of Position Bias in LLM-as-a-Judge**, AACL-IJCNLP 2025（arXiv:2406.07791）
 - Miller, **Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations**, arXiv:2411.00640 — **本週統計部分的主文獻；截至 2026 仍無取代它的方法論論文**
 - Kapoor et al., **AI Agents That Matter**, arXiv:2407.01502；Zhu et al., **Establishing Best Practices for Building Rigorous Agentic Benchmarks**, arXiv:2507.02825（W13 共用）
+- Xu, Guan, Greene & Kechadi, **Benchmark Data Contamination of Large Language Models: A Survey**, arXiv:2406.04244（v1 2024-06-06）
 - IRT for LLM benchmarks：**2026 仍是零散的，建議當 open problem 講而非指定閱讀**。檢索 *metabench item response theory language model*、*item response theory LLM evaluation efficiency*
 
 **可解釋性**
 - **JM3** Ch 10 *Interpretability* — **尚不完整，慎用**
 - Elhage et al., **Toy Models of Superposition**, arXiv:2209.10652 — **穩定的基礎，本週的起點**
+- Jain & Wallace, **Attention is not Explanation**, NAACL 2019（arXiv:1902.10186）— W3 已講，此處回扣
 - Arditi et al., **Refusal in Language Models Is Mediated by a Single Direction**, NeurIPS 2024（arXiv:2406.11717）— **干預實驗的乾淨範例**
 - Nanda et al., **Are Sparse Autoencoders Useful? A Case Study in Sparse Probing**, arXiv:2502.16681 — **由 SAE 陣營內部提出的懷疑**
+- Korznikov et al., **Sanity Checks for Sparse Autoencoders: Do SAEs Beat Random Baselines?**, arXiv:2602.14111（2026-02）— **本週最重要的一篇**
+- Chanin, **Are Sparse Autoencoder Benchmarks Reliable?**, arXiv:2605.18229（v1 2026-05-18，單一作者）
 - Gao et al. (OpenAI), **Weight-sparse transformers have interpretable circuits**, arXiv:2511.13653
 - Sharkey et al., **Open Problems in Mechanistic Interpretability**, arXiv:2501.16496 — 29 位作者的 position paper，**適合當專題方向的來源**
+- Braun, Bushnaq, Heimersheim, Mendel & Sharkey, **Interpretability in Parameter Space: Minimizing Mechanistic Description Length with Attribution-based Parameter Decomposition (APD)**, arXiv:2501.14926（v1 2025-01-24）
 - Anthropic 的 **Circuit Tracing: Revealing Computational Graphs in Language Models**、**On the Biology of a Large Language Model**、**Towards / Scaling Monosemanticity** 發表於 transformer-circuits.pub，**不在 arXiv**。引用時請標明出處性質並自行核對標題與日期。
 - 機制性證據的方法：檢索 *activation patching causal tracing*、*causal scrubbing*、*path patching interpretability*
 
@@ -47,6 +55,7 @@ toc-depth: 2
 - Meinke et al., **Frontier Models are Capable of In-context Scheming**, arXiv:2412.04984
 - Schoen et al., **Stress Testing Deliberative Alignment for Anti-Scheming Training**, arXiv:2509.15541
 - MacDiarmid et al., **Natural Emergent Misalignment from Reward Hacking in Production RL**, arXiv:2511.18397 — **接在 W9 的 reward hacking 之後最有力**：production RL 中學到的 reward hacking 會泛化到 alignment faking 與 sabotage；緩解手段包含 inoculation prompting
+- Sharma et al., **Towards Understanding Sycophancy in Language Models**, arXiv:2310.13548
 - model welfare：**我未能找到可引用的學術文獻**，目前主要在 blog 與哲學圈。**不建議放進碩博課程的指定閱讀**，若要討論請明確標示性質。
 
 **繁體中文與台灣語言（本週最後一段，也是專題方向的主要來源）**
@@ -58,6 +67,9 @@ toc-depth: 2
 - Lu et al., **Enhancing Taiwanese Hokkien Dual Translation by Exploring and Standardizing of Four Writing Systems**, LREC-COLING 2024（arXiv:2403.12024）— **台語文字端唯一可指定的一篇**
 - Hsu et al., **Taiwan Safety Benchmark (TS-Bench) and Breeze Guard**, arXiv:2603.07286（2026-03）— 金融詐騙／醫療假訊息／政治操作三類 prompts
 - Lan et al., **Breeze Taigi: Benchmarks and Models for Taiwanese Hokkien Speech Recognition and Synthesis**, arXiv:2603.19259（2026-02）— CC-BY 4.0
+- Chen, Lee & Chang, **VoxHakka: A Dialectally Diverse Multi-speaker Text-to-Speech System for Taiwanese Hakka**, arXiv:2409.01548（v1 2024-09-03）
+- Chen et al., **TW-LegalBench: Measuring Taiwanese Legal Understanding**, arXiv:2606.18699（2026-06）
 - **TAIDE 沒有論文**。HuggingFace organization `taide` 確實存在（含 TAIDE-LX-7B、Llama-3.1-TAIDE-LX-8B-Chat、Gemma-3-TAIDE-12b-Chat 等世代），**引用只能引 model card**。
 - **Llama-3-Taiwan-70B-Instruct**（Project TAME，發布者 Yen-Ting Lin）**沒有獨立論文**，model card 引用的是 TMLU 與 Taiwan LLM 兩篇。
 - ⚠️ **「TW-Bench」不存在**。可能被誤記的是 TW-LegalBench、VisTW、或 Llama-3-Taiwan model card 內的 TW MT-Bench（非獨立 benchmark）。**投影片請勿使用這個名稱。**
+- Zhu et al., **Multilingual Large Language Models: A Systematic Survey**, arXiv:2411.11072（v1 2024-11-17）。**這區沒有 2026 年的權威 survey。**

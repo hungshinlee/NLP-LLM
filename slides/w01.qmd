@@ -402,14 +402,10 @@ Counting cannot generalize to unseen contexts, because it has no notion that two
 
 ## Why more data cannot fix it: Zipf and Heaps
 
-$V^n$ tells you the space is huge. It does **not** yet tell you that more data fails — the space is fixed while the corpus can keep growing. What closes that gap is the *shape* of the word distribution.
-
-- **Zipf**: word frequency follows a power law. Most *distinct types* live in the tail
-- **Heaps**: distinct types grow as $|V| \propto D^{\beta}$, $\beta < 1$ — sublinear, and yet **never saturating**
-- So the share of **hapax** does not fade away as $D$ grows. Put that into Good–Turing's unseen mass, $\approx N_1/D$:
+![](assets/w01/heaps.svg){width="84%"}
 
 ::: {.claim .warn}
-The probability mass sitting on things you have never seen **does not go to zero as the corpus grows.** Sparsity is a property of language, not a shortage of text.
+After all 225k tokens, **47.7%** of the vocabulary is still words seen **exactly once**, and Good–Turing puts **2.9%** of the next token's mass on words never seen at all. Sparsity is a property of language, not a shortage of text.
 :::
 
 ::: {.footer}
