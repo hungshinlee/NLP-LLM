@@ -245,6 +245,26 @@ html.present-mode {
   .cm-t { font-weight: 600; }
 }
 
+// 尚未開放的週次：仍列在地圖上（看得到全課結構），但不是連結，
+// 所以要把 .cm-wk 的 hover 與游標回收掉。定義在 .cm-hinge 之後，W3/W4 才吃得到。
+.cm-soon {
+  color: #6b7280;
+  background: #f9fafb;
+  border-style: dashed;
+  cursor: default;
+  .cm-n { color: #9ca3af; }
+  &:hover {
+    border-color: #e5e7eb;
+    background: #f9fafb;
+    transform: none;
+  }
+  &.cm-hinge {
+    border-color: rgba($link-color, .45);
+    background: #f5f6fb;
+    &:hover { border-color: rgba($link-color, .45); background: #f5f6fb; }
+  }
+}
+
 .cm-note {
   margin: .9rem 0 0;
   font-size: .9rem;

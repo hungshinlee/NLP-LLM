@@ -7,7 +7,11 @@ project:
     - resources.qmd
     - slides.qmd
     - supplements.qmd
-    - weeks/w*.qmd
+    # 只上 W1。build_weeks.py 仍會產生 weeks/w02–w14.qmd（內容照樣過濾、
+    # 跟著大綱更新），但不 render，站上就沒有那些頁面。
+    # **要開放某一週：這裡加一行，並同步改 build_weeks.py 的 PUBLISHED_WEEKS
+    # 與下面 sidebar 的註解區塊。**
+    - weeks/w01.qmd
     - slides/*.qmd
     - supplements/*.qmd
   resources:
@@ -72,26 +76,28 @@ website:
         text: Syllabus
       - href: slides.qmd
         text: Slides
+      # 尚未開放的週次不列在側欄（頁面也不 render，見上面的 render 清單）。
+      # 開放時把對應的行解除註解，並同步 build_weeks.py 的 PUBLISHED_WEEKS。
       - section: "Part I — Architecture"
         contents:
           - href: weeks/w01.qmd
-          - href: weeks/w02.qmd
-          - href: weeks/w03.qmd
-          - href: weeks/w04.qmd
-          - href: weeks/w05.qmd
-          - href: weeks/w06.qmd
-      - section: "Part II — Training"
-        contents:
-          - href: weeks/w07.qmd
-          - href: weeks/w08.qmd
-          - href: weeks/w09.qmd
-          - href: weeks/w10.qmd
-      - section: "Part III — Systems & Scrutiny"
-        contents:
-          - href: weeks/w11.qmd
-          - href: weeks/w12.qmd
-          - href: weeks/w13.qmd
-          - href: weeks/w14.qmd
+          # - href: weeks/w02.qmd
+          # - href: weeks/w03.qmd
+          # - href: weeks/w04.qmd
+          # - href: weeks/w05.qmd
+          # - href: weeks/w06.qmd
+      # - section: "Part II — Training"
+      #   contents:
+      #     - href: weeks/w07.qmd
+      #     - href: weeks/w08.qmd
+      #     - href: weeks/w09.qmd
+      #     - href: weeks/w10.qmd
+      # - section: "Part III — Systems & Scrutiny"
+      #   contents:
+      #     - href: weeks/w11.qmd
+      #     - href: weeks/w12.qmd
+      #     - href: weeks/w13.qmd
+      #     - href: weeks/w14.qmd
       - href: resources.qmd
         text: Resources
       # sidebar 是手維護的：新增一份補充教材時要在這裡加一行 href

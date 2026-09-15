@@ -69,6 +69,13 @@ SHORT = {
 }
 HINGE = (3, 4)   # 全課樞紐，地圖上要highlight
 
+# 首頁與資源頁上「可點進去」的週次。未列入的週次仍會產生 weeks/wNN.qmd
+# （內容照樣過濾、照樣跟著大綱更新），但首頁的 Weekly Schedule、Course Map
+# 與 Reading / Derivations table 都只顯示文字，不給連結；_quarto.yml 也把它們
+# 排除在 render 清單與 sidebar 之外，所以站上不會有那些頁面，連結才不會是死的。
+# **要開放某一週就把週次加進來，並同步解開 _quarto.yml 裡對應的兩處註解。**
+PUBLISHED_WEEKS = {1}
+
 # syllabus.qmd 與 resources.qmd 引用的英文片段（手寫，依 `<!-- file: X -->` 切段）
 SITE_EN = os.path.join(ROOT, "docs", "site-en.md")
 FILE_RE = re.compile(r"^<!-- file: (\S+) -->$")
@@ -302,8 +309,10 @@ def main():
         assert_no_leak(out, "W%d" % wnum)
         written.append(write(os.path.join(WEEKS_DIR, "w%02d.qmd" % wnum), out))
         sl = ("[▶ Open](slides/w%02d.qmd)" % wnum) if slides_for(wnum) else "—"
-        index_rows.append("| **W%d** | [%s](weeks/w%02d.qmd)<br>[%s]{.wk-zh} | %s | %s |"
-                          % (wnum, en_title, wnum, title,
+        topic = (("[%s](weeks/w%02d.qmd)" % (en_title, wnum))
+                 if wnum in PUBLISHED_WEEKS else en_title)
+        index_rows.append("| **W%d** | %s<br>[%s]{.wk-zh} | %s | %s |"
+                          % (wnum, topic, title,
                              PART_OF[wnum].split(" — ")[-1], sl))
 
     # ── 2. syllabus.qmd 與 resources.qmd 引用的片段 ───────────
@@ -339,9 +348,14 @@ def main():
         h.append('<div class="cm-part">%s</div>' % title.replace("&", "&amp;"))
         for n in rng:
             cls = "cm-wk cm-hinge" if n in HINGE else "cm-wk"
-            h.append('<a class="%s" href="weeks/w%02d.html">'
-                     '<span class="cm-n">W%d</span>'
-                     '<span class="cm-t">%s</span></a>' % (cls, n, n, SHORT[n]))
+            inner = ('<span class="cm-n">W%d</span>'
+                     '<span class="cm-t">%s</span>' % (n, SHORT[n]))
+            if n in PUBLISHED_WEEKS:
+                h.append('<a class="%s" href="weeks/w%02d.html">%s</a>'
+                         % (cls, n, inner))
+            else:
+                # 尚未開放：保留在地圖上（看得到全課結構），但不是連結
+                h.append('<div class="%s cm-soon">%s</div>' % (cls, inner))
         h.append('</div>')
     h.append('</div>')
     h.append('<p class="cm-note"><strong>W3 and W4 are the hinge.</strong> '
@@ -352,14 +366,19 @@ def main():
     written.append(write(os.path.join(INC_DIR, "coursemap.md"),
                          BANNER + "\n\n" + "\n".join(h) + "\n"))
 
-    # 速查表與推導表裡的相對連結需指回 weeks/
+    # 速查表與推導表裡的相對連結需指回 weeks/（未開放的週次不給連結）
+    def _wk_cell(m):
+        n = int(m.group(1))
+        if n in PUBLISHED_WEEKS:
+            return "| [W%d](weeks/w%02d.qmd) |" % (n, n)
+        return "| W%d |" % n
+
     for fname in ("reading-table.md", "derivations.md"):
         p = os.path.join(INC_DIR, fname)
         if os.path.exists(p):
             with io.open(p, encoding="utf-8") as f:
                 t = f.read()
-            t = re.sub(r"^\| W(\d+) \|", lambda m: "| [W%s](weeks/w%02d.qmd) |"
-                       % (m.group(1), int(m.group(1))), t, flags=re.M)
+            t = re.sub(r"^\| W(\d+) \|", _wk_cell, t, flags=re.M)
             write(p, t)
 
     written.append(write(os.path.join(INC_DIR, "week-index.md"),
