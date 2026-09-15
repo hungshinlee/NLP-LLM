@@ -1,18 +1,54 @@
 /*-- scss:defaults --*/
 
+// ═══════════════════════════════════════════════════════════════
+// 字級系統：五級
+// ═══════════════════════════════════════════════════════════════
+// 錨在內文 26px，級距約 1.2。**全部用 deck 內的絕對 px。**
+// reveal 會把整個 1280×800 畫布等比縮到投影機，所以在 .slides 之內
+// px 是可預測的；用 em 才會與祖先疊乘。唯一的例外是 .footer 與
+// .slide-number，它們畫在縮放容器「之外」，必須用 vw（見 rules 段）。
+//
+// | 級 | token        | px | 給誰                                   |
+// |----|--------------|----|----------------------------------------|
+// | T1 | $fs-title    | 42 | h2 投影片標題（章節頁 h1 另有 $fs-section）|
+// | T2 | $fs-lead     | 31 | .claim / .ask：一張投影片的那句話        |
+// | T3 | $fs-body     | 26 | bullet 與段落，預設值                    |
+// | T4 | $fs-support  | 22 | 表格、.gen 樣本、程式碼、.small          |
+// | T5 | $fs-meta     | 18 | .cite、.tag、.footer、metric 的 .lab     |
+//
+// **兩條使用規則，比數字重要：**
+// 1. 一張投影片最多用四級。
+// 2. **T2 一張最多出現一次。** W1 那四次版面溢出的成因全都是
+//    一張表格（T4）後面疊了兩個 .claim（T2）。
+//
+// 改這五個數字會同時影響兩門課的所有投影片，改完務必重新 render 看過。
+$fs-title:   42px !default;
+$fs-lead:    31px !default;
+$fs-body:    26px !default;
+$fs-support: 22px !default;
+$fs-meta:    18px !default;
+$fs-section: 52px !default;   // 章節分隔頁的 h1，自成一級
+
+// 行高與字級反向：字越大行距越緊
+$lh-title:   1.20 !default;
+$lh-lead:    1.35 !default;
+$lh-body:    1.42 !default;
+$lh-support: 1.34 !default;
+$lh-meta:    1.30 !default;
+
 // 與課程網站同一組色票，讓網站與投影片看起來是同一套系統
-$presentation-font-size-root: 34px !default;
-$presentation-h1-font-size:   1.62em !default;
-$presentation-h2-font-size:   1.24em !default;
-$presentation-h3-font-size:   1.02em !default;
+$presentation-font-size-root: $fs-body !default;
+$presentation-h1-font-size:   $fs-section !default;
+$presentation-h2-font-size:   $fs-title !default;
+$presentation-h3-font-size:   $fs-lead !default;
 $presentation-heading-font-weight: 700 !default;
 $presentation-heading-color: #111827 !default;
-$presentation-line-height:  1.42 !default;
+$presentation-line-height:  $lh-body !default;
 
 $body-color: #1f2328 !default;
 $body-bg:    #ffffff !default;
 $link-color: #0b5cad !default;
-$code-block-font-size: .58em !default;
+$code-block-font-size: .85em !default;   // 26 × .85 ≈ T4
 
 $font-family-sans-serif:
   -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
@@ -31,22 +67,30 @@ $c-muted: #6b7280;
 }
 
 // 投影機後排看得到：標題留白收緊，換取內容字級
-.reveal h2 {
+.reveal h2 {                       // T1
   margin-bottom: .55em;
   padding-bottom: .22em;
   border-bottom: 2px solid #e5e7eb;
-  line-height: 1.25;
+  line-height: $lh-title;
 }
-.reveal h3 { color: #374151; margin-bottom: .4em; }
+.reveal h3 {                       // T2（W1 沒有用到 ###，留給後面的週次）
+  color: #374151;
+  margin-bottom: .4em;
+  line-height: $lh-lead;
+}
+// T3 內文由 $presentation-font-size-root 提供，不必在這裡重申。
+// 需要在某一段落局部降級時用 .small（T4）或 .meta（T5）。
+.reveal .small { font-size: $fs-support; line-height: $lh-support; }
+.reveal .meta  { font-size: $fs-meta;    line-height: $lh-meta; color: $c-muted; }
 
 // ── 主張框：一張投影片只有一句話時用 ────────────────────────
 .reveal .claim {
   border-left: 6px solid $link-color;
   background: #f8fafc;
-  padding: .8em 1em;
-  margin: .9em 0;
-  font-size: 1.14em;
-  line-height: 1.4;
+  padding: .7em .95em;             // T2 放大後把內距收一點，淨高度幾乎不變
+  margin: .78em 0;
+  font-size: $fs-lead;             // T2
+  line-height: $lh-lead;
   strong { color: $link-color; }
 }
 .reveal .claim.warn {
@@ -68,30 +112,42 @@ $c-muted: #6b7280;
     padding: .5em .7em;
     background: #fff;
   }
-  .num { display: block; font-size: 1.62em; font-weight: 700; line-height: 1.1; }
-  .lab { display: block; font-size: .68em; color: $c-muted; margin-top: .25em; }
+  // 數字卡不另開一級：數字用 T1、標籤用 T5
+  .num { display: block; font-size: $fs-title; font-weight: 700; line-height: 1.1; }
+  .lab { display: block; font-size: $fs-meta; line-height: $lh-meta; color: $c-muted; margin-top: .25em; }
   .bad  .num { color: $c-warn; }
   .good .num { color: $c-ok; }
 }
 
 // ── 提問slide：留白讓學生先答 ────────────────────────────────
+// .ask 是**給教室的指令**（「先預測再看」「自己算」），不是投影片的論點，
+// 所以它是 T3 而不是 T2——靠顏色與字重分辨，不靠字級。
+// 這樣一張投影片裡的 T2 就能真的只有 .claim 一個，那條規則才守得住。
 .reveal .ask {
-  font-size: 1.34em;
+  font-size: $fs-body;             // T3
+  line-height: $lh-body;
   font-weight: 600;
   color: $link-color;
   margin: 1.2em 0 .6em;
 }
 
 // ── 表格 ────────────────────────────────────────────────────
-// 字級用「絕對值」而非 em：投影片常帶 .smaller，相對字級會相乘，
-// 造成同一份 deck 裡的表格大小不一（W1 曾經全部縮到 19.5px）。
+// ── 表格 ────────────────────────────────────────────────────
+// **一個表格只有一個字級**，由它的角色決定是哪一級：
+//   預設         T4 $fs-support —— 資料與佐證（數字、標籤、短語）
+//   `::: {.prose}` T3 $fs-body   —— 格子是整句話、而且表格就是這張的內容
+// th 刻意不另給字級：字重、底色、下框線已經夠分辨，多一級只是讓系統變六級。
+//
+// **明確覆寫 th/td**，避免任何祖先的 em 疊乘——這正是 2026-09 以前表格大小
+// 會漂的原因（W1 曾經全部縮到 19.5px）。從 2026-09-15 起 deck 不再使用
+// Quarto 的 .smaller，疊乘的來源本身也拿掉了。
 .reveal table {
   border-collapse: collapse;
-  font-size: 26px;
+  font-size: $fs-support;
 
   th, td {
-    font-size: 26px;      // 明確覆寫，避免任何祖先的 em 疊乘
-    line-height: 1.34;
+    font-size: $fs-support;
+    line-height: $lh-support;
     padding: .42em .62em;
     vertical-align: top;
   }
@@ -102,16 +158,25 @@ $c-muted: #6b7280;
   }
   tbody tr + tr td { border-top: 1px solid #eef1f4; }
 
-  // 第一欄通常是短標籤，不換行讀起來更整齊
+  // 第一欄通常是短標籤，不換行讀起來更整齊。
+  // 注意：首欄變長時這條會把表格推寬，W1 目前最長的首欄是 32 字元（約 350px），安全。
   td:first-child, th:first-child { white-space: nowrap; }
 }
 
+// 論述型表格：格子是句子，而且這張投影片的內容就是這個表格。
+// 它不是佐證，是內文，所以給 T3。W1 只有兩張符合（三條主軸、各 Part 補什麼）。
+.reveal .prose table {
+  font-size: $fs-body;
+  th, td { font-size: $fs-body; line-height: $lh-body; }
+  // 論述型表格的首欄是軸名或 Part 名，允許它換行，否則長標籤會把表格推寬
+  td:first-child, th:first-child { white-space: normal; }
+}
+
 // ── 引用與出處 ──────────────────────────────────────────────
-// .cite 在被縮放的 .slides 內，用 em 沒問題。
-.reveal .cite {
-  font-size: .6em;
+.reveal .cite {                    // T5
+  font-size: $fs-meta;
   color: $c-muted;
-  line-height: 1.35;
+  line-height: $lh-meta;
 }
 
 // .footer 與頁碼由 reveal 畫在「縮放容器之外」的頁面層，transform 不會作用到它們。
@@ -126,18 +191,20 @@ $c-muted: #6b7280;
   text-align: center;
   white-space: normal !important;   // Quarto 預設 nowrap，長引用會溢出盒子外
 
-  font-size: clamp(10px, 1.55vw, 21px) !important;
+  // 目標是在 1280px 寬的視窗下落在 T5（18px）附近：1280 × 1.45% ≈ 18.6px。
+  // 這是整份 theme 唯一不能用 $fs-meta 的地方。
+  font-size: clamp(10px, 1.45vw, 19px) !important;
   color: $c-muted;
-  line-height: 1.3;
+  line-height: $lh-meta;
 }
 .reveal .slide-number {
+  // 刻意低於 T5：它是介面，不是內容。
   font-size: clamp(9px, 1.1vw, 15px) !important;
 }
-.reveal .small { font-size: .82em; }
 .reveal .dim   { color: $c-muted; }
 .reveal .tag {
   display: inline-block;
-  font-size: .62em;
+  font-size: $fs-meta;             // T5
   font-weight: 650;
   padding: .12em .5em;
   border-radius: 20px;
@@ -153,7 +220,7 @@ $c-muted: #6b7280;
   margin: .35em 0 .1em;
 }
 .reveal .audio-label {
-  font-size: .72em;
+  font-size: $fs-meta;             // T5
   font-weight: 650;
   color: $c-muted;
   margin-top: .5em;
@@ -166,7 +233,8 @@ $c-muted: #6b7280;
 .reveal .section-title h1 {
   border-left: 10px solid $link-color;
   padding-left: .5em;
-  font-size: 1.5em;
+  font-size: $fs-section;
+  line-height: $lh-title;
 }
 .reveal .section-title { padding-top: 1.2em; }
 
@@ -182,8 +250,8 @@ $c-muted: #6b7280;
   border-left: 5px solid #d6d3ce;
   padding: .62em .85em;
   margin: .5em 0;
-  font-size: .84em;
-  line-height: 1.46;
+  font-size: $fs-support;          // T4：模型吐出來的東西是資料，不是論述
+  line-height: $lh-support;
   color: #2b2b2b;
 }
 .reveal .gen.hit {                 // 逐字複製訓練語料的那一段
@@ -193,7 +261,7 @@ $c-muted: #6b7280;
 .reveal .gen .n {                  // 左上角的 n = ? 標記
   display: block;
   font-family: inherit;
-  font-size: .74em;
+  font-size: $fs-meta;             // T5
   font-weight: 700;
   color: $c-muted;
   margin-bottom: .2em;

@@ -30,7 +30,7 @@ format:
 
 # Five samples {.section-title}
 
-## Same corpus. Same prompt. One number changes. {.smaller}
+## Same corpus. Same prompt. One number changes.
 
 225,333 words of Shakespeare. 14,560 distinct words. A word-level n-gram model, trained by counting.
 
@@ -45,7 +45,7 @@ Every sample below starts from the same seven words, and differs only in **how m
 Watch what happens to the output as that number goes up.
 :::
 
-## n = 1: the words are Shakespeare's. Nothing else is. {.smaller}
+## n = 1: the words are Shakespeare's. Nothing else is.
 
 ::: {.gen}
 [n = 1　·　no context at all]{.n}
@@ -59,7 +59,7 @@ We than me or too: here separation PERDITA I majesty exhales the bring child hav
 A model of word frequency is a model of vocabulary, not of language.
 :::
 
-## n = 2: local fluency arrives. Global coherence does not. {.smaller}
+## n = 2: local fluency arrives. Global coherence does not.
 
 ::: {.gen}
 [n = 2　·　one word of context]{.n}
@@ -73,7 +73,7 @@ be to each of York, you might reproach your lordship cool your will show it. For
 One word of context buys local fluency. That is a remarkably good return on one word.
 :::
 
-## n = 4: this reads like Shakespeare. {.smaller}
+## n = 4: this reads like Shakespeare.
 
 ::: {.gen}
 [n = 4　·　three words of context]{.n}
@@ -87,7 +87,7 @@ wrought To be set high in place, we did: he desires to make atonement Betwixt th
 Four words of context, and pure counting, gets you something you would call fluent.
 :::
 
-## n = 8: this is not generation. This is recall. {.smaller}
+## n = 8: this is not generation. This is recall.
 
 ::: {.gen .hit}
 [n = 8　·　seven words of context]{.n}
@@ -104,7 +104,7 @@ Somewhere between n = 4 and n = 8, the model stopped generalizing and started re
 Corpus: Shakespeare (public domain), the standard `tinyshakespeare` split · figures computed for this course
 :::
 
-## Two curves explain the whole sweep {.smaller}
+## Two curves explain the whole sweep
 
 ![](assets/w01/curves.svg){width="100%"}
 
@@ -120,7 +120,7 @@ Corpus: Shakespeare (public domain), the standard `tinyshakespeare` split · fig
 :::
 :::
 
-## Same prompt. A 2026 model. Live. {.smaller}
+## Same prompt. A 2026 model. Live.
 
 ::: {.gen}
 [live · an open model on this laptop, the same seven words]{.n}
@@ -146,7 +146,7 @@ Also your first look at the machine these demos run on: 64 GB of unified memory,
 
 # What this course is {.section-title}
 
-## By week 14 you should be able to open any layer and say why it is there {.smaller}
+## By week 14 you should be able to open any layer and say why it is there
 
 Not "what is a Transformer" — you can read that anywhere. The target is harder and more useful:
 
@@ -159,7 +159,7 @@ Not "what is a Transformer" — you can read that anywhere. The target is harder
 Every component in this course is introduced through the specific failure it was invented to fix.
 :::
 
-## Fourteen weeks, and which weeks hold up which {.smaller}
+## Fourteen weeks, and which weeks hold up which
 
 ![](assets/w01/course-map.svg){width="100%"}
 
@@ -174,7 +174,7 @@ Everything in Part III reads from two objects built in W3–W4:
 By W11 the question is no longer "how does attention work" but "how many bytes does it move per token." You cannot ask the second question until you have built the first.
 :::
 
-## What you should be able to do by the end of today {.smaller}
+## What you should be able to do by the end of today
 
 1. **Write** the n-gram MLE and the perplexity definition, and say why sparsity cannot be fixed by collecting more data
 2. **Explain** how the distributional hypothesis becomes a loss function in word2vec, and where static embeddings structurally fail
@@ -185,11 +185,11 @@ By W11 the question is no longer "how does attention work" but "how many bytes d
 Item 4 is the one that carries furthest. It comes back in W7, W11 and W12.
 :::
 
-## The ledger we refill every week {.smaller}
+## The ledger we refill every week
 
 ![](assets/w01/ledger.svg){width="100%"}
 
-## Two numbers, now, on paper {.smaller}
+## Two numbers, now, on paper
 
 For a 7B dense model — work these out and keep them:
 
@@ -208,19 +208,21 @@ Capacity and bandwidth are different limits. 64 GB removes the first and does no
 A third number — why a 2026 flagship is "trillion total, tens of billions active" — opens W6, where the idea of an *active* parameter arrives
 :::
 
-## Three questions we ask every single week {.smaller}
+## Three questions we ask every single week
 
+::: {.prose}
 | Axis | The question |
 |---|---|
-| **Representation** | What is the unit at this layer — byte, token, hidden state, KV entry, retrieved chunk, latent thought? **Who chose it, and what does the choice cost downstream?** |
-| **Compute** | Does this spend *training* compute or *inference* compute? Is it FLOPs bound, or memory-bandwidth bound? |
-| **Supervision** | Where does this capability come from? There are five possible answers — and today exactly one of them exists |
+| **Representation** | The unit at this layer — byte, token, hidden state, KV entry, retrieved chunk, latent thought. **Who chose it, and what does that choice cost downstream?** |
+| **Compute** | *Training* compute or *inference* compute? FLOPs bound, or memory-bandwidth bound? |
+| **Supervision** | Where does this capability come from? Five possible answers — today, exactly one exists |
+:::
 
 ::: {.claim}
 The same observed behaviour can come from entirely different places on the third axis. That is the central dispute of W10 and W14.
 :::
 
-## Today, the third column has one entry {.smaller}
+## Today, the third column has one entry
 
 | Where a capability can come from | today | arrives in |
 |---|:---:|---|
@@ -231,13 +233,13 @@ The same observed behaviour can come from entirely different places on the third
 | retrieved knowledge | | W12 |
 | extra compute at test time | | W10 |
 
-Everything in today's lecture — n-grams, word2vec, an LSTM language model, seq2seq — is **self-supervised from raw text**. Nothing else is on the menu yet.
+Everything today — n-grams, word2vec, an LSTM LM, seq2seq — is **self-supervised from raw text**.
 
 ::: {.claim .warn}
-**W8 is where that column starts to branch.** You will not feel how large that change is unless you notice how empty the column is today.
+**W8 is where that column starts to branch**, and you will not feel how large that change is unless you notice how empty the column is today.
 :::
 
-## Four questions to ask of every paper in this course {.smaller}
+## Four questions to ask of every paper in this course
 
 1. **Was the baseline actually tuned?** The most common source of illusory progress. W8 and W9 both have cases where the gain vanishes after a learning-rate sweep
 2. **Is the comparison at equal compute?** Iso-FLOPs, iso-parameter and iso-latency are three different comparisons, and they often disagree
@@ -248,7 +250,7 @@ Everything in today's lecture — n-grams, word2vec, an LSTM language model, seq
 You already used question 3 today: the n = 4 sample read best, and scored worse.
 :::
 
-## Practicalities {.smaller}
+## Practicalities
 
 - Slides in English, taught in Mandarin. The speaker notes are mine and stay with me; the slides are yours, and they go up the same day
 - There is an **open-access English companion** for the first three weeks: Zong, Zhao & Ma, *NLP and Large Language Models* (Springer / Tsinghua, 2026). Ch 5 is essentially today's lecture in prose
@@ -259,7 +261,7 @@ You already used question 3 today: the n = 4 sample read best, and scored worse.
 hungshinlee.github.io/NLP-LLM
 :::
 
-## What you will run: nothing {.smaller}
+## What you will run: nothing
 
 Every demo in this course is run **live, in front of you**, on one laptop: **64 GB of unified memory, no CUDA.**
 
@@ -278,7 +280,7 @@ The KV cache you just computed — 16 GiB — was computed for the project card,
 
 # A language model is a compressor {.section-title}
 
-## Predicting well and compressing well are the same problem {.smaller}
+## Predicting well and compressing well are the same problem
 
 Give me a distribution over the next token and I can build a code. Arithmetic coding reaches the entropy of that distribution, to within a bit.
 
@@ -290,7 +292,7 @@ So the training objective of every model in this course is *literally* a compres
 This is the metaphor that runs the whole term. **Pretraining is compression. A scaling law is the regularity in the compression ratio. Quantization compresses the compressor. RAG refuses to compress and looks things up instead.**
 :::
 
-## Where the compression metaphor fails, and why that matters {.smaller}
+## Where the compression metaphor fails, and why that matters
 
 What gets compressed is a **distribution over strings**, not a set of propositions.
 
@@ -302,7 +304,7 @@ The model can therefore emit a fluent string it never saw, that fits the distrib
 - It is also the reason W12 exists: if you need propositions with sources, do not compress them into weights
 - And it is why "the model knows X" is a badly posed sentence. It has a distribution, not a knowledge base
 
-## Perplexity is not comparable across models {.smaller}
+## Perplexity is not comparable across models
 
 $$\mathrm{PPL} = \exp\!\left(-\frac{1}{T}\sum_{t=1}^{T} \log P(w_t \mid w_{<t})\right)$$
 
@@ -318,7 +320,7 @@ Use **bits-per-byte** instead: total negative log-likelihood in bits, divided by
 Misconception 1 of 7 · returns with real numbers in W2
 :::
 
-## Live: the same paragraph, two tokenizers {.smaller}
+## Live: the same paragraph, two tokenizers
 
 One Traditional Chinese paragraph. Two open models whose tokenizers disagree sharply about Chinese. Identical text, identical bytes.
 
@@ -336,7 +338,7 @@ Predict before I run it: which rows disagree, and which row nearly agrees?
 Run live on the lecture machine · the full five-tokenizer fertility comparison is next week's cold open
 :::
 
-## "Comparable" has three conditions {.smaller}
+## "Comparable" has three conditions
 
 Bits-per-byte fixes the **denominator**. It does not make the number unconditional.
 
@@ -352,7 +354,7 @@ Bits-per-byte fixes the **denominator**. It does not make the number uncondition
 Condition 1 gets its mechanism next week: byte-level fallback is what keeps a tokenizer lossless on rare CJK characters
 :::
 
-## And a low perplexity does not mean good generations {.smaller}
+## And a low perplexity does not mean good generations
 
 Even with the denominator fixed, likelihood and sample quality are **largely independent in high dimensions**. Theis, van den Oord & Bethge (2015) construct models that are good at one and bad at the other — in both directions.
 
@@ -369,7 +371,7 @@ Misconception 2 of 7 · the general form of this argument is all of W14
 
 # From counting to sharing parameters {.section-title}
 
-## Smoothing is not a hack. It is a statistical necessity. {.smaller}
+## Smoothing is not a hack. It is a statistical necessity.
 
 The MLE is just a count ratio:
 
@@ -383,7 +385,7 @@ Good–Turing puts the total probability of everything unseen at roughly $N_1/D$
 The MLE assigns zero to 95% of the 4-grams you will actually meet. Any usable model must therefore invent probability mass — and *how* it invents it is an inductive bias, not an implementation detail.
 :::
 
-## More data does not fix this {.smaller}
+## More data does not fix this
 
 Doubling the corpus halves neither of these numbers by much. The count table grows; the space it must cover grows faster.
 
@@ -398,7 +400,7 @@ Notice the second row saturating: past n = 3, almost every new n-gram is seen ex
 Counting cannot generalize to unseen contexts, because it has no notion that two contexts might be similar.
 :::
 
-## Why more data cannot fix it: Zipf and Heaps {.smaller}
+## Why more data cannot fix it: Zipf and Heaps
 
 $V^n$ tells you the space is huge. It does **not** yet tell you that more data fails — the space is fixed while the corpus can keep growing. What closes that gap is the *shape* of the word distribution.
 
@@ -414,7 +416,7 @@ The probability mass sitting on things you have never seen **does not go to zero
 The same tail returns in W7 (deduplication, compute-optimal budgets) and W14 (long-tail memorization, contamination)
 :::
 
-## Two inductive biases for one problem {.smaller}
+## Two inductive biases for one problem
 
 | | n-gram | Neural LM (Bengio 2003) |
 |---|---|---|
@@ -424,16 +426,16 @@ The same tail returns in W7 (deduplication, compute-optimal budgets) and W14 (lo
 | **Cost of more context** | table size grows like $V^n$ | a few more input weights |
 
 ::: {.claim}
-The move from 2003 onwards was not "neural networks are stronger". It was **replacing a lookup table with a function, so that unseen inputs land somewhere sensible.** Everything after this — including attention — is a variation on how to build that function.
+The move from 2003 on was not "neural networks are stronger". It was **replacing a lookup table with a function, so that unseen inputs land somewhere sensible** — and everything since, attention included, varies how that function is built.
 :::
 
-So "an LLM is just a bigger n-gram" is wrong in both directions: the inductive bias is different, **and** at the long tail an LLM does fall back on memorization — which is exactly what we watched happen at n = 8.
+So *"an LLM is just a bigger n-gram"* is wrong in both directions: the inductive bias differs, **and** at the long tail an LLM does fall back on memorization — which is what we watched at n = 8.
 
 ::: {.footer}
 Misconception 3 of 7 · the memorization half returns in W7 and W14
 :::
 
-## Where does the n = 8 sample sit on that table? {.smaller}
+## Where does the n = 8 sample sit on that table?
 
 ::: {.ask}
 It was fluent. It was grammatical. It was, word for word, in the training set.
@@ -454,7 +456,7 @@ This question returns as benchmark contamination (W14) and as data deduplication
 
 # The distributional hypothesis, and its trap {.section-title}
 
-## The hypothesis becomes a loss function {.smaller}
+## The hypothesis becomes a loss function
 
 *You shall know a word by the company it keeps.* Word2vec (SGNS) turns that into an objective:
 
@@ -466,7 +468,7 @@ Push a word and its true context together; push it away from $K$ sampled non-con
 Read the second term carefully. **The set of negatives defines what "similar" is going to mean.** Change the negative sampling and you change the geometry.
 :::
 
-## Live: the nearest neighbour of `love` in this corpus {.smaller}
+## Live: the nearest neighbour of `love` in this corpus
 
 PPMI on a 4-word window, then SVD to 200 dimensions, on the same Shakespeare. Function words removed for display.
 
@@ -484,7 +486,7 @@ The nearest neighbour of `love` is `hate`.
 Computed for this course · PPMI + truncated SVD, 4,000-word vocabulary
 :::
 
-## Antonyms beat synonyms {.smaller}
+## Antonyms beat synonyms
 
 | | pair | cosine |
 |---|---|---|
@@ -499,7 +501,7 @@ Computed for this course · PPMI + truncated SVD, 4,000-word vocabulary
 Both synonym pairs score **below** every antonym pair. If cosine measured semantic similarity, this table would be impossible.
 :::
 
-## This is not a word2vec quirk {.smaller}
+## This is not a word2vec quirk
 
 Levy & Goldberg (2014): **SGNS is implicitly factorizing a shifted PMI matrix.** That is why the demo above — PPMI plus a truncated SVD — reproduces the same behaviour, and why the behaviour is a property of the *objective*, not of the optimizer.
 
@@ -516,7 +518,7 @@ Misconception 4 of 7 · returns as a retrieval failure in W12
 
 # Why recurrence died {.section-title}
 
-## The gradient is a product, and products go to zero {.smaller}
+## The gradient is a product, and products go to zero
 
 $$\frac{\partial \mathcal{L}}{\partial h_1} = \frac{\partial \mathcal{L}}{\partial h_T}\prod_{t=2}^{T}\frac{\partial h_t}{\partial h_{t-1}}$$
 
@@ -528,7 +530,7 @@ An LSTM's gates replace part of that **multiplicative** path with an **additive*
 Remember the phrase *additive path*. In W4 the same trick reappears under a different name — the residual stream — and it is the reason 100-layer models train at all.
 :::
 
-## Then seq2seq squeezed everything through one vector {.smaller}
+## Then seq2seq squeezed everything through one vector
 
 Encoder reads the whole source, produces one fixed-width vector, decoder writes from it.
 
@@ -542,7 +544,7 @@ $$c_t = \sum_i \alpha_{ti} h_i, \qquad \alpha_{ti} = \mathrm{softmax}_i\big(a(s_
 
 Instead of one vector, let the decoder build **a different weighted read of the source at every output step**.
 
-## That attention is cross-attention, not self-attention {.smaller}
+## That attention is cross-attention, not self-attention
 
 The query is the **decoder** state $s_{t-1}$. The keys and values are the **encoder** states $h_i$. Query and key/value come from **two different sequences**.
 
@@ -559,7 +561,7 @@ Keep these apart or W5 will not make sense. *"Why does the model need extra posi
 Misconception 5 of 7 · this distinction is doing the work in W3 and W5
 :::
 
-## Attention is older than the Transformer {.smaller}
+## Attention is older than the Transformer
 
 Bahdanau attention is 2015. The Transformer is 2017. **What 2017 removed was recurrence, not attention.**
 
@@ -576,7 +578,7 @@ Two consequences you need today:
 Misconception 6 of 7
 :::
 
-## RNNs did not lose on quality. They lost on throughput. {.smaller}
+## RNNs did not lose on quality. They lost on throughput.
 
 An RNN's hidden state at step $t$ requires step $t-1$. **The sequence dimension cannot be parallelized.** So you cannot spend more GPUs to train on more data, and after 2017 that was the only thing that mattered.
 
@@ -588,7 +590,7 @@ This is the single most important sentence in today's lecture for understanding 
 Misconception 7 of 7 · and the next slide is why W6 exists
 :::
 
-## And what recurrence never lost {.smaller}
+## And what recurrence never lost
 
 At inference an RNN carries a **fixed-size state**. A Transformer carries a KV cache that grows with every token it generates.
 
@@ -600,19 +602,21 @@ Which is why, in 2026, recurrence is **back** — Mamba, gated linear attention,
 
 # Where this goes {.section-title}
 
-## Each Part fills in part of the ledger {.smaller}
+## Each Part fills in part of the ledger
 
+::: {.prose}
 | Part | What it adds to the compute ledger |
 |---|---|
 | **I — Architecture** | where the FLOPs and the bytes actually go; what the unit of representation is at each layer, and who chose it |
 | **II — Training** | how to spend a training budget optimally, and what post-training buys that pretraining cannot |
 | **III — Systems** | why decode is memory bound; what a retrieval hop costs; and how we find out whether any of it works |
+:::
 
 ::: {.claim}
 Today you built the first row of that ledger with a model you could have written in twenty lines.
 :::
 
-## Next week: the unit you cannot change after training {.smaller}
+## Next week: the unit you cannot change after training
 
 **Tokenization.** The one design decision in the whole system that cannot be fixed post hoc.
 
@@ -628,7 +632,7 @@ Before then, read: **JM3 Vol I ch 2** *Words and Tokens* (the 2026-08-19 release
 Nothing to install. Every demo in this course runs at the front of the room.
 :::
 
-## Sources {.smaller}
+## Sources
 
 ::: {.cite}
 **Textbooks** · Jurafsky & Martin, *Speech and Language Processing*, 3rd ed., **2026-08-19 draft release** — ch 2 Words and Tokens, ch 3 N-gram Language Models, ch 5 Embeddings, ch 14 RNNs and LSTMs · Zong, Zhao & Ma, *Natural Language Processing and Large Language Models*, Springer Nature Singapore / Tsinghua University Press, 2026 (**open access**) — ch 5 Basic Language Models, ch 3 Distributed Representation, ch 4 Sequence Generation Models, ch 2.5 RNN and LSTM
