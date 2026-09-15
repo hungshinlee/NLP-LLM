@@ -31,5 +31,5 @@ It is also where the course's governing metaphor — **compression is prediction
 - Sutskever, Vinyals & Le, **Sequence to Sequence Learning with Neural Networks**, NeurIPS 2014
 - Bahdanau, Cho & Bengio, **Neural Machine Translation by Jointly Learning to Align and Translate**, ICLR 2015 (arXiv:1409.0473)
 - Levy & Goldberg, **Neural Word Embedding as Implicit Matrix Factorization**, NeurIPS 2014 — ties SGNS back to a PMI matrix factorization; the single strongest reference for the claim that an embedding's similarity is whatever its training objective defined similarity to be
-- `[題]` The equivalence between compression and language modeling — search *language modeling is compression*, *arithmetic coding neural language model*, *bits per byte evaluation*
-- `[題]` Derivations for Good-Turing and Kneser-Ney — search *Chen Goodman empirical study of smoothing*
+- The equivalence between compression and language modeling — search *language modeling is compression*, *arithmetic coding neural language model*, *bits per byte evaluation*
+- Derivations for Good-Turing and Kneser-Ney — search *Chen Goodman empirical study of smoothing*

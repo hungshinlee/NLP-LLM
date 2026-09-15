@@ -2,7 +2,7 @@
 
 ## Four Questions for Reading a Paper
 
-Handed out in week 1 and used every week after. They are short because they have to be usable in the ten minutes before a seminar.
+Handed out in week 1 and used every week after. They are short on purpose — they have to be usable in the ten minutes before a seminar.
 
 1. **Was the baseline actually tuned?** The most common source of illusory progress in this field. W8 (LoRA variants) and W9 (GRPO variants) both have concrete cases where the improvement disappears once the baseline gets a learning-rate sweep.
 2. **Is the comparison at equal compute?** Iso-FLOPs, iso-parameter and iso-latency are three different comparisons, and they frequently give opposite answers. W6 is built around this.

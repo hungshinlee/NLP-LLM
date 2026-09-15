@@ -2,7 +2,7 @@
 
 ## Derivations and Hand-Built Components
 
-One board derivation and one component per week. The compute estimates assume free-tier Colab (T4, 16 GB).
+One board derivation and one component per week. Everything is demonstrated in class; the compute column is there so you can see what each component would cost to rerun yourself, against a free-tier Colab T4.
 
 | Week | At the board | Built by hand | Compute |
 |:--|:--------------------------------|:----------------------------|:------|

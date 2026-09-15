@@ -1,6 +1,6 @@
 ---
 title: "Syllabus"
-subtitle: "Setup, the compute ledger, citation conventions, and what will go stale"
+subtitle: "Setup, course structure, the compute ledger, and how to read a paper"
 ---
 
 ## Course Setup
@@ -32,7 +32,7 @@ The two are in tension, and the course accepts that deliberately. The catch-up l
 | **Part II — Training** | W7–W10 | Scaling laws and data curation; SFT, PEFT and forgetting; preference alignment and RL; reasoning and test-time compute |
 | **Part III — Systems & Scrutiny** | W11–W14 | Inference efficiency, from FLOPs to memory bandwidth; RAG and context engineering; agentic systems and their failure modes; evaluation, interpretability and safety |
 
-**W3 and W4 are the hinge of the course** — W5, W6 and W11 rest entirely on understanding the residual stream and the KV cache, so neither may be compressed. W2 is a prerequisite for W7, because the tokenizer shifts the compute-optimal configuration; W9 is a prerequisite for W10. If the course runs late, compress W6 (an architecture survey by design) and the engineering detail in W12.
+**W3 and W4 are the hinge of the course** — W5, W6 and W11 rest entirely on understanding the residual stream and the KV cache, so neither is a week to miss. W2 is a prerequisite for W7, because the tokenizer shifts the compute-optimal configuration; W9 is a prerequisite for W10.
 
 Two metaphors are meant to run the length of the course, and each is introduced with an explanation of where it fails. **Compression** arrives in W1 and returns in W7 (a scaling law is the regularity in the compression ratio), W11 (quantization compresses the compressor) and W12 (RAG declines to compress at all). **The residual stream as a shared bus** arrives in W4 and returns in W6 (swapping out how data is moved), W8 (a low-rank bypass on the bus) and W14 (a circuit is a signal traced along it).
 
@@ -51,7 +51,3 @@ Question 4 above is the abstract version. Here is the concrete one: the course m
 | W14 | sparse-autoencoder feature | a concept inside the model |
 
 Each time the answer is the same: ask for an intervention rather than a correlation, and ask what a strong baseline does on the same measurement.
-
-{{< include _includes/disclaimer.md >}}
-
-{{< include _includes/halflife.md >}}

@@ -2,7 +2,7 @@
 
 ## The Compute Ledger: The Course's Shared Coordinate System
 
-Hand this out in week 1, then fill in each layer's contribution as the course goes. It is the device that lets an abstract argument fall back onto a number at any point.
+You get this in week 1, and each week adds the layer it is responsible for. It is what lets an abstract argument fall back onto a number at any point.
 
 ::: {.ledger}
 
@@ -20,7 +20,7 @@ $N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ co
 
 **The line worth memorising.** The first two rows are arithmetic problems; the last two are traffic problems. Decode is not short of FLOPs — it is short of bandwidth, and the KV cache is what fills the road. Most of Part III is an attempt to make those two rows cheaper.
 
-Three numbers students should work out for themselves in the first session, and revisit as the course goes:
+Three numbers to work out for yourself in the first session, and to revisit as the course goes:
 
 1. The training FLOPs for a 7B dense model at Chinchilla-optimal ($D \approx 20N$), and how many years that is on a single T4.
 2. The KV cache for that model at batch 1, 32k context, FP16 — in GB, against the T4's 16 GB. **That number is the shared motivation for W5, W6 and W11.**

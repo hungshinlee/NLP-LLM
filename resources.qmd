@@ -11,14 +11,6 @@ subtitle: "Textbooks, one paper per week, derivations, toolchain"
 
 {{< include _includes/toolchain.md >}}
 
-## Practical Notes on the Demos
-
-Beyond the compute ceiling above, three things actually bite:
-
-- **`peft` and `trl` break across versions.** Pin them in the handout and rerun the notebook the week before class; this is the single most common way a lab fails in the room.
-- **The first weight download often takes longer than the inference**, so the notebook has to be warmed up before class. Nothing here needs a large dataset — a few hundred examples is enough for every lab.
-- **The failure demos are the most memorable part of the course**, and three of them are worth the preparation time above all others: a reward with a deliberate hole in it, which the model finds within a few dozen RL steps (W9); a hidden hint in the prompt that changes the answer while the chain of thought never mentions it (W10); and an agent broken by indirect prompt injection (W13). Each is about thirty lines of code, and each settles an argument that would otherwise take ten papers.
-
 ## Four Things This Course Admits It Does Not Know
 
 These gaps are load-bearing rather than embarrassing — each is a project topic, and saying so is the honest graduate-level position.

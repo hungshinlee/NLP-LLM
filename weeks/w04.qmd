@@ -25,10 +25,7 @@ toc-depth: 2
 - Shazeer, **GLU Variants Improve Transformer**, arXiv:2002.05202 — SwiGLU
 - Loshchilov & Hutter, **Decoupled Weight Decay Regularization**, ICLR 2019 — AdamW
 - Yang et al., **Tensor Programs V: Tuning Large Neural Networks via Zero-Shot Hyperparameter Transfer**, NeurIPS 2021（arXiv:2203.03466）— muP
-- Wortsman et al., **Small-scale proxies for large-scale Transformer training instabilities**, arXiv:2309.14322 `[驗]` — **training stability 唯一真正可教的一篇**
 - Blake et al., **u-μP: The Unit-Scaled Maximal Update Parametrization**, arXiv:2407.17465 — muP 與 FP8 的結合
-- Dey et al., **Don't be lazy: CompleteP enables compute-efficient deep transformers**, arXiv:2505.01618 `[驗]` — depth 方向的轉移
 - Bai et al., **Kimi K2: Open Agentic Intelligence**, arXiv:2507.20534 — MuonClip 與 QK-clip 的實務案例（訓練穩定性一節值得單獨讀）
-- `[驗]` Zhou et al., **How to Set the Learning Rate for Large-Scale Pre-training?**, arXiv:2601.05049 — 2026，質疑 μTransfer 在工業規模與 MoE 的可擴展性
-- `[題]` FFN 作為 memory：檢索 *transformer feed-forward layers are key-value memories*
-- `[題]` Muon optimizer：檢索 *Muon optimizer neural network training*、*orthogonalized momentum optimizer LLM*
+- FFN 作為 memory：檢索 *transformer feed-forward layers are key-value memories*
+- Muon optimizer：檢索 *Muon optimizer neural network training*、*orthogonalized momentum optimizer LLM*

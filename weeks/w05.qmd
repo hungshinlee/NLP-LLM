@@ -30,4 +30,4 @@ toc-depth: 2
 - Yuan et al., **Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention**, arXiv:2502.11089 — **強調 natively trainable 是重點，不是 inference-only**
 - DeepSeek-AI, **DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models**, arXiv:2512.02556 — DSA (DeepSeek Sparse Attention)
 - Zhang et al., **H2O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models**, arXiv:2306.14048
-- `[題]` 長文本評估：檢索 *RULER what's the real context size of your long-context language models*、*needle in a haystack limitations*、*∞Bench long context benchmark*
+- 長文本評估：檢索 *RULER what's the real context size of your long-context language models*、*needle in a haystack limitations*、*∞Bench long context benchmark*

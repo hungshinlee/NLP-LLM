@@ -36,7 +36,6 @@ toc-depth: 2
 - Wu et al., **MiniMax-01: Scaling Foundation Models with Lightning Attention**, arXiv:2501.08313
 
 **DeepSeek 主線（建議整條指定，這是唯一能把「MLA → 稀疏注意力 → 極端 KV 壓縮」講成連續故事的開源脈絡）**
-- **DeepSeek-V2**, arXiv:2405.04434（MLA 首發）→ **DeepSeek-V3**, arXiv:2412.19437 → **DeepSeek-V3.2**, arXiv:2512.02556（DSA）→ **DeepSeek-V4: Towards Highly Efficient Million-Token Context Intelligence**, arXiv:2606.19348 `[驗]`（CSA + HCA 混合注意力、mHC、Muon；**注意：此篇的 abs 頁顯示 v1 日期與 ID 前綴不一致，引用日期前請覆核**）
 
 **其他 open-weight 主線（當成 landscape，不必逐篇讀）**
 - Yang et al., **Qwen3 Technical Report**, arXiv:2505.09388 — 0.6B–235B，**Apache 2.0，本課所有 lab 的預設模型家族**
@@ -47,4 +46,4 @@ toc-depth: 2
 **Survey**
 - Sun et al., **Speed Always Wins: A Survey on Efficient Architectures for Large Language Models**, arXiv:2508.09834 — **涵蓋 linear/sparse sequence modeling、efficient attention、sparse MoE、hybrid，是這三塊唯一涵蓋度夠的**。2026 尚無更新的架構 survey。
 
-> **兩個要在課堂上講清楚的「不存在」**：**Qwen3-Next 沒有技術報告**（只有 blog / model card），但它在 2026 的論文中被大量當 baseline；**Llama 4 也沒有 arXiv 技術報告**。要教它們的設計只能引 model card，並在投影片上標明出處性質 `[非論文]`。這本身就是一個值得討論的現象：**開源權重不等於開源方法**。
+> **兩個要在課堂上講清楚的「不存在」**：**Qwen3-Next 沒有技術報告**（只有 blog / model card），但它在 2026 的論文中被大量當 baseline；**Llama 4 也沒有 arXiv 技術報告**。要教它們的設計只能引 model card，並在投影片上標明出處性質 。這本身就是一個值得討論的現象：**開源權重不等於開源方法**。

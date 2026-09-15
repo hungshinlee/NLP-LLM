@@ -33,12 +33,11 @@ toc-depth: 2
 - NVIDIA, **Pretraining Large Language Models with NVFP4**, arXiv:2509.25149
 - Xiao et al., **Efficient Streaming Language Models with Attention Sinks**, ICLR 2024（arXiv:2309.17453）；Zhang et al., **H2O**, arXiv:2306.14048
 - Chen et al., **The Pitfalls of KV Cache Compression**, ACL 2026（arXiv:2510.00231）— **本單元「什麼情況下會壞掉」的核心文本，強烈建議入課**
-- `[驗]` Salfati et al., **Quantization Dominates Rank Reduction for KV-Cache Compression**, arXiv:2604.11501（2026）— 適合當一頁結論式投影片
 - Dao et al., **FlashAttention-3**, arXiv:2407.08608
 - Zhong et al., **DistServe: Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving**, OSDI 2024（arXiv:2401.09670）
 - Agrawal et al., **Taming Throughput-Latency Tradeoff in LLM Inference with Sarathi-Serve**, arXiv:2403.02310 — chunked prefill 的來源
 - Qin et al., **Mooncake: A KVCache-centric Disaggregated Architecture for LLM Serving**, arXiv:2407.00079
 - Gu et al., **MiniLLM: Knowledge Distillation of Large Language Models**, ICLR 2024（arXiv:2306.08543）
 - Survey（選一）：Li et al., **A Survey on Large Language Model Acceleration based on KV Cache Management**, TMLR 2025（arXiv:2412.19442）；或 Zhen et al., **Taming the Titans: A Survey of Efficient LLM Inference Serving**, arXiv:2504.19720
-- `[非論文]` **vLLM V1 沒有論文**，只有工程 blog。教學上請以 2309.06180 + 官方文件搭配，並在投影片標明。**Orca / continuous batching 為 OSDI 2022 會議論文、無 arXiv 版本，引用前請自行核對。**
-- `[題]` LLM 推論的非決定性：檢索 *defeating nondeterminism in LLM inference*、*batch invariant kernels reproducibility*
+- **vLLM V1 沒有論文**，只有工程 blog。教學上請以 2309.06180 + 官方文件搭配，並在投影片標明。**Orca / continuous batching 為 OSDI 2022 會議論文、無 arXiv 版本，引用前請自行核對。**
+- LLM 推論的非決定性：檢索 *defeating nondeterminism in LLM inference*、*batch invariant kernels reproducibility*

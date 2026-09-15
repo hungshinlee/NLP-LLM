@@ -35,8 +35,8 @@ toc-depth: 2
 - Beurer-Kellner et al., **Design Patterns for Securing LLM Agents against Prompt Injections**, arXiv:2506.08837
 - Zou et al., **Security Challenges in AI Agent Deployment: Insights from a Large Scale Public Competition**, arXiv:2507.20526 — **>60,000 次成功注入；robustness 與模型規模／能力幾乎無相關。這個數據點是本單元開場的最佳素材**
 - Hou et al., **MCP: Landscape, Security Threats, and Future Research Directions**, arXiv:2503.23278
-- `[非論文]` **"lethal trifecta"**（私密資料 + 不可信內容 + 對外通訊）出自 Simon Willison 的 blog（2025），**不是同儕審查論文**。可用這個 framing，但投影片必須標明出處性質。
-- `[非論文]` **Model Context Protocol 規格** — **沒有 canonical 的設計論文**，學術文獻幾乎全集中在 security。
+- **"lethal trifecta"**（私密資料 + 不可信內容 + 對外通訊）出自 Simon Willison 的 blog（2025），**不是同儕審查論文**。可用這個 framing，但投影片必須標明出處性質。
+- **Model Context Protocol 規格** — **沒有 canonical 的設計論文**，學術文獻幾乎全集中在 security。
 
 **評估（用最新的當例子，不當教材）**
 - Yao et al., **τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains**, arXiv:2406.12045

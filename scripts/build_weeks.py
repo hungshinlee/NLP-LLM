@@ -79,8 +79,11 @@ PUBLISHED_WEEKS = {1}
 # syllabus.qmd 與 resources.qmd 引用的英文片段（手寫，依 `<!-- file: X -->` 切段）
 SITE_EN = os.path.join(ROOT, "docs", "site-en.md")
 FILE_RE = re.compile(r"^<!-- file: (\S+) -->$")
-NEEDED = ("disclaimer.md", "ledger.md", "reading-questions.md", "textbooks.md",
-          "reading-table.md", "derivations.md", "toolchain.md", "halflife.md")
+# 站上要有的片段。disclaimer.md（How to Read This Site）與 halflife.md（半衰期地圖
+# 與三個維護紀律）已於 2026-09-15 移除——兩者都是寫給備課的人看的，正本在
+# Course-Hub 的 nlp_llm/course-outline.md 附錄 D 與開頭的使用說明。
+NEEDED = ("ledger.md", "reading-questions.md", "textbooks.md",
+          "reading-table.md", "derivations.md", "toolchain.md")
 
 # 每週英文標題寫在 docs/course-outline.md 的標題下一行：<!-- en: ... -->
 EN_RE = re.compile(r"^<!--\s*en:\s*(.+?)\s*-->$")

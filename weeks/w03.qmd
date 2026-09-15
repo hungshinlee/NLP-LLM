@@ -26,7 +26,6 @@ toc-depth: 2
 - Ainslie et al., **GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints**, EMNLP 2023（arXiv:2305.13245）
 - DeepSeek-AI, **DeepSeek-V2**, arXiv:2405.04434 — **MLA 的原始出處**；KV cache 大幅壓縮的論證在此
 - Dao et al., **FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness**, NeurIPS 2022（arXiv:2205.14135）；與 **FlashAttention-3**, arXiv:2407.08608
-- Jain & Wallace, **Attention is not Explanation**, NAACL 2019（arXiv:1902.10186）`[驗]`（abstract 已確認，metadata 請覆核）；並列 Wiegreffe & Pinter, **Attention is not not Explanation**, EMNLP 2019 `[題]`（檢索標題即可）
 - Xiao et al., **Efficient Streaming Language Models with Attention Sinks**, ICLR 2024（arXiv:2309.17453）— attention sink 的來源，W5 會再用
-- `[題]` induction head 與 head 的功能特化：檢索 *in-context learning and induction heads*、*attention head pruning sixteen heads*
-- `[題]` online softmax：檢索 *online normalizer calculation for softmax*（Milakov & Gimelshein）
+- induction head 與 head 的功能特化：檢索 *in-context learning and induction heads*、*attention head pruning sixteen heads*
+- online softmax：檢索 *online normalizer calculation for softmax*（Milakov & Gimelshein）

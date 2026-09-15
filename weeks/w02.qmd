@@ -28,8 +28,8 @@ toc-depth: 2
 - Liu et al., **SuperBPE: Space Travel for Language Models**, COLM 2025（arXiv:2503.13423）— 跨 whitespace 的 superword token，可當 live demo
 - Pagnoni et al., **Byte Latent Transformer: Patches Scale Better Than Tokens**, arXiv:2412.09871 — tokenizer-free 路線的代表
 - Ali et al., **Tokenizer Choice For LLM Training: Negligible or Crucial?**, arXiv:2310.08754
-- `[題]` 跨語言的 token 不公平性：檢索 *language model tokenizers introduce unfairness between languages*（Petrov et al. 一般認為是 arXiv:2305.15425，**我未能逐篇查證，請勿直接寫 ID**）
-- `[題]` glitch token：檢索 *SolidGoldMagikarp glitch tokens*、*under-trained tokens in large language models*
-- `[題]` 數字表徵與算術：檢索 *tokenization arithmetic digit tokenization*、*right-to-left digit grouping LLM*
+- 跨語言的 token 不公平性：檢索 *language model tokenizers introduce unfairness between languages*（Petrov et al. 一般認為是 arXiv:2305.15425，**我未能逐篇查證，請勿直接寫 ID**）
+- glitch token：檢索 *SolidGoldMagikarp glitch tokens*、*under-trained tokens in large language models*
+- 數字表徵與算術：檢索 *tokenization arithmetic digit tokenization*、*right-to-left digit grouping LLM*
 
 > **繁中／台語／客語的文獻缺口（請當成專題題目，不要當成引用）**：我查不到任何專門處理繁體中文 token efficiency 的可驗證論文。相關可用的替代是評測資源而非 tokenizer 研究：Chen et al., **TMLU** (arXiv:2403.20180) 與 Tam et al., **TMMLU+** (arXiv:2403.01858)。因此**繁中 fertility 只能靠你自己現場 demo**——這正好說明這是一個真實的研究機會，而不是我沒查到。

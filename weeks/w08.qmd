@@ -26,13 +26,11 @@ toc-depth: 2
 - Biderman et al., **LoRA Learns Less and Forgets Less**, TMLR 2024（arXiv:2405.09673）
 - Shuttleworth et al., **LoRA vs Full Fine-tuning: An Illusion of Equivalence**, arXiv:2410.21228 — **intruder dimensions，本週的機制性證據**
 - Lee et al., **Learning Rate Matters: Vanilla LoRA May Suffice for LLM Fine-tuning**, arXiv:2602.04998（2026-02）— **本週的方法論核心**
-- `[非論文]` Schulman et al., **LoRA Without Regret**, Thinking Machines Lab **blog**, 2025-09-29 — 影響力大但**不是同儕審查文獻**，引用時必須標明。可驗證主張：LoRA 最佳 LR 約為 full FT 的 10×（極短訓練時約 15×）；必須套用到所有層特別是 MLP/MoE；batch size 變大時 LoRA 的 loss penalty 較嚴重；RL 下 rank-1 即可追上 full FT
+- Schulman et al., **LoRA Without Regret**, Thinking Machines Lab **blog**, 2025-09-29 — 影響力大但**不是同儕審查文獻**，引用時必須標明。可驗證主張：LoRA 最佳 LR 約為 full FT 的 10×（極短訓練時約 15×）；必須套用到所有層特別是 MLP/MoE；batch size 變大時 LoRA 的 loss penalty 較嚴重；RL 下 rank-1 即可追上 full FT
 - Han et al., **Parameter-Efficient Fine-Tuning for Large Models: A Comprehensive Survey**, arXiv:2403.14608
 - Ibrahim et al., **Simple and Scalable Strategies to Continually Pre-train Large Language Models**, arXiv:2403.08763 — LR re-warming + replay 的實務基線
-- `[驗]` Lai et al., **Reinforcement Fine-Tuning Naturally Mitigates Forgetting in Continual Post-Training**, arXiv:2507.05386 — **這塊最有教學價值的單一結論**
-- `[驗]` Thede, Akata et al., **CapTrack: Multifaceted Evaluation of Forgetting in LLM Post-Training**, arXiv:2603.06610（2026）
 - Ilharco et al., **Editing Models with Task Arithmetic**, ICLR 2023（arXiv:2212.04089）
 - Yadav et al., **TIES-Merging: Resolving Interference When Merging Models**, NeurIPS 2023（arXiv:2306.01708）
 - Yu et al., **Language Models are Super Mario: Absorbing Abilities from Homologous Models as a Free Lunch (DARE)**, ICML 2024（arXiv:2311.03099）
 - Song et al., **Model Merging in the Era of Large Language Models: Methods, Applications, and Future Directions**, arXiv:2603.09938（2026-03）— **建議取代 2408.07666 當主 survey**
-- `[題]` 指令資料的品質 > 數量：檢索 *LIMA less is more for alignment*、*instruction tuning data quality scaling*
+- 指令資料的品質 > 數量：檢索 *LIMA less is more for alignment*、*instruction tuning data quality scaling*

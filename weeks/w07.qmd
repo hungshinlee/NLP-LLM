@@ -31,7 +31,6 @@ Part II 的開場，也是全課三個數學高峰之一。本週把 W1 的「�
 - Kumar et al., **Scaling Laws for Precision**, arXiv:2411.04330 — 過度訓練的模型對後量化更敏感（連 W11）
 - Muennighoff et al., **Scaling Data-Constrained Language Models**, arXiv:2305.16264
 - Sadhukhan et al., **Kinetics: Rethinking Test-Time Scaling Laws**, arXiv:2506.05333 — 從 memory/KV-cache bound 而非 FLOPs 重寫（連 W10、W11）
-- `[驗]` Kricheli et al., **Tokens-per-Parameter Coverage Is Critical for Robust LLM Scaling Law Extrapolation**, arXiv:2605.08541
 
 **資料策展**
 - Penedo et al., **The FineWeb Datasets: Decanting the Web for the Finest Text Data at Scale**, arXiv:2406.17557 — **含 FineWeb-Edu，classifier-based filtering 的標準教材**
@@ -53,8 +52,7 @@ Part II 的開場，也是全課三個數學高峰之一。本週把 W1 的「�
 - Maini et al., **Rephrasing the Web**, arXiv:2401.16380（2024，樂觀）
 - Maini et al., **BeyondWeb: Lessons from Scaling Synthetic Data for Trillion-scale Pretraining**, arXiv:2508.10975（2025，「no silver bullet」）— **與上一篇並排，是本課最好的 negative-result 教材**
 - Qin et al., **Scaling Laws of Synthetic Data for Language Models**, COLM 2025（arXiv:2503.19551）
-- `[驗]` **How Can We Synthesize High-Quality Pretraining Data? A Systematic Study of Prompt Design, Generator Model, and Source Data**, arXiv:2604.13977（**first author 請自行確認**）
-- `[題]` model collapse 的理論主張：檢索 *the curse of recursion training on generated data*、*model collapse demystified*（**注意證據強度，理論假設與實務 pipeline 不同**）
+- model collapse 的理論主張：檢索 *the curse of recursion training on generated data*、*model collapse demystified*（**注意證據強度，理論假設與實務 pipeline 不同**）
 
 **在此第一次出現、W14 展開**
 - Gema et al., **Are We Done with MMLU?**, NAACL 2025（arXiv:2406.04127）— MMLU 的題目錯誤率
