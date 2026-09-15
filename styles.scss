@@ -49,6 +49,36 @@ main table {
   td, th { vertical-align: top; }
 }
 
+// ── 算力帳本：syllabus 的核心表格，全課每週回填的那一張 ────
+// 公式欄是這張表的視覺主角：置中、不折行、KaTeX 在表格裡預設偏小，
+// 放大一點才和正文裡的 $6ND$ 同級。欄寬寫死，否則長說明會把公式擠扁。
+.ledger {
+  margin: 1.5rem 0 1.2rem;
+
+  table {
+    border-top: 1.6px solid $link-color;
+    border-bottom: 1px solid #d0d7de;
+  }
+  tbody tr + tr { border-top: 1px solid #eaeef2; }
+  tbody tr:nth-child(even) { background: #fafbfc; }
+
+  td:nth-child(1) { width: 21%; }
+  td:nth-child(2) {
+    width: 31%;
+    text-align: center;
+    white-space: nowrap;
+    .katex { font-size: 1.08em; }
+  }
+  td:nth-child(3) { width: 48%; }
+}
+
+// 帳本底下那行符號說明：是圖例不是正文，收小一級
+.ledger + p {
+  font-size: .88rem;
+  color: #57606a;
+  margin-top: -.4rem;
+}
+
 // 首頁每週索引：英文標題為主，中文標題作次行
 .wk-zh {
   color: #6b7280;
