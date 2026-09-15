@@ -4,7 +4,7 @@ subtitle: "Part I — Architecture · 位置編碼、長文本與 context 的極
 toc-depth: 2
 ---
 
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 ## 定位
 本週處理一個常被誤解為「已解決」的問題。從「attention 本身是 permutation-equivariant」出發，走到 RoPE 的推導，再走到長度外推與 context 的**有效使用率**。核心訊息：**「能吃進 1M token」與「能用好 1M token」是兩件不同的事，而且業界的宣稱幾乎都在講前者。** 這一週是 W12（RAG 到底還需不需要）的前提。

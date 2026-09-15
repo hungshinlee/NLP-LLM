@@ -1,8 +1,9 @@
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 ## Course Map
 
 <div class="coursemap">
+<p class="cm-goal"><strong>Endpoint — read a modern LLM layer by layer:</strong> for every layer from tokenizer to agent, say why it looks the way it does and where it breaks. W1 opens with the compression framing and the compute ledger that the remaining thirteen weeks keep filling in.</p>
 <div class="cm-grid">
 <div class="cm-col">
 <div class="cm-part">Part I — Architecture</div>

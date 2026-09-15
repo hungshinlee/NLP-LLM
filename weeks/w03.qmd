@@ -4,7 +4,7 @@ subtitle: "Part I — Architecture · Transformer I：attention 的機制、複�
 toc-depth: 2
 ---
 
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 ## 定位
 全課的第一個樞紐。本週只做一件事：**把 attention 徹底拆開，並讓學生從零寫一次**。刻意把 LayerNorm、FFN、最佳化留到 W4，避免一次塞太多。KV cache 在本週就要出現（不是留到 W11），因為 W5 與 W6 的整條敘事都建立在「KV 是推論期的記憶體本體」這個認識上。

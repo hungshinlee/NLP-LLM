@@ -4,7 +4,7 @@ subtitle: "Part I — Architecture · 架構路線：MoE、SSM 與 linear attent
 toc-depth: 2
 ---
 
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 ## 定位
 本週回答 W3–W5 累積下來的兩個成本問題：**FLOPs 太貴**（→ MoE：把參數量與計算量解耦）與 **KV cache 太貴**（→ SSM / linear attention：換掉產生 KV 的機制）。這是全課「證據強度」訓練最密集的一週，因為架構論文的比較條件（iso-FLOPs? iso-params? iso-latency?）幾乎決定了結論。若進度落後，本週可壓縮，但**MoE 的 routing 與 activation ratio 趨勢不能省**，因為它是理解 2026 開源模型的門票。

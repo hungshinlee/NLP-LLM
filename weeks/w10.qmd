@@ -4,7 +4,7 @@ subtitle: "Part II — Training · Reasoning 與 test-time compute"
 toc-depth: 2
 ---
 
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 ## 定位
 本課程 open problems 最多、也最需要謹慎處理證據強度的一週。核心結構是三層：**(1) 現象**（CoT、self-consistency、long CoT 有效）、**(2) 理論框架**（test-time compute 是第四條 scaling 軸）、**(3) 批判**（CoT 不是模型的思考過程；RL 是否擴展了能力邊界仍有爭議）。第三層是本週的重點，而且是研究所學生最該練的能力。**明確原則：本週不宣告任何一方勝利。**

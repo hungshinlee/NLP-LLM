@@ -4,7 +4,7 @@ subtitle: "Part III — Systems & Scrutiny · Agentic systems：工具、規劃�
 toc-depth: 2
 ---
 
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 ## 定位
 本課程**唯一沒有教科書可用的一週**（JM3 ch12 *Agents* 標註 "[not written yet]"），必須完全自備論文與講義。也是半衰期最短的一週：agent benchmark 在 18 個月內換了四代。因此本週的設計原則是**教穩定的骨架與失效分類，用最新的 benchmark 當例子而非教材**。本週的三個穩定物是：**model-harness 分離**的架構觀點、**MAST 的失效分類**、以及 **prompt injection 的結構性論證**。

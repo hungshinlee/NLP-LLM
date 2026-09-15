@@ -4,7 +4,7 @@ subtitle: "Part III — Systems & Scrutiny · RAG 與 context engineering"
 toc-depth: 2
 ---
 
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 ## 定位
 本週回答 W1 埋下的問題（壓縮器不存事實，那事實從哪來）與 W5 埋下的問題（1M context 是否讓 RAG 過時）。**本週的教學重點不是 pipeline 的組裝，而是「檢索失敗的分類學」**——因為 RAG 的工程細節半衰期短且多為 folklore，而失敗模式的分類是穩定的。要誠實處理一件事：chunking 與 query rewriting **沒有可指定的代表論文**，這兩塊是 engineering folklore 多於實證文獻，本週用 ablation lab 代替論文。

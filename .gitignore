@@ -32,7 +32,8 @@ slides/*.html
 
 **/*.quarto_ipynb
 
-# 課堂 demo 的下載語料（可由 scripts/make_demo_w01.py 重建）
+# 課堂 demo 的下載語料已隨產圖腳本搬到 private repo 的
+# nlp_llm/slides/_corpus/。這條留著擋回歸：萬一有人又在這裡下載語料，不要進版控。
 /_corpus/
 
 # 課本 PDF（版權材料，不進版控）
@@ -40,4 +41,8 @@ slides/*.html
 
 # 課程大綱正本在 private repo（Course-Hub）。萬一有人把它複製回來，先擋住。
 docs/course-outline.md
+
+# 投影片的中文講稿正本也在 private repo（nlp_llm/slides/）。這裡的 slides/*.qmd
+# 是 bin/publish_slides.py 剝除講稿後的產物，**是要進版控的**，所以不能整包擋掉；
+# 保險絲改由 bin/publish.py 執行：產物含 ::: {.notes} 就中止發佈。
 notes/

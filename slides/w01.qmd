@@ -26,6 +26,8 @@ format:
       url: "https://cdn.jsdelivr.net/npm/katex@0.18.7/dist/"
 ---
 
+<!-- 此檔由 bin/publish_slides.py 從投影片正本產生（中文講稿區塊已剝除），請勿直接編輯。正本在 private repo 的 <course>/slides/。 -->
+
 # Four samples {.section-title}
 
 ## Same corpus. Same prompt. One number changes. {.smaller}
@@ -43,16 +45,6 @@ Every sample below starts from the same seven words, and differs only in **how m
 Watch what happens to the output as that number goes up.
 :::
 
-::: {.notes}
-**這張只交代實驗設定，不要解釋機制。** 大約一分鐘。
-
-要講清楚的只有三件事：語料是 22.5 萬個詞的莎士比亞、模型只做一件事（數次數），以及**四段輸出的唯一差別是模型能看幾個前文詞**。
-
-刻意用莎士比亞有兩個理由，可以順口說一句：一是它是公版，二是**JM3 第 3 章就有這張經典的圖**，我們等於把課本那張圖當場重跑一次，數字是自己算的。學生後面自己重跑會得到同樣結果。
-
-不要預告他們該看什麼。這四張的價值就在於他們自己說出「越後面越通順」，然後在第四張自己踩進陷阱。
-:::
-
 ## n = 1: the words are Shakespeare's. Nothing else is. {.smaller}
 
 ::: {.gen}
@@ -65,16 +57,6 @@ We than me or too: here separation PERDITA I majesty exhales the bring child hav
 
 ::: {.claim}
 A model of word frequency is a model of vocabulary, not of language.
-:::
-
-::: {.notes}
-唸出來一小段，效果比讓他們默讀好——聽起來像在念詞彙表。
-
-要點出來的是：**這一段的詞頻分布其實是對的**。`the`、`our`、`to` 出現的頻率跟真實文本差不多，所以「統計上正確」跟「語言上正確」在這裡完全分開了。這一刀之後在 W14 講 benchmark 時會再用一次：一個指標對了不代表能力對了。
-
-如果有人笑，很好，那正是要的反應。可以順著說：「這是 1948 年 Shannon 就做過的實驗，我們只是把語料換大了。」
-
-不要現在就講 smoothing 或 sparsity，那是第四節的事。
 :::
 
 ## n = 2: local fluency arrives. Global coherence does not. {.smaller}
@@ -91,14 +73,6 @@ be to each of York, you might reproach your lordship cool your will show it. For
 One word of context buys local fluency. That is a remarkably good return on one word.
 :::
 
-::: {.notes}
-這一張的教學價值是**投資報酬率**：只多看一個詞，輸出就從詞彙表變成了「聽起來像英文」。這解釋了為什麼 n-gram 在 1990 到 2010 年代能撐起整個語音辨識與機器翻譯產業。
-
-指兩個具體的片段給他們看——`your lordship`、`furnished with patience`。這些不是模型「懂」了，是因為這些二元組在語料裡真的常出現。
-
-**這裡可以停下來問**：「如果一個詞就買到這麼多，那多看十個詞會怎樣？」讓他們預測。多數人會說「更好」。留著，第四張會給答案。
-:::
-
 ## n = 4: this reads like Shakespeare. {.smaller}
 
 ::: {.gen}
@@ -111,14 +85,6 @@ wrought To be set high in place, we did: he desires to make atonement Betwixt th
 
 ::: {.claim}
 Four words of context, and pure counting, gets you something you would call fluent.
-:::
-
-::: {.notes}
-這一張要讓他們印象深刻，語氣可以稍微賣一下：**這是純粹數次數做出來的**，沒有神經網路、沒有梯度、沒有 GPU，一台筆電幾秒鐘。
-
-`And who durst mine when Warwick bent his brow?` 是一個結構完整的修辭問句。`Betwixt the Duke of York` 用詞一致。
-
-然後埋下一張的伏筆：「所以往上加 context 就是對的方向。我們把它加到 8 看看。」**語氣要真誠，不要預告有陷阱**——下一張的效果完全靠這個。
 :::
 
 ## n = 8: this is not generation. This is recall. {.smaller}
@@ -138,20 +104,6 @@ Somewhere between n = 4 and n = 8, the model stopped generalizing and started re
 Corpus: Shakespeare (public domain), the standard `tinyshakespeare` split · figures computed for this course
 :::
 
-::: {.notes}
-**這是 cold open 的關鍵一張**，值得三分鐘。
-
-先問：「這一段比上一段更好嗎？」多數人會說更好、更連貫。**然後告訴他們這一段是逐字抄的**，連後面那個 `BRUTUS:` 說話人標記都一起抄出來了——那是最好的證據，因為模型並不「知道」什麼是說話人標記，它只是照著語料往下數。
-
-接著把這個現象講成一句他們會記住的話：**在某個 n，模型從「歸納」變成「背誦」，而訓練目標沒有任何一項告訴我們那條線在哪裡。**
-
-這一刀直通兩個後面的單元，現在就先掛上鉤子：
-- **W14 的 contamination**：如果評測題目在訓練語料裡，模型的高分是背出來的還是推出來的？你分不出來——這正是我們剛剛親眼看到的。
-- **W7 的資料重複**：為什麼 pretraining 要花那麼大力氣做去重。
-
-如果有學生問「那 LLM 是不是也在背」，這是個好問題，答案是「部分是，而且我們有一整週在處理怎麼分辨」（W14）。不要現在展開。
-:::
-
 ## Two numbers explain the whole sweep {.smaller}
 
 ![](assets/w01/curves.svg){width="100%"}
@@ -166,18 +118,6 @@ Corpus: Shakespeare (public domain), the standard `tinyshakespeare` split · fig
 ::: {.metric}
 [99.0%]{.num}[unseen at n = 5. More data will not fix this]{.lab}
 :::
-:::
-
-::: {.notes}
-兩張圖一起看，是本節的收束。
-
-**左圖**：held-out 文本裡有多少 n-gram 是訓練集從沒見過的。5.2% → 36.4% → 77.2% → 95.0% → 99.0%。到 n=4，二十個裡有十九個是沒見過的。所以 n=8 的模型絕大多數時候根本沒有統計可用——**它唯一能做的就是照抄那條它見過的路徑**。這就是上一張的機制。
-
-**右圖**：bits-per-byte（越低越好）。它在 **n=2 就到最低點 1.861**，之後開始變差。這跟他們剛剛的直覺（n 越大越好）正好相反，而且跟他們對「n=4 讀起來最好」的印象也不一致——**這個矛盾要點出來**：讀起來像，跟預測得準，是兩件事。n=4 讀起來好，是因為它在抄一條真實的路徑；但它對「沒見過的文本」預測得比 n=2 差。
-
-如果有人問 bits-per-byte 是什麼，先說「就是壓縮率，第三節會定義」，不要在這裡展開。
-
-也順便交代方法：這裡用的是 stupid backoff（λ=0.4），不是 add-1。要說一句：**平滑方式的選擇會改變這條曲線的形狀**，這是「讀論文的第一個問題」的第一個例子——別人給你一條曲線，你要問他用什麼平滑。
 :::
 
 # What this course is {.section-title}
@@ -195,33 +135,9 @@ Not "what is a Transformer" — you can read that anywhere. The target is harder
 Every component in this course is introduced through the specific failure it was invented to fix.
 :::
 
-::: {.notes}
-這張是課程的終點宣告，語氣要當成承諾而不是宣傳。
-
-第 1 條的三個例子刻意挑了三個不同的難度層級，可以各講一句：$1/\sqrt{d_k}$ 是 W3 的十分鐘變異數論證；Chinchilla 的指數是 W7 的黑板主推導；DPO 的 partition function 為什麼會消掉是 W9 最漂亮的一步。**先讓他們知道這門課真的會推**。
-
-第 4 條是這門課跟大多數 LLM 課程真正的差別。可以說重一點：「這個領域每個月產出的論文比你讀得完的多，而其中有相當一部分的結論撐不起它的摘要。我要教你怎麼看出來。」
-
-最後那句 claim 是全課的方法論：**從失效講起**。剛才那四段 n-gram 就是示範——我們不是先定義 n-gram，是先讓你看到它壞在哪。
-:::
-
 ## Fourteen weeks, and which weeks hold up which {.smaller}
 
 ![](assets/w01/course-map.svg){width="100%"}
-
-::: {.notes}
-這張是**依賴結構**，不是週次清單。
-
-先讓他們看整體形狀：左邊六週是架構、中間四週是訓練、右邊四週是系統與檢驗。今天那一格是虛線框。灰色箭頭表示前面撐後面，符合直覺。
-
-**重點是那條藍色虛線。** 它從 W3–W4 出發，繞過整個 Part II，指進框住 Part III 的那個虛線框——注意它指的不是某一週，而是**整欄**。
-
-理由講清楚：Part III 的三塊（推論效率、RAG、agent）全部建立在兩個 W3–W4 建立的物件上——**residual stream** 與 **KV cache**。W11 的 roofline 是在算 KV 的搬運；W5 的長文本問題是 KV 的大小；W6 換掉的正是「產生 KV 的那個機制」。
-
-可以說：「W7 到 W10 缺一週，你還是聽得懂 W13。W3 或 W4 缺了，W11 之後全部聽不懂。」
-
-也告訴他們地圖的用法：每週開場我都回到這張，指出今天在哪裡。缺課的話看這張就知道會影響哪幾週。
-:::
 
 ## W3 and W4 are the hinge. If you skip one week, do not skip those two.
 
@@ -234,18 +150,6 @@ Everything in Part III reads from two objects built in W3–W4:
 By W11 the question is no longer "how does attention work" but "how many bytes does it move per token." You cannot ask the second question until you have built the first.
 :::
 
-::: {.notes}
-這張是課程地圖裡最重要的依賴關係，話可以說重一點。
-
-兩個物件各給一句人話：
-**residual stream** 是一條每層都能讀、算完再加回去的共用匯流排。這個比喻在 W6（換掉搬運方式）、W8（LoRA 是掛在匯流排上的低秩旁路）、W14（circuit 就是追蹤匯流排上的一個訊號）都會回來。
-**KV cache** 是模型在推論時的狀態本體，不是工程細節。長 context 下它比模型權重還大。
-
-那句 claim 是要他們記住的：到 W11，問題已經不是「attention 怎麼運作」，而是「它每個 token 搬幾個位元組」。**沒有建過第一個，問不出第二個。**
-
-如果進度落後，可壓縮的是 W6（架構掃描本來就是掃描式）與 W12（RAG 的工程細節）。**不要壓 W3 與 W4。**
-:::
-
 ## What you should be able to do by the end of today {.smaller}
 
 1. **Write** the n-gram MLE and the perplexity definition, and say why sparsity cannot be fixed by collecting more data
@@ -255,18 +159,6 @@ By W11 the question is no longer "how does attention work" but "how many bytes d
 
 ::: {.claim}
 Item 4 is the one that carries furthest. It comes back in W7, W11 and W12.
-:::
-
-::: {.notes}
-把四條唸一遍，語氣是「這是你走出教室該帶走的東西」。
-
-四條都用**可檢驗的動詞**：寫得出來、解釋得出來、指得出來、陳述得出來。可以直接說：「下課時第 4 條你講不出來，那是我沒講清楚，請當場問。」
-
-第 4 條為什麼最重要，值得先說：壓縮這個框架會在 W7（scaling law 是壓縮率隨資源的規律）、W11（量化是在壓縮壓縮器本身）、W12（RAG 是拒絕壓縮、改成外掛查表）各回來一次。**今天建立的是後面三週共用的語言。**
-
-第 1 條裡「不能靠更多資料解決」那半句，就是剛才那張 99.0% 的圖在說的事。已經看過了，這裡只是把它變成一個他們能陳述的命題。
-
-時間緊的話這張可以只唸第 1 與第 4 條。
 :::
 
 ## Three questions we ask every single week {.smaller}
@@ -281,18 +173,6 @@ Item 4 is the one that carries furthest. It comes back in W7, W11 and W12.
 The same observed behaviour can come from entirely different places on the third axis. That is the central dispute of W10 and W14.
 :::
 
-::: {.notes}
-這三軸是全課的座標系。今天只要建立「每週都會回到這三個問題」的預期，並各給一個**今天已經出現過**的例子，讓它不抽象：
-
-**表徵軸**——剛才的 n-gram 用「詞」當單位。下週會看到 LLM 用的單位既不是字也不是詞，而且那個選擇會改變 compute-optimal 的參數配置。
-**算力軸**——那四段生成幾乎不花算力，但 n=8 的模型要存 21 萬個 8-gram 的計數表。這就是「參數量 vs 記憶體」的第一個版本。
-**監督軸**——n-gram 的能力完全來自語料的計數。今天之後，能力的來源會多出人類偏好、可驗證獎勵、外部檢索、以及 test-time 的額外計算。
-
-第三軸的那句 claim 要說清楚：**同一個表現可以由完全不同的來源產生**。W10 的爭點（RL 到底有沒有擴展能力邊界）和 W14 的整週（我們怎麼知道它真的會）都是這一軸的問題。
-
-期末的期望是：拿任何一個模組給他們，他們能自己回答這三個問題。
-:::
-
 ## Four questions to ask of every paper in this course {.smaller}
 
 1. **Was the baseline actually tuned?** The most common source of illusory progress. W8 and W9 both have cases where the gain vanishes after a learning-rate sweep
@@ -302,18 +182,6 @@ The same observed behaviour can come from entirely different places on the third
 
 ::: {.claim}
 You already used question 3 today: the n = 4 sample read best, and scored worse.
-:::
-
-::: {.notes}
-這四個問題是本課給學生的**工具**，不是課程規範。要說明它們可以在讀任何一篇論文的十分鐘內用完。
-
-第 1 條在 W8 有最乾淨的案例：2026 年有一篇系統性工作顯示，learning rate 調好之後，近年多數 LoRA 變體相對原始 LoRA 的增益就消失了。這不是小事，那是好幾年的論文。
-
-第 3 條**今天已經用過了**，這是這張最有力的一句：n=4 那段讀起來最好，但 bits-per-byte 比 n=2 差。「讀起來好」跟「預測得準」是兩個指標，你選哪一個就會得到不同的排名。
-
-第 4 條會在三個不同的週次以同一個形式出現（attention weight、CoT、SAE feature），W14 會用一張表把三次收在一起。今天先讓他們有這個抓手。
-
-可以說一句：「這四題我期待你們用在我引用的論文上，包括我講錯的地方。」
 :::
 
 ## Practicalities
@@ -326,20 +194,6 @@ You already used question 3 today: the n = 4 sample read best, and scored worse.
 
 ::: {.tag}
 hungshinlee.github.io/NLP-LLM
-:::
-
-::: {.notes}
-實務事項，講快。
-
-**評量要說清楚**：期中報告 40%、期末論文 60%，沒有考試也沒有每週作業。兩份都當成投稿而不是作業來寫——期中是 research proposal 加初期 PoC，期末是一篇可投 ARR 的完整稿件。分組進行，另外要參與兩次線上討論。
-
-這裡要給他們一句定心的話：**不是要你們做出 SOTA**，是要你們做出一個問題定義清楚、假說可證偽、實驗誠實的東西。網站 Supplements 有四份中文指南（選題題庫、期中 PoC、期末論文、寫作與敘事），選題那份特別值得早看——它列了十個在單張 16 GB 顯卡上做得完、且與台灣本土語言有關的題目。
-
-**順便講硬體的落差**：那份選題指南是按單張消費級顯卡（RTX 5070 Ti 級、約 16 GB）寫的，跟課堂 demo 用的 Colab 免費版 T4 記憶體相同但吞吐量差很多。要他們照自己實際拿得到的算力規劃專題，不要照指南的假設。
-
-Colab 免費版的限制要誠實講：T4 16 GB 跑不動 2026 的任何旗艦模型，所以所有 demo 都是「小模型手刻 + 大模型讀報告數字」兩層。今天那四段 n-gram 就是這個設計的示範——它在筆電上幾秒鐘，但講清楚的是一個 2026 年仍然重要的問題。
-
-**半衰期地圖**值得提一句，這是這門課少見的誠實：網站上明確標了哪幾週的內容五年不用動（W1、W3），哪幾週六個月就過時（W6、W9、W10、W13、W14）。學生會知道哪些是該記住的基礎、哪些是該追的前沿。
 :::
 
 # A language model is a compressor {.section-title}
@@ -356,18 +210,6 @@ So the training objective of every model in this course is *literally* a compres
 This is the metaphor that runs the whole term. **Pretraining is compression. A scaling law is the regularity in the compression ratio. Quantization compresses the compressor. RAG refuses to compress and looks things up instead.**
 :::
 
-::: {.notes}
-這是全課的主比喻，值得慢一點，四到五分鐘。
-
-先給直覺，不要先給式子：**如果你能預測下一個字，你就能壓縮這段文字。** 因為壓縮的本質是「常見的東西用短碼、罕見的用長碼」，而「什麼是常見」正是語言模型在學的。算術編碼可以做到逼近該分布的熵，誤差在一個 bit 以內。
-
-反過來也成立，這是關鍵：**壓縮率就是預測品質的度量。** 所以 cross-entropy loss 不是一個為了方便最佳化而選的代理指標，它就是壓縮率本身。
-
-那句 claim 要念出來，因為它是這學期的路線圖：pretraining 是壓縮（W7）、scaling law 是壓縮率隨資源變化的規律（W7）、quantization 是在壓縮那個壓縮器（W11）、RAG 是拒絕壓縮改成外掛查表（W12）。**每次回到這個比喻，我都會說「這就是第一週那個比喻」。**
-
-如果班上有資訊論背景的，可以順帶點一句 Shannon 1948 的英文字母預測實驗——這件事已經做了七十幾年。
-:::
-
 ## Where the compression metaphor fails, and why that matters {.smaller}
 
 What gets compressed is a **distribution over strings**, not a set of propositions.
@@ -379,20 +221,6 @@ The model can therefore emit a fluent string it never saw, that fits the distrib
 - This is one mechanism behind hallucination — a mechanistic account, not a moral one
 - It is also the reason W12 exists: if you need propositions with sources, do not compress them into weights
 - And it is why "the model knows X" is a badly posed sentence. It has a distribution, not a knowledge base
-
-::: {.notes}
-**比喻的失效點要跟比喻同時給**，這是本課的原則之一：一次性的比喻會製造混淆，能延伸的比喻必須標明邊界。
-
-核心區分：被壓縮的是**字串上的機率分布**，不是**命題的集合**。所以模型可以生成一個它從未見過、完全符合分布、而且是錯的句子。
-
-這裡要小心不要說成「模型在說謊」或「模型不誠實」——那是把機制問題道德化。正確的說法是：**它做的就是壓縮該做的事**，只是我們拿它當知識庫用。
-
-這一刀直接推出兩件後面的事：
-- W12 為什麼存在：需要有來源、可更新、可追溯的命題，就不要把它壓進權重。
-- 「模型知道 X 嗎」這個問句本身有問題。它有一個分布，沒有一個知識庫。
-
-如果有學生問「那為什麼它答對那麼多事實」，好問題，答案是「因為在足夠大的語料上，真話的分布密度比假話高」——但這是統計性質，不是保證。W14 會回來處理。
-:::
 
 ## Perplexity is not comparable across models {.smaller}
 
@@ -410,35 +238,9 @@ Use **bits-per-byte** instead: total negative log-likelihood in bits, divided by
 Misconception 1 of 5 · returns with real numbers in W2
 :::
 
-::: {.notes}
-**這是本課五個誤解裡最常見、也最容易犯的一個**，每一屆都會出現。
-
-論證只有一步，要慢慢講：PPL 的分母是 token 數，而 token 數是 tokenizer 決定的，不是文本決定的。所以你換一個 tokenizer，同一個模型在同一段文字上的 PPL 就變了——**它們根本不在同一個尺度上。**
-
-中文特別嚴重，因為不同 tokenizer 對漢字的處理差異極大。下週會實際量：同一段繁中文字丟進四五個 tokenizer，token 數的差距。**今天先給命題，下週給數字。**
-
-正確做法是 bits-per-byte：分母換成位元組數，那是文本的性質。剛才那張右圖用的就是 BPB，這也是為什麼那條曲線可以跨 n 比較。
-
-**可以停下來問**：「那如果兩篇論文報告的 PPL 用同一個 tokenizer，可以比嗎？」答案是可以，但你要確認——而這就是「讀論文的第二個問題」（比較條件是否相同）的一個實例。
-:::
-
 ## The ledger we refill every week {.smaller}
 
 ![](assets/w01/ledger.svg){width="100%"}
-
-::: {.notes}
-這張是**母版**，之後每週回來填一格：W3 加 KV cache、W4 加 optimizer state、W5 加長 context 的成本、W7 加訓練預算、W10 加 test-time compute、W11 把它收束成 roofline。學期末他們手上就有一張完整的成本解剖圖。
-
-今天只要建立三件事：
-
-**左邊 $C \approx 6ND$**：每個參數每個 token，前向約 2 FLOPs、後向約 4。這個式子是 W7 整週的基礎（Chinchilla 的約束條件就是它）。要註明它忽略了 attention 的 $n^2$ 項——什麼時候該修正，W3 會給答案。
-
-**右邊的分裂是本課最重要的成本觀念**：prefill 是 compute bound，decode 是 memory bound。所以兩者的最佳化手段幾乎完全不重疊。這句話今天他們不會有實感，W11 會用 roofline 的實測讓他們看到「decode 時 batch 從 1 加到 8 幾乎不變慢」。
-
-**KV cache 的公式**先給，不解釋。W3 會逐項推。
-
-不要在這裡展開任何一項，今天它只是一張要被記住的表。
-:::
 
 ## Three numbers, now, on paper {.smaller}
 
@@ -450,18 +252,6 @@ For a 7B dense model — work these out and keep them:
 
 ::: {.ask}
 Number 2 is the one that will surprise you. It is the shared motivation for W5, W6 and W11.
-:::
-
-::: {.notes}
-**這是課堂計算，不是投影片內容。** 給他們五到六分鐘，讓他們真的動筆，然後叫三個人報答案。不要自己算給他們看。
-
-第 1 題的答案量級：$6 \times 7\text{e}9 \times 1.4\text{e}11 \approx 6\text{e}21$ FLOPs。T4 的 FP16 大約 65 TFLOPS 峰值，實際效率打三折的話……讓他們自己算出那個荒謬的年數。**這一題的目的是讓他們對「為什麼 pretraining 是少數機構的事」有數量級的實感。**
-
-第 2 題是重點。7B 級模型、32k context、FP16，KV cache 會落在**十幾 GB 的量級**——也就是說光是 KV 就快要把 T4 吃滿，模型權重還沒放進去。這個數字是後面三週的共同動機，所以要讓他們自己算出來才有效。
-
-第 3 題比較開放，是要他們理解 MoE 把成本從 FLOPs 搬到了記憶體容量與通訊，**是搬移不是消滅**。W6 會展開。
-
-如果時間不夠，第 1、2 題必做，第 3 題留成回家想。
 :::
 
 # From counting to sharing parameters {.section-title}
@@ -480,20 +270,6 @@ Good–Turing puts the total probability of everything unseen at roughly $N_1/D$
 The MLE assigns zero to 95% of the 4-grams you will actually meet. Any usable model must therefore invent probability mass — and *how* it invents it is an inductive bias, not an implementation detail.
 :::
 
-::: {.notes}
-這一節的目的是把剛才看到的現象變成一個統計命題。
-
-先把數字寫在黑板上：$V = 14560$，$V^4 \approx 4.5 \times 10^{16}$，而訓練語料只有 $2.25 \times 10^5$ 個詞。**兩者差了十一個數量級。** 這不是資料不夠多，這是組合爆炸。
-
-Good–Turing 的直覺可以給，不必推完整：**用「只出現一次的 n-gram 有多少」來估計「完全沒出現的東西總共佔多少機率」**。直覺是——如果你看到很多只出現一次的東西，說明你的樣本還在不斷遇到新東西，所以未見事件的機率質量很大。
-
-那句 claim 是本節的核心：**任何可用的模型都必須無中生有地發明機率質量，而它怎麼發明就是它的歸納偏誤。** 這句話今天講 smoothing，但它其實是整個機器學習的形狀——下一張會用它把 n-gram 和神經網路接起來。
-
-有背景的學生可能會問 Kneser-Ney，可以說「那是這條線的終點，且它的 continuation count 想法很漂亮，但我們不往那邊走」，並給檢索關鍵字。
-
-**指定閱讀**：ZZM **ch 5.1.2 Data Smoothing Methods** 與 **ch 5.1.3 Language Model Evaluation** 就是這一節與下一節的散文版，而且是 open access，可以直接發下去。ch 5.1.1 是 n-gram 的定義。
-:::
-
 ## More data does not fix this {.smaller}
 
 Doubling the corpus halves neither of these numbers by much. The count table grows; the space it must cover grows faster.
@@ -507,18 +283,6 @@ Notice the second row saturating: past n = 3, almost every new n-gram is seen ex
 
 ::: {.claim .warn}
 Counting cannot generalize to unseen contexts, because it has no notion that two contexts might be similar.
-:::
-
-::: {.notes}
-第二列是這張的隱藏重點，多數人只看第一列。
-
-**型數在 n=3 之後飽和**：182k → 213k → 222k。而訓練語料只有 225k 個詞。也就是說在 n=5，幾乎每個 n-gram 都只出現一次——**這個表已經不是在估計機率了，它就是語料本身的一份索引。**
-
-這解釋了 cold open 的 n=8：它不是一個機率模型，它是一台查詢機。
-
-最後那句 claim 是接下一張的橋，要說清楚：**計數法失敗的根本原因不是資料不夠，是它沒有「兩個 context 可能相似」這個概念。** `the red car` 和 `the blue car` 對計數表來說是兩個完全無關的字串。
-
-**可以停下來問**：「怎麼讓模型知道 red 和 blue 是類似的東西？」讓他們想三十秒。這就是下一張，也是整個 embedding 的動機。
 :::
 
 ## Two inductive biases for one problem {.smaller}
@@ -540,18 +304,6 @@ So "an LLM is just a bigger n-gram" is wrong in both directions: the inductive b
 Misconception 2 of 5 · the memorization half returns in W7 and W14
 :::
 
-::: {.notes}
-這張是本節的收束，也是全課歷史敘事的轉軸。
-
-要反覆強調的是：**從 n-gram 到神經語言模型，關鍵不是「神經網路比較強」，而是把查表換成函數逼近。** 查表對沒見過的輸入只能回傳零；函數會在連續空間裡內插到一個合理的地方。
-
-第三列（similarity）是真正的差別。n-gram 眼中字串是原子，`red` 和 `blue` 毫無關係。神經語言模型把詞映到向量，相近的向量行為相近——**這件事不是額外加上去的功能，是換成函數之後自動得到的。**
-
-第四列給一個很好的數量級對比：n-gram 多看一個詞，表的大小乘上 $V$；神經語言模型多看一個詞，只多幾個輸入權重。**這就是為什麼 context 長度後來能一路長到十萬。**
-
-那句 claim 的最後半句是要他們帶走的：**之後的一切，包括 attention，都是在變化「怎麼建那個函數」。** 這句話會在 W3 開場再說一次。
-:::
-
 ## Where does the n = 8 sample sit on that table? {.smaller}
 
 ::: {.ask}
@@ -571,18 +323,6 @@ For a 4-gram table you can check by grepping the corpus. For a model trained on 
 This question returns as benchmark contamination (W14) and as data deduplication (W7)
 :::
 
-::: {.notes}
-這張是刻意的**停下來討論**，三到四分鐘，不要自己講完。
-
-問題丟出去：那段 n=8 的輸出，是內插還是檢索？答案很清楚（是檢索，我們可以 grep 語料驗證）。**但真正的問題是下一步**：一個在十兆 token 上訓練的模型，你要怎麼問同一個問題？
-
-讓他們自己說幾個答案。常見的會有「看它能不能回答沒見過的問題」——很好，那就是 held-out 評測，然後問「你怎麼知道你的測試題不在那十兆裡？」這就是 contamination，也是 W14 的主題之一。
-
-要點出這個問題的**不對稱性**：我們今天能驗證，是因為語料只有 1 MB 而且在手上。閉源模型的訓練資料不公開，所以這個問題原則上無法回答——**這不是技術困難，是結構性的。**
-
-順便掛 W7 的鉤子：這就是為什麼 pretraining pipeline 要花大力氣做去重與 decontamination。
-:::
-
 # The distributional hypothesis, and its trap {.section-title}
 
 ## The hypothesis becomes a loss function {.smaller}
@@ -595,18 +335,6 @@ Push a word and its true context together; push it away from $K$ sampled non-con
 
 ::: {.claim}
 Read the second term carefully. **The set of negatives defines what "similar" is going to mean.** Change the negative sampling and you change the geometry.
-:::
-
-::: {.notes}
-式子要寫出來並定義符號：$\mathbf{v}_c$ 是中心詞向量，$\mathbf{u}_o$ 是真實 context 詞，$\mathbf{u}_k$ 是取樣出來的 K 個負樣本。第一項把真實共現的拉近，第二項把隨機取的推遠。
-
-negative sampling 的動機講一句就好：完整 softmax 的分母要掃過整個詞彙表，太貴，所以用取樣近似。
-
-**但那句 claim 是本節真正的重點**，而且它會在 W12 用更嚴重的形式回來：**負樣本的集合決定了「相似」的定義。** 這不是實作細節。你用 in-batch negatives 訓出來的空間，和用 hard negatives 訓出來的空間，幾何性質不一樣。
-
-所以「兩個向量的 cosine 高」到底是什麼意思？答案是：**在這個模型的訓練目標所定義的意義下相似。** 不是在語意上相似。下一張就用真實數字證明這件事。
-
-**指定閱讀**：ZZM **ch 3.1.1 Static Word Vectors** 有 CBOW 與 skip-gram 的完整推導，**ch 3.1.2 Dynamic Word Vectors** 用 ELMo 當例子——後者正好接上 W3 的 contextual representation，可以在這裡預告一句。
 :::
 
 ## Live: the nearest neighbour of `love` in this corpus {.smaller}
@@ -627,18 +355,6 @@ The nearest neighbour of `love` is `hate`.
 Computed for this course · PPMI + truncated SVD, 4,000-word vocabulary
 :::
 
-::: {.notes}
-**這張是本節的錘子。** 先只顯示第一列，問他們猜 `love` 最近的鄰居是什麼。有人會猜 `heart`、`beauty`、`romeo`。**答案是 `hate`。**
-
-為什麼？因為 `love` 和 `hate` 出現在幾乎相同的語境裡——同樣的動詞、同樣的句型、同樣的主詞。分布假說說「語境相同則相似」，而它們的語境確實相同。**模型沒有錯，是我們對「相似」的期待錯了。**
-
-第二列 `king → richard, edward, iii, vi, ii` 是另一種味道的教訓：這些是**這個語料裡的國王的名字和序數**。所以 embedding 學到的不是「king 的語意」，是「在莎士比亞劇本裡，king 這個詞旁邊會出現什麼」。換一個語料，鄰居就換一批。
-
-第三列 `father → child, son, heir, grandfather` 展示的是**關係**而非語意相似：這些詞和 father 不是同義，是在同一個親屬關係網路裡。
-
-方法上要交代一句：這裡用的是 PPMI + SVD，不是真的跑 word2vec。這是刻意的，理由在後面兩張——Levy & Goldberg 證明了兩者在數學上等價。
-:::
-
 ## Antonyms beat synonyms {.smaller}
 
 | | pair | cosine |
@@ -652,20 +368,6 @@ Computed for this course · PPMI + truncated SVD, 4,000-word vocabulary
 
 ::: {.claim .warn}
 Both synonym pairs score **below** every antonym pair. If cosine measured semantic similarity, this table would be impossible.
-:::
-
-::: {.notes}
-這張把上一張變成一個不能反駁的命題。
-
-念出對比：兩個**反義詞對**（0.412、0.404）都高於兩個**同義詞對**（0.212、0.163）。而且 good/bad（反義，0.228）也高於 good/excellent（同義，0.212）。
-
-**如果 cosine 度量的是語意相似度，這張表不可能存在。**
-
-要給機制解釋，不要只給現象：反義詞是**可互換的**——`I love thee` 和 `I hate thee` 都成立，所以它們的分布幾乎相同。同義詞反而常常不可互換（`excellent` 用在不同的句法位置與語域），所以分布可以差很多。**分布相似 ≠ 語意相似，而且在反義詞上是系統性地相反。**
-
-這條在 W12 會以更嚴重的形式回來：retriever 用的就是 cosine，所以一個「詞彙重疊高但語意無關」的文件可以排在前面，而「用完全不同的詞說同一件事」的文件會被漏掉。**今天是教學案例，W12 是工程災難。**
-
-如果有人問「現代的 embedding 模型有比較好嗎」，答案是：好很多，但性質沒變——它仍然等於「它的訓練目標與負樣本所定義的相似」。
 :::
 
 ## This is not a word2vec quirk {.smaller}
@@ -683,16 +385,6 @@ Cosine similarity means **"similar under the notion of similarity this model's t
 Misconception 3 of 5 · returns as a retrieval failure in W12
 :::
 
-::: {.notes}
-這張把個案升級成原理，也解釋了為什麼我可以用 PPMI+SVD 做剛才的 demo。
-
-**Levy & Goldberg 2014 的結果**：SGNS 隱含地在分解一個位移過的 PMI 矩陣。所以那個現象不是 word2vec 的實作特性，也不是 SGD 的隨機性——**它是目標函數的性質。** 換演算法不會改變它。這一點很重要，否則學生會以為「用更好的訓練方法就沒事了」。
-
-那句 claim 是要他們背下來的一句話。可以真的請他們念一遍——之後每次在論文裡看到 cosine，他們要能自動補上這句限定。
-
-最後兩點是分工：static embedding 還有一個獨立的問題是**一詞一向量**，多義詞被壓成一個點。W3 的 contextual representation 解決了這個，但**沒有解決 cosine 的問題**——把這兩件事分開講很重要，因為學生常以為「用 BERT/LLM 的 embedding 就沒事了」。
-:::
-
 # Why recurrence died {.section-title}
 
 ## The gradient is a product, and products go to zero {.smaller}
@@ -705,18 +397,6 @@ An LSTM's gates replace part of that **multiplicative** path with an **additive*
 
 ::: {.claim}
 Remember the phrase *additive path*. In W4 the same trick reappears under a different name — the residual stream — and it is the reason 100-layer models train at all.
-:::
-
-::: {.notes}
-式子寫出來，並且強調那個連乘符號：**$T$ 個 Jacobian 相乘。** 這是問題的全部來源。譜半徑小於 1 就指數衰減，大於 1 就爆炸，兩邊都不能用。實務上 LSTM 的有效記憶長度遠短於序列長度。
-
-LSTM 的 gate 在做什麼，用一句話講：**把乘法路徑換成加法路徑。** cell state 是被「加上」新資訊，不是被「重新變換」，所以梯度沿著那條路徑可以直接流回去。
-
-**「加法路徑」這個詞要他們記住**，因為 W4 會用同一個技巧、換一個名字（residual stream）回來，而那是百層模型能訓練的原因。這是全課少見的、跨了十幾年的同一個想法——值得說一句：「LSTM 1997 年的洞見，2015 年的 ResNet 又發現一次，而它現在是每個 Transformer 的骨幹。」
-
-不要展開 LSTM 的完整 gate 方程式。今天要的只有「連乘會壞」和「加法路徑能救」這兩個直覺。
-
-**想看完整 gate 方程式的學生**：ZZM **ch 2.5.1–2.5.3**（simple RNN、LSTM、GRU）有逐式推導。那一章也是「先修無」的學生補神經網路基礎最省事的入口。
 :::
 
 ## Then seq2seq squeezed everything through one vector {.smaller}
@@ -732,18 +412,6 @@ Bahdanau, Cho & Bengio (2015) aimed at that one symptom:
 $$c_t = \sum_i \alpha_{ti} h_i, \qquad \alpha_{ti} = \mathrm{softmax}_i\big(a(s_{t-1}, h_i)\big)$$
 
 Instead of one vector, let the decoder build **a different weighted read of the source at every output step**.
-
-::: {.notes}
-seq2seq 的瓶頸要用資訊通道的角度講：**5 個詞和 50 個詞得到同樣多的 float。** 所以長句必然退化，而且退化的方式正是固定容量通道所預測的——這不是調參能解決的，是架構的容量上限。
-
-然後 Bahdanau 的貢獻要講得很精確：**它是針對這一個症狀提出的。** 不是「注意力機制是個好想法」，而是「固定長度瓶頸壞了，那就別用固定長度」。decoder 在每一步重新對 source 做一次加權讀取，所以容量隨來源長度成長。
-
-式子寫出來，並指出 $\alpha_{ti}$ 是一個機率分布——**這裡就是 attention weight 的來源**，也是 W3「attention weight 不是解釋」那個爭議的起點。今天先不展開，但可以埋一句：「這個權重看起來很像對齊，這件事後來造成了十年的誤讀。」
-
-如果時間允許，可以順帶說 additive attention（$v^\top\tanh(W[s;h])$）與 dot-product 的差別，並指出後者可以寫成矩陣乘法——那正是下一張的重點。
-
-**指定閱讀**：ZZM **ch 4.1**（RNN seq2seq 的運作原理與 decoding strategies）與 **ch 4.2**（加上 attention 的 seq2seq）把這兩張的內容拆得很細；**ch 4.3** 接著走到 Transformer，是 W3 的預習。
-:::
 
 ## Attention is older than the Transformer {.smaller}
 
@@ -762,20 +430,6 @@ Two consequences you need today:
 Misconception 4 of 5
 :::
 
-::: {.notes}
-這個誤解每一屆都有，而且它會妨礙理解：如果學生以為 attention 是 Transformer 發明的，他們就無法理解為什麼需要 positional encoding。
-
-時間軸講清楚：Bahdanau 2015，Transformer 2017。**2017 年拿掉的是 recurrence，不是加上 attention。** 那篇論文的標題是一個關於「可以刪掉什麼」的主張。
-
-兩個今天就要用到的推論：
-
-第一，**recurrence 一走，架構裡就沒有任何東西知道詞序了**。attention 本身對輸入是 permutation-equivariant 的（W5 會用兩行證明）。所以位置資訊必須外加——這就是 W5 整週的來源。
-
-第二個推論是下一張，也是本節的結論。
-
-如果有學生問「那 attention 到底是誰發明的」，可以說更早還有 memory networks、neural Turing machine 這一系列的定址機制，Bahdanau 是在 NMT 上第一個真正有效的版本。給關鍵字就好，不要展開。
-:::
-
 ## RNNs did not lose on quality. They lost on throughput. {.smaller}
 
 An RNN's hidden state at step $t$ requires step $t-1$. **The sequence dimension cannot be parallelized.** So you cannot spend more GPUs to train on more data, and after 2017 that was the only thing that mattered.
@@ -788,20 +442,6 @@ Because in 2026, recurrence is **back** — Mamba, gated linear attention, the h
 
 ::: {.footer}
 Misconception 5 of 5 · W6 depends on getting this one right
-:::
-
-::: {.notes}
-**這是今天最重要的一張。** 如果學生只帶走一句話，是這一句。
-
-一般的敘事是「Transformer 效果比 RNN 好所以取代了它」。這個敘事是錯的，而且它會讓 W6 完全無法理解。
-
-正確的敘事：RNN 的 hidden state 在第 $t$ 步需要第 $t-1$ 步，**所以序列維度無法平行化**。你不能靠加 GPU 來訓練更多資料。而 2017 年之後，能不能把規模推上去是唯一重要的事。**它輸在吞吐量，不是輸在品質。**
-
-然後給那個反轉：**2026 年 recurrence 回來了。** Mamba、gated linear attention、以及各種 hybrid 架構。變的不是 recurrence 本身，變的是他們找到了**在序列維度上平行訓練的方法**（parallel scan、以及 Mamba-2 的 SSD 對偶性：同一個運算可以寫成 recurrence 也可以寫成 matmul）。
-
-可以說：「如果你相信『RNN 因為效果差而被淘汰』，那 W6 對你會是一團謎。如果你知道它是輸在平行化，W6 就只是一則好消息。」
-
-**這一張值得停下來確認他們懂了**，因為它是 W6 的門票。
 :::
 
 # Where this goes {.section-title}
@@ -818,16 +458,6 @@ Misconception 5 of 5 · W6 depends on getting this one right
 Today you built the first row of that ledger with a model you could have written in twenty lines.
 :::
 
-::: {.notes}
-收尾的第一張，把今天放回全課。
-
-三個 Part 各補算力帳本的哪一格，逐列講一句。重點是**帳本是同一張表**，不是三張——每週回來填的是同一份文件。
-
-最後那句 claim 是刻意的：今天用一個二十行就能寫完的模型，建立了帳本的第一列（訓練成本 = 存多少計數、推論成本 = 查表）。**規模會變，這個記帳的習慣不會變。**
-
-如果時間夠，可以問一句：「今天那個 n=8 的模型，它的『參數量』是多少？」答案是 21 萬個計數項——而那已經接近語料本身的大小。這是「參數量 vs 訓練資料量」這個比例第一次出現，W7 的 Chinchilla 就是在問這個比例該是多少。
-:::
-
 ## Next week: the unit you cannot change after training {.smaller}
 
 **Tokenization.** The one design decision in the whole system that cannot be fixed post hoc.
@@ -840,18 +470,6 @@ Today you built the first row of that ledger with a model you could have written
 Before then: JM3 ch 2 and ch 3, or **ZZM ch 7** for the same ground with Chinese segmentation in it. To review today: **ZZM ch 5**. And bring a laptop with `tokenizers` installed.
 :::
 
-::: {.notes}
-下週前置，講快。
-
-**「訓練後無法修正的唯一設計決策」**這個框架要給，因為它解釋了為什麼 tokenization 值得一整週：模型可以微調、可以量化、可以換 context 長度，但 tokenizer 換掉就等於換一個模型。
-
-三個 preview 各一句，重點是第三個：2026 年有一篇工作顯示 tokenizer 的壓縮率會平移整條 compute-optimal 曲線——**這把 tokenizer 從「預處理」正式移進「架構設計」。** 這是這週在課程順序上放在 W7 之前的理由。
-
-指定閱讀給 JM3 ch 2（Words and Tokens，這一章是 2026-08-19 那版為此重寫的）與 ch 3（N-gram，也就是今天的內容）。**提醒他們固定用 2026-08-19 那個 release**，因為 draft 的章節編號會動。
-
-最後說一句下週要動手，請先裝好 `tokenizers`。
-:::
-
 ## Sources {.smaller}
 
 ::: {.cite}
@@ -862,16 +480,4 @@ Before then: JM3 ch 2 and ch 3, or **ZZM ch 7** for the same ground with Chinese
 **Data and figures** · Corpus: the standard `tinyshakespeare` split of Shakespeare's works (public domain). All n-gram generations, sparsity percentages, bits-per-byte values, cosine similarities and nearest-neighbour lists on these slides were computed for this course by `scripts/make_demo_w01.py`; the figures by `scripts/make_figs_w01.py`. Nothing on these slides is a remembered number.
 
 **Search terms, not citations** · language modeling is compression · arithmetic coding neural language model · Chen & Goodman empirical study of smoothing · attention is not not explanation
-:::
-
-::: {.notes}
-出處頁。**這一頁的存在本身就是課程規範的示範**，值得花三十秒說明。
-
-三件事要點出來：
-
-第一，**JM3 要註明 release 日期**。它是 draft，章節編號會在版本之間變動。這門課固定用 2026-08-19 那一版。
-
-第二，**投影片上的每一個數字都是為這門課現算的**，腳本在 repo 裡，他們可以自己重跑。「Nothing on these slides is a remembered number」這句話是刻意寫上去的——本課的規範是不放印象值，要放 benchmark 數字就引原論文的表格。
-
-第三，最後那一組是**檢索關鍵字而不是引用**。這是本課四級引用標記的一部分：沒標記的是查證過的、`[驗]` 是要覆核的、`[題]` 是只給關鍵字的、`[非論文]` 是 blog 或 model card。網站的 Syllabus 頁有完整說明。可以說：「我寧可給你關鍵字，也不要生成一個看起來很合理但不存在的論文標題。這件事在這個領域每天都在發生。」
 :::

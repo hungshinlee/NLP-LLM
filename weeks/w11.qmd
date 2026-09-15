@@ -4,7 +4,7 @@ subtitle: "Part III — Systems & Scrutiny · 推論效率：從 FLOPs 到 memor
 toc-depth: 2
 ---
 
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 ## 定位
 本週把散落在 W3（KV cache）、W5（長文本成本）、W6（架構取捨）、W7（precision scaling）、W10（test-time compute 的成本）的算力軸收攏成一整堂。**核心的觀念轉換是：prefill 是 compute bound，decode 是 memory bound，因此兩者的最佳化手段幾乎完全不重疊。** 學生一旦掌握這個二分，2025–2026 的整片推論最佳化文獻就有了地圖。本週也是「什麼情況下會壞掉」素材最豐富的一週。

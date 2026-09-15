@@ -4,7 +4,7 @@ subtitle: "Part III — Systems & Scrutiny · 評估、可解釋性、安全，�
 toc-depth: 2
 ---
 
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 ## 定位
 收尾週，也是全課批判性思考的總結。本週把散落各週的「怎麼知道它真的有效」收攏，並用一個貫串的主題把三塊接起來：**可讀的中間產物不等於機制**（attention weight → CoT → SAE feature），以及**指標不等於能力**（PPL → MMLU → Arena → agent benchmark）。SAE 在 2025–2026 的敘事反轉是本週最好的單一教案，因為它完整展示了「一個熱門方法如何被 strong baseline 打回原形」。最後 30 分鐘給 open problems 與專題方向，並用一段講台灣語言資源的實際狀況。

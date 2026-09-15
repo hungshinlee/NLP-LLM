@@ -23,6 +23,17 @@
        <!-- /private -->
 
 引用標記的處理是**逐課程設定**的，見下方 DROP_UNVERIFIED / STRIP_MARKERS。
+
+語言
+----
+網站一律英文。公開區塊若在大綱裡附了
+
+    <!-- en -->
+    English for the students.
+    <!-- /en -->
+
+上站時**只取英文**，`###` 標題也換成 SECTION_EN 的英文；沒附的區塊維持中文，
+所以尚未翻譯的週次不會壞掉。英文版仍走同一套過濾（private 段落、[驗]、[題]）。
 """
 
 import re
@@ -39,11 +50,25 @@ PUBLIC_SECTIONS = {
 }
 
 # 含「未查證」標記的行是否整行不上站。
+# **本課程刻意設 False**：四級引用標記是逐篇比對過 arXiv title 與 first author
+# 的結果，Syllabus 頁也向學生完整說明了每一級的意思，所以標記原樣上站——
+# 「我寧可給你關鍵字，也不要生成一個看起來很合理但不存在的論文標題」本身就是教材。
+# Speech-AI 相反（True），因為那邊尚未逐篇查證，也沒有向學生說明。
+# 兩邊不一致是刻意的，見 Course-Hub 的 CLAUDE.md「引用可信度：四級標記」。
 DROP_UNVERIFIED = False
 UNVERIFIED_MARKER = "[驗]"
 
-# 保留該行、但把標記本身拿掉的標記。
+# 保留該行、但把標記本身拿掉的標記。本課程一個都不拿掉（理由同上）。
 STRIP_MARKERS = ()
+
+# 區塊標題的英文對照。網站一律英文，所以只要該區塊在大綱裡給了 <!-- en --> 版本，
+# `###` 標題也一起換成英文；沒給英文版的區塊維持中文標題與中文內文。
+# PUBLIC_SECTIONS 的每一項都必須在這裡有一筆，否則 build_weeks.py 會 sys.exit。
+SECTION_EN = {
+    "定位": "Where This Fits",
+    "Learning objectives": "Learning Objectives",
+    "參考資料": "References",
+}
 
 # 寫檔前的保險絲：頁面含這些字串就中止建置。
 LEAK_MARKERS = ("課堂骨架", "常見誤解", "卡點提示", "demo 建議")
@@ -54,6 +79,8 @@ _SEC = re.compile(r"^###\s+(.+?)\s*$")
 _VIS = re.compile(r"^<!--\s*vis:\s*(public|private)\s*-->\s*$")
 _POPEN = re.compile(r"^<!--\s*private\s*-->\s*$")
 _PCLOSE = re.compile(r"^<!--\s*/private\s*-->\s*$")
+_ENOPEN = re.compile(r"^<!--\s*en\s*-->\s*$")
+_ENCLOSE = re.compile(r"^<!--\s*/en\s*-->\s*$")
 _PAREN = re.compile(r"[（(][^（(]*?[）)]\s*$")
 _STRIP = [re.compile(r"`?" + re.escape(m) + r"`?\s*") for m in STRIP_MARKERS]
 
@@ -80,37 +107,52 @@ def _drop_empty_sections(lines):
     return out
 
 
-def public_only(body):
-    """body 是某一週 `## W<n>｜…` 底下的原始行（尚未 demote）。"""
-    out, keep, skip, pending, head = [], False, False, False, None
+def _sections(body):
+    """切成 [(### 標題行 或 None, 內文行)]；None 代表第一個 ### 之前的前言。"""
+    blocks, head, cur = [], None, []
     for ln in body:
-        m = _SEC.match(ln)
-        if m:
-            keep = canon(m.group(1)) in PUBLIC_SECTIONS
-            skip, pending, head = False, True, ln
-            if keep:
-                out.append(ln)
-            continue
+        if _SEC.match(ln):
+            blocks.append((head, cur))
+            head, cur = ln, []
+        else:
+            cur.append(ln)
+    blocks.append((head, cur))
+    return blocks
 
-        if pending:
-            pending = False
-            mv = _VIS.match(ln.strip())
-            if mv:
-                want_public = mv.group(1) == "public"
-                if want_public and not keep:
-                    keep = True
-                    out.append(head)
-                elif not want_public and keep:
-                    out.pop()          # 收回剛加進去的標題
-                    keep = False
-                continue
 
-        if not keep:
+def _english_body(lines):
+    """區塊內若有 <!-- en --> … <!-- /en -->，回傳英文版的行；沒有則回傳 None。
+
+    網站是英文的，中文原文只留在大綱裡備課用，不上站。
+    """
+    out, inside, found = [], False, False
+    for ln in lines:
+        s = ln.strip()
+        if _ENOPEN.match(s):
+            inside, found = True, True
             continue
-        if _POPEN.match(ln.strip()):
+        if _ENCLOSE.match(s):
+            inside = False
+            continue
+        if inside:
+            out.append(ln)
+    return out if found else None
+
+
+def has_english(body):
+    """這一週是否已經有英文內文（給 build_weeks.py 列 TODO 用）。"""
+    return any(_ENOPEN.match(ln.strip()) for ln in body)
+
+
+def _filter_lines(lines):
+    """已確定公開的內文：挖掉 <!-- private --> 段落、處理引用標記。"""
+    out, skip = [], False
+    for ln in lines:
+        s = ln.strip()
+        if _POPEN.match(s):
             skip = True
             continue
-        if _PCLOSE.match(ln.strip()):
+        if _PCLOSE.match(s):
             skip = False
             continue
         if skip:
@@ -120,7 +162,34 @@ def public_only(body):
         for rx in _STRIP:
             ln = rx.sub("", ln)
         out.append(ln)
+    return out
 
+
+def public_only(body):
+    """body 是某一週 `## W<n>｜…` 底下的原始行（尚未 demote）。"""
+    out = []
+    for head, lines in _sections(body):
+        if head is None:
+            continue              # 前言（週標題的 <!-- en: … --> 等）不上站
+        name = canon(_SEC.match(head).group(1))
+        keep = name in PUBLIC_SECTIONS
+        # 區塊層級覆寫必須緊接在標題的下一行
+        if lines:
+            mv = _VIS.match(lines[0].strip())
+            if mv:
+                keep = mv.group(1) == "public"
+                lines = lines[1:]
+        if not keep:
+            continue
+        en = _english_body(lines)
+        if en is None:
+            out.append(head)      # 還沒翻的區塊：維持中文標題與中文內文
+        else:
+            out.append("### " + SECTION_EN.get(name, name))
+            lines = en
+        out.extend(_filter_lines(lines))
+        if out and out[-1].strip():
+            out.append("")   # 區塊之間留一行空白，下一個標題才不會黏上來
     return _drop_empty_sections(out)
 
 

@@ -4,7 +4,7 @@ subtitle: "Part II — Training · Pre-training：scaling laws 與資料策展"
 toc-depth: 2
 ---
 
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 ## 定位
 Part II 的開場，也是全課三個數學高峰之一。本週把 W1 的「壓縮」與 W4 的 $6ND$ 接起來，回答「給定算力，該怎麼花」。**2026 的關鍵訊息是：Chinchilla 沒有被推翻，但它的問題被改寫了**——從「單一 training compute 預算下的最優」變成「多軸成本（training / inference / precision / 資料上限）下的最優」。資料策展佔本週後半，因為它是唯一在 2024–2026 之間有大量可複現公開成果的部分。**contamination 在本週第一次出現**（因為第一次提到 MMLU），W14 展開。

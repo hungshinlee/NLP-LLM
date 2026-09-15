@@ -4,7 +4,7 @@ subtitle: "Part II — Training · Post-training II：偏好對齊與強化學�
 toc-depth: 2
 ---
 
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 ## 定位
 全課三個數學高峰之一，也是**課程內容半衰期最短的三週之一**（W9、W10、W13）。好消息是 2026 年這個單元的半衰期比 2025 時看起來長：GRPO 的變體大戰已經收斂成「同一個 advantage 正規化的不同選擇」，而不是三套獨立演算法。本週的主要推導是 DPO 的封閉解與 GRPO 的 advantage 正規化；主要批判是 reward hacking 與「可驗證獎勵並不保證可驗證的推理」。

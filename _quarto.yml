@@ -96,6 +96,7 @@ website:
         text: Resources
       # sidebar 是手維護的：新增一份補充教材時要在這裡加一行 href
       - section: "Supplements"
+        href: supplements.qmd
         contents:
           - href: supplements/topics-for-acl27.qmd
           - href: supplements/midterm-poc.qmd

@@ -20,7 +20,8 @@ import os
 import re
 import sys
 
-from visibility import public_only, assert_no_leak
+from visibility import (public_only, assert_no_leak, has_english,
+                        PUBLIC_SECTIONS, SECTION_EN)
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # 大綱正本在 private repo（Course-Hub），不在這個公開 repo 裡。
@@ -29,8 +30,8 @@ SRC = os.path.expanduser(os.environ.get("COURSE_OUTLINE", ""))
 WEEKS_DIR = os.path.join(ROOT, "weeks")
 INC_DIR = os.path.join(ROOT, "_includes")
 
-BANNER = ("<!-- 此檔由 scripts/build_weeks.py 自動產生，"
-          "請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->")
+BANNER = ("<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。"
+          "大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->")
 
 # 補充教材（選題／期中／期末／寫作教戰守策）：來源是手寫的 supplements/*.md
 SUP_DIR = os.path.join(ROOT, "supplements")
@@ -39,7 +40,9 @@ SUP_BANNER = ("<!-- 此檔由 scripts/build_weeks.py 自動產生，"
 # 每份補充教材在 H1 下方用三行 HTML 註解宣告 metadata
 META_RE = re.compile(r"^<!--\s*(en|order|summary):\s*(.+?)\s*-->$")
 
-# 網站骨架（首頁、導覽列、每週索引）一律英文；站名與每週內頁維持中文。
+# 網站一律英文：骨架（首頁、導覽列、每週索引）與每週頁的內文都是英文，
+# 只有 YAML 的 subtitle（該週中文標題）留著當對照。每週內文的英文版寫在大綱的
+# <!-- en --> 區塊裡（見 visibility.py）；沒寫的週次會退回中文。
 PART_OF = {}
 for w in range(1, 7):
     PART_OF[w] = "Part I — Architecture"
@@ -237,6 +240,11 @@ def write(path, content):
 
 
 def main():
+    # 白名單裡的區塊都要有英文標題，否則英文頁面會冒出中文小標
+    lack = sorted(x for x in PUBLIC_SECTIONS if x not in SECTION_EN)
+    if lack:
+        sys.exit("visibility.SECTION_EN 缺少 %s 的英文標題" % lack)
+
     lines = read_source()
 
     # ── 1. 每週頁面 ───────────────────────────────────────────
@@ -265,9 +273,12 @@ def main():
         rel = os.path.join("slides", "w%02d.qmd" % n)
         return rel if os.path.exists(os.path.join(ROOT, rel)) else None
 
+    no_en = []
     for idx, (li, wnum, title, en_title) in enumerate(week_heads):
-        body = trim(strip_en(strip_hr(demote(
-            public_only(slice_section(lines, li))))))
+        raw = slice_section(lines, li)
+        if not has_english(raw):
+            no_en.append(wnum)
+        body = trim(strip_en(strip_hr(demote(public_only(raw)))))
         if not body:
             sys.exit("W%d 過濾後沒有任何可公開內容——索引會產生死連結。"
                      "請檢查 visibility.PUBLIC_SECTIONS 或該週的區塊標題。" % wnum)
@@ -284,7 +295,7 @@ def main():
         ]
         if slides_for(wnum):
             fm += ["::: {.callout-note appearance=\"minimal\"}",
-                   "[**▶ 本週投影片（English）**](../slides/w%02d.qmd)" % wnum,
+                   "[**▶ Slides for this week**](../slides/w%02d.qmd)" % wnum,
                    ":::",
                    ""]
         out = "\n".join(fm + body) + "\n"
@@ -315,7 +326,14 @@ def main():
     # 連結是相對路徑，因此這個片段只能被站根目錄的 index.qmd 引用
     # 標題用 markdown 的 H2，與首頁其他區塊（Three Threads…、Weekly Schedule）一致，
     # 也才會進到頁內 TOC
-    h = ['## Course Map', '', '<div class="coursemap">', '<div class="cm-grid">']
+    h = ['## Course Map', '', '<div class="coursemap">']
+    # 地圖最上面先把終點講明白（原 ASCII 圖的目標方塊）
+    h.append('<p class="cm-goal"><strong>Endpoint — read a modern LLM layer by '
+             'layer:</strong> for every layer from tokenizer to agent, say why it '
+             'looks the way it does and where it breaks. W1 opens with the '
+             'compression framing and the compute ledger that the remaining '
+             'thirteen weeks keep filling in.</p>')
+    h.append('<div class="cm-grid">')
     for title, rng in parts:
         h.append('<div class="cm-col">')
         h.append('<div class="cm-part">%s</div>' % title.replace("&", "&amp;"))
@@ -394,6 +412,10 @@ def main():
     print("產生 %d 個檔案：" % len(written))
     for p in written:
         print("  " + os.path.relpath(p, ROOT))
+    if no_en:
+        print("\n尚未有英文內文、頁面仍是中文的週次："
+              + "、".join("W%d" % n for n in no_en)
+              + "\n（在大綱的公開區塊加 <!-- en --> … <!-- /en --> 即可）")
 
 
 if __name__ == "__main__":

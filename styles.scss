@@ -226,6 +226,17 @@ html.present-mode {
   .cm-t { font-size: .9rem; }
 }
 
+// 終點：全課倒推自「看懂一個現代 LLM 的每一層」這個目標
+.cm-goal {
+  margin: 0 0 1rem;
+  padding: .6rem .8rem;
+  border: 1.6px solid $link-color;
+  border-radius: 6px;
+  background: #f8fafc;
+  font-size: .93rem;
+  strong { color: $link-color; }
+}
+
 // 樞紐週：W3–W4，Part III 整欄都建立在其上
 .cm-hinge {
   border-color: $link-color;

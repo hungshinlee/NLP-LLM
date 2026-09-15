@@ -4,7 +4,7 @@ subtitle: "English slides, Mandarin delivery — 1 of 14 weeks ready"
 toc: false
 ---
 
-<!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 docs/course-outline.md 後重跑腳本。 -->
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
 The slides are written in English to accompany the Mandarin lectures. Each deck is a reveal.js page — open it in a browser, nothing to install.
 
