@@ -24,6 +24,27 @@ format:
     html-math-method:
       method: katex
       url: "https://cdn.jsdelivr.net/npm/katex@0.18.7/dist/"
+    # 講稿（notes 區塊）裡的數學只輸出 MathML（2026-09-16）。
+    # presenter view 是另一個視窗，沒有 KaTeX 的 CSS；KaTeX 預設同時輸出 HTML 與 MathML，
+    # 沒有 CSS 時兩份都會顯示，符號就重複了（例如 ℓℓ）。MathML 由瀏覽器原生排版，不需要 CSS。
+    # 做法：在 Quarto 的全頁 KaTeX 渲染之前，把講稿裡的 .math 摘出來，改成只輸出 MathML。
+    include-after-body:
+      - text: |
+          <script>
+          (function () {
+            var items = [];
+            document.querySelectorAll('aside.notes .math').forEach(function (el) {
+              items.push({ el: el, tex: el.textContent, display: el.classList.contains('display') });
+              el.classList.remove('math');
+              el.classList.add('notes-math');
+            });
+            document.addEventListener('DOMContentLoaded', function () {
+              items.forEach(function (it) {
+                katex.render(it.tex, it.el, { displayMode: it.display, output: 'mathml', throwOnError: false });
+              });
+            });
+          })();
+          </script>
 ---
 
 <!-- 此檔由 bin/publish_slides.py 從投影片正本產生（中文講稿區塊已剝除），請勿直接編輯。正本在 private repo 的 <course>/slides/。 -->
@@ -207,7 +228,24 @@ Item 4 is the one that carries furthest. It comes back in W7, W11 and W12.
 
 ## The ledger we refill every week
 
-![](assets/w01/ledger.svg){width="100%"}
+| Where the cost falls | Formula | What binds it | Filled in |
+|:---|:---|:---|:---|
+| **Training**, one run | $C_{\text{train}} \approx 6ND$ FLOPs | compute | today · W7 |
+| **Optimizer state** (Adam) | $\approx 2N$ extra values | memory | W4 |
+| **Prefill**, once per request | $C_{\text{pre}} \approx 2NL_{\text{in}}$ FLOPs | compute | W11 |
+| **Decode**, per generated token | $C_{\text{dec}} \approx 2N$ FLOPs | memory bandwidth | W11 |
+| **KV cache**, state carried | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ bytes | capacity, then bandwidth | W3 · W5 |
+| **MoE** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | both, separately | W6 |
+
+: {tbl-colwidths="[25,45,19,11]"}
+
+::: {.small}
+$N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ context so far · $b$ bytes per element · $n_{\text{kv}}$ KV heads · $6 = 2$ forward $+\,4$ backward
+:::
+
+::: {.claim}
+**Decode is short of bandwidth, not FLOPs** — and the KV cache is what fills the road.
+:::
 
 ## One number, now, on paper
 
