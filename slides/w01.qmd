@@ -397,7 +397,7 @@ $$P(w_t \mid w_{t-n+1:t-1}) = \frac{C(w_{t-n+1:t})}{C(w_{t-n+1:t-1})}$$
 
 With vocabulary $V$, there are $V^n$ possible n-grams. Ours: $V = 14{,}560$, so $V^4 \approx 4.5\times10^{16}$ — against 225,333 training words.
 
-Good–Turing puts the total probability of everything unseen at roughly $N_1/D$, where $N_1$ counts the n-grams seen exactly once.
+Good–Turing puts the total probability of everything unseen at roughly $N_1/D$, where $N_1$ counts the n-grams seen exactly once and $D$ counts all training tokens.
 
 ::: {.claim}
 The MLE assigns zero to 95% of the 4-grams you will actually meet. Any usable model must therefore invent probability mass — and *how* it invents it is an inductive bias, not an implementation detail.
