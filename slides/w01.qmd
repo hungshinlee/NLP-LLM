@@ -358,7 +358,7 @@ Misconception 2 of 10 · returns with real numbers in W2
 
 ## Live: the same paragraph, two tokenizers
 
-One Traditional Chinese paragraph. Two open models whose tokenizers disagree sharply about Chinese. Identical text, identical bytes.
+One Traditional Chinese paragraph: 209 characters, 627 bytes. Two open models whose tokenizers split it differently. Identical text, identical bytes.
 
 | | model A | model B |
 |---|---|---|
@@ -367,7 +367,7 @@ One Traditional Chinese paragraph. Two open models whose tokenizers disagree sha
 | **bits-per-byte** | | |
 
 ::: {.ask}
-Predict before I run it: which rows disagree, and which row nearly agrees?
+Predict before I run it: which rows move with the tokenizer, and which one moves only with the model?
 :::
 
 ::: {.footer}
