@@ -403,6 +403,37 @@ Good–Turing puts the total probability of everything unseen at roughly $N_1/D$
 The MLE assigns zero to 95% of the 4-grams you will actually meet. Any usable model must therefore invent probability mass — and *how* it invents it is an inductive bias, not an implementation detail.
 :::
 
+## Good–Turing: count $c$ borrows its mass from count $c+1$
+
+:::: {.columns}
+::: {.column width="50%"}
+![](assets/w01/goodturing.svg){width="100%"}
+:::
+::: {.column width="50%"}
+::: {.small}
+$N_c$ = number of bigram types seen exactly $c$ times, so $\sum_c c\,N_c = D$.
+
+A type with probability $p$ is seen $c$ times with probability $\binom{D}{c}p^c(1-p)^{D-c}$. Multiply by $p$:
+
+$$p\binom{D}{c}p^c(1-p)^{D-c} = \frac{c+1}{D+1}\binom{D+1}{c+1}p^{c+1}(1-p)^{D-c}$$
+
+Summed over all types, the right side is $\frac{c+1}{D+1}\,\mathbb{E}_{D+1}[N_{c+1}]$. So a type seen $c$ times has mean probability
+
+$$\hat{p}_c = \frac{c+1}{D+1}\cdot\frac{\mathbb{E}_{D+1}[N_{c+1}]}{\mathbb{E}_{D}[N_c]} \approx \frac{c^*}{D}$$
+
+with $c^* = (c+1)\,N_{c+1}/N_c$. At $c = 0$ the unseen share $N_0\,\hat{p}_0 \approx N_1/D$, and $\sum_c N_c\,c^* = D$: the total is unchanged.
+:::
+:::
+::::
+
+::: {.claim}
+The unseen mass is paid for by **discounting every seen count**.
+:::
+
+::: {.footer}
+Good (1953) · bigrams, this corpus · raw $c^*$ fails once $N_{c+1} = 0$ (from $c = 80$)
+:::
+
 ## More data does not fix this
 
 Doubling the corpus halves neither of these numbers by much. The count table grows; the space it must cover grows faster.
@@ -755,7 +786,7 @@ Nothing to install. Every demo in this course runs at the front of the room.
 ::: {.cite}
 **Textbooks** · Jurafsky & Martin, *Speech and Language Processing*, 3rd ed., **2026-08-19 draft release** — ch 2 Words and Tokens; ch 3 N-gram Language Models (whole chapter); ch 5 Embeddings; ch 6 Neural Networks (§6.5, the feedforward LM); ch 14 RNNs and LSTMs (incl. §14.7–14.8) · Zong, Zhao & Ma, *Natural Language Processing and Large Language Models*, Springer Nature Singapore / Tsinghua University Press, 2026 (**open access**) — ch 2.5, ch 3, ch 4, ch 5, ch 7
 
-**History and n-grams** · Shannon, *A Mathematical Theory of Communication*, Bell System Technical Journal, 1948 · Shannon, *Prediction and Entropy of Printed English*, Bell System Technical Journal, 1951 · Kneser & Ney, *Improved backing-off for M-gram language modeling*, ICASSP 1995 · Chen & Goodman, *An empirical study of smoothing techniques for language modeling*, Computer Speech & Language, 1999 · Bengio, Ducharme, Vincent & Jauvin, *A Neural Probabilistic Language Model*, JMLR 2003 · Liu et al., *Infini-gram*, COLM 2024 (arXiv:2401.17377) · Nguyen, *Understanding Transformers via N-gram Statistics*, NeurIPS 2024 (arXiv:2407.12034)
+**History and n-grams** · Shannon, *A Mathematical Theory of Communication*, Bell System Technical Journal, 1948 · Shannon, *Prediction and Entropy of Printed English*, Bell System Technical Journal, 1951 · Good, *The Population Frequencies of Species and the Estimation of Population Parameters*, Biometrika, 1953 · Church & Gale, *A comparison of the enhanced Good-Turing and deleted estimation methods for estimating probabilities of English bigrams*, Computer Speech & Language, 1991 · Kneser & Ney, *Improved backing-off for M-gram language modeling*, ICASSP 1995 · Chen & Goodman, *An empirical study of smoothing techniques for language modeling*, Computer Speech & Language, 1999 · Bengio, Ducharme, Vincent & Jauvin, *A Neural Probabilistic Language Model*, JMLR 2003 · Liu et al., *Infini-gram*, COLM 2024 (arXiv:2401.17377) · Nguyen, *Understanding Transformers via N-gram Statistics*, NeurIPS 2024 (arXiv:2407.12034)
 
 **Compression and evaluation** · Theis, van den Oord & Bethge, *A note on the evaluation of generative models*, arXiv:1511.01844 (2015) · Delétang et al., *Language Modeling Is Compression*, arXiv:2309.10668 (2023) · Huang, Zhang, Shan & He, *Compression Represents Intelligence Linearly*, COLM 2024 (arXiv:2404.09937) · Kalai & Vempala, *Calibrated Language Models Must Hallucinate*, STOC 2024 (arXiv:2311.14648) · Cao & Rimell, *You should evaluate your language model on marginal likelihood over tokenisations*, EMNLP 2021 · Arnett, Chang & Bergen, *A Bit of a Problem: Measurement Disparities in Dataset Sizes Across Languages*, arXiv:2403.00686 (2024)
 

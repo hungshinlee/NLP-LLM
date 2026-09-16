@@ -854,5 +854,63 @@
    ]
   ],
   "no_vector_rate_vs_emb_vocab": 0.113
+ },
+ "good_turing": {
+  "n": 2,
+  "D": 225332,
+  "D_held": 25037,
+  "types": 94817,
+  "max_count": 1069,
+  "first_gap_c": 80,
+  "distinct_count_values": 187,
+  "unseen_mass_gt": 0.3187,
+  "unseen_mass_heldout": 0.3635,
+  "rows": [
+   {
+    "c": 0,
+    "mle_mass": 0.0,
+    "gt_mass": 0.3187
+   },
+   {
+    "c": 1,
+    "mle_mass": 0.3187,
+    "gt_mass": 0.0917,
+    "N_c": 71821,
+    "c_star": 0.288,
+    "heldout": 0.266
+   },
+   {
+    "c": 2,
+    "mle_mass": 0.0917,
+    "gt_mass": 0.0542,
+    "N_c": 10329,
+    "c_star": 1.182,
+    "heldout": 1.06
+   },
+   {
+    "c": 3,
+    "mle_mass": 0.0542,
+    "gt_mass": 0.0375,
+    "N_c": 4070,
+    "c_star": 2.075,
+    "heldout": 2.019
+   },
+   {
+    "c": 4,
+    "mle_mass": 0.0375,
+    "gt_mass": 0.0278,
+    "N_c": 2111,
+    "c_star": 2.97,
+    "heldout": 2.92
+   },
+   {
+    "c": 5,
+    "mle_mass": 0.0278,
+    "gt_mass": 0.0235,
+    "N_c": 1254,
+    "c_star": 4.225,
+    "heldout": 3.703
+   }
+  ]
  }
 }
