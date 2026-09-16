@@ -31,7 +31,7 @@ toc-depth: 2
 - Dao & Gu, **Transformers are SSMs: Generalized Models and Efficient Algorithms Through Structured State Space Duality (Mamba-2)**, arXiv:2405.21060 — **教 SSM 的必要理論橋樑**
 
 **Hybrid（2026 的收斂點）**
-- Zuo et al., **Falcon-H1: A Family of Hybrid-Head Language Models Redefining Efficiency and Performance**, arXiv:2507.22448 — **有 0.5B/1.5B，Colab 可跑**
+- Zuo et al., **Falcon-H1: A Family of Hybrid-Head Language Models Redefining Efficiency and Performance**, arXiv:2507.22448 — **MLX 有原生實作**（`mlx_lm/models/falcon_h1.py`），多種尺寸可選
 - Du et al., **Kimi Linear: An Expressive, Efficient Attention Architecture**, arXiv:2510.26692 — **本週最該指定的一篇**：KDA（Gated DeltaNet + DPLR）+ MLA 的 layerwise hybrid，且在 fair comparison 下勝過 full attention
 - Wu et al., **MiniMax-01: Scaling Foundation Models with Lightning Attention**, arXiv:2501.08313
 

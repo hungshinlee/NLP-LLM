@@ -57,7 +57,7 @@ Handed out in week 1 and used every week after. They are short on purpose — th
 | **LLMBook** | 趙鑫、李軍毅、周昆、唐天一、文繼榮, *大語言模型*, 高等教育出版社, 2024 (13 chapters) | The Chinese companion. Its site carries lecture PDFs, code and the original slides on request |
 | **BB** | Bishop & Bishop, *Deep Learning: Foundations and Concepts*, Springer, 2024 | Prerequisite mathematics and deep-learning background; free online edition |
 | **UDL** | Prince, *Understanding Deep Learning*, MIT Press; GitHub **v5.0.3, 2026-02-09**, ch 1–21, CC BY-NC-ND | **The best catch-up text for a class with no prerequisites**: free PDF, notebooks, slides and an answer booklet, and still maintained |
-| **HOLLM** | Alammar & Grootendorst, *Hands-On Large Language Models*, O'Reilly, 2024 (12 chapters) | The lab manual for Colab. The visualizations in ch 2 (tokens and embeddings) and ch 8 (RAG) are unusually good |
+| **HOLLM** | Alammar & Grootendorst, *Hands-On Large Language Models*, O'Reilly, 2024 (12 chapters) | A hands-on companion. The visualizations in ch 2 (tokens and embeddings) and ch 8 (RAG) are unusually good. **Its notebooks are written for Colab**, so the backend has to be swapped on the demo machine |
 | **ZZM** | Zong, Zhao & Ma, *Natural Language Processing and Large Language Models: Theory, Hands-on Codes, and Case Studies*, Springer Nature Singapore / Tsinghua University Press, **2026** (ISBN 978-981-92-0681-0; **open access**, 400 pages) | **The English companion for W1–W3.** Ch 5 (n-grams, smoothing, perplexity, FNN- and LSTM-based LMs), ch 3 (word2vec, ELMo) and ch 4 (seq2seq through Transformer) line up almost section by section with W1 and W3; ch 2 is the shortest catch-up chapter for anyone arriving without the prerequisites; ch 7 is the only treatment of Chinese word segmentation on this list. **Read it, do not run it** — see the note below |
 | **LLMSurvey** | Zhao et al., *A Survey of Large Language Models*, arXiv:2303.18223 (**last revised 2026-03-18**, 144 pages, 1081 references, marked ongoing) | A reference, not a textbook |
 
@@ -108,24 +108,24 @@ Goldberg, *Neural Network Methods for NLP* (2017) and Paaß & Giesselbach, *Foun
 <!-- file: derivations.md -->
 ## Derivations and Hand-Built Components
 
-One board derivation and one component per week. Everything is demonstrated in class; the compute column is there so you can see what each component would cost to rerun yourself, against a free-tier Colab T4.
+One board derivation and one component per week. Everything is demonstrated in class. The last column says **what each component needs to run on**, not how long it takes: the demo machine has no CUDA, and nothing here has been timed on it yet. Timings will be added once they are measured rather than estimated.
 
-| Week | At the board | Built by hand | Compute |
+| Week | At the board | Built by hand | Runs on |
 |:--|:--------------------------------|:----------------------------|:------|
 | W1 | Cross-entropy as compression; the BPTT product | — (demos only) | CPU |
-| W2 | Vocabulary size inside the scaling law | **BPE training, encoding, decoding** | CPU, 10 min |
-| W3 | The variance of $q^\top k$ → $1/\sqrt{d_k}$; the KV-cache formula | **Scaled dot-product attention + KV cache** | CPU, 5 min |
-| W4 | Parameter accounting → $N \approx 12 n_{\text{layer}}d^2$; $C \approx 6ND$ | **A full GPT block, and a tiny model trained** | T4, 20 min |
-| W5 | **RoPE's relative property** in complex form; the phase argument for extrapolation | RoPE and its extrapolation variants | T4, 15 min |
-| W6 | **The linear-attention associativity identity** → recurrent form; the SSD skeleton | Both algorithms for linear attention | T4, 10 min |
-| W7 | **Chinchilla's first-order condition** (one of the course's three peaks) | A scaling law fitted at small scale | T4, 30 min |
-| W8 | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT on Qwen3-0.6B/1.7B** | T4, 25 min |
-| W9 | **DPO in four steps** (one of the three peaks); GRPO's advantage normalization | **The DPO loss, with four tests** | CPU, 10 min |
-| W10 | The two crossing pass@k curves; the binomial bound behind self-consistency | Budget forcing | T4, 30 min |
-| W11 | **Roofline and the batch threshold for decode**; the three-line losslessness proof for speculative decoding | A roofline measured | T4, 20 min |
-| W12 | InfoNCE, and how the negatives define "similar"; RAG's three-term decomposition | **A minimal RAG, and three deliberate failures** | CPU, 40 min |
-| W13 | The compound error rate $p^n$, and what a verifier does to it | **An agent broken by prompt injection** | CPU/T4, 30 min |
-| W14 | The binomial standard error and paired bootstrap; the sparsity–reconstruction Pareto | An evaluation workshop (no new model) | CPU |
+| W2 | Vocabulary size inside the scaling law | **BPE training, encoding, decoding** | CPU — tokenizers are hardware-independent |
+| W3 | The variance of $q^\top k$ → $1/\sqrt{d_k}$; the KV-cache formula | **Scaled dot-product attention + KV cache** | **CPU** — the gradient check needs `float64`, which Metal does not have |
+| W4 | Parameter accounting → $N \approx 12 n_{\text{layer}}d^2$; $C \approx 6ND$ | **A full GPT block, and a tiny model trained** | MPS or CPU. **SDPA on MPS refuses attention dropout** |
+| W5 | **RoPE's relative property** in complex form; the phase argument for extrapolation | RoPE and its extrapolation variants | MPS; the long-context demo uses a quantized mid-size model |
+| W6 | **The linear-attention associativity identity** → recurrent form; the SSD skeleton | Both algorithms for linear attention | MPS. SSM and hybrid models run on MLX's own Metal kernels |
+| W7 | **Chinchilla's first-order condition** (one of the course's three peaks) | A scaling law fitted at small scale | MPS — four or five tiny transformers |
+| W8 | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT with `mlx_lm.lora`** | MLX. Pointing it at a quantized model *is* QLoRA |
+| W9 | **DPO in four steps** (one of the three peaks); GRPO's advantage normalization | **The DPO loss, with four tests** | CPU |
+| W10 | The two crossing pass@k curves; the binomial bound behind self-consistency | Budget forcing | MLX, a mid-size model with a thinking mode |
+| W11 | **Roofline and the batch threshold for decode**; the three-line losslessness proof for speculative decoding | A roofline measured | MLX (`mlx_lm.benchmark`, `--draft-model`) |
+| W12 | InfoNCE, and how the negatives define "similar"; RAG's three-term decomposition | **A minimal RAG, and three deliberate failures** | CPU |
+| W13 | The compound error rate $p^n$, and what a verifier does to it | **An agent broken by prompt injection** | A small local model is enough |
+| W14 | The binomial standard error and paired bootstrap; the sparsity–reconstruction Pareto | An evaluation workshop (no new model) | CPU — TransformerLens avoids MPS by default |
 
 <!-- file: toolchain.md -->
 ## Toolchain
@@ -137,20 +137,24 @@ One board derivation and one component per week. Everything is demonstrated in c
 | Inference for in-class demos | **MLX (`mlx-lm`)**, or llama.cpp / Ollama (GGUF) | Native to Apple silicon. **Unified memory is the real advantage here**: models far larger than 16 GB load comfortably |
 | Building components by hand | Plain `torch` (MPS backend, or CPU) | The hand-built labs in W3, W4, W6 and W9 are small enough that MPS — or even CPU — finishes them in minutes |
 | Tokenizer experiments | `tokenizers`, `sentencepiece`, `tiktoken` | Pure CPU, hardware-independent. The W2 fertility table |
-| Fine-tuning demos | **LoRA in `mlx-lm`** | W8. The `peft` + `bitsandbytes` QLoRA path does not run here — see below |
-| Evaluation | `lm-evaluation-harness` | Pointed at an MLX or llama.cpp backend. The W14 workshop looks at per-item results, not just aggregate scores |
+| Fine-tuning demos | **`mlx_lm.lora`** | W8. QLoRA is not a flag: point `--model` at an already-quantized model and that *is* QLoRA. Adapters are merged back with `mlx_lm.fuse` |
+| Evaluation | **`mlx_lm.evaluate`** | W14. The harness itself has **no MLX backend** — the integration lives on the MLX side and registers itself into lm-eval. The workshop looks at per-item results, not just aggregate scores |
 | RAG | `sentence-transformers` + `faiss-cpu`, or plain numpy | W12. Brute-force search on CPU is enough; no vector database needed |
-| Interpretability | `transformer-lens` (MPS) | Activation patching in W14; fine at small model sizes |
+| Interpretability | `transformer-lens` (**runs on CPU in practice**) | Activation patching in W14. The library declines to auto-select MPS unless `TRANSFORMERLENS_ALLOW_MPS=1`, and currently marks no torch version as MPS-safe. CPU is fine at these model sizes |
 
 ### What cannot be demonstrated on this hardware
 
 | Not available | Why | What stands in for it |
 |:-----------------|:--------|:---------------------|
-| `bitsandbytes` 4/8-bit, QLoRA | CUDA only | MLX's own quantization and LoRA. The concept is identical; only the backend differs |
+| `bitsandbytes` 4/8-bit, QLoRA | CUDA only | `mlx_lm.lora` against a quantized model. **But "you cannot do 4-bit in transformers on a Mac" stopped being true in 2026**: transformers now ships a Metal quantization backend built on MLX's kernels |
 | `vLLM`'s PagedAttention and continuous batching | Not usable on Apple silicon | W11 teaches the argument and cites the SOSP 2023 numbers. PagedAttention's memory argument was always clearest on a whiteboard |
 | **FP8 / NVFP4 measurements** | Apple silicon has no such tensor formats | W7 and W11 cite the figures from the Quartet and NVFP4-pretraining reports |
 | FlashAttention, custom Triton kernels | CUDA only | The IO argument in W3 is a board derivation, not an implementation exercise |
-| `auto-gptq`, `autoawq` | CUDA | MLX or GGUF quantization for the "what quantization changes besides perplexity" comparison |
+| `auto-gptq`, `autoawq` | CUDA | mlx-lm's own AWQ / GPTQ / DWQ / dynamic-quant tools for the "what quantization changes besides perplexity" comparison |
+| **`float64`** — finite-difference gradient checks, ill-conditioned linalg | **Metal has no double type.** Not slow; absent | Pin those exercises to the CPU |
+| Attention dropout through `scaled_dot_product_attention` | MPS's SDPA refuses `dropout_p > 0.0`, and has no dedicated backward kernel | The hand-built version writes its own dropout — which is one more argument for building it by hand |
+| Multi-process `accelerate launch`, DDP | `gloo` and `nccl` do not work with `mps` | Single device only. In-class demos never needed it |
+| CPU offload via `device_map="auto"` | **MPS requires the whole model to fit in unified memory** | This is where 64 GB becomes a hard edge: too big is too big, with no automatic fallback |
 
 ### Models used in the demos
 

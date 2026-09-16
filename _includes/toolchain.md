@@ -9,20 +9,24 @@
 | Inference for in-class demos | **MLX (`mlx-lm`)**, or llama.cpp / Ollama (GGUF) | Native to Apple silicon. **Unified memory is the real advantage here**: models far larger than 16 GB load comfortably |
 | Building components by hand | Plain `torch` (MPS backend, or CPU) | The hand-built labs in W3, W4, W6 and W9 are small enough that MPS — or even CPU — finishes them in minutes |
 | Tokenizer experiments | `tokenizers`, `sentencepiece`, `tiktoken` | Pure CPU, hardware-independent. The W2 fertility table |
-| Fine-tuning demos | **LoRA in `mlx-lm`** | W8. The `peft` + `bitsandbytes` QLoRA path does not run here — see below |
-| Evaluation | `lm-evaluation-harness` | Pointed at an MLX or llama.cpp backend. The W14 workshop looks at per-item results, not just aggregate scores |
+| Fine-tuning demos | **`mlx_lm.lora`** | W8. QLoRA is not a flag: point `--model` at an already-quantized model and that *is* QLoRA. Adapters are merged back with `mlx_lm.fuse` |
+| Evaluation | **`mlx_lm.evaluate`** | W14. The harness itself has **no MLX backend** — the integration lives on the MLX side and registers itself into lm-eval. The workshop looks at per-item results, not just aggregate scores |
 | RAG | `sentence-transformers` + `faiss-cpu`, or plain numpy | W12. Brute-force search on CPU is enough; no vector database needed |
-| Interpretability | `transformer-lens` (MPS) | Activation patching in W14; fine at small model sizes |
+| Interpretability | `transformer-lens` (**runs on CPU in practice**) | Activation patching in W14. The library declines to auto-select MPS unless `TRANSFORMERLENS_ALLOW_MPS=1`, and currently marks no torch version as MPS-safe. CPU is fine at these model sizes |
 
 ### What cannot be demonstrated on this hardware
 
 | Not available | Why | What stands in for it |
 |:-----------------|:--------|:---------------------|
-| `bitsandbytes` 4/8-bit, QLoRA | CUDA only | MLX's own quantization and LoRA. The concept is identical; only the backend differs |
+| `bitsandbytes` 4/8-bit, QLoRA | CUDA only | `mlx_lm.lora` against a quantized model. **But "you cannot do 4-bit in transformers on a Mac" stopped being true in 2026**: transformers now ships a Metal quantization backend built on MLX's kernels |
 | `vLLM`'s PagedAttention and continuous batching | Not usable on Apple silicon | W11 teaches the argument and cites the SOSP 2023 numbers. PagedAttention's memory argument was always clearest on a whiteboard |
 | **FP8 / NVFP4 measurements** | Apple silicon has no such tensor formats | W7 and W11 cite the figures from the Quartet and NVFP4-pretraining reports |
 | FlashAttention, custom Triton kernels | CUDA only | The IO argument in W3 is a board derivation, not an implementation exercise |
-| `auto-gptq`, `autoawq` | CUDA | MLX or GGUF quantization for the "what quantization changes besides perplexity" comparison |
+| `auto-gptq`, `autoawq` | CUDA | mlx-lm's own AWQ / GPTQ / DWQ / dynamic-quant tools for the "what quantization changes besides perplexity" comparison |
+| **`float64`** — finite-difference gradient checks, ill-conditioned linalg | **Metal has no double type.** Not slow; absent | Pin those exercises to the CPU |
+| Attention dropout through `scaled_dot_product_attention` | MPS's SDPA refuses `dropout_p > 0.0`, and has no dedicated backward kernel | The hand-built version writes its own dropout — which is one more argument for building it by hand |
+| Multi-process `accelerate launch`, DDP | `gloo` and `nccl` do not work with `mps` | Single device only. In-class demos never needed it |
+| CPU offload via `device_map="auto"` | **MPS requires the whole model to fit in unified memory** | This is where 64 GB becomes a hard edge: too big is too big, with no automatic fallback |
 
 ### Models used in the demos
 
