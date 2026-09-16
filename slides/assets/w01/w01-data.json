@@ -709,5 +709,150 @@
     }
    ]
   }
+ },
+ "polysemy": {
+  "grave": {
+   "count": 64,
+   "neighbours": [
+    [
+     "buried",
+     0.453
+    ],
+    [
+     "bury",
+     0.432
+    ],
+    [
+     "renown'd",
+     0.419
+    ],
+    [
+     "joys",
+     0.41
+    ],
+    [
+     "quiet",
+     0.405
+    ],
+    [
+     "lady's",
+     0.401
+    ],
+    [
+     "triumphant",
+     0.392
+    ],
+    [
+     "gave",
+     0.373
+    ]
+   ]
+  },
+  "light": {
+   "count": 59,
+   "neighbours": [
+    [
+     "breaks",
+     0.502
+    ],
+    [
+     "vanity",
+     0.486
+    ],
+    [
+     "yonder",
+     0.413
+    ],
+    [
+     "through",
+     0.408
+    ],
+    [
+     "dwell",
+     0.404
+    ],
+    [
+     "clouds",
+     0.397
+    ],
+    [
+     "hole",
+     0.395
+    ],
+    [
+     "lends",
+     0.387
+    ]
+   ]
+  },
+  "bear": {
+   "count": 132,
+   "neighbours": [
+    [
+     "neat",
+     0.404
+    ],
+    [
+     "witness",
+     0.403
+    ],
+    [
+     "captain",
+     0.381
+    ],
+    [
+     "bears",
+     0.38
+    ],
+    [
+     "herd",
+     0.379
+    ],
+    [
+     "matter",
+     0.371
+    ],
+    [
+     "having",
+     0.356
+    ],
+    [
+     "weakness",
+     0.349
+    ]
+   ]
+  }
+ },
+ "oov": {
+  "held_word_tokens": 19877,
+  "oov_rate_vs_train": 0.057,
+  "oov_types": 711,
+  "oov_top": [
+   [
+    "prospero",
+    65
+   ],
+   [
+    "sebastian",
+    45
+   ],
+   [
+    "gonzalo",
+    39
+   ],
+   [
+    "miranda",
+    36
+   ],
+   [
+    "curtis",
+    26
+   ],
+   [
+    "ariel",
+    26
+   ]
+  ],
+  "no_vector_rate_vs_emb_vocab": 0.113
  }
 }
