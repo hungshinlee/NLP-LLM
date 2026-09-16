@@ -34,7 +34,7 @@ format:
 
 225,333 words of Shakespeare. 14,560 distinct words. A word-level n-gram model, trained by counting.
 
-Every sample below starts from the same seven words, and differs only in **how many previous words the model is allowed to look at**.
+Every sample below starts from the same eight words, and differs only in **how many previous words the model is allowed to look at**.
 
 ::: {.gen}
 [prompt]{.n}
@@ -127,7 +127,7 @@ Corpus: Shakespeare (public domain), `tinyshakespeare` split · computed for thi
 ## Same prompt. A 2026 model. Live.
 
 ::: {.gen}
-[live · an open model on this laptop, the same seven words]{.n}
+[live · an open model on this laptop, the same eight words]{.n}
 :::
 
 Then one more, in Traditional Chinese, asking for something specific and checkable.
