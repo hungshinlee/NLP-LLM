@@ -70,10 +70,10 @@ Watch what happens to the output as that number goes up.
 The experiment is Shannon's (1948): approximations to English of increasing order
 :::
 
-## n = 1: the words are Shakespeare's. Nothing else is.
+## $n = 1$: the words are Shakespeare's. Nothing else is.
 
 ::: {.gen}
-[n = 1　·　no context at all]{.n}
+[$n = 1$　·　no context at all]{.n}
 We than me or too: here separation PERDITA I majesty exhales the bring child have, night interchange, our to thereto and dad, kiss thinks a country's the pedigree Thy For they Unless but,. the
 :::
 
@@ -84,10 +84,10 @@ We than me or too: here separation PERDITA I majesty exhales the bring child hav
 A model of word frequency is a model of vocabulary, not of language.
 :::
 
-## n = 2: local fluency arrives. Global coherence does not.
+## $n = 2$: local fluency arrives. Global coherence does not.
 
 ::: {.gen}
-[n = 2　·　one word of context]{.n}
+[$n = 2$　·　one word of context]{.n}
 be to each of York, you might reproach your lordship cool your will show it. For thy due to your channel should be furnished with patience but a truth, seven night: He shift a word, my
 :::
 
@@ -98,10 +98,10 @@ be to each of York, you might reproach your lordship cool your will show it. For
 One word of context buys local fluency. That is a remarkably good return on one word.
 :::
 
-## n = 4: this reads like Shakespeare.
+## $n = 4$: this reads like Shakespeare.
 
 ::: {.gen}
-[n = 4　·　three words of context]{.n}
+[$n = 4$　·　three words of context]{.n}
 wrought To be set high in place, we did: he desires to make atonement Betwixt the Duke of York is there alive but we? And who durst mine when Warwick bent his brow? Lo, now my sovereign speaketh
 :::
 
@@ -112,17 +112,17 @@ wrought To be set high in place, we did: he desires to make atonement Betwixt th
 Four words of context, and pure counting, gets you something you would call fluent.
 :::
 
-## n = 8: this is not generation. This is recall.
+## $n = 8$: this is not generation. This is recall.
 
 ::: {.gen .hit}
-[n = 8　·　seven words of context]{.n}
+[$n = 8$　·　seven words of context]{.n}
 well in his person wrought To be set high in place, we did commend To your remembrances: but you have found, Scaling his present bearing with his past, That he's your fixed enemy, and revoke Your sudden approbation. BRUTUS: Say
 :::
 
 That passage is in the training corpus, word for word, including the speaker tag that follows it.
 
 ::: {.claim .warn}
-Somewhere between n = 4 and n = 8, the model stopped generalizing and started remembering. **Nothing in the training objective told us where that line was.**
+Somewhere between $n = 4$ and $n = 8$, the model stopped generalizing and started remembering. **Nothing in the training objective told us where that line was.**
 :::
 
 ::: {.footer}
@@ -138,10 +138,10 @@ Corpus: Shakespeare (public domain), `tinyshakespeare` split · computed for thi
 [95.0%]{.num}[of held-out 4-grams never appeared in training]{.lab}
 :::
 ::: {.metric .good}
-[n = 2]{.num}[where bits-per-byte actually bottoms out]{.lab}
+[$n = 2$]{.num}[where bits-per-byte actually bottoms out]{.lab}
 :::
 ::: {.metric}
-[99.0%]{.num}[unseen at n = 5. More data will not fix this]{.lab}
+[99.0%]{.num}[unseen at $n = 5$. More data will not fix this]{.lab}
 :::
 :::
 
@@ -157,8 +157,8 @@ Then one more, in Traditional Chinese, asking for something specific and checkab
 Third failure mode. Name it before I do.
 :::
 
-- n = 1 failed **locally**: the words never combine
-- n = 4 failed **globally**: every clause holds, the passage goes nowhere
+- $n = 1$ failed **locally**: the words never combine
+- $n = 4$ failed **globally**: every clause holds, the passage goes nowhere
 - This one fails at **neither** scale — and will still state something checkable and wrong, in exactly the same even voice
 
 ::: {.claim .warn}
@@ -171,14 +171,14 @@ This laptop: 64 GB unified memory, no CUDA · what it cannot run is itself a top
 
 ## A lower perplexity is not a better text
 
-You just watched this. **n = 4** read best of the four samples. On held-out text it scored **2.293** bits per byte; **n = 2** scored **1.861**.
+You just watched this. $n = 4$ read best of the four samples. On held-out text it scored **2.293** bits per byte; $n = 2$ scored **1.861**.
 
 ::: {.claim .warn}
 Reading well and predicting well are different measurements, and they ranked the same four models in different orders.
 :::
 
 - Theis, van den Oord & Bethge (2015): in high dimensions, likelihood and sample quality are largely independent — they construct counterexamples in **both** directions
-- n = 8 is the other direction on today's screen: flawless text, by copying
+- $n = 8$ is the other direction on today's screen: flawless text, by copying
 
 ::: {.footer}
 Misconception 1 of 10 · bits-per-byte is defined in Part 3 · the general case is W14
@@ -305,7 +305,7 @@ Everything today learns to **match a distribution in text**. Even seq2seq, train
 4. **Is the claim mechanistic, or correlational?** "The attention weight is high", "the chain of thought wrote this step", "the reward went up" — all three are correlations
 
 ::: {.claim}
-You already used question 3 today: the n = 4 sample read best, and scored worse. Question 1 comes back before we finish.
+You already used question 3 today: the $n = 4$ sample read best, and scored worse. Question 1 comes back before we finish.
 :::
 
 # A language model is a compressor {.section-title}
@@ -407,12 +407,12 @@ The MLE assigns zero to 95% of the 4-grams you will actually meet. Any usable mo
 
 Doubling the corpus halves neither of these numbers by much. The count table grows; the space it must cover grows faster.
 
-| | n = 1 | n = 2 | n = 3 | n = 4 | n = 5 |
+| | $n = 1$ | $n = 2$ | $n = 3$ | $n = 4$ | $n = 5$ |
 |---|---|---|---|---|---|
 | **Unseen in held-out** | 5.2% | 36.4% | 77.2% | **95.0%** | **99.0%** |
 | **Distinct n-grams stored** | 13.7k | 94.8k | 182k | 213k | 222k |
 
-Notice the second row saturating: past n = 3, almost every new n-gram is seen exactly once. The table is memorizing, not estimating.
+Notice the second row saturating: past $n = 3$, almost every new n-gram is seen exactly once. The table is memorizing, not estimating.
 
 ::: {.claim .warn}
 Counting cannot generalize to unseen contexts, because it has no notion that two contexts might be similar.
@@ -430,19 +430,19 @@ After all 225k tokens, **47.7%** of the vocabulary is still words seen **exactly
 Measured on this corpus · this tail returns in W7 (dedup) and W14 (contamination)
 :::
 
-## The unseen mass does fall — at a rate that goes to zero as n grows
+## The unseen mass does fall — at a rate that goes to zero as $n$ grows
 
 Good–Turing's unseen mass is $N_1/D$. If a roughly fixed share of types are seen once, then $N_1 \propto D^{\beta_n}$ and $N_1/D \propto D^{\beta_n-1}$.
 
-| n | Heaps $\beta_n$ | unseen mass, 2.3k → 225k words | slope | more text to halve it |
+| $n$ | Heaps $\beta_n$ | unseen mass, 2.3k → 225k words | slope | more text to halve it |
 |---|---|---|---|---|
-| 1 | 0.622 | 0.231 → 0.029 | −0.46 | about ×5 |
-| 2 | 0.852 | 0.738 → 0.319 | −0.19 | about ×40 |
-| 3 | 0.963 | 0.926 → 0.733 | −0.05 | about ×500,000 |
-| 4 | **0.990** | **0.975 → 0.917** | **−0.02** | about $\times 2^{66}$ |
+| $1$ | $0.622$ | $0.231 \to 0.029$ | $-0.46$ | about $\times 5$ |
+| $2$ | $0.852$ | $0.738 \to 0.319$ | $-0.19$ | about $\times 40$ |
+| $3$ | $0.963$ | $0.926 \to 0.733$ | $-0.05$ | about $\times 500{,}000$ |
+| $4$ | $\mathbf{0.990}$ | $\mathbf{0.975 \to 0.917}$ | $\mathbf{-0.02}$ | about $\times 2^{66}$ |
 
 ::: {.claim .warn}
-A useful n-gram model needs n ≥ 3 — which is exactly where the decay stops. That is what "more data cannot fix it" means.
+A useful n-gram model needs $n \geq 3$ — which is exactly where the decay stops. That is what "more data cannot fix it" means.
 :::
 
 ::: {.footer}
@@ -477,13 +477,13 @@ Misconception 3 of 10 · one reason W9 (post-training) and W12 (retrieval) exist
 The move from 2003 on was not "neural networks are stronger". It was **replacing a lookup table with a function, so that unseen inputs land somewhere sensible** — and everything since, attention included, varies how that function is built.
 :::
 
-So *"an LLM is just a bigger n-gram"* is wrong in both directions: the inductive bias differs, **and** at the long tail an LLM does fall back on memorization — which is what we watched at n = 8.
+So *"an LLM is just a bigger n-gram"* is wrong in both directions: the inductive bias differs, **and** at the long tail an LLM does fall back on memorization — which is what we watched at $n = 8$.
 
 ::: {.footer}
 Misconception 4 of 10 · the memorization half returns in W7 and W14
 :::
 
-## Where does the n = 8 sample sit on that table?
+## Where does the $n = 8$ sample sit on that table?
 
 ::: {.ask}
 It was fluent. It was grammatical. It was, word for word, in the training set.
@@ -504,7 +504,7 @@ This question returns as benchmark contamination (W14) and as data deduplication
 
 ## n-grams did not die. They became instruments.
 
-- **Infini-gram** (Liu et al., COLM 2024): an n-gram model over **5 trillion tokens**, with no upper limit on n, answered in milliseconds by a suffix array. It complements neural LLMs and greatly reduces their perplexity
+- **Infini-gram** (Liu et al., COLM 2024): an n-gram model over **5 trillion tokens**, with no upper limit on $n$, answered in milliseconds by a suffix array. It complements neural LLMs and greatly reduces their perplexity
 - **Nguyen (NeurIPS 2024)**: for **79%** of LLM next-token distributions on TinyStories and **68%** on Wikipedia, the top-1 prediction agrees with a ruleset built from n-gram statistics of the training data
 
 ::: {.claim}
@@ -621,9 +621,9 @@ Contextual models fix the first failure and inherit the third. A static vector e
 
 ## The gradient is a product, and products go to zero
 
-$$\frac{\partial \mathcal{L}}{\partial h_1} = \frac{\partial \mathcal{L}}{\partial h_T}\prod_{t=2}^{T}\frac{\partial h_t}{\partial h_{t-1}}, \qquad \frac{\partial h_t}{\partial h_{t-1}} = \mathrm{diag}\big(\phi'(\cdot)\big)\,W$$
+$$\frac{\partial \mathcal{L}}{\partial \mathbf{h}_1} = \frac{\partial \mathcal{L}}{\partial \mathbf{h}_T}\prod_{t=2}^{T}\frac{\partial \mathbf{h}_t}{\partial \mathbf{h}_{t-1}}, \qquad \frac{\partial \mathbf{h}_t}{\partial \mathbf{h}_{t-1}} = \mathrm{diag}\big(\phi'(\cdot)\big)\,\mathbf{W}$$
 
-So the product's norm is at most $(\gamma\,\sigma_{\max}(W))^{T-1}$, where $\gamma = \sup|\phi'|$ — 1 for tanh.
+So the product's norm is at most $(\gamma\,\sigma_{\max}(\mathbf{W}))^{T-1}$, where $\gamma = \sup|\phi'|$ — 1 for tanh.
 
 - $\sigma_{\max} < 1/\gamma$ is **sufficient** for vanishing; $\sigma_{\max} > 1/\gamma$ is only **necessary** for exploding
 - Exploding has a cheap fix still used to train every LLM: **clip the gradient norm** (Pascanu et al.). Vanishing needs a different architecture
@@ -634,11 +634,11 @@ Either way, the effective memory is far shorter than the sequence.
 
 ## Two LSTMs, and a line to W4
 
-- **1997** (Hochreiter & Schmidhuber): $c_t = c_{t-1} + i_t \odot g_t$. Along the cell, the Jacobian is $I$ — a genuinely **additive path**
-- **2000** (Gers, Schmidhuber & Cummins): add a forget gate, $c_t = f_t \odot c_{t-1} + i_t \odot g_t$. Now it is $\mathrm{diag}(f_t)$: still a product, but one the model **learns to hold near 1**. This is the LSTM in use today
+- **1997** (Hochreiter & Schmidhuber): $\mathbf{c}_t = \mathbf{c}_{t-1} + \mathbf{i}_t \odot \mathbf{g}_t$. Along the cell, the Jacobian is $\mathbf{I}$ — a genuinely **additive path**
+- **2000** (Gers, Schmidhuber & Cummins): add a forget gate, $\mathbf{c}_t = \mathbf{f}_t \odot \mathbf{c}_{t-1} + \mathbf{i}_t \odot \mathbf{g}_t$. Now it is $\mathrm{diag}(\mathbf{f}_t)$: still a product, but one the model **learns to hold near 1**. This is the LSTM in use today
 
 ::: {.claim}
-LSTM: a gated additive path across **time**. Highway networks: gated, across **depth**. ResNet: the gate removed, $x_{l+1} = x_l + F(x_l)$. **That last line is the residual stream of W4.**
+LSTM: a gated additive path across **time**. Highway networks: gated, across **depth**. ResNet: the gate removed, $\mathbf{x}_{l+1} = \mathbf{x}_l + F(\mathbf{x}_l)$. **That last line is the residual stream of W4.**
 :::
 
 ::: {.footer}
@@ -655,13 +655,13 @@ A 5-word sentence and a 50-word sentence get the same number of floats. Cho et a
 
 Bahdanau, Cho & Bengio (2015) aimed at that one symptom:
 
-$$c_t = \sum_i \alpha_{ti} h_i, \qquad \alpha_{ti} = \mathrm{softmax}_i\big(a(s_{t-1}, h_i)\big)$$
+$$\mathbf{c}_t = \sum_i \alpha_{ti} \mathbf{h}_i, \qquad \alpha_{ti} = \mathrm{softmax}_i\big(a(\mathbf{s}_{t-1}, \mathbf{h}_i)\big)$$
 
 Instead of one vector, the decoder builds **a different weighted read of the source at every output step**.
 
 ## That attention is cross-attention, not self-attention
 
-The query is the **decoder** state $s_{t-1}$. The keys and values are the **encoder** states $h_i$. Query and key/value come from **two different sequences**.
+The query is the **decoder** state $\mathbf{s}_{t-1}$. The keys and values are the **encoder** states $\mathbf{h}_i$. Query and key/value come from **two different sequences**.
 
 Self-attention — one sequence attending to itself — does not appear until 2017.
 
