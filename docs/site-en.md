@@ -28,10 +28,10 @@ $N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ co
 
 **The line worth memorising.** The first two rows are arithmetic problems; the last two are traffic problems. Decode is not short of FLOPs — it is short of bandwidth, and the KV cache is what fills the road. Most of Part III is an attempt to make those two rows cheaper.
 
-Two numbers to work out for yourself in the first session, and to revisit as the course goes:
+Two numbers to work out for yourself, and to revisit as the course goes:
 
-1. The training FLOPs for a 7B dense model at Chinchilla-optimal ($D \approx 20N$), and how many years that is on a single consumer GPU — an RTX 5070 Ti, say, which is the compute a term project actually has.
-2. The KV cache for that model at batch 1, 32k context, FP16 — in GB, against two real ceilings: the 16 GB on that same card, which cannot hold it, and the 64 GB of unified memory the classroom demos run on, which can, at a fraction of a datacenter GPU's bandwidth. **Capacity and bandwidth are two separate limits, and 64 GB relieves only the first — which is the first hint of the roofline in W11.** That number is the shared motivation for W5, W6 and W11.
+1. **In week 1:** the training FLOPs for a 7B dense model at Chinchilla-optimal ($D \approx 20N$), and how many years that is on a single consumer GPU — an RTX 5070 Ti, say, which is the compute a term project actually has.
+2. **At the start of W3:** the KV cache for that model at batch 1, 32k context, FP16 — in GB, against two real ceilings: the 16 GB on that same card, which cannot hold it, and the 64 GB of unified memory the classroom demos run on, which can, at a fraction of a datacenter GPU's bandwidth. **Capacity and bandwidth are two separate limits, and 64 GB relieves only the first — which is the first hint of the roofline in W11.** That number is the shared motivation for W5, W6 and W11. It waits until W3 because the formula only means something once you know what an attention head is; in week 1 the ledger simply lists it.
 
 A third number, working backwards from the MoE activation ratio to why a 2026 flagship is rational at roughly a trillion total parameters and tens of billions active, opens W6 instead — it needs the idea of an active parameter, which arrives that week.
 
@@ -112,7 +112,7 @@ One board derivation and one component per week. Everything is demonstrated in c
 
 | Week | At the board | Built by hand | Runs on |
 |:--|:--------------------------------|:----------------------------|:------|
-| W1 | Cross-entropy as compression; the BPTT product | — (demos only) | CPU |
+| W1 | Cross-entropy as compression; the power-law decay of unseen mass under Zipf–Heaps; the BPTT product and its singular-value bound | — (demos only) | CPU |
 | W2 | Vocabulary size inside the scaling law | **BPE training, encoding, decoding** | CPU — tokenizers are hardware-independent |
 | W3 | The variance of $q^\top k$ → $1/\sqrt{d_k}$; the KV-cache formula | **Scaled dot-product attention + KV cache** | **CPU** — the gradient check needs `float64`, which Metal does not have |
 | W4 | Parameter accounting → $N \approx 12 n_{\text{layer}}d^2$; $C \approx 6ND$ | **A full GPT block, and a tiny model trained** | MPS or CPU. **SDPA on MPS refuses attention dropout** |

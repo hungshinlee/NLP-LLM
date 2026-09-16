@@ -6,7 +6,7 @@ One board derivation and one component per week. Everything is demonstrated in c
 
 | Week | At the board | Built by hand | Runs on |
 |:--|:--------------------------------|:----------------------------|:------|
-| [W1](weeks/w01.qmd) | Cross-entropy as compression; the BPTT product | — (demos only) | CPU |
+| [W1](weeks/w01.qmd) | Cross-entropy as compression; the power-law decay of unseen mass under Zipf–Heaps; the BPTT product and its singular-value bound | — (demos only) | CPU |
 | W2 | Vocabulary size inside the scaling law | **BPE training, encoding, decoding** | CPU — tokenizers are hardware-independent |
 | W3 | The variance of $q^\top k$ → $1/\sqrt{d_k}$; the KV-cache formula | **Scaled dot-product attention + KV cache** | **CPU** — the gradient check needs `float64`, which Metal does not have |
 | W4 | Parameter accounting → $N \approx 12 n_{\text{layer}}d^2$; $C \approx 6ND$ | **A full GPT block, and a tiny model trained** | MPS or CPU. **SDPA on MPS refuses attention dropout** |
