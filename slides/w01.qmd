@@ -308,34 +308,6 @@ Everything today learns to **match a distribution in text**. Even seq2seq, train
 You already used question 3 today: the n = 4 sample read best, and scored worse. Question 1 comes back before we finish.
 :::
 
-## Practicalities
-
-- Slides in English, taught in Mandarin. The speaker notes are mine and stay with me; the slides are yours, and they go up the same day
-- There is an **open-access English companion** for the first three weeks: Zong, Zhao & Ma, *NLP and Large Language Models* (Springer / Tsinghua, 2026). Ch 5 is essentially today's lecture in prose
-- **Assessed on two pieces of writing**: a midterm report (40%) and a final paper (60%), both treated as conference submissions rather than coursework. Group work, plus two online discussions
-- Everything is on the course site: weekly pages, the reading list, these slides, and four Chinese guides for the two reports
-
-::: {.tag}
-hungshinlee.github.io/NLP-LLM
-:::
-
-## What you will run: nothing
-
-Every demo in this course is run **live, in front of you**, on one laptop: **64 GB of unified memory, no CUDA.**
-
-- That buys room — a mid-sized model loads fine. It also rules things out: no `vLLM`, no `bitsandbytes` QLoRA, no FP8 or NVFP4 measurement
-- When a demo cannot run on this machine, **I will say so on the slide** and we read the number out of the paper instead
-
-::: {.claim}
-That gap is not an apology. It is W11's thesis arriving early: **inference optimization is bound to hardware.** Whether the same `transformers` code runs, and how fast, *is* the content of that week.
-:::
-
-Your **term project** is a different machine: one 16 GB consumer GPU. Plan for that, not for what you see at the front of the room.
-
-::: {.footer}
-The 16 GB card is the one you just costed · W3 opens by asking what its memory holds
-:::
-
 # A language model is a compressor {.section-title}
 
 ## Predicting well and compressing well are the same problem
