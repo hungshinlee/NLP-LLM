@@ -15,7 +15,7 @@ subtitle: "Textbooks, one paper per week, derivations, toolchain"
 
 These gaps are load-bearing rather than embarrassing — each is a project topic, and saying so is the honest graduate-level position.
 
-- **W2** — there is no verifiable published work on Traditional Chinese token efficiency. The fertility comparison has to be demonstrated live.
+- **W2** — there is no systematic study of tokenizer efficiency for Traditional Chinese, Taiwanese Hokkien, or Hakka; the only published numbers are incidental measurements in the technical reports of individual models. The fertility comparison is therefore measured live in class.
 - **W12** — chunking and query rewriting have no citable representative papers; both are engineering folklore more than literature, so the course substitutes an ablation lab. RAG evaluation has fragmented, and nothing has become the accepted successor to RAGAS.
 - **W13** — no textbook (JM3 ch 12 is unwritten), and no canonical design paper for the Model Context Protocol; its academic literature is almost entirely about security.
 - **W14** — item response theory for benchmarks is still scattered; the text-side benchmarks for Taiwanese Hokkien and Hakka are effectively absent; and model welfare has no citable academic literature.

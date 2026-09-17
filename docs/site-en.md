@@ -89,7 +89,7 @@ Goldberg, *Neural Network Methods for NLP* (2017) and Paaß & Giesselbach, *Foun
 | Week | Topic | If you read only one |
 |:--|:---------------------|:---------------------------------------|
 | W1 | From n-grams to seq2seq | Bahdanau et al., *Neural Machine Translation by Jointly Learning to Align and Translate*, ICLR 2015 |
-| W2 | Tokenization | Limisiewicz et al., *Compute Optimal Tokenization*, arXiv:2605.01188 |
+| W2 | Tokenization | Tao et al., *Scaling Laws with Vocabulary: Larger Models Deserve Larger Vocabularies*, NeurIPS 2024 (pair with Limisiewicz et al., *Compute Optimal Tokenization*, arXiv:2605.01188) |
 | W3 | Attention | Vaswani et al., *Attention Is All You Need*, NeurIPS 2017 — with Jain & Wallace, *Attention is not Explanation* |
 | W4 | The full block | Wortsman et al., *Small-scale proxies for large-scale Transformer training instabilities*, arXiv:2309.14322 |
 | W5 | Position and long context | Liu et al., *Lost in the Middle*, TACL 2023 |
