@@ -353,7 +353,7 @@ Bigram counts, training split · sub-intervals in alphabetical order · Shannon 
 
 1. **What gets compressed is a distribution over strings, not a set of propositions.** A fluent string that fits the distribution and is false is exactly what a compressor produces — later today, a theorem says how often
 2. **A compression rate that ignores the model's own size is not a compression ratio.** Count the weights, and a large model only pays for itself on terabytes of text
-3. **Bits-per-byte comparisons come with conditions.** Four of them, three slides from now
+3. **Bits-per-byte comparisons come with conditions.** Four of them, four slides from now
 
 ::: {.claim .warn}
 So "the model knows X" is a badly posed sentence. It has a distribution, not a knowledge base.
