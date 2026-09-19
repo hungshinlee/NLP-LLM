@@ -912,5 +912,88 @@
     "heldout": 3.703
    }
   ]
+ },
+ "arith": {
+  "words": [
+   "wrought",
+   "To",
+   "be",
+   "set",
+   "high",
+   "in"
+  ],
+  "steps": [
+   {
+    "prev": "wrought",
+    "w": "To",
+    "count": 1,
+    "ctx_count": 9,
+    "p": 0.1111,
+    "low_in_dist": 0.2222,
+    "n_candidates": 9,
+    "bits_so_far": 3.17
+   },
+   {
+    "prev": "To",
+    "w": "be",
+    "count": 28,
+    "ctx_count": 752,
+    "p": 0.0372,
+    "low_in_dist": 0.0745,
+    "n_candidates": 355,
+    "bits_so_far": 7.92
+   },
+   {
+    "prev": "be",
+    "w": "set",
+    "count": 6,
+    "ctx_count": 1431,
+    "p": 0.0042,
+    "low_in_dist": 0.7338,
+    "n_candidates": 588,
+    "bits_so_far": 15.82
+   },
+   {
+    "prev": "set",
+    "w": "high",
+    "count": 1,
+    "ctx_count": 98,
+    "p": 0.0102,
+    "low_in_dist": 0.3776,
+    "n_candidates": 43,
+    "bits_so_far": 22.43
+   },
+   {
+    "prev": "high",
+    "w": "in",
+    "count": 1,
+    "ctx_count": 55,
+    "p": 0.0182,
+    "low_in_dist": 0.6545,
+    "n_candidates": 46,
+    "bits_so_far": 28.21
+   }
+  ],
+  "width": 3.2182555934730423e-09,
+  "bits": 28.21,
+  "note": "bigram MLE on the training split; sub-intervals ordered alphabetically"
+ },
+ "sgns_example": {
+  "window": [
+   "all",
+   "the",
+   "love",
+   "they",
+   "bear"
+  ],
+  "center": "love",
+  "positive": "they",
+  "negatives": [
+   "anon",
+   "seldom",
+   "a"
+  ],
+  "K": 3,
+  "noise": "unigram^0.75"
  }
 }

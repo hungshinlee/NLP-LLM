@@ -247,6 +247,18 @@ $N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ co
 **Decode is short of bandwidth, not FLOPs** — and the KV cache is what fills the road.
 :::
 
+## Where the $6$ in $6ND$ comes from
+
+![](assets/w01/flops.svg){width="100%"}
+
+::: {.claim}
+Every parameter touches every token three times — once forward, twice backward — at two FLOPs a touch. Nothing else in the model is counted.
+:::
+
+::: {.footer}
+Multiply-add $= 2$ FLOPs · attention scores left out; when that matters is W3 and W5
+:::
+
 ## One number, now, on paper
 
 For a **7B dense model** at Chinchilla-optimal, $D \approx 20N$:
@@ -314,12 +326,24 @@ You already used question 3 today: the $n = 4$ sample read best, and scored wors
 
 Give me a distribution over the next token and I can build a code. Arithmetic coding reaches the entropy of that distribution, to within a couple of bits over the whole message.
 
-$$H(p,q) = -\mathbb{E}_{x\sim p}\big[\log_2 q(x)\big] \quad\text{bits per symbol}$$
+$$H(p,q) = -\mathbb{E}_{x\sim p}\big[\log_2 q(x)\big] = H(p) + D_{\mathrm{KL}}(p\,\|\,q) \quad\text{bits per symbol}$$
 
-So the training objective of every model in this course is *literally* a compression rate.
+So the training objective of every model in this course is *literally* a compression rate — and training can only ever shrink the second term.
 
 ::: {.claim}
 This is the metaphor that runs the whole term. **Pretraining is compression. A scaling law is the regularity in the compression ratio. Quantization compresses the compressor. RAG refuses to compress and looks things up instead.**
+:::
+
+## Arithmetic coding: the interval is the probability
+
+![](assets/w01/arith.svg){width="100%"}
+
+::: {.claim}
+Each word narrows the interval by its probability. Naming a point in the last interval takes $-\log_2 \prod_t q(w_t \mid w_{<t})$ bits — the model's log-loss, summed.
+:::
+
+::: {.footer}
+Bigram counts, training split · sub-intervals in alphabetical order · Shannon (1948)
 :::
 
 ## Where the compression metaphor fails
@@ -349,7 +373,11 @@ $$\mathrm{PPL} = \exp\!\left(-\frac{1}{T}\sum_{t=1}^{T} \log P(w_t \mid w_{<t})\
 The denominator is $T$, **the number of tokens** — a property of the tokenizer, not of the text. The same Chinese paragraph can differ by more than a factor of two in $T$ between two tokenizers.
 
 ::: {.claim .ok}
-Use **bits-per-byte**: the same total log-likelihood in bits, divided by the number of bytes $B$ — a property of the text. Converting takes one line: $\mathrm{BPB} = \frac{T}{B}\log_2 \mathrm{PPL}$.
+Use **bits-per-byte**: the same total log-likelihood in bits, divided by the number of bytes $B$ — a property of the text.
+:::
+
+::: {.small}
+The conversion is one line. The total code length is $\sum_{t} -\log_2 P(w_t \mid w_{<t}) = T \log_2 \mathrm{PPL}$; divide by $T$ tokens and you have $\log_2 \mathrm{PPL}$, divide by $B$ bytes and you have $\mathrm{BPB} = \frac{T}{B}\log_2 \mathrm{PPL}$. Same numerator, different denominator.
 :::
 
 ::: {.footer}
@@ -472,6 +500,10 @@ Good–Turing's unseen mass is $N_1/D$. If a roughly fixed share of types are se
 | $3$ | $0.963$ | $0.926 \to 0.733$ | $-0.05$ | about $\times 500{,}000$ |
 | $4$ | $\mathbf{0.990}$ | $\mathbf{0.975 \to 0.917}$ | $\mathbf{-0.02}$ | about $\times 2^{66}$ |
 
+::: {.small}
+Last column: $(D'/D)^{s} = \tfrac{1}{2} \Rightarrow D'/D = 2^{1/|s|}$, with the measured slope $s$ standing in for $\beta_n - 1$.
+:::
+
 ::: {.claim .warn}
 A useful n-gram model needs $n \geq 3$ — which is exactly where the decay stops. That is what "more data cannot fix it" means.
 :::
@@ -548,9 +580,9 @@ So "just a bigger n-gram" is wrong about the mechanism — and still a surprisin
 
 *You shall know a word by the company it keeps.* Word2vec (SGNS) turns that into an objective:
 
-$$\mathcal{L} = -\log\sigma(\mathbf{u}_o^\top \mathbf{v}_c) \;-\; \sum_{k=1}^{K}\log\sigma(-\mathbf{u}_{w_k}^\top \mathbf{v}_c), \qquad w_k \sim P_n$$
+$$\mathcal{L} = -\log\sigma(\mathbf{u}_o^\top \mathbf{v}_c) \;-\; \sum_{k=1}^{K}\log\sigma(-\mathbf{u}_{w_k}^\top \mathbf{v}_c), \qquad w_k \sim P_n \propto \text{unigram}^{3/4}$$
 
-Push a word and its true context together; push it away from $K$ sampled non-contexts, drawn from the unigram distribution raised to the 3/4.
+![](assets/w01/sgns.svg){width="100%"}
 
 ::: {.claim}
 Read the second term carefully. **The set of negatives defines what "similar" is going to mean.** Change the negative sampling and you change the geometry.
@@ -570,6 +602,26 @@ So word2vec does not learn $P(\text{context} \mid \text{word})$. It learns **poi
 
 ::: {.footer}
 Misconception 5 of 10 · Dyer (2014) is the clearest four-page account of the difference
+:::
+
+## Why the optimum is $\mathrm{PMI} - \log K$, in three lines
+
+Fix one pair $(w, c)$ and write $x = \mathbf{u}_w^\top \mathbf{v}_c$. Over the corpus $\mathcal{D}$ it is a positive $\#(w,c)$ times, and — if negatives are drawn from the unigram distribution — a negative about $K\,\#(w)\,\#(c)/|\mathcal{D}|$ times:
+
+$$\ell(x) = \#(w,c)\,\log\sigma(x) \;+\; K\,\frac{\#(w)\,\#(c)}{|\mathcal{D}|}\,\log\sigma(-x)$$
+
+Set $\partial\ell/\partial x = 0$, using $\tfrac{d}{dx}\log\sigma(x) = \sigma(-x)$ and $\sigma(x)/\sigma(-x) = e^{x}$:
+
+$$\#(w,c)\,\sigma(-x) = K\,\frac{\#(w)\,\#(c)}{|\mathcal{D}|}\,\sigma(x)
+\quad\Longrightarrow\quad
+x = \log\frac{\#(w,c)\,|\mathcal{D}|}{\#(w)\,\#(c)} - \log K = \mathrm{PMI}(w,c) - \log K$$
+
+::: {.claim}
+Valid only if the dimension is large enough that every $x_{wc}$ can be set independently — that is Levy & Goldberg's "enough dimensions". Low-rank vectors approximate this matrix; they do not change what it measures.
+:::
+
+::: {.footer}
+Levy & Goldberg (2014) · with $P_n \propto$ unigram$^{3/4}$, $P(c)$ in the ratio becomes $P_n(c)$
 :::
 
 ## Live: the nearest neighbour of `love` in this corpus
@@ -663,6 +715,14 @@ So the product's norm is at most $(\gamma\,\sigma_{\max}(\mathbf{W}))^{T-1}$, wh
 Either way, the effective memory is far shorter than the sequence.
 :::
 
+## One factor per step — and its fiftieth power
+
+![](assets/w01/gradprod.svg){width="100%"}
+
+::: {.claim .warn}
+Nothing in $\mathbf{W}$ has to be extreme. A per-step factor of $0.9$ or $1.1$ is enough to lose the signal, or blow it up, inside one sentence.
+:::
+
 ## Two LSTMs, and a line to W4
 
 - **1997** (Hochreiter & Schmidhuber): $\mathbf{c}_t = \mathbf{c}_{t-1} + \mathbf{i}_t \odot \mathbf{g}_t$. Along the cell, the Jacobian is $\mathbf{I}$ — a genuinely **additive path**
@@ -674,6 +734,18 @@ LSTM: a gated additive path across **time**. Highway networks: gated, across **d
 
 ::: {.footer}
 This lineage is our framing, not those papers' claim · gate equations: ZZM ch 2.5
+:::
+
+## The same wire, drawn three times
+
+![](assets/w01/wire.svg){width="100%"}
+
+::: {.claim}
+Read the three Jacobians left to right: $\mathbf{I}$, then $\mathrm{diag}(\mathbf{f}_t)$, then $\mathbf{I} + \partial F/\partial \mathbf{x}_l$. A path the gradient can walk along unchanged — across time in 1997, across depth from 2015.
+:::
+
+::: {.footer}
+Jacobians ignore the gates' own dependencies · our framing, not the papers' claim
 :::
 
 ## Then seq2seq squeezed everything through one vector
@@ -689,6 +761,14 @@ Bahdanau, Cho & Bengio (2015) aimed at that one symptom:
 $$\mathbf{c}_t = \sum_i \alpha_{ti} \mathbf{h}_i, \qquad \alpha_{ti} = \mathrm{softmax}_i\big(a(\mathbf{s}_{t-1}, \mathbf{h}_i)\big)$$
 
 Instead of one vector, the decoder builds **a different weighted read of the source at every output step**.
+
+## One vector, or a fresh weighted read at every step
+
+![](assets/w01/seq2seq.svg){width="100%"}
+
+::: {.claim}
+Left: the whole source must fit through $\mathbf{v}$, whatever its length. Right: the decoder state scores every $\mathbf{h}_i$, and $\mathbf{c}_t$ is rebuilt at every $t$. **Note who asks and who answers** — that is the next slide.
+:::
 
 ## That attention is cross-attention, not self-attention
 
