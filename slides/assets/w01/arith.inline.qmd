@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 420" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-arith" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="400" y="30" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">the current interval, zoomed to full width</text><text x="1096" y="30" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">bits so far</text><text x="376" y="30" font-size="19" fill="#6b7280" text-anchor="end" font-weight="400">next word, given the last</text><rect x="400" y="52" width="660" height="28" rx="4" fill="#e5e7eb"/><rect x="546.652" y="52" width="73.326" height="28" rx="3" fill="#0b5cad"/><svg x="217.53" y="47" width="158.47" height="23" viewBox="0 0 158.47 23"><defs>
+<!-- 由 scripts/make_figs_w01.py 產生，勿手改；投影片用 {{< include assets/w01/arith.inline.qmd >}} 貼入 -->
+```{=html}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 420" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-arith" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="400" y="30" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">the current interval, zoomed to full width</text><text x="1096" y="30" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">bits so far</text><text x="376" y="30" font-size="19" fill="#6b7280" text-anchor="end" font-weight="400">next word, given the last</text><rect x="400" y="52" width="660" height="28" rx="4" fill="#e5e7eb"/><rect x="546.652" y="52" width="73.326" height="28" rx="3" fill="#0b5cad"/><svg x="217.53" y="47" width="158.47" height="23" viewBox="0 0 158.47 23"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t36-figure_1">
@@ -5355,3 +5357,4 @@ z
   </g>
  </g>
 </svg><text x="60" y="406" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">8-bit ASCII for the same 5 words: 17 bytes = 136 bits · decoding needs the same model at the other end</text></g></svg>
+```

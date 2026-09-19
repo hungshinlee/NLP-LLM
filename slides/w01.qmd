@@ -19,6 +19,9 @@ format:
     # 章節標題會產生垂直堆疊；linear 讓左右鍵逐張前進，講課時才不會跳章
     navigation-mode: linear
     incremental: false
+    # inline SVG 的 fragment（2026-09-19 起，先用在算術編碼那張）：?print-pdf 時整張印在一頁，
+    # 不要每個 fragment 各印一頁——講義要看的是完整的圖
+    pdf-separate-fragments: false
     chalkboard:
       buttons: true
     html-math-method:
@@ -336,7 +339,7 @@ This is the metaphor that runs the whole term. **Pretraining is compression. A s
 
 ## Arithmetic coding: the interval is the probability
 
-![](assets/w01/arith.svg){width="100%"}
+{{< include assets/w01/arith.inline.qmd >}}
 
 ::: {.claim}
 Each word narrows the interval by its probability. Naming a point in the last interval takes $-\log_2 \prod_t q(w_t \mid w_{<t})$ bits — the model's log-loss, summed.
