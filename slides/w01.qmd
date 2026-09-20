@@ -848,12 +848,12 @@ So W6's hybrids keep some attention: the recurrent layers collect the inference 
 Today you filled in the first entry of that ledger, and met most of the course's recurring failures in a model you could write in twenty lines.
 :::
 
-## Next week: the unit you cannot change after training
+## Next week: the unit that costs most to change after training
 
-**Tokenization.** The one design decision in the whole system that cannot be fixed post hoc.
+**Tokenization.** The design decision in the whole system that is **most expensive to fix post hoc** — not impossible, but every route back means paying for training again.
 
 - Today ended with words that had no vector. Next week: what a model sees instead
-- We build BPE by hand, and put the same Traditional Chinese paragraph through five tokenizers to measure fertility — with the actual token counts that make perplexity incomparable
+- We build BPE by hand, and put the same Traditional Chinese paragraph through nine tokenizers to measure fertility — with the actual token counts that make perplexity incomparable
 - A 2026 result: the tokenizer shifts the **compute-optimal** parameter/data configuration, which moves it out of preprocessing and into architecture
 
 ::: {.ask}

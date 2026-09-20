@@ -1,0 +1,1373 @@
+{
+ "unicode": {
+  "chars": [
+   {
+    "char": "a",
+    "codepoint": "U+0061",
+    "name": "LATIN SMALL LETTER A",
+    "utf8": "61",
+    "bytes": 1,
+    "plane": "BMP"
+   },
+   {
+    "char": "é",
+    "codepoint": "U+00E9",
+    "name": "LATIN SMALL LETTER E WITH ACUTE",
+    "utf8": "C3 A9",
+    "bytes": 2,
+    "plane": "BMP"
+   },
+   {
+    "char": "我",
+    "codepoint": "U+6211",
+    "name": "CJK UNIFIED IDEOGRAPH-6211",
+    "utf8": "E6 88 91",
+    "bytes": 3,
+    "plane": "BMP"
+   },
+   {
+    "char": "𠊎",
+    "codepoint": "U+2028E",
+    "name": "CJK UNIFIED IDEOGRAPH-2028E",
+    "utf8": "F0 A0 8A 8E",
+    "bytes": 4,
+    "plane": "SIP (plane 2)"
+   },
+   {
+    "char": "𪜶",
+    "codepoint": "U+2A736",
+    "name": "CJK UNIFIED IDEOGRAPH-2A736",
+    "utf8": "F0 AA 9C B6",
+    "bytes": 4,
+    "plane": "SIP (plane 2)"
+   },
+   {
+    "char": "🙂",
+    "codepoint": "U+1F642",
+    "name": "SLIGHTLY SMILING FACE",
+    "utf8": "F0 9F 99 82",
+    "bytes": 4,
+    "plane": "other"
+   }
+  ],
+  "scripts": [
+   {
+    "label": "台語漢字",
+    "text": "𪜶是台灣人",
+    "chars": 5,
+    "bytes": 16,
+    "max_bytes_per_char": 4
+   },
+   {
+    "label": "台羅 NFC",
+    "text": "In sī Tâi-uân-lâng",
+    "chars": 18,
+    "bytes": 22,
+    "max_bytes_per_char": 2
+   },
+   {
+    "label": "台羅 NFD",
+    "text": "In sī Tâi-uân-lâng",
+    "chars": 22,
+    "bytes": 26,
+    "max_bytes_per_char": 2
+   },
+   {
+    "label": "客語漢字",
+    "text": "𠊎係客家人",
+    "chars": 5,
+    "bytes": 16,
+    "max_bytes_per_char": 4
+   },
+   {
+    "label": "客語白話字 NFC",
+    "text": "Ngài he Hak-kâ-ngìn",
+    "chars": 19,
+    "bytes": 22,
+    "max_bytes_per_char": 2
+   },
+   {
+    "label": "客語白話字 NFD",
+    "text": "Ngài he Hak-kâ-ngìn",
+    "chars": 22,
+    "bytes": 25,
+    "max_bytes_per_char": 2
+   }
+  ],
+  "w01_texts": {
+   "zh_city": {
+    "chars": 209,
+    "bytes": 627,
+    "four_byte_chars": []
+   },
+   "taigi": {
+    "chars": 61,
+    "bytes": 184,
+    "four_byte_chars": [
+     "𪜶"
+    ]
+   }
+  },
+  "nfkc": [
+   {
+    "before": "ＡＢＣ１２３",
+    "after": "ABC123",
+    "bytes_before": 18,
+    "bytes_after": 6,
+    "changed": true
+   },
+   {
+    "before": "①②③",
+    "after": "123",
+    "bytes_before": 9,
+    "bytes_after": 3,
+    "changed": true
+   },
+   {
+    "before": "㎏",
+    "after": "kg",
+    "bytes_before": 3,
+    "bytes_after": 2,
+    "changed": true
+   },
+   {
+    "before": "ﬁ",
+    "after": "fi",
+    "bytes_before": 3,
+    "bytes_after": 2,
+    "changed": true
+   },
+   {
+    "before": "café",
+    "after": "café",
+    "bytes_before": 5,
+    "bytes_after": 5,
+    "changed": false
+   }
+  ]
+ },
+ "fertility": {
+  "text": {
+   "id": "zh_city",
+   "chars": 209,
+   "bytes": 627
+  },
+  "rows": [
+   {
+    "key": "qwen38",
+    "label": "Qwen3.8 27B",
+    "repo": "mlx-community/Qwen3.8-27B-4bit",
+    "tokens": 141,
+    "tokens_per_char": 0.675,
+    "bytes_per_token": 4.45,
+    "lossless": "yes",
+    "source": "demos/w01_d2_bpb/runs/rehearsal/zh_city-qwen38-gemma4.json",
+    "time": "2026-09-20T01:48:44",
+    "relative_cost": 1.0
+   },
+   {
+    "key": "gemma4",
+    "label": "Gemma 4 26B-A4B",
+    "repo": "mlx-community/gemma-4-26b-a4b-it-4bit",
+    "tokens": 164,
+    "tokens_per_char": 0.785,
+    "bytes_per_token": 3.82,
+    "lossless": "yes",
+    "source": "demos/w01_d2_bpb/runs/rehearsal/zh_city-qwen38-gemma4.json",
+    "time": "2026-09-20T01:48:44",
+    "relative_cost": 1.16
+   },
+   {
+    "key": "mistral7b",
+    "label": "Mistral 7B v0.3",
+    "repo": "mlx-community/Mistral-7B-Instruct-v0.3-4bit",
+    "tokens": 272,
+    "tokens_per_char": 1.301,
+    "bytes_per_token": 2.31,
+    "lossless": "yes",
+    "source": "demos/w01_d2_bpb/runs/rehearsal/zh_city-qwen38-mistral7b.json",
+    "time": "2026-09-20T02:11:27",
+    "relative_cost": 1.93
+   },
+   {
+    "key": "byt5",
+    "label": "ByT5 (bytes)",
+    "repo": "—",
+    "tokens": 627,
+    "tokens_per_char": 3.0,
+    "bytes_per_token": 1.0,
+    "lossless": "yes",
+    "source": "computed: len(text.encode('utf-8'))",
+    "time": "",
+    "relative_cost": 4.45
+   }
+  ]
+ },
+ "bpe": {
+  "corpus": {
+   "new": 3,
+   "newest": 5,
+   "nest": 2,
+   "net": 3,
+   "widest": 2
+  },
+  "end_marker": "_",
+  "n_chars_initial": 8,
+  "merges": [
+   [
+    "n",
+    "e"
+   ],
+   [
+    "t",
+    "_"
+   ],
+   [
+    "s",
+    "t_"
+   ],
+   [
+    "ne",
+    "w"
+   ],
+   [
+    "e",
+    "st_"
+   ],
+   [
+    "new",
+    "est_"
+   ],
+   [
+    "ne",
+    "t_"
+   ],
+   [
+    "new",
+    "_"
+   ]
+  ],
+  "steps": [
+   {
+    "k": 1,
+    "pair": [
+     "n",
+     "e"
+    ],
+    "count": 13,
+    "tie": false,
+    "top5": [
+     [
+      [
+       "n",
+       "e"
+      ],
+      13
+     ],
+     [
+      [
+       "t",
+       "_"
+      ],
+      12
+     ],
+     [
+      [
+       "e",
+       "s"
+      ],
+      9
+     ],
+     [
+      [
+       "s",
+       "t"
+      ],
+      9
+     ],
+     [
+      [
+       "e",
+       "w"
+      ],
+      8
+     ]
+    ]
+   },
+   {
+    "k": 2,
+    "pair": [
+     "t",
+     "_"
+    ],
+    "count": 12,
+    "tie": false,
+    "top5": [
+     [
+      [
+       "t",
+       "_"
+      ],
+      12
+     ],
+     [
+      [
+       "s",
+       "t"
+      ],
+      9
+     ],
+     [
+      [
+       "ne",
+       "w"
+      ],
+      8
+     ],
+     [
+      [
+       "e",
+       "s"
+      ],
+      7
+     ],
+     [
+      [
+       "w",
+       "e"
+      ],
+      5
+     ]
+    ]
+   },
+   {
+    "k": 3,
+    "pair": [
+     "s",
+     "t_"
+    ],
+    "count": 9,
+    "tie": false,
+    "top5": [
+     [
+      [
+       "s",
+       "t_"
+      ],
+      9
+     ],
+     [
+      [
+       "ne",
+       "w"
+      ],
+      8
+     ],
+     [
+      [
+       "e",
+       "s"
+      ],
+      7
+     ],
+     [
+      [
+       "w",
+       "e"
+      ],
+      5
+     ],
+     [
+      [
+       "ne",
+       "t_"
+      ],
+      3
+     ]
+    ]
+   },
+   {
+    "k": 4,
+    "pair": [
+     "ne",
+     "w"
+    ],
+    "count": 8,
+    "tie": false,
+    "top5": [
+     [
+      [
+       "ne",
+       "w"
+      ],
+      8
+     ],
+     [
+      [
+       "e",
+       "st_"
+      ],
+      7
+     ],
+     [
+      [
+       "w",
+       "e"
+      ],
+      5
+     ],
+     [
+      [
+       "ne",
+       "t_"
+      ],
+      3
+     ],
+     [
+      [
+       "w",
+       "_"
+      ],
+      3
+     ]
+    ]
+   },
+   {
+    "k": 5,
+    "pair": [
+     "e",
+     "st_"
+    ],
+    "count": 7,
+    "tie": false,
+    "top5": [
+     [
+      [
+       "e",
+       "st_"
+      ],
+      7
+     ],
+     [
+      [
+       "new",
+       "e"
+      ],
+      5
+     ],
+     [
+      [
+       "ne",
+       "t_"
+      ],
+      3
+     ],
+     [
+      [
+       "new",
+       "_"
+      ],
+      3
+     ],
+     [
+      [
+       "d",
+       "e"
+      ],
+      2
+     ]
+    ]
+   },
+   {
+    "k": 6,
+    "pair": [
+     "new",
+     "est_"
+    ],
+    "count": 5,
+    "tie": false,
+    "top5": [
+     [
+      [
+       "new",
+       "est_"
+      ],
+      5
+     ],
+     [
+      [
+       "ne",
+       "t_"
+      ],
+      3
+     ],
+     [
+      [
+       "new",
+       "_"
+      ],
+      3
+     ],
+     [
+      [
+       "d",
+       "est_"
+      ],
+      2
+     ],
+     [
+      [
+       "i",
+       "d"
+      ],
+      2
+     ]
+    ]
+   },
+   {
+    "k": 7,
+    "pair": [
+     "ne",
+     "t_"
+    ],
+    "count": 3,
+    "tie": true,
+    "top5": [
+     [
+      [
+       "ne",
+       "t_"
+      ],
+      3
+     ],
+     [
+      [
+       "new",
+       "_"
+      ],
+      3
+     ],
+     [
+      [
+       "d",
+       "est_"
+      ],
+      2
+     ],
+     [
+      [
+       "i",
+       "d"
+      ],
+      2
+     ],
+     [
+      [
+       "ne",
+       "st_"
+      ],
+      2
+     ]
+    ]
+   },
+   {
+    "k": 8,
+    "pair": [
+     "new",
+     "_"
+    ],
+    "count": 3,
+    "tie": false,
+    "top5": [
+     [
+      [
+       "new",
+       "_"
+      ],
+      3
+     ],
+     [
+      [
+       "d",
+       "est_"
+      ],
+      2
+     ],
+     [
+      [
+       "i",
+       "d"
+      ],
+      2
+     ],
+     [
+      [
+       "ne",
+       "st_"
+      ],
+      2
+     ],
+     [
+      [
+       "w",
+       "i"
+      ],
+      2
+     ]
+    ]
+   }
+  ],
+  "initial_chars": [
+   "_",
+   "d",
+   "e",
+   "i",
+   "n",
+   "s",
+   "t",
+   "w"
+  ],
+  "vocab_after": [
+   "_",
+   "d",
+   "e",
+   "i",
+   "n",
+   "s",
+   "t",
+   "w",
+   "ne",
+   "t_",
+   "st_",
+   "new",
+   "est_",
+   "newest_",
+   "net_",
+   "new_"
+  ],
+  "encode": {
+   "nest": {
+    "tokens": [
+     "ne",
+     "st_"
+    ],
+    "trace": [
+     "n e s t _",
+     "ne s t _",
+     "ne s t_",
+     "ne st_"
+    ],
+    "in_corpus": true,
+    "oov_chars": []
+   },
+   "west": {
+    "tokens": [
+     "w",
+     "est_"
+    ],
+    "trace": [
+     "w e s t _",
+     "w e s t_",
+     "w e st_",
+     "w est_"
+    ],
+    "in_corpus": false,
+    "oov_chars": []
+   },
+   "newer": {
+    "tokens": [
+     "new",
+     "e",
+     "r",
+     "_"
+    ],
+    "trace": [
+     "n e w e r _",
+     "ne w e r _",
+     "new e r _"
+    ],
+    "in_corpus": false,
+    "oov_chars": [
+     "r"
+    ]
+   },
+   "widest": {
+    "tokens": [
+     "w",
+     "i",
+     "d",
+     "est_"
+    ],
+    "trace": [
+     "w i d e s t _",
+     "w i d e s t_",
+     "w i d e st_",
+     "w i d est_"
+    ],
+    "in_corpus": true,
+    "oov_chars": []
+   }
+  },
+  "wordpiece_first": {
+   "top5": [
+    {
+     "pair": [
+      "i",
+      "d"
+     ],
+     "score": 0.5,
+     "count": 2,
+     "count_a": 2,
+     "count_b": 2,
+     "rank": 1
+    },
+    {
+     "pair": [
+      "w",
+      "i"
+     ],
+     "score": 0.1,
+     "count": 2,
+     "count_a": 10,
+     "count_b": 2,
+     "rank": 2
+    },
+    {
+     "pair": [
+      "s",
+      "t"
+     ],
+     "score": 0.0833,
+     "count": 9,
+     "count_a": 9,
+     "count_b": 12,
+     "rank": 3
+    },
+    {
+     "pair": [
+      "t",
+      "_"
+     ],
+     "score": 0.0667,
+     "count": 12,
+     "count_a": 12,
+     "count_b": 15,
+     "rank": 4
+    },
+    {
+     "pair": [
+      "d",
+      "e"
+     ],
+     "score": 0.05,
+     "count": 2,
+     "count_a": 2,
+     "count_b": 20,
+     "rank": 5
+    }
+   ],
+   "bpe_choice": {
+    "pair": [
+     "n",
+     "e"
+    ],
+    "score": 0.05,
+    "count": 13,
+    "count_a": 13,
+    "count_b": 20,
+    "rank": 7
+   }
+  },
+  "byte_level_ngai": {
+   "char": "𠊎",
+   "bytes": [
+    "0xF0",
+    "0xA0",
+    "0x8A",
+    "0x8E"
+   ],
+   "tokens_if_unmerged": 4
+  }
+ },
+ "segmentations": {
+  "toy": {
+   "nest": {
+    "count": 7,
+    "canonical": [
+     "ne",
+     "st_"
+    ]
+   },
+   "west": {
+    "count": 4,
+    "canonical": [
+     "w",
+     "est_"
+    ]
+   },
+   "newest": {
+    "count": 13,
+    "canonical": null
+   },
+   "widest": {
+    "count": 4,
+    "canonical": [
+     "w",
+     "i",
+     "d",
+     "est_"
+    ]
+   }
+  },
+  "growth_max_piece_3": [
+   {
+    "n": 1,
+    "count": 1
+   },
+   {
+    "n": 2,
+    "count": 2
+   },
+   {
+    "n": 3,
+    "count": 4
+   },
+   {
+    "n": 4,
+    "count": 7
+   },
+   {
+    "n": 5,
+    "count": 13
+   },
+   {
+    "n": 6,
+    "count": 24
+   },
+   {
+    "n": 7,
+    "count": 44
+   },
+   {
+    "n": 8,
+    "count": 81
+   },
+   {
+    "n": 9,
+    "count": 149
+   },
+   {
+    "n": 10,
+    "count": 274
+   },
+   {
+    "n": 11,
+    "count": 504
+   },
+   {
+    "n": 12,
+    "count": 927
+   },
+   {
+    "n": 13,
+    "count": 1705
+   },
+   {
+    "n": 14,
+    "count": 3136
+   },
+   {
+    "n": 15,
+    "count": 5768
+   },
+   {
+    "n": 16,
+    "count": 10609
+   },
+   {
+    "n": 17,
+    "count": 19513
+   },
+   {
+    "n": 18,
+    "count": 35890
+   },
+   {
+    "n": 19,
+    "count": 66012
+   },
+   {
+    "n": 20,
+    "count": 121415
+   },
+   {
+    "n": 21,
+    "count": 223317
+   },
+   {
+    "n": 22,
+    "count": 410744
+   },
+   {
+    "n": 23,
+    "count": 755476
+   },
+   {
+    "n": 24,
+    "count": 1389537
+   },
+   {
+    "n": 25,
+    "count": 2555757
+   },
+   {
+    "n": 26,
+    "count": 4700770
+   },
+   {
+    "n": 27,
+    "count": 8646064
+   },
+   {
+    "n": 28,
+    "count": 15902591
+   },
+   {
+    "n": 29,
+    "count": 29249425
+   },
+   {
+    "n": 30,
+    "count": 53798080
+   },
+   {
+    "n": 31,
+    "count": 98950096
+   },
+   {
+    "n": 32,
+    "count": 181997601
+   },
+   {
+    "n": 33,
+    "count": 334745777
+   },
+   {
+    "n": 34,
+    "count": 615693474
+   },
+   {
+    "n": 35,
+    "count": 1132436852
+   },
+   {
+    "n": 36,
+    "count": 2082876103
+   },
+   {
+    "n": 37,
+    "count": 3831006429
+   },
+   {
+    "n": 38,
+    "count": 7046319384
+   },
+   {
+    "n": 39,
+    "count": 12960201916
+   },
+   {
+    "n": 40,
+    "count": 23837527729
+   }
+  ]
+ },
+ "digits": {
+  "example": "1234567",
+  "l2r_3": [
+   "123",
+   "456",
+   "7"
+  ],
+  "with_commas": "1,234,567",
+  "r2l_3": [
+   "1",
+   "234",
+   "567"
+  ],
+  "regex": {
+   "gpt2": "\\p{N}+",
+   "cl100k_o200k": "\\p{N}{1,3}",
+   "qwen": "\\p{N}"
+  },
+  "regex_source": "tiktoken openai_public.py 與 transformers tokenization_qwen2.py，2026-09-17 查原始碼（大綱 W2）；彩排時用 inspect 再確認",
+  "problems": [
+   {
+    "digits": 4,
+    "a": 5591,
+    "b": 3092,
+    "sum": 8683,
+    "A_raw": "5591+3092",
+    "B_commas": "5,591+3,092",
+    "C_spaced": "5 5 9 1 + 3 0 9 2",
+    "pieces_l2r": [
+     [
+      "559",
+      "1"
+     ],
+     [
+      "309",
+      "2"
+     ],
+     [
+      "868",
+      "3"
+     ]
+    ]
+   },
+   {
+    "digits": 4,
+    "a": 8417,
+    "b": 7717,
+    "sum": 16134,
+    "A_raw": "8417+7717",
+    "B_commas": "8,417+7,717",
+    "C_spaced": "8 4 1 7 + 7 7 1 7",
+    "pieces_l2r": [
+     [
+      "841",
+      "7"
+     ],
+     [
+      "771",
+      "7"
+     ],
+     [
+      "161",
+      "34"
+     ]
+    ]
+   },
+   {
+    "digits": 4,
+    "a": 6679,
+    "b": 4952,
+    "sum": 11631,
+    "A_raw": "6679+4952",
+    "B_commas": "6,679+4,952",
+    "C_spaced": "6 6 7 9 + 4 9 5 2",
+    "pieces_l2r": [
+     [
+      "667",
+      "9"
+     ],
+     [
+      "495",
+      "2"
+     ],
+     [
+      "116",
+      "31"
+     ]
+    ]
+   },
+   {
+    "digits": 7,
+    "a": 8351109,
+    "b": 6819494,
+    "sum": 15170603,
+    "A_raw": "8351109+6819494",
+    "B_commas": "8,351,109+6,819,494",
+    "C_spaced": "8 3 5 1 1 0 9 + 6 8 1 9 4 9 4",
+    "pieces_l2r": [
+     [
+      "835",
+      "110",
+      "9"
+     ],
+     [
+      "681",
+      "949",
+      "4"
+     ],
+     [
+      "151",
+      "706",
+      "03"
+     ]
+    ]
+   },
+   {
+    "digits": 7,
+    "a": 1354805,
+    "b": 3121991,
+    "sum": 4476796,
+    "A_raw": "1354805+3121991",
+    "B_commas": "1,354,805+3,121,991",
+    "C_spaced": "1 3 5 4 8 0 5 + 3 1 2 1 9 9 1",
+    "pieces_l2r": [
+     [
+      "135",
+      "480",
+      "5"
+     ],
+     [
+      "312",
+      "199",
+      "1"
+     ],
+     [
+      "447",
+      "679",
+      "6"
+     ]
+    ]
+   },
+   {
+    "digits": 7,
+    "a": 5906090,
+    "b": 9572443,
+    "sum": 15478533,
+    "A_raw": "5906090+9572443",
+    "B_commas": "5,906,090+9,572,443",
+    "C_spaced": "5 9 0 6 0 9 0 + 9 5 7 2 4 4 3",
+    "pieces_l2r": [
+     [
+      "590",
+      "609",
+      "0"
+     ],
+     [
+      "957",
+      "244",
+      "3"
+     ],
+     [
+      "154",
+      "785",
+      "33"
+     ]
+    ]
+   },
+   {
+    "digits": 10,
+    "a": 9216127623,
+    "b": 2690269346,
+    "sum": 11906396969,
+    "A_raw": "9216127623+2690269346",
+    "B_commas": "9,216,127,623+2,690,269,346",
+    "C_spaced": "9 2 1 6 1 2 7 6 2 3 + 2 6 9 0 2 6 9 3 4 6",
+    "pieces_l2r": [
+     [
+      "921",
+      "612",
+      "762",
+      "3"
+     ],
+     [
+      "269",
+      "026",
+      "934",
+      "6"
+     ],
+     [
+      "119",
+      "063",
+      "969",
+      "69"
+     ]
+    ]
+   },
+   {
+    "digits": 10,
+    "a": 1294793760,
+    "b": 6373833755,
+    "sum": 7668627515,
+    "A_raw": "1294793760+6373833755",
+    "B_commas": "1,294,793,760+6,373,833,755",
+    "C_spaced": "1 2 9 4 7 9 3 7 6 0 + 6 3 7 3 8 3 3 7 5 5",
+    "pieces_l2r": [
+     [
+      "129",
+      "479",
+      "376",
+      "0"
+     ],
+     [
+      "637",
+      "383",
+      "375",
+      "5"
+     ],
+     [
+      "766",
+      "862",
+      "751",
+      "5"
+     ]
+    ]
+   },
+   {
+    "digits": 10,
+    "a": 4608529817,
+    "b": 6920026884,
+    "sum": 11528556701,
+    "A_raw": "4608529817+6920026884",
+    "B_commas": "4,608,529,817+6,920,026,884",
+    "C_spaced": "4 6 0 8 5 2 9 8 1 7 + 6 9 2 0 0 2 6 8 8 4",
+    "pieces_l2r": [
+     [
+      "460",
+      "852",
+      "981",
+      "7"
+     ],
+     [
+      "692",
+      "002",
+      "688",
+      "4"
+     ],
+     [
+      "115",
+      "285",
+      "567",
+      "01"
+     ]
+    ]
+   }
+  ]
+ },
+ "ledger": {
+  "shapes_source": "Brown et al. 2020 Table 2.1 (n_layer, d_model); N_nv = 12·n_layer·d² per Kaplan et al. 2020 — verify before class",
+  "vocab_sizes": [
+   32000,
+   128000,
+   256000
+  ],
+  "share": [
+   {
+    "name": "125M",
+    "n_layer": 12,
+    "d_model": 768,
+    "N_nv": 84934656,
+    "share_V32k": 0.3666,
+    "emb_V32k": 49152000,
+    "share_V128k": 0.6983,
+    "emb_V128k": 196608000,
+    "share_V256k": 0.8224,
+    "emb_V256k": 393216000
+   },
+   {
+    "name": "350M",
+    "n_layer": 24,
+    "d_model": 1024,
+    "N_nv": 301989888,
+    "share_V32k": 0.1783,
+    "emb_V32k": 65536000,
+    "share_V128k": 0.4647,
+    "emb_V128k": 262144000,
+    "share_V256k": 0.6345,
+    "emb_V256k": 524288000
+   },
+   {
+    "name": "760M",
+    "n_layer": 24,
+    "d_model": 1536,
+    "N_nv": 679477248,
+    "share_V32k": 0.1264,
+    "emb_V32k": 98304000,
+    "share_V128k": 0.3666,
+    "emb_V128k": 393216000,
+    "share_V256k": 0.5365,
+    "emb_V256k": 786432000
+   },
+   {
+    "name": "1.3B",
+    "n_layer": 24,
+    "d_model": 2048,
+    "N_nv": 1207959552,
+    "share_V32k": 0.0979,
+    "emb_V32k": 131072000,
+    "share_V128k": 0.3027,
+    "emb_V128k": 524288000,
+    "share_V256k": 0.4647,
+    "emb_V256k": 1048576000
+   },
+   {
+    "name": "2.7B",
+    "n_layer": 32,
+    "d_model": 2560,
+    "N_nv": 2516582400,
+    "share_V32k": 0.0611,
+    "emb_V32k": 163840000,
+    "share_V128k": 0.2066,
+    "emb_V128k": 655360000,
+    "share_V256k": 0.3425,
+    "emb_V256k": 1310720000
+   },
+   {
+    "name": "6.7B",
+    "n_layer": 32,
+    "d_model": 4096,
+    "N_nv": 6442450944,
+    "share_V32k": 0.0391,
+    "emb_V32k": 262144000,
+    "share_V128k": 0.14,
+    "emb_V128k": 1048576000,
+    "share_V256k": 0.2456,
+    "emb_V256k": 2097152000
+   },
+   {
+    "name": "13B",
+    "n_layer": 40,
+    "d_model": 5140,
+    "N_nv": 12681408000,
+    "share_V32k": 0.0253,
+    "emb_V32k": 328960000,
+    "share_V128k": 0.094,
+    "emb_V128k": 1315840000,
+    "share_V256k": 0.1719,
+    "emb_V256k": 2631680000
+   },
+   {
+    "name": "175B",
+    "n_layer": 96,
+    "d_model": 12288,
+    "N_nv": 173946175488,
+    "share_V32k": 0.0045,
+    "emb_V32k": 786432000,
+    "share_V128k": 0.0178,
+    "emb_V128k": 3145728000,
+    "share_V256k": 0.0349,
+    "emb_V256k": 6291456000
+   }
+  ],
+  "N_example": 7000000000.0,
+  "D_example": 140000000000.0,
+  "per_byte": {
+   "qwen38": {
+    "bytes_per_token": 4.45,
+    "D_bytes_for_1.4e11_tokens": 623000000000.0,
+    "decode_flops_per_byte_7B": 3146067415.730337,
+    "context_bytes_at_32k": 145817.6,
+    "context_chars_at_32k_3B_per_char": 48606
+   },
+   "mistral7b": {
+    "bytes_per_token": 2.31,
+    "D_bytes_for_1.4e11_tokens": 323400000000.0,
+    "decode_flops_per_byte_7B": 6060606060.60606,
+    "context_bytes_at_32k": 75694.08,
+    "context_chars_at_32k_3B_per_char": 25231
+   },
+   "byt5": {
+    "bytes_per_token": 1.0,
+    "D_bytes_for_1.4e11_tokens": 140000000000.0,
+    "decode_flops_per_byte_7B": 14000000000.0,
+    "context_bytes_at_32k": 32768.0,
+    "context_chars_at_32k_3B_per_char": 10923
+   }
+  },
+  "qwen_over_mistral_bytes_per_token": 1.93
+ }
+}

@@ -6,40 +6,44 @@ toc-depth: 2
 
 <!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
-## 定位
-放在架構之前，因為 **tokenizer 是整個系統中訓練後修正代價最高的設計決策**：詞表一旦定下，embedding、unembedding 與所有已經花掉的訓練算力都綁在它上面。事後不是不能改（詞表擴充加 continued pre-training、tokenizer 移植），但每一條路都要重新付訓練成本，而且效果沒有保證。它的下游效應也比「預處理」這個稱呼暗示的大：vocabulary size 已經進入 scaling law，2026 年另有工作主張 tokenizer 的壓縮率會移動 compute-optimal 的參數／資料配置。對繁中授課的班級，這一週有額外的重量：token fertility 的落差直接轉換成成本與有效 context 長度的落差，而台語與客語有一部分常用字落在 Unicode 擴充區，代價更高。這也是全課第一個把演算法從零寫一次的元件（課堂上現場寫，附參考實作）。
+::: {.callout-note appearance="minimal"}
+[**▶ Slides for this week**](../slides/w02.qmd)
+:::
 
-## Learning objectives
-1. 能在小語料上**手算** BPE 的 merge 序列與編碼結果、讀懂一份參考實作，並說明 BPE、WordPiece（likelihood-based merge）、Unigram LM（自 top-down 剪枝）在**目標函數**上的差異。
-2. 能畫出 tokenizer 的四段管線（normalization → pre-tokenization → subword model → post-processing），並指出數字、空白與特殊 token 的行為各由哪一段決定。
-3. 能區分 **byte-level BPE** 與 **byte fallback** 這兩種消滅 OOV 的機制，並用 UTF-8 的 byte 數說明它們對 CJK（含擴充區漢字）造成的 fertility 代價。
-4. 能說明 vocabulary size 為何進入 scaling law、給出「較大的模型該配較大的 vocab」的直覺論證，並把 tokenizer 記進算力帳本：embedding 參數、$D$ 的單位、每個 byte 的推論成本。
-5. 能診斷至少四種由 tokenization 直接造成的下游失效（多位數算術、字元級任務、glitch token、跨語言成本不對等、prompt 邊界），並對每一種說明證據強度：哪些是機制性的，哪些只是相關。
-6. 能比較「語言被 tokenizer 虧待」時的三條路（詞表擴充、tokenizer 移植、不用 tokenizer）各自要付的代價。
+## Where This Fits
+This week comes before the architecture weeks because the tokenizer is **the design decision that is most expensive to correct after training**. Once the vocabulary is fixed, the embedding and unembedding matrices — and every FLOP already spent on pre-training — are tied to it. It is not impossible to change (vocabulary extension with continued pre-training, and tokenizer transfer, both exist), but every route back means paying for training again, with no guarantee on the result. Its downstream effects are also larger than the word "preprocessing" suggests: vocabulary size is now a variable in scaling laws, and a 2026 preprint argues that a tokenizer's compression rate shifts the compute-optimal parameter/data allocation. For a class taught in Traditional Chinese this week carries extra weight: differences in token fertility translate directly into cost and into effective context length, and some of the most frequent characters of Taiwanese and Hakka fall outside the Basic Multilingual Plane, where the price is higher still. This is also the first component in the course that we build from scratch — written live in class, with a reference implementation handed out afterwards.
 
-## 參考資料
-- **JM3** Ch 2 *Words and Tokens*（2026-08-19 release 的新章名，正是為此重寫的）
-- **RAS** ch 2（BPE 手刻）；**HOLLM** ch 2 *Tokens and Embeddings*（視覺化最強）
-- **ZZM** ch 7 *Word Segmentation and Tokenization*——含 BPE 實作與**中文分詞**（本課書單中唯一處理中文分詞的）。**注意程式碼是 PaddleNLP，只讀不跑**
-- Sennrich, Haddow & Birch, **Neural Machine Translation of Rare Words with Subword Units**, ACL 2016 — BPE 進入 NLP 的原始出處
-- Kudo, **Subword Regularization: Improving NMT Models with Multiple Subword Candidates**, ACL 2018 — Unigram LM 與取樣
-- Kudo & Richardson, **SentencePiece: A simple and language independent subword tokenizer**, EMNLP 2018 (demo)
-- Provilkov, Emelianenko & Voita, **BPE-Dropout: Simple and Effective Subword Regularization**, ACL 2020 — 在 BPE 上做同樣的取樣：編碼時隨機跳過一部分 merge
-- Rajaraman, Jiao & Ramchandran, **Toward a Theory of Tokenization in LLMs**, arXiv:2404.08335（NeurIPS 2024，會議版題名為 *An Analysis of Tokenization: Transformers under Markov data*）— 為什麼 tokenization 有效的一個理論論證：在 Markov 資料上，不經 tokenization 的 transformer 學不到高階相依性
-- Tao et al., **Scaling Laws with Vocabulary: Larger Models Deserve Larger Vocabularies**, NeurIPS 2024（arXiv:2407.13623）— **本週的推導主文獻**
-- Limisiewicz et al., **Compute Optimal Tokenization**, arXiv:2605.01188（2026-05）— 主張參數量應按以 bytes 計的資料量縮放；**2026 年的預印本，這個結論目前只有這一篇**
+## Learning Objectives
+1. **Compute by hand** the merge sequence of BPE on a small corpus and the encoding it produces, read a reference implementation, and state how BPE, WordPiece (likelihood-based merges) and Unigram LM (top-down pruning) differ in **what they optimize**.
+2. Draw the four-stage tokenizer pipeline (normalization → pre-tokenization → subword model → post-processing) and say which stage determines the behaviour of digits, whitespace and special tokens.
+3. Distinguish **byte-level BPE** from **byte fallback** as two mechanisms for eliminating out-of-vocabulary characters, and use UTF-8 byte counts to explain the fertility cost each imposes on CJK, including characters in the supplementary planes.
+4. Explain why vocabulary size enters the scaling law, give the intuitive argument that larger models deserve larger vocabularies, and enter the tokenizer into the compute ledger: embedding parameters, the unit of $D$, and inference cost per byte.
+5. Diagnose at least four downstream failures caused directly by tokenization (multi-digit arithmetic, character-level tasks, glitch tokens, unequal cost across languages, the prompt boundary) and, for each, state the strength of the evidence: which are mechanistic, which are only correlational.
+6. Compare the three routes available when a language is short-changed by a tokenizer — vocabulary extension, tokenizer transfer, dropping the tokenizer — and the price each one pays.
+
+## References
+- **JM3** ch 2 *Words and Tokens* (the new chapter title in the 2026-08-19 release, rewritten for exactly this material)
+- **RAS** ch 2 (BPE from scratch); **HOLLM** ch 2 *Tokens and Embeddings* (the best visualizations)
+- **ZZM** ch 7 *Word Segmentation and Tokenization* — includes a BPE implementation and **Chinese word segmentation**, the only book on our list that treats it. **Note that the code is PaddleNLP: read it, do not run it**
+- Sennrich, Haddow & Birch, **Neural Machine Translation of Rare Words with Subword Units**, ACL 2016 — where BPE entered NLP
+- Kudo, **Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates**, ACL 2018 — the Unigram LM and sampling over segmentations
+- Kudo & Richardson, **SentencePiece: A simple and language independent subword tokenizer and detokenizer for Neural Text Processing**, EMNLP 2018 (system demonstrations)
+- Provilkov, Emelianenko & Voita, **BPE-Dropout: Simple and Effective Subword Regularization**, ACL 2020 — the same sampling effect for BPE: randomly skip merges at encoding time
+- Rajaraman, Jiao & Ramchandran, **Toward a Theory of Tokenization in LLMs**, arXiv:2404.08335 (NeurIPS 2024; the conference version is titled *An Analysis of Tokenization: Transformers under Markov data*) — a theoretical argument for why tokenization works: on Markov data, a transformer over raw symbols fails to learn higher-order dependence
+- Tao et al., **Scaling Laws with Vocabulary: Larger Models Deserve Larger Vocabularies**, NeurIPS 2024 (arXiv:2407.13623) — **this week's main derivation paper**
+- Limisiewicz et al., **Compute Optimal Tokenization**, arXiv:2605.01188 (May 2026) — argues that parameter count should scale with data measured in bytes; **a 2026 preprint, and at present the only source for that claim**
 - Ali et al., **Tokenizer Choice For LLM Training: Negligible or Crucial?**, arXiv:2310.08754
-- Goldman et al., **Unpacking Tokenization: Evaluating Text Compression and its Correlation with Model Performance**, Findings of EMNLP 2024（arXiv:2403.06265）與 Schmidt et al., **Tokenization Is More Than Compression**, EMNLP 2024（arXiv:2402.18376）— **請成對讀**：前者發現壓縮率與下游表現相關，後者刻意把 token 數壓到最少卻沒有換到更好的模型
-- Singh & Strouse, **Tokenization counts: the impact of tokenization on arithmetic in frontier LLMs**, arXiv:2402.14903（2024）— 數字由右至左分組明顯優於由左至右
-- Kaushal & Mahowald, **What do tokens know about their characters and how do they know it?**, NAACL 2022 與 Edman, Schmid & Fraser, **CUTE: Measuring LLMs' Understanding of Their Tokens**, EMNLP 2024 — 字元級任務：模型知道多少拼字資訊、又為什麼用不好
-- Land & Bartolo, **Fishing for Magikarp: Automatically Detecting Under-trained Tokens in Large Language Models**, EMNLP 2024（arXiv:2405.05417）— glitch token 的自動偵測
-- Petrov et al., **Language Model Tokenizers Introduce Unfairness Between Languages**, NeurIPS 2023（arXiv:2305.15425）— 同樣的內容在不同語言下的 token 數差距很大，而且直接變成成本、延遲與可用 context 的差距
-- Liu et al., **SuperBPE: Space Travel for Language Models**, COLM 2025（arXiv:2503.13423）— 跨 whitespace 的 superword token；BPE 之後「更大的 token」這個方向
-- Xue et al., **ByT5: Towards a Token-Free Future with Pre-trained Byte-to-Byte Models**, TACL 10:291–306, 2022；Yu et al., **MEGABYTE: Predicting Million-byte Sequences with Multiscale Transformers**, arXiv:2305.07185（2023）；Pagnoni et al., **Byte Latent Transformer: Patches Scale Better Than Tokens**, arXiv:2412.09871；Hwang, Wang & Gu, **Dynamic Chunking for End-to-End Hierarchical Sequence Modeling**, arXiv:2507.07955（2025）— 「沒有 token」這個方向的四個節點，由純 byte 到學出來的動態切分（H-Net）
-- Cui, Yang & Yao, **Efficient and Effective Text Encoding for Chinese LLaMA and Alpaca**, arXiv:2304.08177（2023）— 在 LLaMA 的詞表上加兩萬個中文 token 再續訓
-- Hsu et al., **Breeze-7B Technical Report**, arXiv:2403.02712（2024）— 聯發科研究院的技術報告，不是同儕審查論文；在 Mistral 的詞表上擴充繁中 token，並報告壓縮率與速度的變化。**繁體中文 token efficiency 少數有數字的公開來源**
-- Minixhofer, Ponti & Vulić, **Zero-Shot Tokenizer Transfer**, arXiv:2405.07883（2024）— 不重訓就替模型換 tokenizer
-- prompt 邊界與 token healing：檢索 *token healing*、*prompt boundary problem tokenization*、*language models over characters from tokens*
-- glitch token 的最初發現是一篇部落格文章：檢索 *SolidGoldMagikarp*
+- Goldman et al., **Unpacking Tokenization: Evaluating Text Compression and its Correlation with Model Performance**, Findings of EMNLP 2024 (arXiv:2403.06265) and Schmidt et al., **Tokenization Is More Than Compression**, EMNLP 2024 (arXiv:2402.18376) — **read as a pair**: the first finds compression correlated with downstream performance, the second minimizes token count outright and does not get a better model
+- Singh & Strouse, **Tokenization counts: the impact of tokenization on arithmetic in frontier LLMs**, arXiv:2402.14903 (2024) — right-to-left digit grouping clearly beats left-to-right
+- Kaushal & Mahowald, **What do tokens know about their characters and how do they know it?**, NAACL 2022 and Edman, Schmid & Fraser, **CUTE: Measuring LLMs' Understanding of Their Tokens**, EMNLP 2024 — character-level tasks: how much spelling information the model has, and why it still uses it badly
+- Land & Bartolo, **Fishing for Magikarp: Automatically Detecting Under-trained Tokens in Large Language Models**, EMNLP 2024 (arXiv:2405.05417) — automatic detection of glitch tokens
+- Petrov et al., **Language Model Tokenizers Introduce Unfairness Between Languages**, NeurIPS 2023 (arXiv:2305.15425) — the same content costs very different numbers of tokens across languages, and that becomes cost, latency and usable context
+- Liu et al., **SuperBPE: Space Travel for Language Models**, COLM 2025 (arXiv:2503.13423) — superword tokens that cross whitespace; the "bigger tokens" direction after BPE
+- Xue et al., **ByT5: Towards a Token-Free Future with Pre-trained Byte-to-Byte Models**, TACL 10:291–306, 2022; Yu et al., **MEGABYTE: Predicting Million-byte Sequences with Multiscale Transformers**, arXiv:2305.07185 (2023); Pagnoni et al., **Byte Latent Transformer: Patches Scale Better Than Tokens**, arXiv:2412.09871; Hwang, Wang & Gu, **Dynamic Chunking for End-to-End Hierarchical Sequence Modeling**, arXiv:2507.07955 (2025) — four points on the "no tokens" line, from raw bytes to learned dynamic chunking (H-Net)
+- Cui, Yang & Yao, **Efficient and Effective Text Encoding for Chinese LLaMA and Alpaca**, arXiv:2304.08177 (2023) — twenty thousand Chinese tokens added to LLaMA's vocabulary, then continued pre-training
+- Hsu et al., **Breeze-7B Technical Report**, arXiv:2403.02712 (2024) — an industrial technical report from MediaTek Research, not a peer-reviewed paper; extends Mistral's vocabulary with Traditional Chinese tokens and reports the change in compression and speed. **One of the few public sources with numbers on Traditional Chinese token efficiency**
+- Minixhofer, Ponti & Vulić, **Zero-Shot Tokenizer Transfer**, arXiv:2405.07883 (2024) — swapping a model's tokenizer without retraining
+- The prompt-boundary problem and token healing: search *token healing*, *prompt boundary problem tokenization*, *language models over characters from tokens*
+- Glitch tokens were first reported in a blog post: search *SolidGoldMagikarp*
 
-> **繁體中文、台語與客語的 tokenizer 研究缺口**：目前找得到的是個別模型在技術報告裡順帶量的數字（如上面的 Breeze-7B），**沒有一篇系統性比較各家 tokenizer 在繁中、台語、客語上表現的研究**。相關可用的是評測資源而非 tokenizer 研究：Chen et al., **TMLU** (arXiv:2403.20180) 與 Tam et al., **TMMLU+** (arXiv:2403.01858)。本週課堂上的對照表因此是現場量出來的——這是一個真實的研究機會。
+> **The research gap on Traditional Chinese, Taiwanese and Hakka tokenization**: what exists are numbers measured in passing in individual model reports (the Breeze-7B report above); **there is no systematic comparison of tokenizers on Traditional Chinese, Taiwanese or Hakka**. The related resources are evaluation suites, not tokenizer studies: Chen et al., **TMLU** — *Measuring Taiwanese Mandarin Language Understanding* (arXiv:2403.20180) and Tam et al., **TMMLU+** — *An Improved Traditional Chinese Evaluation Suite for Foundation Model* (arXiv:2403.01858). The comparison table in this week's class is therefore measured live, in the room — which makes it a genuine research opportunity.
