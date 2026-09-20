@@ -274,7 +274,7 @@ Normalization is the one stage where the model is allowed to see **less** than y
 :::
 
 ::: {.footer}
-Python `unicodedata.normalize` · Qwen2 applies NFC (source read 2026-09-17; verify fast)
+Python `unicodedata.normalize` · Qwen3.8 applies NFC (source 2026-09-17; `inspect` 2026-09-20)
 :::
 
 ## The pre-tokenizer decides how digits split. Three generations, three rules
@@ -290,7 +290,7 @@ Inconsistent splitting was fixed by a regex. **Direction** was not — and that 
 :::
 
 ::: {.footer}
-Rules read from `tiktoken` and `transformers` source, 2026-09-17 · Llama 3, Gemma: verify
+Rules read from source 2026-09-17; all nine tokenizers checked live 2026-09-20 (demo 1 `inspect`)
 :::
 
 ## Control tokens are in the vocabulary — and must not be reachable from text
@@ -678,12 +678,12 @@ arXiv:2402.14903 · rules from §3 · the next slide measures the effect on this
 | 10 | | | |
 
 - Same model, same random problems, **only the digit grouping changes**
-- Model must use a `\p{N}{1,3}` pre-tokenizer (Llama 3 family or an o200k-vocabulary model) — **not Qwen**, where (A) and (C) are the same thing
-- Qwen as the **control**: with per-digit tokens, the three columns should differ much less
+- Model: **Llama 3.1 8B** (`\p{N}{1,3}`: `123` `456` `7`) — **not Qwen**, whose per-digit tokenizer makes (A) and (C) the same thing
+- **Qwen3 8B** as the control: per-digit tokens, so (A) and (B) should differ much less
 - Thinking mode **off** — with it on, the model rewrites the digits in its own scratchpad and bypasses the tokenizer (W10)
 
 ::: {.footer}
-Demo 3 · live: ~20 problems per cell; the full table is from rehearsal, with n and date
+Demo 3 · live: 20 problems per cell · rehearsal 2026-09-20: 50 per cell, Llama 3.1 8B vs Qwen3 8B (4-bit MLX)
 :::
 
 ## Misconception 7: "it cannot count the r's in *strawberry* because it cannot see letters"
