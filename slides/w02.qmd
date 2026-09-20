@@ -107,12 +107,12 @@ Six objectives · every one of them is checked in class today, not in homework
 | tokenizer | tokens | tokens / character | bytes / token | relative cost |
 |:---|---:|---:|---:|---:|
 | Qwen3.8 27B (byte-level BPE, Chinese-heavy) | **141** | 0.675 | 4.45 | 1.00 |
-| Gemma 4 26B-A4B (SentencePiece, byte fallback) | 164 | 0.785 | 3.82 | 1.16 |
+| Gemma 4 26B-A4B (multilingual, ~260k vocabulary) | 164 | 0.785 | 3.82 | 1.16 |
 | Mistral 7B v0.3 (SentencePiece, 32k, English-heavy) | 272 | 1.301 | 2.31 | 1.93 |
 | ByT5 (every byte is a token) | 627 | 3.000 | 1.00 | 4.45 |
 
 ::: {.claim}
-The same text costs **1.9×** more on one modern model than another — and the byte model marks the ceiling: $T \leq B$, always.
+The same text costs $\mathbf{1.9\times}$ more on one modern model than another — and the byte model marks the ceiling: $T \leq B$, always.
 :::
 
 ::: {.footer}
@@ -137,7 +137,7 @@ Petrov et al. (NeurIPS 2023) call the cross-language ratio the *tokenization pre
 
 ## Live: the full table
 
-| text | GPT-2 | o200k | Llama 3 | Qwen3 | Gemma | Mistral | Breeze | bert-zh | ByT5 |
+| text | GPT-2 | o200k | Llama 3 | Qwen3.8 | Gemma 4 | Mistral | Breeze | bert-zh | ByT5 |
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | 繁中 (209 chars) | | | | | | | | | 627 |
 | the same, in English | | | | | | | | | |
@@ -185,6 +185,10 @@ Numbers: the live table · the retina metaphor fails here — a retina is not fi
 | 客語漢字 | 𠊎係客家人 | 5 | 16 |
 | 客語白話字, NFC / NFD | Ngài he Hak-kâ-ngìn | 19 / 22 | 22 / 25 |
 
+::: {.small}
+Why: NFC stores `â` as one code point, U+00E2, $2$ bytes. NFD stores `a` + a combining circumflex, U+0061 U+0302, $1 + 2$ bytes. Each tone mark costs $+1$ character and $+1$ byte; four marks take the Tâi-lô line from $22$ to $26$.
+:::
+
 ::: {.claim}
 Two identical-looking strings, four bytes apart. **Orthography is a cost decision** — and the tokenizer sees the bytes, not the glyphs.
 :::
@@ -210,7 +214,7 @@ Python `unicodedata` (make_demo_w02.py §1) · each 16-byte row has one 4-byte c
 - No vocabulary; 16 bytes → 16 tokens
 - Lossless by construction
 - Token count is the **upper bound** for every byte-based tokenizer: $T \leq B$
-- The price: sequences 3–4× longer than a modern subword model on Chinese
+- The price: sequences $3.8$–$4.5\times$ longer than a modern subword model on Chinese ($627$ vs $164$ and $141$)
 :::
 :::
 
@@ -219,7 +223,7 @@ Between the floor and the ceiling sit all the real tokenizers — and where each
 :::
 
 ::: {.footer}
-Condition (a) from W1 p30 · fertility rows for 台語 and 客語 on the live table
+Condition (a) from W1 p29 · fertility rows for 台語 and 客語 on the live table
 :::
 
 ## Misconception 1: "a token is a character" — or "a token is a word"
@@ -255,12 +259,12 @@ Terms are Hugging Face `tokenizers`' — the demo shows these four objects by na
 
 ## The normalizer is lossy — and that has a bits-per-byte consequence
 
-| input | after NFKC | bytes before → after |
+| input | after NFKC | bytes, before $\to$ after |
 |:---|:---|:---|
-| ＡＢＣ１２３ (full-width) | ABC123 | 18 → 6 |
-| ①②③ | 123 | 9 → 3 |
-| ㎏ | kg | 3 → 2 |
-| café (NFC) | café | 5 → 5 |
+| ＡＢＣ１２３ (full-width) | ABC123 | $18 \to 6$ |
+| ①②③ | 123 | $9 \to 3$ |
+| ㎏ | kg | $3 \to 2$ |
+| café (NFC) | café | $5 \to 5$ |
 
 - After NFKC, full-width and half-width are **the same thing** to the model; `decode` cannot bring the original back. NFC does less: it only unifies precomposed vs. decomposed forms — the Tâi-lô case
 - Condition (a) again: a normalizing tokenizer's bits-per-byte must divide by the bytes **after** normalization
@@ -279,7 +283,7 @@ Python `unicodedata.normalize` · Qwen2 applies NFC (source read 2026-09-17; ver
 |:---|:---|:---|:---|
 | GPT-2 (2019) | `\p{N}+` — one span, merges decide | depends on corpus frequency | the **same** four-digit number can be 1, 2 or 3 tokens; the model learns carrying once per split pattern |
 | cl100k / o200k (GPT-4 family) | `\p{N}{1,3}` — 1–3 digits, left to right | `123` `456` `7` | consistent — but grouped **against** the carry direction |
-| Qwen (2023–) | `\p{N}` — one digit per token | `1` `2` `3` `4` `5` `6` `7` | no grouping to get wrong; sequences 3× longer on numbers |
+| Qwen (2023–) | `\p{N}` — one digit per token | `1` `2` `3` `4` `5` `6` `7` | no grouping to get wrong; sequences $3\times$ longer on numbers |
 
 ::: {.claim}
 Inconsistent splitting was fixed by a regex. **Direction** was not — and that is what §7's demo will measure.
@@ -322,6 +326,10 @@ Hooks: W8 (SFT format is this template), W13 (injection) · ChatML shown; famili
 ## BPE is a compression algorithm. The language model is the second stage
 
 {{< include assets/w02/twostage.inline.qmd >}}
+
+::: {.small}
+Last week's one-line conversion, in this week's notation: $\mathrm{BPB} = \dfrac{T}{B}\log_2 \mathrm{PPL} = \dfrac{\log_2 \mathrm{PPL}}{\bar{b}}$ — stage 2's score divided by stage 1's compression. Check on last week's numbers: $\log_2 12.23 / 4.45 = 0.81$, $\log_2 9.14 / 2.31 = 1.38$.
+:::
 
 ::: {.claim}
 Two stages of compression: a **fixed dictionary**, then an **adaptive model**. Perplexity measures only the second. Bits-per-byte measures both.
@@ -396,7 +404,7 @@ Demo 2 · live coding · reference implementation is handed out after class, not
 :::
 
 ::: {.footer}
-Toy corpus: WordPiece's first merge is `i`+`d` (0.50, seen 2×); BPE's `n`+`e` ranks 7th
+Toy corpus: WordPiece's first merge is `i`+`d` (score $0.50$, seen $2\times$); BPE's `n`+`e` ranks 7th
 :::
 
 ## Sampling the segmentation: subword regularization and BPE-dropout
@@ -567,7 +575,7 @@ Ledger master: W1 p16 · today's three rows are new; the other six keep their W1
 ![](assets/w02/vocab_share.svg){width="100%"}
 
 ::: {.footer}
-Shapes: GPT-3 Table 2.1 · $N_{\text{nv}} = 12\,n_{\text{layer}} d^2$ (Kaplan) · Qwen3: demo 1
+Shapes: GPT-3 Table 2.1 · $N_{\text{nv}} = 12\,n_{\text{layer}} d^2$ (Kaplan) · Qwen3.8: demo 1
 :::
 
 ## "Trained on 15T tokens" is not a quantity of text
@@ -581,7 +589,7 @@ Same 7B model, Chinchilla-optimal $D = 20N = 1.4 \times 10^{11}$ tokens. Convert
 | ByT5 | 1.00 | $1.4 \times 10^{11}$ bytes | 0.43 |
 
 ::: {.claim}
-The same token budget buys **1.9× more Chinese text** through one tokenizer than through another. Report data in bytes or characters, or the comparison is meaningless.
+The same token budget buys $\mathbf{1.9\times}$ **more Chinese text** through one tokenizer than through another. Report data in bytes or characters, or the comparison is meaningless.
 :::
 
 ::: {.footer}
@@ -594,7 +602,7 @@ $\bar{b}$ from the 209-character paragraph (2026-09-20): one text, one language
 |:---|---:|---:|---:|
 | decode FLOPs per **byte**, $2N/\bar{b}$ with $N = 7 \times 10^{9}$ | $3.1 \times 10^{9}$ | $6.1 \times 10^{9}$ | **1.93** |
 | bytes that fit in a 32k-token window, $L\bar{b}$ | 146k | 76k | 1.93 |
-| ≈ Chinese characters in that window (3 bytes each) | ≈ 48,600 | ≈ 25,200 | 1.93 |
+| $\approx$ Chinese characters in that window ($3$ bytes each) | $\approx 48{,}600$ | $\approx 25{,}200$ | 1.93 |
 
 ::: {.claim}
 Same weights, same hardware, same text: the "wrong" tokenizer **doubles the cost per character and halves the usable context** — before any model quality enters the picture.
@@ -798,7 +806,7 @@ arXiv:2503.13423 · this is *not* tokenizer-free; it is BPE with one constraint 
 ::: {.prose}
 | | idea | what it costs | what it buys |
 |:---|:---|:---|:---|
-| **ByT5** (2022) | every byte is a token; no vocabulary | sequences 3–4× longer on Chinese (today's table) | no OOV, no normalizer, no glitch tokens; robust to noise |
+| **ByT5** (2022) | every byte is a token; no vocabulary | sequences $3.8$–$4.5\times$ longer on Chinese (today's table) | no OOV, no normalizer, no glitch tokens; robust to noise |
 | **MegaByte** (2023) | a global model over **patches** of bytes, a local model within | two models; fixed patch size | attention cost falls with patch size |
 | **BLT** (2024) | patches sized by **entropy**: split where the next byte is hard | an entropy model runs first | compute goes where the data is hard |
 | **H-Net** (2025) | chunking **learned end-to-end**, hierarchical (Mamba authors — W6) | a new architecture | reports gains on Chinese and code |
@@ -834,8 +842,8 @@ Hook: W6 (hierarchical / SSM architectures) holds the "hide the length" half of 
 ::: {.prose}
 | route | example | what you pay | what you get |
 |:---|:---|:---|:---|
-| **Extend the vocabulary**, then continue pre-training | Chinese-LLaMA (+20k Chinese tokens on LLaMA); **Breeze-7B**: Mistral's 32k → 61,872 with 29,873 Traditional Chinese tokens | new embeddings start from zero — CPT compute to fill them; risk to the base model's abilities (W8: catastrophic forgetting) | Breeze's technical report: ≈2× compression on Traditional Chinese, ≈2× faster training and inference |
-| **Transplant the tokenizer** | Zero-Shot Tokenizer Transfer (Minixhofer, Ponti & Vulić, 2024): a hypernetwork predicts embeddings for a new vocabulary | a small gap to the original; the paper says < 1B tokens of continued training closes most of it; validated up to 7B | swap the retina without retraining the cortex — almost |
+| **Extend the vocabulary**, then continue pre-training | Chinese-LLaMA (+20k tokens on LLaMA); **Breeze-7B**: Mistral's 32,000 $\to$ 61,872 (+29,873 Traditional Chinese) | new embeddings start from zero — CPT compute to fill them; risk to the base model's abilities (W8: catastrophic forgetting) | Breeze's report: $\approx 2\times$ compression and $\approx 2\times$ speed on Traditional Chinese |
+| **Transplant the tokenizer** | Zero-Shot Tokenizer Transfer (Minixhofer, Ponti & Vulić, 2024): a hypernetwork predicts embeddings for a new vocabulary | a small gap to the original; the paper says under 1B tokens of continued training closes most of it; validated up to 7B | swap the retina without retraining the cortex — almost |
 | **Drop the tokenizer** | ByT5 → H-Net (previous section) | longer sequences; a new architecture | no vocabulary to be short-changed by |
 :::
 
@@ -847,7 +855,7 @@ Misconception 9 of 10: "cannot be changed after training" — it can, at a price
 
 - Data volume is a major cause — nobody disputes it
 - But fertility is a **second, independent, measurable** cause: it eats context, cost and effective sequence length at once — today's ledger rows
-- Keeping the two apart is what lets you decide **which one to invest in**: Breeze-7B invested in the second alone and reported ≈2× gains without touching the first
+- Keeping the two apart is what lets you decide **which one to invest in**: Breeze-7B invested in the second alone and reported $\approx 2\times$ gains without touching the first
 - Today's table is the diagnostic: if your language's row is expensive, that cost exists **whatever** the training data was
 
 ::: {.claim}

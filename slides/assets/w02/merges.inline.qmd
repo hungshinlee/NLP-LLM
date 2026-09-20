@@ -1,4 +1,505 @@
 <!-- 由 scripts/make_figs_w02.py 產生，勿手改；投影片用 {{< include assets/w02/merges.inline.qmd >}} 貼入 -->
 ```{=html}
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 384" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-merges" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="34" font-size="18" fill="#6b7280" text-anchor="start" font-weight="400">corpus (word × count), split into characters + end marker</text><rect x="20" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="37" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">n</text><rect x="57" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="74" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="94" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="111" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">w</text><rect x="131" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="148" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><text x="180" y="76" font-size="20" fill="#1f2328" text-anchor="start" font-weight="400">× 3</text><rect x="20" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="37" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">n</text><rect x="57" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="74" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="94" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="111" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">w</text><rect x="131" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="148" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="168" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="185" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">s</text><rect x="205" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="222" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t</text><rect x="242" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="259" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><text x="291" y="118" font-size="20" fill="#1f2328" text-anchor="start" font-weight="400">× 5</text><rect x="20" y="136" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="37" y="160.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">n</text><rect x="57" y="136" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="74" y="160.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="94" y="136" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="111" y="160.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">s</text><rect x="131" y="136" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="148" y="160.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t</text><rect x="168" y="136" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="185" y="160.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><text x="217" y="160" font-size="20" fill="#1f2328" text-anchor="start" font-weight="400">× 2</text><rect x="20" y="178" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="37" y="202.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">n</text><rect x="57" y="178" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="74" y="202.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="94" y="178" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="111" y="202.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t</text><rect x="131" y="178" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="148" y="202.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><text x="180" y="202" font-size="20" fill="#1f2328" text-anchor="start" font-weight="400">× 3</text><rect x="20" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="37" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">w</text><rect x="57" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="74" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">i</text><rect x="94" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="111" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">d</text><rect x="131" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="148" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="168" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="185" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">s</text><rect x="205" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="222" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t</text><rect x="242" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="259" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><text x="291" y="244" font-size="20" fill="#1f2328" text-anchor="start" font-weight="400">× 2</text><text x="20" y="284" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">8 characters to start · ties (none in the first six) break by dictionary order</text><text x="540" y="34" font-size="18" fill="#6b7280" text-anchor="start" font-weight="400">step</text><text x="610" y="34" font-size="18" fill="#6b7280" text-anchor="start" font-weight="400">most frequent adjacent pair</text><text x="900" y="34" font-size="18" fill="#6b7280" text-anchor="end" font-weight="400">count</text><text x="940" y="34" font-size="18" fill="#6b7280" text-anchor="start" font-weight="400">new symbol</text><text x="1100" y="34" font-size="18" fill="#6b7280" text-anchor="start" font-weight="400">runner-up</text><g class="fragment" data-fragment-index="1"><text x="540" y="76" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">1</text><rect x="610" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="627" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">n</text><text x="650" y="76" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="668" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="685" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><text x="900" y="76" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">13</text><rect x="940" y="52" width="42.8" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="961.4" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">ne</text><text x="1100" y="76" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">t+_ (12)</text></g><g class="fragment" data-fragment-index="2"><text x="540" y="126" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">2</text><rect x="610" y="102" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="627" y="126.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t</text><text x="650" y="126" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="668" y="102" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="685" y="126.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><text x="900" y="126" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">12</text><rect x="940" y="102" width="42.8" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="961.4" y="126.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t_</text><text x="1100" y="126" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">s+t (9)</text></g><g class="fragment" data-fragment-index="3"><text x="540" y="176" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">3</text><rect x="610" y="152" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="627" y="176.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">s</text><text x="650" y="176" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="668" y="152" width="42.8" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="689.4" y="176.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t_</text><text x="900" y="176" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">9</text><rect x="940" y="152" width="55.2" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="967.6" y="176.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">st_</text><text x="1100" y="176" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">ne+w (8)</text></g><g class="fragment" data-fragment-index="4"><text x="540" y="226" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">4</text><rect x="610" y="202" width="42.8" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="631.4" y="226.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">ne</text><text x="658.8" y="226" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="676.8" y="202" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="693.8" y="226.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">w</text><text x="900" y="226" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">8</text><rect x="940" y="202" width="55.2" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="967.6" y="226.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">new</text><text x="1100" y="226" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">e+st_ (7)</text></g><g class="fragment" data-fragment-index="5"><text x="540" y="276" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">5</text><rect x="610" y="252" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="627" y="276.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><text x="650" y="276" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="668" y="252" width="55.2" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="695.6" y="276.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">st_</text><text x="900" y="276" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">7</text><rect x="940" y="252" width="67.6" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="973.8" y="276.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">est_</text><text x="1100" y="276" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">new+e (5)</text></g><g class="fragment" data-fragment-index="6"><text x="540" y="326" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">6</text><rect x="610" y="302" width="55.2" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="637.6" y="326.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">new</text><text x="671.2" y="326" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="689.2" y="302" width="67.6" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="723" y="326.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">est_</text><text x="900" y="326" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">5</text><rect x="940" y="302" width="104.8" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="992.4" y="326.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">newest_</text><text x="1100" y="326" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">ne+t_ (3)</text></g><text x="540" y="374" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">the output is this ordered merge list; vocabulary = characters + every merge product</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 384" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-merges" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="34" font-size="18" fill="#6b7280" text-anchor="start" font-weight="400">corpus (word × count), split into characters + end marker</text><rect x="20" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="37" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">n</text><rect x="57" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="74" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="94" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="111" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">w</text><rect x="131" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="148" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><svg x="180" y="57.6437" width="28.6" height="19.3562" viewBox="0 0 28.6 19.35625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t5-figure_1">
+  <g id="t5-patch_1">
+   <path d="M 0 19.35625 
+L 28.6 19.35625 
+L 28.6 0 
+L 0 0 
+L 0 19.35625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t5-text_1">
+   <!-- $\times\, 3$ -->
+   <g style="fill: #1f2328" transform="translate(0 15.196875) scale(0.2 -0.2)">
+    <defs>
+     <path id="t5-Cmsy10-a3" d="M 941 184 
+Q 941 234 972 275 
+L 2303 1600 
+L 972 2931 
+Q 941 2963 941 3016 
+Q 941 3063 978 3103 
+Q 1016 3144 1069 3144 
+Q 1113 3144 1166 3103 
+L 2491 1778 
+L 3809 3103 
+Q 3863 3144 3903 3144 
+Q 3956 3144 3993 3106 
+Q 4031 3069 4031 3016 
+Q 4031 2963 4000 2931 
+L 2669 1600 
+L 4000 275 
+Q 4031 234 4031 184 
+Q 4031 131 3993 93 
+Q 3956 56 3903 56 
+Q 3856 56 3809 103 
+L 2491 1422 
+L 1166 103 
+Q 1119 56 1069 56 
+Q 1016 56 978 97 
+Q 941 138 941 184 
+z
+" transform="scale(0.015625)"/>
+     <path id="t5-Cmr10-33" d="M 609 494 
+Q 759 275 1012 169 
+Q 1266 63 1556 63 
+Q 1928 63 2084 380 
+Q 2241 697 2241 1100 
+Q 2241 1281 2208 1462 
+Q 2175 1644 2097 1800 
+Q 2019 1956 1883 2050 
+Q 1747 2144 1550 2144 
+L 1125 2144 
+Q 1069 2144 1069 2203 
+L 1069 2259 
+Q 1069 2309 1125 2309 
+L 1478 2338 
+Q 1703 2338 1851 2506 
+Q 2000 2675 2069 2917 
+Q 2138 3159 2138 3378 
+Q 2138 3684 1994 3881 
+Q 1850 4078 1556 4078 
+Q 1313 4078 1091 3986 
+Q 869 3894 738 3706 
+Q 750 3709 759 3711 
+Q 769 3713 781 3713 
+Q 925 3713 1022 3613 
+Q 1119 3513 1119 3372 
+Q 1119 3234 1022 3134 
+Q 925 3034 781 3034 
+Q 641 3034 541 3134 
+Q 441 3234 441 3372 
+Q 441 3647 606 3850 
+Q 772 4053 1033 4158 
+Q 1294 4263 1556 4263 
+Q 1750 4263 1965 4205 
+Q 2181 4147 2356 4039 
+Q 2531 3931 2642 3762 
+Q 2753 3594 2753 3378 
+Q 2753 3109 2633 2881 
+Q 2513 2653 2303 2487 
+Q 2094 2322 1844 2241 
+Q 2122 2188 2372 2031 
+Q 2622 1875 2773 1631 
+Q 2925 1388 2925 1106 
+Q 2925 753 2731 467 
+Q 2538 181 2222 20 
+Q 1906 -141 1556 -141 
+Q 1256 -141 954 -26 
+Q 653 88 461 316 
+Q 269 544 269 863 
+Q 269 1022 375 1128 
+Q 481 1234 641 1234 
+Q 744 1234 830 1186 
+Q 916 1138 964 1050 
+Q 1013 963 1013 863 
+Q 1013 706 903 600 
+Q 794 494 641 494 
+L 609 494 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t5-Cmsy10-a3" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t5-Cmr10-33" transform="translate(92.318001 0.390625)"/>
+   </g>
+  </g>
+ </g>
+</svg><rect x="20" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="37" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">n</text><rect x="57" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="74" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="94" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="111" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">w</text><rect x="131" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="148" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="168" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="185" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">s</text><rect x="205" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="222" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t</text><rect x="242" y="94" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="259" y="118.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><svg x="291" y="99.6437" width="28.6" height="19.3562" viewBox="0 0 28.6 19.35625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t6-figure_1">
+  <g id="t6-patch_1">
+   <path d="M 0 19.35625 
+L 28.6 19.35625 
+L 28.6 0 
+L 0 0 
+L 0 19.35625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t6-text_1">
+   <!-- $\times\, 5$ -->
+   <g style="fill: #1f2328" transform="translate(0 15.196875) scale(0.2 -0.2)">
+    <defs>
+     <path id="t6-Cmsy10-a3" d="M 941 184 
+Q 941 234 972 275 
+L 2303 1600 
+L 972 2931 
+Q 941 2963 941 3016 
+Q 941 3063 978 3103 
+Q 1016 3144 1069 3144 
+Q 1113 3144 1166 3103 
+L 2491 1778 
+L 3809 3103 
+Q 3863 3144 3903 3144 
+Q 3956 3144 3993 3106 
+Q 4031 3069 4031 3016 
+Q 4031 2963 4000 2931 
+L 2669 1600 
+L 4000 275 
+Q 4031 234 4031 184 
+Q 4031 131 3993 93 
+Q 3956 56 3903 56 
+Q 3856 56 3809 103 
+L 2491 1422 
+L 1166 103 
+Q 1119 56 1069 56 
+Q 1016 56 978 97 
+Q 941 138 941 184 
+z
+" transform="scale(0.015625)"/>
+     <path id="t6-Cmr10-35" d="M 556 728 
+Q 622 541 758 387 
+Q 894 234 1080 148 
+Q 1266 63 1466 63 
+Q 1928 63 2103 422 
+Q 2278 781 2278 1294 
+Q 2278 1516 2270 1667 
+Q 2263 1819 2228 1959 
+Q 2169 2184 2020 2353 
+Q 1872 2522 1656 2522 
+Q 1441 2522 1286 2456 
+Q 1131 2391 1034 2303 
+Q 938 2216 863 2119 
+Q 788 2022 769 2016 
+L 697 2016 
+Q 681 2016 657 2036 
+Q 634 2056 634 2075 
+L 634 4213 
+Q 634 4228 654 4245 
+Q 675 4263 697 4263 
+L 716 4263 
+Q 1147 4056 1631 4056 
+Q 2106 4056 2547 4263 
+L 2566 4263 
+Q 2588 4263 2606 4247 
+Q 2625 4231 2625 4213 
+L 2625 4153 
+Q 2625 4122 2613 4122 
+Q 2394 3831 2064 3668 
+Q 1734 3506 1381 3506 
+Q 1125 3506 856 3578 
+L 856 2369 
+Q 1069 2541 1236 2614 
+Q 1403 2688 1663 2688 
+Q 2016 2688 2295 2484 
+Q 2575 2281 2725 1954 
+Q 2875 1628 2875 1288 
+Q 2875 903 2686 575 
+Q 2497 247 2172 53 
+Q 1847 -141 1466 -141 
+Q 1150 -141 886 21 
+Q 622 184 470 459 
+Q 319 734 319 1044 
+Q 319 1188 412 1278 
+Q 506 1369 647 1369 
+Q 788 1369 883 1276 
+Q 978 1184 978 1044 
+Q 978 906 883 811 
+Q 788 716 647 716 
+Q 625 716 597 720 
+Q 569 725 556 728 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t6-Cmsy10-a3" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t6-Cmr10-35" transform="translate(92.318001 0.390625)"/>
+   </g>
+  </g>
+ </g>
+</svg><rect x="20" y="136" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="37" y="160.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">n</text><rect x="57" y="136" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="74" y="160.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="94" y="136" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="111" y="160.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">s</text><rect x="131" y="136" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="148" y="160.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t</text><rect x="168" y="136" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="185" y="160.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><svg x="217" y="140.644" width="28.6" height="19.3562" viewBox="0 0 28.6 19.35625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t7-figure_1">
+  <g id="t7-patch_1">
+   <path d="M 0 19.35625 
+L 28.6 19.35625 
+L 28.6 0 
+L 0 0 
+L 0 19.35625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t7-text_1">
+   <!-- $\times\, 2$ -->
+   <g style="fill: #1f2328" transform="translate(0 15.196875) scale(0.2 -0.2)">
+    <defs>
+     <path id="t7-Cmsy10-a3" d="M 941 184 
+Q 941 234 972 275 
+L 2303 1600 
+L 972 2931 
+Q 941 2963 941 3016 
+Q 941 3063 978 3103 
+Q 1016 3144 1069 3144 
+Q 1113 3144 1166 3103 
+L 2491 1778 
+L 3809 3103 
+Q 3863 3144 3903 3144 
+Q 3956 3144 3993 3106 
+Q 4031 3069 4031 3016 
+Q 4031 2963 4000 2931 
+L 2669 1600 
+L 4000 275 
+Q 4031 234 4031 184 
+Q 4031 131 3993 93 
+Q 3956 56 3903 56 
+Q 3856 56 3809 103 
+L 2491 1422 
+L 1166 103 
+Q 1119 56 1069 56 
+Q 1016 56 978 97 
+Q 941 138 941 184 
+z
+" transform="scale(0.015625)"/>
+     <path id="t7-Cmr10-32" d="M 319 0 
+L 319 172 
+Q 319 188 331 206 
+L 1325 1306 
+Q 1550 1550 1690 1715 
+Q 1831 1881 1968 2097 
+Q 2106 2313 2186 2536 
+Q 2266 2759 2266 3009 
+Q 2266 3272 2169 3511 
+Q 2072 3750 1880 3894 
+Q 1688 4038 1416 4038 
+Q 1138 4038 916 3870 
+Q 694 3703 603 3438 
+Q 628 3444 672 3444 
+Q 816 3444 917 3347 
+Q 1019 3250 1019 3097 
+Q 1019 2950 917 2848 
+Q 816 2747 672 2747 
+Q 522 2747 420 2851 
+Q 319 2956 319 3097 
+Q 319 3338 409 3548 
+Q 500 3759 670 3923 
+Q 841 4088 1055 4175 
+Q 1269 4263 1509 4263 
+Q 1875 4263 2190 4108 
+Q 2506 3953 2690 3670 
+Q 2875 3388 2875 3009 
+Q 2875 2731 2753 2481 
+Q 2631 2231 2440 2026 
+Q 2250 1822 1953 1562 
+Q 1656 1303 1563 1216 
+L 838 519 
+L 1453 519 
+Q 1906 519 2211 526 
+Q 2516 534 2534 550 
+Q 2609 631 2688 1141 
+L 2875 1141 
+L 2694 0 
+L 319 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t7-Cmsy10-a3" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t7-Cmr10-32" transform="translate(92.318001 0.390625)"/>
+   </g>
+  </g>
+ </g>
+</svg><rect x="20" y="178" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="37" y="202.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">n</text><rect x="57" y="178" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="74" y="202.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="94" y="178" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="111" y="202.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t</text><rect x="131" y="178" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="148" y="202.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><svg x="180" y="183.644" width="28.6" height="19.3562" viewBox="0 0 28.6 19.35625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t8-figure_1">
+  <g id="t8-patch_1">
+   <path d="M 0 19.35625 
+L 28.6 19.35625 
+L 28.6 0 
+L 0 0 
+L 0 19.35625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t8-text_1">
+   <!-- $\times\, 3$ -->
+   <g style="fill: #1f2328" transform="translate(0 15.196875) scale(0.2 -0.2)">
+    <defs>
+     <path id="t8-Cmsy10-a3" d="M 941 184 
+Q 941 234 972 275 
+L 2303 1600 
+L 972 2931 
+Q 941 2963 941 3016 
+Q 941 3063 978 3103 
+Q 1016 3144 1069 3144 
+Q 1113 3144 1166 3103 
+L 2491 1778 
+L 3809 3103 
+Q 3863 3144 3903 3144 
+Q 3956 3144 3993 3106 
+Q 4031 3069 4031 3016 
+Q 4031 2963 4000 2931 
+L 2669 1600 
+L 4000 275 
+Q 4031 234 4031 184 
+Q 4031 131 3993 93 
+Q 3956 56 3903 56 
+Q 3856 56 3809 103 
+L 2491 1422 
+L 1166 103 
+Q 1119 56 1069 56 
+Q 1016 56 978 97 
+Q 941 138 941 184 
+z
+" transform="scale(0.015625)"/>
+     <path id="t8-Cmr10-33" d="M 609 494 
+Q 759 275 1012 169 
+Q 1266 63 1556 63 
+Q 1928 63 2084 380 
+Q 2241 697 2241 1100 
+Q 2241 1281 2208 1462 
+Q 2175 1644 2097 1800 
+Q 2019 1956 1883 2050 
+Q 1747 2144 1550 2144 
+L 1125 2144 
+Q 1069 2144 1069 2203 
+L 1069 2259 
+Q 1069 2309 1125 2309 
+L 1478 2338 
+Q 1703 2338 1851 2506 
+Q 2000 2675 2069 2917 
+Q 2138 3159 2138 3378 
+Q 2138 3684 1994 3881 
+Q 1850 4078 1556 4078 
+Q 1313 4078 1091 3986 
+Q 869 3894 738 3706 
+Q 750 3709 759 3711 
+Q 769 3713 781 3713 
+Q 925 3713 1022 3613 
+Q 1119 3513 1119 3372 
+Q 1119 3234 1022 3134 
+Q 925 3034 781 3034 
+Q 641 3034 541 3134 
+Q 441 3234 441 3372 
+Q 441 3647 606 3850 
+Q 772 4053 1033 4158 
+Q 1294 4263 1556 4263 
+Q 1750 4263 1965 4205 
+Q 2181 4147 2356 4039 
+Q 2531 3931 2642 3762 
+Q 2753 3594 2753 3378 
+Q 2753 3109 2633 2881 
+Q 2513 2653 2303 2487 
+Q 2094 2322 1844 2241 
+Q 2122 2188 2372 2031 
+Q 2622 1875 2773 1631 
+Q 2925 1388 2925 1106 
+Q 2925 753 2731 467 
+Q 2538 181 2222 20 
+Q 1906 -141 1556 -141 
+Q 1256 -141 954 -26 
+Q 653 88 461 316 
+Q 269 544 269 863 
+Q 269 1022 375 1128 
+Q 481 1234 641 1234 
+Q 744 1234 830 1186 
+Q 916 1138 964 1050 
+Q 1013 963 1013 863 
+Q 1013 706 903 600 
+Q 794 494 641 494 
+L 609 494 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t8-Cmsy10-a3" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t8-Cmr10-33" transform="translate(92.318001 0.390625)"/>
+   </g>
+  </g>
+ </g>
+</svg><rect x="20" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="37" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">w</text><rect x="57" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="74" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">i</text><rect x="94" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="111" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">d</text><rect x="131" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="148" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><rect x="168" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="185" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">s</text><rect x="205" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="222" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t</text><rect x="242" y="220" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="259" y="244.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><svg x="291" y="224.644" width="28.6" height="19.3562" viewBox="0 0 28.6 19.35625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t9-figure_1">
+  <g id="t9-patch_1">
+   <path d="M 0 19.35625 
+L 28.6 19.35625 
+L 28.6 0 
+L 0 0 
+L 0 19.35625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t9-text_1">
+   <!-- $\times\, 2$ -->
+   <g style="fill: #1f2328" transform="translate(0 15.196875) scale(0.2 -0.2)">
+    <defs>
+     <path id="t9-Cmsy10-a3" d="M 941 184 
+Q 941 234 972 275 
+L 2303 1600 
+L 972 2931 
+Q 941 2963 941 3016 
+Q 941 3063 978 3103 
+Q 1016 3144 1069 3144 
+Q 1113 3144 1166 3103 
+L 2491 1778 
+L 3809 3103 
+Q 3863 3144 3903 3144 
+Q 3956 3144 3993 3106 
+Q 4031 3069 4031 3016 
+Q 4031 2963 4000 2931 
+L 2669 1600 
+L 4000 275 
+Q 4031 234 4031 184 
+Q 4031 131 3993 93 
+Q 3956 56 3903 56 
+Q 3856 56 3809 103 
+L 2491 1422 
+L 1166 103 
+Q 1119 56 1069 56 
+Q 1016 56 978 97 
+Q 941 138 941 184 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9-Cmr10-32" d="M 319 0 
+L 319 172 
+Q 319 188 331 206 
+L 1325 1306 
+Q 1550 1550 1690 1715 
+Q 1831 1881 1968 2097 
+Q 2106 2313 2186 2536 
+Q 2266 2759 2266 3009 
+Q 2266 3272 2169 3511 
+Q 2072 3750 1880 3894 
+Q 1688 4038 1416 4038 
+Q 1138 4038 916 3870 
+Q 694 3703 603 3438 
+Q 628 3444 672 3444 
+Q 816 3444 917 3347 
+Q 1019 3250 1019 3097 
+Q 1019 2950 917 2848 
+Q 816 2747 672 2747 
+Q 522 2747 420 2851 
+Q 319 2956 319 3097 
+Q 319 3338 409 3548 
+Q 500 3759 670 3923 
+Q 841 4088 1055 4175 
+Q 1269 4263 1509 4263 
+Q 1875 4263 2190 4108 
+Q 2506 3953 2690 3670 
+Q 2875 3388 2875 3009 
+Q 2875 2731 2753 2481 
+Q 2631 2231 2440 2026 
+Q 2250 1822 1953 1562 
+Q 1656 1303 1563 1216 
+L 838 519 
+L 1453 519 
+Q 1906 519 2211 526 
+Q 2516 534 2534 550 
+Q 2609 631 2688 1141 
+L 2875 1141 
+L 2694 0 
+L 319 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t9-Cmsy10-a3" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t9-Cmr10-32" transform="translate(92.318001 0.390625)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="20" y="284" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">8 characters to start · ties (none in the first six) break by dictionary order</text><text x="540" y="34" font-size="18" fill="#6b7280" text-anchor="start" font-weight="400">step</text><text x="610" y="34" font-size="18" fill="#6b7280" text-anchor="start" font-weight="400">most frequent adjacent pair</text><text x="900" y="34" font-size="18" fill="#6b7280" text-anchor="end" font-weight="400">count</text><text x="940" y="34" font-size="18" fill="#6b7280" text-anchor="start" font-weight="400">new symbol</text><text x="1100" y="34" font-size="18" fill="#6b7280" text-anchor="start" font-weight="400">runner-up</text><g class="fragment" data-fragment-index="1"><text x="540" y="76" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">1</text><rect x="610" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="627" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">n</text><text x="650" y="76" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="668" y="52" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="685" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><text x="900" y="76" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">13</text><rect x="940" y="52" width="42.8" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="961.4" y="76.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">ne</text><text x="1100" y="76" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">t+_ (12)</text></g><g class="fragment" data-fragment-index="2"><text x="540" y="126" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">2</text><rect x="610" y="102" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="627" y="126.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t</text><text x="650" y="126" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="668" y="102" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="685" y="126.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">_</text><text x="900" y="126" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">12</text><rect x="940" y="102" width="42.8" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="961.4" y="126.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t_</text><text x="1100" y="126" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">s+t (9)</text></g><g class="fragment" data-fragment-index="3"><text x="540" y="176" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">3</text><rect x="610" y="152" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="627" y="176.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">s</text><text x="650" y="176" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="668" y="152" width="42.8" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="689.4" y="176.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">t_</text><text x="900" y="176" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">9</text><rect x="940" y="152" width="55.2" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="967.6" y="176.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">st_</text><text x="1100" y="176" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">ne+w (8)</text></g><g class="fragment" data-fragment-index="4"><text x="540" y="226" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">4</text><rect x="610" y="202" width="42.8" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="631.4" y="226.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">ne</text><text x="658.8" y="226" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="676.8" y="202" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="693.8" y="226.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">w</text><text x="900" y="226" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">8</text><rect x="940" y="202" width="55.2" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="967.6" y="226.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">new</text><text x="1100" y="226" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">e+st_ (7)</text></g><g class="fragment" data-fragment-index="5"><text x="540" y="276" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">5</text><rect x="610" y="252" width="34" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="627" y="276.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">e</text><text x="650" y="276" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="668" y="252" width="55.2" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="695.6" y="276.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">st_</text><text x="900" y="276" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">7</text><rect x="940" y="252" width="67.6" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="973.8" y="276.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">est_</text><text x="1100" y="276" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">new+e (5)</text></g><g class="fragment" data-fragment-index="6"><text x="540" y="326" font-size="22" fill="#1f2328" text-anchor="start" font-weight="700">6</text><rect x="610" y="302" width="55.2" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="637.6" y="326.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">new</text><text x="671.2" y="326" font-size="20" fill="#6b7280" text-anchor="start" font-weight="400">+</text><rect x="689.2" y="302" width="67.6" height="34" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="723" y="326.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">est_</text><text x="900" y="326" font-size="22" fill="#1f2328" text-anchor="end" font-weight="400">5</text><rect x="940" y="302" width="104.8" height="34" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.4"/><text x="992.4" y="326.2" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">newest_</text><text x="1100" y="326" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">ne+t_ (3)</text></g><text x="540" y="374" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">the output is this ordered merge list; vocabulary = characters + every merge product</text></svg>
 ```
