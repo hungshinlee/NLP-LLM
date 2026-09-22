@@ -16,6 +16,8 @@ project:
     - supplements/*.qmd
   resources:
     - slides/assets/**
+    # 講義 PDF：由 bin/publish.py 從 private repo 的 nlp_llm/handouts/ 複製過來的產物，勿手改
+    - handouts/**
 
 # 用 zh-TW 而非 zh-Hant：Quarto 只有 _language-zh-TW.yml，給 zh-Hant 會退回簡體的 _language-zh.yml
 lang: zh-TW

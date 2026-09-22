@@ -9,6 +9,7 @@ on:
       - '_quarto.yml'
       - 'styles.scss'
       - 'scripts/**'
+      - 'handouts/**'
       - '.github/workflows/publish.yml'
   workflow_dispatch:
 
