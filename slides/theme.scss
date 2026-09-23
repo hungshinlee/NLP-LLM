@@ -259,6 +259,10 @@ $c-muted: #6b7280;
   line-height: $lh-support;
   color: #2b2b2b;
 }
+.reveal .gen.read {                // 給學生讀的原文（W2 p7 的 209 字）：整張只有這一段，放大到 T2
+  font-size: $fs-lead;
+  line-height: $lh-lead;
+}
 .reveal .gen.hit {                 // 逐字複製訓練語料的那一段
   border-left-color: $c-warn;
   background: #fdf6f6;

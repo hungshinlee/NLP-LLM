@@ -94,6 +94,20 @@ Tokenization is the design decision that is **most expensive to fix after traini
 
 # Demo 1: one paragraph, many tokenizers {.section-title}
 
+## Read it first: the paragraph every number today is measured on
+
+::: {.gen .read}
+清晨六點半，城市還沒完全醒來。巷口的早餐店已經亮起燈，老闆一邊煎蛋餅，一邊和熟客聊著昨晚的颱風消息。捷運站裡，通勤的人們低頭滑著手機，有人在讀新聞，有人在回訊息，也有人只是閉著眼睛，想多偷幾分鐘的睡眠。公車站牌旁，一位老先生慢慢地把雨傘收好，抬頭看了看天空：雲層很厚，但風已經小了。對許多人來說，這只是再平凡不過的星期三；可是對剛搬來這座城市的學生而言，每一個轉角都像是一個還沒讀完的句子，等著他們自己去補上後面的字。
+:::
+
+::: {.ask}
+Before any number: how many tokens would a modern model spend on this paragraph? Write one guess down.
+:::
+
+::: {.footer}
+209 characters · 627 UTF-8 bytes · written for this course; in no model's training data
+:::
+
 ## Same 209 characters. Same 627 bytes. Four answers to "how many tokens?"
 
 | tokenizer | tokens | tokens / character | bytes / token | relative cost |
