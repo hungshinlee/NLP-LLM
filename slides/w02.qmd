@@ -83,10 +83,6 @@ The model never sees your text. It sees what the tokenizer sends up.
 Tokenization is the design decision that is **most expensive to fix after training** — not impossible, but every route back means paying for training again.
 :::
 
-::: {.footer}
-W1 said "cannot be fixed" — too strong: vocabulary extension and transfer exist (§9)
-:::
-
 ## What you should be able to do by the end of today
 
 1. **Hand-compute** BPE merges on a toy corpus, read a reference implementation, and state what BPE, WordPiece and Unigram each **optimize**
@@ -95,10 +91,6 @@ W1 said "cannot be fixed" — too strong: vocabulary extension and transfer exis
 4. Explain why vocabulary size is a **scaling-law variable**, and fill three rows of the ledger: $2Vd$, the unit of $D$, cost per byte
 5. Diagnose at least four **tokenization-caused failures** — and for each, say whether the evidence is mechanistic or correlational
 6. Compare the three routes for a **short-changed language**: extend the vocabulary, transplant the tokenizer, or drop tokens
-
-::: {.footer}
-Six objectives · every one of them is checked in class today, not in homework
-:::
 
 # Demo 1: one paragraph, many tokenizers {.section-title}
 
@@ -172,7 +164,7 @@ A tokenizer does not know Chinese. It knows the **frequency table of the text it
 :::
 
 ::: {.footer}
-Numbers: the live table · the retina metaphor fails here — a retina is not fitted
+Numbers: the live table (demo 1)
 :::
 
 ## Two scripts for one Taiwanese sentence — and the cost of a tone mark
@@ -240,7 +232,7 @@ What the live table just showed, all at once:
 :::
 
 ::: {.footer}
-Misconception 1 of 10 · this one has to be seen, not told — hence the demo comes first
+Misconception 1 of 10
 :::
 
 # The four-stage pipeline {.section-title}
@@ -290,7 +282,7 @@ Inconsistent splitting was fixed by a regex. **Direction** was not — and that 
 :::
 
 ::: {.footer}
-Rules read from source 2026-09-17; all nine tokenizers checked live 2026-09-20 (demo 1 `inspect`)
+Rules read from source; all nine tokenizers checked live 2026-09-20 (demo 1 `inspect`)
 :::
 
 ## Control tokens are in the vocabulary — and must not be reachable from text
@@ -443,7 +435,7 @@ Both byte routes are lossless. Only one of them can ever get **cheaper** than fo
 :::
 
 ::: {.footer}
-Byte counts: make_demo_w02.py §1 · which kind each live tokenizer is: check the demo
+Byte counts: make_demo_w02.py §1
 :::
 
 ## Why subwords work: the trade-off argument, and a harder one
@@ -529,7 +521,7 @@ Misconception 2 of 10 · search: *token healing*, *prompt boundary problem* — 
 ![](assets/w02/vocab_u.svg){width="100%"}
 
 ::: {.footer}
-Tao et al., *Scaling Laws with Vocabulary*, NeurIPS 2024 (arXiv:2407.13623) — main paper
+Misconception 3 of 10: "a bigger vocabulary is better" · Tao et al., NeurIPS 2024 (main paper)
 :::
 
 ## The derivation skeleton: one first-order condition
@@ -545,7 +537,7 @@ Step 3 is the whole point: once $D$ depends on $V$, the tokenizer is inside the 
 :::
 
 ::: {.footer}
-Skeleton only — the fitted form and the exponent are in the paper; check before quoting
+Skeleton only — the fitted form and the exponent are in Tao et al. (arXiv:2407.13623)
 :::
 
 ## The ledger, week 2: three rows the tokenizer owns
@@ -666,7 +658,7 @@ Singh & Strouse (2024): forcing right-to-left groups with commas **raises arithm
 :::
 
 ::: {.footer}
-arXiv:2402.14903 · rules from §3 · the next slide measures the effect on this laptop
+Misconception 6 of 10 · arXiv:2402.14903 (rules: its §3) · measured on the next slide
 :::
 
 ## Live: one model, one set of sums, three ways of writing the numbers
@@ -683,7 +675,7 @@ arXiv:2402.14903 · rules from §3 · the next slide measures the effect on this
 - Thinking mode **off** — with it on, the model rewrites the digits in its own scratchpad and bypasses the tokenizer (W10)
 
 ::: {.footer}
-Demo 3 · live: 20 problems per cell · rehearsal 2026-09-20: 50 per cell, Llama 3.1 8B vs Qwen3 8B (4-bit MLX)
+Demo 3 · live: 20 problems per cell · rehearsal 2026-09-20: 50 per cell, both models 4-bit MLX
 :::
 
 ## Misconception 7: "it cannot count the r's in *strawberry* because it cannot see letters"
@@ -708,7 +700,7 @@ Say "the representation makes it hard", not "it is impossible". The failure is i
 :::
 
 ::: {.footer}
-Misconception 7 of 10 · both verified by title and authors; claims from abstracts
+Misconception 7 of 10
 :::
 
 ## Glitch tokens: in the tokenizer's corpus, not in the model's
@@ -762,10 +754,6 @@ arXiv:2305.15425 · the paper's multipliers are deliberately not quoted: read it
 
 ::: {.claim}
 Same root cause each time: token boundaries are frequency boundaries, and frequency does not respect syntax, morphology, or whitespace.
-:::
-
-::: {.footer}
-Two entries with no single canonical paper in this course's list · skip if short on time
 :::
 
 ## Each failure, one question: mechanism or correlation?
@@ -863,7 +851,7 @@ Misconception 9 of 10: "cannot be changed after training" — it can, at a price
 :::
 
 ::: {.footer}
-Misconception 10 of 10 · the last one, because it needs everything before it
+Misconception 10 of 10
 :::
 
 ## The gap: nobody has measured this systematically — which makes it a project
