@@ -842,23 +842,36 @@ So W6's hybrids keep some attention: the recurrent layers collect the inference 
 
 # Where this goes {.section-title}
 
-## Ten things this week said no to
+## Ten things this week said no to (1 of 2)
 
+::: {.prose}
 | The belief | What is true | Returns |
 |---|---|---|
-| Lower perplexity, better text | Likelihood and sample quality are nearly independent | W14 |
-| Perplexity compares across models | Denominator is tokens — compare bits per byte instead | W2 |
-| Hallucination means bad data | A calibrated model hallucinates at the singleton rate | W9, W12 |
-| An LLM is a large n-gram | Lookup vs. interpolation; the long tail is memorized | W7, W14 |
-| Negative sampling ≈ softmax | That is NCE; the SGNS optimum is $\mathrm{PMI} - \log K$ | W12 |
-| Cosine similarity is meaning | What the objective rewarded — here, shared contexts | W12 |
-| A vector holds the commonest sense | Its senses are superposed in one vector | W14 |
-| That attention was self-attention | Cross-attention: query and keys from two sequences | W3, W5 |
-| Attention came with the Transformer | Bahdanau 2014; the Transformer only dropped recurrence | W3 |
-| RNNs lost on quality | Parallelism and path length; fixed state still pays | W6 |
+| **1** · Lower perplexity, better text | Likelihood and sample quality are nearly independent; $n = 4$ read best and scored worse | W14 |
+| **2** · Perplexity compares across models | Its denominator is tokens; compare bits per byte, on the same bytes | W2 |
+| **3** · Hallucination means bad data | A calibrated model on clean data still hallucinates at about the singleton-fact rate | W9, W12 |
+| **4** · An LLM is a large n-gram | Different inductive bias — lookup vs. interpolation; but the long tail is memorized | W7, W14 |
+:::
 
 ::: {.footer}
-Misconceptions 1–10, one row per slide, in the order they appeared today · the last column is where each returns with real numbers
+Misconceptions 1–4: the ones about measurement · one row per slide, in the order they appeared · the last column is where each returns with real numbers
+:::
+
+## Ten things this week said no to (2 of 2)
+
+::: {.prose}
+| The belief | What is true | Returns |
+|---|---|---|
+| **5** · Negative sampling approximates softmax | That is NCE; the SGNS optimum is $\mathrm{PMI} - \log K$ | W12 |
+| **6** · Cosine similarity is meaning | It is whatever the objective rewarded — here, shared contexts | W12 |
+| **7** · A vector holds the commonest sense | Its senses are superposed in one vector | W14 |
+| **8** · That attention was self-attention | Cross-attention: the query and the keys come from two sequences | W3, W5 |
+| **9** · Attention came with the Transformer | Bahdanau 2014, Luong 2015; the Transformer only dropped the recurrence | W3 |
+| **10** · RNNs lost on quality | Parallelism and path length; the fixed-size state is still an asset at inference | W6 |
+:::
+
+::: {.footer}
+Misconceptions 5–10: vectors, then attention and recurrence · the last column is where each returns with real numbers
 :::
 
 ## Each Part fills in part of the ledger
