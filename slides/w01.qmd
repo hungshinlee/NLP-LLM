@@ -184,7 +184,7 @@ Reading well and predicting well are different measurements, and they ranked the
 - $n = 8$ is the other direction on today's screen: flawless text, by copying
 
 ::: {.footer}
-Misconception 1 of 10 · bits-per-byte is defined in Part 3 · the general case is W14
+Misconception 1 of 10 · bits-per-byte is defined in Part 3
 :::
 
 # What this course is {.section-title}
@@ -275,10 +275,6 @@ Five minutes. Work it out by hand, then I will ask three of you for your answers
 
 ::: {.claim}
 The answer is why pretraining is something a handful of institutions do — and why a card ten times faster would not change that.
-:::
-
-::: {.footer}
-The memory-side number, this model's KV cache, opens W3 · the MoE number opens W6
 :::
 
 ## Three questions we ask every single week
@@ -384,7 +380,7 @@ The conversion is one line. The total code length is $\sum_{t} -\log_2 P(w_t \mi
 :::
 
 ::: {.footer}
-Misconception 2 of 10 · returns with real numbers in W2
+Misconception 2 of 10
 :::
 
 ## Live: the same paragraph, two tokenizers
@@ -402,7 +398,7 @@ Predict before I run it: which rows move with the tokenizer, and which one moves
 :::
 
 ::: {.footer}
-Demo 2 · run live · next week's cold open compares five tokenizers
+Demo 2 · run live
 :::
 
 ## "Comparable" has four conditions
@@ -415,7 +411,7 @@ Bits-per-byte fixes the **denominator**. It does not make the number uncondition
 4. **The same language.** The same content takes different numbers of UTF-8 bytes in different languages — a *byte premium*. A common Chinese character is three bytes
 
 ::: {.footer}
-Condition 1: next week, byte-level fallback · condition 4: Arnett et al. (2024)
+Condition 4: Arnett et al. (2024)
 :::
 
 # From counting to sharing parameters {.section-title}
@@ -489,7 +485,7 @@ After all 225k tokens, **47.7%** of the vocabulary is still words seen **exactly
 :::
 
 ::: {.footer}
-Measured on this corpus · this tail returns in W7 (dedup) and W14 (contamination)
+Measured on this corpus
 :::
 
 ## The unseen mass does fall — at a rate that goes to zero as $n$ grows
@@ -527,7 +523,7 @@ To a good predictor, a fact seen once is just another hapax. The same $N_1/D$ th
 :::
 
 ::: {.footer}
-Misconception 3 of 10 · one reason W9 (post-training) and W12 (retrieval) exist
+Misconception 3 of 10
 :::
 
 ## Two inductive biases for one problem
@@ -546,7 +542,7 @@ The move from 2003 on was not "neural networks are stronger". It was **replacing
 So *"an LLM is just a bigger n-gram"* is wrong in both directions: the inductive bias differs, **and** at the long tail an LLM does fall back on memorization — which is what we watched at $n = 8$.
 
 ::: {.footer}
-Misconception 4 of 10 · the memorization half returns in W7 and W14
+Misconception 4 of 10
 :::
 
 ## Where does the $n = 8$ sample sit on that table?
@@ -562,10 +558,6 @@ Ask it of any model, at any scale:
 
 ::: {.claim .warn}
 For a 4-gram table you can grep the corpus. For an open corpus of trillions of tokens, a suffix array now lets you do the same. **For a closed one you cannot — and W14 is about what we do instead.**
-:::
-
-::: {.footer}
-This question returns as benchmark contamination (W14) and as data deduplication (W7)
 :::
 
 ## n-grams did not die. They became instruments.
@@ -671,7 +663,7 @@ Cosine similarity means **"similar under the notion of similarity this model's t
 - A better optimizer will not change it. A different objective, or different negatives, will
 
 ::: {.footer}
-Misconception 6 of 10 · returns as a retrieval failure in W12
+Misconception 6 of 10
 :::
 
 ## Live: one vector, several senses — and words with no vector at all
@@ -795,7 +787,7 @@ Keep these apart or W5 will not make sense. *"Why does the model need extra posi
 - The weights $\alpha_{ti}$ do look like an alignment, and that resemblance is where a decade of misreading begins — W3
 
 ::: {.footer}
-Misconception 8 of 10 · this distinction is doing the work in W3 and W5
+Misconception 8 of 10
 :::
 
 ## Attention is older than the Transformer
@@ -812,7 +804,7 @@ Two consequences you need today:
 - Once recurrence is gone, the sequence dimension is fully parallel — and that is the main cause of death
 
 ::: {.footer}
-Misconception 9 of 10 · only the dot-product form is one matrix product (W3)
+Misconception 9 of 10
 :::
 
 ## RNNs lost on parallelism and path length — and partly on tuning
@@ -826,7 +818,7 @@ Reading question 1, applied to the history of the field itself.
 :::
 
 ::: {.footer}
-Misconception 10 of 10 · the next slide is why W6 exists
+Misconception 10 of 10
 :::
 
 ## What recurrence kept, and what it paid
