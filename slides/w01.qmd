@@ -705,6 +705,14 @@ Contextual models fix the first failure and inherit the third. A static vector e
 
 # Why recurrence died {.section-title}
 
+## One cell, applied once per token
+
+![](assets/w01/rnn.svg){width="100%"}
+
+::: {.claim}
+Two consequences: any length fits, because nothing in the weights depends on $t$ — and everything the model knows about the past sits in one fixed-size $\mathbf{h}_t$.
+:::
+
 ## The gradient is a product, and products go to zero
 
 $$\frac{\partial \mathcal{L}}{\partial \mathbf{h}_1} = \frac{\partial \mathcal{L}}{\partial \mathbf{h}_T}\prod_{t=2}^{T}\frac{\partial \mathbf{h}_t}{\partial \mathbf{h}_{t-1}}, \qquad \frac{\partial \mathbf{h}_t}{\partial \mathbf{h}_{t-1}} = \mathrm{diag}\big(\phi'(\cdot)\big)\,\mathbf{W}$$
@@ -833,6 +841,25 @@ So W6's hybrids keep some attention: the recurrent layers collect the inference 
 :::
 
 # Where this goes {.section-title}
+
+## Ten things this week said no to
+
+| The belief | What is true | Returns |
+|---|---|---|
+| Lower perplexity, better text | Likelihood and sample quality are nearly independent | W14 |
+| Perplexity compares across models | Denominator is tokens — compare bits per byte instead | W2 |
+| Hallucination means bad data | A calibrated model hallucinates at the singleton rate | W9, W12 |
+| An LLM is a large n-gram | Lookup vs. interpolation; the long tail is memorized | W7, W14 |
+| Negative sampling ≈ softmax | That is NCE; the SGNS optimum is $\mathrm{PMI} - \log K$ | W12 |
+| Cosine similarity is meaning | What the objective rewarded — here, shared contexts | W12 |
+| A vector holds the commonest sense | Its senses are superposed in one vector | W14 |
+| That attention was self-attention | Cross-attention: query and keys from two sequences | W3, W5 |
+| Attention came with the Transformer | Bahdanau 2014; the Transformer only dropped recurrence | W3 |
+| RNNs lost on quality | Parallelism and path length; fixed state still pays | W6 |
+
+::: {.footer}
+Misconceptions 1–10, one row per slide, in the order they appeared today · the last column is where each returns with real numbers
+:::
 
 ## Each Part fills in part of the ledger
 
