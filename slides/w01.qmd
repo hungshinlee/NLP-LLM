@@ -853,10 +853,6 @@ So W6's hybrids keep some attention: the recurrent layers collect the inference 
 | **4** · An LLM is a large n-gram | Different inductive bias — lookup vs. interpolation; but the long tail is memorized | W7, W14 |
 :::
 
-::: {.footer}
-Misconceptions 1–4: the ones about measurement · one row per slide, in the order they appeared · the last column is where each returns with real numbers
-:::
-
 ## Ten things this week said no to (2 of 2)
 
 ::: {.prose}
@@ -868,10 +864,6 @@ Misconceptions 1–4: the ones about measurement · one row per slide, in the or
 | **8** · That attention was self-attention | Cross-attention: the query and the keys come from two sequences | W3, W5 |
 | **9** · Attention came with the Transformer | Bahdanau 2014, Luong 2015; the Transformer only dropped the recurrence | W3 |
 | **10** · RNNs lost on quality | Parallelism and path length; the fixed-size state is still an asset at inference | W6 |
-:::
-
-::: {.footer}
-Misconceptions 5–10: vectors, then attention and recurrence · the last column is where each returns with real numbers
 :::
 
 ## Each Part fills in part of the ledger
