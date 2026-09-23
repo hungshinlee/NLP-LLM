@@ -190,7 +190,7 @@ $c-muted: #6b7280;
 .reveal .footer {
   box-sizing: border-box;     // 少了這行，padding 會加在 100% 寬之外而衝出畫面
   left: 16% !important;       // 讓出左下角的控制列
-  right: 12% !important;      // 讓出右下角的頁碼
+  right: 16% !important;      // 讓出右下角的頁碼；與 left 相同才會真的置中（2026-09-23 前是 12%，整體偏右 2%）
   bottom: 1.1em !important;
   padding: 0 !important;
   text-align: center;
