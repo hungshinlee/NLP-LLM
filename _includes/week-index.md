@@ -3,7 +3,7 @@
 | Week | Topic | Part | Slides |
 |:---|:-----------------------------|:------|:------|
 | **W1** | [From n-grams to Seq2Seq: A Compressed History](weeks/w01.qmd)<br>[從 n-gram 到 seq2seq：一條被壓縮的技術史]{.wk-zh} | Architecture | [▶ Open](slides/w01.qmd) |
-| **W2** | Tokenization: The World the Model Sees<br>[Tokenization：模型看到的世界，以及它看不到的]{.wk-zh} | Architecture | [▶ Open](slides/w02.qmd) |
+| **W2** | [Tokenization: The World the Model Sees](weeks/w02.qmd)<br>[Tokenization：模型看到的世界，以及它看不到的]{.wk-zh} | Architecture | [▶ Open](slides/w02.qmd) |
 | **W3** | Transformer I: Attention Mechanics, Complexity, and Building It by Hand<br>[Transformer I：attention 的機制、複雜度與手刻]{.wk-zh} | Architecture | — |
 | **W4** | Transformer II: The Full Block, Parameter Accounting, and Training Dynamics<br>[Transformer II：完整 block、參數記帳與訓練動力學]{.wk-zh} | Architecture | — |
 | **W5** | Positional Encoding, Long Context, and the Limits of Context<br>[位置編碼、長文本與 context 的極限]{.wk-zh} | Architecture | — |
