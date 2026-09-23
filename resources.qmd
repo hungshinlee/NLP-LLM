@@ -11,6 +11,15 @@ subtitle: "Textbooks, one paper per week, derivations, toolchain"
 
 {{< include _includes/toolchain.md >}}
 
+## Code
+
+Everything public lives in one repository: [github.com/hungshinlee/NLP-LLM](https://github.com/hungshinlee/NLP-LLM) (the GitHub icon in the top-right corner goes there too).
+
+- **Slides** — `slides/wNN.qmd`, rendered at [Slides](slides.qmd). They are Quarto reveal.js decks; the source is readable as Markdown.
+- **The numbers on the slides** — `slides/assets/wNN/wNN-data.json`, one file per week (e.g. [`w02-data.json`](slides/assets/w02/w02-data.json)). Every measured figure on a deck — n-gram counts, Heaps' law fit, UTF-8 byte counts, the toy-corpus BPE merges, the compute ledger — is read from there, so a number you see can be traced to the file that produced it. The figures in `slides/assets/wNN/*.svg` are drawn from the same data.
+- **Weekly pages** are generated from the course outline; the outline itself is not published.
+- **In-class demos** are run live by the lecturer on the machine described above and are not part of this repository; you do not need to set anything up. Where a week has you watch a component being written from scratch (BPE in W2, for instance), the reference implementation is handed out after that session.
+
 ## Four Things This Course Admits It Does Not Know
 
 These gaps are load-bearing rather than embarrassing — each is a project topic, and saying so is the honest graduate-level position.
