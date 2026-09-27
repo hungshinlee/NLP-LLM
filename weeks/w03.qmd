@@ -6,27 +6,36 @@ toc-depth: 2
 
 <!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
-## 定位
-全課的第一個樞紐。本週只做一件事：**把 attention 徹底拆開，並讓學生從零寫一次**。刻意把 LayerNorm、FFN、最佳化留到 W4，避免一次塞太多。KV cache 在本週就要出現（不是留到 W11），因為 W5 與 W6 的整條敘事都建立在「KV 是推論期的記憶體本體」這個認識上。**算力帳本的第 2 題（7B 模型的 KV cache）在本週開場算。**
+## Where This Fits
+The first hinge of the course. This week does one thing: **take attention completely apart** — what it reads, how, what one read costs in compute and in memory, and whether its weights can be read as an explanation. LayerNorm, the feed-forward block, the residual stream and optimization are deliberately left to W4. **The KV cache appears this week**, not in W11, and it is taught as *the model's state at inference time* rather than as a caching trick: the whole story of W5 and W6 rests on that view, and the prefill/decode split of W11 gets its mechanism here for the first time. The KV-cache row of the compute ledger receives its first number this week — W2 already announced that it is 16 GiB, so the opening is not a guess at the total but a derivation of it, followed by guesses at how it moves. **The from-scratch implementation is written live by the instructor** (demo 1), with a reference implementation handed out afterwards; you do not need to run anything.
 
-## Learning objectives
-1. 能從「soft dictionary lookup」與「可微分的檢索」兩個角度分別解釋 QKV，並說明兩者各自的解釋盲點。
-2. 能推導 scaled dot-product 中 $1/\sqrt{d_k}$ 的來源（變異數論證），並說明省略它會造成什麼具體訓練失效。
-3. 能寫出 causal mask 的實作、並解釋 KV cache 為何讓 autoregressive decode 從 $O(n^2)$ 攤銷成每步 $O(n)$。
-4. 能說明 MHA → MQA → GQA → MLA 這條線**只解一個問題**（KV cache 大小），並用算力帳本算出各方案的 KV bytes。
-5. 能說明 FlashAttention 為什麼是 IO 最佳化而非近似，並用 memory-bound 觀點解釋它為何有效。
-6. 能陳述「attention weight 不是解釋」的具體實驗證據，並說明什麼樣的證據才算機制性證據。
+## Learning Objectives
+1. Explain $\mathbf{Q}, \mathbf{K}, \mathbf{V}$ from two angles — *soft dictionary lookup* and *differentiable routing* — and state the blind spot of each; answer what happens if $\mathbf{Q} = \mathbf{K} = \mathbf{V} = \mathbf{X}$.
+2. Derive the $1/\sqrt{d_k}$ in scaled dot-product attention from a variance argument, explain why the softmax entropy collapses without it, and point out that this fix only holds at initialization — logits still grow during training (the entry point to W4).
+3. Write out the causal mask, explain why the KV cache is **correct** (under causality, the $\mathbf{K}, \mathbf{V}$ of earlier tokens do not change when a new token arrives), and state the cost of decoding precisely: **per step** from $O(L^2 d)$ to $O(L d)$, **for the whole sequence** from $O(L^3 d)$ to $O(L^2 d)$; predict what each of the five tests in demo 1 checks and which one fails first.
+4. Use the ledger's KV formula to compute the KV bytes per token for MHA → MQA → GQA → MLA, state that this whole line **solves one problem only** (how much KV has to be moved at decode time), and explain why multi-head attention does **not** multiply the projection cost by $n_{\text{head}}$.
+5. State at which sequence length attention's FLOPs, and separately its activation memory, begin to dominate the weight side (the two crossovers differ by an order of magnitude), and use the memory-bound view to explain why FlashAttention works and why it is an exact computation, not an approximation.
+6. State the concrete experimental evidence that "attention weights are not explanations" — both sides of the debate — and say what would count as mechanistic evidence (the fourth question to ask of any paper).
 
-## 參考資料
-- **JM3** Ch 7 *Transformers and Pretraining*（前半）
-- **RAS** ch 3（手刻 attention，本週 lab 的骨架）；**XZ** 相關章節可作為推導的補充講義
-- **ZZM** ch 4 *Sequence Generation Models*（self-attention → Transformer 的 encoder / decoder 逐節拆解）
-- Vaswani et al., **Attention Is All You Need**, NeurIPS 2017（arXiv:1706.03762）
-- Shazeer, **Fast Transformer Decoding: One Write-Head is All You Need**, arXiv:1911.02150 — MQA
-- Ainslie et al., **GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints**, EMNLP 2023（arXiv:2305.13245）
-- DeepSeek-AI, **DeepSeek-V2**, arXiv:2405.04434 — **MLA 的原始出處**；KV cache 大幅壓縮的論證在此
-- Dao et al., **FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness**, NeurIPS 2022（arXiv:2205.14135）；與 **FlashAttention-3**, arXiv:2407.08608
-- Jain & Wallace, **Attention is not Explanation**, NAACL 2019（arXiv:1902.10186）；並列 Wiegreffe & Pinter, **Attention is not not Explanation**, EMNLP 2019 （檢索標題即可）
-- Xiao et al., **Efficient Streaming Language Models with Attention Sinks**, ICLR 2024（arXiv:2309.17453）— attention sink 的來源，W5 會再用
-- induction head 與 head 的功能特化：檢索 *in-context learning and induction heads*、*attention head pruning sixteen heads*
-- online softmax：檢索 *online normalizer calculation for softmax*（Milakov & Gimelshein）
+## References
+- **JM3** ch 7 *Transformers and Pretraining* (first half: attention, multi-head, the causal mask)
+- **RAS** ch 3 (attention from scratch — the skeleton for demo 1; covers the causal mask and multi-head); **XZ**, the corresponding chapters, as supplementary notes for the derivations
+- **ZZM** ch 4 *Sequence Generation Models* (self-attention → the Transformer encoder/decoder, section by section)
+- Vaswani et al., **Attention Is All You Need**, NeurIPS 2017 (arXiv:1706.03762) — the variance argument for $1/\sqrt{d_k}$ is a footnote in §3.2.1; the path-length comparison is Table 1
+- Shazeer, **Fast Transformer Decoding: One Write-Head is All You Need**, arXiv:1911.02150 (2019) — MQA; the abstract already names the bottleneck of incremental decoding: the memory bandwidth of repeatedly loading K and V
+- Ainslie et al., **GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints**, EMNLP 2023 (arXiv:2305.13245) — grouped KV heads, and converting an existing MHA checkpoint to GQA with continued training
+- DeepSeek-AI, **DeepSeek-V2: A Strong, Economical, and Efficient Mixture-of-Experts Language Model**, arXiv:2405.04434 (2024) — **the original source of MLA**; the abstract reports a 93.3% reduction of the KV cache relative to DeepSeek 67B
+- Zhang et al., **Tensor Product Attention Is All You Need**, NeurIPS 2025 (arXiv:2501.06425) — tensor decompositions of Q, K, V that shrink the KV cache; one of the 2025 additions to the MHA → MLA line
+- Dao et al., **FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness**, NeurIPS 2022 (arXiv:2205.14135); Dao, **FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning**, arXiv:2307.08691 (2023); Shah et al., **FlashAttention-3: Fast and Accurate Attention with Asynchrony and Low-precision**, arXiv:2407.08608 (2024) — the first paper is where the IO argument comes from; the other two do not change the argument
+- Milakov & Gimelshein, **Online normalizer calculation for softmax**, arXiv:1805.02867 (2018) — an NVIDIA technical report, not a peer-reviewed paper; the source of the online-softmax recurrence
+- Zhai et al., **Stabilizing Transformer Training by Preventing Attention Entropy Collapse**, arXiv:2303.06296 (2023) — links training instability to attention entropy collapse; picked up in W4
+- Jain & Wallace, **Attention is not Explanation**, NAACL 2019 (arXiv:1902.10186); Serrano & Smith, **Is Attention Interpretable?**, ACL 2019 (arXiv:1906.03731); and, on the other side, Wiegreffe & Pinter, **Attention is not not Explanation**, EMNLP-IJCNLP 2019 (DOI 10.18653/v1/D19-1002) — **read the three together**; this is the first stop on the course's critical line
+- Abnar & Zuidema, **Quantifying Attention Flow in Transformers**, arXiv:2005.00928 (2020) — attention rollout and attention flow; the third ranking in demo 3
+- Michel, Levy & Neubig, **Are Sixteen Heads Really Better than One?**, NeurIPS 2019 (arXiv:1905.10650); Voita et al., **Analyzing Multi-Head Self-Attention: Specialized Heads Do the Heavy Lifting, the Rest Can Be Pruned**, ACL 2019 (arXiv:1905.09418) — most heads can be pruned; a few have identifiable functions
+- Olsson et al., **In-context Learning and Induction Heads**, arXiv:2209.11895 (2022) — a research report from Anthropic (the Transformer Circuits series), not a peer-reviewed paper; the induction head is the most-cited example of a head with an identifiable function
+- Xiao et al., **Efficient Streaming Language Models with Attention Sinks**, ICLR 2024 (arXiv:2309.17453) — the source of the attention-sink phenomenon, used again in W5
+- Barbero et al., **Why do LLMs attend to the first token?**, arXiv:2504.02732 (2025) — one mechanistic account of attention sinks; a preprint with no venue listed
+- Qiu et al., **Gated Attention for Large Language Models: Non-linearity, Sparsity, and Attention-Sink-Free**, arXiv:2505.06708 (2025) — a gate on the attention output; the title claims sink-free behaviour; a preprint with no venue listed, and only the abstract was read for this outline
+- A survey of the attention-as-explanation debate: search *Is Attention Explanation? An Introduction to the Debate* (ACL 2022)
+- The term-by-term formula for training-time activation memory (when the score matrix overtakes the rest): search *Reducing Activation Recomputation in Large Transformer Models*
+- How deployed models handle attention sinks (a learnable sink term): search *gpt-oss model card attention sink* and *softmax off-by-one* (the latter is a blog post)
