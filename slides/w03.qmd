@@ -246,9 +246,9 @@ Misconception 2: "$1/\sqrt{d_k}$ fixes the numerics" · Zhai et al. 2023 · Wort
 
 1. `scaled_dot_product_attention(Q, K, V, mask)` — scores, scale, mask, softmax, weighted sum
 2. `causal_mask(L)` — $-\infty$ above the diagonal
-3. `decode_step(x_t, cache)` — compute $\mathbf{k}_t, \mathbf{v}_t$ once, append, attend over the cache
+3. `decode_step(x_t, cache, W)` — compute $\mathbf{k}_t, \mathbf{v}_t$ once, append, attend over the cache
 
-Test after each step. Typos are expected; `attention_final.py` is the fallback after two minutes.
+Tests run after each step (`tests.py` skips what is not written yet). Typos are expected; `attention_final.py` is the fallback after two minutes.
 :::
 ::: {.column width="52%"}
 **Five tests — predict first: what does each check, and which fails first?**
