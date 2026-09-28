@@ -1,0 +1,438 @@
+{
+ "kv": {
+  "config": {
+   "N": 7000000000.0,
+   "n_layer": 32,
+   "n_head": 32,
+   "n_kv": 32,
+   "d_head": 128,
+   "d_model": 4096,
+   "b": 2,
+   "dtype": "FP16/BF16",
+   "source": "W1 p16 / W2 p60 的紙上組態（Llama-2-7B 形狀；不綁定任何實測模型）"
+  },
+  "per_token_bytes": 524288,
+  "per_token_KiB": 512.0,
+  "totals": [
+   {
+    "L": 1024,
+    "bytes": 536870912,
+    "GiB": 0.5
+   },
+   {
+    "L": 2048,
+    "bytes": 1073741824,
+    "GiB": 1.0
+   },
+   {
+    "L": 4096,
+    "bytes": 2147483648,
+    "GiB": 2.0
+   },
+   {
+    "L": 8192,
+    "bytes": 4294967296,
+    "GiB": 4.0
+   },
+   {
+    "L": 16384,
+    "bytes": 8589934592,
+    "GiB": 8.0
+   },
+   {
+    "L": 32768,
+    "bytes": 17179869184,
+    "GiB": 16.0
+   },
+   {
+    "L": 65536,
+    "bytes": 34359738368,
+    "GiB": 32.0
+   },
+   {
+    "L": 131072,
+    "bytes": 68719476736,
+    "GiB": 64.0
+   }
+  ],
+  "GiB_at_32k": 16.0,
+  "variants": {
+   "gqa8": {
+    "n_kv": 8,
+    "per_token_bytes": 131072,
+    "GiB_at_32k": 4.0
+   },
+   "mqa1": {
+    "n_kv": 1,
+    "per_token_bytes": 16384,
+    "GiB_at_32k": 0.5
+   },
+   "ctx128k": {
+    "L": 131072,
+    "GiB": 64.0
+   },
+   "fit_64GB": {
+    "unified_GB": 64,
+    "weights_GB_fp16": 14.0,
+    "kv_budget_bytes": 50000000000.0,
+    "L_max_tokens": 95367,
+    "note": "64 GB（十進位）扣掉 FP16 權重 14 GB，其餘全給 KV；不含作業系統與活化，是上界"
+   },
+   "fit_16GB_card": {
+    "card_GB": 16,
+    "kv_GiB_at_32k": 16.0,
+    "note": "16 GiB 的 KV 在放任何一個權重之前就佈滿一張 16 GB 的卡"
+   }
+  },
+  "compression_table": [
+   {
+    "scheme": "MHA",
+    "n_kv": 32,
+    "per_token_KiB": 512.0,
+    "GiB_at_32k": 16.0,
+    "ratio_vs_mha": 1.0
+   },
+   {
+    "scheme": "GQA (8 KV heads)",
+    "n_kv": 8,
+    "per_token_KiB": 128.0,
+    "GiB_at_32k": 4.0,
+    "ratio_vs_mha": 4.0
+   },
+   {
+    "scheme": "GQA (4 KV heads)",
+    "n_kv": 4,
+    "per_token_KiB": 64.0,
+    "GiB_at_32k": 2.0,
+    "ratio_vs_mha": 8.0
+   },
+   {
+    "scheme": "MQA",
+    "n_kv": 1,
+    "per_token_KiB": 16.0,
+    "GiB_at_32k": 0.5,
+    "ratio_vs_mha": 32.0
+   }
+  ]
+ },
+ "variance": {
+  "setup": "q, k ~ N(0, I_{d_k}) i.i.d.; 64 keys per query; 200 trials; seed 3; entropy in nats (max ln 64 = 4.159)",
+  "L_keys": 64,
+  "trials": 200,
+  "max_entropy_nats": 4.1588830833596715,
+  "rows": [
+   {
+    "d_k": 4,
+    "sample_var_qk": 4.072256433038345,
+    "std_qk": 2.0179832588597817,
+    "entropy_unscaled": 2.8096250517111785,
+    "entropy_scaled": 3.702297946119964,
+    "pmax_unscaled": 0.27360681964235595,
+    "pmax_scaled": 0.1038015682502567
+   },
+   {
+    "d_k": 8,
+    "sample_var_qk": 7.63925002550189,
+    "std_qk": 2.763919323262148,
+    "entropy_unscaled": 2.1093785256953494,
+    "entropy_scaled": 3.7148929210316783,
+    "pmax_unscaled": 0.42537718692606824,
+    "pmax_scaled": 0.10384041727574841
+   },
+   {
+    "d_k": 16,
+    "sample_var_qk": 16.361030852205985,
+    "std_qk": 4.0448771121266445,
+    "entropy_unscaled": 1.3580383202379387,
+    "entropy_scaled": 3.6743826707480025,
+    "pmax_unscaled": 0.5831870141938237,
+    "pmax_scaled": 0.10904324381991044
+   },
+   {
+    "d_k": 32,
+    "sample_var_qk": 31.80307034343708,
+    "std_qk": 5.639421100027651,
+    "entropy_unscaled": 0.841083234833505,
+    "entropy_scaled": 3.680919072492734,
+    "pmax_unscaled": 0.7195108387455901,
+    "pmax_scaled": 0.1103335226942454
+   },
+   {
+    "d_k": 64,
+    "sample_var_qk": 63.491102592235656,
+    "std_qk": 7.968130432682164,
+    "entropy_unscaled": 0.582176514229246,
+    "entropy_scaled": 3.6934605224805495,
+    "pmax_unscaled": 0.7985305049658258,
+    "pmax_scaled": 0.1069350527916072
+   },
+   {
+    "d_k": 128,
+    "sample_var_qk": 134.0289356323862,
+    "std_qk": 11.57708666428589,
+    "entropy_unscaled": 0.34128501211078394,
+    "entropy_scaled": 3.6547923555741892,
+    "pmax_unscaled": 0.8702845224465938,
+    "pmax_scaled": 0.11529655568611095
+   },
+   {
+    "d_k": 256,
+    "sample_var_qk": 250.07543884844938,
+    "std_qk": 15.813773706754798,
+    "entropy_unscaled": 0.27566376434822293,
+    "entropy_scaled": 3.6944507138865164,
+    "pmax_unscaled": 0.8903028338264539,
+    "pmax_scaled": 0.10667853827259252
+   },
+   {
+    "d_k": 512,
+    "sample_var_qk": 510.4756218800449,
+    "std_qk": 22.593707572685915,
+    "entropy_unscaled": 0.19366148019873983,
+    "entropy_scaled": 3.675779435189421,
+    "pmax_unscaled": 0.921604748084238,
+    "pmax_scaled": 0.10976910569527286
+   },
+   {
+    "d_k": 1024,
+    "sample_var_qk": 1029.3061944722995,
+    "std_qk": 32.08280216053921,
+    "entropy_unscaled": 0.16050751285935325,
+    "entropy_scaled": 3.6872163611074145,
+    "pmax_unscaled": 0.934856794443258,
+    "pmax_scaled": 0.10505047590793859
+   }
+  ]
+ },
+ "lookup": {
+  "query": [
+   1.0,
+   0.6
+  ],
+  "keys": {
+   "the": [
+    -0.4,
+    0.9
+   ],
+   "cat": [
+    1.0,
+    0.5
+   ],
+   "sat": [
+    0.3,
+    -0.8
+   ],
+   "mat": [
+    0.8,
+    0.2
+   ]
+  },
+  "scores": {
+   "the": 0.14,
+   "cat": 1.3,
+   "sat": -0.18,
+   "mat": 0.92
+  },
+  "scaled_scores": {
+   "the": 0.09899494936611665,
+   "cat": 0.9192388155425117,
+   "sat": -0.12727922061357855,
+   "mat": 0.6505382386916237
+  },
+  "weights": {
+   "the": 0.17228063151176465,
+   "cat": 0.39125854895048984,
+   "sat": 0.13739370392995387,
+   "mat": 0.29906711560779176
+  },
+  "d_k": 2
+ },
+ "crossover": {
+  "d": 4096,
+  "n_head": 32,
+  "d_head": 128,
+  "c_assumed": 20,
+  "weights_flops_per_layer_token": 402653184,
+  "L_cross_flops_causal": 49152,
+  "L_cross_flops_full": 24576,
+  "L_cross_memory": 2560,
+  "note": "per layer, per token, forward; N ≈ 12 n_layer d², FFN width 4d; c is an assumed order-of-magnitude constant",
+  "rows": [
+   {
+    "L": 256,
+    "attn_share_flops_causal": 0.0051813471502590676,
+    "attn_share_flops_full": 0.010309278350515464,
+    "score_share_memory": 0.09090909090909091
+   },
+   {
+    "L": 512,
+    "attn_share_flops_causal": 0.010309278350515464,
+    "attn_share_flops_full": 0.02040816326530612,
+    "score_share_memory": 0.16666666666666666
+   },
+   {
+    "L": 1024,
+    "attn_share_flops_causal": 0.02040816326530612,
+    "attn_share_flops_full": 0.04,
+    "score_share_memory": 0.2857142857142857
+   },
+   {
+    "L": 2048,
+    "attn_share_flops_causal": 0.04,
+    "attn_share_flops_full": 0.07692307692307693,
+    "score_share_memory": 0.4444444444444444
+   },
+   {
+    "L": 4096,
+    "attn_share_flops_causal": 0.07692307692307693,
+    "attn_share_flops_full": 0.14285714285714285,
+    "score_share_memory": 0.6153846153846154
+   },
+   {
+    "L": 8192,
+    "attn_share_flops_causal": 0.14285714285714285,
+    "attn_share_flops_full": 0.25,
+    "score_share_memory": 0.7619047619047619
+   },
+   {
+    "L": 16384,
+    "attn_share_flops_causal": 0.25,
+    "attn_share_flops_full": 0.4,
+    "score_share_memory": 0.8648648648648649
+   },
+   {
+    "L": 32768,
+    "attn_share_flops_causal": 0.4,
+    "attn_share_flops_full": 0.5714285714285714,
+    "score_share_memory": 0.927536231884058
+   },
+   {
+    "L": 65536,
+    "attn_share_flops_causal": 0.5714285714285714,
+    "attn_share_flops_full": 0.7272727272727273,
+    "score_share_memory": 0.9624060150375939
+   },
+   {
+    "L": 131072,
+    "attn_share_flops_causal": 0.7272727272727273,
+    "attn_share_flops_full": 0.8421052631578947,
+    "score_share_memory": 0.9808429118773946
+   },
+   {
+    "L": 262144,
+    "attn_share_flops_causal": 0.8421052631578947,
+    "attn_share_flops_full": 0.9142857142857143,
+    "score_share_memory": 0.9903288201160542
+   }
+  ]
+ },
+ "softmax": {
+  "scores": [
+   2.62,
+   0.4,
+   3.93,
+   1.77,
+   1.72,
+   -2.05,
+   4.44,
+   -1.6
+  ],
+  "values": [
+   0.5,
+   -0.3,
+   0.8,
+   0.1,
+   -0.6,
+   0.2,
+   0.9,
+   -0.4
+  ],
+  "one_shot_output": 0.741413959434512,
+  "two_block_output": 0.7414139594345122,
+  "abs_diff": 1.1102230246251565e-16,
+  "trace": [
+   {
+    "block": 1,
+    "block_scores": [
+     2.62,
+     0.4,
+     3.93,
+     1.77
+    ],
+    "m_old": null,
+    "m_new": 3.93,
+    "correction": 0.0,
+    "l": 1.41445009328979,
+    "o_unnormalized": 0.9376510655360375
+   },
+   {
+    "block": 2,
+    "block_scores": [
+     1.72,
+     -2.05,
+     4.44,
+     -1.6
+    ],
+    "m_old": 3.93,
+    "m_new": 4.44,
+    "correction": 0.6004955788122658,
+    "l": 1.9191458898192035,
+    "o_unnormalized": 1.4228815529033256
+   }
+  ],
+  "all_masked_row_gives": [
+   "nan",
+   "nan",
+   "nan",
+   "nan"
+  ],
+  "note": "純 Python 浮點；分數與 value 手選（第二塊含最大值）；abs_diff 若非零是加總順序不同的浮點效應——精確在數學上，不在逐位元"
+ },
+ "permute": {
+  "L": 5,
+  "d_k": 4,
+  "perm": [
+   3,
+   0,
+   4,
+   1,
+   2
+  ],
+  "max_abs_diff_Attn(PX)_vs_P_Attn(X)": 2.220446049250313e-16,
+  "note": "Q = K = V = X（無投影、無 mask、無位置編碼）；Attn(PX) = P·Attn(X) 到浮點誤差"
+ },
+ "ledger": {
+  "decode_flops_per_step": 14000000000.0,
+  "weights_bytes": 14000000000.0,
+  "rows": [
+   {
+    "L": 4096,
+    "weights_GB": 14.0,
+    "kv_GiB": 2.0,
+    "bytes_moved_per_step": 16147483648.0,
+    "bytes_moved_GB": 16.147483648,
+    "flops_per_step": 14000000000.0,
+    "flop_per_byte": 0.8670081546565935
+   },
+   {
+    "L": 32768,
+    "weights_GB": 14.0,
+    "kv_GiB": 16.0,
+    "bytes_moved_per_step": 31179869184.0,
+    "bytes_moved_GB": 31.179869184,
+    "flops_per_step": 14000000000.0,
+    "flop_per_byte": 0.4490076567474543
+   },
+   {
+    "L": 131072,
+    "weights_GB": 14.0,
+    "kv_GiB": 64.0,
+    "bytes_moved_per_step": 82719476736.0,
+    "bytes_moved_GB": 82.719476736,
+    "flops_per_step": 14000000000.0,
+    "flop_per_byte": 0.16924671857730839
+   }
+  ],
+  "note": "time per decode step ≥ (N·b + M_KV) / BW；BW 是記憶體頻寬，demo 機的數字待實測（HANDOVER C6b），不寫"
+ }
+}

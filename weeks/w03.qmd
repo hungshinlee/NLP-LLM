@@ -6,6 +6,10 @@ toc-depth: 2
 
 <!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
+::: {.callout-note appearance="minimal"}
+[**▶ Slides for this week**](../slides/w03.qmd)
+:::
+
 ## Where This Fits
 The first hinge of the course. This week does one thing: **take attention completely apart** — what it reads, how, what one read costs in compute and in memory, and whether its weights can be read as an explanation. LayerNorm, the feed-forward block, the residual stream and optimization are deliberately left to W4. **The KV cache appears this week**, not in W11, and it is taught as *the model's state at inference time* rather than as a caching trick: the whole story of W5 and W6 rests on that view, and the prefill/decode split of W11 gets its mechanism here for the first time. The KV-cache row of the compute ledger receives its first number this week — W2 already announced that it is 16 GiB, so the opening is not a guess at the total but a derivation of it, followed by guesses at how it moves. **The from-scratch implementation is written live by the instructor** (demo 1), with a reference implementation handed out afterwards; you do not need to run anything.
 
