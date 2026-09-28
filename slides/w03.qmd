@@ -65,7 +65,7 @@ Multiply it out yourself — first **per token**, then for the whole context. Yo
 :::
 
 ::: {.footer}
-Configuration: W1 p16 · the answer was announced on W2 p60
+Configuration: W1 p16 · the answer was announced on W2 p58
 :::
 
 ## Now guess three variants — before computing them
@@ -110,7 +110,7 @@ and which, by construction, produces the object we just priced: the KV cache.
 :::
 
 ::: {.footer}
-W1 p52–p57: BPTT, the Jacobian chain, seq2seq's bottleneck, Bahdanau's weighted read
+W1 p51–p57: BPTT, the Jacobian chain, seq2seq's bottleneck, Bahdanau's weighted read
 :::
 
 ## What you should be able to do by the end of today
@@ -288,7 +288,7 @@ Misconception 3: "the KV cache is an engineering optimization" — it is the sta
 ![](assets/w03/kvformula.svg)
 
 ::: {.claim}
-Two of the six factors are **design choices** — $n_{\text{kv}}$ and $b$ — and one is **the user's** — $L$. The rest are fixed the day the model is trained.
+Two of the six factors are **levers** — $n_{\text{kv}}$, chosen before training (next slides), and $b$, changeable at serving time (W11) — and one is **the user's**, $L$. The other three are the architecture.
 :::
 
 ::: {.footer}
@@ -329,12 +329,28 @@ Shazeer 2019 (MQA) · Ainslie et al. 2023 (GQA) · DeepSeek-V2 2024 (MLA) · ope
 
 $$\mathbf{c}_t = \mathbf{W}^{DKV}\,\mathbf{x}_t \in \mathbb{R}^{d_c},\qquad \mathbf{k}_t = \mathbf{W}^{UK}\mathbf{c}_t,\qquad \mathbf{v}_t = \mathbf{W}^{UV}\mathbf{c}_t,\qquad d_c \ll 2\,n_{\text{head}}\,d_{\text{head}}$$
 
-- Cache $\mathbf{c}_t$, not $\mathbf{k}_t, \mathbf{v}_t$. At inference the score is $\mathbf{q}^\top\mathbf{k}_t = \mathbf{q}^\top\mathbf{W}^{UK}\mathbf{c}_t = (\mathbf{W}^{UK\top}\mathbf{q})^\top\mathbf{c}_t$ — **absorb** $\mathbf{W}^{UK}$ into the query side and never materialize $\mathbf{K}$
-- The same trick as LoRA (W8): a low-rank factorization, used for a completely different purpose — here to shrink state, there to shrink an update
-- **RoPE breaks the absorption**: the rotation depends on the position of $\mathbf{k}_t$ and sits between $\mathbf{W}^{UK}$ and $\mathbf{q}$, so it cannot be folded into the query. DeepSeek-V2 keeps a small separate key for position — the *decoupled* RoPE key — and caches it alongside $\mathbf{c}_t$
+{{< include assets/w03/mla.inline.qmd >}}
+
+::: {.claim}
+Cache $\mathbf{c}_t$, not $\mathbf{k}_t, \mathbf{v}_t$, and score against $\mathbf{c}_t$ directly. **What is cached changed; the attention itself did not.**
+:::
 
 ::: {.footer}
-DeepSeek-AI, arXiv:2405.04434 §2.1 · dimensions are the paper's; W5 explains what RoPE is
+DeepSeek-AI 2405.04434 §2.1 · $d_c$ and the position-key width: its Table 1, not quoted
+:::
+
+## Low rank is LoRA's trick too — and RoPE is where it breaks
+
+- **The same trick as LoRA (W8)**: a matrix written as the product of two thin ones. Used for a completely different purpose — here to shrink the **state** carried at inference, there to shrink the **update** learned in fine-tuning
+- **RoPE breaks the absorption**: the rotation $\mathbf{R}_t$ depends on the position of $\mathbf{k}_t$ and sits between $\mathbf{W}^{UK}$ and $\mathbf{q}$, so no single matrix can be folded into the query
+- DeepSeek-V2's answer: a **small separate key that carries position** — the *decoupled* RoPE key — not compressed, cached alongside $\mathbf{c}_t$. The cache per token is $d_c$ **plus** that key, not $d_c$ alone
+
+::: {.claim}
+**Low rank and rotation do not commute.** W5 comes back to this sentence when it explains what RoPE is.
+:::
+
+::: {.footer}
+DeepSeek-AI, arXiv:2405.04434 §2.1 · LoRA: W8 · RoPE: W5
 :::
 
 ## Why decode is memory-bound: the ledger's first roofline
@@ -428,7 +444,7 @@ Output after the last block: $\mathbf{o}/\ell$. The whole trick is the factor $e
 | **one shot** over all eight | | | $0.7414$ |
 
 ::: {.ask}
-On paper: take the first two scores as block 1 and the next two as block 2. Show the rescaling reproduces the one-shot softmax.
+On paper: take the first two scores as block 1 and the next two as block 2 (values as in the table). Show the rescaling reproduces the one-shot softmax over those four.
 :::
 
 ::: {.footer}
@@ -490,7 +506,7 @@ $$\mathrm{Attn}(\mathbf{P}\mathbf{X}) = \mathrm{softmax}\!\left(\frac{\mathbf{P}
 = \mathbf{P}\,\mathrm{Attn}(\mathbf{X})$$
 
 - so shuffling the tokens shuffles the outputs the same way — **"the cat sat on the mat" and "mat the on sat cat the" produce the same set of vectors**
-- the causal mask breaks the symmetry only partially (it knows *before* and *after*, not *how far*); everything else about order has to be **added**
+- the causal mask breaks the symmetry only partially — it fixes which tokens come *earlier*, nothing more; everything else about order has to be **added**
 - checked numerically in `w03-data.json`: $\max|\mathrm{Attn}(\mathbf{P}\mathbf{X}) - \mathbf{P}\,\mathrm{Attn}(\mathbf{X})| = 2 \times 10^{-16}$
 
 ::: {.claim}
@@ -557,7 +573,7 @@ The fourth question to ask of every paper (W1 p21) · this table closes W14
 
 - The **design** motivation (Vaswani et al.): attend jointly from several representation subspaces — a capacity argument, not a linguistic one
 - **After** training, most heads can be pruned with little loss: Michel, Levy & Neubig (NeurIPS 2019) remove most heads at test time; Voita et al. (ACL 2019) find a few specialized heads carry the load and the rest can go
-- A few heads do have identifiable functions — the best-known is the **induction head** (Olsson et al. 2022, an Anthropic research report, not a peer-reviewed paper), which copies patterns like *A B … A → B*
+- A few heads do have identifiable functions — the best-known is the **induction head** (Olsson et al. 2022, an Anthropic research report, not a peer-reviewed paper), which copies patterns like $A\ B \ldots A \rightarrow B$
 
 ::: {.claim}
 "Heads specialize" is a finding about **some** heads, made after the fact. Do not let it become the reason the design exists — and do not expect it of every head.
@@ -619,7 +635,7 @@ Same master as W1 p16 · prefill's $L^2$ term is the attention side: $2Ld$ per l
 - The failure demo: push the learning rate past its limit and watch the loss spike **with the attention logits** — the growth this week said $1/\sqrt{d_k}$ cannot stop
 
 ::: {.ask}
-Before then: **JM3 Vol I ch 7**, second half (the 2026-08-19 release), and **RAS ch 3–4**. To consolidate today: **ZZM ch 4** for a second walk through self-attention, and Jain & Wallace's abstract.
+Before then: **JM3 Vol I ch 7**, second half (the 2026-08-19 release), and **RAS ch 4** (ch 3 was this week's). To consolidate today: **ZZM ch 4** for a second walk through self-attention, and Jain & Wallace's abstract.
 :::
 
 ::: {.claim}

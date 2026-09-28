@@ -9,7 +9,7 @@
    "d_model": 4096,
    "b": 2,
    "dtype": "FP16/BF16",
-   "source": "W1 p16 / W2 p60 的紙上組態（Llama-2-7B 形狀；不綁定任何實測模型）"
+   "source": "W1 p16 / W2 p58 的紙上組態（Llama-2-7B 形狀；不綁定任何實測模型）"
   },
   "per_token_bytes": 524288,
   "per_token_KiB": 512.0,
