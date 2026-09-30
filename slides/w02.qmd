@@ -393,30 +393,28 @@ A word never seen in training still encodes — into pieces that **were** seen. 
 Rank = position in the merge list · lowest rank first, leftmost occurrence first on ties
 :::
 
-## Live: write it, run three tests
+## Live: one loop by hand, one line changed — and OOV is gone
 
 ::: {.columns}
 ::: {.column width="50%"}
-**Write, in this order**
+**What you should believe after this**
 
-1. `get_pairs(corpus)` — count adjacent pairs, weighted by word count
-2. `train(corpus, k)` — $k$ rounds of merge; return the merge list
-3. `encode(word, merges)` — apply merges by rank
-4. `decode(tokens)` — join, strip the end marker
+1. The merge table a program produces is **the one you just computed on paper** — BPE training is that loop, nothing more
+2. Swap the base alphabet from characters to **bytes** and the same code encodes **any** string — no `[UNK]`, ever
 
-Test after each step. Typos are expected; `bpe_final.py` is the fallback after two minutes.
+**Live**: write `get_pairs` (two loops; the rest is already there) → run → change **one line** in `to_symbols` → run again
 :::
 ::: {.column width="50%"}
-**Three tests**
+**Three checks, three claims**
 
-- **(a)** merges match the reference — and match what you computed on paper
-- **(b)** `decode(encode(w)) == w` for every word; in the **byte-level** variant, for any UTF-8 string
-- **(c)** 𠊎 under byte-level: **4 byte tokens, no UNK** — and then the same character into `bert-base-chinese`
+- **(a) training = counting.** Merges 1–3 are $n{+}e\ 13$, $t{+}\_\ 12$, $s{+}t\_\ 9$ — your paper answer; all eight match the reference
+- **(b) a tokenizer must be lossless.** `decode(encode(w)) == w` for every word; byte-level, for any UTF-8 string
+- **(c) OOV is a choice of alphabet.** 𠊎 under characters: not in the vocabulary. Under bytes: `F0 A0 8A 8E`, no `[UNK]` — then the same character into `bert-base-chinese`
 :::
 :::
 
 ::: {.footer}
-Demo 2 · live coding · reference implementation is handed out after class, not before
+Demo 2 · live, on a prepared skeleton · reference implementation handed out after class
 :::
 
 ## Three subword algorithms, three objectives
