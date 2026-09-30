@@ -533,11 +533,11 @@ Skeleton only: no estimator here · Cao & Rimell, EMNLP 2021
 ## Misconception 2: "the same text always becomes the same tokens"
 
 ::: {.gen}
-[the prompt ends with a space — or does not]{.n}
-`The answer is` **→** next token candidates: ` A`, ` B`, ` yes` …　　　`The answer is ` **→** next token candidates: `A`, `B`, `yes` …
+[the prompt ends with a space — or does not · ␣ marks one space character]{.n}
+`The answer is` **→** next token candidates: `␣A`, `␣B`, `␣yes` …　　　`The answer is␣` **→** next token candidates: `A`, `B`, `yes` …
 :::
 
-- Most tokenizers glue the **leading space onto the following word**: ` world` is one token, `world` is a different one
+- Most tokenizers glue the **leading space onto the following word**: `␣world` is one token, `world` is a different one
 - A prompt that ends in a space forces the model to continue from a segmentation it almost never saw in training
 - Multiple-choice scoring: the logits of `A` and ` A` belong to **different tokens** — W14 meets this as an evaluation bug
 - Same complete string → same tokens; **same word in a different context** → not necessarily
