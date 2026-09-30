@@ -357,6 +357,18 @@ A token pays by **shrinking the interval**; the bits are read off once, at the e
 Continues W1 p24 · toy probabilities · integer renormalization (range coding) not drawn
 :::
 
+## Decoding: the same model makes the same cuts, and the number says which one
+
+{{< include assets/w02/decode.inline.qmd >}}
+
+::: {.claim}
+The decoder never sees the tokens. It runs the LM, cuts the interval the way the encoder did, and reads off which piece the number is in — then feeds that token back in and cuts again.
+:::
+
+::: {.footer}
+Toy vocabulary {a, b, c} · same four chosen probabilities as p22 · 5 bits, bound ≤ 6
+:::
+
 ## Training: merge the most frequent adjacent pair, repeat
 
 {{< include assets/w02/merges.inline.qmd >}}
