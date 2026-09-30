@@ -345,6 +345,18 @@ Two stages of compression: a **fixed dictionary**, then an **adaptive model**. P
 Gage (1994), *C Users Journal* — a magazine article, known here via Sennrich et al.
 :::
 
+## Paying the bits: the interval is the ledger, and the decoder runs the same model
+
+{{< include assets/w02/ledger.inline.qmd >}}
+
+::: {.claim}
+A token pays by **shrinking the interval**; the bits are read off once, at the end — so half a bit is a real price. Free in bits is not free in compute, and the decoder needs the same $P(\cdot \mid w_{<t})$, bit for bit.
+:::
+
+::: {.footer}
+Continues W1 p24 · toy probabilities · integer renormalization (range coding) not drawn
+:::
+
 ## Training: merge the most frequent adjacent pair, repeat
 
 {{< include assets/w02/merges.inline.qmd >}}
