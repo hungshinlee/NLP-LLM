@@ -9,7 +9,7 @@
 <div class="cm-part">Part I — Architecture</div>
 <a class="cm-wk" href="weeks/w01.html"><span class="cm-n">W1</span><span class="cm-t">n-grams → seq2seq</span></a>
 <a class="cm-wk" href="weeks/w02.html"><span class="cm-n">W2</span><span class="cm-t">Tokenization</span></a>
-<div class="cm-wk cm-hinge cm-soon"><span class="cm-n">W3</span><span class="cm-t">Attention, by hand</span></div>
+<a class="cm-wk cm-hinge" href="weeks/w03.html"><span class="cm-n">W3</span><span class="cm-t">Attention, by hand</span></a>
 <div class="cm-wk cm-hinge cm-soon"><span class="cm-n">W4</span><span class="cm-t">The block &amp; dynamics</span></div>
 <div class="cm-wk cm-soon"><span class="cm-n">W5</span><span class="cm-t">Position &amp; long context</span></div>
 <div class="cm-wk cm-soon"><span class="cm-n">W6</span><span class="cm-t">MoE / SSM / linear</span></div>

@@ -8,7 +8,7 @@ One board derivation and one component per week. Everything is demonstrated in c
 |:--|:--------------------------------|:----------------------------|:------|
 | [W1](weeks/w01.qmd) | Cross-entropy as compression; the power-law decay of unseen mass under Zipf–Heaps; the BPTT product and its singular-value bound | — (demos only) | CPU |
 | [W2](weeks/w02.qmd) | Vocabulary size inside the scaling law | **BPE training, encoding, decoding** | CPU — tokenizers are hardware-independent |
-| W3 | The variance of $q^\top k$ → $1/\sqrt{d_k}$; the KV-cache formula | **Scaled dot-product attention + KV cache** | **CPU** — the gradient check needs `float64`, which Metal does not have |
+| [W3](weeks/w03.qmd) | The variance of $q^\top k$ → $1/\sqrt{d_k}$; the KV-cache formula | **Scaled dot-product attention + KV cache** | **CPU** — the gradient check needs `float64`, which Metal does not have |
 | W4 | Parameter accounting → $N \approx 12 n_{\text{layer}}d^2$; $C \approx 6ND$ | **A full GPT block, and a tiny model trained** | MPS or CPU. **SDPA on MPS refuses attention dropout** |
 | W5 | **RoPE's relative property** in complex form; the phase argument for extrapolation | RoPE and its extrapolation variants | MPS; the long-context demo uses a quantized mid-size model |
 | W6 | **The linear-attention associativity identity** → recurrent form; the SSD skeleton | Both algorithms for linear attention | MPS. SSM and hybrid models run on MLX's own Metal kernels |
