@@ -905,9 +905,37 @@ One of this course's four honest gaps. It is on the syllabus page as a project s
 Term-project hardware is a 16 GB CUDA card — a tokenizer study needs none of it
 :::
 
+# Where this goes {.section-title}
+
+## Ten things this week said no to (1 of 2)
+
+::: {.prose}
+| The belief | What is true | Returns |
+|---|---|---|
+| **1** · A token is a character, or a word | One frequent byte-string, one token; merge and word boundaries coincide by frequency, not grammar | W3 |
+| **2** · Same text, same tokens | Boundary-dependent: `A` and `␣A` are different tokens; one string has many legal segmentations | W14 |
+| **3** · A bigger vocabulary is better | Loss is U-shaped in $V$; the optimum grows with the model, but slower: $N_{\text{v}}^* \propto N_{\text{nv}}^{\gamma}$, $\gamma < 1$ | W7 |
+| **4** · The tokenizer is preprocessing | $V$ is in the scaling law (several papers); compression moves the compute-optimal curve (one 2026 preprint) | W7 |
+| **5** · Fewer tokens, better tokenizer | Compression correlates with quality (Goldman); minimizing the token count did not help (Schmidt) | W14 |
+: {tbl-colwidths="[28,62,10]"}
+:::
+
+## Ten things this week said no to (2 of 2)
+
+::: {.prose}
+| The belief | What is true | Returns |
+|---|---|---|
+| **6** · Bad arithmetic is weak reasoning | Partly representation: digits group left-to-right, the carry runs right-to-left; commas recover part of it | W10 |
+| **7** · It cannot count the r's: no letters | Half right; embeddings encode spelling, and the failure is in operating on it, not in having it | W14 |
+| **8** · Tokenizer-free has replaced BPE | ByT5 → MegaByte → BLT → H-Net is active; in 2026 not a deployed default | W6 |
+| **9** · A tokenizer cannot be changed | It can, at a price: extend the vocabulary + CPT, transplant it (ZeTT), or drop it | W8 |
+| **10** · Traditional Chinese: too little data | Fertility is a second, independent, measurable cause; only one of the two shows in a loss curve | W7, W11 |
+: {tbl-colwidths="[28,62,10]"}
+:::
+
 ## Next week: attention — the operation that reads the tokens
 
-- Today decided **what the units are**. Next week: how a model lets every unit look at every other — attention as retrieval, and as a soft dictionary lookup
+- Today decided **what the units are**. Next week: how a model lets every unit look at every other — attention as a soft dictionary lookup, and as differentiable routing
 - The ledger's KV-cache row gets its first number in the opening ten minutes: for a 7B model at 32k context in FP16 it is exactly 16 GiB — **the whole project card**
 - The first of three times this course will catch the same mistake: an attention weight is a readable intermediate, not an explanation
 
