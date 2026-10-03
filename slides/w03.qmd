@@ -48,6 +48,22 @@ format:
 
 # The number last week promised {.section-title}
 
+## Where we are: week 3 of 14
+
+![](assets/w03/course-map.svg){width="100%"}
+
+## Last week, in one picture
+
+{{< include assets/w03/last-week.inline.qmd >}}
+
+::: {.claim}
+**Week 2 gave us the rows.** Nothing yet lets one row read another — that is this week's operation, and its price is the number we derive next.
+:::
+
+::: {.footer}
+Token counts: W2 demo 1 rehearsal · pipeline W2 p16 · ledger W2 p38 · schematic
+:::
+
 ## Last week ended with a number. Derive it before you trust it
 
 The ledger row from W1: $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ bytes
@@ -87,30 +103,16 @@ Capacity decides whether it fits. Bandwidth decides how long each token waits. *
 w03-data.json (kv.variants) · 64 GB decimal, minus FP16 weights; an upper bound
 :::
 
-## W1 left off here: the RNN died of two things
+## The problem this week handles, in one picture
 
-::: {.columns}
-::: {.column width="50%"}
-**W1, last section.** Recurrence lost on
+{{< include assets/w03/problem-map.inline.qmd >}}
 
-- **training parallelism**: step $t$ waits for step $t-1$
-- **path length**: a gradient between positions $i$ and $j$ crosses $|i-j|$ Jacobians — the product $(\gamma\sigma_{\max})^{T-1}$
-
-It did **not** lose on quality, and at inference its fixed-size state is an advantage (W6 will come back to that).
-:::
-::: {.column width="50%"}
-**This week.** One operation in which
-
-- every position is computed **at once**
-- any two positions are **one step** apart
-- addressing is by **content**, not by position — so the same weights serve any length
-
-and which, by construction, produces the object we just priced: the KV cache.
-:::
+::: {.claim}
+Recurrence lost on **parallelism** and **path length** — not on quality. This week's operation fixes both, and pays with a state that grows with $L$.
 :::
 
 ::: {.footer}
-W1 p51–p57: BPTT, the Jacobian chain, seq2seq's bottleneck, Bahdanau's weighted read
+W1 p51–p57: BPTT, the Jacobian chain, seq2seq's bottleneck, Bahdanau's read
 :::
 
 ## What you should be able to do by the end of today
