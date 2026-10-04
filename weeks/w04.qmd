@@ -6,29 +6,51 @@ toc-depth: 2
 
 <!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
-## 定位
-把 W3 的 attention 裝回一個可訓練的模型，並第一次面對「訓練一個 LLM 實際上會發生什麼事」。本週的隱藏主題是**residual stream 觀點**：把 Transformer 看成一條共享的通訊匯流排，各層讀取、修改、寫回。這個觀點在 W6（hybrid 架構）、W8（LoRA 的低秩更新）、W14（circuit 與 SAE）都會回來，是投資報酬率最高的一個框架。
+## Where This Fits
+This week puts the attention of W3 back into a **trainable model**, and faces for the first time what actually happens when you train one. The organising frame is the **residual stream**: each token owns a shared communication bus, and every layer reads part of it, computes, and adds its result back — the $\mathbf{X}$ of W3 is called the residual stream from here on. The frame returns in W6 (replacing some layers with SSMs), W8 (LoRA as a low-rank bypass) and W14 (circuits and SAEs); it is the single most reusable idea in the course. Two things happen on the board: **parameter accounting** (turning last week's $24d^2$ into $N \approx 12\,n_{\text{layer}} d^2 + Vd$, then inverting it on a real model's `config.json` and explaining the error) and the **pre-LN vs. post-LN Jacobian** (the sequel to the three Jacobians of W1). The compute ledger receives its **optimizer-state** row this week, counted all the way to bytes — that number is the motivation for W8. **The block is assembled live by the instructor** (demo 1, on top of W3's attention); the training runs and the instability reproduction are rehearsed in advance and replayed in class. You do not need to run anything.
 
-## Learning objectives
-1. 能寫出一個完整 Transformer block 的前向計算，並**逐項記帳出參數量**（embedding / attention / FFN / norm），推出「$N \approx 12 n_{\text{layer}} d^2$」這類近似式並說明它何時失準。
-2. 能解釋 pre-LN 與 post-LN 的梯度差異，並說明為何現代模型幾乎一律用 pre-LN + RMSNorm。
-3. 能從 residual stream 的角度說明「每層是加法更新」，並用它解釋為何 LLM 對層的移除相對穩健。
-4. 能說明 SwiGLU 的形式與它相對 ReLU-FFN 的參數記帳差異（為何 $d_{\text{ff}}$ 通常設成 $\frac{8}{3}d$ 而非 $4d$）。
-5. 能診斷至少三種訓練不穩定的症狀（loss spike、attention logit growth、output logit divergence），並說明對應的緩解手段。
-6. 能說明 muP 的目的（超參數跨規模轉移）與它的已知邊界。
+## Learning Objectives
+1. Write out the forward pass of a pre-LN Transformer block (residual stream, two sub-layers, RMSNorm, gated FFN) and **account for its parameters term by term**; derive $N \approx 12\,n_{\text{layer}} d^2 + Vd$ from the accounting, invert it in class on a real open-weight model's `config.json`, and **name the sources of the error** (GQA, $n_{\text{head}} d_{\text{head}} \neq d$, the $d_{\text{ff}}/d$ ratio, tied or untied embeddings).
+2. Write the layer-to-layer Jacobian for pre-LN and for post-LN, explain why the former contains an identity term and the latter does not; state the price of pre-LN (the residual norm accumulates with depth, so deep layers make relatively smaller updates) and what the 2024–2025 return of post-norm (Gemma 2, OLMo 2, Peri-LN) is repairing.
+3. Explain "every layer is an additive update" from the residual-stream view, use it to predict the shape of the curve in demo 3 (which layers are cheap to remove and which are not), and state the three qualifications on that "robustness" (middle layers only, on some metrics only, usually with healing).
+4. Write SwiGLU in its three-matrix form, explain that $\frac{8}{3}d$ is an **iso-parameter convention** rather than a law, and state that gated FFNs beating ReLU FFNs is an empirical result with weak theory behind it.
+5. Write the AdamW update, explain how decoupled weight decay differs from L2 regularisation, and count the optimizer state in bytes (about 16 bytes per parameter in mixed precision) — hence why full fine-tuning of an 8B model does not fit in 64 GB, the entry point to W8.
+6. Diagnose the three symptoms of training instability (loss spikes, attention-logit growth, output-logit divergence), state the diagnostic order (**statistics first, data second**), and pair each symptom with a mitigation (QK-norm / soft-capping / QK-clip, z-loss, clipping and warmup).
+7. State what muP claims (zero-shot hyperparameter transfer across width), its known limits (depth, MoE and industrial scale), and the update rule and current status of Muon-style matrix optimizers (the new default of 2025–2026, still under validation).
 
-## 參考資料
-- **JM3** Ch 7 *Transformers and Pretraining*（後半）
-- **RAS** ch 3–4（本週 lab 的骨架）；**BB** 最佳化與正規化章節；**UDL** ch 12（Transformer）
-- Xiong et al., **On Layer Normalization in the Transformer Architecture**, ICML 2020 — pre-LN vs. post-LN 的分析
-- Zhang & Sennrich, **Root Mean Square Layer Normalization**, NeurIPS 2019
-- Shazeer, **GLU Variants Improve Transformer**, arXiv:2002.05202 — SwiGLU
-- Loshchilov & Hutter, **Decoupled Weight Decay Regularization**, ICLR 2019 — AdamW
-- Yang et al., **Tensor Programs V: Tuning Large Neural Networks via Zero-Shot Hyperparameter Transfer**, NeurIPS 2021（arXiv:2203.03466）— muP
-- Wortsman et al., **Small-scale proxies for large-scale Transformer training instabilities**, arXiv:2309.14322 — **training stability 唯一真正可教的一篇**
-- Blake et al., **u-μP: The Unit-Scaled Maximal Update Parametrization**, arXiv:2407.17465 — muP 與 FP8 的結合
-- Dey et al., **Don't be lazy: CompleteP enables compute-efficient deep transformers**, arXiv:2505.01618 — depth 方向的轉移
-- Bai et al., **Kimi K2: Open Agentic Intelligence**, arXiv:2507.20534 — MuonClip 與 QK-clip 的實務案例（訓練穩定性一節值得單獨讀）
-- Zhou et al., **How to Set the Learning Rate for Large-Scale Pre-training?**, arXiv:2601.05049 — 2026，質疑 μTransfer 在工業規模與 MoE 的可擴展性
-- FFN 作為 memory：檢索 *transformer feed-forward layers are key-value memories*
-- Muon optimizer：檢索 *Muon optimizer neural network training*、*orthogonalized momentum optimizer LLM*
+## References
+- **JM3** ch 7 *Transformers and Pretraining* (second half: the full block, the residual stream, training)
+- **RAS** ch 4 (the full GPT block — the skeleton of demo 1) and the first half of ch 5 (the training loop); **BB**, the optimization and regularization chapters; **UDL** ch 12 (Transformers)
+- Elhage et al., **A Mathematical Framework for Transformer Circuits**, Transformer Circuits Thread, December 2021 — **a research report from Anthropic, not a peer-reviewed paper**; the source of "the residual stream is a communication channel" and of virtual weights
+- Veit, Wilber & Belongie, **Residual Networks Behave Like Ensembles of Relatively Shallow Networks**, NIPS 2016 (arXiv:1605.06431) — why additive updates tolerate the removal of a layer: the original argument, on ResNets
+- Xiong et al., **On Layer Normalization in the Transformer Architecture**, ICML 2020 (arXiv:2002.04745) — the gradient analysis of pre-LN vs. post-LN; "pre-LN needs no warmup" is this paper's claim
+- Zhang & Sennrich, **Root Mean Square Layer Normalization**, NeurIPS 2019 (arXiv:1910.07467) — re-centering is not what makes LayerNorm work
+- Kim et al., **Peri-LN: Revisiting Normalization Layer in the Transformer Architecture**, ICML 2025 (arXiv:2502.02732) — the variance growth of pre-LN, and normalizing the sub-layer output as well
+- Gemma Team, **Gemma 2: Improving Open Language Models at a Practical Size**, arXiv:2408.00118 (2024) — both pre- and post-norm, and logit soft-capping (both in the body; the abstract mentions only local-global attention and GQA)
+- OLMo Team, **2 OLMo 2 Furious**, arXiv:2501.00656 (2024; a shorter version at COLM 2025) — a public recipe that combines reordered norm, QK-norm and z-loss (details in the body, not in the abstract)
+- Zhu et al., **Transformers without Normalization**, CVPR 2025 (arXiv:2503.10622) — DyT: the counter-evidence, replacing Norm with $\tanh(\alpha x)$
+- Shazeer, **GLU Variants Improve Transformer**, arXiv:2002.05202 (2020) — SwiGLU, and the iso-parameter comparison behind $\frac{8}{3}$
+- Geva et al., **Transformer Feed-Forward Layers Are Key-Value Memories**, EMNLP 2021 (arXiv:2012.14913) — the memory view of the FFN; the prequel to W14
+- Gromov et al., **The Unreasonable Ineffectiveness of the Deeper Layers**, arXiv:2403.17887 (2024; v2 is the ICLR camera-ready) — removing deep layers costs little on QA-style benchmarks, with healing; the reference point for demo 3
+- Men et al., **ShortGPT: Layers in Large Language Models are More Redundant Than You Expect**, arXiv:2403.03853 (2024) — layer removal by a block-influence score
+- Kingma & Ba, **Adam: A Method for Stochastic Optimization**, ICLR 2015 (arXiv:1412.6980)
+- Loshchilov & Hutter, **Decoupled Weight Decay Regularization**, ICLR 2019 (arXiv:1711.05101) — AdamW; L2 and weight decay are not equivalent under Adam
+- Rajbhandari et al., **ZeRO: Memory Optimizations Toward Training Trillion Parameter Models**, arXiv:1910.02054 (2019) — the source of the 16-bytes-per-parameter accounting under mixed precision
+- Wortsman et al., **Small-scale proxies for large-scale Transformer training instabilities**, arXiv:2309.14322 (2023) — **the one paper on training stability that can really be taught**; the design basis of demo 2
+- Zhai et al., **Stabilizing Transformer Training by Preventing Attention Entropy Collapse**, arXiv:2303.06296 (2023) — announced in W3, picked up here
+- Henry et al., **Query-Key Normalization for Transformers**, Findings of EMNLP 2020 (arXiv:2010.04245) — the original source of QK-norm
+- Dehghani et al., **Scaling Vision Transformers to 22 Billion Parameters**, arXiv:2302.05442 (2023) — the most-cited use of QK-norm in large-scale training
+- Chowdhery et al., **PaLM: Scaling Language Modeling with Pathways**, arXiv:2204.02311 (2022) — the source of z-loss; the loss-spike and "skip the batch" experience is in the body
+- Takase et al., **Spike No More: Stabilizing the Pre-training of Large Language Models**, COLM 2025 (arXiv:2312.16903) — another spike mechanism: sub-layer outputs that are large relative to the shortcut
+- Yang et al., **Tensor Programs V: Tuning Large Neural Networks via Zero-Shot Hyperparameter Transfer**, NeurIPS 2021 (arXiv:2203.03466) — muP
+- Bordelon et al., **Depthwise Hyperparameter Transfer in Residual Networks: Dynamics and Scaling Limit**, arXiv:2309.16620 (2023); Dey et al., **Don't be lazy: CompleteP enables compute-efficient deep transformers**, arXiv:2505.01618 (2025) — transfer across depth; the two papers scale the residual branch by different powers
+- Blake et al., **u-μP: The Unit-Scaled Maximal Update Parametrization**, arXiv:2407.17465 (2024) — muP combined with unit scaling and low precision
+- Zhou et al., **How to Set the Learning Rate for Large-Scale Pre-training?**, arXiv:2601.05049 (2026) — questions whether μTransfer scales to industrial sizes and to MoE
+- Jordan et al., **Muon: An optimizer for hidden layers in neural networks**, 2024-12-08 — **a blog post by Keller Jordan, not a paper**; the definition of Muon and the rule that embeddings and output layers stay on AdamW
+- Liu et al., **Muon is Scalable for LLM Training**, arXiv:2502.16982 (2025) — Moonshot's scaling of Muon to LLM size
+- Bai et al., **Kimi K2: Open Agentic Intelligence**, arXiv:2507.20534 (2025, technical report) — MuonClip and QK-clip; the abstract claims zero loss spikes over 15.5T tokens
+- DeepSeek, **DeepSeek V4 Technical Documentation** (model card, 2026-04-27) — **a specification document, not a paper**; states that Muon is used, and that the residual connection is modified by mHC
+- Hyper-connections (several learnable, mixed residual streams): search *Hyper-Connections residual stream*, *manifold-constrained hyper-connections*
+- Qwen3 dropping the QKV bias and adding QK-norm: search *Qwen3 technical report QK-Norm*
+- The Adam-side reason for warmup: search *RAdam variance of the adaptive learning rate warmup*
+- Kaplan's $N$ excludes embeddings: Kaplan et al. 2020 in the W7 references, §2.1
