@@ -402,8 +402,15 @@
   "note": "Q = K = V = X（無投影、無 mask、無位置編碼）；Attn(PX) = P·Attn(X) 到浮點誤差"
  },
  "ledger": {
-  "decode_flops_per_step": 14000000000.0,
+  "decode_flops_weights": 14000000000.0,
+  "attention_flops_per_layer_per_token": 16384,
   "weights_bytes": 14000000000.0,
+  "intensity": {
+   "weights": 1.0,
+   "kv_MHA": 1.0,
+   "kv_GQA8": 4.0,
+   "note": "權重 2N/(Nb) = 2/b；KV 4 n_layer L d / M_KV = 2 n_head/(n_kv b)。兩項都與 L 無關"
+  },
   "rows": [
    {
     "L": 4096,
@@ -411,8 +418,12 @@
     "kv_GiB": 2.0,
     "bytes_moved_per_step": 16147483648.0,
     "bytes_moved_GB": 16.147483648,
-    "flops_per_step": 14000000000.0,
-    "flop_per_byte": 0.8670081546565935
+    "flops_weights": 14000000000.0,
+    "flops_attention": 2147483648,
+    "flops_per_step": 16147483648.0,
+    "attention_share_of_flops": 0.1329918453434064,
+    "flop_per_byte": 1.0,
+    "flop_per_byte_weights_only": 0.8670081546565935
    },
    {
     "L": 32768,
@@ -420,8 +431,12 @@
     "kv_GiB": 16.0,
     "bytes_moved_per_step": 31179869184.0,
     "bytes_moved_GB": 31.179869184,
-    "flops_per_step": 14000000000.0,
-    "flop_per_byte": 0.4490076567474543
+    "flops_weights": 14000000000.0,
+    "flops_attention": 17179869184,
+    "flops_per_step": 31179869184.0,
+    "attention_share_of_flops": 0.5509923432525456,
+    "flop_per_byte": 1.0,
+    "flop_per_byte_weights_only": 0.4490076567474543
    },
    {
     "L": 131072,
@@ -429,10 +444,14 @@
     "kv_GiB": 64.0,
     "bytes_moved_per_step": 82719476736.0,
     "bytes_moved_GB": 82.719476736,
-    "flops_per_step": 14000000000.0,
-    "flop_per_byte": 0.16924671857730839
+    "flops_weights": 14000000000.0,
+    "flops_attention": 68719476736,
+    "flops_per_step": 82719476736.0,
+    "attention_share_of_flops": 0.8307532814226917,
+    "flop_per_byte": 1.0,
+    "flop_per_byte_weights_only": 0.16924671857730839
    }
   ],
-  "note": "time per decode step ≥ (N·b + M_KV) / BW；BW 是記憶體頻寬，demo 機的數字待實測（HANDOVER C6b），不寫"
+  "note": "time per decode step ≥ (N·b + M_KV) / BW；BW 是記憶體頻寬，demo 機的數字待實測（HANDOVER C6b），不寫。FLOPs = 2N + 4 n_layer L d（2026-10-07 起含 attention 項；舊版只有 2N，見 flop_per_byte_weights_only）"
  }
 }

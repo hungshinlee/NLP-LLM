@@ -9,8 +9,8 @@ You get this in week 1, and each week adds the layer it is responsible for. It i
 | Where the cost falls | Formula | What actually binds it |
 |:---------------------|:-------:|:-----------------------|
 | **Training** — one run | $C_{\text{train}} \approx 6ND$ FLOPs | **Compute.** The $6$ is $2$ forward $+\ 4$ backward, per parameter per token |
-| **Prefill** — once per request | $C_{\text{pre}} \approx 2NL_{\text{in}}$ FLOPs | **Compute.** The whole prompt goes through together, so the matrices are large enough to keep the GPU busy |
-| **Decode** — per generated token | $C_{\text{dec}} \approx 2N$ FLOPs | **Memory bandwidth.** One token's worth of arithmetic against a full read of all $N$ weights out of HBM |
+| **Prefill** — once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | **Compute.** The whole prompt goes through together, so the matrices are large enough to keep the GPU busy. The second term is attention's own bill; it matters once $L_{\text{in}} > 12d$ (W3) |
+| **Decode** — per generated token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$ FLOPs | **Memory bandwidth.** One token's worth of arithmetic against a full read of all $N$ weights and the whole KV cache out of HBM — about one FLOP per byte on either road, at any $L$ (W3) |
 | **KV cache** — state carried, not FLOPs | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ bytes | **Capacity first, then bandwidth.** The leading $2$ is key $+$ value; the whole thing is re-read at every decode step |
 | **MoE** — the two columns come apart | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | Both, but separately — which is the entire point of the architecture (W6) |
 

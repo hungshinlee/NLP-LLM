@@ -205,7 +205,7 @@ Take $\mathbf{q}, \mathbf{k} \in \mathbb{R}^{d_k}$ with components independent, 
 $$\mathbf{q}^\top\mathbf{k} = \sum_{i=1}^{d_k} q_i k_i,\qquad \mathbb{E}\big[\mathbf{q}^\top\mathbf{k}\big] = 0,\qquad \mathrm{Var}\big(\mathbf{q}^\top\mathbf{k}\big) = \sum_{i=1}^{d_k} \mathbb{E}[q_i^2]\,\mathbb{E}[k_i^2] = d_k$$
 
 - so the logits have standard deviation $\sqrt{d_k}$: for $d_k = 128$, about $11$
-- softmax of logits that spread over $\pm 11$ is nearly one-hot; its gradient $\partial p_j / \partial s_j = p_j(1 - p_j)$ is then nearly $0$
+- softmax over $64$ keys whose logits spread over $\pm 11$ is nearly one-hot; its gradient $\partial p_j / \partial s_j = p_j(1 - p_j)$ is then nearly $0$
 - dividing by $\sqrt{d_k}$ brings the variance back to $1$. Equivalently: $\sqrt{d_k}$ is a **temperature**
 
 ::: {.ask}
@@ -371,19 +371,19 @@ DeepSeek-AI, arXiv:2405.04434 §2.1 · LoRA: W8 · RoPE: W5
 
 | the 7B model, FP16, per decode step | at $L = 4\text{k}$ | at $L = 32\text{k}$ | at $L = 128\text{k}$ |
 |:---|---:|---:|---:|
-| FLOPs $\approx 2N$ | $1.4 \times 10^{10}$ | $1.4 \times 10^{10}$ | $1.4 \times 10^{10}$ |
-| bytes moved: weights $N b$ | 14 GB | 14 GB | 14 GB |
-| bytes moved: cache $M_{\text{KV}}$ | 2 GiB | 16 GiB | 64 GiB |
-| FLOPs per byte | $0.87$ | $0.45$ | $0.17$ |
+| FLOPs, weights: $2N$ | $1.4 \times 10^{10}$ | $1.4 \times 10^{10}$ | $1.4 \times 10^{10}$ |
+| FLOPs, attention: $4\,n_{\text{layer}} L d$ | $0.2 \times 10^{10}$ | $1.7 \times 10^{10}$ | $6.9 \times 10^{10}$ |
+| bytes moved: weights $N b$ + cache $M_{\text{KV}}$ | 14 GB + 2 GiB | 14 GB + 16 GiB | 14 GB + 64 GiB |
+| FLOPs per byte | $1.0$ | $1.0$ | $1.0$ |
 
-$$t_{\text{step}} \;\geq\; \frac{N\,b + M_{\text{KV}}}{\text{BW}}$$
+$$t_{\text{step}} \;\geq\; \frac{N\,b + M_{\text{KV}}}{\text{BW}}, \qquad \frac{2N}{Nb} = \frac{2}{b} = 1, \quad \frac{4\,n_{\text{layer}} L d}{M_{\text{KV}}} = \frac{2\,n_{\text{head}}}{n_{\text{kv}}\,b} = 1 \ \text{(MHA)}$$
 
 ::: {.claim}
-Every accelerator balances at tens to hundreds of FLOPs per byte. Decode delivers **less than one**. The step time is set by **how fast memory can be read** — and the cache is what fills the road.
+Every accelerator balances at tens to hundreds of FLOPs per byte. Decode delivers **about one — at every $L$**: both roads, weights and cache, pay one FLOP per byte. A longer context takes longer, not a different kind of time.
 :::
 
 ::: {.footer}
-w03-data.json (ledger) · BW = memory bandwidth, unmeasured here and not quoted · W11
+w03-data.json (ledger) · attention: one query, $L$ keys, no causal average · BW unmeasured · W11
 :::
 
 ## Where decode sits: the roofline, drawn once, filled in at W11
@@ -391,11 +391,11 @@ w03-data.json (ledger) · BW = memory bandwidth, unmeasured here and not quoted 
 ![](assets/w03/roofline.svg)
 
 ::: {.claim}
-Below the ridge, time is **bytes over bandwidth** and the arithmetic waits. Decode lives there at every context length — a longer context only pushes it further left.
+Below the ridge, time is **bytes over bandwidth**. Decode sits there at every $L$, at the **same** spot: $L$ scales bytes and FLOPs together. Omit attention's FLOPs and it seems to drift left (hollow).
 :::
 
 ::: {.footer}
-schematic — no bandwidth, no peak FLOP/s quoted · the three points: w03-data.json (ledger) · W11
+schematic — no bandwidth, no peak FLOP/s quoted · the points: w03-data.json (ledger) · W11
 :::
 
 ## After MLA: what 2025–2026 added, and what belongs elsewhere
@@ -532,11 +532,11 @@ $$\mathrm{Attn}(\mathbf{P}\mathbf{X}) = \mathrm{softmax}\!\left(\frac{\mathbf{P}
 = \mathbf{P}\,\mathrm{Attn}(\mathbf{X})$$
 
 - so shuffling the tokens shuffles the outputs the same way — **"the cat sat on the mat" and "mat the on sat cat the" produce the same set of vectors**
-- the causal mask breaks the symmetry only partially — it fixes which tokens come *earlier*, nothing more; everything else about order has to be **added**
+- the causal mask breaks the symmetry — and **leaks position**: position $t$ sees exactly $t$ keys, so a causal LM with no positional encoding still infers where it is (Haviv et al. 2022). W5 adds position **explicitly**
 - checked numerically in `w03-data.json`: $\max|\mathrm{Attn}(\mathbf{P}\mathbf{X}) - \mathbf{P}\,\mathrm{Attn}(\mathbf{X})| = 2 \times 10^{-16}$
 
 ::: {.claim}
-Attention addresses by content and has **no idea where anything is**. W5 is about the ways of telling it — and the ways that break at lengths it never saw.
+Attention addresses by content and has **no idea where anything is** — only the mask hints at it. W5 is about telling it explicitly, and the ways that break at lengths it never saw.
 :::
 
 ::: {.footer}
@@ -647,7 +647,7 @@ Michel et al. 1905.10650 · Voita et al. 1905.09418 · Olsson et al. 2209.11895 
 | **Training**, one run | $C_{\text{train}} \approx 6ND$ FLOPs | compute | W1 · W7 |
 | **Optimizer state** (Adam) | $\approx 2N$ extra values | memory | W4 |
 | **Prefill**, once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | compute | **today: the second term** · W11 |
-| **Decode**, per generated token | $C_{\text{dec}} \approx 2N$ FLOPs; $t_{\text{step}} \geq (Nb + M_{\text{KV}})/\text{BW}$ | memory bandwidth | **today: the bound** · W11 |
+| **Decode**, per generated token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$ FLOPs; $t_{\text{step}} \geq (Nb + M_{\text{KV}})/\text{BW}$ | memory bandwidth | **today: the bound, the $L$ term** · W11 |
 | **KV cache**, state carried | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ = **512 KiB / token → 16 GiB at 32k** (MHA); **4 GiB** (GQA-8) | capacity, then bandwidth | **today** · W5 · W11 |
 | **MoE** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | both, separately | W6 |
 
@@ -691,6 +691,8 @@ Three weeks in: the unit (W2), what it is allowed to attend to (W3) — and next
 **Heads** · Michel, Levy & Neubig, *Are Sixteen Heads Really Better than One?*, NeurIPS 2019 (arXiv:1905.10650) · Voita et al., *Analyzing Multi-Head Self-Attention: Specialized Heads Do the Heavy Lifting, the Rest Can Be Pruned*, ACL 2019 (arXiv:1905.09418) · Olsson et al., *In-context Learning and Induction Heads*, arXiv:2209.11895 — an Anthropic research report (Transformer Circuits), not peer-reviewed
 
 **Sinks** · Xiao et al., *Efficient Streaming Language Models with Attention Sinks*, ICLR 2024 (arXiv:2309.17453) · Barbero et al., *Why do LLMs attend to the first token?*, COLM 2025 (arXiv:2504.02732)
+
+**Position without positional encoding** · Haviv et al., *Transformer Language Models without Positional Encodings Still Learn Positional Information*, Findings of EMNLP 2022 (DOI 10.18653/v1/2022.findings-emnlp.99) · Kazemnejad et al., *The Impact of Positional Encoding on Length Generalization in Transformers*, NeurIPS 2023
 
 **Data and figures** · The KV-cache numbers are arithmetic on the W1 p16 configuration (32 layers, 32 KV heads, head width 128, FP16), computed by a script written for this course; the entropy curves are a Gaussian simulation (64 keys, 200 trials, seed 3); the two-crossover curves are arithmetic on the per-layer formulas with an assumed activation constant $c = 20$; the online-softmax table is computed on hand-chosen scores; the lookup, routing, mask, heads, IO and sink figures are schematics.
 

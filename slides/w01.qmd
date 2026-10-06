@@ -235,15 +235,15 @@ Item 4 is the one that carries furthest. It comes back in W7, W11 and W12.
 |:---|:---|:---|:---|
 | **Training**, one run | $C_{\text{train}} \approx 6ND$ FLOPs | compute | today · W7 |
 | **Optimizer state** (Adam) | $\approx 2N$ extra values | memory | W4 |
-| **Prefill**, once per request | $C_{\text{pre}} \approx 2NL_{\text{in}}$ FLOPs | compute | W11 |
-| **Decode**, per generated token | $C_{\text{dec}} \approx 2N$ FLOPs | memory bandwidth | W11 |
+| **Prefill**, once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | compute | W3 · W11 |
+| **Decode**, per generated token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$ FLOPs | memory bandwidth | W3 · W11 |
 | **KV cache**, state carried | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ bytes | capacity, then bandwidth | W3 · W5 |
 | **MoE** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | both, separately | W6 |
 
-: {tbl-colwidths="[25,45,19,11]"}
+: {tbl-colwidths="[22,50,17,11]"}
 
 ::: {.small}
-$N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ context so far · $b$ bytes per element · $n_{\text{kv}}$ KV heads · $6 = 2$ forward $+\,4$ backward
+$N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ context so far · $d$ width · $n_{\text{layer}}$ layers · $b$ bytes per element · $n_{\text{kv}}$ KV heads · $6 = 2$ forward $+\,4$ backward
 :::
 
 ::: {.claim}

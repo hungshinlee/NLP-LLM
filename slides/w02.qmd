@@ -637,7 +637,7 @@ Same weights, same hardware, same text: the "wrong" tokenizer **doubles the cost
 :::
 
 ::: {.footer}
-Arithmetic on this week's $\bar{b}$ · decode $2N$ per token (W1 ledger) · W11: latency
+Arithmetic on this week's $\bar{b}$ · decode $2N$ per token (W1 ledger, weights' side) · W11: latency
 :::
 
 ## Compute-optimal tokenization (2026): a strong claim, a single preprint
