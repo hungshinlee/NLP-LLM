@@ -368,7 +368,7 @@ Henry 2020 · Dehghani 2023 · OLMo 2 · Qwen3 (search term, report not verified
 
 ## Replay: pre-LN vs. post-LN, no warmup, same tiny GPT
 
-| | depth | final loss | gradient norm, first 200 steps | diverged? |
+| | depth | final loss | gradient norm, first 200 steps | diverged, or stalled? |
 |:---|---:|---:|:---|:---|
 | pre-LN | | | | |
 | post-LN | | | | |
@@ -526,21 +526,21 @@ Same master as W1 p16, W3 p51 · $N \approx 12\,n_{\text{layer}}d^2 + Vd$ is now
 Wortsman 2023 — the one paper on training stability this course can teach · Zhai 2023
 :::
 
-## Replay: push the learning rate, watch the logits grow first; then QK-norm
+## Replay: push the learning rate, watch the logits grow; then QK-norm
 
-| LR $\times$ base | spike at step | $\max\lvert s_{ij}\rvert$ at the spike | $\max\lvert s_{ij}\rvert$ 500 steps earlier | $\log Z$ at the spike |
-|:---|---:|---:|---:|---:|
-| $1\times$ | | | | |
-| $3\times$ | | | | |
-| $10\times$ | | | | |
-| $10\times$ + **QK-norm** | | | | |
+| LR $\times$ base | final loss | stuck at | peak $\max\lvert s_{ij}\rvert$ | final $\log Z$ | spike? |
+|:---|---:|:---|---:|---:|:---|
+| $1\times$ | | | | | |
+| $3\times$ | | | | | |
+| $10\times$ | | | | | |
+| $10\times$ + **QK-norm** | | | | | |
 
 ::: {.ask}
-Setting (ii): three learning rates, four statistics each. **Which statistic moves first?** Setting (iii): the highest LR again, with QK-norm on.
+Setting (ii): three learning rates, four statistics each. **Which statistic moves first — and at $10\times$, what does the loss get stuck at?** Setting (iii): the highest LR again, with QK-norm on.
 :::
 
 ::: {.footer}
-Demo 2, settings (ii) and (iii) · rehearsed, replayed · the mechanism's shape only
+Demo 2 (ii)/(iii) · rehearsed, replayed · "stuck at" = char n-gram cross-entropy on the held-out
 :::
 
 ## Pair each symptom with a repair
