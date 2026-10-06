@@ -1,0 +1,50 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W4 demo 2（投影片 p29「Replay: pre-LN vs. post-LN, no warmup」、p44「Replay: push the learning rate … then QK-norm」）的設定
+#
+# 三組設定全部**課前彩排、課堂只 replay**。模型是 demo 1 組出來的 tiny GPT（block_final.py 的 GPT，
+# norm="post" / qk_norm=True / record_stats=True 三個開關是為這裡留的）；語料、字元表、held-out 切點
+# 也沿 demo 1 的 demo_config.toml（[tiny] 與 [corpus]），這裡不再寫一份——三個 demo 共用同一個 tiny GPT 是大綱的規定。
+# 改這個檔就能換深度、learning rate、步數，不必動程式。
+
+[shared]
+demo1 = "../w04_d1_block_scratch"      # 從這裡 import block_final.py（GPT）與 train.py（語料、device、param groups），並讀它的 demo_config.toml
+
+[common]
+# 三組設定共用的訓練超參數。與 demo 1 不同的三件事都是刻意的，理由寫在 README〈設計決定〉：
+device = "mps"           # 沒有 MPS 自動退回 cpu（會印出來）
+batch = 64
+dropout = 0.0            # 關掉：dropout 的雜訊會蓋住統計量的趨勢；demo 1 的 0.1 是為了訓到收斂，這裡不求收斂
+grad_clip = 0.0          # 關掉（0 = 不 clip）：clipping 是「修法」之一（p46），先不開才看得到症狀；開了 clipping 的對照可用 --clip 1.0 另跑
+weight_decay = 0.1       # 同 demo 1：decoupled，只加在矩陣上
+betas = [0.9, 0.95]
+schedule = "warmup-constant"   # 線性 warmup 後維持常數 LR（不用 cosine：LR 降下來 spike 就不會出現，這裡要的是症狀）
+log_every = 25           # 每 25 步記一次四個統計量（loss、max|s_ij|、log Z、梯度範數）與逐層梯度範數；500 步 = 20 個點，p44 表的「500 步前」正好落在格點上
+seed = 1
+spike_jump = 0.5         # spike 的判定：loss 比到目前為止的最小值高出 0.5 nats 以上（或變成 NaN／inf）。這是這個 demo 自己的操作型定義，不是文獻的
+earlier = 500            # p44 表第四欄：「spike 前 N 步」的 max|s_ij|
+
+[i]
+# 設定 (i)：同一個模型 pre-LN vs. post-LN，**不加 warmup**（p29）。深度要夠才看得出差別：
+# 大綱寫「8 層看不出來就 16 或 24 層，待實測」。先 16；--depth 24 可覆蓋。
+depths = [16]
+lr = 1e-3                # 兩條都用這個常數 LR、從第 0 步開始（warmup = 0）
+warmup = 0
+steps = 1000
+grad_norm_window = 200   # p29 表第三欄：「前 200 步的梯度範數」取這個視窗內紀錄點的平均與最大
+d_ff = 688               # 其餘尺寸沿 demo 1 的 [tiny]（d 256、8 head、L 256）；只改深度
+
+[ii]
+# 設定 (ii)：LR 掃 {1, 3, 10} × 基準，四條統計量對步數（p44）。模型就是 demo 1 的 6 層 tiny GPT。
+# 要看到的畫面：spike 發生時 max|s_ij| 已經先漲了一段。10× 不 spike 就把 30 加進 multipliers（表格第一欄跟著改）。
+base_lr = 1e-3
+multipliers = [1, 3, 10]
+warmup = 100             # 同 demo 1（Adam 側的理由）；之後常數
+steps = 2000
+
+[iii]
+# 設定 (iii)：(ii) 的最高 LR 開 QK-norm 再跑一次；--z-loss 1e-4 另跑一條加 z-loss 的（PaLM 的 α，有時間才 replay）。
+multiplier = 10          # 跟 [ii].multipliers 的最後一個對齊；(ii) 改掃 30 時這裡也改
+qk_norm = true
+z_loss = 0.0             # 0 = 不加；rehearse iii --z-loss 1e-4 會多存一條
+warmup = 100
+steps = 2000

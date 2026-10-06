@@ -1,0 +1,43 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W4 demo 3（投影片 p32「Live: skip one layer at a time, and measure the perplexity」）的設定
+#
+# 改這個檔就能換模型、換文字、換 device 與要跑的 window 大小，不必動程式。
+
+[demo]
+title = "W4 · Live: skip one layer at a time, and measure the perplexity"
+# 跑在哪：mps 或 cpu。只有前向、沒有梯度、沒有 attention 權重要回傳，MPS 上的 float32 應該沒有未知數；
+# inspect 會印一次前向幾秒與 28 點的估計，太慢或數字怪就改 cpu（或 ./present.sh show --device cpu）。待實測。
+device = "mps"
+# attention 後端：這個 demo 不需要 attention 權重，用預設的 sdpa 即可（W3 demo 3 要權重才釘 eager）。
+attn_implementation = "sdpa"
+# 課堂 show 跑哪些 window（連續跳過幾層）：預設只跑「一次跳一層」；有時間就 --windows 1,2。
+show_windows = [1]
+# 課堂 show 每印一點停幾秒：2026-10-07 彩排實測 MPS 上 28 點只要 0.22 s，不放慢就是一瞬間；0.4 s × 28 ≈ 11 s 剛好可以邊念邊看。--pace 可覆蓋，--no-pause 時不放慢。
+show_pace = 0.4
+# 彩排 rehearse 跑哪些 window：1 是主線；2、4 是「連續跳過 k 層」那一條（大綱〈課堂 demo 建議〉3 的「有時間再加」）。
+rehearse_windows = [1, 2, 4]
+
+# 固定文字：W1 demo 2 的繁中段落（zh_city.txt）加同一段的英文版（W2 demo 1 的 zh_city_en.txt）。
+# 兩篇各算一次前向、合併算 perplexity（token 加權），逐篇的也存。路徑相對於本資料夾。
+[[texts]]
+name = "zh"
+path = "../w01_d2_bpb/texts/zh_city.txt"
+note = "W1 demo 2 的繁中段落（627 bytes）"
+[[texts]]
+name = "en"
+path = "../w02_d1_fertility/texts/zh_city_en.txt"
+note = "同一段的英文版（W2 demo 1，754 bytes）"
+
+# ── 模型 ───────────────────────────────────────────────────────
+# 附錄 C：手刻元件的對照模型 Qwen3-0.6B／1.7B。W3 demo 3 已 fetch，revision 在 ../versions.lock（以 repo 為鍵，demo 之間共用）。
+[models.primary]
+repo = "Qwen/Qwen3-0.6B"
+label = "Qwen3-0.6B (bf16 weights, run in float32)"
+note = "28 層（W3 demo 3 的 inspect.json 讀到的 num_hidden_layers）；float32 約 2.4 GB"
+revision = ""
+
+[models.backup]
+repo = "Qwen/Qwen3-1.7B"
+label = "Qwen3-1.7B (bf16 weights, run in float32)"
+note = "28 層；0.6B 的曲線太吵（中間層忽高忽低到看不出形狀）時換它。float32 約 6.8 GB"
+revision = ""

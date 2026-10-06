@@ -1,0 +1,25 @@
+{
+ "date": "2026-10-06T21:49:09",
+ "torch": "2.14.0",
+ "python": "3.12.14",
+ "macos": "27.0.1",
+ "machine": "arm64",
+ "mps_available": true,
+ "mps_built": true,
+ "builtin_sdpa": {
+  "dropout_0": {
+   "status": "ok",
+   "grad_finite": true
+  },
+  "dropout_0.1_train": {
+   "status": "ok",
+   "grad_finite": true
+  }
+ },
+ "handwritten_attention_dropout": {
+  "status": "ok",
+  "grad_finite": true
+ },
+ "step_time_s": 0.1345344066619873,
+ "est_minutes_for_steps": 6.726720333099364
+}

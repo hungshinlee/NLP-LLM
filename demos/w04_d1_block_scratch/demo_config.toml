@@ -1,0 +1,51 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W4 demo 1（投影片 p16「Live: RMSNorm → SwiGLU → Block → GPT」、p20「Live: invert config.json」）的設定
+#
+# 改這個檔就能換 tiny GPT 的尺寸、訓練超參數、要反推的模型，不必動程式。
+
+[tiny]
+# 課堂上組出來的 tiny GPT（demo 2 的三組設定也用它）。字元級 tokenizer，V 由語料決定（tinyshakespeare 是 65），這裡不寫。
+d = 256          # residual stream 寬度
+n_layer = 6
+n_head = 8       # d_head = 32；n_kv = n_head（MHA，W3 的前提，所以 4d² 成立）
+d_ff = 688       # ≈ 8/3 · d = 682.67，取 16 的倍數；近似式 12·n_layer·d² 假設的是 8d²，這裡是 3·d·688 = 8.06d²
+L = 256          # context；沒有位置編碼（W5 才補），字元級 256 個字元約三行台詞
+dropout = 0.1    # attention 權重與子層輸出都用；tiny 語料不加 dropout 會過擬合
+
+[train]
+# 彩排用（./present.sh rehearse），不在課堂跑。時間與 BPB 都是彩排後才寫進講稿的數字。
+device = "mps"           # 沒有 MPS 時自動退回 cpu（會印出來）
+batch = 64
+steps = 3000
+lr = 1e-3                # AdamW；p38 的更新式就是 torch.optim.AdamW
+betas = [0.9, 0.95]
+weight_decay = 0.1       # decoupled（p39）；只加在矩陣上，norm 的 γ 與 embedding 不 decay
+warmup = 100             # Adam 側的理由（二階動量初期估不準），不是 Norm 側的（大綱〈概念拆解路徑〉）
+grad_clip = 1.0
+eval_every = 250         # 每隔幾步量一次 held-out 的 nats/char 與 BPB
+log_every = 50
+eval_stride = 128        # held-out 評估：視窗 L，每次前進 stride，只計後 stride 個字元的 loss（第一個視窗全計）
+seed = 1
+sample_chars = 300       # 訓完生成幾個字元放進紀錄（只是看看；不是評估）
+live_steps = 300         # ./present.sh peek：課堂上若有時間，現場跑最初幾百步看 loss 開始掉（不存檔）
+
+[corpus]
+# 沿 W1 的語料（slides/_corpus/，.gitignore；make_demo_w01.py 第一次跑時下載）。
+path = "../../slides/_corpus/tinyshakespeare.txt"
+# held-out 的切法對齊 W1：W1 把 regex token 的前 90% 當 train、後 10% 當 held（《暴風雨》）；
+# 這裡取第 int(0.9·T) 個 token 的字元起點當切點，held-out 文字與 W1 同一段。
+w1_split = 0.9
+w1_token_regex = "[A-Za-z']+|[.,!?;:]"
+# W1 的四個 BPB（n = 1..4）從這裡讀，replay 時並排；不抄數字。
+w1_data = "../../slides/assets/w01/w01-data.json"
+
+# ── 反推 config.json 的兩個模型（p20）──────────────────────────────
+# 都已在本機（W3 demo 2、demo 3 下載並鎖在 ../versions.lock），不必 fetch；present.sh 一律 HF_HUB_OFFLINE=1。
+[models.llama]
+repo = "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit"
+label = "Llama 3.1 8B Instruct (MLX 4-bit; same shapes as the HF original)"
+note = "4-bit 的 safetensors 把 8 個權重包成一個 uint32，count_params.py 會把 .scales／.biases 另外列、把 weight 乘回 32/bits"
+[models.qwen]
+repo = "Qwen/Qwen3-0.6B"
+label = "Qwen3-0.6B (bf16 safetensors)"
+note = "head_dim × num_attention_heads = 2048 ≠ hidden_size 1024；tie_word_embeddings；每層另有 q_norm／k_norm"

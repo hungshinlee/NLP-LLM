@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" font-family="system-ui, sans-serif" font-size="13">
+<rect width="1100" height="520" fill="white"/>
+<text x="90" y="30" font-size="16" font-weight="600">W4 · Live: skip one layer at a time, and measure the perplexity · Qwen3-0.6B (bf16 weights, run in float32) · 2026-10-07</text>
+<rect x="90" y="60" width="820" height="380" fill="none" stroke="#999"/>
+<line x1="90" x2="910" y1="440.0" y2="440.0" stroke="#eee"/>
+<text x="82" y="444.0" text-anchor="end" fill="#555">×1</text>
+<line x1="90" x2="910" y1="411.4" y2="411.4" stroke="#eee"/>
+<text x="82" y="415.4" text-anchor="end" fill="#555">×2</text>
+<line x1="90" x2="910" y1="373.6" y2="373.6" stroke="#eee"/>
+<text x="82" y="377.6" text-anchor="end" fill="#555">×5</text>
+<line x1="90" x2="910" y1="345.0" y2="345.0" stroke="#eee"/>
+<text x="82" y="349.0" text-anchor="end" fill="#555">×10</text>
+<line x1="90" x2="910" y1="316.4" y2="316.4" stroke="#eee"/>
+<text x="82" y="320.4" text-anchor="end" fill="#555">×20</text>
+<line x1="90" x2="910" y1="278.6" y2="278.6" stroke="#eee"/>
+<text x="82" y="282.6" text-anchor="end" fill="#555">×50</text>
+<line x1="90" x2="910" y1="250.0" y2="250.0" stroke="#eee"/>
+<text x="82" y="254.0" text-anchor="end" fill="#555">×100</text>
+<line x1="90" x2="910" y1="221.4" y2="221.4" stroke="#eee"/>
+<text x="82" y="225.4" text-anchor="end" fill="#555">×200</text>
+<line x1="90" x2="910" y1="183.6" y2="183.6" stroke="#eee"/>
+<text x="82" y="187.6" text-anchor="end" fill="#555">×500</text>
+<line x1="90" x2="910" y1="155.0" y2="155.0" stroke="#eee"/>
+<text x="82" y="159.0" text-anchor="end" fill="#555">×1000</text>
+<line x1="90" x2="910" y1="126.4" y2="126.4" stroke="#eee"/>
+<text x="82" y="130.4" text-anchor="end" fill="#555">×2000</text>
+<line x1="90" x2="910" y1="88.6" y2="88.6" stroke="#eee"/>
+<text x="82" y="92.6" text-anchor="end" fill="#555">×5000</text>
+<line x1="90" x2="910" y1="60.0" y2="60.0" stroke="#eee"/>
+<text x="82" y="64.0" text-anchor="end" fill="#555">×10000</text>
+<line x1="90" x2="910" y1="440.0" y2="440.0" stroke="#666" stroke-dasharray="4 4"/>
+<text x="120.0" y="458" text-anchor="middle" fill="#555">0</text>
+<text x="176.3" y="458" text-anchor="middle" fill="#555">2</text>
+<text x="232.6" y="458" text-anchor="middle" fill="#555">4</text>
+<text x="288.9" y="458" text-anchor="middle" fill="#555">6</text>
+<text x="345.2" y="458" text-anchor="middle" fill="#555">8</text>
+<text x="401.5" y="458" text-anchor="middle" fill="#555">10</text>
+<text x="457.8" y="458" text-anchor="middle" fill="#555">12</text>
+<text x="514.1" y="458" text-anchor="middle" fill="#555">14</text>
+<text x="570.4" y="458" text-anchor="middle" fill="#555">16</text>
+<text x="626.7" y="458" text-anchor="middle" fill="#555">18</text>
+<text x="683.0" y="458" text-anchor="middle" fill="#555">20</text>
+<text x="739.3" y="458" text-anchor="middle" fill="#555">22</text>
+<text x="795.6" y="458" text-anchor="middle" fill="#555">24</text>
+<text x="851.9" y="458" text-anchor="middle" fill="#555">26</text>
+<text x="500.0" y="482" text-anchor="middle" fill="#333">first skipped layer i  (window of k consecutive layers i … i+k−1)</text>
+<text transform="translate(28,250.0) rotate(-90)" text-anchor="middle" fill="#333">perplexity / baseline (log scale)</text>
+<polyline points="120.0,60.0 148.1,150.6 176.3,247.2 204.4,424.2 232.6,424.6 260.7,428.9 288.9,423.6 317.0,432.3 345.2,435.2 373.3,432.2 401.5,433.6 429.6,432.6 457.8,434.1 485.9,437.9 514.1,436.4 542.2,435.5 570.4,412.1 598.5,403.2 626.7,419.9 654.8,428.1 683.0,432.0 711.1,422.3 739.3,425.4 767.4,428.3 795.6,431.3 823.7,429.3 851.9,422.9 880.0,402.1" fill="none" stroke="#1f5fbf" stroke-width="2.2"/>
+<circle cx="120.0" cy="60.0" r="3.2" fill="#1f5fbf"/>
+<circle cx="148.1" cy="150.6" r="3.2" fill="#1f5fbf"/>
+<circle cx="176.3" cy="247.2" r="3.2" fill="#1f5fbf"/>
+<circle cx="204.4" cy="424.2" r="3.2" fill="#1f5fbf"/>
+<circle cx="232.6" cy="424.6" r="3.2" fill="#1f5fbf"/>
+<circle cx="260.7" cy="428.9" r="3.2" fill="#1f5fbf"/>
+<circle cx="288.9" cy="423.6" r="3.2" fill="#1f5fbf"/>
+<circle cx="317.0" cy="432.3" r="3.2" fill="#1f5fbf"/>
+<circle cx="345.2" cy="435.2" r="3.2" fill="#1f5fbf"/>
+<circle cx="373.3" cy="432.2" r="3.2" fill="#1f5fbf"/>
+<circle cx="401.5" cy="433.6" r="3.2" fill="#1f5fbf"/>
+<circle cx="429.6" cy="432.6" r="3.2" fill="#1f5fbf"/>
+<circle cx="457.8" cy="434.1" r="3.2" fill="#1f5fbf"/>
+<circle cx="485.9" cy="437.9" r="3.2" fill="#1f5fbf"/>
+<circle cx="514.1" cy="436.4" r="3.2" fill="#1f5fbf"/>
+<circle cx="542.2" cy="435.5" r="3.2" fill="#1f5fbf"/>
+<circle cx="570.4" cy="412.1" r="3.2" fill="#1f5fbf"/>
+<circle cx="598.5" cy="403.2" r="3.2" fill="#1f5fbf"/>
+<circle cx="626.7" cy="419.9" r="3.2" fill="#1f5fbf"/>
+<circle cx="654.8" cy="428.1" r="3.2" fill="#1f5fbf"/>
+<circle cx="683.0" cy="432.0" r="3.2" fill="#1f5fbf"/>
+<circle cx="711.1" cy="422.3" r="3.2" fill="#1f5fbf"/>
+<circle cx="739.3" cy="425.4" r="3.2" fill="#1f5fbf"/>
+<circle cx="767.4" cy="428.3" r="3.2" fill="#1f5fbf"/>
+<circle cx="795.6" cy="431.3" r="3.2" fill="#1f5fbf"/>
+<circle cx="823.7" cy="429.3" r="3.2" fill="#1f5fbf"/>
+<circle cx="851.9" cy="422.9" r="3.2" fill="#1f5fbf"/>
+<circle cx="880.0" cy="402.1" r="3.2" fill="#1f5fbf"/>
+<rect x="930" y="70" width="14" height="4" fill="#1f5fbf"/>
+<text x="950" y="76" fill="#333">skip 1 layer</text>
+<polyline points="120.0,60.0 148.1,151.5 176.3,182.5 204.4,393.1 232.6,391.5 260.7,412.3 288.9,412.9 317.0,429.5 345.2,428.1 373.3,424.7 401.5,422.4 429.6,427.6 457.8,431.9 485.9,435.0 514.1,430.8 542.2,423.3 570.4,393.7 598.5,396.3 626.7,393.7 654.8,416.6 683.0,410.7 711.1,408.8 739.3,410.0 767.4,415.6 795.6,412.9 823.7,402.4 851.9,382.3" fill="none" stroke="#d97706" stroke-width="2.2"/>
+<circle cx="120.0" cy="60.0" r="3.2" fill="#d97706"/>
+<circle cx="148.1" cy="151.5" r="3.2" fill="#d97706"/>
+<circle cx="176.3" cy="182.5" r="3.2" fill="#d97706"/>
+<circle cx="204.4" cy="393.1" r="3.2" fill="#d97706"/>
+<circle cx="232.6" cy="391.5" r="3.2" fill="#d97706"/>
+<circle cx="260.7" cy="412.3" r="3.2" fill="#d97706"/>
+<circle cx="288.9" cy="412.9" r="3.2" fill="#d97706"/>
+<circle cx="317.0" cy="429.5" r="3.2" fill="#d97706"/>
+<circle cx="345.2" cy="428.1" r="3.2" fill="#d97706"/>
+<circle cx="373.3" cy="424.7" r="3.2" fill="#d97706"/>
+<circle cx="401.5" cy="422.4" r="3.2" fill="#d97706"/>
+<circle cx="429.6" cy="427.6" r="3.2" fill="#d97706"/>
+<circle cx="457.8" cy="431.9" r="3.2" fill="#d97706"/>
+<circle cx="485.9" cy="435.0" r="3.2" fill="#d97706"/>
+<circle cx="514.1" cy="430.8" r="3.2" fill="#d97706"/>
+<circle cx="542.2" cy="423.3" r="3.2" fill="#d97706"/>
+<circle cx="570.4" cy="393.7" r="3.2" fill="#d97706"/>
+<circle cx="598.5" cy="396.3" r="3.2" fill="#d97706"/>
+<circle cx="626.7" cy="393.7" r="3.2" fill="#d97706"/>
+<circle cx="654.8" cy="416.6" r="3.2" fill="#d97706"/>
+<circle cx="683.0" cy="410.7" r="3.2" fill="#d97706"/>
+<circle cx="711.1" cy="408.8" r="3.2" fill="#d97706"/>
+<circle cx="739.3" cy="410.0" r="3.2" fill="#d97706"/>
+<circle cx="767.4" cy="415.6" r="3.2" fill="#d97706"/>
+<circle cx="795.6" cy="412.9" r="3.2" fill="#d97706"/>
+<circle cx="823.7" cy="402.4" r="3.2" fill="#d97706"/>
+<circle cx="851.9" cy="382.3" r="3.2" fill="#d97706"/>
+<rect x="930" y="94" width="14" height="4" fill="#d97706"/>
+<text x="950" y="100" fill="#333">skip 2 layers</text>
+<polyline points="120.0,60.0 148.1,89.2 176.3,134.7 204.4,347.1 232.6,373.7 260.7,393.4 288.9,391.3 317.0,400.4 345.2,389.3 373.3,406.1 401.5,417.2 429.6,422.7 457.8,427.2 485.9,416.4 514.1,377.0 542.2,381.0 570.4,344.2 598.5,356.5 626.7,347.1 654.8,361.1 683.0,348.5 711.1,352.3 739.3,360.6 767.4,314.9 795.6,326.7" fill="none" stroke="#b91c1c" stroke-width="2.2"/>
+<circle cx="120.0" cy="60.0" r="3.2" fill="#b91c1c"/>
+<circle cx="148.1" cy="89.2" r="3.2" fill="#b91c1c"/>
+<circle cx="176.3" cy="134.7" r="3.2" fill="#b91c1c"/>
+<circle cx="204.4" cy="347.1" r="3.2" fill="#b91c1c"/>
+<circle cx="232.6" cy="373.7" r="3.2" fill="#b91c1c"/>
+<circle cx="260.7" cy="393.4" r="3.2" fill="#b91c1c"/>
+<circle cx="288.9" cy="391.3" r="3.2" fill="#b91c1c"/>
+<circle cx="317.0" cy="400.4" r="3.2" fill="#b91c1c"/>
+<circle cx="345.2" cy="389.3" r="3.2" fill="#b91c1c"/>
+<circle cx="373.3" cy="406.1" r="3.2" fill="#b91c1c"/>
+<circle cx="401.5" cy="417.2" r="3.2" fill="#b91c1c"/>
+<circle cx="429.6" cy="422.7" r="3.2" fill="#b91c1c"/>
+<circle cx="457.8" cy="427.2" r="3.2" fill="#b91c1c"/>
+<circle cx="485.9" cy="416.4" r="3.2" fill="#b91c1c"/>
+<circle cx="514.1" cy="377.0" r="3.2" fill="#b91c1c"/>
+<circle cx="542.2" cy="381.0" r="3.2" fill="#b91c1c"/>
+<circle cx="570.4" cy="344.2" r="3.2" fill="#b91c1c"/>
+<circle cx="598.5" cy="356.5" r="3.2" fill="#b91c1c"/>
+<circle cx="626.7" cy="347.1" r="3.2" fill="#b91c1c"/>
+<circle cx="654.8" cy="361.1" r="3.2" fill="#b91c1c"/>
+<circle cx="683.0" cy="348.5" r="3.2" fill="#b91c1c"/>
+<circle cx="711.1" cy="352.3" r="3.2" fill="#b91c1c"/>
+<circle cx="739.3" cy="360.6" r="3.2" fill="#b91c1c"/>
+<circle cx="767.4" cy="314.9" r="3.2" fill="#b91c1c"/>
+<circle cx="795.6" cy="326.7" r="3.2" fill="#b91c1c"/>
+<rect x="930" y="118" width="14" height="4" fill="#b91c1c"/>
+<text x="950" y="124" fill="#333">skip 4 layers</text>
+<polyline points="120.0,438.8 148.1,440.0 176.3,405.3 204.4,316.4 232.6,310.6 260.7,314.1 288.9,315.3 317.0,303.7 345.2,295.6 373.3,302.6 401.5,297.9 429.6,295.6 457.8,303.7 485.9,291.0 514.1,295.6 542.2,293.3 570.4,311.8 598.5,317.6 626.7,314.1 654.8,306.0 683.0,303.7 711.1,317.6 739.3,314.1 767.4,307.2 795.6,303.7 823.7,299.1 851.9,309.5 880.0,307.2" fill="none" stroke="#059669" stroke-width="1.8" stroke-dasharray="6 4"/>
+<text x="918" y="444.0" fill="#059669">0%</text>
+<text x="918" y="349.0" fill="#059669">25%</text>
+<text x="918" y="254.0" fill="#059669">50%</text>
+<text x="918" y="159.0" fill="#059669">75%</text>
+<text x="918" y="64.0" fill="#059669">100%</text>
+<rect x="930" y="142" width="14" height="4" fill="#059669"/>
+<text x="950" y="148" fill="#333">top-1 acc (skip 1)</text>
+<text x="950" y="166" fill="#059669">baseline 39.8%</text>
+<text x="90" y="506" fill="#555">baseline perplexity 29.63 over 329 predicted tokens; a skipped layer's forward is replaced by the identity (parameters untouched)</text>
+</svg>

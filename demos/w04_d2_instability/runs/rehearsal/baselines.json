@@ -1,0 +1,11 @@
+{
+ "date": "2026-10-06T18:06:54",
+ "V": 65,
+ "train_chars": 1006309,
+ "held_chars": 109085,
+ "cut_char": 1006309,
+ "unigram_entropy_train": 3.3091298792233177,
+ "held_xent_unigram": 3.3477177597450822,
+ "held_xent_bigram_add0.5": 2.478980321841612,
+ "note": "nats/char; same split as demo 1 (W1's 90% token cut); bigram uses add-0.5 smoothing over V symbols. Recomputed 2026-10-07 with the same formula as demo.py baselines() (stdlib), because runs/rehearsal/baselines.json was not on disk"
+}

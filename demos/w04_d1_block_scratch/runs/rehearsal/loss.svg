@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="360" font-family="system-ui, sans-serif" font-size="12">
+<rect width="760" height="360" fill="white"/>
+<text x="60" y="18" font-size="14" font-weight="600">tiny GPT on tinyshakespeare (char-level), 4,763,136 params — train loss and held-out nats/char</text>
+<line x1="60" y1="310.0" x2="740" y2="310.0" stroke="#eee"/>
+<text x="54" y="314.0" text-anchor="end" fill="#555">1.10</text>
+<line x1="60" y1="240.0" x2="740" y2="240.0" stroke="#eee"/>
+<text x="54" y="244.0" text-anchor="end" fill="#555">1.89</text>
+<line x1="60" y1="170.0" x2="740" y2="170.0" stroke="#eee"/>
+<text x="54" y="174.0" text-anchor="end" fill="#555">2.69</text>
+<line x1="60" y1="100.0" x2="740" y2="100.0" stroke="#eee"/>
+<text x="54" y="104.0" text-anchor="end" fill="#555">3.48</text>
+<line x1="60" y1="30.0" x2="740" y2="30.0" stroke="#eee"/>
+<text x="54" y="34.0" text-anchor="end" fill="#555">4.28</text>
+<text x="60.0" y="326" text-anchor="middle" fill="#555">0</text>
+<text x="230.0" y="326" text-anchor="middle" fill="#555">749</text>
+<text x="400.0" y="326" text-anchor="middle" fill="#555">1499</text>
+<text x="570.0" y="326" text-anchor="middle" fill="#555">2249</text>
+<text x="740.0" y="326" text-anchor="middle" fill="#555">2999</text>
+<text x="400.0" y="352" text-anchor="middle" fill="#555">step (64 × 256 tokens each)</text>
+<polyline fill="none" stroke="#3b6fb6" stroke-width="1.5" points="60.0,37.4 71.3,173.9 82.7,188.9 94.0,196.4 105.3,204.0 116.7,206.6 128.0,219.6 139.4,234.2 150.7,242.5 162.0,250.1 173.4,255.4 184.7,258.6 196.0,267.1 207.4,266.7 218.7,271.5 230.1,274.2 241.4,276.0 252.7,278.6 264.1,275.9 275.4,280.5 286.7,280.5 298.1,279.7 309.4,284.2 320.8,283.8 332.1,285.3 343.4,287.7 354.8,289.0 366.1,287.2 377.4,288.8 388.8,289.5 400.1,291.7 411.5,291.3 422.8,293.9 434.1,295.9 445.5,290.6 456.8,292.8 468.1,294.2 479.5,296.8 490.8,296.4 502.1,298.5 513.5,296.0 524.8,297.8 536.2,297.4 547.5,296.9 558.8,299.5 570.2,299.8 581.5,301.3 592.8,299.8 604.2,299.9 615.5,299.9 626.9,301.5 638.2,302.3 649.5,303.2 660.9,303.9 672.2,303.3 683.5,303.7 694.9,304.9 706.2,303.1 717.6,302.5 728.9,303.2 740.0,303.0"/>
+<polyline fill="none" stroke="#d9534f" stroke-width="2" points="116.7,199.1 173.4,248.5 230.1,259.3 286.7,265.3 343.4,269.2 400.1,271.0 456.8,273.0 513.5,273.4 570.2,273.4 626.9,273.5 683.5,273.6 740.0,273.2"/>
+<circle cx="116.7" cy="199.1" r="3" fill="#d9534f"/>
+<circle cx="173.4" cy="248.5" r="3" fill="#d9534f"/>
+<circle cx="230.1" cy="259.3" r="3" fill="#d9534f"/>
+<circle cx="286.7" cy="265.3" r="3" fill="#d9534f"/>
+<circle cx="343.4" cy="269.2" r="3" fill="#d9534f"/>
+<circle cx="400.1" cy="271.0" r="3" fill="#d9534f"/>
+<circle cx="456.8" cy="273.0" r="3" fill="#d9534f"/>
+<circle cx="513.5" cy="273.4" r="3" fill="#d9534f"/>
+<circle cx="570.2" cy="273.4" r="3" fill="#d9534f"/>
+<circle cx="626.9" cy="273.5" r="3" fill="#d9534f"/>
+<circle cx="683.5" cy="273.6" r="3" fill="#d9534f"/>
+<circle cx="740.0" cy="273.2" r="3" fill="#d9534f"/>
+<text x="740" y="44" text-anchor="end" fill="#d9534f">held-out 1.514 nats/char = 2.184 bits/char; BPB 2.184 (raw bytes)</text>
+<text x="740" y="60" text-anchor="end" fill="#3b6fb6">train loss (per 50 steps)</text>
+</svg>

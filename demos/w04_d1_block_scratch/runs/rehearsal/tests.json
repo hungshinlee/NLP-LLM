@@ -1,0 +1,147 @@
+{
+ "date": "2026-10-06T22:24:31",
+ "impl": "block_final.py",
+ "torch": "2.14.0",
+ "python": "3.12.14",
+ "machine": "arm64",
+ "macos": "27.0.1",
+ "device": "cpu",
+ "elapsed_s": 0.17139101028442383,
+ "tests": {
+  "a": {
+   "status": "ok",
+   "message": "count_params = 4,763,136; term by term = 4,763,136 (差零個); approx 12·n_layer·d² + V·d = 4,735,232, rel. error -0.59%  [V = 65 from tinyshakespeare.txt]",
+   "count_params": 4763136,
+   "exact_term_by_term": 4763136,
+   "per_layer": 791040,
+   "approx": 4735232,
+   "approx_rel_err": -0.005858325271417822,
+   "cfg": {
+    "V": 65,
+    "d": 256,
+    "n_layer": 6,
+    "n_head": 8,
+    "d_ff": 688,
+    "L": 256
+   },
+   "vocab_note": "V = 65 from tinyshakespeare.txt"
+  },
+  "b": {
+   "status": "ok",
+   "message": "llama: approx 7,493,124,096 / exact 8,030,261,248 / actual 8,030,261,248 (exact = actual; approx rel. error -6.7%)  qwen: approx 507,904,000 / exact 596,049,920 / actual 596,049,920 (exact = actual; approx rel. error -14.8%)",
+   "llama": {
+    "status": "ok",
+    "model": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+    "path": "/Users/winston/Data/04_checkpoints/pretrained/hf_home/hub/models--mlx-community--Meta-Llama-3.1-8B-Instruct-4bit/snapshots/241a666dad6cb93c8ff213d39a7f34a36bf26db4",
+    "config": {
+     "hidden_size": 4096,
+     "intermediate_size": 14336,
+     "num_hidden_layers": 32,
+     "num_attention_heads": 32,
+     "num_key_value_heads": 8,
+     "head_dim": 128,
+     "vocab_size": 128256,
+     "tie_word_embeddings": false
+    },
+    "model_type": "llama",
+    "head_dim_in_config": false,
+    "attention_bias": false,
+    "qk_norm_assumed": false,
+    "quantization": {
+     "group_size": 64,
+     "bits": 4
+    },
+    "approx": 7493124096,
+    "approx_formula": "12·32·4096² + 2V·d",
+    "approx_rel_err": -0.06688912544828828,
+    "exact": 8030261248,
+    "actual": 8030261248,
+    "exact_minus_actual": 0,
+    "exact_by_cat": {
+     "embedding": 525336576,
+     "attention": 1342177280,
+     "ffn": 5637144576,
+     "norm": 266240,
+     "head": 525336576,
+     "other": 0
+    },
+    "actual_by_cat": {
+     "embedding": 525336576,
+     "attention": 1342177280,
+     "ffn": 5637144576,
+     "norm": 266240,
+     "head": 525336576,
+     "other": 0
+    },
+    "per_layer_exact": 218112000,
+    "quant_overhead_elems": 250937344,
+    "n_tensors": 743,
+    "n_quantized_tensors": 226,
+    "has_lm_head_tensor": true,
+    "tied_head_stored_elems": 0,
+    "uncategorized_tensors": []
+   },
+   "qwen": {
+    "status": "ok",
+    "model": "Qwen/Qwen3-0.6B",
+    "path": "/Users/winston/Data/04_checkpoints/pretrained/hf_home/hub/models--Qwen--Qwen3-0.6B/snapshots/c1899de289a04d12100db370d81485cdf75e47ca",
+    "config": {
+     "hidden_size": 1024,
+     "intermediate_size": 3072,
+     "num_hidden_layers": 28,
+     "num_attention_heads": 16,
+     "num_key_value_heads": 8,
+     "head_dim": 128,
+     "vocab_size": 151936,
+     "tie_word_embeddings": true
+    },
+    "model_type": "qwen3",
+    "head_dim_in_config": true,
+    "attention_bias": false,
+    "qk_norm_assumed": true,
+    "quantization": null,
+    "approx": 507904000,
+    "approx_formula": "12·28·1024² + V·d",
+    "approx_rel_err": -0.1478834524463991,
+    "exact": 596049920,
+    "actual": 596049920,
+    "exact_minus_actual": 0,
+    "exact_by_cat": {
+     "embedding": 155582464,
+     "attention": 176160768,
+     "ffn": 264241152,
+     "norm": 65536,
+     "head": 0,
+     "other": 0
+    },
+    "actual_by_cat": {
+     "embedding": 155582464,
+     "attention": 176160768,
+     "ffn": 264241152,
+     "norm": 65536,
+     "head": 0,
+     "other": 0
+    },
+    "per_layer_exact": 15730944,
+    "quant_overhead_elems": 0,
+    "n_tensors": 311,
+    "n_quantized_tensors": 0,
+    "has_lm_head_tensor": true,
+    "tied_head_stored_elems": 155582464,
+    "uncategorized_tensors": []
+   }
+  },
+  "c": {
+   "status": "ok",
+   "message": "RMSNorm ok ((2, 16, 256), row rms 1.0000) · SwiGLU ok ((2, 16, 256)) · Block ok ((2, 16, 256)) · GPT ok ((2, 16, 65), finite True)",
+   "rmsnorm_row_rms_after": 0.9999993443489075,
+   "gpt_logits_shape": [
+    2,
+    16,
+    65
+   ],
+   "gpt_logits_finite": true,
+   "gpt_logits_absmax": 1.3104934692382812
+  }
+ }
+}
