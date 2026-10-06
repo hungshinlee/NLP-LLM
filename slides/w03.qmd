@@ -537,20 +537,23 @@ Misconception 7: "a high attention weight means the token mattered" · W3 → W1
 
 ## Live: the same sentence, three rankings
 
-| token | attention (one head, one layer) | gradient × input | attention rollout |
+*The keys that the old man who lives next door lost last week* → the model predicts **were** · numbers from the rehearsal run
+
+| rank | attention (layer 14, head 0) | gradient × input | attention rollout |
 |:---|---:|---:|---:|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| 1 | lost · 0.29 | man · 0.22 | The · 1.00 |
+| 2 | The · 0.24 | that · 0.18 | keys · $<10^{-5}$ |
+| 3 | last · 0.16 | week · 0.14 | that · $<10^{-5}$ |
+| 4 | week · 0.09 | old · 0.09 | the · $<10^{-5}$ |
+| 5 | old · 0.06 | next · 0.07 | old · $<10^{-5}$ |
+| **keys** (the subject of *were*) | 13th of 13 · 0.01 | 8th · 0.05 | 2nd · $<10^{-5}$ |
 
 ::: {.ask}
 Before the numbers: if attention were an explanation, what should the three columns look like?
 :::
 
 ::: {.footer}
-Demo 3 · live · a small model, one sentence · rollout: Abnar & Zuidema 2020
+Demo 3 · Qwen3-0.6B · layer 14, head 0 · rollout: Abnar & Zuidema 2020
 :::
 
 ## Mechanistic evidence, and the three times this course asks
