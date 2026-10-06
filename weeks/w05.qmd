@@ -27,7 +27,7 @@ toc-depth: 2
 - Xiao et al., **Efficient Streaming Language Models with Attention Sinks**, ICLR 2024（arXiv:2309.17453）
 - Liu et al., **Lost in the Middle: How Language Models Use Long Contexts**, TACL 2023（arXiv:2307.03172）— **本週的核心批判文獻**
 - Li et al., **RAG or Long-Context LLMs? A Comprehensive Study and Hybrid Approach**, EMNLP 2024 industry track（arXiv:2407.16833）— 在此埋下，W12 展開
-- Yuan et al., **Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention**, arXiv:2502.11089 — **強調 natively trainable 是重點，不是 inference-only**
+- Yuan et al., **Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention**, ACL 2025 best paper（arXiv:2502.11089）— **強調 natively trainable 是重點，不是 inference-only**
 - DeepSeek-AI, **DeepSeek-V3.2: Pushing the Frontier of Open Large Language Models**, arXiv:2512.02556 — DSA (DeepSeek Sparse Attention)
 - Zhang et al., **H2O: Heavy-Hitter Oracle for Efficient Generative Inference of Large Language Models**, arXiv:2306.14048
 - 長文本評估：檢索 *RULER what's the real context size of your long-context language models*、*needle in a haystack limitations*、*∞Bench long context benchmark*
