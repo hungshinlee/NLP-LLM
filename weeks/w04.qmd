@@ -37,7 +37,7 @@ This week puts the attention of W3 back into a **trainable model**, and faces fo
 - Loshchilov & Hutter, **Decoupled Weight Decay Regularization**, ICLR 2019 (arXiv:1711.05101) — AdamW; L2 and weight decay are not equivalent under Adam
 - Rajbhandari et al., **ZeRO: Memory Optimizations Toward Training Trillion Parameter Models**, arXiv:1910.02054 (2019) — the source of the 16-bytes-per-parameter accounting under mixed precision
 - Wortsman et al., **Small-scale proxies for large-scale Transformer training instabilities**, arXiv:2309.14322 (2023) — **the one paper on training stability that can really be taught**; the design basis of demo 2
-- Zhai et al., **Stabilizing Transformer Training by Preventing Attention Entropy Collapse**, arXiv:2303.06296 (2023) — announced in W3, picked up here
+- Zhai et al., **Stabilizing Transformer Training by Preventing Attention Entropy Collapse**, ICML 2023 (arXiv:2303.06296) — announced in W3, picked up here
 - Henry et al., **Query-Key Normalization for Transformers**, Findings of EMNLP 2020 (arXiv:2010.04245) — the original source of QK-norm
 - Dehghani et al., **Scaling Vision Transformers to 22 Billion Parameters**, arXiv:2302.05442 (2023) — the most-cited use of QK-norm in large-scale training
 - Chowdhery et al., **PaLM: Scaling Language Modeling with Pathways**, arXiv:2204.02311 (2022) — the source of z-loss; the loss-spike and "skip the batch" experience is in the body
