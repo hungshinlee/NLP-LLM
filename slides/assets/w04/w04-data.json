@@ -522,5 +522,23 @@
    "prefill_tps",
    "seconds"
   ]
+ },
+ "qknorm": {
+  "d_head": 128,
+  "d_head_source": "demos/w03_d2_kv_memory/runs/rehearsal/curve.json (Llama 3.1 8B)",
+  "bound_at_init": 11.314,
+  "bound": "|s_ij| <= sqrt(d_head) * max|gamma_q| * max|gamma_k|; at init (gamma = 1) sqrt(d_head)",
+  "random_check": {
+   "samples": 2000,
+   "max_ratio_to_new_bound": 0.0827,
+   "max_ratio_to_old_formula": 0.357
+  },
+  "counterexample_to_old_formula": {
+   "s": 1448.155,
+   "old_formula_value": 11.314,
+   "new_bound_value": 1448.155,
+   "note": "gamma and the vectors concentrated on one coordinate: s = d_head^{3/2} exceeds the old ||gamma||_2 ||gamma||_2 / sqrt(d_head) = sqrt(d_head)"
+  },
+  "note": "the course's own derivation (not a paper's statement); written wrongly at step 2 (2026-10-06), corrected at step 3 the same day"
  }
 }

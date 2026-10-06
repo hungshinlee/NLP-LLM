@@ -90,7 +90,7 @@ One matrix, $L \times d$, enters at the embedding and leaves at the unembedding;
 :::
 
 ::: {.footer}
-Outline W4 · the three board exercises are §3, §4, §6 · the symptoms are §7
+Outline W4 · on the board: p18, p24, p38 · the symptoms: p41
 :::
 
 ## What you should be able to do by the end of today
@@ -123,7 +123,7 @@ Misconception 1: "the residual connection only fixes vanishing gradients"
 | The picture says | What is actually true | Returns |
 |---|---|---|
 | **(a)** layers are independent, pluggable modules | adjacent layers often work in pairs — W3's induction head is two layers cooperating | W14 |
-| **(b)** a layer reads the values on the bus | every read goes through a Norm first: a layer reads the *direction* of the stream, rescaled | §4 |
+| **(b)** a layer reads the values on the bus | every read goes through a Norm first: a layer reads the *direction* of the stream, rescaled | p24 |
 | **(c)** the bus has room for everything | $d$ dimensions are shared by every sub-layer of every block; what is written interferes — superposition | W14 |
 | **(d)** one bus per token is *the* design | 2026 redesigns the bus itself: hyper-connections, several learnable mixed streams (DeepSeek-V4's mHC) | p33 |
 
@@ -131,7 +131,7 @@ Misconception 1: "the residual connection only fixes vanishing gradients"
 :::
 
 ::: {.footer}
-"2017–2025's standard form", not a law of nature · W3 p46 (induction heads)
+"2017–2025's standard form", not a law of nature · W3 p47 (induction heads)
 :::
 
 ## The block, formally: pre-LN
@@ -139,7 +139,7 @@ Misconception 1: "the residual connection only fixes vanishing gradients"
 {{< include assets/w04/block.inline.qmd >}}
 
 ::: {.claim}
-Two sub-layers, each **Norm → function → add**. The trunk is the residual stream; the branches are what training changes. Where the Norm sits is the subject of §4.
+Two sub-layers, each **Norm → function → add**. The trunk is the residual stream; the branches are what training changes. Where the Norm sits: p24.
 :::
 
 ::: {.footer}
@@ -174,10 +174,10 @@ $$\mathbf{z} = \mathrm{Norm}(\mathbf{X}_{n_{\text{layer}}})\,\mathbf{W}_U, \qqua
 
 - **Tied**: $\mathbf{W}_U = \mathbf{E}^\top$, the embedding $\mathbf{E} \in \mathbb{R}^{V \times d}$ read backwards — $Vd$ parameters once
 - **Untied**: a separate matrix — $2Vd$ in total. W2 p39 computed how large that share is for a small model with a large vocabulary
-- The `config.json` key is `tie_word_embeddings` — the fourth source of error in §3
+- The `config.json` key is `tie_word_embeddings` — the fourth source of error on p21
 
 ::: {.claim}
-From here the loss of W1 takes over: cross-entropy on $\mathbf{z}$, and $C \approx 6ND$ for training it — reconciled with today's accounting in §6.
+From here the loss of W1 takes over: cross-entropy on $\mathbf{z}$, and $C \approx 6ND$ for training it — reconciled with today's accounting on p35.
 :::
 
 ::: {.footer}
@@ -205,7 +205,7 @@ A shape test runs after each step; `block_final.py` is the fallback after two mi
 - **(a)** `count_params()` equals the term-by-term count on the board, to the parameter; prints $12\,n_{\text{layer}} d^2 + Vd$ and the relative error
 - **(b)** `count_params.py` on any `config.json`: approximate / exact / `safetensors` — three columns (p20)
 - **(c)** forward on a batch: shape `[B, L, V]`, all logits finite
-- Training is **not** run here: the rehearsal's loss curve and bits-per-byte are replayed at the end of §3
+- Training is **not** run here: the rehearsal's loss curve and bits-per-byte are replayed after the accounting (p22)
 :::
 :::
 
@@ -336,7 +336,7 @@ Three consequences: demo 3 (p31), Peri-LN (p26), CompleteP (p46)
 ::: {.prose}
 | who | what they do to the block | what it repairs |
 |---|---|---|
-| **Gemma 2** (2024) | Norm on the branch **and** on its output — both pre- and post-norm; logit soft-capping | the growing trunk (p25); the growing logits (§7) |
+| **Gemma 2** (2024) | Norm on the branch **and** on its output — both pre- and post-norm; logit soft-capping | the growing trunk (p25); the growing logits (p41) |
 | **OLMo 2** (2024) | *reordered norm*: Norm on the sub-layer output, inside the residual; plus QK-norm and z-loss | the same, as a public recipe |
 | **Peri-LN** (ICML 2025) | names the pattern and measures the variance growth of pre-LN | the mechanism of p25, as a paper |
 | **DyT** (CVPR 2025) | the other side: replace Norm by elementwise $\tanh(\alpha x)$ and still train | asks what Norm was doing at all — mostly vision, mid-size LMs; "being tested" |
@@ -353,8 +353,14 @@ Misconception 5: "pre-LN is the end of the story" — a default under repair
 $$s_{ij} = \frac{\mathbf{q}_i^\top \mathbf{k}_j}{\sqrt{d_{\text{head}}}} \quad\longrightarrow\quad s_{ij} = \mathrm{RMSNorm}(\mathbf{q}_i)^\top\,\mathrm{RMSNorm}(\mathbf{k}_j)\,/\,\sqrt{d_{\text{head}}}$$
 
 - W3 p19: $1/\sqrt{d_{\text{head}}}$ sets the temperature **at initialization**; nothing stops $\|\mathbf{q}\|\|\mathbf{k}\|$ from growing during training
-- **QK-norm** bounds the logit by construction: $|s_{ij}| \leq \|\boldsymbol{\gamma}_q\|\|\boldsymbol{\gamma}_k\|/\sqrt{d_{\text{head}}}$ — the learned gains are the only way up
-- Origin: Henry et al. 2020; scaled up in ViT-22B; adopted by OLMo 2 and Qwen3. The symptom it prevents is §7's second picture
+- **QK-norm** bounds the logit **by construction**, in two lines — the learned gains are the only way up:
+
+::: {.small}
+$\mathbf{u} = \mathbf{q}/\mathrm{rms}(\mathbf{q})$ has $\sum_i u_i^2 = d_{\text{head}}$, so $\|\mathbf{u} \odot \boldsymbol{\gamma}_q\|^2 = \sum_i u_i^2\,\gamma_{q,i}^2 \leq d_{\text{head}}\,\|\boldsymbol{\gamma}_q\|_\infty^2$; the same for $\mathbf{k}$. Cauchy–Schwarz, then divide by $\sqrt{d_{\text{head}}}$:
+$$|s_{ij}| \;\leq\; \sqrt{d_{\text{head}}}\;\|\boldsymbol{\gamma}_q\|_\infty\,\|\boldsymbol{\gamma}_k\|_\infty, \qquad \text{at initialization } (\boldsymbol{\gamma} = \mathbf{1}):\ |s_{ij}| \leq \sqrt{d_{\text{head}}} \approx 11.3 \text{ for } d_{\text{head}} = 128$$
+:::
+
+- Origin: Henry et al. 2020; scaled up in ViT-22B; adopted by OLMo 2 and Qwen3. The symptom it prevents is the second picture on p41
 
 ::: {.footer}
 Henry 2020 · Dehghani 2023 · OLMo 2 · Qwen3 (search term, report not verified)
