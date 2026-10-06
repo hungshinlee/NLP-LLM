@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="186" font-family="system-ui, sans-serif" font-size="11">
+<rect width="1080" height="186" fill="white"/>
+<text x="90" y="22" font-size="13" font-weight="600">attention (layer 14, head 5)</text>
+<text x="84" y="45" text-anchor="end">The</text>
+<rect x="90" y="36" width="240.0" height="10" fill="#3b6fb6"/>
+<text x="334.0" y="45" fill="#555">0.514</text>
+<text x="84" y="59" text-anchor="end">␣article</text>
+<rect x="90" y="50" width="15.8" height="10" fill="#3b6fb6"/>
+<text x="109.8" y="59" fill="#555">0.034</text>
+<text x="84" y="73" text-anchor="end">␣the</text>
+<rect x="90" y="64" width="27.1" height="10" fill="#3b6fb6"/>
+<text x="121.1" y="73" fill="#555">0.058</text>
+<text x="84" y="87" text-anchor="end">␣senator</text>
+<rect x="90" y="78" width="9.3" height="10" fill="#3b6fb6"/>
+<text x="103.3" y="87" fill="#555">0.020</text>
+<text x="84" y="101" text-anchor="end">␣wrote</text>
+<rect x="90" y="92" width="60.9" height="10" fill="#3b6fb6"/>
+<text x="154.9" y="101" fill="#555">0.130</text>
+<text x="84" y="115" text-anchor="end">␣about</text>
+<rect x="90" y="106" width="41.4" height="10" fill="#3b6fb6"/>
+<text x="135.4" y="115" fill="#555">0.089</text>
+<text x="84" y="129" text-anchor="end">␣the</text>
+<rect x="90" y="120" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="94.3" y="129" fill="#555">0.001</text>
+<text x="84" y="143" text-anchor="end">␣scandal</text>
+<rect x="90" y="134" width="22.0" height="10" fill="#3b6fb6"/>
+<text x="116.0" y="143" fill="#555">0.047</text>
+<text x="84" y="157" text-anchor="end">␣was</text>
+<rect x="90" y="148" width="50.0" height="10" fill="#3b6fb6"/>
+<text x="144.0" y="157" fill="#555">0.107</text>
+<text x="420" y="22" font-size="13" font-weight="600">gradient × input (|·|, share)</text>
+<rect x="420" y="36" width="163.3" height="10" fill="#3b6fb6"/>
+<text x="587.3" y="45" fill="#555">0.220</text>
+<rect x="420" y="50" width="14.8" height="10" fill="#3b6fb6"/>
+<text x="438.8" y="59" fill="#555">0.020</text>
+<rect x="420" y="64" width="240.0" height="10" fill="#3b6fb6"/>
+<text x="664.0" y="73" fill="#555">0.323</text>
+<rect x="420" y="78" width="124.6" height="10" fill="#3b6fb6"/>
+<text x="548.6" y="87" fill="#555">0.168</text>
+<rect x="420" y="92" width="67.3" height="10" fill="#3b6fb6"/>
+<text x="491.3" y="101" fill="#555">0.091</text>
+<rect x="420" y="106" width="14.8" height="10" fill="#3b6fb6"/>
+<text x="438.8" y="115" fill="#555">0.020</text>
+<rect x="420" y="120" width="23.7" height="10" fill="#3b6fb6"/>
+<text x="447.7" y="129" fill="#555">0.032</text>
+<rect x="420" y="134" width="12.9" height="10" fill="#3b6fb6"/>
+<text x="436.9" y="143" fill="#555">0.017</text>
+<rect x="420" y="148" width="81.7" height="10" fill="#3b6fb6"/>
+<text x="505.7" y="157" fill="#555">0.110</text>
+<text x="750" y="22" font-size="13" font-weight="600">attention rollout</text>
+<rect x="750" y="36" width="240.0" height="10" fill="#3b6fb6"/>
+<text x="994.0" y="45" fill="#555">1.000</text>
+<rect x="750" y="50" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="59" fill="#555">0.000</text>
+<rect x="750" y="64" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="73" fill="#555">0.000</text>
+<rect x="750" y="78" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="87" fill="#555">0.000</text>
+<rect x="750" y="92" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="101" fill="#555">0.000</text>
+<rect x="750" y="106" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="115" fill="#555">0.000</text>
+<rect x="750" y="120" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="129" fill="#555">0.000</text>
+<rect x="750" y="134" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="143" fill="#555">0.000</text>
+<rect x="750" y="148" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="157" fill="#555">0.000</text>
+</svg>

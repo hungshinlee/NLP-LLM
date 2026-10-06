@@ -1,0 +1,67 @@
+{
+ "date": "2026-09-28T22:53:03",
+ "impl": "attention_final.py",
+ "torch": "2.14.0",
+ "python": "3.12.14",
+ "machine": "arm64",
+ "macos": "26.6.2",
+ "device": "cpu",
+ "elapsed_s": 0.11621785163879395,
+ "tests": {
+  "a": {
+   "status": "ok",
+   "message": "max |ours - F.sdpa| = 0.00e+00 (no mask), 0.00e+00 (causal, vs is_causal=True)",
+   "max_abs_err_no_mask": 0.0,
+   "max_abs_err_causal": 0.0
+  },
+  "b": {
+   "status": "ok",
+   "message": "max |∂out_t/∂x_s| for s > t = 0.0e+00; for s ≤ t = 8.23e-01 (autograd Jacobian, float32)",
+   "max_abs_jacobian_future": 0.0,
+   "max_abs_jacobian_past": 0.8233773708343506
+  },
+  "c": {
+   "status": "ok",
+   "message": "max |step-by-step - full forward| = 1.19e-07; cache holds 8 rows, max |cached K - X W_k| = 0.0e+00",
+   "max_abs_err_step_vs_full": 1.1920928955078125e-07,
+   "cache_rows": 8,
+   "max_abs_err_cached_K": 0.0
+  },
+  "d": {
+   "status": "ok",
+   "message": "mean row entropy in nats, scaled vs unscaled (max ln 64 = 4.16): d_k=16: 3.70 vs 1.40  d_k=128: 3.68 vs 0.32  d_k=1024: 3.68 vs 0.10",
+   "rows": [
+    {
+     "d_k": 16,
+     "entropy_scaled": 3.696780642271042,
+     "entropy_unscaled": 1.400965993963182
+    },
+    {
+     "d_k": 128,
+     "entropy_scaled": 3.67695681810379,
+     "entropy_unscaled": 0.3235015485704033
+    },
+    {
+     "d_k": 1024,
+     "entropy_scaled": 3.6784395706653594,
+     "entropy_unscaled": 0.10270316654786685
+    }
+   ],
+   "max_entropy_nats": 4.1588830833596715,
+   "setup": "q, k ~ N(0, I); 64 keys per query; 200 trials; seed 3"
+  },
+  "e": {
+   "status": "ok",
+   "message": "fully masked row → finite, row 2 = [0.0, 0.0, 0.0, 0.0, 0.0] (fixed; F.sdpa on the same input: finite)",
+   "ours_has_nan": false,
+   "row2": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "F_sdpa_has_nan": false
+  }
+ }
+}

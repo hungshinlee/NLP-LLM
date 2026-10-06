@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="242" font-family="system-ui, sans-serif" font-size="11">
+<rect width="1080" height="242" fill="white"/>
+<text x="90" y="22" font-size="13" font-weight="600">attention (layer 14, head 0)</text>
+<text x="84" y="45" text-anchor="end">The</text>
+<rect x="90" y="36" width="198.2" height="10" fill="#3b6fb6"/>
+<text x="292.2" y="45" fill="#555">0.236</text>
+<text x="84" y="59" text-anchor="end">␣keys</text>
+<rect x="90" y="50" width="6.4" height="10" fill="#3b6fb6"/>
+<text x="100.4" y="59" fill="#555">0.008</text>
+<text x="84" y="73" text-anchor="end">␣that</text>
+<rect x="90" y="64" width="8.2" height="10" fill="#3b6fb6"/>
+<text x="102.2" y="73" fill="#555">0.010</text>
+<text x="84" y="87" text-anchor="end">␣the</text>
+<rect x="90" y="78" width="8.4" height="10" fill="#3b6fb6"/>
+<text x="102.4" y="87" fill="#555">0.010</text>
+<text x="84" y="101" text-anchor="end">␣old</text>
+<rect x="90" y="92" width="49.0" height="10" fill="#3b6fb6"/>
+<text x="143.0" y="101" fill="#555">0.058</text>
+<text x="84" y="115" text-anchor="end">␣man</text>
+<rect x="90" y="106" width="26.0" height="10" fill="#3b6fb6"/>
+<text x="120.0" y="115" fill="#555">0.031</text>
+<text x="84" y="129" text-anchor="end">␣who</text>
+<rect x="90" y="120" width="21.9" height="10" fill="#3b6fb6"/>
+<text x="115.9" y="129" fill="#555">0.026</text>
+<text x="84" y="143" text-anchor="end">␣lives</text>
+<rect x="90" y="134" width="12.3" height="10" fill="#3b6fb6"/>
+<text x="106.3" y="143" fill="#555">0.015</text>
+<text x="84" y="157" text-anchor="end">␣next</text>
+<rect x="90" y="148" width="20.2" height="10" fill="#3b6fb6"/>
+<text x="114.2" y="157" fill="#555">0.024</text>
+<text x="84" y="171" text-anchor="end">␣door</text>
+<rect x="90" y="162" width="47.1" height="10" fill="#3b6fb6"/>
+<text x="141.1" y="171" fill="#555">0.056</text>
+<text x="84" y="185" text-anchor="end">␣lost</text>
+<rect x="90" y="176" width="240.0" height="10" fill="#3b6fb6"/>
+<text x="334.0" y="185" fill="#555">0.286</text>
+<text x="84" y="199" text-anchor="end">␣last</text>
+<rect x="90" y="190" width="131.1" height="10" fill="#3b6fb6"/>
+<text x="225.1" y="199" fill="#555">0.156</text>
+<text x="84" y="213" text-anchor="end">␣week</text>
+<rect x="90" y="204" width="71.4" height="10" fill="#3b6fb6"/>
+<text x="165.4" y="213" fill="#555">0.085</text>
+<text x="420" y="22" font-size="13" font-weight="600">gradient × input (|·|, share)</text>
+<rect x="420" y="36" width="18.5" height="10" fill="#3b6fb6"/>
+<text x="442.5" y="45" fill="#555">0.017</text>
+<rect x="420" y="50" width="52.6" height="10" fill="#3b6fb6"/>
+<text x="476.6" y="59" fill="#555">0.048</text>
+<rect x="420" y="64" width="194.8" height="10" fill="#3b6fb6"/>
+<text x="618.8" y="73" fill="#555">0.180</text>
+<rect x="420" y="78" width="10.2" height="10" fill="#3b6fb6"/>
+<text x="434.2" y="87" fill="#555">0.009</text>
+<rect x="420" y="92" width="92.4" height="10" fill="#3b6fb6"/>
+<text x="516.4" y="101" fill="#555">0.085</text>
+<rect x="420" y="106" width="240.0" height="10" fill="#3b6fb6"/>
+<text x="664.0" y="115" fill="#555">0.221</text>
+<rect x="420" y="120" width="43.3" height="10" fill="#3b6fb6"/>
+<text x="467.3" y="129" fill="#555">0.040</text>
+<rect x="420" y="134" width="70.7" height="10" fill="#3b6fb6"/>
+<text x="494.7" y="143" fill="#555">0.065</text>
+<rect x="420" y="148" width="76.6" height="10" fill="#3b6fb6"/>
+<text x="500.6" y="157" fill="#555">0.071</text>
+<rect x="420" y="162" width="28.5" height="10" fill="#3b6fb6"/>
+<text x="452.5" y="171" fill="#555">0.026</text>
+<rect x="420" y="176" width="65.3" height="10" fill="#3b6fb6"/>
+<text x="489.3" y="185" fill="#555">0.060</text>
+<rect x="420" y="190" width="45.4" height="10" fill="#3b6fb6"/>
+<text x="469.4" y="199" fill="#555">0.042</text>
+<rect x="420" y="204" width="147.2" height="10" fill="#3b6fb6"/>
+<text x="571.2" y="213" fill="#555">0.136</text>
+<text x="750" y="22" font-size="13" font-weight="600">attention rollout</text>
+<rect x="750" y="36" width="240.0" height="10" fill="#3b6fb6"/>
+<text x="994.0" y="45" fill="#555">1.000</text>
+<rect x="750" y="50" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="59" fill="#555">0.000</text>
+<rect x="750" y="64" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="73" fill="#555">0.000</text>
+<rect x="750" y="78" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="87" fill="#555">0.000</text>
+<rect x="750" y="92" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="101" fill="#555">0.000</text>
+<rect x="750" y="106" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="115" fill="#555">0.000</text>
+<rect x="750" y="120" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="129" fill="#555">0.000</text>
+<rect x="750" y="134" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="143" fill="#555">0.000</text>
+<rect x="750" y="148" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="157" fill="#555">0.000</text>
+<rect x="750" y="162" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="171" fill="#555">0.000</text>
+<rect x="750" y="176" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="185" fill="#555">0.000</text>
+<rect x="750" y="190" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="199" fill="#555">0.000</text>
+<rect x="750" y="204" width="1.0" height="10" fill="#3b6fb6"/>
+<text x="754.0" y="213" fill="#555">0.000</text>
+</svg>

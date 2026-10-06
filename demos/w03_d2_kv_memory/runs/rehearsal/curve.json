@@ -1,0 +1,137 @@
+{
+ "date": "2026-09-29T12:25:55",
+ "model": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+ "revision": "241a666dad6cb93c8ff213d39a7f34a36bf26db4",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "fake": false,
+ "baseline_active_bytes": 4517412872,
+ "prefill_step_size": 2048,
+ "config": {
+  "model_type": "llama",
+  "num_hidden_layers": 32,
+  "num_attention_heads": 32,
+  "num_key_value_heads": 8,
+  "hidden_size": 4096,
+  "head_dim": 128,
+  "head_dim_in_config": false,
+  "max_position_embeddings": 131072,
+  "vocab_size": 128256,
+  "rope_scaling": {
+   "factor": 8.0,
+   "low_freq_factor": 1.0,
+   "high_freq_factor": 4.0,
+   "original_max_position_embeddings": 8192,
+   "rope_type": "llama3"
+  },
+  "quantization": {
+   "group_size": 64,
+   "bits": 4
+  }
+ },
+ "bytes_per_elem": 2,
+ "kv_dtype": "mlx.core.float16",
+ "kv_probe_shape": [
+  1,
+  8,
+  256,
+  128
+ ],
+ "weight_bytes": 4517404672,
+ "kv_bytes_per_token": 131072,
+ "contexts": [
+  {
+   "L": 1024,
+   "label": "1k"
+  },
+  {
+   "L": 4096,
+   "label": "4k"
+  },
+  {
+   "L": 8192,
+   "label": "8k"
+  },
+  {
+   "L": 32768,
+   "label": "32k"
+  },
+  {
+   "L": 131072,
+   "label": "model maximum"
+  }
+ ],
+ "rows": [
+  {
+   "L": 1024,
+   "cache_nbytes": 134217728,
+   "active_delta": 134217728,
+   "peak_delta": 826282036,
+   "seconds": 0.273360013961792,
+   "prefill_tps": 3745.97581101648,
+   "fake": false,
+   "label": "1k",
+   "date": "2026-09-29T12:25:55"
+  },
+  {
+   "L": 4096,
+   "cache_nbytes": 536870912,
+   "active_delta": 536870912,
+   "peak_delta": 1337991212,
+   "seconds": 1.106978178024292,
+   "prefill_tps": 3700.163274501438,
+   "fake": false,
+   "label": "4k",
+   "date": "2026-09-29T12:25:55"
+  },
+  {
+   "L": 8192,
+   "cache_nbytes": 1073741824,
+   "active_delta": 1073741824,
+   "peak_delta": 1778393120,
+   "seconds": 2.3839340209960938,
+   "prefill_tps": 3436.3367139569937,
+   "fake": false,
+   "label": "8k",
+   "date": "2026-09-29T12:25:55"
+  },
+  {
+   "L": 32768,
+   "cache_nbytes": 4294967296,
+   "active_delta": 4294967296,
+   "peak_delta": 5016395808,
+   "seconds": 17.085307121276855,
+   "prefill_tps": 1917.90523678635,
+   "fake": false,
+   "label": "32k",
+   "date": "2026-09-29T12:25:55"
+  },
+  {
+   "L": 131072,
+   "cache_nbytes": 17179869184,
+   "active_delta": 17179869184,
+   "peak_delta": 18631106592,
+   "seconds": 194.80154299736023,
+   "prefill_tps": 672.8488798560295,
+   "fake": false,
+   "label": "model maximum",
+   "date": "2026-09-29T12:25:55"
+  }
+ ]
+}

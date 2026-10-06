@@ -1,0 +1,33 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W3 demo 2（投影片 p25「Live: predict the curve from config.json, then measure it」）的設定
+#
+# 改這個檔就能換模型、換 context 長度，不必動程式。
+
+[demo]
+title = "W3 · Live: predict the curve from config.json, then measure it"
+# 量哪幾個 context 長度。"max" = 模型 config.json 的 max_position_embeddings（可用 max_context 蓋掉）。
+# 與投影片 p25 表格的五列逐一對應；改了這裡表格也要改。
+contexts = [1024, 4096, 8192, 32768, "max"]
+# 模型上限太大時的蓋子（0 = 不蓋）。Llama 3.1 是 131072；量到那裡的 prefill 時間待實測。
+max_context = 0
+# prefill 分塊大小，與 mlx-lm generate_step 的 prefill_step_size 預設相同（2048）。
+prefill_step_size = 2048
+# 假 token 的亂數種子（prefill 的內容不影響記憶體，只影響可重現性）。
+seed = 20260929
+# show 時：彩排耗時超過這個秒數的列不現場跑，改顯示彩排值並標「非現場」。0 = 全部現場跑。
+live_limit_s = 45
+
+# ── 模型 ───────────────────────────────────────────────────────
+# 兩個都已在 W2 demo 3 下載並鎖在 ../versions.lock（以 repo 為鍵，demo 之間共用），不必再 fetch。
+# 三個數（層數、KV head、head_dim）**由程式現場讀 config.json**，這裡的 note 只是備課時的印象值，以現場為準。
+[models.primary]
+repo = "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit"
+label = "Llama 3.1 8B Instruct (4-bit MLX)"
+note = "印象：32 層、8 個 KV head、head_dim 128（config 不寫，= 4096/32）、上限 131072。每 token 128 KiB；若真能量到 131072，KV 恰好 16 GiB——與開場那個 MHA×32k 同一個數字、另一條路（GQA×128k）。待實測"
+revision = ""
+
+[models.backup]
+repo = "mlx-community/Qwen3-8B-4bit"
+label = "Qwen3 8B (4-bit MLX)"
+note = "印象：36 層、8 個 KV head、head_dim 128（config 明寫）、上限 40960。每 token 144 KiB。主模型跑不動或太慢時用"
+revision = ""

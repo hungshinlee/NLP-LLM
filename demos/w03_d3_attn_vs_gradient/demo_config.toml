@@ -1,0 +1,46 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W3 demo 3（投影片 p45「Live: the same sentence, three rankings」）的設定
+#
+# 改這個檔就能換模型、換句子、換一開始顯示的層與 head，不必動程式。
+
+[demo]
+title = "W3 · Live: the same sentence, three rankings"
+# 跑在哪：cpu 或 mps。0.6B、三十個 token 的一次前向加一次反向在 CPU 上是秒級，而且 CPU 上 float32 的
+# eager attention 與 autograd 沒有 MPS 的未知數；mps 留作選項，彩排時可以各跑一次比對。
+device = "cpu"
+# 表格印前幾名
+top_k = 5
+# 第一欄一開始顯示哪一層：整數，或 "mid" = 層數的一半。
+layer = "mid"
+# 第一欄輪流顯示的 head（show 時每按一次 Enter 換下一個；rehearse 全部算一遍）。
+heads = [0, 5, 11]
+# gradient × input 的目標：模型在最後一個位置預測的第一名 token 的 log-prob（畫面會印出那個 token）。
+# 三種方法都是對「最後一個位置的輸出」問「哪些輸入 token 重要」。
+target = "argmax_logprob"
+# attention rollout（Abnar & Zuidema 2020）：每層取各 head 的平均，加上 0.5 的恆等（residual），列正規化後逐層連乘。
+rollout_residual = 0.5
+
+# 句子：主詞與動詞相隔幾個 token（關係子句），三欄才有得比。show 時 `n` 換下一句；rehearse 每句都算。
+[[sentences]]
+text = "The keys that the old man who lives next door lost last week"
+note = "英文，主詞 keys 與最後的動詞相隔一個關係子句；模型在句尾預測的下一個 token 應該是 were／have 之類，看它靠不靠 keys"
+[[sentences]]
+text = "那位住在隔壁、上星期把鑰匙弄丟的老先生今天終於"
+note = "繁中，主詞在句中、句尾要接動詞；Qwen 的中文 token 多為單字或雙字，欄位讀得出來"
+[[sentences]]
+text = "The article the senator wrote about the scandal was"
+note = "備用：較短，主詞 article 與 was 之間夾一個名詞"
+
+# ── 模型 ───────────────────────────────────────────────────────
+# 附錄 C：手刻元件的對照模型 Qwen3-0.6B／1.7B。fetch 下載並把 revision 鎖進 ../versions.lock（以 repo 為鍵）。
+[models.primary]
+repo = "Qwen/Qwen3-0.6B"
+label = "Qwen3-0.6B (bf16 weights, run in float32)"
+note = "印象：28 層、16 個 query head、8 個 KV head、head_dim 128；layer = mid → 14。以 inspect 現場讀到的為準"
+revision = ""
+
+[models.backup]
+repo = "Qwen/Qwen3-1.7B"
+label = "Qwen3-1.7B (bf16 weights, run in float32)"
+note = "印象：28 層、16 個 query head；0.6B 的排序看起來太亂時換它。float32 約 6.8 GB"
+revision = ""

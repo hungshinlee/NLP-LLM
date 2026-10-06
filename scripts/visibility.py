@@ -46,6 +46,7 @@ import re
 PUBLIC_SECTIONS = {
     "定位",
     "Learning objectives",
+    "Demos",          # 2026-10-07 加：學生版 demo 說明，連到公開 repo 的 demos/（程式由 bin/publish_demos.py 白名單複製）
     "參考資料",
 }
 
@@ -71,6 +72,7 @@ STRIP_MARKERS = ("[題]", "[非論文]")
 SECTION_EN = {
     "定位": "Where This Fits",
     "Learning objectives": "Learning Objectives",
+    "Demos": "Demos",
     "參考資料": "References",
 }
 

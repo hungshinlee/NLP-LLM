@@ -1,0 +1,77 @@
+{
+ "date": "2026-09-29T12:22:18",
+ "model": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+ "revision": "241a666dad6cb93c8ff213d39a7f34a36bf26db4",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "config": {
+  "model_type": "llama",
+  "num_hidden_layers": 32,
+  "num_attention_heads": 32,
+  "num_key_value_heads": 8,
+  "hidden_size": 4096,
+  "head_dim": 128,
+  "head_dim_in_config": false,
+  "max_position_embeddings": 131072,
+  "vocab_size": 128256,
+  "rope_scaling": {
+   "factor": 8.0,
+   "low_freq_factor": 1.0,
+   "high_freq_factor": 4.0,
+   "original_max_position_embeddings": 8192,
+   "rope_type": "llama3"
+  },
+  "quantization": {
+   "group_size": 64,
+   "bits": 4
+  }
+ },
+ "bytes_per_elem": 2,
+ "kv_dtype": "mlx.core.float16",
+ "kv_probe_shape": [
+  1,
+  8,
+  256,
+  128
+ ],
+ "weight_bytes": 4517404672,
+ "kv_bytes_per_token": 131072,
+ "contexts": [
+  {
+   "L": 1024,
+   "label": "1k"
+  },
+  {
+   "L": 4096,
+   "label": "4k"
+  },
+  {
+   "L": 8192,
+   "label": "8k"
+  },
+  {
+   "L": 32768,
+   "label": "32k"
+  },
+  {
+   "L": 131072,
+   "label": "model maximum"
+  }
+ ]
+}
