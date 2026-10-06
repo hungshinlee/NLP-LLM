@@ -7,7 +7,7 @@
 | [W1](weeks/w01.qmd) | From n-grams to seq2seq | Bahdanau et al., *Neural Machine Translation by Jointly Learning to Align and Translate*, ICLR 2015 |
 | [W2](weeks/w02.qmd) | Tokenization | Tao et al., *Scaling Laws with Vocabulary: Larger Models Deserve Larger Vocabularies*, NeurIPS 2024 (pair with Limisiewicz et al., *Compute Optimal Tokenization*, arXiv:2605.01188) |
 | [W3](weeks/w03.qmd) | Attention | Vaswani et al., *Attention Is All You Need*, NeurIPS 2017 — with Jain & Wallace, *Attention is not Explanation* |
-| W4 | The full block | Wortsman et al., *Small-scale proxies for large-scale Transformer training instabilities*, arXiv:2309.14322 |
+| [W4](weeks/w04.qmd) | The full block | Wortsman et al., *Small-scale proxies for large-scale Transformer training instabilities*, arXiv:2309.14322 |
 | W5 | Position and long context | Liu et al., *Lost in the Middle*, TACL 2023 |
 | W6 | Architecture routes | Du et al., *Kimi Linear*, arXiv:2510.26692 — with Dao & Gu, *Mamba-2* |
 | W7 | Pre-training and scaling | Hoffmann et al., *Chinchilla*, arXiv:2203.15556 — with Besiroglu et al.'s replication |
