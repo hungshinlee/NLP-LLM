@@ -1,0 +1,526 @@
+{
+ "accounting": {
+  "d": 4096,
+  "n_layer": 32,
+  "V": 131072,
+  "attn_per_layer": 67108864,
+  "attn_over_d2": 4.0,
+  "ffn_relu_per_layer": 134217728,
+  "ffn_over_d2": 8.0,
+  "ffn_gated_dff_iso": 10922.666666666666,
+  "ffn_gated_ratio_iso": 2.6666666666666665,
+  "ffn_gated_per_layer": 134217728.0,
+  "per_layer": 201326592,
+  "per_layer_over_d2": 12.0,
+  "ffn_share_of_layer": 0.6666666666666666,
+  "norm_per_layer": 8192,
+  "norm_share_of_layer": 4.0690104166666664e-05,
+  "body_12nd2": 6442450944,
+  "body_12nd2_B": 6.442450944,
+  "embed_tied_Vd": 536870912,
+  "embed_tied_B": 0.536870912,
+  "embed_untied_2Vd": 1073741824,
+  "embed_untied_B": 1.073741824,
+  "N_tied_B": 6.979321856,
+  "N_untied_B": 7.516192768,
+  "embed_share_tied": 0.07692307692307693,
+  "embed_share_untied": 0.14285714285714285,
+  "dff_ratios": {
+   "ReLU convention": 4.0,
+   "gated, iso-parameter": 2.6666666666666665,
+   "Llama 3 8B (outline)": 3.5,
+   "Qwen3-0.6B (outline)": 3.0
+  },
+  "gqa_attn_over_d2": {
+   "MHA (n_kv = n_head)": 4.0,
+   "GQA n_kv = n_head/4": 2.5,
+   "GQA n_kv = n_head/8": 2.25,
+   "MQA (n_kv = 1), n_head = 32": 2.0625
+  },
+  "note": "paper configuration from W1 p16 (32 layers, d = 4096); V = 2^17 is an order of magnitude, not a model's vocabulary. Real config.json inversions are done live in demo 1 and are deliberately absent here."
+ },
+ "flops": {
+  "d": 4096,
+  "n_layer": 32,
+  "V": 131072,
+  "weights_24d2": 402653184,
+  "L_cross": 49152,
+  "rows": [
+   {
+    "L": 2048,
+    "weights": 402653184,
+    "attention_causal": 16777216,
+    "unembed_per_layer": 33554432.0,
+    "attention_share": 0.037037037037037035,
+    "unembed_share": 0.07407407407407407
+   },
+   {
+    "L": 8192,
+    "weights": 402653184,
+    "attention_causal": 67108864,
+    "unembed_per_layer": 33554432.0,
+    "attention_share": 0.13333333333333333,
+    "unembed_share": 0.06666666666666667
+   },
+   {
+    "L": 32768,
+    "weights": 402653184,
+    "attention_causal": 268435456,
+    "unembed_per_layer": 33554432.0,
+    "attention_share": 0.38095238095238093,
+    "unembed_share": 0.047619047619047616
+   },
+   {
+    "L": 131072,
+    "weights": 402653184,
+    "attention_causal": 1073741824,
+    "unembed_per_layer": 33554432.0,
+    "attention_share": 0.7111111111111111,
+    "unembed_share": 0.022222222222222223
+   }
+  ],
+  "note": "forward, per layer, per token; multiply-add = 2 FLOPs (W1 p17 convention); Norm, softmax, nonlinearity are O(Ld) and dropped"
+ },
+ "prenorm": {
+  "d": 256,
+  "n_layer": 64,
+  "trials": 40,
+  "seed": 4,
+  "norm_sq": [
+   255.4,
+   507.4,
+   761.7,
+   1027.4,
+   1309.0,
+   1550.6,
+   1806.1,
+   2061.6,
+   2328.2,
+   2582.8,
+   2826.2,
+   3092.4,
+   3348.2,
+   3594.4,
+   3850.7,
+   4078.2,
+   4370.7,
+   4646.9,
+   4893.0,
+   5182.9,
+   5445.9,
+   5736.1,
+   6006.6,
+   6244.0,
+   6505.7,
+   6782.8,
+   6982.3,
+   7224.6,
+   7463.8,
+   7741.3,
+   7982.2,
+   8259.0,
+   8532.2,
+   8791.9,
+   9060.0,
+   9313.1,
+   9566.8,
+   9797.0,
+   10003.7,
+   10268.2,
+   10458.5,
+   10738.2,
+   11036.4,
+   11328.3,
+   11579.3,
+   11885.6,
+   12196.3,
+   12440.3,
+   12686.2,
+   12939.7,
+   13133.9,
+   13403.2,
+   13644.1,
+   13947.1,
+   14195.6,
+   14472.4,
+   14691.9,
+   14976.2,
+   15213.3,
+   15481.1,
+   15690.8,
+   16004.5,
+   16305.2,
+   16481.4,
+   16794.7
+  ],
+  "norm_sq_over_d": [
+   0.998,
+   1.982,
+   2.976,
+   4.013,
+   5.113,
+   6.057,
+   7.055,
+   8.053,
+   9.095,
+   10.089,
+   11.04,
+   12.08,
+   13.079,
+   14.041,
+   15.042,
+   15.931,
+   17.073,
+   18.152,
+   19.113,
+   20.246,
+   21.273,
+   22.407,
+   23.463,
+   24.39,
+   25.413,
+   26.495,
+   27.275,
+   28.221,
+   29.156,
+   30.24,
+   31.18,
+   32.262,
+   33.329,
+   34.343,
+   35.391,
+   36.379,
+   37.37,
+   38.27,
+   39.077,
+   40.11,
+   40.854,
+   41.946,
+   43.111,
+   44.251,
+   45.232,
+   46.428,
+   47.642,
+   48.595,
+   49.555,
+   50.546,
+   51.304,
+   52.356,
+   53.297,
+   54.481,
+   55.452,
+   56.533,
+   57.39,
+   58.501,
+   59.427,
+   60.473,
+   61.292,
+   62.518,
+   63.692,
+   64.381,
+   65.604
+  ],
+  "rel_update": [
+   0.9955,
+   0.7107,
+   0.5868,
+   0.4988,
+   0.44,
+   0.4033,
+   0.3818,
+   0.3564,
+   0.331,
+   0.3103,
+   0.3007,
+   0.2869,
+   0.2785,
+   0.2681,
+   0.2587,
+   0.253,
+   0.2439,
+   0.2364,
+   0.228,
+   0.2219,
+   0.2186,
+   0.2117,
+   0.2078,
+   0.2038,
+   0.1976,
+   0.1938,
+   0.192,
+   0.1871,
+   0.1836,
+   0.1822,
+   0.18,
+   0.1781,
+   0.1752,
+   0.1703,
+   0.1678,
+   0.1637,
+   0.1649,
+   0.1628,
+   0.1602,
+   0.1581,
+   0.1579,
+   0.1553,
+   0.1507,
+   0.1491,
+   0.1503,
+   0.148,
+   0.1459,
+   0.143,
+   0.1408,
+   0.1401,
+   0.1401,
+   0.1374,
+   0.1375,
+   0.1349,
+   0.1343,
+   0.1332,
+   0.1327,
+   0.1295,
+   0.129,
+   0.1292,
+   0.1284,
+   0.127,
+   0.1249,
+   0.1254
+  ],
+  "rel_update_loglog_slope": -0.501,
+  "note": "schematic simulation: unit-scale Gaussian sub-layer outputs added to the stream; E||x_l||^2 grows linearly in l, relative update ~ l^(-1/2). No trained model."
+ },
+ "adamw": {
+  "eta": 0.001,
+  "lambda": 0.1,
+  "theta": 1.0,
+  "rows": [
+   {
+    "grad_scale": 0.01,
+    "L2_decay_shrink": 0.0009090908264462886,
+    "decoupled_decay_shrink": 0.0001,
+    "ratio_L2_over_decoupled": 9.090908264462886
+   },
+   {
+    "grad_scale": 1.0,
+    "L2_decay_shrink": 9.09090900826447e-05,
+    "decoupled_decay_shrink": 0.0001,
+    "ratio_L2_over_decoupled": 0.9090909008264471
+   },
+   {
+    "grad_scale": 100.0,
+    "L2_decay_shrink": 9.990009989010572e-07,
+    "decoupled_decay_shrink": 0.0001,
+    "ratio_L2_over_decoupled": 0.009990009989010572
+   }
+  ],
+  "note": "steady-state approximation (m_hat ~ g, v_hat ~ g^2): with L2-in-gradient the decay term is divided by sqrt(v_hat), so it shrinks as the gradient grows; decoupled decay is eta*lambda*theta regardless of the gradient"
+ },
+ "bytes": {
+  "parts": [
+   {
+    "what": "bf16 weights",
+    "bytes": 2
+   },
+   {
+    "what": "bf16 gradients",
+    "bytes": 2
+   },
+   {
+    "what": "fp32 master weights",
+    "bytes": 4
+   },
+   {
+    "what": "fp32 Adam m",
+    "bytes": 4
+   },
+   {
+    "what": "fp32 Adam v",
+    "bytes": 4
+   }
+  ],
+  "bytes_per_param_mixed": 16,
+  "bytes_per_param_adam_state_fp32": 8,
+  "N_8B": 8000000000.0,
+  "GB_8B_mixed": 128.0,
+  "GB_8B_adam_state_only": 64.0,
+  "GB_8B_weights_bf16_only": 16.0,
+  "max_N_in_64GB_B": 4.0,
+  "max_N_in_16GB_B": 1.0,
+  "lora_saves_of_16": 12,
+  "muon_state_bytes_per_param": 4,
+  "note": "ZeRO's accounting (Rajbhandari et al. 2019, section 3): 2+2+4+4+4 = 16 bytes per parameter, activations not included. N = 8e9 is the nominal size of an 8B model, not a config.json reading."
+ },
+ "muon": {
+  "shape": [
+   6,
+   4
+  ],
+  "seed": 7,
+  "sv_before": [
+   11.146,
+   2.336,
+   1.234,
+   0.805
+  ],
+  "sv_after_iters": [
+   [
+    0.9707,
+    0.2034,
+    0.1074,
+    0.0701
+   ],
+   [
+    0.9987,
+    0.3009,
+    0.1605,
+    0.1049
+   ],
+   [
+    1.0,
+    0.4378,
+    0.2387,
+    0.1568
+   ],
+   [
+    1.0,
+    0.6147,
+    0.3513,
+    0.2333
+   ],
+   [
+    1.0,
+    0.8059,
+    0.5052,
+    0.3436
+   ],
+   [
+    1.0,
+    0.9472,
+    0.6934,
+    0.4951
+   ],
+   [
+    1.0,
+    0.9959,
+    0.8734,
+    0.682
+   ],
+   [
+    1.0,
+    1.0,
+    0.977,
+    0.8644
+   ],
+   [
+    1.0,
+    1.0,
+    0.9992,
+    0.9737
+   ],
+   [
+    1.0,
+    1.0,
+    1.0,
+    0.999
+   ],
+   [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  ],
+  "iters": 12,
+  "iteration": "X <- 1.5 X - 0.5 X X^T X (classical Newton-Schulz, X_0 = M / ||M||_F)",
+  "note": "the iteration converges to U V^T (all singular values -> 1). Jordan's blog uses a tuned quintic with the same fixed point; coefficients deliberately not copied here."
+ },
+ "lastweek": {
+  "source": "demos/w03_d2_kv_memory/runs/rehearsal/curve.json",
+  "date": "2026-09-29T12:25:55",
+  "model": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+  "kv_bytes_per_token": 131072,
+  "config": {
+   "num_hidden_layers": 32,
+   "num_key_value_heads": 8,
+   "head_dim": 128,
+   "hidden_size": 4096,
+   "num_attention_heads": 32,
+   "vocab_size": 128256
+  },
+  "rows": [
+   {
+    "L": 1024,
+    "label": "1k",
+    "predicted_bytes": 134217728,
+    "cache_bytes": 134217728,
+    "delta_active_bytes": 134217728,
+    "delta_peak_bytes": 826282036,
+    "cache_equals_formula": true,
+    "seconds": 0.273360013961792
+   },
+   {
+    "L": 4096,
+    "label": "4k",
+    "predicted_bytes": 536870912,
+    "cache_bytes": 536870912,
+    "delta_active_bytes": 536870912,
+    "delta_peak_bytes": 1337991212,
+    "cache_equals_formula": true,
+    "seconds": 1.106978178024292
+   },
+   {
+    "L": 8192,
+    "label": "8k",
+    "predicted_bytes": 1073741824,
+    "cache_bytes": 1073741824,
+    "delta_active_bytes": 1073741824,
+    "delta_peak_bytes": 1778393120,
+    "cache_equals_formula": true,
+    "seconds": 2.3839340209960938
+   },
+   {
+    "L": 32768,
+    "label": "32k",
+    "predicted_bytes": 4294967296,
+    "cache_bytes": 4294967296,
+    "delta_active_bytes": 4294967296,
+    "delta_peak_bytes": 5016395808,
+    "cache_equals_formula": true,
+    "seconds": 17.085307121276855
+   },
+   {
+    "L": 131072,
+    "label": "model maximum",
+    "predicted_bytes": 17179869184,
+    "cache_bytes": 17179869184,
+    "delta_active_bytes": 17179869184,
+    "delta_peak_bytes": 18631106592,
+    "cache_equals_formula": true,
+    "seconds": 194.80154299736023
+   }
+  ],
+  "keys_seen": [
+   "L",
+   "active_delta",
+   "cache_nbytes",
+   "date",
+   "fake",
+   "label",
+   "peak_delta",
+   "prefill_tps",
+   "seconds"
+  ]
+ }
+}

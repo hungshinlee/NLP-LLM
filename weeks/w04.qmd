@@ -6,6 +6,10 @@ toc-depth: 2
 
 <!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
+::: {.callout-note appearance="minimal"}
+[**▶ Slides for this week**](../slides/w04.qmd)
+:::
+
 ## Where This Fits
 This week puts the attention of W3 back into a **trainable model**, and faces for the first time what actually happens when you train one. The organising frame is the **residual stream**: each token owns a shared communication bus, and every layer reads part of it, computes, and adds its result back — the $\mathbf{X}$ of W3 is called the residual stream from here on. The frame returns in W6 (replacing some layers with SSMs), W8 (LoRA as a low-rank bypass) and W14 (circuits and SAEs); it is the single most reusable idea in the course. Two things happen on the board: **parameter accounting** (turning last week's $24d^2$ into $N \approx 12\,n_{\text{layer}} d^2 + Vd$, then inverting it on a real model's `config.json` and explaining the error) and the **pre-LN vs. post-LN Jacobian** (the sequel to the three Jacobians of W1). The compute ledger receives its **optimizer-state** row this week, counted all the way to bytes — that number is the motivation for W8. **The block is assembled live by the instructor** (demo 1, on top of W3's attention); the training runs and the instability reproduction are rehearsed in advance and replayed in class. You do not need to run anything.
 
