@@ -2755,22 +2755,22 @@ z
    </g>
   </g>
  </g>
-</svg><svg x="20" y="333.04" width="1044.16" height="16.96" viewBox="0 0 1044.16 16.96"><defs>
+</svg><svg x="20" y="332.56" width="1108.96" height="17.44" viewBox="0 0 1108.96 17.44"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t43-figure_1">
   <g id="t43-patch_1">
-   <path d="M 0 16.96 
-L 1044.16 16.96 
-L 1044.16 0 
+   <path d="M 0 17.44 
+L 1108.96 17.44 
+L 1108.96 0 
 L 0 0 
-L 0 16.96 
+L 0 17.44 
 z
 " style="fill: none"/>
   </g>
   <g id="t43-text_1">
-   <!-- $n_{\text{head}}\ \text{projections of size}\ d \times d_{\text{head}} = \text{one}\ d \times d\ \text{matrix each for } Q, K, V:\ \ 4d^2\ \text{parameters, } 8d^2\ \text{FLOPs per token — the same as a single head of width } d$ -->
-   <g style="fill: #1f2328" transform="translate(0 13.6) scale(0.16 -0.16)">
+   <!-- $n_{\text{head}}\ \text{projections of size}\ d \times d_{\text{head}} = \text{one}\ d \times d\ \text{matrix each for } Q, K, V\text{, plus }\mathbf{W}^{O}\text{:}\ \ 4d^2\ \text{parameters, } 8d^2\ \text{FLOPs per token — the same as a single head of width } d$ -->
+   <g style="fill: #1f2328" transform="translate(0 14.08) scale(0.16 -0.16)">
     <defs>
      <path id="t43-Cmmi10-6e" d="M 494 109 
 Q 494 147 500 166 
@@ -3729,6 +3729,123 @@ L 1491 -141
 Q 1419 -141 1409 -72 
 z
 " transform="scale(0.015625)"/>
+     <path id="t43-Cmr10-6c" d="M 197 0 
+L 197 225 
+Q 416 225 556 259 
+Q 697 294 697 428 
+L 697 3788 
+Q 697 3959 645 4036 
+Q 594 4113 497 4130 
+Q 400 4147 197 4147 
+L 197 4372 
+L 1147 4441 
+L 1147 428 
+Q 1147 294 1287 259 
+Q 1428 225 1644 225 
+L 1644 0 
+L 197 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t43-Cmr10-75" d="M 691 763 
+L 691 2175 
+Q 691 2347 639 2423 
+Q 588 2500 491 2517 
+Q 394 2534 191 2534 
+L 191 2759 
+L 1159 2828 
+L 1159 763 
+Q 1159 513 1195 373 
+Q 1231 234 1348 165 
+Q 1466 97 1722 97 
+Q 2066 97 2269 384 
+Q 2472 672 2472 1038 
+L 2472 2175 
+Q 2472 2347 2419 2423 
+Q 2366 2500 2270 2517 
+Q 2175 2534 1972 2534 
+L 1972 2759 
+L 2938 2828 
+L 2938 581 
+Q 2938 413 2989 336 
+Q 3041 259 3137 242 
+Q 3234 225 3438 225 
+L 3438 0 
+L 2491 -72 
+L 2491 469 
+Q 2372 228 2159 78 
+Q 1947 -72 1691 -72 
+Q 1231 -72 961 123 
+Q 691 319 691 763 
+z
+" transform="scale(0.015625)"/>
+     <path id="t43-Cmb10-57" d="M 1966 63 
+L 622 4063 
+L 134 4063 
+L 134 4391 
+L 2100 4391 
+L 2100 4063 
+L 1569 4063 
+L 2484 1356 
+L 3128 3291 
+L 2869 4063 
+L 2381 4063 
+L 2381 4391 
+L 4347 4391 
+L 4347 4063 
+L 3822 4063 
+L 4728 1356 
+L 5619 4013 
+Q 5603 4028 5459 4044 
+Q 5259 4063 5050 4063 
+L 5050 4391 
+L 6472 4391 
+L 6472 4063 
+Q 6316 4063 6147 4053 
+Q 5978 4044 5966 4006 
+L 4641 63 
+Q 4600 -50 4481 -50 
+L 4378 -50 
+Q 4250 -50 4219 63 
+L 3303 2778 
+L 2388 63 
+Q 2356 -50 2228 -50 
+L 2125 -50 
+Q 2006 -50 1966 63 
+z
+" transform="scale(0.015625)"/>
+     <path id="t43-Cmmi10-4f" d="M 1947 -141 
+Q 1466 -141 1094 79 
+Q 722 300 520 692 
+Q 319 1084 319 1563 
+Q 319 2259 714 2950 
+Q 1109 3641 1756 4077 
+Q 2403 4513 3109 4513 
+Q 3475 4513 3778 4381 
+Q 4081 4250 4290 4017 
+Q 4500 3784 4614 3471 
+Q 4728 3159 4728 2791 
+Q 4728 2263 4503 1739 
+Q 4278 1216 3879 786 
+Q 3481 356 2984 107 
+Q 2488 -141 1947 -141 
+z
+M 1997 50 
+Q 2463 50 2866 345 
+Q 3269 641 3553 1108 
+Q 3838 1575 3989 2089 
+Q 4141 2603 4141 3047 
+Q 4141 3394 4022 3683 
+Q 3903 3972 3656 4148 
+Q 3409 4325 3066 4325 
+Q 2728 4325 2409 4162 
+Q 2091 4000 1831 3731 
+Q 1566 3459 1359 3057 
+Q 1153 2656 1047 2214 
+Q 941 1772 941 1381 
+Q 941 838 1208 444 
+Q 1475 50 1997 50 
+z
+" transform="scale(0.015625)"/>
      <path id="t43-Cmr10-3a" d="M 538 353 
 Q 538 497 644 600 
 Q 750 703 891 703 
@@ -4109,23 +4226,6 @@ Q 966 1331 1084 1222
 Q 1203 1113 1422 1113 
 z
 " transform="scale(0.015625)"/>
-     <path id="t43-Cmr10-6c" d="M 197 0 
-L 197 225 
-Q 416 225 556 259 
-Q 697 294 697 428 
-L 697 3788 
-Q 697 3959 645 4036 
-Q 594 4113 497 4130 
-Q 400 4147 197 4147 
-L 197 4372 
-L 1147 4441 
-L 1147 428 
-Q 1147 294 1287 259 
-Q 1428 225 1644 225 
-L 1644 0 
-L 197 0 
-z
-" transform="scale(0.015625)"/>
      <path id="t43-Cmr10-77" d="M 1416 0 
 L 588 2328 
 Q 531 2469 425 2501 
@@ -4168,138 +4268,147 @@ Q 1438 -72 1416 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t43-Cmmi10-6e" transform="translate(0 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-68" transform="translate(60.009766 -16.896875) scale(0.7)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(98.87207 -16.896875) scale(0.7)"/>
-    <use xlink:href="#t43-Cmr10-61" transform="translate(129.941406 -16.896875) scale(0.7)"/>
-    <use xlink:href="#t43-Cmr10-64" transform="translate(164.941406 -16.896875) scale(0.7)"/>
-    <use xlink:href="#t43-Cmr10-70" transform="translate(239.445085 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-72" transform="translate(294.962663 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6f" transform="translate(334.073991 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6a" transform="translate(384.073991 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(414.591569 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-63" transform="translate(458.976335 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-74" transform="translate(503.361101 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-69" transform="translate(542.17946 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6f" transform="translate(569.865007 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6e" transform="translate(619.865007 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-73" transform="translate(675.382585 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(714.786882 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6f" transform="translate(748.087663 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-66" transform="translate(798.087663 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(828.605241 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-73" transform="translate(861.906022 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-69" transform="translate(901.310319 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-7a" transform="translate(928.995866 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(973.380632 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-64" transform="translate(1047.029428 0.109375)"/>
-    <use xlink:href="#t43-Cmsy10-a3" transform="translate(1116.589975 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-64" transform="translate(1211.834115 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-68" transform="translate(1263.836068 -16.896875) scale(0.7)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(1302.698373 -16.896875) scale(0.7)"/>
-    <use xlink:href="#t43-Cmr10-61" transform="translate(1333.767709 -16.896875) scale(0.7)"/>
-    <use xlink:href="#t43-Cmr10-64" transform="translate(1368.767709 -16.896875) scale(0.7)"/>
-    <use xlink:href="#t43-Cmr10-3d" transform="translate(1431.565951 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6f" transform="translate(1526.810092 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6e" transform="translate(1576.810092 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(1632.32767 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-64" transform="translate(1705.976466 0.109375)"/>
-    <use xlink:href="#t43-Cmsy10-a3" transform="translate(1775.537013 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-64" transform="translate(1870.781153 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6d" transform="translate(1952.047137 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-61" transform="translate(2035.347918 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-74" transform="translate(2085.347918 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-72" transform="translate(2124.166277 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-69" transform="translate(2163.277605 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-78" transform="translate(2190.963152 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(2243.648699 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(2276.94948 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-61" transform="translate(2321.334246 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-63" transform="translate(2371.334246 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-68" transform="translate(2415.719012 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(2471.23659 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-66" transform="translate(2504.537371 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6f" transform="translate(2535.054949 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-72" transform="translate(2585.054949 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(2624.166277 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-51" transform="translate(2657.467059 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-3b" transform="translate(2736.470965 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-4b" transform="translate(2781.715105 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-3b" transform="translate(2866.627215 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-56" transform="translate(2911.871355 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-3a" transform="translate(2987.73073 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-34" transform="translate(3091.502932 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-64" transform="translate(3141.502932 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-32" transform="translate(3205.100822 38.373438) scale(0.7)"/>
-    <use xlink:href="#t43-Cmr10-70" transform="translate(3275.742196 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-61" transform="translate(3331.259774 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-72" transform="translate(3381.259774 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-61" transform="translate(3420.371103 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6d" transform="translate(3470.371103 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(3553.671884 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-74" transform="translate(3598.056649 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(3636.875009 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-72" transform="translate(3681.259774 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-73" transform="translate(3720.371103 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-3b" transform="translate(3759.775399 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(3787.460946 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-38" transform="translate(3820.761728 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-64" transform="translate(3870.761728 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-32" transform="translate(3934.359618 38.373438) scale(0.7)"/>
-    <use xlink:href="#t43-Cmr10-46" transform="translate(4005.000992 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-4c" transform="translate(4070.186539 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-4f" transform="translate(4132.686539 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-50" transform="translate(4210.372086 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-73" transform="translate(4278.389664 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(4317.793961 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-70" transform="translate(4351.094742 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(4406.61232 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-72" transform="translate(4450.997086 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(4490.108414 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-74" transform="translate(4523.409195 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6f" transform="translate(4562.227555 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6b" transform="translate(4612.227555 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(4664.913102 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6e" transform="translate(4709.297867 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(4764.815445 0.109375)"/>
-    <use xlink:href="#t43-STIXGeneral-Regular-2014" transform="translate(4798.116227 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(4898.116211 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-74" transform="translate(4931.416993 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-68" transform="translate(4970.235352 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(5025.75293 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(5070.137696 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-73" transform="translate(5103.438477 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-61" transform="translate(5142.842774 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6d" transform="translate(5192.842774 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(5276.143555 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(5320.528321 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-61" transform="translate(5353.829102 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-73" transform="translate(5403.829102 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(5443.233399 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-61" transform="translate(5476.53418 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(5526.53418 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-73" transform="translate(5559.834961 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-69" transform="translate(5599.239258 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6e" transform="translate(5626.924805 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-67" transform="translate(5682.442383 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6c" transform="translate(5732.442383 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(5760.12793 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(5804.512696 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-68" transform="translate(5837.813477 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-65" transform="translate(5893.331055 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-61" transform="translate(5937.715821 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-64" transform="translate(5987.715821 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(6043.233399 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-6f" transform="translate(6076.53418 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-66" transform="translate(6126.53418 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(6157.051758 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-77" transform="translate(6190.352539 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-69" transform="translate(6262.569336 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-64" transform="translate(6290.254883 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-74" transform="translate(6345.772461 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-68" transform="translate(6384.590821 0.109375)"/>
-    <use xlink:href="#t43-Cmr10-20" transform="translate(6440.108399 0.109375)"/>
-    <use xlink:href="#t43-Cmmi10-64" transform="translate(6473.40918 0.109375)"/>
+    <use xlink:href="#t43-Cmmi10-6e" transform="translate(0 0.375)"/>
+    <use xlink:href="#t43-Cmr10-68" transform="translate(60.009766 -16.63125) scale(0.7)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(98.87207 -16.63125) scale(0.7)"/>
+    <use xlink:href="#t43-Cmr10-61" transform="translate(129.941406 -16.63125) scale(0.7)"/>
+    <use xlink:href="#t43-Cmr10-64" transform="translate(164.941406 -16.63125) scale(0.7)"/>
+    <use xlink:href="#t43-Cmr10-70" transform="translate(239.445085 0.375)"/>
+    <use xlink:href="#t43-Cmr10-72" transform="translate(294.962663 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6f" transform="translate(334.073991 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6a" transform="translate(384.073991 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(414.591569 0.375)"/>
+    <use xlink:href="#t43-Cmr10-63" transform="translate(458.976335 0.375)"/>
+    <use xlink:href="#t43-Cmr10-74" transform="translate(503.361101 0.375)"/>
+    <use xlink:href="#t43-Cmr10-69" transform="translate(542.17946 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6f" transform="translate(569.865007 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6e" transform="translate(619.865007 0.375)"/>
+    <use xlink:href="#t43-Cmr10-73" transform="translate(675.382585 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(714.786882 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6f" transform="translate(748.087663 0.375)"/>
+    <use xlink:href="#t43-Cmr10-66" transform="translate(798.087663 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(828.605241 0.375)"/>
+    <use xlink:href="#t43-Cmr10-73" transform="translate(861.906022 0.375)"/>
+    <use xlink:href="#t43-Cmr10-69" transform="translate(901.310319 0.375)"/>
+    <use xlink:href="#t43-Cmr10-7a" transform="translate(928.995866 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(973.380632 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-64" transform="translate(1047.029428 0.375)"/>
+    <use xlink:href="#t43-Cmsy10-a3" transform="translate(1116.589975 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-64" transform="translate(1211.834115 0.375)"/>
+    <use xlink:href="#t43-Cmr10-68" transform="translate(1263.836068 -16.63125) scale(0.7)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(1302.698373 -16.63125) scale(0.7)"/>
+    <use xlink:href="#t43-Cmr10-61" transform="translate(1333.767709 -16.63125) scale(0.7)"/>
+    <use xlink:href="#t43-Cmr10-64" transform="translate(1368.767709 -16.63125) scale(0.7)"/>
+    <use xlink:href="#t43-Cmr10-3d" transform="translate(1431.565951 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6f" transform="translate(1526.810092 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6e" transform="translate(1576.810092 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(1632.32767 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-64" transform="translate(1705.976466 0.375)"/>
+    <use xlink:href="#t43-Cmsy10-a3" transform="translate(1775.537013 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-64" transform="translate(1870.781153 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6d" transform="translate(1952.047137 0.375)"/>
+    <use xlink:href="#t43-Cmr10-61" transform="translate(2035.347918 0.375)"/>
+    <use xlink:href="#t43-Cmr10-74" transform="translate(2085.347918 0.375)"/>
+    <use xlink:href="#t43-Cmr10-72" transform="translate(2124.166277 0.375)"/>
+    <use xlink:href="#t43-Cmr10-69" transform="translate(2163.277605 0.375)"/>
+    <use xlink:href="#t43-Cmr10-78" transform="translate(2190.963152 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(2243.648699 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(2276.94948 0.375)"/>
+    <use xlink:href="#t43-Cmr10-61" transform="translate(2321.334246 0.375)"/>
+    <use xlink:href="#t43-Cmr10-63" transform="translate(2371.334246 0.375)"/>
+    <use xlink:href="#t43-Cmr10-68" transform="translate(2415.719012 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(2471.23659 0.375)"/>
+    <use xlink:href="#t43-Cmr10-66" transform="translate(2504.537371 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6f" transform="translate(2535.054949 0.375)"/>
+    <use xlink:href="#t43-Cmr10-72" transform="translate(2585.054949 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(2624.166277 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-51" transform="translate(2657.467059 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-3b" transform="translate(2736.470965 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-4b" transform="translate(2781.715105 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-3b" transform="translate(2866.627215 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-56" transform="translate(2911.871355 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-3b" transform="translate(2970.172137 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(2997.857684 0.375)"/>
+    <use xlink:href="#t43-Cmr10-70" transform="translate(3031.158465 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6c" transform="translate(3086.676043 0.375)"/>
+    <use xlink:href="#t43-Cmr10-75" transform="translate(3114.36159 0.375)"/>
+    <use xlink:href="#t43-Cmr10-73" transform="translate(3169.879168 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(3209.283465 0.375)"/>
+    <use xlink:href="#t43-Cmb10-57" transform="translate(3242.584246 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-4f" transform="translate(3350.368699 38.639063) scale(0.7)"/>
+    <use xlink:href="#t43-Cmr10-3a" transform="translate(3410.100535 0.375)"/>
+    <use xlink:href="#t43-Cmr10-34" transform="translate(3496.314143 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-64" transform="translate(3546.314143 0.375)"/>
+    <use xlink:href="#t43-Cmr10-32" transform="translate(3609.912033 38.639063) scale(0.7)"/>
+    <use xlink:href="#t43-Cmr10-70" transform="translate(3680.553407 0.375)"/>
+    <use xlink:href="#t43-Cmr10-61" transform="translate(3736.070985 0.375)"/>
+    <use xlink:href="#t43-Cmr10-72" transform="translate(3786.070985 0.375)"/>
+    <use xlink:href="#t43-Cmr10-61" transform="translate(3825.182313 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6d" transform="translate(3875.182313 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(3958.483095 0.375)"/>
+    <use xlink:href="#t43-Cmr10-74" transform="translate(4002.86786 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(4041.68622 0.375)"/>
+    <use xlink:href="#t43-Cmr10-72" transform="translate(4086.070985 0.375)"/>
+    <use xlink:href="#t43-Cmr10-73" transform="translate(4125.182313 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-3b" transform="translate(4164.58661 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(4192.272157 0.375)"/>
+    <use xlink:href="#t43-Cmr10-38" transform="translate(4225.572938 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-64" transform="translate(4275.572938 0.375)"/>
+    <use xlink:href="#t43-Cmr10-32" transform="translate(4339.170829 38.639063) scale(0.7)"/>
+    <use xlink:href="#t43-Cmr10-46" transform="translate(4409.812203 0.375)"/>
+    <use xlink:href="#t43-Cmr10-4c" transform="translate(4474.99775 0.375)"/>
+    <use xlink:href="#t43-Cmr10-4f" transform="translate(4537.49775 0.375)"/>
+    <use xlink:href="#t43-Cmr10-50" transform="translate(4615.183297 0.375)"/>
+    <use xlink:href="#t43-Cmr10-73" transform="translate(4683.200875 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(4722.605172 0.375)"/>
+    <use xlink:href="#t43-Cmr10-70" transform="translate(4755.905953 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(4811.423531 0.375)"/>
+    <use xlink:href="#t43-Cmr10-72" transform="translate(4855.808297 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(4894.919625 0.375)"/>
+    <use xlink:href="#t43-Cmr10-74" transform="translate(4928.220406 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6f" transform="translate(4967.038766 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6b" transform="translate(5017.038766 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(5069.724313 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6e" transform="translate(5114.109078 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(5169.626656 0.375)"/>
+    <use xlink:href="#t43-STIXGeneral-Regular-2014" transform="translate(5202.927438 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(5302.927422 0.375)"/>
+    <use xlink:href="#t43-Cmr10-74" transform="translate(5336.228203 0.375)"/>
+    <use xlink:href="#t43-Cmr10-68" transform="translate(5375.046563 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(5430.564141 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(5474.948907 0.375)"/>
+    <use xlink:href="#t43-Cmr10-73" transform="translate(5508.249688 0.375)"/>
+    <use xlink:href="#t43-Cmr10-61" transform="translate(5547.653985 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6d" transform="translate(5597.653985 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(5680.954766 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(5725.339532 0.375)"/>
+    <use xlink:href="#t43-Cmr10-61" transform="translate(5758.640313 0.375)"/>
+    <use xlink:href="#t43-Cmr10-73" transform="translate(5808.640313 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(5848.04461 0.375)"/>
+    <use xlink:href="#t43-Cmr10-61" transform="translate(5881.345391 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(5931.345391 0.375)"/>
+    <use xlink:href="#t43-Cmr10-73" transform="translate(5964.646172 0.375)"/>
+    <use xlink:href="#t43-Cmr10-69" transform="translate(6004.050469 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6e" transform="translate(6031.736016 0.375)"/>
+    <use xlink:href="#t43-Cmr10-67" transform="translate(6087.253594 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6c" transform="translate(6137.253594 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(6164.939141 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(6209.323907 0.375)"/>
+    <use xlink:href="#t43-Cmr10-68" transform="translate(6242.624688 0.375)"/>
+    <use xlink:href="#t43-Cmr10-65" transform="translate(6298.142266 0.375)"/>
+    <use xlink:href="#t43-Cmr10-61" transform="translate(6342.527032 0.375)"/>
+    <use xlink:href="#t43-Cmr10-64" transform="translate(6392.527032 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(6448.04461 0.375)"/>
+    <use xlink:href="#t43-Cmr10-6f" transform="translate(6481.345391 0.375)"/>
+    <use xlink:href="#t43-Cmr10-66" transform="translate(6531.345391 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(6561.862969 0.375)"/>
+    <use xlink:href="#t43-Cmr10-77" transform="translate(6595.16375 0.375)"/>
+    <use xlink:href="#t43-Cmr10-69" transform="translate(6667.380547 0.375)"/>
+    <use xlink:href="#t43-Cmr10-64" transform="translate(6695.066094 0.375)"/>
+    <use xlink:href="#t43-Cmr10-74" transform="translate(6750.583672 0.375)"/>
+    <use xlink:href="#t43-Cmr10-68" transform="translate(6789.402032 0.375)"/>
+    <use xlink:href="#t43-Cmr10-20" transform="translate(6844.91961 0.375)"/>
+    <use xlink:href="#t43-Cmmi10-64" transform="translate(6878.220391 0.375)"/>
    </g>
   </g>
  </g>
