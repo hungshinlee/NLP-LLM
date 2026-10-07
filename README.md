@@ -30,13 +30,13 @@ Three threads run through all fourteen weeks and are asked of every layer: **Rep
 
 ## What is published so far
 
-Weeks are opened on the site as they are taught. As of October 2026, **W1–W4** are open: week pages, slides, and (from W3 on) the demo code. W1 and W2 demos are not published except for two short text files that the W4 demos read. The remaining weeks appear on the course map as greyed-out placeholders; their pages are generated but not rendered, so there are no dead links.
+Weeks are opened on the site as they are taught. As of October 2026, **W1–W4** are open: week pages, slides, and the demo code for every week. The remaining weeks appear on the course map as greyed-out placeholders; their pages are generated but not rendered, so there are no dead links.
 
 | | W1 | W2 | W3 | W4 | W5–W14 |
 |---|---|---|---|---|---|
 | Week page (positioning, learning objectives, references) | ✓ | ✓ | ✓ | ✓ | generated, not yet published |
 | Slides (`slides/wNN.qmd`, reveal.js) | ✓ | ✓ | ✓ | ✓ | — |
-| Demo code (`demos/wNN_dK_*/`) | — | — | ✓ | ✓ | — |
+| Demo code (`demos/wNN_dK_*/`) | ✓ | ✓ | ✓ | ✓ | — |
 | Handout | [Mathematical prerequisites (PDF)](handouts/w01-math-prerequisites.pdf) | | | | |
 
 The **Syllabus** page carries the compute ledger (the shared coordinate system of the course), the four questions to ask of any paper, and a **half-life map** that says which weeks are stable for years and which need to be re-scanned against arXiv `cs.CL` / `cs.LG` and the latest ACL / EMNLP / NeurIPS / ICLR / ICML / COLM programmes before each offering. The **Resources** page lists the core textbooks, one paper per week, the derivations and hand-built components, and the toolchain the demos run on. **Supplements** holds four guides (in Chinese) for the midterm proof-of-concept report, the final paper, paper writing, and ten research topics sized for a single 16 GB GPU.
@@ -45,7 +45,7 @@ The **Syllabus** page carries the compute ledger (the shared coordinate system o
 
 - **You do not need to run anything.** The course is lectures only. Every demo is run live by the lecturer, and every number on the slides comes from a rehearsal record checked into `demos/*/runs/rehearsal/`. The code is published so you can read it, re-run it, and change it.
 - **The slides have no speaker notes.** Pressing `S` in a deck opens an empty notes panel. That is intentional, not a bug: the Chinese lecture script is part of the teaching materials and is not published.
-- **Demos were tested on one machine** — a MacBook Pro M5 Max (64 GB unified memory, no CUDA). `demos/README.md` says which demos are portable (CPU-only PyTorch) and which need Apple silicon (`mlx`), and pins every package and model revision in `demos/versions.lock`.
+- **Demos were tested on one machine** — a MacBook Pro M5 Max (64 GB unified memory, no CUDA). `demos/README.md` says which demos are portable (standard library or CPU-only PyTorch) and which need Apple silicon (`mlx`), and pins every package and model revision in `demos/versions.lock`.
 - **References were checked one by one.** Every citation on the site has had its title and first author verified against the arXiv abstract page, the ACL Anthology, PMLR, or Crossref. Entries that could not be verified are dropped from the site rather than shown with a caveat. Where a source is a blog post, model card, or specification rather than a peer-reviewed paper, the sentence says so — that matters in this field, where several widely used terms and baselines have no technical report behind them.
 - The site has a **presentation mode** (press `z`, or use the navbar button) that collapses the side panels for projection.
 
@@ -70,7 +70,7 @@ Most of this repository is *generated*. Files marked ⚙︎ are overwritten on t
 
 ## What is deliberately not here
 
-The course outline (`course-outline.md`) is the single source of truth for the course and lives only in the private repository. Week pages on this site are produced from it by a **deny-by-default filter**: only three sections per week are public — *Positioning*, *Learning objectives*, and *References* — plus, from W3 on, a student-facing *Demos* section. Lesson timing, the misconception list, demo scripts for the lecturer, and the private design notes stay private. The same goes for the Chinese speaker notes in the slides, the lecturer's demo READMEs (rehearsal notes and fallbacks), and all assessment material (questions and rubrics).
+The course outline (`course-outline.md`) is the single source of truth for the course and lives only in the private repository. Week pages on this site are produced from it by a **deny-by-default filter**: only three sections per week are public — *Positioning*, *Learning objectives*, and *References* — plus a student-facing *Demos* section that links to the published code. Lesson timing, the misconception list, demo scripts for the lecturer, and the private design notes stay private. The same goes for the Chinese speaker notes in the slides, the lecturer's demo READMEs (rehearsal notes and fallbacks), and all assessment material (questions and rubrics).
 
 If `docs/course-outline.md` ever appears in this repository, that is a regression, not a feature.
 

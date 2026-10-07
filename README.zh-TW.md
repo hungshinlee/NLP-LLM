@@ -30,13 +30,13 @@
 
 ## 目前已公開的內容
 
-週次隨授課進度逐週開放。截至 2026 年 10 月，**W1–W4** 已開放：每週頁面、投影片，以及（自 W3 起）demo 程式。W1、W2 的 demo 不公開，只有 W4 demo 會讀到的兩段短文字檔上站。其餘週次在課程地圖上以灰色占位顯示；頁面已產生但不 render，所以沒有死連結。
+週次隨授課進度逐週開放。截至 2026 年 10 月，**W1–W4** 已開放：每週頁面、投影片，以及每一週的 demo 程式。其餘週次在課程地圖上以灰色占位顯示；頁面已產生但不 render，所以沒有死連結。
 
 | | W1 | W2 | W3 | W4 | W5–W14 |
 |---|---|---|---|---|---|
 | 每週頁面（定位、learning objectives、參考資料） | ✓ | ✓ | ✓ | ✓ | 已產生，尚未公開 |
 | 投影片（`slides/wNN.qmd`，reveal.js） | ✓ | ✓ | ✓ | ✓ | — |
-| Demo 程式（`demos/wNN_dK_*/`） | — | — | ✓ | ✓ | — |
+| Demo 程式（`demos/wNN_dK_*/`） | ✓ | ✓ | ✓ | ✓ | — |
 | 講義 | [數學先修（PDF）](handouts/w01-math-prerequisites.pdf) | | | | |
 
 **Syllabus** 頁有算力帳本（全課共用的座標系）、讀任何一篇論文時要問的四個問題，以及**半衰期地圖**——標明哪些週次幾年不用動、哪些每次開課前要重掃 arXiv `cs.CL` / `cs.LG` 與 ACL / EMNLP / NeurIPS / ICLR / ICML / COLM 的最新議程。**Resources** 頁列核心教科書、每週一篇論文、推導與手刻元件清單，以及 demo 跑在上面的工具鏈。**Supplements** 有四份中文指南：期中 PoC 報告、期末論文、論文寫作，以及十個以單張 16 GB GPU 為預算的研究題目。
@@ -45,7 +45,7 @@
 
 - **你不需要跑任何東西。** 本課全為 lectures，所有 demo 由授課者現場執行；投影片上的每個數字都來自 `demos/*/runs/rehearsal/` 裡進版控的彩排紀錄。程式公開是讓你能讀、能重跑、能改。
 - **投影片沒有講稿。** 在 deck 裡按 `S` 打開的講稿欄是空的——那是刻意的，不是壞掉：中文講稿屬於教學材料，不公開。
-- **Demo 只在一台機器上測過**——MacBook Pro M5 Max（64 GB 統一記憶體、無 CUDA）。`demos/README.md` 說明哪些 demo 可攜（純 CPU 的 PyTorch）、哪些需要 Apple silicon（`mlx`）；所有套件與模型版本釘在 `demos/versions.lock`。
+- **Demo 只在一台機器上測過**——MacBook Pro M5 Max（64 GB 統一記憶體、無 CUDA）。`demos/README.md` 說明哪些 demo 可攜（純標準函式庫或純 CPU 的 PyTorch）、哪些需要 Apple silicon（`mlx`）；所有套件與模型版本釘在 `demos/versions.lock`。
 - **引用逐篇查證過。** 站上每一筆引用都已對 arXiv 摘要頁、ACL Anthology、PMLR 或 Crossref 比對過 title 與第一作者。查不到的條目直接不上站，而不是附一句但書放上去。來源若是 blog、model card 或規格文件而非同儕審查論文，句子本身會寫明——這在本領域特別重要，有幾個廣為使用的術語與 baseline 背後根本沒有技術報告。
 - 網站有**展示模式**（按 `z` 或點 navbar 的按鈕），會收起兩側欄位方便投影。
 
@@ -70,7 +70,7 @@
 
 ## 刻意不放在這裡的東西
 
-課程大綱（`course-outline.md`）是這門課唯一的真相來源，只存在於 private repo。站上的每週頁面是從它經**預設不公開的過濾器**產生的：每週只有三個區塊公開——*定位*、*Learning objectives*、*參考資料*——加上自 W3 起的學生版 *Demos* 區塊。課堂時間分配、學生誤解清單、給授課者的 demo 腳本與教學設計備註都不公開。投影片裡的中文講稿、授課者版的 demo README（彩排筆記與退路）、所有評量材料（題目與 rubric）亦同。
+課程大綱（`course-outline.md`）是這門課唯一的真相來源，只存在於 private repo。站上的每週頁面是從它經**預設不公開的過濾器**產生的：每週只有三個區塊公開——*定位*、*Learning objectives*、*參考資料*——加上連到已公開程式的學生版 *Demos* 區塊。課堂時間分配、學生誤解清單、給授課者的 demo 腳本與教學設計備註都不公開。投影片裡的中文講稿、授課者版的 demo README（彩排筆記與退路）、所有評量材料（題目與 rubric）亦同。
 
 若這個 repo 裡出現 `docs/course-outline.md`，那是回歸 bug，不是功能。
 
