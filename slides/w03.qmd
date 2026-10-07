@@ -204,7 +204,7 @@ Take $\mathbf{q}, \mathbf{k} \in \mathbb{R}^{d_k}$ with components independent, 
 
 $$\mathbf{q}^\top\mathbf{k} = \sum_{i=1}^{d_k} q_i k_i,\qquad \mathbb{E}\big[\mathbf{q}^\top\mathbf{k}\big] = 0,\qquad \mathrm{Var}\big(\mathbf{q}^\top\mathbf{k}\big) = \sum_{i=1}^{d_k} \mathbb{E}[q_i^2]\,\mathbb{E}[k_i^2] = d_k$$
 
-- so the logits have standard deviation $\sqrt{d_k}$: for $d_k = 128$, about $11$
+- so the **logits** — the pre-softmax scores $s_{ij}$ — have standard deviation $\sqrt{d_k}$: for $d_k = 128$, about $11$
 - softmax over $64$ keys whose logits spread over $\pm 11$ is nearly one-hot; its gradient $\partial p_j / \partial s_j = p_j(1 - p_j)$ is then nearly $0$
 - dividing by $\sqrt{d_k}$ brings the variance back to $1$. Equivalently: $\sqrt{d_k}$ is a **temperature**
 
