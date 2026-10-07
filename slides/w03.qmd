@@ -661,7 +661,7 @@ Same master as W1 p16 · prefill's $L^2$ term is the attention side: $2Ld$ per l
 
 - Today took one operation apart. Next week puts it back into a **block** — LayerNorm, the FFN, the residual connection — and names the object every layer reads and writes: the **residual stream**
 - The parameter accounting behind today's $24d^2$: $N \approx 12\,n_{\text{layer}}d^2$, and where the $6$ in $6ND$ comes from once attention is included
-- The failure demo: push the learning rate past its limit and watch the loss spike **with the attention logits** — the growth this week said $1/\sqrt{d_k}$ cannot stop
+- The failure demo: push the learning rate past its limit and watch the **attention logits** climb while the loss stalls — the growth this week said $1/\sqrt{d_k}$ cannot stop
 
 ::: {.ask}
 Before then: **JM3 Vol I ch 7**, second half (the 2026-08-19 release), and **RAS ch 4** (ch 3 was this week's). To consolidate today: **ZZM ch 4** for a second walk through self-attention, and Jain & Wallace's abstract.
