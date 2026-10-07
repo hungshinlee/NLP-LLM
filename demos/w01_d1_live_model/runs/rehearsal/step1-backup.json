@@ -1,0 +1,35 @@
+{
+ "time": "2026-09-16T12:37:17",
+ "step": "1",
+ "model": "mlx-community/Qwen3.8-27B-4bit",
+ "prompt": "<|im_start|>user\nContinue the following passage in the style of an Elizabethan play. Output only the continuation.\n\nbeside well in his person wrought To be<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+ "shown_prompt": "Continue the following passage in the style of an Elizabethan play. Output only the continuation.  beside well in his person wrought To be",
+ "output": "a mirror to the age,\nWherein the world might see its own decay\nReflected in his noble, fading grace.\nFor what is beauty but a fleeting guest,\nThat knocks upon the door of time, and leaves?\nHe stood, a monument of flesh and bone,\nYet hollowed out by care’s relentless stone.\nThe sun, that gilded all the earth below,\nSeemed to dim its rays, as if in woe,\nTo witness such a ruin of a man,\nWhose spirit, once a beacon, now is wan.\n",
+ "params": {
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "seed": 20260916,
+  "max_tokens": 120
+ },
+ "stats": {
+  "prompt_tokens": 40,
+  "prompt_tps": 114.0,
+  "generation_tokens": 120,
+  "generation_tps": 33.6,
+  "peak_memory_gb": 15.47,
+  "finish_reason": "length"
+ },
+ "wall_seconds": 4.33,
+ "fake": false,
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "rehearsal": true
+}

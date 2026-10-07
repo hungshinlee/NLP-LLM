@@ -1,0 +1,46 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W1 demo 2（投影片 p28「Live: the same paragraph, two tokenizers」）的設定
+#
+# 同一段繁體中文，交給兩個 tokenizer 差很多的模型，現場算：
+#   token 數 → perplexity → bits-per-byte
+# 要學生看到的是：PPL 跟著 token 的切法走，bits-per-byte 才是同一把尺。
+
+[demo]
+title = "W1 · Demo 2 · Same paragraph, two tokenizers"
+text = "zh_city"          # 預設文字，見 [texts]
+pair = ["qwen38", "mistral7b"]   # 2026-09-20 彩排定案：Qwen PPL 12.2 / BPB 0.81，Mistral PPL 9.1 / BPB 1.38——PPL 選錯模型的活例子。
+                                 # 原本的 gemma4 打分不可用（見 README「Gemma 4 的觀察」），生成正常所以 demo 1 照舊
+preview_chars = 32        # Step 2 只把第一段這麼多字切給學生看
+
+# ── 文字 ───────────────────────────────────────────────────────
+# 兩段都是為這門課自己寫的，沒有著作權問題，也不在任何模型的訓練資料裡。
+[texts.zh_city]
+file = "texts/zh_city.txt"
+label = "繁中散文（城市的早晨，209 字、627 bytes）"
+
+[texts.taigi]
+file = "texts/taigi.txt"
+label = "台語漢字（61 字、184 bytes，含 BMP 以外的「𪜶」U+2A736）"
+note = "用來測前提 (a)：罕見字在 tokenizer 裡是不是無損"
+
+# ── 模型 ───────────────────────────────────────────────────────
+# revision 留空：fetch 時把實際 commit 寫進 demos/versions.lock（以 repo 為鍵，與 demo 1 共用）。
+# 前兩個 demo 1 已經下載過；mistral7b 要另外下載約 4.1 GB。
+
+[models.qwen38]
+repo = "mlx-community/Qwen3.8-27B-4bit"
+label = "Qwen3.8 27B"
+note = "中文詞彙很多的 byte-level BPE"
+revision = ""
+
+[models.gemma4]
+repo = "mlx-community/gemma-4-26b-a4b-it-4bit"
+label = "Gemma 4 26B-A4B"
+note = "約 26 萬詞的多語 tokenizer。2026-09-20：對原始文字的 likelihood 崩掉（PPL 3,435、英文一句 5,843），diag 排除了 BOS 重複與 forward 路徑差異，原因未定；不要拿它打分，見 README"
+revision = ""
+
+[models.mistral7b]
+repo = "mlx-community/Mistral-7B-Instruct-v0.3-4bit"
+label = "Mistral 7B v0.3"
+note = "32,768 詞、以英文為主；inspect 實測繁中 1.30 token／字（Qwen 0.68），多數漢字退成 3 個 byte token。2024 年的模型，中文能力弱——這正是要的：token 好猜所以 PPL 反而低，BPB 才看得出差距"
+revision = ""

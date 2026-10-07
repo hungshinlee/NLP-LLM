@@ -1,0 +1,60 @@
+{
+ "time": "2026-09-20T01:48:44",
+ "text_id": "zh_city",
+ "text": "清晨六點半，城市還沒完全醒來。巷口的早餐店已經亮起燈，老闆一邊煎蛋餅，一邊和熟客聊著昨晚的颱風消息。捷運站裡，通勤的人們低頭滑著手機，有人在讀新聞，有人在回訊息，也有人只是閉著眼睛，想多偷幾分鐘的睡眠。公車站牌旁，一位老先生慢慢地把雨傘收好，抬頭看了看天空：雲層很厚，但風已經小了。對許多人來說，這只是再平凡不過的星期三；可是對剛搬來這座城市的學生而言，每一個轉角都像是一個還沒讀完的句子，等著他們自己去補上後面的字。",
+ "models": [
+  {
+   "key": "qwen38",
+   "label": "Qwen3.8 27B",
+   "repo": "mlx-community/Qwen3.8-27B-4bit"
+  },
+  {
+   "key": "gemma4",
+   "label": "Gemma 4 26B-A4B",
+   "repo": "mlx-community/gemma-4-26b-a4b-it-4bit"
+  }
+ ],
+ "results": [
+  {
+   "tokens": 141,
+   "chars": 209,
+   "bytes": 627,
+   "tokens_per_char": 0.675,
+   "lossless": "yes",
+   "prefix_token": "'<|endoftext|>'",
+   "nll_nats": 353.044,
+   "ppl": 12.23,
+   "bpb": 0.8123,
+   "bits_per_char": 2.437,
+   "identity_check": 0.8123,
+   "forward_seconds": 0.77,
+   "peak_memory_gb": 29.8
+  },
+  {
+   "tokens": 164,
+   "chars": 209,
+   "bytes": 627,
+   "tokens_per_char": 0.785,
+   "lossless": "yes",
+   "prefix_token": "BOS '<bos>'",
+   "nll_nats": 1335.252,
+   "ppl": 3435.02,
+   "bpb": 3.0723,
+   "bits_per_char": 9.217,
+   "identity_check": 3.0723,
+   "forward_seconds": 1.28,
+   "peak_memory_gb": 29.77
+  }
+ ],
+ "fake": false,
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ }
+}

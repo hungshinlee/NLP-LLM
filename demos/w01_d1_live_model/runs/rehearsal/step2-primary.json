@@ -1,0 +1,43 @@
+{
+ "time": "2026-09-16T12:37:10",
+ "step": "2",
+ "model": "mlx-community/gemma-4-26b-a4b-it-4bit",
+ "prompt": "<bos><|turn>user\n國道 5 號雪山隧道全長幾公里？哪一年通車？<turn|>\n<|turn>model\n<|channel>thought\n<channel|>",
+ "shown_prompt": "國道 5 號雪山隧道全長幾公里？哪一年通車？",
+ "output": "國道 5 號雪山隧道相關資訊如下：\n\n*   **全長：** 約 **19.8 公里**。\n*   **通車年份：** **2006 年**（2006 年 12 月 22 日正式通車）。",
+ "params": {
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "seed": 20260916,
+  "max_tokens": 220
+ },
+ "stats": {
+  "prompt_tokens": 31,
+  "prompt_tps": 515.3,
+  "generation_tokens": 65,
+  "generation_tps": 137.9,
+  "peak_memory_gb": 14.29,
+  "finish_reason": "stop"
+ },
+ "wall_seconds": 0.53,
+ "fake": false,
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "question_id": "snow_tunnel",
+ "judgement": {
+  "looks_correct": false,
+  "missing": [
+   "12\\.9"
+  ],
+  "rejected_by": []
+ },
+ "rehearsal": true
+}

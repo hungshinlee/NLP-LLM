@@ -22,6 +22,17 @@ It is also where the course's governing metaphor — **compression is prediction
 4. Use cross-entropy and bits-per-byte to argue that a language model is a compressor, and say where that equivalence breaks down — including the conditions under which bits-per-byte is actually comparable, and how *compressing a distribution rather than a set of facts* leads, statistically, to hallucination.
 5. Use $C \approx 6ND$ to estimate the training compute of a dense model at a compute-optimal configuration, and convert it into time on a single consumer GPU.
 
+## Demos
+Two of this week's three demos are programs; they are published so that you can read them, re-run them, and change them — **you are not required to run anything**, and the numbers on the slides are the rehearsal records checked in with the code. Each folder's `README.md` gives requirements, setup, commands, and what you should see; the index at [`demos/`](https://github.com/hungshinlee/NLP-LLM/tree/main/demos) explains the shared environment.
+
+| | Slide | What it shows | Needs | Runs on |
+|---|---|---|---|---|
+| [Demo 1 · same prompt, a 2026 model, live](https://github.com/hungshinlee/NLP-LLM/tree/main/demos/w01_d1_live_model) | p9 | The eight-word seed of the cold open continued by Gemma 4 26B-A4B (backup Qwen3.8 27B) — fluent and not a quotation — then one checkable Traditional Chinese question answered wrongly in exactly the tone of a right answer; the configuration holds five verified questions with sources | `mlx` + `mlx-lm`, two ≈ 15 GB 4-bit models | **Apple silicon only**, 32 GB |
+| [Demo 2 · the same paragraph, two tokenizers](https://github.com/hungshinlee/NLP-LLM/tree/main/demos/w01_d2_bpb) | p28 | One Chinese paragraph scored by Qwen3.8 27B and Mistral 7B: 141 vs. 272 tokens, perplexity 12.2 vs. **9.1**, bits per byte **0.81** vs. 1.39 — perplexity picks the wrong model, bits per byte does not; a round-trip check and a Taiwanese paragraph with a four-byte character | `mlx` + `mlx-lm`, both models loaded together (≈ 20 GB) | **Apple silicon only**, 32 GB |
+| Demo 3 · three failures of static embeddings | p44–48 | No program to run: antonyms with the highest cosine, a polysemous word's mixed neighbours, and an out-of-vocabulary lookup, computed in advance by the slide-figure script on the course corpus and printed on the slides | — | — |
+
+Tested on one machine only — an Apple M5 Max (64 GB, no CUDA), macOS 26.6, Python 3.12 — with the versions pinned in `demos/versions.lock`. Terminal prompts are in Chinese; Enter advances, `q` quits.
+
 ## References
 - **JM3** Ch 3 *N-gram Language Models* (**the whole chapter** — §3.7, on how perplexity relates to entropy, comes last and is the core of this week's compression argument), Ch 5 *Embeddings* (§5.1–5.5), Ch 6 *Neural Networks* (the feedforward neural language model subsection under §6.5, which is the NPLM), and Ch 14 *RNNs and LSTMs* (§14.1–14.2 and §14.5, plus **§14.7–14.8 on the encoder-decoder and attention** — they sit at the end of the chapter, so do not stop halfway)
 - **UDL** ch 1–2 (the catch-up route for students with no background); **BB** for the probability and optimization assumed here. The two-page Week 1 handout [*Mathematical Prerequisites* (PDF)](../handouts/w01-math-prerequisites.pdf) maps every mathematical object this course uses onto UDL Appendices B–C and ch 5–7, with six self-check questions at the end

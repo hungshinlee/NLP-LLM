@@ -1,0 +1,35 @@
+{
+ "time": "2026-09-16T12:37:09",
+ "step": "1",
+ "model": "mlx-community/gemma-4-26b-a4b-it-4bit",
+ "prompt": "<bos><|turn>user\nContinue the following passage in the style of an Elizabethan play. Output only the continuation.\n\nbeside well in his person wrought To be<turn|>\n<|turn>model\n<|channel>thought\n<channel|>",
+ "shown_prompt": "Continue the following passage in the style of an Elizabethan play. Output only the continuation.  beside well in his person wrought To be",
+ "output": "the very image of a godhead's thought,\nIn virtue's bloom and wisdom's golden light,\nTo banish darkness from the eyes of sight.\nNo shadow falls where such a sun may rise,\nTo cast its glory 'pon the mortal skies;\nFor in his frame, the heavens themselves do dwell,\nAnd heaven's grace in earthly vessel swell.",
+ "params": {
+  "temperature": 0.0,
+  "top_p": 0.0,
+  "seed": 20260916,
+  "max_tokens": 120
+ },
+ "stats": {
+  "prompt_tokens": 40,
+  "prompt_tps": 377.6,
+  "generation_tokens": 81,
+  "generation_tps": 137.6,
+  "peak_memory_gb": 14.3,
+  "finish_reason": "stop"
+ },
+ "wall_seconds": 0.77,
+ "fake": false,
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "rehearsal": true
+}

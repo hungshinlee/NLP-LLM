@@ -1,0 +1,95 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W1 demo 1（投影片 p9「Same prompt. A 2026 model. Live.」）的設定
+#
+# 改這個檔就能換模型、換問題，不必動程式。
+# 所有「事實」都附了查證來源與日期；新增問題時照同樣格式寫，查不到就不要放。
+
+[demo]
+title = "W1 · Same prompt. A 2026 model. Live."
+# 生成參數。temperature = 0 是 greedy，但**不保證每次輸出一模一樣**
+# （batching、kernel 的非決定性、套件版本都會影響）——這本身是本課的誤解清單之一。
+temperature = 0.0
+top_p = 0.0
+seed = 20260916
+max_tokens_continuation = 120
+max_tokens_answer = 220
+
+# ── 模型 ───────────────────────────────────────────────────────
+# 兩個都是 2026 年的開源權重、MLX 4-bit 版，檔案各約 15–16 GB，64 GB 統一記憶體放得下。
+# 2026-09-16 以 Hugging Face API 確認存在，mlx-lm main 分支有對應的
+# mlx_lm/models/gemma4.py 與 qwen3_5.py（都會丟掉視覺權重，只載入文字模型）。
+# revision 留空：`demo.py fetch` 第一次下載時會把實際的 commit 寫進 ../versions.lock（以 repo 為鍵）。
+
+[models.primary]
+repo = "mlx-community/gemma-4-26b-a4b-it-4bit"
+label = "Gemma 4 26B-A4B (instruct, 4-bit MLX)"
+note = "MoE，每個 token 約 4B 活化參數，decode 應該比 dense 快；Google，2026-04"
+revision = ""
+
+[models.backup]
+repo = "mlx-community/Qwen3.8-27B-4bit"
+label = "Qwen3.8 27B (4-bit MLX)"
+note = "dense 27B；Alibaba，2026-08。主模型載不進來或表現不適合時用"
+revision = ""
+
+# ── 第一步：同一個 prompt ─────────────────────────────────────
+# 與 cold open 四段 n-gram 完全相同的起點，出自 slides/assets/w01/w01-data.json 的 "seed"。
+[step1]
+prompt_source = "../../slides/assets/w01/w01-data.json"
+prompt_key = "seed"
+# raw：不套 chat template，讓模型直接接著寫（最接近 n-gram 的設定）。
+# chat：用下面這句指令包起來。
+# 2026-09-16 改成 chat：raw 模式下 Gemma 4 在 greedy 下陷入重複迴圈（"in his person wrought To be" 一再重複），
+# Qwen3.8 則開始解釋這句話（runs/check.jsonl）。兩個都是對話模型，不給指令不會乖乖往下寫。
+mode = "chat"
+chat_instruction = "Continue the following passage in the style of an Elizabethan play. Output only the continuation.\n\n"
+
+# ── 第二步：繁中、具體、可查證的問題 ──────────────────────────
+# 課前用 `demo.py probe` 對每題跑幾次，挑「穩定答錯而且語氣篤定」的那題，
+# 把它的 id 填進 chosen。**答案判定只是粗篩**（regex），最後一定要人眼看。
+[step2]
+# 2026-09-16 probe（Gemma 4，每題 3 次、三次逐字相同）五題全錯。選雪隧：答案短、錯得乾淨、語氣篤定
+# （長度說 19.8 公里、日期說 2006-12-22）。高鐵那題也錯，但輸出中途自我「重新整理」又被截斷，語氣不夠乾淨。
+chosen = "snow_tunnel"
+system = ""
+
+[[questions]]
+id = "thsr_stations"
+text = "台灣高鐵目前有幾個營運中的車站？請列出全部站名，由北到南。"
+answer = "12 站：南港、台北、板橋、桃園、新竹、苗栗、台中、彰化、雲林、嘉義、台南、左營"
+accept = ["12|十二", "苗栗", "彰化", "雲林", "南港"]
+source = "台灣高鐵官網〈時刻表與票價查詢〉的車站選單，2026-09-16 查證"
+why = "2016 年才從 8 站增為 12 站；舊資料多，模型常答 8 站或漏掉苗栗、彰化、雲林"
+
+[[questions]]
+id = "snow_tunnel"
+text = "國道 5 號雪山隧道全長幾公里？哪一年通車？"
+answer = "約 12.9 公里；民國 95 年（2006 年）6 月 16 日通車"
+accept = ["12\\.9", "2006|95 ?年"]
+source = "交通部高速公路局〈國道5號雪山隧道－設施簡介〉，2026-09-16 查證"
+why = "長度與年份都是單一、可查的數字"
+
+[[questions]]
+id = "kinmen_bridge"
+text = "金門大橋全長多少公里？哪一天正式通車？連接哪兩個地方？"
+answer = "全長 5.4 公里；2022 年 10 月 30 日通車；連接大金門（金門本島）與小金門（烈嶼）"
+accept = ["5\\.4", "2022", "10 ?月 ?30|10/30", "烈嶼|小金門"]
+source = "中央社〈金門大橋通車5／5分鐘的路走了30年〉2022-10-29，2026-09-16 查證"
+why = "日期很新、只出現在少數新聞裡——正是『只出現一次的事實』"
+
+[[questions]]
+id = "paper_nguyen"
+text = "《Understanding Transformers via N-gram Statistics》這篇論文的作者是誰？發表在哪個會議？"
+answer = "單一作者 Timothy Nguyen；NeurIPS 2024（arXiv:2407.12034）"
+accept = ["Nguyen", "NeurIPS"]
+reject = ["(?i)et al\\.?|等人"]
+source = "arXiv abs 頁（Comments: NeurIPS 2024），2026-09-16 查證"
+why = "單一作者的論文，模型很容易替它編出共同作者——而且這篇就是今天投影片 p36 的引用"
+
+[[questions]]
+id = "paper_kalai"
+text = "《Calibrated Language Models Must Hallucinate》的作者是誰？發表在哪裡？"
+answer = "Adam Tauman Kalai 與 Santosh S. Vempala；STOC 2024（arXiv:2311.14648）"
+accept = ["Kalai", "Vempala", "STOC"]
+source = "arXiv abs 頁（Comments: STOC 2024），2026-09-16 查證"
+why = "若模型答對，也可以在 p33 回收：『它答對了——因為這篇被引用很多次，不是 hapax』"
