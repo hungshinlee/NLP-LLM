@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W2 demo 1（投影片 p10「Live: the full table」）的設定
+# W2 demo 1（投影片 p12「Live: the full table」）的設定
 #
 # 同一組文字，九個 tokenizer，現場填表：token 數、tokens per character、bytes per token，
 # 最後一列把繁中的 token 數換成相對成本（以英文為 1，Petrov et al. 的 tokenization premium）。
@@ -7,9 +7,9 @@
 
 [demo]
 title = "W2 · Demo 1 · One paragraph, nine tokenizers"
-# 表的列，依課堂順序（與投影片 p10 的列一致）。每個 id 見 [texts]
+# 表的列，依課堂順序（與投影片 p12 的列一致）。每個 id 見 [texts]
 rows = ["zh_city", "zh_city_en", "zh_city_hans", "taigi", "tailo", "hakka", "python", "numbers"]
-# 表的欄，依投影片 p10 的欄序。每個 key 見 [tokenizers]
+# 表的欄，依投影片 p12 的欄序。每個 key 見 [tokenizers]
 columns = ["gpt2", "o200k", "llama3", "qwen38", "gemma4", "mistral", "breeze", "bert_zh", "byt5"]
 # 每一列另外用色塊畫出切法的兩欄（投影片講稿：Qwen3.8 與 Mistral）
 highlight = ["qwen38", "mistral"]
@@ -24,7 +24,7 @@ longest_cjk_n = 12
 preview_chars = 40        # 色塊只畫每段文字的前這麼多字
 
 # ── 文字 ───────────────────────────────────────────────────────
-# 繁中與台語漢字沿用 W1 demo 2 的檔案（維持兩週連續性；p8 的實測列就是那段文字）。
+# 繁中與台語漢字沿用 W1 demo 2 的檔案（維持兩週連續性；p10 的實測列就是那段文字）。
 # 其餘為本課自寫。file 是相對於這個資料夾的路徑；有 text 就直接用 text。
 [texts.zh_city]
 file = "../w01_d2_bpb/texts/zh_city.txt"
@@ -49,7 +49,7 @@ label = "台語漢字 (61 chars)"
 [texts.tailo]
 file = "texts/tailo.txt"
 label = "台羅 NFC / NFD"
-note = "同一句台羅存成 NFC 與 NFD 各算一次；投影片 p12 的例句。拼法請以你的語感核對"
+note = "同一句台羅存成 NFC 與 NFD 各算一次；投影片 p14 的例句。拼法請以你的語感核對"
 variants = "nfc_nfd"
 
 [texts.hakka]
@@ -97,7 +97,7 @@ revision = ""
 kind = "hf"
 repo = "mlx-community/Qwen3.8-27B-4bit"
 label = "Qwen3.8"
-note = "W1 demo 2 的模型，p8 的實測列（141 tokens）就是它；中文詞彙很多的 byte-level BPE；數字逐位。是否先做 NFC 用 inspect 確認"
+note = "W1 demo 2 的模型，p10 的實測列（141 tokens）就是它；中文詞彙很多的 byte-level BPE；數字逐位。是否先做 NFC 用 inspect 確認"
 revision = ""
 params_nominal = 27e9      # 名稱上的參數量，與 config.json 算出來的對照
 

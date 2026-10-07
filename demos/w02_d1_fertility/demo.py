@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W2 demo 1（投影片 p10「Live: the full table」）：同一組文字，九個 tokenizer。
+"""W2 demo 1（投影片 p12「Live: the full table」）：同一組文字，九個 tokenizer。
 
 只載 tokenizer、不載權重，純 CPU。課堂上按 Enter 一列一列填表：
     token 數 · tokens per character · bytes per token
@@ -504,7 +504,7 @@ def print_ledger(cfg, key, args):
         print(f"  N ≈ {N:,}  ({N/1e9:.2f} B)" + (f"   名稱上是 {spec['params_nominal']/1e9:.0f}B" if spec.get("params_nominal") else ""))
     if N:
         print(f"\n  {BOLD}{'Vd' if e['tie'] else '2Vd'} / N = {e['emb_params']/N:.3f}  →  {100*e['emb_params']/N:.1f}% 的參數是詞表{RESET}")
-        note("  對照投影片 p37 那張圖：125M 的模型配 128K 詞表是 70%，175B 是 1.8%；這個模型落在中間。")
+        note("  對照投影片 p39 那張圖：125M 的模型配 128K 詞表是 70%，175B 是 1.8%；這個模型落在中間。")
     tc = text_config(c)
     return {"config": {k: tc.get(k) for k in ("vocab_size", "hidden_size", "num_hidden_layers", "intermediate_size",
                                                "num_attention_heads", "num_key_value_heads", "head_dim", "tie_word_embeddings", "_from")},
@@ -585,7 +585,7 @@ def cmd_inspect(args, cfg):
             ta, tb = facts[a]["zh_city"]["tokens"], facts[b]["zh_city"]["tokens"]
             print(f"  {cfg['tokenizers'][a]['label']} {ta} → {cfg['tokenizers'][b]['label']} {tb} tokens  ({ta/tb:.2f}×)   {why}")
     note("判讀（對應 HANDOVER C7.4）：Qwen 的 normalizer 是否 NFC 看「decode(NFD)」；Gemma／Llama 3 的數字規則看 1234567 那行；"
-         "bert-zh 對 𠊎 看 [UNK]；Breeze 對 Mistral 看倍數；<|im_start|> 那行是 p19 講稿要不要說「Qwen3.8 守住了」的依據。"
+         "bert-zh 對 𠊎 看 [UNK]；Breeze 對 Mistral 看倍數；<|im_start|> 那行是 p21 講稿要不要說「Qwen3.8 守住了」的依據。"
          "確認之後把講稿裡的「待確認」句改掉。")
     REHEARSAL.mkdir(parents=True, exist_ok=True)
     out = REHEARSAL / ("inspect%s.json" % ("-FAKE" if args.fake else ""))

@@ -1,0 +1,663 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 400" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-problem-map" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><rect x="20" y="74" width="160" height="92" rx="8" fill="#f8fafc" stroke="#1f2328" stroke-width="1.8"/><text x="100" y="108" font-size="19" fill="#1f2328" text-anchor="middle" font-weight="700">text</text><text x="100" y="134" font-size="15" fill="#6b7280" text-anchor="middle" font-weight="400">209 characters</text><text x="100" y="154" font-size="15" fill="#6b7280" text-anchor="middle" font-weight="400">what you typed</text><line x1="182" y1="120" x2="218" y2="120" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-problem-map)"/><rect x="222" y="74" width="150" height="92" rx="8" fill="#f8fafc" stroke="#1f2328" stroke-width="1.8"/><text x="297" y="108" font-size="19" fill="#1f2328" text-anchor="middle" font-weight="700">bytes</text><text x="297" y="134" font-size="15" fill="#6b7280" text-anchor="middle" font-weight="400">627 (UTF-8)</text><text x="297" y="154" font-size="15" fill="#6b7280" text-anchor="middle" font-weight="400">a property of the text</text><line x1="374" y1="120" x2="410" y2="120" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-problem-map)"/><rect x="414" y="74" width="370" height="92" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><text x="599" y="108" font-size="19" fill="#0b5cad" text-anchor="middle" font-weight="700">tokenizer</text><text x="599" y="134" font-size="15" fill="#6b7280" text-anchor="middle" font-weight="400">normalizer · pre-tokenizer · model · post-processor</text><text x="599" y="154" font-size="15" fill="#6b7280" text-anchor="middle" font-weight="400">fitted on a corpus, before the model is trained</text><line x1="786" y1="120" x2="822" y2="120" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-problem-map)"/><rect x="826" y="98" width="42" height="44" rx="5" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><svg x="837.25" y="115.483" width="19.5" height="14.5172" viewBox="0 0 19.5 14.517187"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t9001-figure_1">
+  <g id="t9001-patch_1">
+   <path d="M 0 14.517187 
+L 19.5 14.517187 
+L 19.5 -0 
+L 0 -0 
+L 0 14.517187 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t9001-text_1">
+   <!-- $\mathrm{id}_1$ -->
+   <g style="fill: #1f2328" transform="translate(0 11.397656) scale(0.15 -0.15)">
+    <defs>
+     <path id="t9001-Cmr10-69" d="M 197 0 
+L 197 225 
+Q 416 225 556 259 
+Q 697 294 697 428 
+L 697 2175 
+Q 697 2422 601 2478 
+Q 506 2534 225 2534 
+L 225 2759 
+L 1147 2828 
+L 1147 428 
+Q 1147 294 1269 259 
+Q 1391 225 1594 225 
+L 1594 0 
+L 197 0 
+z
+M 469 3928 
+Q 469 4069 575 4175 
+Q 681 4281 819 4281 
+Q 909 4281 993 4234 
+Q 1078 4188 1125 4103 
+Q 1172 4019 1172 3928 
+Q 1172 3791 1065 3684 
+Q 959 3578 819 3578 
+Q 681 3578 575 3684 
+Q 469 3791 469 3928 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9001-Cmr10-64" d="M 1563 -72 
+Q 1184 -72 871 133 
+Q 559 338 386 672 
+Q 213 1006 213 1381 
+Q 213 1769 402 2101 
+Q 591 2434 916 2631 
+Q 1241 2828 1631 2828 
+Q 1866 2828 2075 2729 
+Q 2284 2631 2438 2456 
+L 2438 3788 
+Q 2438 3959 2386 4036 
+Q 2334 4113 2239 4130 
+Q 2144 4147 1941 4147 
+L 1941 4372 
+L 2888 4441 
+L 2888 581 
+Q 2888 413 2939 336 
+Q 2991 259 3086 242 
+Q 3181 225 3384 225 
+L 3384 0 
+L 2419 -72 
+L 2419 331 
+Q 2253 141 2025 34 
+Q 1797 -72 1563 -72 
+z
+M 909 556 
+Q 1019 347 1201 222 
+Q 1384 97 1600 97 
+Q 1866 97 2087 250 
+Q 2309 403 2419 647 
+L 2419 2181 
+Q 2344 2322 2230 2433 
+Q 2116 2544 1973 2603 
+Q 1831 2663 1672 2663 
+Q 1338 2663 1134 2473 
+Q 931 2284 850 1990 
+Q 769 1697 769 1375 
+Q 769 1119 795 928 
+Q 822 738 909 556 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9001-Cmr10-31" d="M 594 0 
+L 594 225 
+Q 1394 225 1394 428 
+L 1394 3788 
+Q 1063 3628 556 3628 
+L 556 3853 
+Q 1341 3853 1741 4263 
+L 1831 4263 
+Q 1853 4263 1873 4245 
+Q 1894 4228 1894 4206 
+L 1894 428 
+Q 1894 225 2694 225 
+L 2694 0 
+L 594 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t9001-Cmr10-69" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t9001-Cmr10-64" transform="translate(27.685547 0.609375)"/>
+    <use xlink:href="#t9001-Cmr10-31" transform="translate(87.667266 -16.396875) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><rect x="872" y="98" width="42" height="44" rx="5" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><svg x="883.25" y="115.483" width="19.5" height="14.5172" viewBox="0 0 19.5 14.517187"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t9002-figure_1">
+  <g id="t9002-patch_1">
+   <path d="M 0 14.517187 
+L 19.5 14.517187 
+L 19.5 -0 
+L 0 -0 
+L 0 14.517187 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t9002-text_1">
+   <!-- $\mathrm{id}_2$ -->
+   <g style="fill: #1f2328" transform="translate(0 11.397656) scale(0.15 -0.15)">
+    <defs>
+     <path id="t9002-Cmr10-69" d="M 197 0 
+L 197 225 
+Q 416 225 556 259 
+Q 697 294 697 428 
+L 697 2175 
+Q 697 2422 601 2478 
+Q 506 2534 225 2534 
+L 225 2759 
+L 1147 2828 
+L 1147 428 
+Q 1147 294 1269 259 
+Q 1391 225 1594 225 
+L 1594 0 
+L 197 0 
+z
+M 469 3928 
+Q 469 4069 575 4175 
+Q 681 4281 819 4281 
+Q 909 4281 993 4234 
+Q 1078 4188 1125 4103 
+Q 1172 4019 1172 3928 
+Q 1172 3791 1065 3684 
+Q 959 3578 819 3578 
+Q 681 3578 575 3684 
+Q 469 3791 469 3928 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9002-Cmr10-64" d="M 1563 -72 
+Q 1184 -72 871 133 
+Q 559 338 386 672 
+Q 213 1006 213 1381 
+Q 213 1769 402 2101 
+Q 591 2434 916 2631 
+Q 1241 2828 1631 2828 
+Q 1866 2828 2075 2729 
+Q 2284 2631 2438 2456 
+L 2438 3788 
+Q 2438 3959 2386 4036 
+Q 2334 4113 2239 4130 
+Q 2144 4147 1941 4147 
+L 1941 4372 
+L 2888 4441 
+L 2888 581 
+Q 2888 413 2939 336 
+Q 2991 259 3086 242 
+Q 3181 225 3384 225 
+L 3384 0 
+L 2419 -72 
+L 2419 331 
+Q 2253 141 2025 34 
+Q 1797 -72 1563 -72 
+z
+M 909 556 
+Q 1019 347 1201 222 
+Q 1384 97 1600 97 
+Q 1866 97 2087 250 
+Q 2309 403 2419 647 
+L 2419 2181 
+Q 2344 2322 2230 2433 
+Q 2116 2544 1973 2603 
+Q 1831 2663 1672 2663 
+Q 1338 2663 1134 2473 
+Q 931 2284 850 1990 
+Q 769 1697 769 1375 
+Q 769 1119 795 928 
+Q 822 738 909 556 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9002-Cmr10-32" d="M 319 0 
+L 319 172 
+Q 319 188 331 206 
+L 1325 1306 
+Q 1550 1550 1690 1715 
+Q 1831 1881 1968 2097 
+Q 2106 2313 2186 2536 
+Q 2266 2759 2266 3009 
+Q 2266 3272 2169 3511 
+Q 2072 3750 1880 3894 
+Q 1688 4038 1416 4038 
+Q 1138 4038 916 3870 
+Q 694 3703 603 3438 
+Q 628 3444 672 3444 
+Q 816 3444 917 3347 
+Q 1019 3250 1019 3097 
+Q 1019 2950 917 2848 
+Q 816 2747 672 2747 
+Q 522 2747 420 2851 
+Q 319 2956 319 3097 
+Q 319 3338 409 3548 
+Q 500 3759 670 3923 
+Q 841 4088 1055 4175 
+Q 1269 4263 1509 4263 
+Q 1875 4263 2190 4108 
+Q 2506 3953 2690 3670 
+Q 2875 3388 2875 3009 
+Q 2875 2731 2753 2481 
+Q 2631 2231 2440 2026 
+Q 2250 1822 1953 1562 
+Q 1656 1303 1563 1216 
+L 838 519 
+L 1453 519 
+Q 1906 519 2211 526 
+Q 2516 534 2534 550 
+Q 2609 631 2688 1141 
+L 2875 1141 
+L 2694 0 
+L 319 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t9002-Cmr10-69" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t9002-Cmr10-64" transform="translate(27.685547 0.609375)"/>
+    <use xlink:href="#t9002-Cmr10-32" transform="translate(87.667266 -16.396875) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><rect x="918" y="98" width="42" height="44" rx="5" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><text x="939" y="127" font-size="17" fill="#1f2328" text-anchor="middle" font-weight="400">…</text><rect x="964" y="98" width="42" height="44" rx="5" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><svg x="974.875" y="115.483" width="20.25" height="14.5172" viewBox="0 0 20.25 14.517187"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t9003-figure_1">
+  <g id="t9003-patch_1">
+   <path d="M 0 14.517187 
+L 20.25 14.517187 
+L 20.25 -0 
+L 0 -0 
+L 0 14.517187 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t9003-text_1">
+   <!-- $\mathrm{id}_T$ -->
+   <g style="fill: #1f2328" transform="translate(0 11.397656) scale(0.15 -0.15)">
+    <defs>
+     <path id="t9003-Cmr10-69" d="M 197 0 
+L 197 225 
+Q 416 225 556 259 
+Q 697 294 697 428 
+L 697 2175 
+Q 697 2422 601 2478 
+Q 506 2534 225 2534 
+L 225 2759 
+L 1147 2828 
+L 1147 428 
+Q 1147 294 1269 259 
+Q 1391 225 1594 225 
+L 1594 0 
+L 197 0 
+z
+M 469 3928 
+Q 469 4069 575 4175 
+Q 681 4281 819 4281 
+Q 909 4281 993 4234 
+Q 1078 4188 1125 4103 
+Q 1172 4019 1172 3928 
+Q 1172 3791 1065 3684 
+Q 959 3578 819 3578 
+Q 681 3578 575 3684 
+Q 469 3791 469 3928 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9003-Cmr10-64" d="M 1563 -72 
+Q 1184 -72 871 133 
+Q 559 338 386 672 
+Q 213 1006 213 1381 
+Q 213 1769 402 2101 
+Q 591 2434 916 2631 
+Q 1241 2828 1631 2828 
+Q 1866 2828 2075 2729 
+Q 2284 2631 2438 2456 
+L 2438 3788 
+Q 2438 3959 2386 4036 
+Q 2334 4113 2239 4130 
+Q 2144 4147 1941 4147 
+L 1941 4372 
+L 2888 4441 
+L 2888 581 
+Q 2888 413 2939 336 
+Q 2991 259 3086 242 
+Q 3181 225 3384 225 
+L 3384 0 
+L 2419 -72 
+L 2419 331 
+Q 2253 141 2025 34 
+Q 1797 -72 1563 -72 
+z
+M 909 556 
+Q 1019 347 1201 222 
+Q 1384 97 1600 97 
+Q 1866 97 2087 250 
+Q 2309 403 2419 647 
+L 2419 2181 
+Q 2344 2322 2230 2433 
+Q 2116 2544 1973 2603 
+Q 1831 2663 1672 2663 
+Q 1338 2663 1134 2473 
+Q 931 2284 850 1990 
+Q 769 1697 769 1375 
+Q 769 1119 795 928 
+Q 822 738 909 556 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9003-Cmmi10-54" d="M 294 84 
+Q 297 100 308 140 
+Q 319 181 336 203 
+Q 353 225 384 225 
+Q 934 225 1113 256 
+Q 1284 300 1319 441 
+L 2194 3956 
+Q 2222 4034 2222 4097 
+Q 2222 4147 1997 4147 
+L 1625 4147 
+Q 1197 4147 964 4015 
+Q 731 3884 622 3668 
+Q 513 3453 341 2963 
+Q 319 2906 275 2906 
+L 219 2906 
+Q 153 2906 153 2988 
+L 609 4313 
+Q 622 4372 672 4372 
+L 4453 4372 
+Q 4519 4372 4519 4288 
+L 4306 2963 
+Q 4306 2944 4284 2925 
+Q 4263 2906 4244 2906 
+L 4184 2906 
+Q 4122 2906 4122 2988 
+Q 4191 3441 4191 3628 
+Q 4191 3853 4097 3968 
+Q 4003 4084 3853 4115 
+Q 3703 4147 3463 4147 
+L 3084 4147 
+Q 2913 4147 2853 4115 
+Q 2794 4084 2753 3928 
+L 1875 416 
+Q 1872 403 1870 390 
+Q 1869 378 1863 359 
+Q 1863 278 1959 256 
+Q 2125 225 2669 225 
+Q 2731 225 2731 141 
+Q 2709 50 2696 25 
+Q 2684 0 2625 0 
+L 359 0 
+Q 294 0 294 84 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t9003-Cmr10-69" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t9003-Cmr10-64" transform="translate(27.685547 0.609375)"/>
+    <use xlink:href="#t9003-Cmmi10-54" transform="translate(87.667266 -16.396875) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><svg x="884.79" y="63.5794" width="66.42" height="17.4206" viewBox="0 0 66.42 17.420625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t9004-figure_1">
+  <g id="t9004-patch_1">
+   <path d="M 0 17.420625 
+L 66.42 17.420625 
+L 66.42 0 
+L 0 0 
+L 0 17.420625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t9004-text_1">
+   <!-- $T\ \text{tokens}$ -->
+   <g style="fill: #1f2328" transform="translate(0 13.677187) scale(0.18 -0.18)">
+    <defs>
+     <path id="t9004-Cmmi10-54" d="M 294 84 
+Q 297 100 308 140 
+Q 319 181 336 203 
+Q 353 225 384 225 
+Q 934 225 1113 256 
+Q 1284 300 1319 441 
+L 2194 3956 
+Q 2222 4034 2222 4097 
+Q 2222 4147 1997 4147 
+L 1625 4147 
+Q 1197 4147 964 4015 
+Q 731 3884 622 3668 
+Q 513 3453 341 2963 
+Q 319 2906 275 2906 
+L 219 2906 
+Q 153 2906 153 2988 
+L 609 4313 
+Q 622 4372 672 4372 
+L 4453 4372 
+Q 4519 4372 4519 4288 
+L 4306 2963 
+Q 4306 2944 4284 2925 
+Q 4263 2906 4244 2906 
+L 4184 2906 
+Q 4122 2906 4122 2988 
+Q 4191 3441 4191 3628 
+Q 4191 3853 4097 3968 
+Q 4003 4084 3853 4115 
+Q 3703 4147 3463 4147 
+L 3084 4147 
+Q 2913 4147 2853 4115 
+Q 2794 4084 2753 3928 
+L 1875 416 
+Q 1872 403 1870 390 
+Q 1869 378 1863 359 
+Q 1863 278 1959 256 
+Q 2125 225 2669 225 
+Q 2731 225 2731 141 
+Q 2709 50 2696 25 
+Q 2684 0 2625 0 
+L 359 0 
+Q 294 0 294 84 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9004-Cmr10-74" d="M 653 769 
+L 653 2534 
+L 122 2534 
+L 122 2700 
+Q 541 2700 737 3090 
+Q 934 3481 934 3938 
+L 1119 3938 
+L 1119 2759 
+L 2022 2759 
+L 2022 2534 
+L 1119 2534 
+L 1119 781 
+Q 1119 516 1208 316 
+Q 1297 116 1528 116 
+Q 1747 116 1844 327 
+Q 1941 538 1941 781 
+L 1941 1159 
+L 2125 1159 
+L 2125 769 
+Q 2125 569 2051 373 
+Q 1978 178 1834 53 
+Q 1691 -72 1484 -72 
+Q 1100 -72 876 158 
+Q 653 388 653 769 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9004-Cmr10-6f" d="M 1600 -72 
+Q 1216 -72 887 123 
+Q 559 319 368 647 
+Q 178 975 178 1363 
+Q 178 1656 283 1928 
+Q 388 2200 583 2414 
+Q 778 2628 1037 2748 
+Q 1297 2869 1600 2869 
+Q 1994 2869 2317 2661 
+Q 2641 2453 2828 2104 
+Q 3016 1756 3016 1363 
+Q 3016 978 2825 648 
+Q 2634 319 2307 123 
+Q 1981 -72 1600 -72 
+z
+M 1600 116 
+Q 2113 116 2284 487 
+Q 2456 859 2456 1434 
+Q 2456 1756 2422 1967 
+Q 2388 2178 2272 2350 
+Q 2200 2456 2089 2536 
+Q 1978 2616 1854 2658 
+Q 1731 2700 1600 2700 
+Q 1400 2700 1220 2609 
+Q 1041 2519 922 2350 
+Q 803 2169 770 1951 
+Q 738 1734 738 1434 
+Q 738 1075 800 789 
+Q 863 503 1052 309 
+Q 1241 116 1600 116 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9004-Cmr10-6b" d="M 166 0 
+L 166 225 
+Q 384 225 525 259 
+Q 666 294 666 428 
+L 666 3788 
+Q 666 3959 614 4036 
+Q 563 4113 466 4130 
+Q 369 4147 166 4147 
+L 166 4372 
+L 1113 4441 
+L 1113 1403 
+L 1972 2156 
+Q 2100 2278 2100 2381 
+Q 2100 2456 2047 2495 
+Q 1994 2534 1919 2534 
+L 1919 2759 
+L 3122 2759 
+L 3122 2534 
+Q 2688 2534 2253 2156 
+L 1797 1759 
+L 2613 603 
+Q 2781 363 2895 294 
+Q 3009 225 3272 225 
+L 3272 0 
+L 1997 0 
+L 1997 225 
+Q 2216 225 2216 359 
+Q 2216 456 2100 603 
+L 1484 1478 
+L 1094 1141 
+L 1094 428 
+Q 1094 294 1236 259 
+Q 1378 225 1594 225 
+L 1594 0 
+L 166 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9004-Cmr10-65" d="M 1594 -72 
+Q 1203 -72 876 133 
+Q 550 338 364 680 
+Q 178 1022 178 1403 
+Q 178 1778 348 2115 
+Q 519 2453 823 2661 
+Q 1128 2869 1503 2869 
+Q 1797 2869 2014 2770 
+Q 2231 2672 2372 2497 
+Q 2513 2322 2584 2084 
+Q 2656 1847 2656 1563 
+Q 2656 1478 2591 1478 
+L 738 1478 
+L 738 1409 
+Q 738 878 952 497 
+Q 1166 116 1650 116 
+Q 1847 116 2014 203 
+Q 2181 291 2304 447 
+Q 2428 603 2472 781 
+Q 2478 803 2495 820 
+Q 2513 838 2534 838 
+L 2591 838 
+Q 2656 838 2656 756 
+Q 2566 394 2266 161 
+Q 1966 -72 1594 -72 
+z
+M 744 1638 
+L 2203 1638 
+Q 2203 1878 2136 2125 
+Q 2069 2372 1912 2536 
+Q 1756 2700 1503 2700 
+Q 1141 2700 942 2361 
+Q 744 2022 744 1638 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9004-Cmr10-6e" d="M 191 0 
+L 191 225 
+Q 409 225 550 259 
+Q 691 294 691 428 
+L 691 2175 
+Q 691 2347 639 2423 
+Q 588 2500 491 2517 
+Q 394 2534 191 2534 
+L 191 2759 
+L 1119 2828 
+L 1119 2203 
+Q 1247 2478 1498 2653 
+Q 1750 2828 2047 2828 
+Q 2491 2828 2714 2615 
+Q 2938 2403 2938 1966 
+L 2938 428 
+Q 2938 294 3078 259 
+Q 3219 225 3438 225 
+L 3438 0 
+L 1972 0 
+L 1972 225 
+Q 2191 225 2331 259 
+Q 2472 294 2472 428 
+L 2472 1947 
+Q 2472 2259 2381 2461 
+Q 2291 2663 2009 2663 
+Q 1638 2663 1398 2366 
+Q 1159 2069 1159 1691 
+L 1159 428 
+Q 1159 294 1300 259 
+Q 1441 225 1656 225 
+L 1656 0 
+L 191 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t9004-Cmr10-73" d="M 213 -19 
+L 213 1025 
+Q 213 1075 269 1075 
+L 347 1075 
+Q 384 1075 397 1025 
+Q 575 97 1259 97 
+Q 1563 97 1767 234 
+Q 1972 372 1972 659 
+Q 1972 866 1812 1011 
+Q 1653 1156 1434 1209 
+L 1006 1294 
+Q 791 1341 614 1437 
+Q 438 1534 325 1695 
+Q 213 1856 213 2069 
+Q 213 2350 361 2529 
+Q 509 2709 746 2789 
+Q 984 2869 1259 2869 
+Q 1588 2869 1831 2694 
+L 2016 2853 
+Q 2016 2869 2047 2869 
+L 2094 2869 
+Q 2113 2869 2128 2851 
+Q 2144 2834 2144 2816 
+L 2144 1978 
+Q 2144 1919 2094 1919 
+L 2016 1919 
+Q 1959 1919 1959 1978 
+Q 1959 2313 1773 2516 
+Q 1588 2719 1253 2719 
+Q 966 2719 755 2612 
+Q 544 2506 544 2247 
+Q 544 2069 695 1955 
+Q 847 1841 1050 1791 
+L 1484 1709 
+Q 1703 1659 1892 1540 
+Q 2081 1422 2192 1240 
+Q 2303 1059 2303 831 
+Q 2303 600 2223 429 
+Q 2144 259 2001 146 
+Q 1859 34 1665 -19 
+Q 1472 -72 1259 -72 
+Q 859 -72 575 197 
+L 341 -56 
+Q 341 -72 306 -72 
+L 269 -72 
+Q 213 -72 213 -19 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t9004-Cmmi10-54" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t9004-Cmr10-74" transform="translate(87.662468 0.609375)"/>
+    <use xlink:href="#t9004-Cmr10-6f" transform="translate(126.480827 0.609375)"/>
+    <use xlink:href="#t9004-Cmr10-6b" transform="translate(176.480827 0.609375)"/>
+    <use xlink:href="#t9004-Cmr10-65" transform="translate(229.166374 0.609375)"/>
+    <use xlink:href="#t9004-Cmr10-6e" transform="translate(273.55114 0.609375)"/>
+    <use xlink:href="#t9004-Cmr10-73" transform="translate(329.068718 0.609375)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="918" y="168" font-size="14" fill="#6b7280" text-anchor="middle" font-weight="400">T depends on the tokenizer:</text><text x="918" y="188" font-size="15" fill="#1f2328" text-anchor="middle" font-weight="700">141 / 164 / 272 / 627  (p10)</text><line x1="1014" y1="120" x2="1060" y2="120" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-problem-map)"/><rect x="1064" y="74" width="150" height="92" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/><text x="1139" y="108" font-size="19" fill="#b45309" text-anchor="middle" font-weight="700">model</text><text x="1139" y="134" font-size="15" fill="#6b7280" text-anchor="middle" font-weight="400">sees only the ids</text><g class="fragment" data-fragment-index="1"><rect x="20" y="178" width="352" height="40" rx="8" fill="none" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="7 5"/><text x="196" y="204" font-size="17" fill="#dc2626" text-anchor="middle" font-weight="700">the model never sees any of this</text></g><g class="fragment" data-fragment-index="2"><rect x="20" y="232" width="1200" height="56" rx="9" fill="#fff5f5" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="7 5"/><text x="40" y="266" font-size="17" fill="#dc2626" text-anchor="start" font-weight="700">fitted before training; every weight was learned against its output — replacing it afterwards means paying for training again (§9)</text></g><text x="20" y="318" font-size="16" fill="#6b7280" text-anchor="start" font-weight="400">three questions this week asks of that box:</text><text x="20" y="348" font-size="17" fill="#1f2328" text-anchor="start" font-weight="700">what the unit is (§2–4)</text><text x="420" y="348" font-size="17" fill="#1f2328" text-anchor="start" font-weight="700">what it costs each language (§6, §9)</text><text x="860" y="348" font-size="17" fill="#1f2328" text-anchor="start" font-weight="700">what the model cannot see (§7)</text><text x="1220" y="390" font-size="17" fill="#6b7280" text-anchor="end" font-weight="400">schematic — not a measurement</text></svg>

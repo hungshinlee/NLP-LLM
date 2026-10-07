@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W2 · Demo 2 — BPE: one loop by hand, one line changed, and OOV is gone (slide p26)
+# W2 · Demo 2 — BPE: one loop by hand, one line changed, and OOV is gone (slide p28)
 
 A complete byte-pair-encoding trainer, encoder and decoder in about a hundred lines of plain Python — no packages, no virtual environment, no model. Two files:
 

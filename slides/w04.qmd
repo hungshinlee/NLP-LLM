@@ -173,7 +173,7 @@ Shazeer 2020 · names as in Hugging Face: `gate_proj`, `up_proj`, `down_proj`
 $$\mathbf{z} = \mathrm{Norm}(\mathbf{X}_{n_{\text{layer}}})\,\mathbf{W}_U, \qquad \mathbf{W}_U \in \mathbb{R}^{d \times V}, \qquad \mathbf{z} \in \mathbb{R}^{L \times V}$$
 
 - **Tied**: $\mathbf{W}_U = \mathbf{E}^\top$, the embedding $\mathbf{E} \in \mathbb{R}^{V \times d}$ read backwards — $Vd$ parameters once
-- **Untied**: a separate matrix — $2Vd$ in total. W2 p39 computed how large that share is for a small model with a large vocabulary
+- **Untied**: a separate matrix — $2Vd$ in total. W2 p41 computed how large that share is for a small model with a large vocabulary
 - The `config.json` key is `tie_word_embeddings` — the fourth source of error on p21
 
 ::: {.claim}
@@ -181,7 +181,7 @@ From here the loss of W1 takes over: cross-entropy on $\mathbf{z}$, and $C \appr
 :::
 
 ::: {.footer}
-W2 p39: the vocabulary's share · W1 p23: cross-entropy
+W2 p41: the vocabulary's share · W1 p23: cross-entropy
 :::
 
 # Demo 1: assemble the block {.section-title}
@@ -235,7 +235,7 @@ Assumes MHA, $n_{\text{head}} d_{\text{head}} = d$, iso-parameter $d_{\text{ff}}
 | $N = 12\,n_{\text{layer}} d^2 + Vd$ or $+ 2Vd$ | yes | the number on the model card; the ledger's $2N$ per token |
 | what `safetensors` counts | yes, and every $\boldsymbol{\gamma}$ | demo 1's third column |
 
-- For a **small model with a large vocabulary** the two differ by 20–30%: W2 p39 computed $2Vd/N$ across shapes
+- For a **small model with a large vocabulary** the two differ by 20–30%: W2 p41 computed $2Vd/N$ across shapes
 - Embedding lookup costs **no FLOPs**; the unembedding $\mathbf{X}\mathbf{W}_U$ costs $2Vd$ per token — in the FLOP count, out of $N_{\text{nv}}$
 
 ::: {.footer}

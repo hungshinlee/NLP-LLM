@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W2 · Demo 3 — one model, one set of sums, three ways of writing the numbers (slide p46)
+# W2 · Demo 3 — one model, one set of sums, three ways of writing the numbers (slide p48)
 
 The same model gets the same random multi-digit additions written three ways, and nothing else changes:
 

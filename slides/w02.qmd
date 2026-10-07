@@ -48,27 +48,32 @@ format:
 
 # Two loose ends from last week {.section-title}
 
-## Last week ended on two things that would not compare
+## Where we are: week 2 of 14
 
-::: {.columns}
-::: {.column width="50%"}
-**Demo 3, last slide.** A whole cast of characters — *prospero*, *miranda* — had **no vector at all**. The model had nothing to say about them.
-:::
-::: {.column width="50%"}
-**Demo 2.** Two models, one Traditional Chinese paragraph. Perplexity **12.2** vs **9.1** — and the lower number was the **worse** model.
-:::
-:::
+![](assets/w02/course-map.svg){width="100%"}
 
-::: {.ask}
-What do these two failures have in common?
-:::
+## Last week, in one picture
+
+{{< include assets/w02/last-week.inline.qmd >}}
 
 ::: {.claim}
-Both come from the same place: **someone decided what the unit is** — and the model never got a vote.
+Both loose ends come from the same place: **someone decided what the unit is** — and the model never got a vote.
 :::
 
 ::: {.footer}
-W1 demo 2, 2026-09-20: Qwen3.8 PPL 12.23 / BPB 0.81 · Mistral 7B PPL 9.14 / BPB 1.38
+W1 p8, p28, p44–49 · demo 2 rehearsal 2026-09-20: Qwen3.8 PPL 12.23 / BPB 0.81 · Mistral 7B PPL 9.14 / BPB 1.38
+:::
+
+## The problem this week handles, in one picture
+
+{{< include assets/w02/problem-map.inline.qmd >}}
+
+::: {.claim}
+The model never sees your text. It sees what one trained object sends up — and that object is **fitted before** the model and **paid for** by it.
+:::
+
+::: {.footer}
+Pipeline: §3 (p18) · the four token counts: p10 · the three questions are the week's three parts
 :::
 
 ## The tokenizer is the model's retina
@@ -366,7 +371,7 @@ The decoder never sees the tokens. It runs the LM, cuts the interval the way the
 :::
 
 ::: {.footer}
-Toy vocabulary {a, b, c} · same four chosen probabilities as p22 · 5 bits, bound ≤ 6
+Toy vocabulary {a, b, c} · same four chosen probabilities as p24 · 5 bits, bound ≤ 6
 :::
 
 ## Training: merge the most frequent adjacent pair, repeat

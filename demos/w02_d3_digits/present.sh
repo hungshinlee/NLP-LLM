@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W2 demo 3（投影片 p43「Live: one model, one set of sums, three ways of writing the numbers」）課堂與課前的入口。一律離線（HF_HUB_OFFLINE=1）。
+# W2 demo 3（投影片 p48「Live: one model, one set of sums, three ways of writing the numbers」）課堂與課前的入口。一律離線（HF_HUB_OFFLINE=1）。
 #
 #   ./present.sh               上課用：載入主模型，Enter 逐列跑（4／7／10 位數，各 n_live 題）；q = 對照組、f = 彩排完整表、x = 離開
 #   ./present.sh replay        現場失敗時：顯示課前彩排的表（畫面標明非現場）

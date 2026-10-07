@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W2 demo 3（投影片 p43「Live: one model, one set of sums, three ways of writing the numbers」）。
+"""W2 demo 3（投影片 p48「Live: one model, one set of sums, three ways of writing the numbers」）。
 
 同一個模型、同一批隨機多位數加法，三種寫法——(A) 原樣、(B) 千分位逗號、(C) 逐位加空白——依位數報正確率。
 主模型的 pre-tokenizer 是 \\p{N}{1,3}（由左至右三位一組，與進位方向相反），Qwen（逐位）當對照組。
