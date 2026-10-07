@@ -1,0 +1,144 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W2 demo 1（投影片 p10「Live: the full table」）的設定
+#
+# 同一組文字，九個 tokenizer，現場填表：token 數、tokens per character、bytes per token，
+# 最後一列把繁中的 token 數換成相對成本（以英文為 1，Petrov et al. 的 tokenization premium）。
+# 只載 tokenizer、不載權重，純 CPU。要學生看到的是：token 不是字也不是詞，是「該 tokenizer 訓練語料裡夠常見的 byte 串」。
+
+[demo]
+title = "W2 · Demo 1 · One paragraph, nine tokenizers"
+# 表的列，依課堂順序（與投影片 p10 的列一致）。每個 id 見 [texts]
+rows = ["zh_city", "zh_city_en", "zh_city_hans", "taigi", "tailo", "hakka", "python", "numbers"]
+# 表的欄，依投影片 p10 的欄序。每個 key 見 [tokenizers]
+columns = ["gpt2", "o200k", "llama3", "qwen38", "gemma4", "mistral", "breeze", "bert_zh", "byt5"]
+# 每一列另外用色塊畫出切法的兩欄（投影片講稿：Qwen3.8 與 Mistral）
+highlight = ["qwen38", "mistral"]
+# 相對成本那一列：分子是這一列、分母是這一列（跨語言 fertility = 平行語料上的 token 數比）
+premium_numerator = "zh_city"
+premium_denominator = "zh_city_en"
+# 按 c 讀 config.json 算 2Vd/N 的模型
+ledger_model = "qwen38"
+# 按 l 列出詞表裡最長的含漢字 token：哪個 tokenizer、列幾個
+longest_cjk_tokenizer = "o200k"
+longest_cjk_n = 12
+preview_chars = 40        # 色塊只畫每段文字的前這麼多字
+
+# ── 文字 ───────────────────────────────────────────────────────
+# 繁中與台語漢字沿用 W1 demo 2 的檔案（維持兩週連續性；p8 的實測列就是那段文字）。
+# 其餘為本課自寫。file 是相對於這個資料夾的路徑；有 text 就直接用 text。
+[texts.zh_city]
+file = "../w01_d2_bpb/texts/zh_city.txt"
+label = "繁中 (209 chars)"
+
+[texts.zh_city_en]
+file = "texts/zh_city_en.txt"
+label = "the same, in English"
+note = "繁中那段的英文對應，本課自譯；跨語言 fertility 的分母"
+
+[texts.zh_city_hans]
+file = "texts/zh_city_hans.txt"
+label = "簡體 (OpenCC)"
+note = "rehearse 時用 OpenCC t2s 從 zh_city 重產並覆寫；檔案裡現在這份是 2026-09-20 手動逐字轉的初稿"
+derive = "opencc_t2s"
+derive_from = "zh_city"
+
+[texts.taigi]
+file = "../w01_d2_bpb/texts/taigi.txt"
+label = "台語漢字 (61 chars)"
+
+[texts.tailo]
+file = "texts/tailo.txt"
+label = "台羅 NFC / NFD"
+note = "同一句台羅存成 NFC 與 NFD 各算一次；投影片 p12 的例句。拼法請以你的語感核對"
+variants = "nfc_nfd"
+
+[texts.hakka]
+file = "texts/hakka.txt"
+label = "客語 with 𠊎"
+note = "含 U+2028E「𠊎」；bert-base-chinese 那格預期是 [UNK]。用字請核對"
+
+[texts.python]
+file = "texts/python.txt"
+label = "Python, 8 lines"
+note = "demo 2 的 get_pairs，八行；看縮排與空白怎麼切"
+
+[texts.numbers]
+text = "3.14159265358979 1234567"
+label = "numbers: 3.14159…, 1234567"
+note = "看 pre-tokenizer 的數字規則：整串／三位一組／逐位"
+
+# ── tokenizer ──────────────────────────────────────────────────
+# kind = "hf"：transformers.AutoTokenizer，只下載 tokenizer 檔（allow_patterns），revision 鎖進 demos/versions.lock
+# kind = "tiktoken"：OpenAI 的 tiktoken，BPE 檔快取在 demos/.tiktoken-cache/
+# kind = "bytes"：不載任何東西，token 數 = UTF-8 byte 數（ByT5 的定義；它另有 3 個特殊 token 的 offset，不影響計數）
+# 每一個都有它要示範的事（note）。gated = true 的要先在 Hugging Face 接受授權，課前一週處理。
+
+[tokenizers.gpt2]
+kind = "tiktoken"
+encoding = "gpt2"
+label = "GPT-2"
+note = "2019，舊世代 byte-level BPE，50,257 詞；數字規則 \\p{N}+，同樣四位數可能是 1、2、3 個 token"
+
+[tokenizers.o200k]
+kind = "tiktoken"
+encoding = "o200k_base"
+label = "o200k"
+note = "現代 GPT 系的詞表（約 20 萬）；數字 \\p{N}{1,3} 由左至右；按 l 看它最長的含漢字 token（課前先自己看過）"
+
+[tokenizers.llama3]
+kind = "hf"
+repo = "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit"
+label = "Llama 3"
+note = "128k 詞，tiktoken 式 byte-level BPE；數字是否 \\p{N}{1,3} 用 inspect 確認。原本用 meta-llama/Llama-3.1-8B（要申請授權），2026-09-20 改成 mlx-community 的鏡像，tokenizer.json 相同；若它也 401，改 NousResearch/Meta-Llama-3.1-8B 或 unsloth/Llama-3.1-8B 之一"
+gated = false
+revision = ""
+
+[tokenizers.qwen38]
+kind = "hf"
+repo = "mlx-community/Qwen3.8-27B-4bit"
+label = "Qwen3.8"
+note = "W1 demo 2 的模型，p8 的實測列（141 tokens）就是它；中文詞彙很多的 byte-level BPE；數字逐位。是否先做 NFC 用 inspect 確認"
+revision = ""
+params_nominal = 27e9      # 名稱上的參數量，與 config.json 算出來的對照
+
+[tokenizers.gemma4]
+kind = "hf"
+repo = "mlx-community/gemma-4-26b-a4b-it-4bit"
+label = "Gemma 4"
+note = "W1 demo 2 已量（164 tokens）；約 26 萬詞的多語 tokenizer。是不是 SentencePiece + byte fallback、數字是否逐位，用 inspect 確認，投影片上先不標"
+revision = ""
+
+[tokenizers.mistral]
+kind = "hf"
+repo = "mlx-community/Mistral-7B-Instruct-v0.3-4bit"
+label = "Mistral"
+note = "W1 demo 2 的模型（272 tokens）；SentencePiece BPE + byte fallback，32,768 詞（v0.1 是 32,000，Breeze 的底是 v0.1）。多數漢字退成 3 個 byte token"
+revision = ""
+
+[tokenizers.mistral_v01]
+kind = "hf"
+repo = "mistralai/Mistral-7B-v0.1"
+label = "Mistral v0.1"
+note = "Breeze-7B 真正的底（32,000 詞）。不在表上，inspect 用來確認它與 v0.3 對繁中的切法相同；被 gate 的話就略過"
+gated = true
+optional = true
+revision = ""
+
+[tokenizers.breeze]
+kind = "hf"
+repo = "MediaTek-Research/Breeze-7B-Base-v1_0"
+label = "Breeze"
+note = "Mistral 的詞表加 29,873 個繁中 token（技術報告寫 61,872；32,000 + 29,873 = 61,873，差 1 待核對）；與 Mistral 那欄是 before／after"
+revision = ""
+
+[tokenizers.bert_zh]
+kind = "hf"
+repo = "google-bert/bert-base-chinese"
+label = "bert-zh"
+note = "2018 的 WordPiece 字元級詞表，沒有 byte fallback；「𠊎」預期是 [UNK]，那格是這張表唯一的有損"
+revision = ""
+
+[tokenizers.byt5]
+kind = "bytes"
+label = "ByT5"
+note = "每個 byte 一個 token，不必跑；是所有以 byte 為底的 tokenizer 的上限（T ≤ B）"

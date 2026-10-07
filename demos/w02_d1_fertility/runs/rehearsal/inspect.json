@@ -1,0 +1,694 @@
+{
+ "time": "2026-09-20T14:05:32",
+ "fake": false,
+ "facts": {
+  "gpt2": {
+   "describe": {
+    "vocab_size": 50257,
+    "model_type": "BPE (byte-level, tiktoken)",
+    "byte_fallback": "n/a",
+    "normalizer": "none",
+    "pre_tokenizer": "Split('(?:[sdmt]|ll|ve|re)| ?\\p{L}++| ?\\p{N}++| ?[^\\s\\p{L}\\p{N}]++|\\s++$|\\s+(?!\\S)|\\s)",
+    "special_tokens": [
+     "<|endoftext|>"
+    ]
+   },
+   "ngai": {
+    "tokens": 4,
+    "pieces": [
+     "�",
+     "�",
+     "�",
+     "�"
+    ],
+    "unk": false,
+    "lossless": true
+   },
+   "nfd": {
+    "tokens_nfc": 32,
+    "tokens_nfd": 42,
+    "same_ids": false,
+    "decode_of_nfd": "維持 NFD"
+   },
+   "digits": [
+    "123",
+    "45",
+    "67"
+   ],
+   "space_A": {
+    "space_A": [
+     317
+    ],
+    "A": [
+     32
+    ],
+    "different": true
+   },
+   "zh_city": {
+    "tokens": 468,
+    "chars": 209,
+    "bytes": 627,
+    "tokens_per_char": 2.239,
+    "bytes_per_token": 1.34,
+    "lossless": "yes",
+    "unk": 0
+   },
+   "hakka": {
+    "tokens": 36,
+    "chars": 15,
+    "bytes": 47,
+    "tokens_per_char": 2.4,
+    "bytes_per_token": 1.31,
+    "lossless": "yes",
+    "unk": 0
+   }
+  },
+  "o200k": {
+   "describe": {
+    "vocab_size": 200019,
+    "model_type": "BPE (byte-level, tiktoken)",
+    "byte_fallback": "n/a",
+    "normalizer": "none",
+    "pre_tokenizer": "Split([^\\r\\n\\p{L}\\p{N}]?[\\p{Lu}\\p{Lt}\\p{Lm}\\p{Lo}\\p{M}]*[\\p{Ll}\\p{Lm}\\p{Lo}\\p{M}]+(?i:'s|'t|'re|'ve|'m|'ll|'d)?|[^\\r\\n\\p{L}\\p{N}]?[\\p{Lu}\\p{Lt}\\p{Lm}\\p{Lo}\\p{M}]+[\\p{Ll}\\p{Lm}\\p{Lo}\\p{M}]*(?i:'s|'t|'re|'ve|'m|'ll|'d)?|\\p{N}{1,3}| ?[^\\s\\p{L}\\p{N}]+[\\r\\n/]*|\\s*[\\r\\n]+|\\s+(?!\\S)|\\s+)",
+    "special_tokens": [
+     "<|endofprompt|>",
+     "<|endoftext|>"
+    ]
+   },
+   "ngai": {
+    "tokens": 4,
+    "pieces": [
+     "�",
+     "�",
+     "�",
+     "�"
+    ],
+    "unk": false,
+    "lossless": true
+   },
+   "nfd": {
+    "tokens_nfc": 23,
+    "tokens_nfd": 33,
+    "same_ids": false,
+    "decode_of_nfd": "維持 NFD"
+   },
+   "digits": [
+    "123",
+    "456",
+    "7"
+   ],
+   "space_A": {
+    "space_A": [
+     355
+    ],
+    "A": [
+     32
+    ],
+    "different": true
+   },
+   "zh_city": {
+    "tokens": 193,
+    "chars": 209,
+    "bytes": 627,
+    "tokens_per_char": 0.923,
+    "bytes_per_token": 3.25,
+    "lossless": "yes",
+    "unk": 0
+   },
+   "hakka": {
+    "tokens": 22,
+    "chars": 15,
+    "bytes": 47,
+    "tokens_per_char": 1.467,
+    "bytes_per_token": 2.14,
+    "lossless": "yes",
+    "unk": 0
+   }
+  },
+  "llama3": {
+   "describe": {
+    "vocab_size": 128256,
+    "unk_token": null,
+    "fast": true,
+    "model_type": "BPE",
+    "byte_fallback": false,
+    "unk_in_model": null,
+    "normalizer": "none",
+    "pre_tokenizer": "Split((?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\\r\\n\\p{L}\\p{N}]?\\p{L}+|\\p{N}{1,3}| ?[^\\s\\p{L}\\p{N}]+[\\r\\n]*|\\s*[\\r\\n]+|\\s+(?!\\S)|\\s+) → ByteLevel(add_prefix_space=False,trim_offsets=True,use_regex=False)",
+    "decoder": "ByteLevel"
+   },
+   "ngai": {
+    "tokens": 4,
+    "pieces": [
+     "ð",
+     "ł",
+     "Ĭ",
+     "İ"
+    ],
+    "unk": false,
+    "lossless": true
+   },
+   "nfd": {
+    "tokens_nfc": 24,
+    "tokens_nfd": 34,
+    "same_ids": false,
+    "decode_of_nfd": "維持 NFD"
+   },
+   "digits": [
+    "123",
+    "456",
+    "7"
+   ],
+   "space_A": {
+    "space_A": [
+     362
+    ],
+    "A": [
+     32
+    ],
+    "different": true
+   },
+   "control": {
+    "token": "<|begin_of_text|>",
+    "id": 128000,
+    "reachable_from_text": true
+   },
+   "zh_city": {
+    "tokens": 190,
+    "chars": 209,
+    "bytes": 627,
+    "tokens_per_char": 0.909,
+    "bytes_per_token": 3.3,
+    "lossless": "yes",
+    "unk": 0
+   },
+   "hakka": {
+    "tokens": 22,
+    "chars": 15,
+    "bytes": 47,
+    "tokens_per_char": 1.467,
+    "bytes_per_token": 2.14,
+    "lossless": "yes",
+    "unk": 0
+   }
+  },
+  "qwen38": {
+   "describe": {
+    "vocab_size": 248077,
+    "unk_token": null,
+    "fast": true,
+    "model_type": "BPE",
+    "byte_fallback": false,
+    "unk_in_model": null,
+    "normalizer": "NFC",
+    "pre_tokenizer": "Split((?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\\r\\n\\p{L}\\p{N}]?\\p{L}+|\\p{N}| ?[^\\s\\p{L}\\p{N}]+[\\r\\n]*|\\s*[\\r\\n]+|\\s+(?!\\S)|\\s+) → ByteLevel(add_prefix_space=False,trim_offsets=True,use_regex=False)",
+    "decoder": "ByteLevel"
+   },
+   "ngai": {
+    "tokens": 4,
+    "pieces": [
+     "ð",
+     "ł",
+     "Ĭ",
+     "İ"
+    ],
+    "unk": false,
+    "lossless": true
+   },
+   "nfd": {
+    "tokens_nfc": 24,
+    "tokens_nfd": 24,
+    "same_ids": true,
+    "decode_of_nfd": "改成 NFC（normalizer 動了）"
+   },
+   "digits": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7"
+   ],
+   "space_A": {
+    "space_A": [
+     357
+    ],
+    "A": [
+     32
+    ],
+    "different": true
+   },
+   "control": {
+    "token": "<|im_start|>",
+    "id": 248045,
+    "reachable_from_text": true
+   },
+   "zh_city": {
+    "tokens": 141,
+    "chars": 209,
+    "bytes": 627,
+    "tokens_per_char": 0.675,
+    "bytes_per_token": 4.45,
+    "lossless": "yes",
+    "unk": 0
+   },
+   "hakka": {
+    "tokens": 20,
+    "chars": 15,
+    "bytes": 47,
+    "tokens_per_char": 1.333,
+    "bytes_per_token": 2.35,
+    "lossless": "yes",
+    "unk": 0
+   }
+  },
+  "gemma4": {
+   "describe": {
+    "vocab_size": 262144,
+    "unk_token": "<unk>",
+    "fast": true,
+    "model_type": "BPE",
+    "byte_fallback": true,
+    "unk_in_model": "<unk>",
+    "normalizer": "Replace(content=▁)",
+    "pre_tokenizer": "Split( )",
+    "decoder": "Sequence"
+   },
+   "ngai": {
+    "tokens": 4,
+    "pieces": [
+     "<0xF0>",
+     "<0xA0>",
+     "<0x8A>",
+     "<0x8E>"
+    ],
+    "unk": false,
+    "lossless": true
+   },
+   "nfd": {
+    "tokens_nfc": 26,
+    "tokens_nfd": 31,
+    "same_ids": false,
+    "decode_of_nfd": "維持 NFD"
+   },
+   "digits": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7"
+   ],
+   "space_A": {
+    "space_A": [
+     562
+    ],
+    "A": [
+     236776
+    ],
+    "different": true
+   },
+   "control": {
+    "token": "<s>",
+    "id": 203,
+    "reachable_from_text": false
+   },
+   "zh_city": {
+    "tokens": 164,
+    "chars": 209,
+    "bytes": 627,
+    "tokens_per_char": 0.785,
+    "bytes_per_token": 3.82,
+    "lossless": "yes",
+    "unk": 0
+   },
+   "hakka": {
+    "tokens": 20,
+    "chars": 15,
+    "bytes": 47,
+    "tokens_per_char": 1.333,
+    "bytes_per_token": 2.35,
+    "lossless": "yes",
+    "unk": 0
+   }
+  },
+  "mistral": {
+   "describe": {
+    "vocab_size": 32768,
+    "unk_token": "<unk>",
+    "fast": true,
+    "model_type": "BPE",
+    "byte_fallback": true,
+    "unk_in_model": "<unk>",
+    "normalizer": "none",
+    "pre_tokenizer": "Metaspace(replacement=▁,prepend_scheme=first,split=False)",
+    "decoder": "Sequence"
+   },
+   "ngai": {
+    "tokens": 5,
+    "pieces": [
+     "▁",
+     "<0xF0>",
+     "<0xA0>",
+     "<0x8A>",
+     "<0x8E>"
+    ],
+    "unk": false,
+    "lossless": true
+   },
+   "nfd": {
+    "tokens_nfc": 30,
+    "tokens_nfd": 33,
+    "same_ids": false,
+    "decode_of_nfd": "維持 NFD"
+   },
+   "digits": [
+    "▁",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7"
+   ],
+   "space_A": {
+    "space_A": [
+     1098
+    ],
+    "A": [
+     1098
+    ],
+    "different": false
+   },
+   "control": {
+    "token": "<s>",
+    "id": 1,
+    "reachable_from_text": true
+   },
+   "zh_city": {
+    "tokens": 272,
+    "chars": 209,
+    "bytes": 627,
+    "tokens_per_char": 1.301,
+    "bytes_per_token": 2.31,
+    "lossless": "yes",
+    "unk": 0
+   },
+   "hakka": {
+    "tokens": 28,
+    "chars": 15,
+    "bytes": 47,
+    "tokens_per_char": 1.867,
+    "bytes_per_token": 1.68,
+    "lossless": "yes",
+    "unk": 0
+   }
+  },
+  "mistral_v01": {
+   "describe": {
+    "vocab_size": 32000,
+    "unk_token": "<unk>",
+    "fast": true,
+    "model_type": "BPE",
+    "byte_fallback": true,
+    "unk_in_model": "<unk>",
+    "normalizer": "none",
+    "pre_tokenizer": "Metaspace(replacement=▁,prepend_scheme=first,split=False)",
+    "decoder": "Sequence"
+   },
+   "ngai": {
+    "tokens": 5,
+    "pieces": [
+     "▁",
+     "<0xF0>",
+     "<0xA0>",
+     "<0x8A>",
+     "<0x8E>"
+    ],
+    "unk": false,
+    "lossless": true
+   },
+   "nfd": {
+    "tokens_nfc": 30,
+    "tokens_nfd": 33,
+    "same_ids": false,
+    "decode_of_nfd": "維持 NFD"
+   },
+   "digits": [
+    "▁",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7"
+   ],
+   "space_A": {
+    "space_A": [
+     330
+    ],
+    "A": [
+     330
+    ],
+    "different": false
+   },
+   "control": {
+    "token": "<s>",
+    "id": 1,
+    "reachable_from_text": true
+   },
+   "zh_city": {
+    "tokens": 272,
+    "chars": 209,
+    "bytes": 627,
+    "tokens_per_char": 1.301,
+    "bytes_per_token": 2.31,
+    "lossless": "yes",
+    "unk": 0
+   },
+   "hakka": {
+    "tokens": 28,
+    "chars": 15,
+    "bytes": 47,
+    "tokens_per_char": 1.867,
+    "bytes_per_token": 1.68,
+    "lossless": "yes",
+    "unk": 0
+   }
+  },
+  "breeze": {
+   "describe": {
+    "vocab_size": 61875,
+    "unk_token": "<unk>",
+    "fast": true,
+    "model_type": "BPE",
+    "byte_fallback": true,
+    "unk_in_model": "<unk>",
+    "normalizer": "Prepend(prepend=▁) → Replace(content=▁)",
+    "pre_tokenizer": "none",
+    "decoder": "Sequence"
+   },
+   "ngai": {
+    "tokens": 5,
+    "pieces": [
+     "▁",
+     "<0xF0>",
+     "<0xA0>",
+     "<0x8A>",
+     "<0x8E>"
+    ],
+    "unk": false,
+    "lossless": true
+   },
+   "nfd": {
+    "tokens_nfc": 30,
+    "tokens_nfd": 33,
+    "same_ids": false,
+    "decode_of_nfd": "維持 NFD"
+   },
+   "digits": [
+    "▁",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7"
+   ],
+   "space_A": {
+    "space_A": [
+     28705,
+     330
+    ],
+    "A": [
+     330
+    ],
+    "different": true
+   },
+   "control": {
+    "token": "<s>",
+    "id": 1,
+    "reachable_from_text": true
+   },
+   "zh_city": {
+    "tokens": 146,
+    "chars": 209,
+    "bytes": 627,
+    "tokens_per_char": 0.699,
+    "bytes_per_token": 4.29,
+    "lossless": "yes",
+    "unk": 0
+   },
+   "hakka": {
+    "tokens": 21,
+    "chars": 15,
+    "bytes": 47,
+    "tokens_per_char": 1.4,
+    "bytes_per_token": 2.24,
+    "lossless": "yes",
+    "unk": 0
+   }
+  },
+  "bert_zh": {
+   "describe": {
+    "vocab_size": 21128,
+    "unk_token": "[UNK]",
+    "fast": true,
+    "model_type": null,
+    "byte_fallback": null,
+    "unk_in_model": "[UNK]",
+    "normalizer": "BertNormalizer(clean_text=True,handle_chinese_chars=True,lowercase=False)",
+    "pre_tokenizer": "BertPreTokenizer",
+    "decoder": "WordPiece"
+   },
+   "ngai": {
+    "tokens": 1,
+    "pieces": [
+     "[UNK]"
+    ],
+    "unk": true,
+    "lossless": false
+   },
+   "nfd": {
+    "tokens_nfc": 17,
+    "tokens_nfd": 17,
+    "same_ids": true,
+    "decode_of_nfd": "其他"
+   },
+   "digits": [
+    "123456",
+    "##7"
+   ],
+   "space_A": {
+    "space_A": [
+     100
+    ],
+    "A": [
+     100
+    ],
+    "different": false
+   },
+   "control": {
+    "token": "[CLS]",
+    "id": 101,
+    "reachable_from_text": true
+   },
+   "zh_city": {
+    "tokens": 209,
+    "chars": 209,
+    "bytes": 627,
+    "tokens_per_char": 1.0,
+    "bytes_per_token": 3.0,
+    "lossless": "NO",
+    "unk": 0
+   },
+   "hakka": {
+    "tokens": 15,
+    "chars": 15,
+    "bytes": 47,
+    "tokens_per_char": 1.0,
+    "bytes_per_token": 3.13,
+    "lossless": "NO",
+    "unk": 2
+   }
+  },
+  "byt5": {
+   "describe": {
+    "vocab_size": 256,
+    "model_type": "none: every UTF-8 byte is a token",
+    "byte_fallback": "n/a",
+    "normalizer": "none",
+    "pre_tokenizer": "none"
+   },
+   "ngai": {
+    "tokens": 4,
+    "pieces": [
+     "F0",
+     "A0",
+     "8A",
+     "8E"
+    ],
+    "unk": false,
+    "lossless": true
+   },
+   "nfd": {
+    "tokens_nfc": 51,
+    "tokens_nfd": 60,
+    "same_ids": false,
+    "decode_of_nfd": "維持 NFD"
+   },
+   "digits": [
+    "31",
+    "32",
+    "33",
+    "34",
+    "35",
+    "36",
+    "37"
+   ],
+   "space_A": {
+    "space_A": [
+     32,
+     65
+    ],
+    "A": [
+     65
+    ],
+    "different": true
+   },
+   "zh_city": {
+    "tokens": 627,
+    "chars": 209,
+    "bytes": 627,
+    "tokens_per_char": 3.0,
+    "bytes_per_token": 1.0,
+    "lossless": "yes",
+    "unk": 0
+   },
+   "hakka": {
+    "tokens": 47,
+    "chars": 15,
+    "bytes": 47,
+    "tokens_per_char": 3.133,
+    "bytes_per_token": 1.0,
+    "lossless": "yes",
+    "unk": 0
+   }
+  }
+ },
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ }
+}

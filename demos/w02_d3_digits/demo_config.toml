@@ -1,0 +1,74 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W2 demo 3（投影片 p43「Live: one model, one set of sums, three ways of writing the numbers」）的設定
+#
+# 同一個模型、同一批隨機多位數加法，三種寫法：
+#   (A) 原樣        5591+3092            pre-tokenizer 由左至右 1–3 位一組（\p{N}{1,3}）
+#   (B) 千分位逗號   5,591+3,092          逗號把數字切成由右至左的三位一組（Singh & Strouse 的操弄）
+#   (C) 逐位加空白   5 5 9 1 + 3 0 9 2    每一位自己一個 token
+# 只改數字的分組，其他什麼都不動，依位數報正確率。要學生看到的是：「LLM 不會算術」有一部分是表徵的問題。
+#
+# 模型的選法（大綱 W2〈課堂 demo 建議〉3）：主模型的 pre-tokenizer 必須是 \p{N}{1,3} 那一類（Llama 3 系或 o200k 詞表的模型），
+# 不能用 Qwen——它逐位切，(A) 與 (C) 是同一件事；Qwen 當對照組。尺寸要挑正確率落在中段的（太小全錯、太大全對）。
+# **模型未定**：先 `scan` 掃候選 × 位數，再把 [demo].main 與 control 填成有鑑別力的那組。
+
+[demo]
+title = "W2 · Demo 3 · Same sums, three ways of writing the numbers"
+main = "llama31_8b"          # scan 之後定案；候選見 [models]
+control = "qwen3_8b"         # 對照組：逐位切的 tokenizer，三欄差距應該小很多
+digits = [4, 7, 10]          # 表的三列
+n_live = 20                  # 課堂上每格幾題（只看方向）
+n_rehearse = 50              # 彩排每格幾題（投影片要標樣本數與日期）
+n_scan = 20                  # scan 每格幾題
+seed = 20260920              # 題目的亂數種子；同一個 seed 三種寫法用同一批題
+max_tokens = 48
+temperature = 0.0
+
+# 提示語：三種寫法共用；答案只要數字。逗號寫法下模型可能也用逗號回答，解析時會把逗號與空白拿掉。
+[prompt]
+system = "You are a calculator. Reply with the final answer only: digits, nothing else."
+user = "{a} + {b} ="
+
+# ── 候選模型（全部是 mlx-community 的 4-bit MLX 版；repo 名稱 2026-09-20 憑印象寫，fetch 404 就到 hf.co/mlx-community 對一次）──
+# kind = "main"：pre-tokenizer 要是 \p{N}{1,3}（inspect 會實測 1234567 的切法，不是就拒絕當主模型）
+# kind = "control"：逐位切（\p{N}）
+[models.llama31_8b]
+repo = "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit"
+label = "Llama 3.1 8B"
+kind = "main"
+note = "demo 1 已抓它的 tokenizer；權重約 4.5 GB。\\p{N}{1,3} 已由 demo 1 inspect 確認"
+revision = ""
+
+[models.llama32_3b]
+repo = "mlx-community/Llama-3.2-3B-Instruct-4bit"
+label = "Llama 3.2 3B"
+kind = "main"
+note = "約 1.8 GB；若 8B 三欄全對，這個比較可能落在中段"
+revision = ""
+
+[models.llama32_1b]
+repo = "mlx-community/Llama-3.2-1B-Instruct-4bit"
+label = "Llama 3.2 1B"
+kind = "main"
+note = "約 0.7 GB；若 3B 還是全對就用它；若三欄全錯就是 floor effect，講稿有退路"
+revision = ""
+
+[models.qwen3_8b]
+repo = "mlx-community/Qwen3-8B-4bit"
+label = "Qwen3 8B"
+kind = "control"
+note = "逐位切；與 Llama 3.1 8B 同尺寸，對照最乾淨。thinking 要關（enable_thinking=False）"
+revision = ""
+
+[models.qwen3_4b]
+repo = "mlx-community/Qwen3-4B-4bit"
+label = "Qwen3 4B"
+kind = "control"
+note = "備用對照組"
+revision = ""
+
+[models.qwen38_27b]
+repo = "mlx-community/Qwen3.8-27B-4bit"
+label = "Qwen3.8 27B"
+kind = "control"
+note = "W1 已在本機，不必下載；但 27B 大概三欄全對，當對照組沒有鑑別力，只在其他 Qwen 抓不到時用"
+revision = ""

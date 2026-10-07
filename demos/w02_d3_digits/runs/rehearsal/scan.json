@@ -1,0 +1,28 @@
+{
+ "time": "2026-09-20T14:37:29",
+ "n": 20,
+ "fake": false,
+ "summary": {
+  "qwen3_8b": {
+   "4A": 1.0,
+   "4B": 0.95,
+   "4C": 0.1,
+   "7A": 0.8,
+   "7B": 0.95,
+   "7C": 0.05,
+   "10A": 0.8,
+   "10B": 0.8,
+   "10C": 0.0
+  }
+ },
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ }
+}

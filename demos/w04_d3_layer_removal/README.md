@@ -18,7 +18,7 @@ Take a fixed text, measure the teacher-forced perplexity of Qwen3-0.6B on it (th
 |---|---|
 | Packages | `torch 2.14.0`, `transformers 5.17.0` (pinned in `../versions.lock`). Attention backend `sdpa` (no attention weights are needed, unlike W3 demo 3). |
 | Model | `Qwen/Qwen3-0.6B` (float32 ≈ 2.4 GB in memory); W3 demo 3's `fetch` already downloaded it and pinned its revision — `./present.sh fetch` here only confirms. Backup `Qwen/Qwen3-1.7B` (`--model backup`, ≈ 6.8 GB). |
-| Texts | `../w01_d2_bpb/texts/zh_city.txt` and `../w02_d1_fertility/texts/zh_city_en.txt`, published alongside (those two demos themselves are not yet published). Any two UTF-8 text files can be substituted in `demo_config.toml`. |
+| Texts | `../w01_d2_bpb/texts/zh_city.txt` (the file is published although W1's demos are not yet) and `../w02_d1_fertility/texts/zh_city_en.txt`. Any two UTF-8 text files can be substituted in `demo_config.toml`. |
 | Memory | ≈ 3 GB free. |
 | Portability | should run anywhere `torch` and `transformers` install; `--device cpu` for machines without MPS (not timed). Tested only on an Apple M5 Max, macOS 27.0, Python 3.12.14 (2026-10-07). |
 

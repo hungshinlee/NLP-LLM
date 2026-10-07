@@ -1,0 +1,1266 @@
+{
+ "time": "2026-09-20T14:07:16",
+ "fake": false,
+ "columns": [
+  "gpt2",
+  "o200k",
+  "llama3",
+  "qwen38",
+  "gemma4",
+  "mistral",
+  "breeze",
+  "bert_zh",
+  "byt5"
+ ],
+ "rows": [
+  "zh_city",
+  "zh_city_en",
+  "zh_city_hans",
+  "taigi",
+  "tailo",
+  "hakka",
+  "python",
+  "numbers"
+ ],
+ "labels": {
+  "gpt2": "GPT-2",
+  "o200k": "o200k",
+  "llama3": "Llama 3",
+  "qwen38": "Qwen3.8",
+  "gemma4": "Gemma 4",
+  "mistral": "Mistral",
+  "breeze": "Breeze",
+  "bert_zh": "bert-zh",
+  "byt5": "ByT5"
+ },
+ "texts": {
+  "zh_city": {
+   "label": "繁中 (209 chars)",
+   "parts": [
+    [
+     "",
+     "清晨六點半，城市還沒完全醒來。巷口的早餐店已經亮起燈，老闆一邊煎蛋餅，一邊和熟客聊著昨晚的颱風消息。捷運站裡，通勤的人們低頭滑著手機，有人在讀新聞，有人在回訊息，也有人只是閉著眼睛，想多偷幾分鐘的睡眠。公車站牌旁，一位老先生慢慢地把雨傘收好，抬頭看了看天空：雲層很厚，但風已經小了。對許多人來說，這只是再平凡不過的星期三；可是對剛搬來這座城市的學生而言，每一個轉角都像是一個還沒讀完的句子，等著他們自己去補上後面的字。"
+    ]
+   ]
+  },
+  "zh_city_en": {
+   "label": "the same, in English",
+   "parts": [
+    [
+     "",
+     "At half past six in the morning, the city has not fully woken up. The breakfast shop at the mouth of the lane has already turned its lights on; the owner fries egg pancakes while chatting with regulars about last night's typhoon news. In the MRT station, commuters look down at their phones: some are reading the news, some are replying to messages, and some just close their eyes, hoping to steal a few more minutes of sleep. Beside the bus stop, an old man slowly folds his umbrella and looks up at the sky: the clouds are thick, but the wind has died down. For many people this is just another ordinary Wednesday; but for a student who has just moved to this city, every corner looks like an unfinished sentence, waiting for them to fill in the rest."
+    ]
+   ]
+  },
+  "zh_city_hans": {
+   "label": "簡體 (OpenCC)",
+   "parts": [
+    [
+     "",
+     "清晨六点半，城市还没完全醒来。巷口的早餐店已经亮起灯，老板一边煎蛋饼，一边和熟客聊著昨晚的台风消息。捷运站里，通勤的人们低头滑著手机，有人在读新闻，有人在回讯息，也有人只是闭著眼睛，想多偷几分钟的睡眠。公车站牌旁，一位老先生慢慢地把雨伞收好，抬头看了看天空：云层很厚，但风已经小了。对许多人来说，这只是再平凡不过的星期三；可是对刚搬来这座城市的学生而言，每一个转角都像是一个还没读完的句子，等著他们自己去补上后面的字。"
+    ]
+   ]
+  },
+  "taigi": {
+   "label": "台語漢字 (61 chars)",
+   "parts": [
+    [
+     "",
+     "阮阿公講，𪜶少年的時陣，逐工透早就愛去田裡做穡。毋管是風抑是雨，攏袂停睏。暗時轉來厝，食一碗燒燙燙的番薯糜，就感覺真心適。"
+    ]
+   ]
+  },
+  "tailo": {
+   "label": "台羅 NFC / NFD",
+   "parts": [
+    [
+     "NFC",
+     "In sī Tâi-uân-lâng, in tī Tâi-uân tuā-hàn."
+    ],
+    [
+     "NFD",
+     "In sī Tâi-uân-lâng, in tī Tâi-uân tuā-hàn."
+    ]
+   ]
+  },
+  "hakka": {
+   "label": "客語 with 𠊎",
+   "parts": [
+    [
+     "",
+     "𠊎係客家人，𠊎兜屋下都講客話。"
+    ]
+   ]
+  },
+  "python": {
+   "label": "Python, 8 lines",
+   "parts": [
+    [
+     "",
+     "def get_pairs(corpus):\n    pairs = {}\n    for word, n in corpus.items():\n        syms = word.split()\n        for a, b in zip(syms, syms[1:]):\n            pairs[(a, b)] = pairs.get((a, b), 0) + n\n    return pairs\nprint(get_pairs({\"n e w\": 3, \"n e w e s t\": 5}))"
+    ]
+   ]
+  },
+  "numbers": {
+   "label": "numbers: 3.14159…, 1234567",
+   "parts": [
+    [
+     "3.14159265358979",
+     "3.14159265358979"
+    ],
+    [
+     "1234567",
+     "1234567"
+    ]
+   ]
+  }
+ },
+ "table": {
+  "zh_city": {
+   "gpt2": [
+    {
+     "tokens": 468,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 2.239,
+     "bytes_per_token": 1.34,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "o200k": [
+    {
+     "tokens": 193,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 0.923,
+     "bytes_per_token": 3.25,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "llama3": [
+    {
+     "tokens": 190,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 0.909,
+     "bytes_per_token": 3.3,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "qwen38": [
+    {
+     "tokens": 141,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 0.675,
+     "bytes_per_token": 4.45,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "gemma4": [
+    {
+     "tokens": 164,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 0.785,
+     "bytes_per_token": 3.82,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "mistral": [
+    {
+     "tokens": 272,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 1.301,
+     "bytes_per_token": 2.31,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "breeze": [
+    {
+     "tokens": 146,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 0.699,
+     "bytes_per_token": 4.29,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "bert_zh": [
+    {
+     "tokens": 209,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 3.0,
+     "lossless": "NO",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "byt5": [
+    {
+     "tokens": 627,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 3.0,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ]
+  },
+  "zh_city_en": {
+   "gpt2": [
+    {
+     "tokens": 164,
+     "chars": 753,
+     "bytes": 753,
+     "tokens_per_char": 0.218,
+     "bytes_per_token": 4.59,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "o200k": [
+    {
+     "tokens": 162,
+     "chars": 753,
+     "bytes": 753,
+     "tokens_per_char": 0.215,
+     "bytes_per_token": 4.65,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "llama3": [
+    {
+     "tokens": 165,
+     "chars": 753,
+     "bytes": 753,
+     "tokens_per_char": 0.219,
+     "bytes_per_token": 4.56,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "qwen38": [
+    {
+     "tokens": 164,
+     "chars": 753,
+     "bytes": 753,
+     "tokens_per_char": 0.218,
+     "bytes_per_token": 4.59,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "gemma4": [
+    {
+     "tokens": 160,
+     "chars": 753,
+     "bytes": 753,
+     "tokens_per_char": 0.212,
+     "bytes_per_token": 4.71,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "mistral": [
+    {
+     "tokens": 176,
+     "chars": 753,
+     "bytes": 753,
+     "tokens_per_char": 0.234,
+     "bytes_per_token": 4.28,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "breeze": [
+    {
+     "tokens": 176,
+     "chars": 753,
+     "bytes": 753,
+     "tokens_per_char": 0.234,
+     "bytes_per_token": 4.28,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "bert_zh": [
+    {
+     "tokens": 242,
+     "chars": 753,
+     "bytes": 753,
+     "tokens_per_char": 0.321,
+     "bytes_per_token": 3.11,
+     "lossless": "NO",
+     "unk": 7,
+     "part": ""
+    }
+   ],
+   "byt5": [
+    {
+     "tokens": 753,
+     "chars": 753,
+     "bytes": 753,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ]
+  },
+  "zh_city_hans": {
+   "gpt2": [
+    {
+     "tokens": 453,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 2.167,
+     "bytes_per_token": 1.38,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "o200k": [
+    {
+     "tokens": 175,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 0.837,
+     "bytes_per_token": 3.58,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "llama3": [
+    {
+     "tokens": 178,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 0.852,
+     "bytes_per_token": 3.52,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "qwen38": [
+    {
+     "tokens": 129,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 0.617,
+     "bytes_per_token": 4.86,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "gemma4": [
+    {
+     "tokens": 158,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 0.756,
+     "bytes_per_token": 3.97,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "mistral": [
+    {
+     "tokens": 244,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 1.167,
+     "bytes_per_token": 2.57,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "breeze": [
+    {
+     "tokens": 176,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 0.842,
+     "bytes_per_token": 3.56,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "bert_zh": [
+    {
+     "tokens": 209,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 3.0,
+     "lossless": "NO",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "byt5": [
+    {
+     "tokens": 627,
+     "chars": 209,
+     "bytes": 627,
+     "tokens_per_char": 3.0,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ]
+  },
+  "taigi": {
+   "gpt2": [
+    {
+     "tokens": 143,
+     "chars": 61,
+     "bytes": 184,
+     "tokens_per_char": 2.344,
+     "bytes_per_token": 1.29,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "o200k": [
+    {
+     "tokens": 79,
+     "chars": 61,
+     "bytes": 184,
+     "tokens_per_char": 1.295,
+     "bytes_per_token": 2.33,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "llama3": [
+    {
+     "tokens": 75,
+     "chars": 61,
+     "bytes": 184,
+     "tokens_per_char": 1.23,
+     "bytes_per_token": 2.45,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "qwen38": [
+    {
+     "tokens": 63,
+     "chars": 61,
+     "bytes": 184,
+     "tokens_per_char": 1.033,
+     "bytes_per_token": 2.92,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "gemma4": [
+    {
+     "tokens": 62,
+     "chars": 61,
+     "bytes": 184,
+     "tokens_per_char": 1.016,
+     "bytes_per_token": 2.97,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "mistral": [
+    {
+     "tokens": 103,
+     "chars": 61,
+     "bytes": 184,
+     "tokens_per_char": 1.689,
+     "bytes_per_token": 1.79,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "breeze": [
+    {
+     "tokens": 58,
+     "chars": 61,
+     "bytes": 184,
+     "tokens_per_char": 0.951,
+     "bytes_per_token": 3.17,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "bert_zh": [
+    {
+     "tokens": 61,
+     "chars": 61,
+     "bytes": 184,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 3.02,
+     "lossless": "NO",
+     "unk": 2,
+     "part": ""
+    }
+   ],
+   "byt5": [
+    {
+     "tokens": 184,
+     "chars": 61,
+     "bytes": 184,
+     "tokens_per_char": 3.016,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ]
+  },
+  "tailo": {
+   "gpt2": [
+    {
+     "tokens": 32,
+     "chars": 42,
+     "bytes": 51,
+     "tokens_per_char": 0.762,
+     "bytes_per_token": 1.59,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFC"
+    },
+    {
+     "tokens": 42,
+     "chars": 51,
+     "bytes": 60,
+     "tokens_per_char": 0.824,
+     "bytes_per_token": 1.43,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFD"
+    }
+   ],
+   "o200k": [
+    {
+     "tokens": 23,
+     "chars": 42,
+     "bytes": 51,
+     "tokens_per_char": 0.548,
+     "bytes_per_token": 2.22,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFC"
+    },
+    {
+     "tokens": 33,
+     "chars": 51,
+     "bytes": 60,
+     "tokens_per_char": 0.647,
+     "bytes_per_token": 1.82,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFD"
+    }
+   ],
+   "llama3": [
+    {
+     "tokens": 24,
+     "chars": 42,
+     "bytes": 51,
+     "tokens_per_char": 0.571,
+     "bytes_per_token": 2.12,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFC"
+    },
+    {
+     "tokens": 34,
+     "chars": 51,
+     "bytes": 60,
+     "tokens_per_char": 0.667,
+     "bytes_per_token": 1.76,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFD"
+    }
+   ],
+   "qwen38": [
+    {
+     "tokens": 24,
+     "chars": 42,
+     "bytes": 51,
+     "tokens_per_char": 0.571,
+     "bytes_per_token": 2.12,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFC"
+    },
+    {
+     "tokens": 24,
+     "chars": 51,
+     "bytes": 60,
+     "tokens_per_char": 0.471,
+     "bytes_per_token": 2.5,
+     "lossless": "NO",
+     "unk": 0,
+     "part": "NFD"
+    }
+   ],
+   "gemma4": [
+    {
+     "tokens": 26,
+     "chars": 42,
+     "bytes": 51,
+     "tokens_per_char": 0.619,
+     "bytes_per_token": 1.96,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFC"
+    },
+    {
+     "tokens": 31,
+     "chars": 51,
+     "bytes": 60,
+     "tokens_per_char": 0.608,
+     "bytes_per_token": 1.94,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFD"
+    }
+   ],
+   "mistral": [
+    {
+     "tokens": 30,
+     "chars": 42,
+     "bytes": 51,
+     "tokens_per_char": 0.714,
+     "bytes_per_token": 1.7,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFC"
+    },
+    {
+     "tokens": 33,
+     "chars": 51,
+     "bytes": 60,
+     "tokens_per_char": 0.647,
+     "bytes_per_token": 1.82,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFD"
+    }
+   ],
+   "breeze": [
+    {
+     "tokens": 30,
+     "chars": 42,
+     "bytes": 51,
+     "tokens_per_char": 0.714,
+     "bytes_per_token": 1.7,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFC"
+    },
+    {
+     "tokens": 33,
+     "chars": 51,
+     "bytes": 60,
+     "tokens_per_char": 0.647,
+     "bytes_per_token": 1.82,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFD"
+    }
+   ],
+   "bert_zh": [
+    {
+     "tokens": 17,
+     "chars": 42,
+     "bytes": 51,
+     "tokens_per_char": 0.405,
+     "bytes_per_token": 3.0,
+     "lossless": "NO",
+     "unk": 10,
+     "part": "NFC"
+    },
+    {
+     "tokens": 17,
+     "chars": 51,
+     "bytes": 60,
+     "tokens_per_char": 0.333,
+     "bytes_per_token": 3.53,
+     "lossless": "NO",
+     "unk": 10,
+     "part": "NFD"
+    }
+   ],
+   "byt5": [
+    {
+     "tokens": 51,
+     "chars": 42,
+     "bytes": 51,
+     "tokens_per_char": 1.214,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFC"
+    },
+    {
+     "tokens": 60,
+     "chars": 51,
+     "bytes": 60,
+     "tokens_per_char": 1.176,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "NFD"
+    }
+   ]
+  },
+  "hakka": {
+   "gpt2": [
+    {
+     "tokens": 36,
+     "chars": 15,
+     "bytes": 47,
+     "tokens_per_char": 2.4,
+     "bytes_per_token": 1.31,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "o200k": [
+    {
+     "tokens": 22,
+     "chars": 15,
+     "bytes": 47,
+     "tokens_per_char": 1.467,
+     "bytes_per_token": 2.14,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "llama3": [
+    {
+     "tokens": 22,
+     "chars": 15,
+     "bytes": 47,
+     "tokens_per_char": 1.467,
+     "bytes_per_token": 2.14,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "qwen38": [
+    {
+     "tokens": 20,
+     "chars": 15,
+     "bytes": 47,
+     "tokens_per_char": 1.333,
+     "bytes_per_token": 2.35,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "gemma4": [
+    {
+     "tokens": 20,
+     "chars": 15,
+     "bytes": 47,
+     "tokens_per_char": 1.333,
+     "bytes_per_token": 2.35,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "mistral": [
+    {
+     "tokens": 28,
+     "chars": 15,
+     "bytes": 47,
+     "tokens_per_char": 1.867,
+     "bytes_per_token": 1.68,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "breeze": [
+    {
+     "tokens": 21,
+     "chars": 15,
+     "bytes": 47,
+     "tokens_per_char": 1.4,
+     "bytes_per_token": 2.24,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "bert_zh": [
+    {
+     "tokens": 15,
+     "chars": 15,
+     "bytes": 47,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 3.13,
+     "lossless": "NO",
+     "unk": 2,
+     "part": ""
+    }
+   ],
+   "byt5": [
+    {
+     "tokens": 47,
+     "chars": 15,
+     "bytes": 47,
+     "tokens_per_char": 3.133,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ]
+  },
+  "python": {
+   "gpt2": [
+    {
+     "tokens": 133,
+     "chars": 260,
+     "bytes": 260,
+     "tokens_per_char": 0.512,
+     "bytes_per_token": 1.95,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "o200k": [
+    {
+     "tokens": 90,
+     "chars": 260,
+     "bytes": 260,
+     "tokens_per_char": 0.346,
+     "bytes_per_token": 2.89,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "llama3": [
+    {
+     "tokens": 89,
+     "chars": 260,
+     "bytes": 260,
+     "tokens_per_char": 0.342,
+     "bytes_per_token": 2.92,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "qwen38": [
+    {
+     "tokens": 94,
+     "chars": 260,
+     "bytes": 260,
+     "tokens_per_char": 0.362,
+     "bytes_per_token": 2.77,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "gemma4": [
+    {
+     "tokens": 101,
+     "chars": 260,
+     "bytes": 260,
+     "tokens_per_char": 0.388,
+     "bytes_per_token": 2.57,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "mistral": [
+    {
+     "tokens": 107,
+     "chars": 260,
+     "bytes": 260,
+     "tokens_per_char": 0.412,
+     "bytes_per_token": 2.43,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "breeze": [
+    {
+     "tokens": 107,
+     "chars": 260,
+     "bytes": 260,
+     "tokens_per_char": 0.412,
+     "bytes_per_token": 2.43,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "bert_zh": [
+    {
+     "tokens": 126,
+     "chars": 260,
+     "bytes": 260,
+     "tokens_per_char": 0.485,
+     "bytes_per_token": 2.06,
+     "lossless": "NO",
+     "unk": 0,
+     "part": ""
+    }
+   ],
+   "byt5": [
+    {
+     "tokens": 260,
+     "chars": 260,
+     "bytes": 260,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": ""
+    }
+   ]
+  },
+  "numbers": {
+   "gpt2": [
+    {
+     "tokens": 8,
+     "chars": 16,
+     "bytes": 16,
+     "tokens_per_char": 0.5,
+     "bytes_per_token": 2.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "3.14159265358979"
+    },
+    {
+     "tokens": 3,
+     "chars": 7,
+     "bytes": 7,
+     "tokens_per_char": 0.429,
+     "bytes_per_token": 2.33,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "1234567"
+    }
+   ],
+   "o200k": [
+    {
+     "tokens": 7,
+     "chars": 16,
+     "bytes": 16,
+     "tokens_per_char": 0.438,
+     "bytes_per_token": 2.29,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "3.14159265358979"
+    },
+    {
+     "tokens": 3,
+     "chars": 7,
+     "bytes": 7,
+     "tokens_per_char": 0.429,
+     "bytes_per_token": 2.33,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "1234567"
+    }
+   ],
+   "llama3": [
+    {
+     "tokens": 7,
+     "chars": 16,
+     "bytes": 16,
+     "tokens_per_char": 0.438,
+     "bytes_per_token": 2.29,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "3.14159265358979"
+    },
+    {
+     "tokens": 3,
+     "chars": 7,
+     "bytes": 7,
+     "tokens_per_char": 0.429,
+     "bytes_per_token": 2.33,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "1234567"
+    }
+   ],
+   "qwen38": [
+    {
+     "tokens": 16,
+     "chars": 16,
+     "bytes": 16,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "3.14159265358979"
+    },
+    {
+     "tokens": 7,
+     "chars": 7,
+     "bytes": 7,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "1234567"
+    }
+   ],
+   "gemma4": [
+    {
+     "tokens": 16,
+     "chars": 16,
+     "bytes": 16,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "3.14159265358979"
+    },
+    {
+     "tokens": 7,
+     "chars": 7,
+     "bytes": 7,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "1234567"
+    }
+   ],
+   "mistral": [
+    {
+     "tokens": 17,
+     "chars": 16,
+     "bytes": 16,
+     "tokens_per_char": 1.062,
+     "bytes_per_token": 0.94,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "3.14159265358979"
+    },
+    {
+     "tokens": 8,
+     "chars": 7,
+     "bytes": 7,
+     "tokens_per_char": 1.143,
+     "bytes_per_token": 0.88,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "1234567"
+    }
+   ],
+   "breeze": [
+    {
+     "tokens": 17,
+     "chars": 16,
+     "bytes": 16,
+     "tokens_per_char": 1.062,
+     "bytes_per_token": 0.94,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "3.14159265358979"
+    },
+    {
+     "tokens": 8,
+     "chars": 7,
+     "bytes": 7,
+     "tokens_per_char": 1.143,
+     "bytes_per_token": 0.88,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "1234567"
+    }
+   ],
+   "bert_zh": [
+    {
+     "tokens": 9,
+     "chars": 16,
+     "bytes": 16,
+     "tokens_per_char": 0.562,
+     "bytes_per_token": 1.78,
+     "lossless": "NO",
+     "unk": 0,
+     "part": "3.14159265358979"
+    },
+    {
+     "tokens": 2,
+     "chars": 7,
+     "bytes": 7,
+     "tokens_per_char": 0.286,
+     "bytes_per_token": 3.5,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "1234567"
+    }
+   ],
+   "byt5": [
+    {
+     "tokens": 16,
+     "chars": 16,
+     "bytes": 16,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "3.14159265358979"
+    },
+    {
+     "tokens": 7,
+     "chars": 7,
+     "bytes": 7,
+     "tokens_per_char": 1.0,
+     "bytes_per_token": 1.0,
+     "lossless": "yes",
+     "unk": 0,
+     "part": "1234567"
+    }
+   ]
+  }
+ },
+ "premium": {
+  "gpt2": 2.85,
+  "o200k": 1.19,
+  "llama3": 1.15,
+  "qwen38": 0.86,
+  "gemma4": 1.02,
+  "mistral": 1.55,
+  "breeze": 0.83,
+  "bert_zh": 0.86,
+  "byt5": 0.83
+ },
+ "ledger": {
+  "config": {
+   "vocab_size": 248320,
+   "hidden_size": 5120,
+   "num_hidden_layers": 64,
+   "intermediate_size": 17408,
+   "num_attention_heads": 24,
+   "num_key_value_heads": 4,
+   "head_dim": 256,
+   "tie_word_embeddings": false,
+   "_from": "text_config"
+  },
+  "estimate": {
+   "V": 248320,
+   "d": 5120,
+   "n_layer": 64,
+   "tie": false,
+   "emb_params": 2542796800,
+   "non_emb_params": 21810380800,
+   "N_est": 24353177600,
+   "moe": false,
+   "share_est": 0.10441334768568353
+  },
+  "N_used": 24353177600
+ },
+ "longest_cjk": [],
+ "tokenizers": {
+  "gpt2": {
+   "repo": "tiktoken:gpt2",
+   "vocab_size": 50257
+  },
+  "o200k": {
+   "repo": "tiktoken:o200k_base",
+   "vocab_size": 200019
+  },
+  "llama3": {
+   "repo": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+   "vocab_size": 128256
+  },
+  "qwen38": {
+   "repo": "mlx-community/Qwen3.8-27B-4bit",
+   "vocab_size": 248077
+  },
+  "gemma4": {
+   "repo": "mlx-community/gemma-4-26b-a4b-it-4bit",
+   "vocab_size": 262144
+  },
+  "mistral": {
+   "repo": "mlx-community/Mistral-7B-Instruct-v0.3-4bit",
+   "vocab_size": 32768
+  },
+  "breeze": {
+   "repo": "MediaTek-Research/Breeze-7B-Base-v1_0",
+   "vocab_size": 61875
+  },
+  "bert_zh": {
+   "repo": "google-bert/bert-base-chinese",
+   "vocab_size": 21128
+  },
+  "byt5": {
+   "repo": "(bytes)",
+   "vocab_size": 256
+  }
+ },
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "_redacted": "keys ['longest_cjk'] were replaced before publishing (bin/publish_demos.py); see this demo's README"
+}

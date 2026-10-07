@@ -1,0 +1,8 @@
+def get_pairs(corpus):
+    pairs = {}
+    for word, n in corpus.items():
+        syms = word.split()
+        for a, b in zip(syms, syms[1:]):
+            pairs[(a, b)] = pairs.get((a, b), 0) + n
+    return pairs
+print(get_pairs({"n e w": 3, "n e w e s t": 5}))

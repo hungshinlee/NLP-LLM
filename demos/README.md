@@ -27,12 +27,14 @@ demos/
 
 | Needs | Demos | Runs on |
 |---|---|---|
+| standard library only | W2 demo 2 | anything with Python 3 |
+| `transformers` (tokenizers only) + `tiktoken` + `opencc` | W2 demo 1 | any laptop; a few MB of tokenizer files to download |
 | `torch` only, CPU | W3 demo 1; W4 demo 1 (tests, `count`) | any laptop |
 | `torch` only, training on `mps` | W4 demo 1 (`rehearse`), W4 demo 2 (`rehearse`) | Apple silicon as tested; falls back to CPU (slow); `cuda` accepted by the code but never run. `replay` needs no device at all |
 | `torch` + `transformers` + a small Hugging Face model | W3 demo 3 (CPU), W4 demo 3 (`mps`, or `--device cpu`) | any laptop with ~4 GB free RAM and a network connection for the first download |
-| `mlx` + `mlx-lm` | W3 demo 2 | **Apple silicon only** |
+| `mlx` + `mlx-lm` + 4-bit MLX models (≈ 4.5 GB each) | W2 demo 3, W3 demo 2 | **Apple silicon only** |
 
-Two cross-folder dependencies to know about: W4 demos 1 and 2 import W3 demo 1's `attention_final.py` and each other by relative path, and W4 demo 3 reads two short texts from `w01_d2_bpb/texts/` and `w02_d1_fertility/texts/` (published here even though those two demos are not yet) — keep the folder layout as it is. W4 demos 1 and 2 train on `tinyshakespeare.txt`, which is not in the repository; W4 demo 1's README says where to download it and where to put it.
+Cross-folder dependencies to know about: W4 demos 1 and 2 import W3 demo 1's `attention_final.py` and each other by relative path; W2 demo 1 and W4 demo 3 read short texts from `w01_d2_bpb/texts/` (published here even though W1's demos are not yet) — keep the folder layout as it is. W4 demos 1 and 2 train on `tinyshakespeare.txt`, which is not in the repository; W4 demo 1's README says where to download it and where to put it.
 
 Nothing has been tested on Linux, Windows, or a CUDA GPU. Where a README says "should also work on …", read that as a statement of what the code *does not* depend on, not as something that was verified.
 
@@ -54,8 +56,10 @@ Then follow the per-demo README; demos that need a model have a `./present.sh fe
 ```bash
 cd demos
 uv venv --python 3.12 .venv
-uv pip install --python .venv/bin/python torch==2.14.0 transformers==5.17.0
+uv pip install --python .venv/bin/python torch==2.14.0 transformers==5.17.0 tiktoken opencc-python-reimplemented
 ```
+
+(`tiktoken` and `opencc-python-reimplemented` are only for W2 demo 1; their versions are the ones in `requirements.lock.txt`.)
 
 (`pip` works too: `python3.12 -m venv .venv && .venv/bin/pip install torch==2.14.0 transformers==5.17.0`.) The `present.sh` scripts look for `../.venv/bin/python`, so the folder has to be called `.venv` and live directly under `demos/`.
 
