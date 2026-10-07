@@ -320,7 +320,7 @@ Demo 2 · live · MLX · Llama 3.1 8B, a GQA model — the point: formula and me
 ![](assets/w03/kvcurve.svg)
 
 ::: {.claim}
-$\Delta$active **is** the formula at every $L$; the transient above it is the prefill's working set, not the cache. **This is the line W5 stretches and W11 halves.**
+$\Delta$active **is** the formula at every $L$. The transient above it is freed after each chunk: the chunk's working set, plus — at 128k — the cache being copied as it grows. **This is the line W5 stretches and W11 halves.**
 :::
 
 ::: {.footer}

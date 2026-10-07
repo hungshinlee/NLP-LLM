@@ -48,7 +48,7 @@ From `runs/rehearsal/curve.json` (2026-09-29, Llama 3.1 8B Instruct 4-bit):
 
 - `inspect`: 32 layers, 8 KV heads, head_dim 128 (not in the config file; derived as 4096 / 32), cache dtype `float16` → **131,072 bytes = 128 KiB per token**; maximum context 131,072.
 - Every row's Δactive equals the formula **exactly**: 1k → 128 MiB, 4k → 512 MiB, 8k → 1 GiB, 32k → 4 GiB, 128k → **16 GiB** (17,179,869,184 bytes). Fitted slope 128.0 KiB/token.
-- Δpeak exceeds Δactive by a roughly constant 0.65–0.76 GiB up to 32k (the prefill's temporaries, which do not grow with `L` because the prefill is chunked in steps of 2,048 tokens), and by 1.35 GiB at 128k.
+- Δpeak exceeds Δactive by a roughly constant 0.65–0.76 GiB up to 32k, and by 1.35 GiB at 128k. That transient has two parts. One is the working set of the chunk being computed: the prefill runs 2,048 tokens at a time, so this part follows the chunk size, not `L`. The other is the cache being copied as it grows: `mlx-lm`'s `KVCache` is one contiguous buffer per layer, lengthened by concatenation, so the old and the new copy briefly coexist. That second part is small up to 32k and about 0.86 GiB at 128k; with the cache allocated at full length up front, the 128k transient drops to about 0.5 GiB (measured 2026-10-07).
 - Timing as in the table above; the 128k row took 194.8 s, which is why `show` replays it instead of running it live.
 
 On your machine Δactive should still equal the formula to the byte if you use the same model; Δpeak and the timings will differ.
