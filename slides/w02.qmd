@@ -646,7 +646,7 @@ Arithmetic on this week's $\bar{b}$ · decode $2N$ per token (W1 ledger, weights
 - Pedagogical value: it moves the tokenizer from *preprocessing* into *architecture design*, one step past Tao et al.
 - **Evidence strength**, said out loud:
   - "the tokenizer affects modelling" — **several independent papers** (Tao et al.; Ali et al.; Goldman et al.)
-  - "compression shifts the compute-optimal allocation" — **this one preprint**, four months old, no independent replication yet
+  - "compression shifts the compute-optimal allocation" — **this one preprint**, from May 2026, no independent replication yet
 
 ::: {.claim}
 Teach it as *a clear argument worth following*, not as a settled result. The difference between those two is the whole of this course's reading discipline.

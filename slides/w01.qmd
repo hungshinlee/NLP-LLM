@@ -56,7 +56,7 @@ format:
 
 ## Same corpus. Same prompt. One number changes.
 
-225,333 words of Shakespeare. 14,560 distinct words. A word-level n-gram model, trained by counting.
+250,371 words of Shakespeare, 14,560 of them distinct. The last 10% is held out; a word-level n-gram model counts the other **225,333**.
 
 Every sample below starts from the same eight words, and differs only in **how many previous words the model is allowed to look at**.
 
@@ -181,7 +181,7 @@ Reading well and predicting well are different measurements, and they ranked the
 :::
 
 - Theis, van den Oord & Bethge (2015): in high dimensions, likelihood and sample quality are largely independent — they construct counterexamples in **both** directions
-- $n = 8$ is the other direction on today's screen: flawless text, by copying
+- $n = 2$ is the other direction on today's screen: the best bits-per-byte of the four, and text that goes nowhere
 
 ::: {.footer}
 Misconception 1 of 10 · bits-per-byte is defined in Part 3
@@ -284,7 +284,7 @@ The answer is why pretraining is something a handful of institutions do — and 
 |---|---|
 | **Representation** | The unit at this layer — byte, token, hidden state, KV entry, retrieved chunk, latent thought. **Who chose it, and what does that choice cost downstream?** |
 | **Compute** | *Training* compute or *inference* compute? FLOPs bound, or memory-bandwidth bound? |
-| **Supervision** | Where does this capability come from? Five possible answers — today, exactly one exists |
+| **Supervision** | Where does this capability come from? Six possible answers — today, exactly one exists |
 :::
 
 ::: {.claim}
@@ -422,7 +422,7 @@ The MLE is just a count ratio:
 
 $$P(w_t \mid w_{t-n+1:t-1}) = \frac{C(w_{t-n+1:t})}{C(w_{t-n+1:t-1})}$$
 
-With vocabulary $V$, there are $V^n$ possible n-grams. Ours: $V = 14{,}560$, so $V^4 \approx 4.5\times10^{16}$ — against 225,333 training words.
+With vocabulary $V$, there are $V^n$ possible n-grams. Ours: $V = 14{,}560$ (the whole corpus), so $V^4 \approx 4.5\times10^{16}$ — against 225,333 training words.
 
 Good–Turing puts the total probability of everything unseen at roughly $N_1/D$, where $N_1$ counts the n-grams seen exactly once and $D$ counts all training tokens.
 
@@ -777,7 +777,7 @@ Left: the whole source must fit through $\mathbf{v}$, whatever its length. Right
 
 The query is the **decoder** state $\mathbf{s}_{t-1}$. The keys and values are the **encoder** states $\mathbf{h}_i$. Query and key/value come from **two different sequences**.
 
-Self-attention — one sequence attending to itself — does not appear until 2017.
+Self-attention — one sequence attending to itself — is a 2016 idea (Parikh et al.; Cheng, Dong & Lapata). 2017 is when it became the *only* sequence operation.
 
 ::: {.claim .warn}
 Keep these apart or W5 will not make sense. *"Why does the model need extra position information?"* is a question that **only arises once a sequence attends to itself.** A decoder already runs in time order; an encoder–decoder alignment never needed to be told what came first.
@@ -790,6 +790,18 @@ Keep these apart or W5 will not make sense. *"Why does the model need extra posi
 Misconception 8 of 10
 :::
 
+## Two sequences, or one: the same arrows, drawn side by side
+
+![](assets/w01/xattn.svg){width="100%"}
+
+::: {.claim}
+Left: asker and answerers on **different rows**, each already in order. Right: one row asks itself — and that row is a **set**. That is why W5 exists.
+:::
+
+::: {.footer}
+Line width $\propto \alpha_{ti}$, illustrative · right panel: Parikh et al. (2016), Vaswani et al. (2017)
+:::
+
 ## Attention is older than the Transformer
 
 Bahdanau attention is 2015; the dot-product form is Luong et al. (2015), also before the Transformer. **What 2017 removed was recurrence, not attention.**
@@ -800,7 +812,7 @@ Bahdanau attention is 2015; the dot-product form is Luong et al. (2015), also be
 
 Two consequences you need today:
 
-- Once recurrence is gone, nothing in the architecture knows word order any more — hence positional encoding, and hence **W5**
+- Once recurrence is gone, attention itself is blind to order — only a mask or an explicit position signal can say what came first; hence positional encoding, and hence **W5**
 - Once recurrence is gone, the sequence dimension is fully parallel — and that is the main cause of death
 
 ::: {.footer}
@@ -854,7 +866,7 @@ So W6's hybrids keep some attention: the recurrent layers collect the inference 
 | **6** · Cosine similarity is meaning | It is whatever the objective rewarded — here, shared contexts | W12 |
 | **7** · A vector holds the commonest sense | Its senses are superposed in one vector | W14 |
 | **8** · That attention was self-attention | Cross-attention: the query and the keys come from two sequences | W3, W5 |
-| **9** · Attention came with the Transformer | Bahdanau 2014, Luong 2015; the Transformer only dropped the recurrence | W3 |
+| **9** · Attention came with the Transformer | Bahdanau 2015, Luong 2015, self-attention 2016; the Transformer only dropped the recurrence | W3 |
 | **10** · RNNs lost on quality | Parallelism and path length; the fixed-size state is still an asset at inference | W6 |
 :::
 
@@ -905,7 +917,7 @@ Nothing to install. Every demo in this course runs at the front of the room.
 ::: {.cite}
 **Embeddings** · Mikolov, Chen, Corrado & Dean, *Efficient Estimation of Word Representations in Vector Space*, arXiv:1301.3781 · Mikolov, Sutskever, Chen, Corrado & Dean, *Distributed Representations of Words and Phrases and their Compositionality*, NeurIPS 2013 · Pennington, Socher & Manning, *GloVe*, EMNLP 2014 · Levy & Goldberg, *Neural Word Embedding as Implicit Matrix Factorization*, NeurIPS 2014 · Dyer, *Notes on Noise Contrastive Estimation and Negative Sampling*, arXiv:1410.8251 (2014; a technical note, not peer reviewed) · Bojanowski, Grave, Joulin & Mikolov, *Enriching Word Vectors with Subword Information*, TACL (arXiv:1607.04606) · Arora, Li, Liang, Ma & Risteski, *Linear Algebraic Structure of Word Senses, with Applications to Polysemy*, TACL 2018 · Peters et al., *Deep contextualized word representations*, NAACL 2018 · Ethayarajh, *How Contextual are Contextualized Word Representations?*, EMNLP 2019
 
-**Recurrence and attention** · Bengio, Simard & Frasconi, *Learning Long-Term Dependencies with Gradient Descent is Difficult*, IEEE Transactions on Neural Networks, 1994 · Hochreiter & Schmidhuber, *Long Short-Term Memory*, Neural Computation, 1997 · Gers, Schmidhuber & Cummins, *Learning to Forget: Continual Prediction with LSTM*, Neural Computation, 2000 · Pascanu, Mikolov & Bengio, *On the difficulty of training Recurrent Neural Networks*, arXiv:1211.5063 (2012) · Cho, van Merriënboer, Bahdanau & Bengio, *On the Properties of Neural Machine Translation: Encoder-Decoder Approaches*, SSST-8, 2014 · Sutskever, Vinyals & Le, *Sequence to Sequence Learning with Neural Networks*, NeurIPS 2014 · Bahdanau, Cho & Bengio, *Neural Machine Translation by Jointly Learning to Align and Translate*, ICLR 2015 · Luong, Pham & Manning, *Effective Approaches to Attention-based Neural Machine Translation*, EMNLP 2015 · Srivastava, Greff & Schmidhuber, *Highway Networks*, ICML 2015 Deep Learning Workshop · He, Zhang, Ren & Sun, *Deep Residual Learning for Image Recognition*, arXiv:1512.03385 (2015) · Vaswani et al., *Attention Is All You Need*, NeurIPS 2017 · Melis, Dyer & Blunsom, *On the State of the Art of Evaluation in Neural Language Models*, arXiv:1707.05589 (2017) · Arora et al., *Zoology*, arXiv:2312.04927 (2023) · Jelassi, Brandfonbrener, Kakade & Malach, *Repeat After Me: Transformers are Better than State Space Models at Copying*, arXiv:2402.01032 (2024) · Feng et al., *Were RNNs All We Needed?*, arXiv:2410.01201 (2024)
+**Recurrence and attention** · Bengio, Simard & Frasconi, *Learning Long-Term Dependencies with Gradient Descent is Difficult*, IEEE Transactions on Neural Networks, 1994 · Hochreiter & Schmidhuber, *Long Short-Term Memory*, Neural Computation, 1997 · Gers, Schmidhuber & Cummins, *Learning to Forget: Continual Prediction with LSTM*, Neural Computation, 2000 · Pascanu, Mikolov & Bengio, *On the difficulty of training Recurrent Neural Networks*, arXiv:1211.5063 (2012) · Cho, van Merriënboer, Bahdanau & Bengio, *On the Properties of Neural Machine Translation: Encoder-Decoder Approaches*, SSST-8, 2014 · Sutskever, Vinyals & Le, *Sequence to Sequence Learning with Neural Networks*, NeurIPS 2014 · Bahdanau, Cho & Bengio, *Neural Machine Translation by Jointly Learning to Align and Translate*, ICLR 2015 · Luong, Pham & Manning, *Effective Approaches to Attention-based Neural Machine Translation*, EMNLP 2015 · Parikh, Täckström, Das & Uszkoreit, *A Decomposable Attention Model for Natural Language Inference*, EMNLP 2016 (arXiv:1606.01933) · Cheng, Dong & Lapata, *Long Short-Term Memory-Networks for Machine Reading*, EMNLP 2016 (arXiv:1601.06733) · Srivastava, Greff & Schmidhuber, *Highway Networks*, ICML 2015 Deep Learning Workshop · He, Zhang, Ren & Sun, *Deep Residual Learning for Image Recognition*, arXiv:1512.03385 (2015) · Vaswani et al., *Attention Is All You Need*, NeurIPS 2017 · Melis, Dyer & Blunsom, *On the State of the Art of Evaluation in Neural Language Models*, arXiv:1707.05589 (2017) · Arora et al., *Zoology*, arXiv:2312.04927 (2023) · Jelassi, Brandfonbrener, Kakade & Malach, *Repeat After Me: Transformers are Better than State Space Models at Copying*, arXiv:2402.01032 (2024) · Feng et al., *Were RNNs All We Needed?*, arXiv:2410.01201 (2024)
 
 **Search terms, not citations** · arithmetic coding neural language model · bits per byte evaluation · Zipf Heaps law vocabulary growth · attention is not not explanation
 :::
