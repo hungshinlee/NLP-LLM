@@ -404,7 +404,7 @@ schematic — no bandwidth, no peak FLOP/s quoted · the points: w03-data.json (
 |:---|:---|:---|
 | **TPA** (tensor product attention) | factorizes $\mathbf{Q}, \mathbf{K}, \mathbf{V}$ per token; caches the factors | NeurIPS 2025 (spotlight), one group's results |
 | **gated attention** (Qwen) | a gate after the attention output; the title claims *attention-sink-free* | NeurIPS 2025, oral and best paper; shipped in Qwen3-Next (Sept 2025, a model blog, not a paper); still only the abstract was read for this deck |
-| **sparse attention** (NSA, DSA) | each query reads a **subset** of keys — an **approximation**, unlike everything above | NSA: ACL 2025, best paper · W6 (mechanism) and W11 (serving) |
+| **sparse attention** (NSA, DSA) | each query reads a **subset** of keys — an **approximation**, unlike everything above | NSA: ACL 2025, best paper · W5 (the budget view) and W11 (serving) |
 
 ::: {.claim}
 Everything on this slide is the part of this week that will be rewritten next year. The formula above it will not.
@@ -484,7 +484,7 @@ Milakov & Gimelshein 2018 — an NVIDIA technical report, not peer-reviewed · w
 |:---|:---|:---|
 | "FlashAttention approximates attention" | **no** | identical output in exact arithmetic; only the order of operations and the memory traffic change |
 | "FlashAttention makes attention $O(n)$" | **no** | FLOPs stay $O(L^2 d)$ (recomputation adds some); the **extra memory** becomes $O(L)$ |
-| "sparse attention is the same idea" | **no** | sparse attention drops keys — a genuine approximation (W6); FlashAttention drops nothing |
+| "sparse attention is the same idea" | **no** | sparse attention drops keys — a genuine approximation (W5); FlashAttention drops nothing |
 | "exact means bitwise identical" | **no** | tiling changes the summation order; floating-point results can differ in the last bits (W11: batch invariance) |
 :::
 
@@ -632,7 +632,7 @@ Michel et al. 1905.10650 · Voita et al. 1905.09418 · Olsson et al. 2209.11895 
 ::: {.prose}
 | The belief | What is true | Returns |
 |---|---|---|
-| **5** · FlashAttention approximates attention, or makes it $O(n)$ | exact; FLOPs unchanged; extra **memory** $O(L)$; HBM traffic falls. Sparse attention is the approximation | W6, W11 |
+| **5** · FlashAttention approximates attention, or makes it $O(n)$ | exact; FLOPs unchanged; extra **memory** $O(L)$; HBM traffic falls. Sparse attention is the approximation | W5, W11 |
 | **6** · the softmax probability is the model's belief | rows must sum to one; unwanted mass lands on the first token — the sink (W5: StreamingLLM) | W5 |
 | **7** · a high attention weight means the token mattered | correlational; alternative weightings and erasure disagree with it. Mechanism needs an intervention (W14) | W14 |
 | **8** · each head learns a semantic role | a capacity argument at design time; most heads are prunable, a few (induction heads) have identifiable functions | W14 |
@@ -678,7 +678,7 @@ Three weeks in: the unit (W2), what it is allowed to attend to (W3) — and next
 
 **Mechanism and scaling** · Vaswani et al., *Attention Is All You Need*, NeurIPS 2017 (arXiv:1706.03762) — §3.2.1 footnote for $1/\sqrt{d_k}$, Table 1 for path length · Zhai et al., *Stabilizing Transformer Training by Preventing Attention Entropy Collapse*, ICML 2023 (arXiv:2303.06296) · Wortsman et al., *Small-scale proxies for large-scale Transformer training instabilities*, arXiv:2309.14322 (W4)
 
-**The KV cache line** · Shazeer, *Fast Transformer Decoding: One Write-Head is All You Need*, arXiv:1911.02150 · Ainslie et al., *GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints*, EMNLP 2023 (arXiv:2305.13245) · DeepSeek-AI, *DeepSeek-V2*, arXiv:2405.04434 — MLA; the 93.3% figure is from its abstract · Zhang et al., *Tensor Product Attention Is All You Need*, NeurIPS 2025 (arXiv:2501.06425) · Qiu et al., *Gated Attention for Large Language Models*, NeurIPS 2025, best paper (arXiv:2505.06708) — abstract only · Qwen Team, *Qwen3-Next: Towards Ultimate Training & Inference Efficiency*, Sept 2025 — a model blog post, not a paper; where gated attention shipped · Yuan et al., *Native Sparse Attention*, ACL 2025, best paper (arXiv:2502.11089; W6, W11)
+**The KV cache line** · Shazeer, *Fast Transformer Decoding: One Write-Head is All You Need*, arXiv:1911.02150 · Ainslie et al., *GQA: Training Generalized Multi-Query Transformer Models from Multi-Head Checkpoints*, EMNLP 2023 (arXiv:2305.13245) · DeepSeek-AI, *DeepSeek-V2*, arXiv:2405.04434 — MLA; the 93.3% figure is from its abstract · Zhang et al., *Tensor Product Attention Is All You Need*, NeurIPS 2025 (arXiv:2501.06425) · Qiu et al., *Gated Attention for Large Language Models*, NeurIPS 2025, best paper (arXiv:2505.06708) — abstract only · Qwen Team, *Qwen3-Next: Towards Ultimate Training & Inference Efficiency*, Sept 2025 — a model blog post, not a paper; where gated attention shipped · Yuan et al., *Native Sparse Attention*, ACL 2025, best paper (arXiv:2502.11089; W5, W11)
 
 **IO** · Dao et al., *FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness*, NeurIPS 2022 (arXiv:2205.14135) · Dao, *FlashAttention-2*, arXiv:2307.08691 · Shah et al., *FlashAttention-3*, arXiv:2407.08608 · Zadouri et al., *FlashAttention-4: Algorithm and Kernel Pipelining Co-Design for Asymmetric Hardware Scaling*, MLSys 2026 (arXiv:2603.05451) · Milakov & Gimelshein, *Online normalizer calculation for softmax*, arXiv:1805.02867 — an NVIDIA technical report, not peer-reviewed
 :::
