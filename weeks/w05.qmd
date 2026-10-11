@@ -6,6 +6,10 @@ toc-depth: 2
 
 <!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
+::: {.callout-note appearance="minimal"}
+[**▶ Slides for this week**](../slides/w05.qmd)
+:::
+
 ## Where This Fits
 This week fills the hole W3 left open — **attention addresses by content and does not know where anything is** (W3 p42: permutation-equivariant without a mask; with a causal mask, position can only be inferred indirectly from the mask, Haviv et al. 2022) — and then asks at once how the fix breaks. Three parts: **where explicit position is added** (the inductive biases of learned absolute, sinusoidal, ALiBi, RoPE and NoPE; the RoPE derivation on the board is the one full derivation of the week), **how it breaks past the training length** (the phase argument → position interpolation → NTK-aware scaling → YaRN; the `rope_scaling` block in Llama 3.1's `config.json` is this line as it shipped), and **the gap between nominal and effective length** (lost in the middle, why needle-in-a-haystack is not enough, RULER- and NoLiMa-style evaluation). The message: **"can take 128k tokens" and "can use 128k tokens" are two different things, and a third — "what it costs to take them in" — is the ledger row we fill this week**: past $L \approx 12d$ the $L^2$ term of prefill overtakes the weight side, and the prefill throughput W3's demo 2 measured fell more than fivefold from 1k to 128k for exactly this reason. The last cost segment gives only the budget view of sparse attention (which term it attacks, why it must be trainable); the mechanisms belong to W6 (replacing what produces the KV) and W11 (serving). This week is the premise of W12 (does RAG still have a job). **The numerical check of RoPE is written live by the instructor** (demo 1); the extrapolation and lost-in-the-middle experiments are rehearsed in advance and replayed in class with two or three live queries. You do not need to run anything.
 
