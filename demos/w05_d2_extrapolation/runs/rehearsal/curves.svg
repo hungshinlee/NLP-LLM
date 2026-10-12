@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" font-family="system-ui, sans-serif" font-size="12">
+<rect width="900" height="420" fill="white"/>
+<text x="64" y="20" font-size="14" font-weight="600">tiny GPT (char-level, trained at L = 256): per-position loss on held-out text, L_eval = 1024, mean per 64 positions</text>
+<line x1="64" y1="364.0" x2="876" y2="364.0" stroke="#eee"/>
+<text x="58" y="368.0" text-anchor="end" fill="#555">1.39</text>
+<line x1="64" y1="282.0" x2="876" y2="282.0" stroke="#eee"/>
+<text x="58" y="286.0" text-anchor="end" fill="#555">2.32</text>
+<line x1="64" y1="200.0" x2="876" y2="200.0" stroke="#eee"/>
+<text x="58" y="204.0" text-anchor="end" fill="#555">3.26</text>
+<line x1="64" y1="118.0" x2="876" y2="118.0" stroke="#eee"/>
+<text x="58" y="122.0" text-anchor="end" fill="#555">4.19</text>
+<line x1="64" y1="36.0" x2="876" y2="36.0" stroke="#eee"/>
+<text x="58" y="40.0" text-anchor="end" fill="#555">5.13</text>
+<text x="64.0" y="380" text-anchor="middle" fill="#555">0</text>
+<text x="267.0" y="380" text-anchor="middle" fill="#555">256</text>
+<text x="470.0" y="380" text-anchor="middle" fill="#555">512</text>
+<text x="673.0" y="380" text-anchor="middle" fill="#555">768</text>
+<text x="876.0" y="380" text-anchor="middle" fill="#555">1024</text>
+<line x1="267.0" y1="36" x2="267.0" y2="364" stroke="#999" stroke-dasharray="4 3"/>
+<text x="271.0" y="48" fill="#666">L_train = 256</text>
+<text x="470.0" y="410" text-anchor="middle" fill="#555">position in the window</text>
+<text x="14" y="200.0" text-anchor="middle" fill="#555" transform="rotate(-90 14 200.0)">loss (nats/char)</text>
+<polyline fill="none" stroke="#6b6b6b" stroke-width="2" points="89.4,350.2 140.1,353.1 190.9,355.3 241.6,357.6 292.4,347.6 343.1,328.2 393.9,287.3 444.6,248.4 495.4,233.0 546.1,222.1 596.9,222.9 647.6,217.7 698.4,220.1 749.1,215.6 799.9,218.8 850.6,212.6"/>
+<polyline fill="none" stroke="#3b6fb6" stroke-width="2" points="89.4,340.7 140.1,342.2 190.9,344.6 241.6,347.7 292.4,336.4 343.1,268.6 393.9,206.4 444.6,175.9 495.4,154.2 546.1,109.9 596.9,107.6 647.6,94.9 698.4,93.1 749.1,88.5 799.9,82.5 850.6,66.4"/>
+<polyline fill="none" stroke="#d9534f" stroke-width="2" points="89.4,113.6 140.1,58.0 190.9,63.7 241.6,64.1 292.4,59.2 343.1,72.4 393.9,67.6 444.6,62.2 495.4,63.5 546.1,62.1 596.9,71.3 647.6,61.9 698.4,67.8 749.1,68.8 799.9,68.0 850.6,57.4"/>
+<polyline fill="none" stroke="#2e8b57" stroke-width="2" points="89.4,335.5 140.1,329.9 190.9,331.9 241.6,336.3 292.4,325.8 343.1,324.5 393.9,328.9 444.6,321.4 495.4,334.4 546.1,323.6 596.9,305.5 647.6,265.6 698.4,250.1 749.1,224.4 799.9,191.6 850.6,153.9"/>
+<line x1="576" y1="50" x2="600" y2="50" stroke="#6b6b6b" stroke-width="2"/>
+<text x="606" y="54" fill="#333">NoPE (W4's model, retrained)</text>
+<line x1="576" y1="66" x2="600" y2="66" stroke="#3b6fb6" stroke-width="2"/>
+<text x="606" y="70" fill="#333">RoPE, b = 10^4</text>
+<line x1="576" y1="82" x2="600" y2="82" stroke="#d9534f" stroke-width="2"/>
+<text x="606" y="86" fill="#333">RoPE + PI (s = 4)</text>
+<line x1="576" y1="98" x2="600" y2="98" stroke="#2e8b57" stroke-width="2"/>
+<text x="606" y="102" fill="#333">RoPE + NTK-aware (b → b·s^(d/(d−2)))</text>
+<text x="876" y="398" text-anchor="end" fill="#888" font-size="11">rehearsal 2026-10-12 · arm64 · torch 2.14.0 · 3000 steps each · not a measurement of any large model</text>
+</svg>

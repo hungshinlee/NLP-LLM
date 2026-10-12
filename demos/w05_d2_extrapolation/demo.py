@@ -161,7 +161,7 @@ def measure(d1, cfg: dict, model, device, name: str, corpus: dict) -> dict:
                 y = torch.stack([data[s + 1:s + L + 1] for s in chunk]).to(device)
                 logits = model(x)
                 nll = torch.nn.functional.cross_entropy(logits.float().view(-1, logits.shape[-1]), y.view(-1), reduction="none").view(len(chunk), L)
-                acc += nll.double().sum(0).cpu()
+                acc += nll.sum(0).cpu().double()                  # 先回 CPU 再升 float64：MPS 沒有 double（與 demo 1 釘 CPU 同一個理由）
         per_pos = (acc / n_win).tolist()
         mean = float(acc.sum() / (n_win * L))
         split = ev["split_at"]

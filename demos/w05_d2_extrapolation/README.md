@@ -50,9 +50,16 @@ Without `present.sh`: `python demo.py replay`, `python demo.py rehearse`, and so
 
 ## What you should see
 
-**Not yet rehearsed (2026-10-12).** The slide's table and figure are blank on purpose; this section is filled from `runs/rehearsal/summary.json` once the rehearsal has run. Deliberately, no expected values are written down beforehand — the point of the demo is to look.
+From `runs/rehearsal/summary.json` (2026-10-12, Apple M5 Max, macOS 27.0.1, Python 3.12, torch 2.14.0, `mps`; training took 629 s for NoPE and 664 s for RoPE). Mean loss in nats per character from the 1024-window pass:
 
-What *is* fixed: the retrained NoPE model should land near W4 demo 1's held-out figure (2.18 bits/char under W4's windowed measure), which `replay` prints beside it as a consistency check.
+| | NoPE | RoPE | RoPE + PI ($s = 4$) | RoPE + NTK-aware |
+|---|---|---|---|---|
+| positions $< 256$ | 1.50 | 1.62 | 4.69 | 1.74 |
+| positions $256$–$1024$ | 2.71 | 3.84 | 4.80 | 2.36 |
+
+The retrained NoPE model's held-out figure is 2.183 bits/char under W4's windowed measure, against 2.184 for the original W4 run — the consistency check `replay` prints. The RoPE model's is 2.371.
+
+Things to notice, all specific to this setup: the NoPE model *also* degrades past 256 (the position it infers from the mask was never counted higher than that); the RoPE model is slightly worse than NoPE *inside* the training length (one run, one seed, hyperparameters tuned last week for NoPE — not a conclusion, just not a free improvement); position interpolation without fine-tuning is above $\ln 65 = 4.17$, the loss of guessing uniformly over the 65 characters — every pair's angular speed is divided by four, so adjacent characters sit at an angle the model only ever saw for a quarter of a character; NTK-aware scaling without fine-tuning stays flat to about position 600 and is the best of the four beyond 256, though it is still rising at 1024.
 
 A caveat the program prints every time: this is a character-level model of under five million parameters, mostly learning spelling and formatting; its long-range dependencies are weak. The *shape* of each curve is the shape of a mechanism. None of the numbers is a threshold for any large model, and every conclusion holds for this setup only.
 
