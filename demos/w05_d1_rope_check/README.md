@@ -32,7 +32,7 @@ For $d_{\text{head}} = 128$ and two bases, $b = 10^4$ and $b = 5 \times 10^5$ (L
 | Packages | `torch` only (`2.14.0` is pinned; nothing else is imported). `wavelengths.py` needs no package at all. No model, no download, no network. |
 | Device | **CPU, deliberately, in float64.** `rope_final.py` sets `torch.set_default_device("cpu")` and `torch.set_default_dtype(torch.float64)`. If you write your own, make `rope_angles` return float64 explicitly (`torch.arange(0, d_head, 2, dtype=torch.float64)`); a float32 $\theta$ silently drops test (a) to $\sim 10^{-5}$ and it fails. |
 | Memory / time | negligible — a few vectors of length 128 |
-| Portability | should run on any machine where `torch` installs (nothing platform-specific is used); tested only on the instructor's Apple M5 Max — see "What you should see" |
+| Portability | should run on any machine where `torch` installs (nothing platform-specific is used); tested only on an Apple M5 Max, macOS 27.0.1, Python 3.12.14, torch 2.14.0 |
 
 ## Run it
 
@@ -53,7 +53,13 @@ Suggested order if you write it yourself, matching the class: `rope_angles` → 
 
 ## What you should see
 
-The rehearsal record `runs/rehearsal/tests.json` will be checked in once the instructor has run `./present.sh rehearse` on the Apple M5 Max; until then the expected magnitudes above come from a NumPy mirror of the same tests with the same constants (2026-10-12): (a) $2.6 \times 10^{-13}$ in float64, $9.7 \times 10^{-5}$ in float32; (b) a spread of about 24, entirely in the cross terms; (c) a spread of about 0.10 in the first component, norm constant to $10^{-14}$. Your figures will agree with these in magnitude, not digit for digit — the random vectors come from a `torch.Generator`.
+From `runs/rehearsal/tests.json` (2026-10-12, Apple M5 Max, macOS 27.0.1, Python 3.12.14, torch 2.14.0, CPU, float64; all three tests in 0.002 s):
+
+- (a) score $-8.306380$ at $m - n = 7$; max difference over the ten values of $m$: $3.1 \times 10^{-13}$ in float64, $1.0 \times 10^{-4}$ for the same inputs in float32.
+- (b) the additive score moves by 38.29; $\mathbf{q}^\top\mathbf{k}$ is constant to 0 and $\mathbf{p}_m^\top\mathbf{p}_n$ to $9 \times 10^{-14}$; the cross terms move by 38.29.
+- (c) the first output component moves by 0.037 (from $-0.018$ to $+0.018$; unrotated it would be a fixed $-0.218$); the norm is 10.3179, constant to $10^{-14}$.
+
+The random vectors come from a `torch.Generator` with fixed seeds, so on the same torch version you should see these digits; on another version or platform expect the same magnitudes.
 
 ## Files
 
@@ -64,4 +70,4 @@ The rehearsal record `runs/rehearsal/tests.json` will be checked in once the ins
 | `tests.py` | the three tests; `python tests.py <module>` runs them against any module exposing the three functions |
 | `wavelengths.py` | the wavelength / turns table, checked against the slides' data file |
 | `present.sh` | entry point; uses `../.venv/bin/python` |
-| `runs/rehearsal/tests.json` | the rehearsal record (once written) |
+| `runs/rehearsal/tests.json` | the rehearsal record quoted above |
