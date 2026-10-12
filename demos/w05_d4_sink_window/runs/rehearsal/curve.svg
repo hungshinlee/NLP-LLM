@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" font-family="system-ui, sans-serif" font-size="12">
+<rect width="900" height="420" fill="white"/>
+<text x="70" y="22" font-size="14" font-weight="bold">per-token perplexity under four KV caches · Llama 3.1 8B Instruct (4-bit MLX)</text>
+<line x1="70" y1="360.0" x2="880" y2="360.0" stroke="#ddd"/>
+<text x="64" y="364.0" text-anchor="end">3.16</text>
+<line x1="70" y1="306.7" x2="880" y2="306.7" stroke="#ddd"/>
+<text x="64" y="310.7" text-anchor="end">10</text>
+<line x1="70" y1="253.3" x2="880" y2="253.3" stroke="#ddd"/>
+<text x="64" y="257.3" text-anchor="end">31.6</text>
+<line x1="70" y1="200.0" x2="880" y2="200.0" stroke="#ddd"/>
+<text x="64" y="204.0" text-anchor="end">100</text>
+<line x1="70" y1="146.7" x2="880" y2="146.7" stroke="#ddd"/>
+<text x="64" y="150.7" text-anchor="end">316</text>
+<line x1="70" y1="93.3" x2="880" y2="93.3" stroke="#ddd"/>
+<text x="64" y="97.3" text-anchor="end">1e+03</text>
+<line x1="70" y1="40.0" x2="880" y2="40.0" stroke="#ddd"/>
+<text x="64" y="44.0" text-anchor="end">3.16e+03</text>
+<line x1="146.0" y1="40" x2="146.0" y2="360" stroke="#555" stroke-dasharray="4 3"/>
+<text x="150.0" y="52" fill="#555">W = 512</text>
+<text x="70.0" y="376" text-anchor="middle">0</text>
+<text x="218.5" y="376" text-anchor="middle">1000</text>
+<text x="367.0" y="376" text-anchor="middle">2000</text>
+<text x="515.5" y="376" text-anchor="middle">3000</text>
+<text x="664.0" y="376" text-anchor="middle">4000</text>
+<text x="812.4" y="376" text-anchor="middle">5000</text>
+<text x="475" y="394" text-anchor="middle">token position</text>
+<text x="16" y="200" transform="rotate(-90 16 200)" text-anchor="middle">perplexity (log)</text>
+<polyline fill="none" stroke="#1f3a93" stroke-width="2" points="89.1,335.8 127.1,330.7 165.1,335.4 203.1,334.4 241.1,345.8 279.1,335.6 317.2,349.6 355.2,329.7 393.2,334.9 431.2,325.6 469.2,330.5 507.2,321.6 545.2,320.1 583.2,306.9 621.3,291.7 659.3,335.4 697.3,336.8 735.3,329.7 773.3,317.4 811.3,317.8 849.3,319.6 874.1,304.7"/>
+<rect x="80" y="66" width="14" height="3" fill="#1f3a93"/>
+<text x="100" y="72">full cache</text>
+<polyline fill="none" stroke="#c0392b" stroke-width="2" points="89.1,335.9 127.1,330.7 165.1,97.6 203.1,98.6 241.1,100.0 279.1,135.7 317.2,133.0 355.2,82.3 393.2,87.1 431.2,94.8 469.2,115.5 507.2,121.7 545.2,113.6 583.2,98.8 621.3,84.5 659.3,98.4 697.3,96.7 735.3,137.9 773.3,167.7 811.3,159.6 849.3,164.1 874.1,134.1"/>
+<rect x="80" y="82" width="14" height="3" fill="#c0392b"/>
+<text x="100" y="88">window W, no sink</text>
+<polyline fill="none" stroke="#e67e22" stroke-width="2" points="89.1,335.9 127.1,330.7 165.1,314.6 203.1,296.0 241.1,297.4 279.1,301.0 317.2,287.9 355.2,250.7 393.2,254.8 431.2,264.0 469.2,274.0 507.2,282.0 545.2,267.5 583.2,271.7 621.3,268.4 659.3,308.3 697.3,315.2 735.3,315.9 773.3,301.3 811.3,306.2 849.3,302.4 874.1,285.0"/>
+<rect x="80" y="98" width="14" height="3" fill="#e67e22"/>
+<text x="100" y="104">window W + n_sink, original positions (library keep)</text>
+<polyline fill="none" stroke="#27ae60" stroke-width="2" points="89.1,335.8 127.1,330.6 165.1,313.4 203.1,293.1 241.1,297.3 279.1,301.0 317.2,288.3 355.2,250.0 393.2,254.1 431.2,263.7 469.2,274.0 507.2,281.6 545.2,267.5 583.2,271.8 621.3,268.2 659.3,308.7 697.3,315.9 735.3,316.8 773.3,302.0 811.3,306.1 849.3,302.5 874.1,284.1"/>
+<rect x="80" y="114" width="14" height="3" fill="#27ae60"/>
+<text x="100" y="120">window W + n_sink, re-indexed (StreamingLLM §3)</text>
+<polyline fill="none" stroke="#8e44ad" stroke-width="2" points="89.1,335.9 127.1,330.7 165.1,314.5 203.1,296.0 241.1,297.6 279.1,301.1 317.2,287.9 355.2,250.7 393.2,254.8 431.2,264.1 469.2,274.0 507.2,282.1 545.2,267.4 583.2,271.7 621.3,268.3 659.3,308.3 697.3,315.2 735.3,315.9 773.3,301.3 811.3,306.1 849.3,302.3 874.1,285.0"/>
+<rect x="80" y="130" width="14" height="3" fill="#8e44ad"/>
+<text x="100" y="136">window W + n_sink, original (own cache, no re-index)</text>
+</svg>

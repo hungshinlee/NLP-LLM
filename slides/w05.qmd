@@ -568,23 +568,24 @@ Xiao et al., ICLR 2024 §3 · Gu et al., ICLR 2025 · W3 p40–41 · Misconcepti
 2. sliding window $W = 512$, no sink
 3. sliding window $W = 512$ + the first $n_{\text{sink}}$ tokens kept
 
-MLX; `mlx-lm`'s `RotatingKVCache` has a `keep` argument — **its re-indexing must be checked against §3 in the source**, else a minimal eviction loop is written by hand.
+MLX; `mlx-lm`'s `RotatingKVCache(keep)` keeps the first tokens **at their original positions** (checked in the source: $\mathbf{q}, \mathbf{k}$ are rotated at `cache.offset` *before* the cache) — the §3 re-indexing is a small cache written by hand; both are run.
 :::
 ::: {.column width="50%"}
-| cache | perplexity, tokens $< W$ | perplexity, tokens $> W$ |
+| cache | perplexity, tokens $< W$ | perplexity, tokens $\geq W$ |
 |:---|:---:|:---:|
 | full | | |
 | window, no sink | | |
-| window + sink | | |
+| window + sink, original positions | | |
+| window + sink, re-indexed (§3) | | |
 
-: {tbl-colwidths="[40,30,30]"}
+: {tbl-colwidths="[44,28,28]"}
 
-*rehearsed, replayed; all three rows pending*
+*rehearsed beforehand, replayed in class; all four rows pending rehearsal*
 :::
 :::
 
 ::: {.footer}
-Demo 4 · `w05_d4_sink_window/` · if time · not yet built (2026-10-11)
+Demo 4 · `w05_d4_sink_window/` · if time · built, not yet rehearsed (2026-10-12)
 :::
 
 ## Stable is not informed: what StreamingLLM solves, and what it does not

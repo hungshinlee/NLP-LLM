@@ -1,0 +1,39 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W5 demo 4（投影片 p39「Replay (if time): demo 4 — a sliding window with and without the sink」）的設定
+#
+# 改這個檔就能換文字、換視窗長度、換 sink 數、換模型，不必動程式。
+
+[demo]
+title = "W5 · Replay (if time): demo 4 — a sliding window with and without the sink"
+# 滑動視窗留最近幾個 token 的 KV（不含 sink）。大綱〈課堂 demo 建議〉4：W = 512。
+window = 512
+# 保留最前面幾個 token 的 KV。大綱寫 4（StreamingLLM 的值要核對 §3；投影片本體只寫 n_sink）。
+n_sink = 4
+# full cache 用分段 prefill，一段幾個 token（三個視窗變體一律一次一個 token）。
+chunk = 512
+# 曲線與 replay 的分格：每格幾個 token 取平均。
+bin = 256
+# replay 每條線之間要不要等 Enter（上課用 true；要一口氣看完就 false）。
+pause = true
+
+# ── 文字 ───────────────────────────────────────────────────────
+# 沿 W1／W4 的語料 slides/_corpus/tinyshakespeare.txt（不在 repo 裡；W4 demo 1 的 README 寫了去哪下載）。
+# 取開頭 chars 個字元；Llama 3 的 tokenizer 下約 4 字元一個 token。
+[text]
+path = "../../slides/_corpus/tinyshakespeare.txt"
+chars = 20000
+
+# ── 模型 ───────────────────────────────────────────────────────
+# 主模型與 W3 demo 2、W5 demo 3 同一個（已下載並鎖在 ../versions.lock，不必 fetch）。
+# 這裡不用 chat template：純文字接在 BOS 後面量 perplexity，Instruct 模型的絕對值會比 base 高，比較的是三種 cache 之間的差。
+[models.primary]
+repo = "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit"
+label = "Llama 3.1 8B Instruct (4-bit MLX)"
+note = "rope_scaling llama3 factor 8、名義長度 131072；兩萬字元遠在名義長度之內，所以崩的只會是 sink 被丟掉，不是位置超界"
+revision = ""
+
+[models.backup]
+repo = "mlx-community/Qwen3-8B-4bit"
+label = "Qwen3 8B (4-bit MLX)"
+note = "tokenizer 不加 BOS，位置 0 是第一個字；sink 照樣落在第一個 token 上（Xiao et al. 的觀察），但要看彩排"
+revision = ""

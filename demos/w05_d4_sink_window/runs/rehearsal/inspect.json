@@ -1,0 +1,66 @@
+{
+ "date": "2026-10-12T14:18:47",
+ "model": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+ "revision": "241a666dad6cb93c8ff213d39a7f34a36bf26db4",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "text": {
+  "path": "../../slides/_corpus/tinyshakespeare.txt",
+  "chars": 20000,
+  "sha256_of_slice": "53644eda67837bad",
+  "first_line": "First Citizen:"
+ },
+ "n_tokens": 5455,
+ "first_token": 5451,
+ "bos_token_id": 128000,
+ "window": 512,
+ "n_sink": 4,
+ "max_position_embeddings": 131072,
+ "rope_scaling": {
+  "factor": 8.0,
+  "low_freq_factor": 1.0,
+  "high_freq_factor": 4.0,
+  "original_max_position_embeddings": 8192,
+  "rope_type": "llama3"
+ },
+ "mlx_lm_source": {
+  "llama_attention": [
+   "queries = self.rope(queries, offset=cache.offset)",
+   "keys = self.rope(keys, offset=cache.offset)",
+   "keys, values = cache.update_and_fetch(keys, values)",
+   "queries = self.rope(queries)",
+   "keys = self.rope(keys)"
+  ],
+  "make_prompt_cache": [
+   "RotatingKVCache(max_size=max_kv_size, keep=4) for _ in range(num_layers)"
+  ],
+  "rotating_keep_test": [
+   0,
+   1,
+   6,
+   7,
+   8,
+   9
+  ]
+ },
+ "rope_checks": {
+  "compose_max_abs_err": 3.5762786865234375e-07,
+  "negative_offset_inverts": true,
+  "invert_max_abs_err": 4.76837158203125e-07,
+  "block_offset_is_per_element_max_abs_err": 0.0,
+  "score_rel_only_pair": [
+   26.701244354248047,
+   26.701610565185547
+  ],
+  "score_rel_only_abs_err": 0.0003662109375,
+  "rope_class": "Llama3RoPE"
+ }
+}
