@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 300" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-rotation" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><circle cx="250" cy="128" r="100" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><line x1="140" y1="128" x2="360" y2="128" stroke="#d1d5db" stroke-width="1"/><line x1="250" y1="238" x2="250" y2="18" stroke="#d1d5db" stroke-width="1"/><line x1="250" y1="128" x2="282.612" y2="44.1165" stroke="#0b5cad" stroke-width="3" marker-end="url(#ah-rotation)"/><line x1="250" y1="128" x2="321.65" y2="105.836" stroke="#b45309" stroke-width="3" marker-end="url(#ah-rotation)"/><svg x="272.494" y="16.191" width="36.18" height="17.4206" viewBox="0 0 36.18 17.420625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t4-figure_1">
-  <g id="t4-patch_1">
+ <g id="t15-figure_1">
+  <g id="t15-patch_1">
    <path d="M 0 17.420625 
 L 36.18 17.420625 
 L 36.18 0 
@@ -11,11 +11,11 @@ L 0 17.420625
 z
 " style="fill: none"/>
   </g>
-  <g id="t4-text_1">
+  <g id="t15-text_1">
    <!-- $\mathbf{R}_m\mathbf{q}$ -->
    <g style="fill: #0b5cad" transform="translate(0 13.677187) scale(0.18 -0.18)">
     <defs>
-     <path id="t4-Cmb10-52" d="M 219 0 
+     <path id="t15-Cmb10-52" d="M 219 0 
 L 219 325 
 L 819 325 
 L 819 4063 
@@ -66,7 +66,7 @@ L 1716 4063
 L 1716 2322 
 z
 " transform="scale(0.015625)"/>
-     <path id="t4-Cmmi10-6d" d="M 494 109 
+     <path id="t15-Cmmi10-6d" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -134,7 +134,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t4-Cmb10-71" d="M 1825 -1241 
+     <path id="t15-Cmb10-71" d="M 1825 -1241 
 L 1825 -916 
 L 2266 -916 
 L 2266 231 
@@ -168,17 +168,17 @@ Q 1297 219 1600 219
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t4-Cmb10-52" transform="translate(0 0.390625)"/>
-    <use xlink:href="#t4-Cmmi10-6d" transform="translate(80.343047 -16.615625) scale(0.7)"/>
-    <use xlink:href="#t4-Cmb10-71" transform="translate(148.175469 0.390625)"/>
+    <use xlink:href="#t15-Cmb10-52" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t15-Cmmi10-6d" transform="translate(80.343047 -16.615625) scale(0.7)"/>
+    <use xlink:href="#t15-Cmb10-71" transform="translate(148.175469 0.390625)"/>
    </g>
   </g>
  </g>
 </svg><svg x="342.668" y="91.9139" width="32.76" height="17.4206" viewBox="0 0 32.76 17.420625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t5-figure_1">
-  <g id="t5-patch_1">
+ <g id="t16-figure_1">
+  <g id="t16-patch_1">
    <path d="M 0 17.420625 
 L 32.76 17.420625 
 L 32.76 0 
@@ -187,11 +187,11 @@ L 0 17.420625
 z
 " style="fill: none"/>
   </g>
-  <g id="t5-text_1">
+  <g id="t16-text_1">
    <!-- $\mathbf{R}_n\mathbf{k}$ -->
    <g style="fill: #b45309" transform="translate(0 13.677187) scale(0.18 -0.18)">
     <defs>
-     <path id="t5-Cmb10-52" d="M 219 0 
+     <path id="t16-Cmb10-52" d="M 219 0 
 L 219 325 
 L 819 325 
 L 819 4063 
@@ -242,7 +242,7 @@ L 1716 4063
 L 1716 2322 
 z
 " transform="scale(0.015625)"/>
-     <path id="t5-Cmmi10-6e" d="M 494 109 
+     <path id="t16-Cmmi10-6e" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -295,7 +295,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t5-Cmb10-6b" d="M 91 0 
+     <path id="t16-Cmb10-6b" d="M 91 0 
 L 91 325 
 L 531 325 
 L 531 3884 
@@ -327,17 +327,17 @@ L 91 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t5-Cmb10-52" transform="translate(0 0.609375)"/>
-    <use xlink:href="#t5-Cmmi10-6e" transform="translate(80.343047 -16.396875) scale(0.7)"/>
-    <use xlink:href="#t5-Cmb10-6b" transform="translate(128.727227 0.609375)"/>
+    <use xlink:href="#t16-Cmb10-52" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t16-Cmmi10-6e" transform="translate(80.343047 -16.396875) scale(0.7)"/>
+    <use xlink:href="#t16-Cmb10-6b" transform="translate(128.727227 0.609375)"/>
    </g>
   </g>
  </g>
 </svg><text x="250" y="262" font-size="17" fill="#1f2328" text-anchor="middle" font-weight="400">rotate q by mθ, k by nθ</text><g class="fragment" data-fragment-index="1"><circle cx="250" cy="128" r="100" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><line x1="140" y1="128" x2="360" y2="128" stroke="#d1d5db" stroke-width="1"/><line x1="250" y1="238" x2="250" y2="18" stroke="#d1d5db" stroke-width="1"/><line x1="250" y1="128" x2="282.612" y2="44.1165" stroke="#0b5cad" stroke-width="3" marker-end="url(#ah-rotation)"/><line x1="250" y1="128" x2="321.65" y2="105.836" stroke="#b45309" stroke-width="3" marker-end="url(#ah-rotation)"/><svg x="272.494" y="16.191" width="36.18" height="17.4206" viewBox="0 0 36.18 17.420625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t6-figure_1">
-  <g id="t6-patch_1">
+ <g id="t17-figure_1">
+  <g id="t17-patch_1">
    <path d="M 0 17.420625 
 L 36.18 17.420625 
 L 36.18 0 
@@ -346,11 +346,11 @@ L 0 17.420625
 z
 " style="fill: none"/>
   </g>
-  <g id="t6-text_1">
+  <g id="t17-text_1">
    <!-- $\mathbf{R}_m\mathbf{q}$ -->
    <g style="fill: #0b5cad" transform="translate(0 13.677187) scale(0.18 -0.18)">
     <defs>
-     <path id="t6-Cmb10-52" d="M 219 0 
+     <path id="t17-Cmb10-52" d="M 219 0 
 L 219 325 
 L 819 325 
 L 819 4063 
@@ -401,7 +401,7 @@ L 1716 4063
 L 1716 2322 
 z
 " transform="scale(0.015625)"/>
-     <path id="t6-Cmmi10-6d" d="M 494 109 
+     <path id="t17-Cmmi10-6d" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -469,7 +469,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t6-Cmb10-71" d="M 1825 -1241 
+     <path id="t17-Cmb10-71" d="M 1825 -1241 
 L 1825 -916 
 L 2266 -916 
 L 2266 231 
@@ -503,17 +503,17 @@ Q 1297 219 1600 219
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t6-Cmb10-52" transform="translate(0 0.390625)"/>
-    <use xlink:href="#t6-Cmmi10-6d" transform="translate(80.343047 -16.615625) scale(0.7)"/>
-    <use xlink:href="#t6-Cmb10-71" transform="translate(148.175469 0.390625)"/>
+    <use xlink:href="#t17-Cmb10-52" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t17-Cmmi10-6d" transform="translate(80.343047 -16.615625) scale(0.7)"/>
+    <use xlink:href="#t17-Cmb10-71" transform="translate(148.175469 0.390625)"/>
    </g>
   </g>
  </g>
 </svg><svg x="342.668" y="91.9139" width="32.76" height="17.4206" viewBox="0 0 32.76 17.420625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t7-figure_1">
-  <g id="t7-patch_1">
+ <g id="t18-figure_1">
+  <g id="t18-patch_1">
    <path d="M 0 17.420625 
 L 32.76 17.420625 
 L 32.76 0 
@@ -522,11 +522,11 @@ L 0 17.420625
 z
 " style="fill: none"/>
   </g>
-  <g id="t7-text_1">
+  <g id="t18-text_1">
    <!-- $\mathbf{R}_n\mathbf{k}$ -->
    <g style="fill: #b45309" transform="translate(0 13.677187) scale(0.18 -0.18)">
     <defs>
-     <path id="t7-Cmb10-52" d="M 219 0 
+     <path id="t18-Cmb10-52" d="M 219 0 
 L 219 325 
 L 819 325 
 L 819 4063 
@@ -577,7 +577,7 @@ L 1716 4063
 L 1716 2322 
 z
 " transform="scale(0.015625)"/>
-     <path id="t7-Cmmi10-6e" d="M 494 109 
+     <path id="t18-Cmmi10-6e" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -630,7 +630,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t7-Cmb10-6b" d="M 91 0 
+     <path id="t18-Cmb10-6b" d="M 91 0 
 L 91 325 
 L 531 325 
 L 531 3884 
@@ -662,17 +662,17 @@ L 91 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t7-Cmb10-52" transform="translate(0 0.609375)"/>
-    <use xlink:href="#t7-Cmmi10-6e" transform="translate(80.343047 -16.396875) scale(0.7)"/>
-    <use xlink:href="#t7-Cmb10-6b" transform="translate(128.727227 0.609375)"/>
+    <use xlink:href="#t18-Cmb10-52" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t18-Cmmi10-6e" transform="translate(80.343047 -16.396875) scale(0.7)"/>
+    <use xlink:href="#t18-Cmb10-6b" transform="translate(128.727227 0.609375)"/>
    </g>
   </g>
  </g>
 </svg><path d="M288.213,116.179 A40,40 0 0 0 264.494,90.7184" stroke="#15803d" stroke-width="2.4" fill="none"/><svg x="265.481" y="77.0118" width="65.62" height="17" viewBox="0 0 65.62 17"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t8-figure_1">
-  <g id="t8-patch_1">
+ <g id="t19-figure_1">
+  <g id="t19-patch_1">
    <path d="M 0 17 
 L 65.62 17 
 L 65.62 0 
@@ -681,11 +681,11 @@ L 0 17
 z
 " style="fill: none"/>
   </g>
-  <g id="t8-text_1">
+  <g id="t19-text_1">
    <!-- $(m-n)\theta$ -->
    <g style="fill: #15803d" transform="translate(0 12.75) scale(0.17 -0.17)">
     <defs>
-     <path id="t8-Cmr10-28" d="M 1984 -1588 
+     <path id="t19-Cmr10-28" d="M 1984 -1588 
 Q 1628 -1306 1370 -942 
 Q 1113 -578 948 -165 
 Q 784 247 703 697 
@@ -711,7 +711,7 @@ L 2016 -1600
 Q 1984 -1600 1984 -1588 
 z
 " transform="scale(0.015625)"/>
-     <path id="t8-Cmmi10-6d" d="M 494 109 
+     <path id="t19-Cmmi10-6d" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -779,7 +779,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t8-Cmsy10-a1" d="M 653 1472 
+     <path id="t19-Cmsy10-a1" d="M 653 1472 
 Q 600 1472 565 1512 
 Q 531 1553 531 1600 
 Q 531 1647 565 1687 
@@ -792,7 +792,7 @@ Q 4375 1472 4325 1472
 L 653 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t8-Cmmi10-6e" d="M 494 109 
+     <path id="t19-Cmmi10-6e" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -845,7 +845,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t8-Cmr10-29" d="M 416 -1600 
+     <path id="t19-Cmr10-29" d="M 416 -1600 
 Q 359 -1600 359 -1544 
 Q 359 -1516 372 -1503 
 Q 1466 -434 1466 1600 
@@ -866,7 +866,7 @@ Q 494 -1600 475 -1600
 L 416 -1600 
 z
 " transform="scale(0.015625)"/>
-     <path id="t8-Cmmi10-b5" d="M 1031 -72 
+     <path id="t19-Cmmi10-b5" d="M 1031 -72 
 Q 741 -72 566 140 
 Q 391 353 323 653 
 Q 256 953 256 1247 
@@ -912,20 +912,670 @@ Q 1141 3038 959 2338
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t8-Cmr10-28"/>
-    <use xlink:href="#t8-Cmmi10-6d" transform="translate(38.818359 0)"/>
-    <use xlink:href="#t8-Cmsy10-a1" transform="translate(144.169922 0)"/>
-    <use xlink:href="#t8-Cmmi10-6e" transform="translate(239.414062 0)"/>
-    <use xlink:href="#t8-Cmr10-29" transform="translate(299.423828 0)"/>
-    <use xlink:href="#t8-Cmmi10-b5" transform="translate(338.242188 0)"/>
+    <use xlink:href="#t19-Cmr10-28"/>
+    <use xlink:href="#t19-Cmmi10-6d" transform="translate(38.818359 0)"/>
+    <use xlink:href="#t19-Cmsy10-a1" transform="translate(144.169922 0)"/>
+    <use xlink:href="#t19-Cmmi10-6e" transform="translate(239.414062 0)"/>
+    <use xlink:href="#t19-Cmr10-29" transform="translate(299.423828 0)"/>
+    <use xlink:href="#t19-Cmmi10-b5" transform="translate(338.242188 0)"/>
    </g>
   </g>
  </g>
-</svg><text x="250" y="262" font-size="17" fill="#1f2328" text-anchor="middle" font-weight="400">rotate q by mθ, k by nθ</text><text x="620" y="88" font-size="18" fill="#15803d" text-anchor="middle" font-weight="400">the logit is the angle between them,</text><text x="620" y="114" font-size="18" fill="#15803d" text-anchor="middle" font-weight="400">plus the content angle φ_qk</text></g><g class="fragment" data-fragment-index="2"><circle cx="990" cy="128" r="100" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><line x1="880" y1="128" x2="1100" y2="128" stroke="#d1d5db" stroke-width="1"/><line x1="990" y1="238" x2="990" y2="18" stroke="#d1d5db" stroke-width="1"/><line x1="990" y1="128" x2="944.564" y2="50.3112" stroke="#0b5cad" stroke-width="3" marker-end="url(#ah-rotation)"/><line x1="990" y1="128" x2="1017.18" y2="58.0971" stroke="#b45309" stroke-width="3" marker-end="url(#ah-rotation)"/><svg x="872.437" y="24.8999" width="61.02" height="17.4206" viewBox="0 0 61.02 17.420625"><defs>
+</svg><text x="250" y="262" font-size="17" fill="#1f2328" text-anchor="middle" font-weight="400">rotate q by mθ, k by nθ</text><text x="620" y="88" font-size="18" fill="#15803d" text-anchor="middle" font-weight="400">the logit is the angle between them,</text><svg x="517.49" y="101.82" width="205.02" height="18.18" viewBox="0 0 205.02 18.18"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t9-figure_1">
-  <g id="t9-patch_1">
+ <g id="t20-figure_1">
+  <g id="t20-patch_1">
+   <path d="M 0 18.18 
+L 205.02 18.18 
+L 205.02 -0 
+L 0 -0 
+L 0 18.18 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t20-text_1">
+   <!-- $\text{plus the content angle } \phi_{qk}$ -->
+   <g style="fill: #15803d" transform="translate(0 12.6) scale(0.18 -0.18)">
+    <defs>
+     <path id="t20-Cmr10-70" d="M 166 -1241 
+L 166 -1019 
+Q 384 -1019 525 -981 
+Q 666 -944 666 -813 
+L 666 2272 
+Q 666 2447 541 2490 
+Q 416 2534 166 2534 
+L 166 2759 
+L 1113 2828 
+L 1113 2431 
+Q 1288 2625 1520 2726 
+Q 1753 2828 2016 2828 
+Q 2394 2828 2697 2623 
+Q 3000 2419 3170 2086 
+Q 3341 1753 3341 1381 
+Q 3341 994 3152 659 
+Q 2963 325 2636 126 
+Q 2309 -72 1919 -72 
+Q 1453 -72 1131 306 
+L 1131 -813 
+Q 1131 -944 1273 -981 
+Q 1416 -1019 1631 -1019 
+L 1631 -1241 
+L 166 -1241 
+z
+M 1131 622 
+Q 1244 394 1444 245 
+Q 1644 97 1881 97 
+Q 2103 97 2273 215 
+Q 2444 334 2559 534 
+Q 2675 734 2729 954 
+Q 2784 1175 2784 1381 
+Q 2784 1638 2692 1936 
+Q 2600 2234 2411 2439 
+Q 2222 2644 1953 2644 
+Q 1694 2644 1476 2511 
+Q 1259 2378 1131 2150 
+L 1131 622 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-6c" d="M 197 0 
+L 197 225 
+Q 416 225 556 259 
+Q 697 294 697 428 
+L 697 3788 
+Q 697 3959 645 4036 
+Q 594 4113 497 4130 
+Q 400 4147 197 4147 
+L 197 4372 
+L 1147 4441 
+L 1147 428 
+Q 1147 294 1287 259 
+Q 1428 225 1644 225 
+L 1644 0 
+L 197 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-75" d="M 691 763 
+L 691 2175 
+Q 691 2347 639 2423 
+Q 588 2500 491 2517 
+Q 394 2534 191 2534 
+L 191 2759 
+L 1159 2828 
+L 1159 763 
+Q 1159 513 1195 373 
+Q 1231 234 1348 165 
+Q 1466 97 1722 97 
+Q 2066 97 2269 384 
+Q 2472 672 2472 1038 
+L 2472 2175 
+Q 2472 2347 2419 2423 
+Q 2366 2500 2270 2517 
+Q 2175 2534 1972 2534 
+L 1972 2759 
+L 2938 2828 
+L 2938 581 
+Q 2938 413 2989 336 
+Q 3041 259 3137 242 
+Q 3234 225 3438 225 
+L 3438 0 
+L 2491 -72 
+L 2491 469 
+Q 2372 228 2159 78 
+Q 1947 -72 1691 -72 
+Q 1231 -72 961 123 
+Q 691 319 691 763 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-73" d="M 213 -19 
+L 213 1025 
+Q 213 1075 269 1075 
+L 347 1075 
+Q 384 1075 397 1025 
+Q 575 97 1259 97 
+Q 1563 97 1767 234 
+Q 1972 372 1972 659 
+Q 1972 866 1812 1011 
+Q 1653 1156 1434 1209 
+L 1006 1294 
+Q 791 1341 614 1437 
+Q 438 1534 325 1695 
+Q 213 1856 213 2069 
+Q 213 2350 361 2529 
+Q 509 2709 746 2789 
+Q 984 2869 1259 2869 
+Q 1588 2869 1831 2694 
+L 2016 2853 
+Q 2016 2869 2047 2869 
+L 2094 2869 
+Q 2113 2869 2128 2851 
+Q 2144 2834 2144 2816 
+L 2144 1978 
+Q 2144 1919 2094 1919 
+L 2016 1919 
+Q 1959 1919 1959 1978 
+Q 1959 2313 1773 2516 
+Q 1588 2719 1253 2719 
+Q 966 2719 755 2612 
+Q 544 2506 544 2247 
+Q 544 2069 695 1955 
+Q 847 1841 1050 1791 
+L 1484 1709 
+Q 1703 1659 1892 1540 
+Q 2081 1422 2192 1240 
+Q 2303 1059 2303 831 
+Q 2303 600 2223 429 
+Q 2144 259 2001 146 
+Q 1859 34 1665 -19 
+Q 1472 -72 1259 -72 
+Q 859 -72 575 197 
+L 341 -56 
+Q 341 -72 306 -72 
+L 269 -72 
+Q 213 -72 213 -19 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-20" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-74" d="M 653 769 
+L 653 2534 
+L 122 2534 
+L 122 2700 
+Q 541 2700 737 3090 
+Q 934 3481 934 3938 
+L 1119 3938 
+L 1119 2759 
+L 2022 2759 
+L 2022 2534 
+L 1119 2534 
+L 1119 781 
+Q 1119 516 1208 316 
+Q 1297 116 1528 116 
+Q 1747 116 1844 327 
+Q 1941 538 1941 781 
+L 1941 1159 
+L 2125 1159 
+L 2125 769 
+Q 2125 569 2051 373 
+Q 1978 178 1834 53 
+Q 1691 -72 1484 -72 
+Q 1100 -72 876 158 
+Q 653 388 653 769 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-68" d="M 191 0 
+L 191 225 
+Q 409 225 550 259 
+Q 691 294 691 428 
+L 691 3788 
+Q 691 3959 639 4036 
+Q 588 4113 491 4130 
+Q 394 4147 191 4147 
+L 191 4372 
+L 1141 4441 
+L 1141 2241 
+Q 1275 2506 1515 2667 
+Q 1756 2828 2047 2828 
+Q 2491 2828 2714 2615 
+Q 2938 2403 2938 1966 
+L 2938 428 
+Q 2938 294 3078 259 
+Q 3219 225 3438 225 
+L 3438 0 
+L 1972 0 
+L 1972 225 
+Q 2191 225 2331 259 
+Q 2472 294 2472 428 
+L 2472 1947 
+Q 2472 2259 2381 2461 
+Q 2291 2663 2009 2663 
+Q 1638 2663 1398 2366 
+Q 1159 2069 1159 1691 
+L 1159 428 
+Q 1159 294 1300 259 
+Q 1441 225 1656 225 
+L 1656 0 
+L 191 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-65" d="M 1594 -72 
+Q 1203 -72 876 133 
+Q 550 338 364 680 
+Q 178 1022 178 1403 
+Q 178 1778 348 2115 
+Q 519 2453 823 2661 
+Q 1128 2869 1503 2869 
+Q 1797 2869 2014 2770 
+Q 2231 2672 2372 2497 
+Q 2513 2322 2584 2084 
+Q 2656 1847 2656 1563 
+Q 2656 1478 2591 1478 
+L 738 1478 
+L 738 1409 
+Q 738 878 952 497 
+Q 1166 116 1650 116 
+Q 1847 116 2014 203 
+Q 2181 291 2304 447 
+Q 2428 603 2472 781 
+Q 2478 803 2495 820 
+Q 2513 838 2534 838 
+L 2591 838 
+Q 2656 838 2656 756 
+Q 2566 394 2266 161 
+Q 1966 -72 1594 -72 
+z
+M 744 1638 
+L 2203 1638 
+Q 2203 1878 2136 2125 
+Q 2069 2372 1912 2536 
+Q 1756 2700 1503 2700 
+Q 1141 2700 942 2361 
+Q 744 2022 744 1638 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-63" d="M 1594 -72 
+Q 1206 -72 890 129 
+Q 575 331 394 667 
+Q 213 1003 213 1381 
+Q 213 1759 392 2106 
+Q 572 2453 889 2661 
+Q 1206 2869 1594 2869 
+Q 1969 2869 2276 2722 
+Q 2584 2575 2584 2241 
+Q 2584 2116 2495 2023 
+Q 2406 1931 2278 1931 
+Q 2150 1931 2061 2023 
+Q 1972 2116 1972 2241 
+Q 1972 2353 2044 2436 
+Q 2116 2519 2222 2541 
+Q 2000 2681 1600 2681 
+Q 1294 2681 1106 2478 
+Q 919 2275 844 1975 
+Q 769 1675 769 1381 
+Q 769 1072 861 783 
+Q 953 494 1158 305 
+Q 1363 116 1672 116 
+Q 1975 116 2187 302 
+Q 2400 488 2478 788 
+Q 2478 825 2528 825 
+L 2606 825 
+Q 2625 825 2640 808 
+Q 2656 791 2656 769 
+L 2656 750 
+Q 2559 372 2271 150 
+Q 1984 -72 1594 -72 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-6f" d="M 1600 -72 
+Q 1216 -72 887 123 
+Q 559 319 368 647 
+Q 178 975 178 1363 
+Q 178 1656 283 1928 
+Q 388 2200 583 2414 
+Q 778 2628 1037 2748 
+Q 1297 2869 1600 2869 
+Q 1994 2869 2317 2661 
+Q 2641 2453 2828 2104 
+Q 3016 1756 3016 1363 
+Q 3016 978 2825 648 
+Q 2634 319 2307 123 
+Q 1981 -72 1600 -72 
+z
+M 1600 116 
+Q 2113 116 2284 487 
+Q 2456 859 2456 1434 
+Q 2456 1756 2422 1967 
+Q 2388 2178 2272 2350 
+Q 2200 2456 2089 2536 
+Q 1978 2616 1854 2658 
+Q 1731 2700 1600 2700 
+Q 1400 2700 1220 2609 
+Q 1041 2519 922 2350 
+Q 803 2169 770 1951 
+Q 738 1734 738 1434 
+Q 738 1075 800 789 
+Q 863 503 1052 309 
+Q 1241 116 1600 116 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-6e" d="M 191 0 
+L 191 225 
+Q 409 225 550 259 
+Q 691 294 691 428 
+L 691 2175 
+Q 691 2347 639 2423 
+Q 588 2500 491 2517 
+Q 394 2534 191 2534 
+L 191 2759 
+L 1119 2828 
+L 1119 2203 
+Q 1247 2478 1498 2653 
+Q 1750 2828 2047 2828 
+Q 2491 2828 2714 2615 
+Q 2938 2403 2938 1966 
+L 2938 428 
+Q 2938 294 3078 259 
+Q 3219 225 3438 225 
+L 3438 0 
+L 1972 0 
+L 1972 225 
+Q 2191 225 2331 259 
+Q 2472 294 2472 428 
+L 2472 1947 
+Q 2472 2259 2381 2461 
+Q 2291 2663 2009 2663 
+Q 1638 2663 1398 2366 
+Q 1159 2069 1159 1691 
+L 1159 428 
+Q 1159 294 1300 259 
+Q 1441 225 1656 225 
+L 1656 0 
+L 191 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-61" d="M 256 628 
+Q 256 1009 556 1248 
+Q 856 1488 1276 1586 
+Q 1697 1684 2075 1684 
+L 2075 1947 
+Q 2075 2131 1994 2304 
+Q 1913 2478 1759 2589 
+Q 1606 2700 1422 2700 
+Q 997 2700 775 2509 
+Q 897 2509 976 2417 
+Q 1056 2325 1056 2203 
+Q 1056 2075 965 1984 
+Q 875 1894 750 1894 
+Q 622 1894 531 1984 
+Q 441 2075 441 2203 
+Q 441 2541 747 2705 
+Q 1053 2869 1422 2869 
+Q 1681 2869 1943 2758 
+Q 2206 2647 2373 2440 
+Q 2541 2234 2541 1959 
+L 2541 519 
+Q 2541 394 2594 289 
+Q 2647 184 2759 184 
+Q 2866 184 2917 290 
+Q 2969 397 2969 519 
+L 2969 928 
+L 3156 928 
+L 3156 519 
+Q 3156 375 3081 245 
+Q 3006 116 2879 39 
+Q 2753 -38 2606 -38 
+Q 2419 -38 2283 107 
+Q 2147 253 2131 453 
+Q 2013 213 1781 70 
+Q 1550 -72 1288 -72 
+Q 1044 -72 808 0 
+Q 572 72 414 226 
+Q 256 381 256 628 
+z
+M 775 628 
+Q 775 403 940 250 
+Q 1106 97 1331 97 
+Q 1538 97 1706 200 
+Q 1875 303 1975 481 
+Q 2075 659 2075 856 
+L 2075 1522 
+Q 1784 1522 1479 1426 
+Q 1175 1331 975 1128 
+Q 775 925 775 628 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmr10-67" d="M 178 -500 
+Q 178 -272 343 -101 
+Q 509 69 738 141 
+Q 609 238 542 384 
+Q 475 531 475 697 
+Q 475 997 666 1228 
+Q 372 1516 372 1888 
+Q 372 2088 458 2263 
+Q 544 2438 697 2566 
+Q 850 2694 1037 2761 
+Q 1225 2828 1422 2828 
+Q 1803 2828 2106 2606 
+Q 2238 2747 2417 2823 
+Q 2597 2900 2791 2900 
+Q 2928 2900 3015 2801 
+Q 3103 2703 3103 2566 
+Q 3103 2488 3043 2428 
+Q 2984 2369 2906 2369 
+Q 2825 2369 2765 2428 
+Q 2706 2488 2706 2566 
+Q 2706 2684 2784 2731 
+Q 2453 2731 2216 2503 
+Q 2331 2388 2401 2220 
+Q 2472 2053 2472 1888 
+Q 2472 1616 2322 1398 
+Q 2172 1181 1926 1061 
+Q 1681 941 1422 941 
+Q 1072 941 781 1131 
+Q 691 1006 691 850 
+Q 691 681 802 554 
+Q 913 428 1081 428 
+L 1606 428 
+Q 1988 428 2294 359 
+Q 2600 291 2808 84 
+Q 3016 -122 3016 -500 
+Q 3016 -781 2778 -967 
+Q 2541 -1153 2211 -1236 
+Q 1881 -1319 1600 -1319 
+Q 1316 -1319 984 -1236 
+Q 653 -1153 415 -967 
+Q 178 -781 178 -500 
+z
+M 538 -500 
+Q 538 -716 713 -861 
+Q 888 -1006 1134 -1076 
+Q 1381 -1147 1600 -1147 
+Q 1816 -1147 2062 -1076 
+Q 2309 -1006 2482 -861 
+Q 2656 -716 2656 -500 
+Q 2656 -166 2350 -67 
+Q 2044 31 1606 31 
+L 1081 31 
+Q 934 31 811 -39 
+Q 688 -109 613 -236 
+Q 538 -363 538 -500 
+z
+M 1422 1113 
+Q 1966 1113 1966 1888 
+Q 1966 2222 1850 2439 
+Q 1734 2656 1422 2656 
+Q 1109 2656 993 2439 
+Q 878 2222 878 1888 
+Q 878 1675 922 1503 
+Q 966 1331 1084 1222 
+Q 1203 1113 1422 1113 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmmi10-c1" d="M 1241 -1247 
+L 1528 -91 
+Q 1203 -91 922 61 
+Q 641 213 470 484 
+Q 300 756 300 1075 
+Q 300 1422 472 1737 
+Q 644 2053 942 2311 
+Q 1241 2569 1584 2708 
+Q 1928 2847 2266 2847 
+L 2650 4403 
+Q 2663 4441 2700 4441 
+L 2778 4441 
+Q 2803 4441 2818 4419 
+Q 2834 4397 2834 4378 
+L 2450 2847 
+Q 2691 2847 2916 2759 
+Q 3141 2672 3314 2514 
+Q 3488 2356 3584 2142 
+Q 3681 1928 3681 1684 
+Q 3681 1338 3509 1022 
+Q 3338 706 3047 453 
+Q 2756 200 2398 54 
+Q 2041 -91 1716 -91 
+L 1422 -1275 
+Q 1409 -1313 1369 -1313 
+L 1294 -1313 
+Q 1269 -1313 1255 -1289 
+Q 1241 -1266 1241 -1247 
+z
+M 1569 78 
+L 2222 2681 
+Q 2059 2681 1881 2615 
+Q 1703 2550 1545 2450 
+Q 1388 2350 1259 2222 
+Q 1103 2066 984 1853 
+Q 866 1641 805 1405 
+Q 744 1169 744 941 
+Q 744 700 847 503 
+Q 950 306 1137 192 
+Q 1325 78 1569 78 
+z
+M 1759 78 
+Q 2000 78 2272 215 
+Q 2544 353 2719 538 
+Q 2959 775 3098 1120 
+Q 3238 1466 3238 1819 
+Q 3238 2056 3134 2254 
+Q 3031 2453 2843 2567 
+Q 2656 2681 2413 2681 
+L 1759 78 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmmi10-71" d="M 941 -1159 
+Q 963 -1019 1025 -1019 
+Q 1256 -1019 1389 -981 
+Q 1522 -944 1563 -800 
+L 1838 288 
+Q 1472 -72 1106 -72 
+Q 703 -72 473 233 
+Q 244 538 244 953 
+Q 244 1363 455 1803 
+Q 666 2244 1027 2536 
+Q 1388 2828 1806 2828 
+Q 2000 2828 2156 2712 
+Q 2313 2597 2394 2406 
+Q 2431 2481 2601 2654 
+Q 2772 2828 2841 2828 
+Q 2913 2828 2913 2747 
+L 2016 -825 
+Q 2000 -919 1997 -934 
+Q 1997 -1019 2419 -1019 
+Q 2450 -1019 2467 -1044 
+Q 2484 -1069 2484 -1100 
+Q 2463 -1184 2448 -1212 
+Q 2434 -1241 2375 -1241 
+L 1006 -1241 
+Q 941 -1241 941 -1159 
+z
+M 1119 97 
+Q 1344 97 1558 267 
+Q 1772 438 1931 672 
+L 2291 2113 
+Q 2253 2338 2126 2500 
+Q 2000 2663 1791 2663 
+Q 1575 2663 1389 2486 
+Q 1203 2309 1075 2069 
+Q 950 1813 836 1366 
+Q 722 919 722 672 
+Q 722 450 817 273 
+Q 913 97 1119 97 
+z
+" transform="scale(0.015625)"/>
+     <path id="t20-Cmmi10-6b" d="M 341 116 
+Q 341 153 347 172 
+L 1275 3872 
+Q 1300 3981 1306 4044 
+Q 1306 4147 891 4147 
+Q 825 4147 825 4231 
+Q 828 4247 839 4287 
+Q 850 4328 867 4350 
+Q 884 4372 916 4372 
+L 1778 4441 
+L 1797 4441 
+Q 1797 4434 1819 4423 
+Q 1841 4413 1844 4409 
+Q 1856 4378 1856 4359 
+L 1184 1684 
+Q 1416 1781 1767 2145 
+Q 2119 2509 2317 2668 
+Q 2516 2828 2816 2828 
+Q 2994 2828 3119 2706 
+Q 3244 2584 3244 2406 
+Q 3244 2294 3197 2198 
+Q 3150 2103 3065 2043 
+Q 2981 1984 2869 1984 
+Q 2766 1984 2695 2048 
+Q 2625 2113 2625 2216 
+Q 2625 2369 2733 2473 
+Q 2841 2578 2994 2578 
+Q 2931 2663 2803 2663 
+Q 2613 2663 2436 2553 
+Q 2259 2444 2054 2239 
+Q 1850 2034 1681 1864 
+Q 1513 1694 1369 1606 
+Q 1747 1563 2025 1408 
+Q 2303 1253 2303 934 
+Q 2303 869 2278 769 
+Q 2222 528 2222 384 
+Q 2222 97 2419 97 
+Q 2650 97 2770 350 
+Q 2891 603 2969 941 
+Q 2981 978 3022 978 
+L 3097 978 
+Q 3122 978 3139 962 
+Q 3156 947 3156 922 
+Q 3156 916 3150 903 
+Q 2909 -72 2406 -72 
+Q 2225 -72 2086 12 
+Q 1947 97 1872 242 
+Q 1797 388 1797 569 
+Q 1797 672 1825 781 
+Q 1844 856 1844 922 
+Q 1844 1169 1625 1297 
+Q 1406 1425 1125 1453 
+L 800 147 
+Q 775 50 703 -11 
+Q 631 -72 538 -72 
+Q 456 -72 398 -17 
+Q 341 38 341 116 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t20-Cmr10-70" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-6c" transform="translate(55.517578 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-75" transform="translate(83.203125 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-73" transform="translate(138.720703 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-20" transform="translate(178.125 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-74" transform="translate(211.425781 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-68" transform="translate(250.244141 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-65" transform="translate(305.761719 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-20" transform="translate(350.146484 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-63" transform="translate(383.447266 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-6f" transform="translate(427.832031 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-6e" transform="translate(477.832031 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-74" transform="translate(533.349609 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-65" transform="translate(572.167969 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-6e" transform="translate(616.552734 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-74" transform="translate(672.070312 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-20" transform="translate(710.888672 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-61" transform="translate(744.189453 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-6e" transform="translate(794.189453 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-67" transform="translate(849.707031 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-6c" transform="translate(899.707031 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-65" transform="translate(927.392578 0.609375)"/>
+    <use xlink:href="#t20-Cmr10-20" transform="translate(971.777344 0.609375)"/>
+    <use xlink:href="#t20-Cmmi10-c1" transform="translate(1005.078125 0.609375)"/>
+    <use xlink:href="#t20-Cmmi10-71" transform="translate(1064.599609 -16.396875) scale(0.7)"/>
+    <use xlink:href="#t20-Cmmi10-6b" transform="translate(1095.805664 -16.396875) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg></g><g class="fragment" data-fragment-index="2"><circle cx="990" cy="128" r="100" fill="#fff" stroke="#d1d5db" stroke-width="1.4"/><line x1="880" y1="128" x2="1100" y2="128" stroke="#d1d5db" stroke-width="1"/><line x1="990" y1="238" x2="990" y2="18" stroke="#d1d5db" stroke-width="1"/><line x1="990" y1="128" x2="944.564" y2="50.3112" stroke="#0b5cad" stroke-width="3" marker-end="url(#ah-rotation)"/><line x1="990" y1="128" x2="1017.18" y2="58.0971" stroke="#b45309" stroke-width="3" marker-end="url(#ah-rotation)"/><svg x="872.437" y="24.8999" width="61.02" height="17.4206" viewBox="0 0 61.02 17.420625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t21-figure_1">
+  <g id="t21-patch_1">
    <path d="M 0 17.420625 
 L 61.02 17.420625 
 L 61.02 0 
@@ -934,11 +1584,11 @@ L 0 17.420625
 z
 " style="fill: none"/>
   </g>
-  <g id="t9-text_1">
+  <g id="t21-text_1">
    <!-- $\mathbf{R}_{m+\Delta}\mathbf{q}$ -->
    <g style="fill: #0b5cad" transform="translate(0 13.280625) scale(0.18 -0.18)">
     <defs>
-     <path id="t9-Cmb10-52" d="M 219 0 
+     <path id="t21-Cmb10-52" d="M 219 0 
 L 219 325 
 L 819 325 
 L 819 4063 
@@ -989,7 +1639,7 @@ L 1716 4063
 L 1716 2322 
 z
 " transform="scale(0.015625)"/>
-     <path id="t9-Cmmi10-6d" d="M 494 109 
+     <path id="t21-Cmmi10-6d" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -1057,7 +1707,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t9-Cmr10-2b" d="M 481 1472 
+     <path id="t21-Cmr10-2b" d="M 481 1472 
 Q 428 1472 393 1512 
 Q 359 1553 359 1600 
 Q 359 1647 393 1687 
@@ -1084,7 +1734,7 @@ L 2363 1472
 L 481 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t9-Cmr10-a2" d="M 347 0 
+     <path id="t21-Cmr10-a2" d="M 347 0 
 Q 294 0 294 50 
 Q 297 56 298 59 
 Q 300 63 300 72 
@@ -1104,7 +1754,7 @@ L 2456 3909
 L 769 513 
 z
 " transform="scale(0.015625)"/>
-     <path id="t9-Cmb10-71" d="M 1825 -1241 
+     <path id="t21-Cmb10-71" d="M 1825 -1241 
 L 1825 -916 
 L 2266 -916 
 L 2266 231 
@@ -1138,19 +1788,19 @@ Q 1297 219 1600 219
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t9-Cmb10-52" transform="translate(0 0.390625)"/>
-    <use xlink:href="#t9-Cmmi10-6d" transform="translate(80.343047 -16.615625) scale(0.7)"/>
-    <use xlink:href="#t9-Cmr10-2b" transform="translate(154.089141 -16.615625) scale(0.7)"/>
-    <use xlink:href="#t9-Cmr10-a2" transform="translate(220.760039 -16.615625) scale(0.7)"/>
-    <use xlink:href="#t9-Cmb10-71" transform="translate(285.44793 0.390625)"/>
+    <use xlink:href="#t21-Cmb10-52" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t21-Cmmi10-6d" transform="translate(80.343047 -16.615625) scale(0.7)"/>
+    <use xlink:href="#t21-Cmr10-2b" transform="translate(154.089141 -16.615625) scale(0.7)"/>
+    <use xlink:href="#t21-Cmr10-a2" transform="translate(220.760039 -16.615625) scale(0.7)"/>
+    <use xlink:href="#t21-Cmb10-71" transform="translate(285.44793 0.390625)"/>
    </g>
   </g>
  </g>
 </svg><svg x="1025.15" y="31.1716" width="57.42" height="17.4206" viewBox="0 0 57.42 17.420625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t10-figure_1">
-  <g id="t10-patch_1">
+ <g id="t22-figure_1">
+  <g id="t22-patch_1">
    <path d="M 0 17.420625 
 L 57.42 17.420625 
 L 57.42 0 
@@ -1159,11 +1809,11 @@ L 0 17.420625
 z
 " style="fill: none"/>
   </g>
-  <g id="t10-text_1">
+  <g id="t22-text_1">
    <!-- $\mathbf{R}_{n+\Delta}\mathbf{k}$ -->
    <g style="fill: #b45309" transform="translate(0 13.280625) scale(0.18 -0.18)">
     <defs>
-     <path id="t10-Cmb10-52" d="M 219 0 
+     <path id="t22-Cmb10-52" d="M 219 0 
 L 219 325 
 L 819 325 
 L 819 4063 
@@ -1214,7 +1864,7 @@ L 1716 4063
 L 1716 2322 
 z
 " transform="scale(0.015625)"/>
-     <path id="t10-Cmmi10-6e" d="M 494 109 
+     <path id="t22-Cmmi10-6e" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -1267,7 +1917,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t10-Cmr10-2b" d="M 481 1472 
+     <path id="t22-Cmr10-2b" d="M 481 1472 
 Q 428 1472 393 1512 
 Q 359 1553 359 1600 
 Q 359 1647 393 1687 
@@ -1294,7 +1944,7 @@ L 2363 1472
 L 481 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t10-Cmr10-a2" d="M 347 0 
+     <path id="t22-Cmr10-a2" d="M 347 0 
 Q 294 0 294 50 
 Q 297 56 298 59 
 Q 300 63 300 72 
@@ -1314,7 +1964,7 @@ L 2456 3909
 L 769 513 
 z
 " transform="scale(0.015625)"/>
-     <path id="t10-Cmb10-6b" d="M 91 0 
+     <path id="t22-Cmb10-6b" d="M 91 0 
 L 91 325 
 L 531 325 
 L 531 3884 
@@ -1346,19 +1996,19 @@ L 91 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t10-Cmb10-52" transform="translate(0 0.609375)"/>
-    <use xlink:href="#t10-Cmmi10-6e" transform="translate(80.343047 -16.396875) scale(0.7)"/>
-    <use xlink:href="#t10-Cmr10-2b" transform="translate(134.640898 -16.396875) scale(0.7)"/>
-    <use xlink:href="#t10-Cmr10-a2" transform="translate(201.311797 -16.396875) scale(0.7)"/>
-    <use xlink:href="#t10-Cmb10-6b" transform="translate(265.999687 0.609375)"/>
+    <use xlink:href="#t22-Cmb10-52" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t22-Cmmi10-6e" transform="translate(80.343047 -16.396875) scale(0.7)"/>
+    <use xlink:href="#t22-Cmr10-2b" transform="translate(134.640898 -16.396875) scale(0.7)"/>
+    <use xlink:href="#t22-Cmr10-a2" transform="translate(201.311797 -16.396875) scale(0.7)"/>
+    <use xlink:href="#t22-Cmb10-6b" transform="translate(265.999687 0.609375)"/>
    </g>
   </g>
  </g>
 </svg><path d="M1004.49,90.7184 A40,40 0 0 0 969.806,93.4716" stroke="#15803d" stroke-width="2.4" fill="none"/><svg x="951.968" y="56.2069" width="65.62" height="17" viewBox="0 0 65.62 17"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t11-figure_1">
-  <g id="t11-patch_1">
+ <g id="t23-figure_1">
+  <g id="t23-patch_1">
    <path d="M 0 17 
 L 65.62 17 
 L 65.62 0 
@@ -1367,11 +2017,11 @@ L 0 17
 z
 " style="fill: none"/>
   </g>
-  <g id="t11-text_1">
+  <g id="t23-text_1">
    <!-- $(m-n)\theta$ -->
    <g style="fill: #15803d" transform="translate(0 12.75) scale(0.17 -0.17)">
     <defs>
-     <path id="t11-Cmr10-28" d="M 1984 -1588 
+     <path id="t23-Cmr10-28" d="M 1984 -1588 
 Q 1628 -1306 1370 -942 
 Q 1113 -578 948 -165 
 Q 784 247 703 697 
@@ -1397,7 +2047,7 @@ L 2016 -1600
 Q 1984 -1600 1984 -1588 
 z
 " transform="scale(0.015625)"/>
-     <path id="t11-Cmmi10-6d" d="M 494 109 
+     <path id="t23-Cmmi10-6d" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -1465,7 +2115,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t11-Cmsy10-a1" d="M 653 1472 
+     <path id="t23-Cmsy10-a1" d="M 653 1472 
 Q 600 1472 565 1512 
 Q 531 1553 531 1600 
 Q 531 1647 565 1687 
@@ -1478,7 +2128,7 @@ Q 4375 1472 4325 1472
 L 653 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t11-Cmmi10-6e" d="M 494 109 
+     <path id="t23-Cmmi10-6e" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -1531,7 +2181,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t11-Cmr10-29" d="M 416 -1600 
+     <path id="t23-Cmr10-29" d="M 416 -1600 
 Q 359 -1600 359 -1544 
 Q 359 -1516 372 -1503 
 Q 1466 -434 1466 1600 
@@ -1552,7 +2202,7 @@ Q 494 -1600 475 -1600
 L 416 -1600 
 z
 " transform="scale(0.015625)"/>
-     <path id="t11-Cmmi10-b5" d="M 1031 -72 
+     <path id="t23-Cmmi10-b5" d="M 1031 -72 
 Q 741 -72 566 140 
 Q 391 353 323 653 
 Q 256 953 256 1247 
@@ -1598,20 +2248,20 @@ Q 1141 3038 959 2338
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t11-Cmr10-28"/>
-    <use xlink:href="#t11-Cmmi10-6d" transform="translate(38.818359 0)"/>
-    <use xlink:href="#t11-Cmsy10-a1" transform="translate(144.169922 0)"/>
-    <use xlink:href="#t11-Cmmi10-6e" transform="translate(239.414062 0)"/>
-    <use xlink:href="#t11-Cmr10-29" transform="translate(299.423828 0)"/>
-    <use xlink:href="#t11-Cmmi10-b5" transform="translate(338.242188 0)"/>
+    <use xlink:href="#t23-Cmr10-28"/>
+    <use xlink:href="#t23-Cmmi10-6d" transform="translate(38.818359 0)"/>
+    <use xlink:href="#t23-Cmsy10-a1" transform="translate(144.169922 0)"/>
+    <use xlink:href="#t23-Cmmi10-6e" transform="translate(239.414062 0)"/>
+    <use xlink:href="#t23-Cmr10-29" transform="translate(299.423828 0)"/>
+    <use xlink:href="#t23-Cmmi10-b5" transform="translate(338.242188 0)"/>
    </g>
   </g>
  </g>
 </svg><text x="990" y="262" font-size="17" fill="#1f2328" text-anchor="middle" font-weight="400">shift both by Δ: the same angle</text><line x1="480" y1="158" x2="860" y2="158" stroke="#6b7280" stroke-width="1.8" stroke-dasharray="6 4" marker-end="url(#ah-rotation)"/><svg x="574.42" y="136.579" width="191.16" height="17.4206" viewBox="0 0 191.16 17.420625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t12-figure_1">
-  <g id="t12-patch_1">
+ <g id="t24-figure_1">
+  <g id="t24-patch_1">
    <path d="M 0 17.420625 
 L 191.16 17.420625 
 L 191.16 0 
@@ -1620,11 +2270,11 @@ L 0 17.420625
 z
 " style="fill: none"/>
   </g>
-  <g id="t12-text_1">
+  <g id="t24-text_1">
    <!-- $m \leftarrow m+\Delta,\ \ n \leftarrow n+\Delta$ -->
    <g style="fill: #6b7280" transform="translate(0 13.677187) scale(0.18 -0.18)">
     <defs>
-     <path id="t12-Cmmi10-6d" d="M 494 109 
+     <path id="t24-Cmmi10-6d" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -1692,7 +2342,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t12-Cmsy10-c3" d="M 1722 -13 
+     <path id="t24-Cmsy10-c3" d="M 1722 -13 
 Q 1675 250 1561 494 
 Q 1447 738 1275 941 
 Q 1103 1144 884 1297 
@@ -1721,7 +2371,7 @@ L 1784 -72
 Q 1738 -72 1722 -13 
 z
 " transform="scale(0.015625)"/>
-     <path id="t12-Cmr10-2b" d="M 481 1472 
+     <path id="t24-Cmr10-2b" d="M 481 1472 
 Q 428 1472 393 1512 
 Q 359 1553 359 1600 
 Q 359 1647 393 1687 
@@ -1748,7 +2398,7 @@ L 2363 1472
 L 481 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t12-Cmr10-a2" d="M 347 0 
+     <path id="t24-Cmr10-a2" d="M 347 0 
 Q 294 0 294 50 
 Q 297 56 298 59 
 Q 300 63 300 72 
@@ -1768,7 +2418,7 @@ L 2456 3909
 L 769 513 
 z
 " transform="scale(0.015625)"/>
-     <path id="t12-Cmmi10-3b" d="M 634 -1153 
+     <path id="t24-Cmmi10-3b" d="M 634 -1153 
 Q 634 -1125 659 -1100 
 Q 891 -878 1019 -587 
 Q 1147 -297 1147 25 
@@ -1787,7 +2437,7 @@ Q 697 -1241 665 -1212
 Q 634 -1184 634 -1153 
 z
 " transform="scale(0.015625)"/>
-     <path id="t12-Cmmi10-6e" d="M 494 109 
+     <path id="t24-Cmmi10-6e" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -1841,17 +2491,17 @@ Q 494 28 494 109
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t12-Cmmi10-6d" transform="translate(0 0.421875)"/>
-    <use xlink:href="#t12-Cmsy10-c3" transform="translate(105.351562 0.421875)"/>
-    <use xlink:href="#t12-Cmmi10-6d" transform="translate(222.910156 0.421875)"/>
-    <use xlink:href="#t12-Cmr10-2b" transform="translate(328.261719 0.421875)"/>
-    <use xlink:href="#t12-Cmr10-a2" transform="translate(423.505859 0.421875)"/>
-    <use xlink:href="#t12-Cmmi10-3b" transform="translate(506.806641 0.421875)"/>
-    <use xlink:href="#t12-Cmmi10-6e" transform="translate(610.578842 0.421875)"/>
-    <use xlink:href="#t12-Cmsy10-c3" transform="translate(688.147201 0.421875)"/>
-    <use xlink:href="#t12-Cmmi10-6e" transform="translate(805.705795 0.421875)"/>
-    <use xlink:href="#t12-Cmr10-2b" transform="translate(883.274154 0.421875)"/>
-    <use xlink:href="#t12-Cmr10-a2" transform="translate(978.518295 0.421875)"/>
+    <use xlink:href="#t24-Cmmi10-6d" transform="translate(0 0.421875)"/>
+    <use xlink:href="#t24-Cmsy10-c3" transform="translate(105.351562 0.421875)"/>
+    <use xlink:href="#t24-Cmmi10-6d" transform="translate(222.910156 0.421875)"/>
+    <use xlink:href="#t24-Cmr10-2b" transform="translate(328.261719 0.421875)"/>
+    <use xlink:href="#t24-Cmr10-a2" transform="translate(423.505859 0.421875)"/>
+    <use xlink:href="#t24-Cmmi10-3b" transform="translate(506.806641 0.421875)"/>
+    <use xlink:href="#t24-Cmmi10-6e" transform="translate(610.578842 0.421875)"/>
+    <use xlink:href="#t24-Cmsy10-c3" transform="translate(688.147201 0.421875)"/>
+    <use xlink:href="#t24-Cmmi10-6e" transform="translate(805.705795 0.421875)"/>
+    <use xlink:href="#t24-Cmr10-2b" transform="translate(883.274154 0.421875)"/>
+    <use xlink:href="#t24-Cmr10-a2" transform="translate(978.518295 0.421875)"/>
    </g>
   </g>
  </g>

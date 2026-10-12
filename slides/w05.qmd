@@ -317,6 +317,10 @@ Chen et al. 2306.15595 · bloc97, r/LocalLLaMA 2023-06 (a forum post) · Peng et
 
 : {tbl-colwidths="[13,35,24,28]"}
 
+::: {.small}
+Why that exponent: the slowest pair is $\theta_{d_{\text{head}}/2-1} = b^{-(d_{\text{head}}-2)/d_{\text{head}}}$, so $b \leftarrow b\,s^{d_{\text{head}}/(d_{\text{head}}-2)}$ multiplies it by $s^{-1}$ exactly, while $\theta_0 = b^0 = 1$ does not move.
+:::
+
 ::: {.claim}
 None of the three touches a trained weight. All three change what the model *sees*; the bill is paid in resolution, in drift, or in a second round of evaluation.
 :::
@@ -408,7 +412,7 @@ Liu et al., Lost in the Middle, TACL 12 (2024) §2, §4 · this week's reading, 
 **Live**: three questions — answer at the beginning, the middle, the end — watch the reply.
 :::
 ::: {.column width="50%"}
-| answer position | ≈ 4k | ≈ 16k |
+| answer position | $\approx 4\text{k}$ | $\approx 16\text{k}$ |
 |:---|:---:|:---:|
 | $1$ | | |
 | $\lfloor K/4 \rfloor$ | | |
@@ -649,7 +653,7 @@ compare with your sentence from p7 · Misconception 10: "with 1M context, RAG is
 |---|---|---|
 | **6** · a longer context window is better | three claims — nominal, effective, cost — measured three ways; marketing states the first | W12 |
 | **7** · the long-context bottleneck is attention's $O(L^2)$ compute | prefill's $L^2$ term leads only past $12d$; decode is bound by KV bandwidth, linear in $L$, at a roofline point that does not move | W11 |
-| **8** · the attention sink is a bug | softmax's normalisation; sigmoid attention shows none (≤ 1B) | — |
+| **8** · the attention sink is a bug | softmax's normalisation; sigmoid attention shows none ($\leq 1$B) | — |
 | **9** · StreamingLLM solved long context | an unbounded stream without collapse; whatever left the window is gone | W11 |
 | **10** · with 1M tokens of context, RAG is over | cost, attribution and updates do not go away; the evidence says hybrid | W12 |
 
@@ -658,7 +662,7 @@ compare with your sentence from p7 · Misconception 10: "with 1M context, RAG is
 
 ## Next week: when the KV itself is too expensive
 
-- Today's row: $M_{\text{KV}} \propto L$, decode's attention side $\propto L$ — **at 128k the cache is four times the 4-bit weights** (W3 demo 2). Sparse attention changes *which* keys are read; next week changes *what produces them*
+- Today's row: $M_{\text{KV}} \propto L$, decode's attention side $\propto L$ — **at 128k the cache is close to four times the 4-bit weights** (W3 demo 2). Sparse attention changes *which* keys are read; next week changes *what produces them*
 - **W6, three routes**: MoE (FLOPs $\propto N_{\text{active}}$, memory $\propto N_{\text{total}}$), SSMs (a fixed-size state — the "notebook" that never stamps a time), linear attention; where each breaks
 - position returns in a new form: an SSM carries order in its recurrence, with no $\theta_i$ to extrapolate
 
