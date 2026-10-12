@@ -524,6 +524,7 @@ Rajbhandari 2019 (ZeRO) §3 · $N = 8 \times 10^9$ nominal · activations not in
 | **Prefill**, once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | compute | W3 · W11 |
 | **Decode**, per generated token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$ FLOPs; $t_{\text{step}} \geq (Nb + M_{\text{KV}})/\text{BW}$ | memory bandwidth | W3 · W11 |
 | **KV cache**, state carried | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ = 512 KiB / token (MHA), 128 KiB (GQA-8) | capacity, then bandwidth | W3 · W5 · W11 |
+| **Long context**, as $L$ grows | KV $\propto L$ · decode's attention side $\propto L$ · prefill's attention side $\propto L^2$, the main term past $L \approx 12d$ | all three, in that order | W5 · W11 |
 | **MoE** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | both, separately | W6 |
 
 : {tbl-colwidths="[20,52,15,13]"}

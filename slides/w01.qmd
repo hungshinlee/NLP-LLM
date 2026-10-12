@@ -238,16 +238,17 @@ Item 4 is the one that carries furthest. It comes back in W7, W11 and W12.
 | **Prefill**, once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | compute | W3 · W11 |
 | **Decode**, per generated token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$ FLOPs | memory bandwidth | W3 · W11 |
 | **KV cache**, state carried | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ bytes | capacity, then bandwidth | W3 · W5 |
+| **Long context**, as $L$ grows | KV and decode's attention side $\propto L$; prefill's $\propto L^2$ | all three | W5 |
 | **MoE** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | both, separately | W6 |
 
-: {tbl-colwidths="[22,50,17,11]"}
+: {tbl-colwidths="[21,48,16,15]"}
 
 ::: {.small}
 $N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ context so far · $d$ width · $n_{\text{layer}}$ layers · $b$ bytes per element · $n_{\text{kv}}$ KV heads · $6 = 2$ forward $+\,4$ backward
 :::
 
 ::: {.claim}
-**Decode is short of bandwidth, not FLOPs** — and the KV cache is what fills the road.
+**Decode is short of bandwidth, not FLOPs** — the KV cache is what fills the road.
 :::
 
 ## Where the $6$ in $6ND$ comes from

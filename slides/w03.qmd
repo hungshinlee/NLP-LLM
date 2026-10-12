@@ -649,6 +649,7 @@ Michel et al. 1905.10650 · Voita et al. 1905.09418 · Olsson et al. 2209.11895 
 | **Prefill**, once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | compute | **today: the second term** · W11 |
 | **Decode**, per generated token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$ FLOPs; $t_{\text{step}} \geq (Nb + M_{\text{KV}})/\text{BW}$ | memory bandwidth | **today: the bound, the $L$ term** · W11 |
 | **KV cache**, state carried | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ = **512 KiB / token → 16 GiB at 32k** (MHA); **4 GiB** (GQA-8) | capacity, then bandwidth | **today** · W5 · W11 |
+| **Long context**, as $L$ grows | KV $\propto L$ · decode's attention side $\propto L$ · prefill's attention side $\propto L^2$, the main term past $L \approx 12d$ | all three, in that order | W5 · W11 |
 | **MoE** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | both, separately | W6 |
 
 : {tbl-colwidths="[22,48,17,13]"}

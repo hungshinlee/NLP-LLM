@@ -12,6 +12,7 @@ You get this in week 1, and each week adds the layer it is responsible for. It i
 | **Prefill** — once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | **Compute.** The whole prompt goes through together, so the matrices are large enough to keep the GPU busy. The second term is attention's own bill; it matters once $L_{\text{in}} > 12d$ (W3) |
 | **Decode** — per generated token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$ FLOPs | **Memory bandwidth.** One token's worth of arithmetic against a full read of all $N$ weights and the whole KV cache out of HBM — about one FLOP per byte on either road, at any $L$ (W3) |
 | **KV cache** — state carried, not FLOPs | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ bytes | **Capacity first, then bandwidth.** The leading $2$ is key $+$ value; the whole thing is re-read at every decode step |
+| **Long context** — as $L$ grows | KV $\propto L$ · decode's attention side $\propto L$ · prefill's attention side $\propto L^2$ | **All three, in that order.** Past $L \approx 12d$ the $L^2$ term is prefill's main term; the KV cache and the decode step grow linearly with every token kept (W5) |
 | **MoE** — the two columns come apart | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | Both, but separately — which is the entire point of the architecture (W6) |
 
 :::
