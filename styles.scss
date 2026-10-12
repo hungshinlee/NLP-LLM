@@ -49,6 +49,10 @@ main table {
   td, th { vertical-align: top; }
 }
 
+// Demos 表的標題欄（build_weeks.py 的 format_demos_table 產生）：
+// **Demo N** 一行、副標一行小字；欄寬比例也在那支腳本裡。
+.demo-sub { display: block; font-size: .9rem; line-height: 1.35; color: #57606a; margin-top: .15rem; }
+
 // ── 算力帳本：syllabus 的核心表格，全課每週回填的那一張 ────
 // 公式欄是這張表的視覺主角：置中、不折行、KaTeX 在表格裡預設偏小，
 // 放大一點才和正文裡的 $6ND$ 同級。欄寬寫死，否則長說明會把公式擠扁。

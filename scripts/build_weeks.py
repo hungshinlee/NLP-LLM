@@ -129,6 +129,54 @@ def trim(lines):
     return lines
 
 
+# ── Demos 表的版面 ────────────────────────────────────────
+# 大綱裡的 Demos 表寫成 |---|---|---|---|---|，Pandoc 對超過 --columns 的 pipe
+# table 會用分隔列的破折號數決定相對欄寬，等長就是五欄各 20%——標題欄被擠成
+# 兩三個字一行、說明欄也只有 20%。欄位是固定的（空 / Slides / What it shows /
+# Needs / Runs on），所以比例由這裡統一給，不在大綱裡每週各寫一次。
+# 標題欄同時改成兩行：連結的 **Demo N** 在上、副標 .demo-sub 小字在下
+# （CSS 在 styles.scss），與投影片 footer 的「Demo N」對得上。
+# 2026-10-12 起，兩門課相同。
+DEMOS_HEADER = re.compile(r"^\| *\| *Slides? *\| *What it shows *\| *Needs *\| *Runs on *\|$")
+DEMOS_SEP = "|" + "|".join("-" * n for n in (22, 7, 46, 15, 10)) + "|"
+_DEMO_LINK = re.compile(r"^\[Demo (\d+) · (.+?)\]\((\S+)\)$")
+_DEMO_PLAIN = re.compile(r"^Demo (\d+) · (.+)$")
+
+def _demo_title(cell):
+    m = _DEMO_LINK.match(cell)
+    if m:
+        return "[**Demo %s**](%s)<br>[%s]{.demo-sub}" % (m.group(1), m.group(3), m.group(2))
+    m = _DEMO_PLAIN.match(cell)
+    if m:
+        return "**Demo %s**<br>[%s]{.demo-sub}" % (m.group(1), m.group(2))
+    return cell
+
+def format_demos_table(lines, where):
+    out, i, n = [], 0, len(lines)
+    while i < n:
+        line = lines[i]
+        if not DEMOS_HEADER.match(line.strip()):
+            out.append(line); i += 1; continue
+        out.append(line); i += 1
+        if i >= n or not re.match(r"^\|[-| :]+\|$", lines[i].strip()):
+            sys.exit("%s：Demos 表的表頭下面不是分隔列" % where)
+        out.append(DEMOS_SEP); i += 1
+        while i < n and lines[i].startswith("|"):
+            m = re.match(r"^\| (.+?) \| ", lines[i])
+            out.append(("| %s | " % _demo_title(m.group(1))) + lines[i][m.end():]
+                       if m else lines[i])
+            i += 1
+        # 表格結束後，空行緊接著又是一列：大綱多了一個空行，pipe table 被切斷，
+        # 後面那列會以純文字上站（2026-10-12 NLP-LLM W5 Demo 4 就是這樣）。
+        j = i
+        while j < n and not lines[j].strip():
+            j += 1
+        if j < n and lines[j].startswith("|") and j > i:
+            sys.exit("%s：Demos 表被空行切斷（第一列：%s…）——刪掉大綱裡那個空行"
+                     % (where, lines[j][:60]))
+    return out
+
+
 def yaml_escape(s):
     return s.replace('"', '\\"')
 
@@ -289,6 +337,7 @@ def main():
         if not has_english(raw):
             no_en.append(wnum)
         body = trim(strip_en(strip_hr(demote(public_only(raw)))))
+        body = format_demos_table(body, "W%d" % wnum)
         if not body:
             sys.exit("W%d 過濾後沒有任何可公開內容——索引會產生死連結。"
                      "請檢查 visibility.PUBLIC_SECTIONS 或該週的區塊標題。" % wnum)
