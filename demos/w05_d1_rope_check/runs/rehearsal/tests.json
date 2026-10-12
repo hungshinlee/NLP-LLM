@@ -1,0 +1,80 @@
+{
+ "date": "2026-10-12T11:02:50",
+ "impl": "rope_final.py",
+ "torch": "2.14.0",
+ "python": "3.12.14",
+ "machine": "arm64",
+ "macos": "27.0.1",
+ "device": "cpu",
+ "dtype": "float64",
+ "elapsed_s": 0.002064228057861328,
+ "tests": {
+  "a": {
+   "status": "ok",
+   "message": "m - n = 7, m = 0..900: score = -8.306380, max difference over ten m = 3.1e-13 (float64); the same in float32 moves by 1.0e-04",
+   "score": -8.306379796198785,
+   "max_abs_diff_float64": 3.126388037344441e-13,
+   "max_abs_diff_float32": 0.00010204315185546875,
+   "d_head": 128,
+   "base": 10000.0,
+   "delta": 7,
+   "shifts": [
+    0,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900
+   ]
+  },
+  "b": {
+   "status": "ok",
+   "message": "additive stamp under the same shift: score moves by 38.29 (q'k and p_m'p_n are constant to 9e-14; all of it is in the cross terms q'p_n + p_m'k: 38.29)",
+   "max_abs_diff_total": 38.28943624659914,
+   "max_abs_diff_qk": 0.0,
+   "max_abs_diff_pp": 8.526512829121202e-14,
+   "max_abs_diff_cross": 38.28943624659907,
+   "totals": [
+    21.11861222594219,
+    12.017316894676856,
+    14.6678792885067,
+    28.07587775282541,
+    13.31560063478301,
+    23.410510422696994,
+    29.606421125046865,
+    50.306753141276,
+    49.24547250973388,
+    32.42584686003661
+   ]
+  },
+  "c": {
+   "status": "ok",
+   "message": "rotate v too: output[0] moves by 0.037 as m shifts (unrotated: -0.218, fixed); |output| = 10.3179 constant to 1e-14 — the whole output is rotated by the absolute position",
+   "max_abs_diff_component0": 0.03655502085461679,
+   "max_abs_diff_norm": 1.2434497875801753e-14,
+   "component0": [
+    -0.011439099757554166,
+    -0.01727249344784433,
+    -0.018349694385528893,
+    -0.014374082090861537,
+    -0.006440390131995696,
+    0.003266742179430987,
+    0.012074336996438798,
+    0.017557115145350147,
+    0.018205326469087894,
+    0.013840478035555853
+   ],
+   "norm": 10.3179383246215,
+   "unrotated_component0": -0.21774879177876416,
+   "key_positions": "n, n+3",
+   "weights": [
+    0.5,
+    0.5
+   ]
+  }
+ }
+}

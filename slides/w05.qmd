@@ -255,7 +255,7 @@ W3 p15 · W3 p29 · DeepSeek-AI, arXiv:2405.04434 §2.1
 
 1. `rope_angles(d_head, base)` → $\theta_i$, $i = 0, \dots, d_{\text{head}}/2 - 1$
 2. `rotate(x, m, theta)` — the pairwise rotation by $m\theta_i$
-3. `score(q, k, m, n)` — $(\mathbf{R}_m\mathbf{q})^\top(\mathbf{R}_n\mathbf{k})$
+3. `score(q, k, m, n, theta)` — $(\mathbf{R}_m\mathbf{q})^\top(\mathbf{R}_n\mathbf{k})$
 
 Pure `torch`, **pinned to CPU in float64** (Metal has no double — W3 demo 1's reason). `rope_final.py` is the fallback.
 :::
@@ -270,7 +270,7 @@ Pure `torch`, **pinned to CPU in float64** (Metal has no double — W3 demo 1's 
 :::
 
 ::: {.footer}
-Demo 1 · live coding, `torch` on CPU · `w05_d1_rope_check/` · not yet built (2026-10-11)
+Demo 1 · live coding, `torch` on CPU, float64 · `w05_d1_rope_check/` · not yet rehearsed (2026-10-12)
 :::
 
 ## The wavelengths: $d_{\text{head}}/2$ hands, from $2\pi$ to $2\pi b$
