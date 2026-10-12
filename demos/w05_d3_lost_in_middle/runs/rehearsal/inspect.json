@@ -1,0 +1,46 @@
+{
+ "date": "2026-10-12T12:54:20",
+ "model": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+ "revision": "241a666dad6cb93c8ff213d39a7f34a36bf26db4",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "max_position_embeddings": 131072,
+ "rope_scaling": {
+  "factor": 8.0,
+  "low_freq_factor": 1.0,
+  "high_freq_factor": 4.0,
+  "original_max_position_embeddings": 8192,
+  "rope_type": "llama3"
+ },
+ "calibration": [
+  {
+   "label": "4k",
+   "K": 81,
+   "target_tokens": 4096,
+   "tokens_at_K": 4101,
+   "tokens_per_pair": 50.12,
+   "tokens_base": 40.0,
+   "fixed": false
+  },
+  {
+   "label": "16k",
+   "K": 326,
+   "target_tokens": 16384,
+   "tokens_at_K": 16182,
+   "tokens_per_pair": 50.12,
+   "tokens_base": 40.0,
+   "fixed": false
+  }
+ ],
+ "example_prompt_tokens": 4150,
+ "system": "Answer with the value only: a single UUID, no other words.",
+ "instruction": "Extract the value corresponding to the specified key in the JSON object below."
+}

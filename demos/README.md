@@ -32,7 +32,7 @@ demos/
 | `torch` only, CPU | W3 demo 1; W4 demo 1 (tests, `count`); W5 demo 1 (float64) | any laptop |
 | `torch` only, training on `mps` | W4 demo 1 (`rehearse`), W4 demo 2 (`rehearse`), W5 demo 2 (`rehearse`; two ≈ 10-minute training runs) | Apple silicon as tested; falls back to CPU (slow); `cuda` accepted by the code but never run. `replay` needs no device at all |
 | `torch` + `transformers` + a small Hugging Face model | W3 demo 3 (CPU), W4 demo 3 (`mps`, or `--device cpu`) | any laptop with ~4 GB free RAM and a network connection for the first download |
-| `mlx` + `mlx-lm` + 4-bit MLX models | W1 demo 1 (two ≈ 15 GB models), W1 demo 2 (16 GB + 4 GB loaded together), W2 demo 3, W3 demo 2 (≈ 4.5 GB each) | **Apple silicon only**; W1's need a 32 GB Mac |
+| `mlx` + `mlx-lm` + 4-bit MLX models | W1 demo 1 (two ≈ 15 GB models), W1 demo 2 (16 GB + 4 GB loaded together), W2 demo 3, W3 demo 2, W5 demo 3 (≈ 4.5 GB each; W5 demo 3 adds 2 GiB of KV cache at 16k) | **Apple silicon only**; W1's need a 32 GB Mac |
 
 Cross-folder dependencies to know about: W4 demos 1 and 2 import W3 demo 1's `attention_final.py` and each other by relative path, and W5 demo 2 imports W4 demo 1's `block_final.py` and `train.py` the same way; W2 demo 1 and W4 demo 3 read short texts from `w01_d2_bpb/texts/`; W1 demo 1 and W4 demo 1 read `slides/assets/w01/w01-data.json` from the repository root — keep the folder layout as it is. W4 demos 1 and 2 and W5 demo 2 train on `tinyshakespeare.txt`, which is not in the repository; W4 demo 1's README says where to download it and where to put it.
 

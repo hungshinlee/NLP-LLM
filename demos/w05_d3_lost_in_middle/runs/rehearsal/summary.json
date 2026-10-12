@@ -1,0 +1,230 @@
+{
+ "cells": [
+  {
+   "size": "4k",
+   "K": 81,
+   "pos_name": "first",
+   "pos_label": "1",
+   "pos": 1,
+   "n": 20,
+   "em": 20,
+   "lenient": 20,
+   "acc": 1.0,
+   "acc_lenient": 1.0,
+   "kinds": {
+    "correct": 20
+   },
+   "mean_offset": null,
+   "mean_prompt_tokens": 4122,
+   "mean_seconds": 2.39,
+   "mean_prompt_tps": 2007
+  },
+  {
+   "size": "4k",
+   "K": 81,
+   "pos_name": "quarter",
+   "pos_label": "⌊K/4⌋",
+   "pos": 20,
+   "n": 20,
+   "em": 20,
+   "lenient": 20,
+   "acc": 1.0,
+   "acc_lenient": 1.0,
+   "kinds": {
+    "correct": 20
+   },
+   "mean_offset": null,
+   "mean_prompt_tokens": 4122,
+   "mean_seconds": 2.33,
+   "mean_prompt_tps": 2042
+  },
+  {
+   "size": "4k",
+   "K": 81,
+   "pos_name": "middle",
+   "pos_label": "⌊K/2⌋",
+   "pos": 40,
+   "n": 20,
+   "em": 20,
+   "lenient": 20,
+   "acc": 1.0,
+   "acc_lenient": 1.0,
+   "kinds": {
+    "correct": 20
+   },
+   "mean_offset": null,
+   "mean_prompt_tokens": 4122,
+   "mean_seconds": 2.35,
+   "mean_prompt_tps": 2058
+  },
+  {
+   "size": "4k",
+   "K": 81,
+   "pos_name": "three_quarter",
+   "pos_label": "⌊3K/4⌋",
+   "pos": 60,
+   "n": 20,
+   "em": 20,
+   "lenient": 20,
+   "acc": 1.0,
+   "acc_lenient": 1.0,
+   "kinds": {
+    "correct": 20
+   },
+   "mean_offset": null,
+   "mean_prompt_tokens": 4122,
+   "mean_seconds": 2.41,
+   "mean_prompt_tps": 2018
+  },
+  {
+   "size": "4k",
+   "K": 81,
+   "pos_name": "last",
+   "pos_label": "K",
+   "pos": 81,
+   "n": 20,
+   "em": 20,
+   "lenient": 20,
+   "acc": 1.0,
+   "acc_lenient": 1.0,
+   "kinds": {
+    "correct": 20
+   },
+   "mean_offset": null,
+   "mean_prompt_tokens": 4122,
+   "mean_seconds": 2.36,
+   "mean_prompt_tps": 2045
+  },
+  {
+   "size": "16k",
+   "K": 326,
+   "pos_name": "first",
+   "pos_label": "1",
+   "pos": 1,
+   "n": 20,
+   "em": 20,
+   "lenient": 20,
+   "acc": 1.0,
+   "acc_lenient": 1.0,
+   "kinds": {
+    "correct": 20
+   },
+   "mean_offset": null,
+   "mean_prompt_tokens": 16278,
+   "mean_seconds": 14.03,
+   "mean_prompt_tps": 1271
+  },
+  {
+   "size": "16k",
+   "K": 326,
+   "pos_name": "quarter",
+   "pos_label": "⌊K/4⌋",
+   "pos": 81,
+   "n": 20,
+   "em": 20,
+   "lenient": 20,
+   "acc": 1.0,
+   "acc_lenient": 1.0,
+   "kinds": {
+    "correct": 20
+   },
+   "mean_offset": null,
+   "mean_prompt_tokens": 16278,
+   "mean_seconds": 14.46,
+   "mean_prompt_tps": 1231
+  },
+  {
+   "size": "16k",
+   "K": 326,
+   "pos_name": "middle",
+   "pos_label": "⌊K/2⌋",
+   "pos": 163,
+   "n": 20,
+   "em": 20,
+   "lenient": 20,
+   "acc": 1.0,
+   "acc_lenient": 1.0,
+   "kinds": {
+    "correct": 20
+   },
+   "mean_offset": null,
+   "mean_prompt_tokens": 16278,
+   "mean_seconds": 14.79,
+   "mean_prompt_tps": 1205
+  },
+  {
+   "size": "16k",
+   "K": 326,
+   "pos_name": "three_quarter",
+   "pos_label": "⌊3K/4⌋",
+   "pos": 244,
+   "n": 20,
+   "em": 20,
+   "lenient": 20,
+   "acc": 1.0,
+   "acc_lenient": 1.0,
+   "kinds": {
+    "correct": 20
+   },
+   "mean_offset": null,
+   "mean_prompt_tokens": 16278,
+   "mean_seconds": 14.9,
+   "mean_prompt_tps": 1201
+  },
+  {
+   "size": "16k",
+   "K": 326,
+   "pos_name": "last",
+   "pos_label": "K",
+   "pos": 326,
+   "n": 20,
+   "em": 20,
+   "lenient": 20,
+   "acc": 1.0,
+   "acc_lenient": 1.0,
+   "kinds": {
+    "correct": 20
+   },
+   "mean_offset": null,
+   "mean_prompt_tokens": 16278,
+   "mean_seconds": 14.83,
+   "mean_prompt_tps": 1197
+  }
+ ],
+ "date": "2026-10-12T13:24:29",
+ "model": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit",
+ "revision": "241a666dad6cb93c8ff213d39a7f34a36bf26db4",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "fake": false,
+ "q": 20,
+ "seconds_total": 1697,
+ "peak_memory_gb": 7.29710596,
+ "max_position_embeddings": 131072,
+ "rope_scaling": {
+  "factor": 8.0,
+  "low_freq_factor": 1.0,
+  "high_freq_factor": 4.0,
+  "original_max_position_embeddings": 8192,
+  "rope_type": "llama3"
+ },
+ "system": "Answer with the value only: a single UUID, no other words.",
+ "instruction": "Extract the value corresponding to the specified key in the JSON object below.",
+ "temperature": 0.0
+}

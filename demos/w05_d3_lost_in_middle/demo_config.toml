@@ -1,0 +1,53 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W5 demo 3（投影片 p29「Replay + live: demo 3 — key-value retrieval, answer at five positions」）的設定
+#
+# 改這個檔就能換模型、換 context 檔次、換題數，不必動程式。
+
+[demo]
+title = "W5 · Replay + live: demo 3 — key-value retrieval, answer at five positions"
+# 每個（檔次 × 位置）幾題。彩排 = len(sizes) × 5 × q 次生成。
+q = 20
+# 題目的亂數種子：同一個 seed 產生同一批鍵值對與同一個答案鍵；現場 show 用 seed + live_offset，和彩排的題不同。
+seed = 20261012
+live_offset = 1000
+# 生成：值只有一個 UUID（36 字元，約 20 多個 token），48 夠；temperature 0 = greedy。
+max_tokens = 48
+temperature = 0.0
+# 現場（show）用哪一檔、問哪三個位置（first / quarter / middle / three_quarter / last）。
+live_size = "16k"
+live_positions = ["first", "middle", "last"]
+
+# ── 兩個 context 檔次 ───────────────────────────────────────────
+# k = 0 時由 target_tokens 校準（inspect 會印出校準結果與實際的 prompt token 數）；
+# 填了 k 就固定用那個 k。token 數包含 chat template 與指令，不只 JSON。
+[[sizes]]
+label = "4k"
+target_tokens = 4096
+k = 0
+
+[[sizes]]
+label = "16k"
+target_tokens = 16384
+k = 0
+
+# ── 提示詞 ─────────────────────────────────────────────────────
+# 設計照 Liu et al.（TACL 2024）§4 的合成 key-value retrieval：JSON 物件、隨機 UUID 鍵值對、問一個鍵的值。
+# 措辭是本 demo 自己寫的，不是論文的原句。
+[prompt]
+system = "Answer with the value only: a single UUID, no other words."
+instruction = "Extract the value corresponding to the specified key in the JSON object below."
+question = "Key: \"{key}\"\nCorresponding value:"
+
+# ── 模型 ───────────────────────────────────────────────────────
+# 主模型與 W3 demo 2 同一個（已下載並鎖在 ../versions.lock，不必 fetch）。備用 Qwen3 8B 要關 thinking（程式會做）。
+[models.primary]
+repo = "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit"
+label = "Llama 3.1 8B Instruct (4-bit MLX)"
+note = "max_position_embeddings 131072、rope_scaling llama3 factor 8（p25 現場讀）；兩檔都遠在名義長度之內"
+revision = ""
+
+[models.backup]
+repo = "mlx-community/Qwen3-8B-4bit"
+label = "Qwen3 8B (4-bit MLX)"
+note = "名義長度 40960；chat template 支援 enable_thinking=False"
+revision = ""
