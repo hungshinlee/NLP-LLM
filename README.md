@@ -30,7 +30,7 @@ Three threads run through all fourteen weeks and are asked of every layer: **Rep
 
 ## What is published so far
 
-Weeks are opened on the site as they are taught. As of October 2026, **W1–W4** are open: week pages, slides, and the demo code for every week. The remaining weeks appear on the course map as greyed-out placeholders; their pages are generated but not rendered, so there are no dead links.
+Weeks are opened on the site as they are taught. As of October 2026, **W1–W5** are open: week pages, slides, and the demo code for every week. The remaining weeks appear on the course map as greyed-out placeholders; their pages are generated but not rendered, so there are no dead links.
 
 | | W1 | W2 | W3 | W4 | W5–W14 |
 |---|---|---|---|---|---|
