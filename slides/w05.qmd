@@ -407,27 +407,27 @@ Liu et al., Lost in the Middle, TACL 12 (2024) §2, §4 · this week's reading, 
 ::: {.column width="50%"}
 **The task** (Liu et al. §4): $K$ random UUID key–value pairs as JSON; ask for one key's value. The answer pair sits at position $1, \lfloor K/4 \rfloor, \lfloor K/2 \rfloor, \lfloor 3K/4 \rfloor, K$; $Q$ questions each; exact match.
 
-**Model**: Llama 3.1 8B Instruct, 4-bit MLX — the one W3 demo 2 measured. Two context sizes, about 4k and 16k tokens.
+**Model**: Llama 3.1 8B Instruct, 4-bit MLX — the one W3 demo 2 measured. Two context sizes: $K = 81$ pairs ($\approx 4.1\text{k}$ tokens) and $K = 326$ ($\approx 16.2\text{k}$).
 
 **Live**: three questions — answer at the beginning, the middle, the end — watch the reply.
 :::
 ::: {.column width="50%"}
 | answer position | $\approx 4\text{k}$ | $\approx 16\text{k}$ |
 |:---|:---:|:---:|
-| $1$ | | |
-| $\lfloor K/4 \rfloor$ | | |
-| $\lfloor K/2 \rfloor$ | | |
-| $\lfloor 3K/4 \rfloor$ | | |
-| $K$ | | |
+| $1$ | $20/20$ | $20/20$ |
+| $\lfloor K/4 \rfloor$ | $20/20$ | $20/20$ |
+| $\lfloor K/2 \rfloor$ | $20/20$ | $20/20$ |
+| $\lfloor 3K/4 \rfloor$ | $20/20$ | $20/20$ |
+| $K$ | $20/20$ | $20/20$ |
 
 : {tbl-colwidths="[40,30,30]"}
 
-*exact-match accuracy over $Q$ questions; rehearsed, replayed*
+*exact-match accuracy over $Q = 20$ questions; rehearsed 2026-10-12, replayed — $200/200$, every reply a bare UUID*
 :::
 :::
 
 ::: {.footer}
-Demo 3 · `w05_d3_lost_in_middle/` · MLX, as W3 demo 2 · built, not yet rehearsed (2026-10-12)
+Demo 3 · `w05_d3_lost_in_middle/` · Llama 3.1 8B 4-bit, MLX · rehearsed 2026-10-12 · 200/200 at both sizes
 :::
 
 ## NIAH is a lower bound: what each evaluation takes away

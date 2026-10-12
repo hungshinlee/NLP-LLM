@@ -20,7 +20,7 @@ This is a retrieval task, not a reading task: a flat curve says the model can lo
 | Packages | `mlx`, `mlx-lm` (git commit pinned in `../versions.lock`), `huggingface-hub`; `transformers` for `inspect` (tokenizer only) |
 | Model | `mlx-community/Meta-Llama-3.1-8B-Instruct-4bit` (≈ 4.5 GB, revision pinned in `../versions.lock`; shared with W2 demo 3 and W3 demo 2). Backup: `mlx-community/Qwen3-8B-4bit` |
 | Device | **Apple silicon only** (MLX). About 4.5 GB for the weights plus 2 GiB of KV cache at 16k |
-| Time | `rehearse` is 200 generations; prefill dominates — on the order of a second per 4k question and several seconds per 16k question (W3 demo 2's measured prefill rates). Not yet timed |
+| Time | `rehearse` is 200 generations: 1,697 s (28 min) on the machine below — about 2.4 s per 4k question and 14–15 s per 16k question, prefill dominating; peak memory 7.3 GB |
 | Portability | tested only on an Apple M5 Max (64 GB), macOS 27.0.1, Python 3.12 |
 
 ## Run it
@@ -40,7 +40,15 @@ Without `present.sh`: `python demo.py replay`, `python demo.py rehearse`, and so
 
 ## What you should see
 
-**Not yet rehearsed (2026-10-12).** The rehearsal record (`runs/rehearsal/summary.json`) is checked in once it exists, and this section and the slide's table are filled from it. No expected numbers are written here on purpose: the shape of the curve at 16k is the result, not the premise.
+From `runs/rehearsal/summary.json` (2026-10-12, Apple M5 Max, macOS 27.0.1, Python 3.12, mlx 0.32.2, mlx-lm 0.32.0; `inspect` calibrated $K = 81$ for ≈ 4.1k tokens and $K = 326$ for ≈ 16.2k):
+
+| answer position | ≈ 4k ($K = 81$) | ≈ 16k ($K = 326$) |
+|---|---|---|
+| $1$, $\lfloor K/4 \rfloor$, $\lfloor K/2 \rfloor$, $\lfloor 3K/4 \rfloor$, $K$ | 20/20 at every position | 20/20 at every position |
+
+**200 of 200 correct.** Every reply was a bare UUID — no quotes, no extra words — so the exact and lenient counts coincide, and the error-kind labels were never used. There is no U-shape here: this model, at these two lengths, on this synthetic task, retrieves a literal key from among 325 identical-looking distractors at every position. Mean time per question was 2.4 s at 4k and 14.6 s at 16k (prefill at roughly 2,000 and 1,200 tokens per second as reported by `stream_generate`, including the 19–28 generated tokens); the three live questions in `show` also all passed, one of them taking twice as long as the others for no identified reason.
+
+What this does and does not show: the result holds for one model, two lengths and one retrieval task, and says nothing about understanding. Liu et al. saw the U on 2023 models with this design; a mid-2024 8B model is flat on it at 16k. That is the lesson the next slide draws — a needle test that today's models pass everywhere no longer measures anything, and the evaluations that followed (RULER, NoLiMa, HELMET) each take something away from the needle to make it measure again. Pushing the context to 32k or more, or removing the literal overlap between question and key, is how one would look for the edge; neither was done here.
 
 ## Files
 
