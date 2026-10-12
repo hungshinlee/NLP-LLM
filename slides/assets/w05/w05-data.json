@@ -589,18 +589,18 @@
    0.018771961854286978,
    0.018771961854287145,
    0.018771961854286034,
-   0.01877196185428598,
-   0.018771961854286312,
-   0.018771961854285646,
+   0.0187719618542862,
+   0.018771961854286423,
+   0.01877196185428609,
    0.0187719618542862,
    0.01877196185428609,
-   0.018771961854285646
+   0.018771961854285202
   ],
-  "rope_max_abs_diff": 1.4988010832439613e-15,
+  "rope_max_abs_diff": 1.942890293094024e-15,
   "additive_scores": [
    -3.476006541162614,
    0.27277657883998385,
-   1.316834680909872,
+   1.3168346809098717,
    1.904071423286617,
    6.173528645322728,
    -0.2335957531965237,
@@ -914,7 +914,7 @@
     "rope_type": "llama3"
    },
    "rope_theta": 500000.0,
-   "rope_theta_source": "Llama 3 herd §3.4 (not read from config.json; set W05_LLAMA_CONFIG to the config path)",
+   "rope_theta_source": "/Users/winston/Data/04_checkpoints/pretrained/hf_home/hub/models--mlx-community--Meta-Llama-3.1-8B-Instruct-4bit/snapshots/241a666dad6cb93c8ff213d39a7f34a36bf26db4/config.json",
    "lambda": [
     6.283185307179586,
     7.713052272947695,

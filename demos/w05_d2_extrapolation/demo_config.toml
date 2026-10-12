@@ -1,0 +1,31 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W5 demo 2（投影片 p24「Replay: demo 2 — NoPE vs. RoPE, then PI and NTK-aware without retraining」）的設定
+#
+# 全部**課前彩排、課堂只 replay**。模型是上週的 tiny GPT（W4 demo 1 的 block_final.GPT）加一個 pos 開關（rope_gpt.py）；
+# 語料、字元表、held-out 切點、尺寸（[tiny]）與訓練超參數（[train]：batch 64、3000 步、AdamW 1e-3、cosine、clip 1.0、dropout 0.1）
+# **全部沿 W4 demo 1 的 demo_config.toml，這裡不再寫一份**——「同一份語料、同一個 held-out、同一組超參數」是大綱〈課堂 demo 建議〉2 的規定。
+# 改這個檔只能換 RoPE 的底、量的長度、兩個修法的倍率；要換模型尺寸或步數就改 W4 那份（會連帶改 W4 的 demo）。
+
+[shared]
+demo1 = "../w04_d1_block_scratch"      # 從這裡載 block_final.py（GPT）、train.py（語料、device、param groups、lr 排程、評估），並讀它的 demo_config.toml
+
+[rope]
+base = 10000.0           # RoFormer 的 b = 10^4（大綱〈課堂 demo 建議〉2）。d_head = 32 → 16 對；L_train = 256 時轉不滿一圈的對數由 demo.py 算出來印在開頭
+
+[train]
+# 兩個版本都訓；seed 與其餘超參數讀 W4 的 [train]。同一個 seed 下兩個版本的初始權重逐個相等（rope_gpt.py 的 docstring）。
+variants = ["nope", "rope"]
+save_weights = true      # 訓完把 state_dict 存到 runs/weights/<variant>.pt（約 19 MB 一個，.gitignore）；scale 不重訓就靠它
+
+[eval]
+# 對 held-out 以三個長度各做一次前向：不重疊的視窗，每個位置的平均 loss（nats/char）。
+lengths = [256, 512, 1024]       # 訓練長度、2 倍、4 倍
+batch = 16                       # 1024 長的視窗，一批 16 個：attention 權重 16 × 8 × 1024² × 4 bytes ≈ 0.5 GB
+bin = 64                         # replay／SVG 把逐位置的 loss 每 64 個位置平均成一格（1024 → 16 格）；json 裡存的仍是逐位置
+split_at = 256                   # p24 表格的兩列：位置 < 256 與 256–1024（都從 L_eval = 1024 那一次前向取）
+
+[scale]
+# 兩個「不重訓」的修法，都只改 θ_i，套在訓好的 RoPE 版上再量一次（大綱：PI s = 4、NTK-aware 改底）。
+s = 4.0                          # L_target / L_train = 1024 / 256
+# PI：位置 m → m/s（等價 θ_i → θ_i/s）
+# NTK-aware：b → b · s^(d_head/(d_head − 2))；d_head = 32 時 10^4 → 4.39 × 10^4（demo.py 印出精確值）

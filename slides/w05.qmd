@@ -341,7 +341,7 @@ Chen et al. 2023 · bloc97 2023 (forum post) · Peng et al. 2023, v3 2026-02 · 
 : {tbl-colwidths="[28,18,18,18,18]"}
 
 ::: {.footer}
-Demo 2 · replay · `w05_d2_extrapolation/` · W4 demo 1's setup · not yet built (2026-10-11)
+Demo 2 · replay · `w05_d2_extrapolation/` · W4 demo 1's setup + RoPE $b = 10^4$ · built, not yet rehearsed (2026-10-12)
 :::
 
 ## Live: Llama 3.1's `rope_scaling`, as shipped
@@ -691,7 +691,7 @@ Five weeks in: the unit (W2), what it may attend to (W3), what carries the resul
 
 **Sinks, streaming, sparse** · Xiao et al., *Efficient Streaming Language Models with Attention Sinks*, ICLR 2024 (arXiv:2309.17453) · Gu et al., *When Attention Sink Emerges in Language Models: An Empirical View*, ICLR 2025 Spotlight (arXiv:2410.10781) · Yuan et al., *Native Sparse Attention*, ACL 2025 best paper (arXiv:2502.11089) · DeepSeek-AI, *DeepSeek-V3.2*, arXiv:2512.02556 · Lu et al., *MoBA*, arXiv:2502.13189 (preprint) · Zhang et al., *H₂O: Heavy-Hitter Oracle*, NeurIPS 2023 (arXiv:2306.14048)
 
-**Data and figures** · Every number on these slides is arithmetic on the definitions ($\theta_i$, $\lambda_i$, the three repairs, the two ledger formulas), or read from two earlier rehearsal records: W3 demo 2's `curve.json` (Llama 3.1 8B's `config.json` fields, KV bytes, prefill timings, 2026-09-29) and W4 demo 1's `tests.json`/`train.json` ($N$ to the parameter; the tiny GPT's 2.18 bits/char, 2026-10-06). The U-curve, the stamps, the phase circles and the cache rows are schematics. **No W5 demo has been run**: the tables on p24, p29 and p39 are blank on purpose.
+**Data and figures** · Every number on these slides is arithmetic on the definitions ($\theta_i$, $\lambda_i$, the three repairs, the two ledger formulas), or read from two earlier rehearsal records: W3 demo 2's `curve.json` (Llama 3.1 8B's `config.json` fields, KV bytes, prefill timings, 2026-09-29) and W4 demo 1's `tests.json`/`train.json` ($N$ to the parameter; the tiny GPT's 2.18 bits/char, 2026-10-06). The U-curve, the stamps, the phase circles and the cache rows are schematics. **Demo 1 has been rehearsed (2026-10-12; its record is `demos/w05_d1_rope_check/runs/rehearsal/tests.json`); demos 2–4 have not**: the tables on p24, p29 and p39 are blank on purpose.
 
 **Search terms, not citations** · *Qwen2.5-1M technical report dual chunk attention* · *DeepSeek-V4 million-token context* — examples of nominal length; no scores quoted
 :::
