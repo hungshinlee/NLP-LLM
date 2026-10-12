@@ -25,7 +25,8 @@ chars = 20000
 
 # ── 模型 ───────────────────────────────────────────────────────
 # 主模型與 W3 demo 2、W5 demo 3 同一個（已下載並鎖在 ../versions.lock，不必 fetch）。
-# 這裡不用 chat template：純文字接在 BOS 後面量 perplexity，Instruct 模型的絕對值會比 base 高，比較的是三種 cache 之間的差。
+# 這裡不用 chat template：純文字量 perplexity（tokenizer 給什麼就什麼；2026-10-12 實測這份 snapshot 沒加 BOS，第一個 token 是 `First`，
+# sink 照樣落在它上面）。Instruct 模型的絕對值會比 base 高，比較的是四種 cache 之間的差。
 [models.primary]
 repo = "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit"
 label = "Llama 3.1 8B Instruct (4-bit MLX)"
@@ -35,5 +36,5 @@ revision = ""
 [models.backup]
 repo = "mlx-community/Qwen3-8B-4bit"
 label = "Qwen3 8B (4-bit MLX)"
-note = "tokenizer 不加 BOS，位置 0 是第一個字；sink 照樣落在第一個 token 上（Xiao et al. 的觀察），但要看彩排"
+note = "同樣不加 BOS；主模型實測 sink 落在第一個字的 token 上，備用沒彩排過"
 revision = ""

@@ -5,7 +5,7 @@ The same text, the same model, the same tokenizer — only the rule for what the
 
 ## What is being measured
 
-The text is the opening of *tinyshakespeare* (the first 20,000 characters, about 5k tokens with Llama 3's tokenizer; the exact count is printed), fed after the BOS token without a chat template. For each cache the model predicts every token given the cache it has at that moment, and the loss of that prediction is recorded. The slide's table reports perplexity, $\exp$ of the mean loss, over two ranges of token positions: before $W$ and from $W$ on. The curve in `runs/rehearsal/curve.svg` averages the loss over 256-token bins.
+The text is the opening of *tinyshakespeare* (the first 20,000 characters, 5,455 tokens with Llama 3's tokenizer), fed as plain text without a chat template. The tokenizer of this checkpoint did not prepend a BOS token, so position 0 is the token of the word `First` — and the sink formed on it anyway. For each cache the model predicts every token given the cache it has at that moment, and the loss of that prediction is recorded. The slide's table reports perplexity, $\exp$ of the mean loss, over two ranges of token positions: before $W$ and from $W$ on. The curve in `runs/rehearsal/curve.svg` averages the loss over 256-token bins.
 
 Why the first few tokens matter: softmax must put weight *somewhere*, and a head with nothing to attend to puts it on the first token, which every query can see (W3 p40; Xiao et al. §3). A plain sliding window drops that token at step $W$; the weight has to land on real tokens instead, and the prediction degrades at once. Keeping the first $n_{\text{sink}}$ tokens' KV under the window keeps the drain in place.
 
@@ -21,8 +21,8 @@ What this does not show: a cache that forgets gracefully is not a cache that rem
 | Model | `mlx-community/Meta-Llama-3.1-8B-Instruct-4bit` (≈ 4.5 GB, revision pinned in `../versions.lock`; shared with W3 demo 2 and W5 demo 3). Backup: `mlx-community/Qwen3-8B-4bit` |
 | Text | `slides/_corpus/tinyshakespeare.txt`, i.e. [karpathy's `tinyshakespeare/input.txt`](https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt) (public domain, 1.1 MB), not in this repository; download it to that path relative to the repository root, as W4 demo 1's README says |
 | Device | **Apple silicon only** (MLX). About 4.5 GB for the weights; the caches are a few hundred tokens |
-| Time | not yet measured: the full-cache line is a few seconds of prefill; each windowed line is one forward pass per token (about 5k), a few minutes each at 8B 4-bit decode speed |
-| Portability | tested only on an Apple M5 Max (64 GB), macOS 27.0.1, Python 3.12 — once rehearsed |
+| Time | 804 s in all on the machine below: the full-cache line is 5 s of prefill; each windowed line is one forward pass per token (5,454 of them), 175–226 s at 25–31 tokens per second; peak memory 6.1 GB |
+| Portability | tested only on an Apple M5 Max (64 GB), macOS 27.0.1, Python 3.12 |
 
 ## Run it
 
@@ -40,7 +40,18 @@ Without `present.sh`: `python demo.py replay`, `python demo.py rehearse`, and so
 
 ## What you should see
 
-**Not yet rehearsed (2026-10-12).** No expected numbers are written here on purpose: the course rule is that a number on a slide comes from a checked-in record or a verified paper, and this folder's record does not exist yet. What the rehearsal looks at, in order: whether the no-sink window's perplexity jumps once the text passes $W$ and by how much (Xiao et al. Figure 1 is the shape being tested); whether the two with-sink lines stay flat and how much above the full cache they sit; how close the original-position and re-indexed variants are to each other at this length; and, before any eviction, that all four lines agree with the full cache to floating-point noise (`rehearse` prints this check).
+From `runs/rehearsal/curve.json` (2026-10-12, Apple M5 Max, macOS 27.0.1, Python 3.12, mlx 0.32.2, mlx-lm 0.32.0; $W = 512$, $n_{\text{sink}} = 4$, 5,455 tokens):
+
+| cache | perplexity, tokens $< W$ | perplexity, tokens $\geq W$ | worst 256-token bin | tokens in the cache |
+|---|---|---|---|---|
+| full | 5.64 | 6.46 | 13.8 | 5,455 |
+| window, no sink | 5.64 | **619.82** | 1,270 | 512 |
+| window + sink, original positions (the library's `keep`) | 5.64 | 14.85 | 33.5 | 516 |
+| window + sink, re-indexed (StreamingLLM §3) | 5.64 | 14.91 | 34.0 | 516 |
+
+Before the window first slides all four lines are the same computation — the largest difference from the full cache over those positions is 0.08 nats, floating-point noise — and the table's first column says so. Then, at position 513, the first prediction made after the first token has been evicted costs the no-sink window 18.9 nats where the full cache pays 0.5, and the line never comes back: every later bin sits between 200 and 1,270. The collapse is immediate, not gradual, and it happened although the evicted token was the word `First`, not a BOS token — the sink is a property of the first position, not of a special token.
+
+Keeping the first four tokens removes the collapse: 14.9 instead of 620. It does not make the window free: 14.9 is 2.3 times the full cache's 6.46, and that is the cost of seeing only 512 tokens of a play whose names and scenes recur further apart than that. "Stable" means it does not collapse or drift; it does not mean it predicts as well. Whether the kept tokens sit at their original positions or are re-indexed inside the cache makes no visible difference here (14.85 against 14.91): 5,455 tokens are far inside this model's nominal length of 131,072, so both kinds of position are ones the model has seen. Separating the two would need a stream longer than the nominal length, which this demo does not attempt. One text, one model, one window: the 2.3 is a number for this setting, not a constant.
 
 ## Files
 

@@ -562,7 +562,7 @@ Xiao et al., ICLR 2024 §3 · Gu et al., ICLR 2025 · W3 p40–41 · Misconcepti
 
 ::: {.columns}
 ::: {.column width="50%"}
-**Setup**: a text longer than the window (W1's tinyshakespeare opening, or W2's long Chinese text); per-token perplexity under three caches:
+**Setup**: a text longer than the window (W1's tinyshakespeare opening, 20,000 characters = 5,455 tokens); per-token perplexity under four caches:
 
 1. full cache
 2. sliding window $W = 512$, no sink
@@ -573,19 +573,19 @@ MLX; `mlx-lm`'s `RotatingKVCache(keep)` keeps the first tokens **at their origin
 ::: {.column width="50%"}
 | cache | perplexity, tokens $< W$ | perplexity, tokens $\geq W$ |
 |:---|:---:|:---:|
-| full | | |
-| window, no sink | | |
-| window + sink, original positions | | |
-| window + sink, re-indexed (§3) | | |
+| full | $5.64$ | $6.46$ |
+| window, no sink | $5.64$ | $\mathbf{620}$ |
+| window + sink, original positions | $5.64$ | $14.9$ |
+| window + sink, re-indexed (§3) | $5.64$ | $14.9$ |
 
 : {tbl-colwidths="[44,28,28]"}
 
-*rehearsed beforehand, replayed in class; all four rows pending rehearsal*
+*rehearsed 2026-10-12 (Llama 3.1 8B Instruct, 4-bit MLX), replayed in class; the first prediction after the first token is evicted costs $18.9$ nats against $0.5$*
 :::
 :::
 
 ::: {.footer}
-Demo 4 · `w05_d4_sink_window/` · if time · built, not yet rehearsed (2026-10-12)
+Demo 4 · `w05_d4_sink_window/` · if time · rehearsed 2026-10-12 · the sink is a word, not BOS
 :::
 
 ## Stable is not informed: what StreamingLLM solves, and what it does not
