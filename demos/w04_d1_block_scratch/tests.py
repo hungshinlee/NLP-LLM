@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W4 demo 1 的三個測試（投影片 p16 右欄 (a)–(c)）。block_final.py 與 block_live.py 共用。
+"""W4 demo 1 的三個測試（投影片 p17 右欄 (a)–(c)）。block_final.py 與 block_live.py 共用。
 
     python3 tests.py block_live            # 課堂：對 live 版跑（等同 ./present.sh live）；還沒寫的類別會標 skip
     python3 tests.py block_final           # 等同 python3 block_final.py

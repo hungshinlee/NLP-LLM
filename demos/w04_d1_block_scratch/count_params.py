@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W4 demo 1 後半（投影片 p20「Live: invert config.json — three columns, two models」）：讀一個模型的 config.json，印三欄。
+"""W4 demo 1 後半（投影片 p21「Live: invert config.json — three columns, two models」）：讀一個模型的 config.json，印三欄。
 
     ./present.sh count llama              # 三欄：近似式 12·n_layer·d² + V·d（或 2V·d）／逐項精算／safetensors 實際
     ./present.sh count qwen
@@ -16,7 +16,7 @@
             MLX 的 4-bit 檔把 32/bits 個權重包成一個 uint32：weight 的元素數要乘回 32/bits；.scales 與 .biases 是量化的附屬張量，
             另外列成「quantization overhead」，不算進參數量（它們不是模型的參數，是壓縮格式的 metadata）。
 exact 應該等於 actual——差一個都是我們漏了什麼；差了就逐類別印出來（embedding／attention／ffn／norm／head／other），
-看漏在哪一類。近似式與精算之間的缺口才是下一張（p21）的四個修正。
+看漏在哪一類。近似式與精算之間的缺口才是下一張（p22）的四個修正。
 
 純標準函式庫（safetensors 的 header 自己讀：前 8 bytes 是 header 長度，接著是 JSON）；找本機快取用 huggingface_hub（共用 .venv 有）。
 """

@@ -3,7 +3,7 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
 """W4 demo 1 的參考實作：RMSNorm、SwiGLU、pre-LN Block、tiny GPT，以及逐項記帳的 count_params。純 `torch`，走 MPS（訓練用；CPU 也能跑）。
 
-課堂上授課者在 block_live.py 從零寫同一份（寫的順序見投影片 p16 講稿的【操作】：RMSNorm → SwiGLU → Block → GPT），
+課堂上授課者在 block_live.py 從零寫同一份（寫的順序見投影片 p17 講稿的【操作】：RMSNorm → SwiGLU → Block → GPT），
 每寫完一段就 `./present.sh live` 跑三個測試（測試本體在 tests.py，兩份實作共用）。這一份是 (1) 課前確認三個測試全過、
 (2) 現場卡住兩分鐘後 `./present.sh show` 切過來、(3) 課後發給學生、(4) train.py 與 W4 demo 2 import 的模型。
 

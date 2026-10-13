@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W4 · Demo 2 — training instability on a tiny GPT: pre-LN vs. post-LN, learning-rate sweep, QK-norm (slides p29, p44)
+# W4 · Demo 2 — training instability on a tiny GPT: pre-LN vs. post-LN, learning-rate sweep, QK-norm (slides p30–p31, p47)
 
 This demo is **replay only**: every run was done in rehearsal (38 minutes in total) and in class only the records in `runs/rehearsal/` are shown. The model is the tiny GPT assembled in W4 demo 1 (`../w04_d1_block_scratch/block_final.py`), trained on the same Shakespeare text; this folder only holds the three experimental settings.
 
@@ -7,10 +7,10 @@ Every 25 steps the run records four statistics inside the training forward pass 
 
 | Statistic | How | Slide |
 |---|---|---|
-| loss | cross-entropy of the batch, nats/char | p43 left: loss spikes |
-| $\max\lvert s_{ij}\rvert$ | largest $\lvert \mathbf{q}_i^\top \mathbf{k}_j / \sqrt{d_{\text{head}}}\rvert$ over all layers and heads, masked positions excluded; with QK-norm, after the norm | p43 middle: attention-logit growth; the bound on p27 |
-| $\log Z$ | $\log \sum_v e^{z_v}$ of the output logits, averaged over positions | p43 right: output-logit divergence; what z-loss watches |
-| gradient norm | $\lVert \mathbf{g} \rVert_2$ of the whole model before clipping, plus the norm per block | p29 third column; "which layer goes wrong first" |
+| loss | cross-entropy of the batch, nats/char | p46 left: loss spikes |
+| $\max\lvert s_{ij}\rvert$ | largest $\lvert \mathbf{q}_i^\top \mathbf{k}_j / \sqrt{d_{\text{head}}}\rvert$ over all layers and heads, masked positions excluded; with QK-norm, after the norm | p46 middle: attention-logit growth; the bound on p28 |
+| $\log Z$ | $\log \sum_v e^{z_v}$ of the output logits, averaged over positions | p46 right: output-logit divergence; what z-loss watches |
+| gradient norm | $\lVert \mathbf{g} \rVert_2$ of the whole model before clipping, plus the norm per block | p31 third column; "which layer goes wrong first" |
 
 A **spike** is defined operationally by this demo as the first record where the loss is 0.5 nats above its running minimum, or NaN. There is no standard definition in the literature.
 
@@ -18,11 +18,11 @@ A **spike** is defined operationally by this demo as the first record where the 
 
 | | Model | Variable | Slide |
 |---|---|---|---|
-| (i) | the tiny GPT deepened to **16 layers** | pre-LN vs. post-LN, **no warmup**, constant LR $10^{-3}$, 1000 steps | p29 |
-| (ii) | the 6-layer tiny GPT of demo 1 | LR $\{1, 3, 10\} \times 10^{-3}$, 100 warmup steps then constant, 2000 steps | p44, rows 1–3 |
-| (iii) | same | the $10\times$ LR **with QK-norm** (an RMSNorm on $\mathbf{q}$ and on $\mathbf{k}$, $2 d_{\text{head}}$ extra $\gamma$ per layer); optionally a z-loss run | p44, row 4 |
+| (i) | the tiny GPT deepened to **16 layers** | pre-LN vs. post-LN, **no warmup**, constant LR $10^{-3}$, 1000 steps | p31 |
+| (ii) | the 6-layer tiny GPT of demo 1 | LR $\{1, 3, 10\} \times 10^{-3}$, 100 warmup steps then constant, 2000 steps | p47, rows 1–3 |
+| (iii) | same | the $10\times$ LR **with QK-norm** (an RMSNorm on $\mathbf{q}$ and on $\mathbf{k}$, $2 d_{\text{head}}$ extra $\gamma$ per layer); optionally a z-loss run | p47, row 4 |
 
-Three deliberate differences from demo 1's training recipe, all meant to let symptoms show rather than to reach convergence: dropout **0** (noise would hide the trends), gradient clipping **off** (clipping is one of the fixes on p46 — it is turned off so that the symptom is visible; `--clip 1.0` runs a clipped comparison), and a **warmup-then-constant** LR schedule instead of cosine (a decaying LR makes spikes disappear). Everything else follows demo 1: AdamW, $\beta = (0.9, 0.95)$, decoupled weight decay 0.1 on matrices only, batch 64 × 256, seed 1.
+Three deliberate differences from demo 1's training recipe, all meant to let symptoms show rather than to reach convergence: dropout **0** (noise would hide the trends), gradient clipping **off** (clipping is one of the fixes on p49 — it is turned off so that the symptom is visible; `--clip 1.0` runs a clipped comparison), and a **warmup-then-constant** LR schedule instead of cosine (a decaying LR makes spikes disappear). Everything else follows demo 1: AdamW, $\beta = (0.9, 0.95)$, decoupled weight decay 0.1 on matrices only, batch 64 × 256, seed 1.
 
 **An honest limit, printed in every replay banner**: this is a proxy of a proxy. The published proxy studies use tens to hundreds of millions of parameters; here it is 4.8 M (6 layers) and 12.7 M (16 layers). What transfers is the *shape* of the mechanisms — none of the numbers (LR multipliers, step counts, logit magnitudes) is a threshold for a real model.
 
@@ -42,9 +42,9 @@ Three deliberate differences from demo 1's training recipe, all meant to let sym
 ```bash
 cd demos                              # see ../README.md for creating .venv
 cd w04_d2_instability
-./present.sh replay i                 # p29: table, the two loss / gradient-norm curves, per-layer gradient norm at step 0
-./present.sh replay ii                # p44 rows 1–3: table and the four statistics over steps
-./present.sh replay iii               # p44 row 4: 10× + QK-norm next to the plain 10× run
+./present.sh replay i                 # p31: table, the two loss / gradient-norm curves, per-layer gradient norm at step 0
+./present.sh replay ii                # p47 rows 1–3: table and the four statistics over steps
+./present.sh replay iii               # p47 row 4: 10× + QK-norm next to the plain 10× run
 ./present.sh show ii                  # table only
 open runs/rehearsal/ii.svg            # the four-panel static figure (one per setting)
 ./present.sh baselines                # one second: unigram and bigram cross-entropy of the held-out text — the "stuck at" yardstick

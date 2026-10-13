@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W4 demo 1：課堂上從零寫的那一份。上課前 ./present.sh reset 清到只剩「從這裡開始現場寫」那條線以上；寫的順序見投影片 p16 講稿的【操作】。
+# W4 demo 1：課堂上從零寫的那一份。上課前 ./present.sh reset 清到只剩「從這裡開始現場寫」那條線以上；寫的順序見投影片 p17 講稿的【操作】。
 # 每寫完一段就 ./present.sh live（= python3 tests.py block_live）；還沒寫的類別會標 skip，(c) 會逐段推進。
 # tests.py 依名稱與簽名呼叫這五個：
 #   RMSNorm(d, eps=1e-6)                 forward(x) -> 同 shape        x * rsqrt(mean(x², -1) + eps) * weight

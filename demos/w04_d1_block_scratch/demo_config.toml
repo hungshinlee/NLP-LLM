@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W4 demo 1（投影片 p16「Live: RMSNorm → SwiGLU → Block → GPT」、p20「Live: invert config.json」）的設定
+# W4 demo 1（投影片 p17「Live: RMSNorm → SwiGLU → Block → GPT」、p21「Live: invert config.json」）的設定
 #
 # 改這個檔就能換 tiny GPT 的尺寸、訓練超參數、要反推的模型，不必動程式。
 
@@ -17,9 +17,9 @@ dropout = 0.1    # attention 權重與子層輸出都用；tiny 語料不加 dro
 device = "mps"           # 沒有 MPS 時自動退回 cpu（會印出來）
 batch = 64
 steps = 3000
-lr = 1e-3                # AdamW；p38 的更新式就是 torch.optim.AdamW
+lr = 1e-3                # AdamW；p41 的更新式就是 torch.optim.AdamW
 betas = [0.9, 0.95]
-weight_decay = 0.1       # decoupled（p39）；只加在矩陣上，norm 的 γ 與 embedding 不 decay
+weight_decay = 0.1       # decoupled（p42）；只加在矩陣上，norm 的 γ 與 embedding 不 decay
 warmup = 100             # Adam 側的理由（二階動量初期估不準），不是 Norm 側的（大綱〈概念拆解路徑〉）
 grad_clip = 1.0
 eval_every = 250         # 每隔幾步量一次 held-out 的 nats/char 與 BPB
@@ -39,7 +39,7 @@ w1_token_regex = "[A-Za-z']+|[.,!?;:]"
 # W1 的四個 BPB（n = 1..4）從這裡讀，replay 時並排；不抄數字。
 w1_data = "../../slides/assets/w01/w01-data.json"
 
-# ── 反推 config.json 的兩個模型（p20）──────────────────────────────
+# ── 反推 config.json 的兩個模型（p21）──────────────────────────────
 # 都已在本機（W3 demo 2、demo 3 下載並鎖在 ../versions.lock），不必 fetch；present.sh 一律 HF_HUB_OFFLINE=1。
 [models.llama]
 repo = "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit"

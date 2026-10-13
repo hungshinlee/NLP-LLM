@@ -1,18 +1,18 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W4 · Demo 1 — RMSNorm → SwiGLU → Block → GPT, and inverting `config.json` (slides p16, p20, p22)
+# W4 · Demo 1 — RMSNorm → SwiGLU → Block → GPT, and inverting `config.json` (slides p16–p17, p21, p23)
 
 Three things happen in this folder, matching three slides:
 
-1. **p16 — assemble a Transformer block live.** In `block_live.py` the instructor writes `RMSNorm`, `SwiGLU`, `Block` and `GPT` from zero, importing last week's `scaled_dot_product_attention` and `causal_mask` from W3 demo 1. The multi-head reshape (`CausalSelfAttention`) is already in the file: it is written but not taught. Tests run after each piece.
-2. **p20 — invert a real `config.json`.** `count_params.py` reads a model's `config.json` and prints three columns: the slide's approximation $12\,n_{\text{layer}} d^2 + Vd$, a term-by-term exact count, and the number of parameters actually stored in the safetensors files (read from the file headers only — no weights are loaded). The exact column must equal the actual column; the gap between the approximation and the exact count is what slide p21 explains.
-3. **p22 — replay a training run.** `train.py` trains the tiny GPT on the same Shakespeare text as W1's n-gram models, with the same held-out split, so that its bits-per-byte can be put next to W1's bigram. Training is done in rehearsal (about ten minutes); in class only the record is replayed.
+1. **p17 — assemble a Transformer block live.** In `block_live.py` the instructor writes `RMSNorm`, `SwiGLU`, `Block` and `GPT` from zero, importing last week's `scaled_dot_product_attention` and `causal_mask` from W3 demo 1. The multi-head reshape (`CausalSelfAttention`) is already in the file: it is written but not taught. Tests run after each piece.
+2. **p21 — invert a real `config.json`.** `count_params.py` reads a model's `config.json` and prints three columns: the slide's approximation $12\,n_{\text{layer}} d^2 + Vd$, a term-by-term exact count, and the number of parameters actually stored in the safetensors files (read from the file headers only — no weights are loaded). The exact column must equal the actual column; the gap between the approximation and the exact count is what slide p22 explains.
+3. **p23 — replay a training run.** `train.py` trains the tiny GPT on the same Shakespeare text as W1's n-gram models, with the same held-out split, so that its bits-per-byte can be put next to W1's bigram. Training is done in rehearsal (about ten minutes); in class only the record is replayed.
 
 ## The three tests
 
 | | Checks | Passes when | Why it matters |
 |---|---|---|---|
 | (a) | `count_params(model)` on the tiny configuration against a term-by-term count that `tests.py` computes on its own from `demo_config.toml`: embedding $Vd$, per layer $4d^2 + 3\,d\,d_{\text{ff}} + 2d$, final norm $d$ | **exactly equal**; also prints the approximation $12\,n_{\text{layer}} d^2 + Vd$ and its relative error (about −0.6 % here, because $d_{\text{ff}} = 688 \approx \tfrac{8}{3}d$) | the blackboard accounting and the code agree. Needs `GPT` to exist, so during the live build it reads `skip` until the end |
-| (b) | `count_params.py` on the two models in `demo_config.toml`: Llama 3.1 8B Instruct (MLX 4-bit) and Qwen3-0.6B | exact count = stored count, for both; a mismatch is printed by category (embedding / attention / ffn / norm / head / other). Models not in the local cache → `skip` | approximation vs. exact is the four corrections on p21; exact vs. stored should have no gap at all |
+| (b) | `count_params.py` on the two models in `demo_config.toml`: Llama 3.1 8B Instruct (MLX 4-bit) and Qwen3-0.6B | exact count = stored count, for both; a mismatch is printed by category (embedding / attention / ffn / norm / head / other). Models not in the local cache → `skip` | approximation vs. exact is the four corrections on p22; exact vs. stored should have no gap at all |
 | (c) | Shapes step by step: `RMSNorm` (same shape, row RMS becomes 1) → `SwiGLU` (same shape) → `Block` ($(B, L, d)$ in and out, finite) → `GPT` ($(B, L, V)$, all logits finite) | all four `ok`; a half-written file reports `info` | a model that can be trained |
 
 Two details of (b) that are easy to get wrong and are printed on screen: MLX 4-bit safetensors pack eight weights into one `uint32`, so element counts are multiplied back by $32/\text{bits}$ and the `.scales` / `.biases` tensors are listed separately (they are quantization metadata, not parameters); and Qwen3-0.6B has `tie_word_embeddings: true` but still stores `lm_head.weight` in the file, so the file holds $Vd = 155{,}582{,}464$ more values than the model has parameters — file size is not parameter count.
@@ -68,7 +68,7 @@ On the BPB comparison: the held-out *text* is the same as W1's, but the predicti
 | `block_final.py` | reference `RMSNorm` / `SwiGLU` / `CausalSelfAttention` / `Block` / `GPT` / `count_params`; `--show`, `--rehearse`. Also imported by W4 demo 2 (`norm="post"`, `qk_norm`, `record_stats` exist for it) |
 | `block_live.py` | the file written live in class; `./present.sh reset` empties the live part |
 | `tests.py` | the three tests, usable against any module exposing the same classes |
-| `count_params.py` | p20: `config.json` → three columns; `--config-only` |
+| `count_params.py` | p21: `config.json` → three columns; `--config-only` |
 | `train.py` | `probe` / `peek` / `rehearse` / `replay`; character-level data loading, W1-aligned held-out split, BPB with both denominators |
 | `demo_config.toml` | tiny GPT size, training hyperparameters, corpus path, the two models to invert |
 | `present.sh` | entry point; uses `../.venv/bin/python` |

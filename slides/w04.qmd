@@ -90,7 +90,7 @@ One matrix, $L \times d$, enters at the embedding and leaves at the unembedding;
 :::
 
 ::: {.footer}
-Outline W4 · on the board: p18, p24, p40 · the symptoms: p43
+Outline W4 · on the board: p19, p25, p43 · the symptoms: p46
 :::
 
 ## What you should be able to do by the end of today
@@ -123,9 +123,9 @@ Misconception 1: "the residual connection only fixes vanishing gradients"
 | The picture says | What is actually true | Returns |
 |---|---|---|
 | **(a)** layers are independent, pluggable modules | adjacent layers often work in pairs — W3's induction head is two layers cooperating | W14 |
-| **(b)** a layer reads the values on the bus | every read goes through a Norm first: a layer reads the *direction* of the stream, rescaled | p24 |
+| **(b)** a layer reads the values on the bus | every read goes through a Norm first: a layer reads the *direction* of the stream, rescaled | p25 |
 | **(c)** the bus has room for everything | $d$ dimensions are shared by every sub-layer of every block; what is written interferes — superposition | W14 |
-| **(d)** one bus per token is *the* design | 2026 redesigns the bus itself: hyper-connections, several learnable mixed streams (DeepSeek-V4's mHC) | p34 |
+| **(d)** one bus per token is *the* design | 2026 redesigns the bus itself: hyper-connections, several learnable mixed streams (DeepSeek-V4's mHC) | p37 |
 
 : {tbl-colwidths="[30,58,12]"}
 :::
@@ -139,7 +139,7 @@ Misconception 1: "the residual connection only fixes vanishing gradients"
 {{< include assets/w04/block.inline.qmd >}}
 
 ::: {.claim}
-Two sub-layers, each **Norm → function → add**. The trunk is the residual stream; the branches are what training changes. Where the Norm sits: p24.
+Two sub-layers, each **Norm → function → add**. The trunk is the residual stream; the branches are what training changes. Where the Norm sits: p25.
 :::
 
 ::: {.footer}
@@ -174,10 +174,10 @@ $$\mathbf{z} = \mathrm{Norm}(\mathbf{X}_{n_{\text{layer}}})\,\mathbf{W}_U, \qqua
 
 - **Tied**: $\mathbf{W}_U = \mathbf{E}^\top$, the embedding $\mathbf{E} \in \mathbb{R}^{V \times d}$ read backwards — $Vd$ parameters once
 - **Untied**: a separate matrix — $2Vd$ in total. W2 p41 computed how large that share is for a small model with a large vocabulary
-- The `config.json` key is `tie_word_embeddings` — the fourth source of error on p21
+- The `config.json` key is `tie_word_embeddings` — the fourth source of error on p22
 
 ::: {.claim}
-From here the loss of W1 takes over: cross-entropy on $\mathbf{z}$, and $C \approx 6ND$ for training it — reconciled with today's accounting on p36.
+From here the loss of W1 takes over: cross-entropy on $\mathbf{z}$, and $C \approx 6ND$ for training it — reconciled with today's accounting on p39.
 :::
 
 ::: {.footer}
@@ -185,6 +185,20 @@ W2 p41: the vocabulary's share · W1 p23: cross-entropy
 :::
 
 # Demo 1: assemble the block {.section-title}
+
+## Before Demo 1: from the block on paper to a model that runs
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Why** | p11–p14 wrote the block as math: a Norm, W3's attention, a gated FFN, residual adds, stacked. Written as code, it becomes a language model that can be trained — and its parameter count becomes something a test can check. |
+| **What runs** | An editor and a terminal; plain `torch`. Four classes written live, in order — `RMSNorm`, `SwiGLU`, `Block`, `GPT` — with the tests run after each; after two minutes, the finished `block_final.py` takes over. The same program comes back twice: reading two real `config.json` files after the accounting (p21), and a training run rehearsed before class (p23). |
+| **Expect** | Each class passes its shape test as soon as it exists; at the end a batch goes in and `[B, L, V]` comes out, every logit finite. One of the three tests needs more than code — which one is the prediction on the next slide. |
+:::
+
+::: {.footer}
+Demo 1 · code: `demos/w04_d1_block_scratch` · plain torch · attention from W3 Demo 1
+:::
 
 ## Live: RMSNorm → SwiGLU → Block → GPT, with a shape test after each
 
@@ -196,16 +210,14 @@ W2 p41: the vocabulary's share · W1 p23: cross-entropy
 2. `SwiGLU(d, d_ff)` — three `nn.Linear`, no bias
 3. `Block(d, n_head, d_ff)` — two sub-layers around W3's `scaled_dot_product_attention`, pre-LN
 4. `GPT(V, d, n_layer, ...)` — embedding, $n_{\text{layer}}$ blocks, final Norm, tied unembedding
-
-A shape test runs after each step; `block_final.py` is the fallback after two minutes.
 :::
 ::: {.column width="50%"}
 **Tests — predict first: which one needs the accounting?**
 
 - **(a)** `count_params()` equals the term-by-term count on the board, to the parameter; prints $12\,n_{\text{layer}} d^2 + Vd$ and the relative error
-- **(b)** `count_params.py` on any `config.json`: approximate / exact / `safetensors` — three columns (p20)
+- **(b)** `count_params.py` on any `config.json`: approximate / exact / `safetensors` — three columns (p21)
 - **(c)** forward on a batch: shape `[B, L, V]`, all logits finite
-- Training is **not** run here: the rehearsal's loss curve and bits-per-byte are replayed after the accounting (p22)
+- Training is **not** run here: the rehearsal's loss curve and bits-per-byte are replayed after the accounting (p23)
 :::
 :::
 
@@ -224,7 +236,7 @@ Demo 1 · live coding, `torch` on MPS · RAS ch 4 · attention from W3 demo 1
 :::
 
 ::: {.footer}
-Assumes MHA, $n_{\text{head}} d_{\text{head}} = d$, iso-parameter $d_{\text{ff}}$ · each is an error source (p21)
+Assumes MHA, $n_{\text{head}} d_{\text{head}} = d$, iso-parameter $d_{\text{ff}}$ · each is an error source (p22)
 :::
 
 ## Which $N$: embeddings in or out
@@ -328,7 +340,7 @@ Each sub-layer adds an $O(1)$ term to a stream of norm $\propto \sqrt{\ell}$: th
 :::
 
 ::: {.footer}
-Three consequences: demo 3 (p32), Peri-LN (p26), CompleteP (p50)
+Three consequences: demo 3 (p35), Peri-LN (p27), CompleteP (p53)
 :::
 
 ## 2024–2025: the Norm comes back after the sub-layer
@@ -336,9 +348,9 @@ Three consequences: demo 3 (p32), Peri-LN (p26), CompleteP (p50)
 ::: {.prose}
 | who | what they do to the block | what it repairs |
 |---|---|---|
-| **Gemma 2** (2024) | Norm on the branch **and** on its output — both pre- and post-norm; logit soft-capping | the growing trunk (p25); the growing logits (p43) |
+| **Gemma 2** (2024) | Norm on the branch **and** on its output — both pre- and post-norm; logit soft-capping | the growing trunk (p26); the growing logits (p46) |
 | **OLMo 2** (2024) | *reordered norm*: Norm on the sub-layer output, inside the residual; plus QK-norm and z-loss | the same, as a public recipe |
-| **Peri-LN** (ICML 2025) | names the pattern and measures the variance growth of pre-LN | the mechanism of p25, as a paper |
+| **Peri-LN** (ICML 2025) | names the pattern and measures the variance growth of pre-LN | the mechanism of p26, as a paper |
 | **DyT** (CVPR 2025) | the other side: replace Norm by elementwise $\tanh(\alpha x)$ and still train | asks what Norm was doing at all — mostly vision, mid-size LMs; "being tested" |
 
 : {tbl-colwidths="[18,50,32]"}
@@ -360,7 +372,7 @@ $\mathbf{u} = \mathbf{q}/\mathrm{rms}(\mathbf{q})$ has $\sum_i u_i^2 = d_{\text{
 $$|s_{ij}| \;\leq\; \sqrt{d_{\text{head}}}\;\|\boldsymbol{\gamma}_q\|_\infty\,\|\boldsymbol{\gamma}_k\|_\infty, \qquad \text{at initialization } (\boldsymbol{\gamma} = \mathbf{1}):\ |s_{ij}| \leq \sqrt{d_{\text{head}}} \approx 11.3 \text{ for } d_{\text{head}} = 128$$
 :::
 
-- Origin: Henry et al. 2020; scaled up in ViT-22B; adopted by OLMo 2 and Qwen3. The symptom it prevents is the second picture on p43
+- Origin: Henry et al. 2020; scaled up in ViT-22B; adopted by OLMo 2 and Qwen3. The symptom it prevents is the second picture on p46
 
 ::: {.footer}
 Henry 2020 · Dehghani 2023 · OLMo 2 · Qwen3 (search term, report not verified)
@@ -372,6 +384,20 @@ Henry 2020 · Dehghani 2023 · OLMo 2 · Qwen3 (search term, report not verified
 
 ::: {.footer}
 simulated · w04-data.json (qknorm) · our derivation · the 1,448 breaks the 2-norm formula, not QK-norm
+:::
+
+## Before Demo 2: train it both ways, without warmup
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Why** | p25 read the two Jacobians: pre-LN keeps an $\mathbf{I}$ on the gradient's path, post-LN does not — so post-LN should need warmup more. Train Demo 1's model both ways and see. A proxy of a proxy: 12.7 million parameters, not billions, so only the shape carries over. |
+| **What runs** | Recorded before class, replayed here: Demo 1's model at 16 layers, pre-LN and post-LN, no warmup, the same learning rate, 1,000 steps. On screen: a table, the loss and gradient-norm curves, and every layer's gradient norm at step 0. The same program returns on p47: three learning rates, then QK-norm. |
+| **Watch for** | Whether post-LN without warmup trains, diverges, or stalls — read its loss against the unigram and bigram levels printed beside it. And at step 0, before any update: which layers' gradients look different between the two. |
+:::
+
+::: {.footer}
+Demo 2 · code: `demos/w04_d2_instability` · torch on MPS · rehearsed, replayed
 :::
 
 ## Replay: pre-LN vs. post-LN, no warmup, same tiny GPT
@@ -403,6 +429,20 @@ A key-value reading tells you where to *look*; it does not tell you what *causes
 
 ::: {.footer}
 Geva et al., EMNLP 2021 · W1 p21: the four questions · W14
+:::
+
+## Before Demo 3: what is one layer worth?
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Why** | On the bus, every layer only adds a term (p9), and under pre-LN the later terms are relatively small (p26). If that were the whole story, removing any one layer would cost little. Test it on a trained model, one layer at a time. |
+| **What runs** | Qwen3-0.6B — W3 Demo 3's model, 28 layers — on a fixed text: W1's Chinese paragraph and its English version. Skipping layer $i$ sets its forward to the identity; no parameter is deleted. Perplexity once with every layer, then 28 times with one skipped: a line per layer, about eleven seconds. |
+| **Watch for** | Three guesses before Enter — the first layer, a middle one, the last one: which costs the most? Then where the curve departs from the guesses. |
+:::
+
+::: {.footer}
+Demo 3 · code: `demos/w04_d3_layer_removal` · torch + transformers, MPS
 :::
 
 ## Live: skip one layer at a time, and measure the perplexity
@@ -481,7 +521,7 @@ $$\mathbf{m}_t = \beta_1 \mathbf{m}_{t-1} + (1-\beta_1)\,\mathbf{g}_t,\qquad \ma
 $$\boldsymbol{\theta}_{t+1} = \boldsymbol{\theta}_t - \eta_t\left(\frac{\hat{\mathbf{m}}_t}{\sqrt{\hat{\mathbf{v}}_t} + \epsilon} + \lambda\,\boldsymbol{\theta}_t\right), \qquad \hat{\mathbf{m}}_t = \frac{\mathbf{m}_t}{1-\beta_1^t},\ \hat{\mathbf{v}}_t = \frac{\mathbf{v}_t}{1-\beta_2^t}$$
 
 - Everything is **elementwise**: each parameter gets its own step size $\eta_t/(\sqrt{\hat v_t} + \epsilon)$
-- $\hat{\mathbf{v}}_t$ is a running estimate of $\mathbf{g}^2$; early on it is a poor one — **the Adam-side reason warmup stays** (p24)
+- $\hat{\mathbf{v}}_t$ is a running estimate of $\mathbf{g}^2$; early on it is a poor one — **the Adam-side reason warmup stays** (p25)
 - The $\lambda\boldsymbol{\theta}_t$ sits **outside** the division: that is the "W" in AdamW, and the next slide
 
 ::: {.footer}
@@ -580,12 +620,12 @@ measured: demo 2 rehearsal 2026-10-06 · ii.json, iii.json, baselines.json · ti
 
 | symptom | repair | who uses it | what it does |
 |:---|:---|:---|:---|
-| attention logit growth | **QK-norm** | OLMo 2, Qwen3, ViT-22B | bounds $s_{ij}$ by construction (p27) |
+| attention logit growth | **QK-norm** | OLMo 2, Qwen3, ViT-22B | bounds $s_{ij}$ by construction (p28) |
 | | **logit soft-cap** $s \leftarrow c\tanh(s/c)$ | Gemma 2 | bounds $s_{ij}$ after the fact |
 | | **QK-clip** | Kimi K2 (MuonClip) | clips $\mathbf{W}^Q, \mathbf{W}^K$ inside the optimizer |
 | output logit divergence | **z-loss** $\alpha(\log Z)^2$, $\alpha = 10^{-4}$ | PaLM, OLMo 2 | pulls $\log Z$ toward $0$ |
-| loss spike, any cause | **gradient clipping**, **warmup** | everyone | caps the step; waits for $\hat{\mathbf{v}}_t$ (p38) |
-| the trunk's growth | **post-norm on the output** (p26) | Gemma 2, OLMo 2, Peri-LN | keeps the added term $O(1)$ relative to the stream |
+| loss spike, any cause | **gradient clipping**, **warmup** | everyone | caps the step; waits for $\hat{\mathbf{v}}_t$ (p41) |
+| the trunk's growth | **post-norm on the output** (p27) | Gemma 2, OLMo 2, Peri-LN | keeps the added term $O(1)$ relative to the stream |
 
 ::: {.footer}
 Takase 2023: a second spike mechanism — sub-layer outputs too large for the shortcut
@@ -596,7 +636,7 @@ Takase 2023: a second spike mechanism — sub-layer outputs too large for the sh
 ![](assets/w04/repairs.svg){width="100%"}
 
 ::: {.footer}
-schematic · colour = the symptom · numbers = the rows of the previous table · p27 · p43 · p46
+schematic · colour = the symptom · numbers = the rows of the previous table · p28 · p46 · p49
 :::
 
 ## Statistics first, data second
@@ -606,7 +646,7 @@ schematic · colour = the symptom · numbers = the rows of the previous table ·
 |---|---|
 | blame the data: "a bad batch caused the spike" | PaLM's experience: skipping the offending batch helps — **but the same batch fed at another point does not spike**. It is a state problem, not a data problem |
 | look for the bad examples first | Wortsman et al. reproduce logit growth and divergence at small scale with a high LR and **no special data**: the causes are architectural and optimizer-side |
-| treat the spike as the event | the spike is the *last* event. $\max\lvert s_{ij}\rvert$, $\log Z$ and the gradient norm move first (p44) — log them, read them, then go to the data |
+| treat the spike as the event | the spike is the *last* event. $\max\lvert s_{ij}\rvert$, $\log Z$ and the gradient norm move first (p47) — log them, read them, then go to the data |
 
 : {tbl-colwidths="[32,68]"}
 :::
@@ -688,7 +728,7 @@ Open: its interaction with muP, its behaviour under MoE and very large batches. 
 
 ## Next week: where is the position?
 
-- W3 p44 said attention is **permutation-equivariant** without a mask; today's block adds nothing positional — Norm, FFN and the residual are all per-token. Whatever today's model knows about order, it inferred from the **causal mask alone** (and it did learn: 2.18 bits/char, p22)
+- W3 p44 said attention is **permutation-equivariant** without a mask; today's block adds nothing positional — Norm, FFN and the residual are all per-token. Whatever today's model knows about order, it inferred from the **causal mask alone** (and it did learn: 2.18 bits/char, p23)
 - Next week makes position **explicit**: absolute, relative, **RoPE** — asks what that buys over the mask alone, and what happens when the context is longer than anything the model trained on
 - The ledger gets its long-context row: the cost that grows with $L$ even after $L > 12d$
 
