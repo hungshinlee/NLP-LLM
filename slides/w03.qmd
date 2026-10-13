@@ -240,6 +240,20 @@ Misconception 2: "$1/\sqrt{d_k}$ fixes the numerics" · Zhai et al. 2023 · Wort
 
 # Demo 1: write it, run five tests {.section-title}
 
+## Before Demo 1: turn today's claims into tests
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Why** | Every claim so far is on paper: the one-line formula (p13), the causal mask that makes the KV cache *correct* (p15), the $1/\sqrt{d_k}$ (p17). Written as code, each claim becomes a test that either passes or fails. |
+| **What runs** | An editor and a terminal; plain `torch` on the CPU, no model. Three functions, written live in order; after each one, `tests.py` runs all five tests and marks what is not written yet as *skip*. Typos are expected: after two minutes, the finished `attention_final.py` takes over. |
+| **Expect** | By the end, all five pass — and each prints a number next to `ok`: an error no larger than floating-point rounding, a gradient that is exactly zero, an entropy for each $d_k$ value. Read the number, not the `ok`. Which test fails first along the way is the prediction on the next slide. |
+:::
+
+::: {.footer}
+Demo 1 · code: `demos/w03_d1_attention_scratch` · plain torch, CPU, no model
+:::
+
 ## Live: attention and a KV cache, from scratch, in this order
 
 ::: {.columns}
@@ -249,8 +263,6 @@ Misconception 2: "$1/\sqrt{d_k}$ fixes the numerics" · Zhai et al. 2023 · Wort
 1. `scaled_dot_product_attention(Q, K, V, mask)` — scores, scale, mask, softmax, weighted sum
 2. `causal_mask(L)` — $-\infty$ above the diagonal
 3. `decode_step(x_t, cache, W)` — compute $\mathbf{k}_t, \mathbf{v}_t$ once, append, attend over the cache
-
-Tests run after each step (`tests.py` skips what is not written yet). Typos are expected; `attention_final.py` is the fallback after two minutes.
 :::
 ::: {.column width="52%"}
 **Five tests — predict first: what does each check, and which fails first?**
@@ -290,11 +302,25 @@ Misconception 3: "the KV cache is an engineering optimization" — it is the sta
 ![](assets/w03/kvformula.svg)
 
 ::: {.claim}
-Two of the six factors are **levers** — $n_{\text{kv}}$, chosen before training (next slides), and $b$, changeable at serving time (W11) — and one is **the user's**, $L$. The other three are the architecture.
+Two of the six factors are **levers** — $n_{\text{kv}}$, chosen before training (after the demo), and $b$, changeable at serving time (W11) — and one is **the user's**, $L$. The other three are the architecture.
 :::
 
 ::: {.footer}
 Ledger row filled today: KV cache · W5 changes $L$, W6 the mechanism, W11 $b$
+:::
+
+## Before Demo 2: does the meter agree with the formula?
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Why** | The previous slide is a prediction: six factors, multiplied. If a memory counter agrees with it, then for any model, three numbers from `config.json` give the KV cache without measuring. |
+| **What runs** | MLX on this laptop: Llama 3.1 8B, weights in 4-bit. A GQA model, not the opening's paper configuration — so 32k will **not** be 16 GiB, deliberately. One prefill at each of 1k, 4k, 8k, 32k, live; the model's maximum from the rehearsal. Per row, above the loaded weights: memory still held after the prefill ([$\Delta$active]{style="white-space: nowrap;"}) and the peak during it ([$\Delta$peak]{style="white-space: nowrap;"}). |
+| **Expect** | [$\Delta$active]{style="white-space: nowrap;"} on the formula at every $L$: a straight line whose slope is the per-token constant. If not, the formula or the meter is wrong. Also watch the gap from [$\Delta$active]{style="white-space: nowrap;"} up to [$\Delta$peak]{style="white-space: nowrap;"} — does it grow with $L$? |
+:::
+
+::: {.footer}
+Demo 2 · code: `demos/w03_d2_kv_memory` · MLX, Apple silicon only
 :::
 
 ## Live: predict the curve from `config.json`, then measure it
@@ -312,7 +338,7 @@ Read three numbers from the model's `config.json` — `num_hidden_layers`, `num_
 :::
 
 ::: {.footer}
-Demo 2 · live · MLX · Llama 3.1 8B, a GQA model — the point: formula and meter agree
+Demo 2 · live · MLX · Llama 3.1 8B Instruct 4-bit, a GQA model
 :::
 
 ## What the meter said: the formula, byte for byte
@@ -559,10 +585,29 @@ uses $\mathbf{P}^\top\mathbf{P} = \mathbf{I}$ and that row-wise softmax commutes
 Misconception 7: "a high attention weight means the token mattered" · W3 → W10 → W14
 :::
 
+## Before Demo 3: one sentence, three rankings of its tokens
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Why** | The three papers disagree on paper. Instead of choosing a side from the abstracts, ask one model about one sentence — which input tokens matter for its next word? — in three different ways, and compare the answers. |
+| **What runs** | Qwen3-0.6B on the CPU (28 layers, 16 heads each); an English sentence whose next word must agree with a subject across a relative clause. Three rankings, revealed one column at a time: one head's attention row in layer 14; gradient × input, from one backward pass; attention rollout, every layer's attention multiplied through. Then another head of the same layer. |
+| **Watch for** | Where the subject, *keys*, lands in each column — and how much the first column changes when only the head changes. |
+:::
+
+::: {.footer}
+Demo 3 · code: `demos/w03_d3_attn_vs_gradient` · torch + transformers, CPU, eager attention
+:::
+
 ## Live: the same sentence, three rankings
 
-*The keys that the old man who lives next door lost last week* → the model predicts **were** · numbers from the rehearsal run
+*The keys that the old man who lives next door lost last week* → the model predicts **were**
 
+::: {.ask}
+Before the numbers: if attention were an explanation, what should the three rankings look like?
+:::
+
+::: {.fragment}
 | rank | attention (layer 14, head 0) | gradient × input | attention rollout |
 |:---|---:|---:|---:|
 | 1 | lost · 0.29 | man · 0.22 | The · 1.00 |
@@ -571,13 +616,10 @@ Misconception 7: "a high attention weight means the token mattered" · W3 → W1
 | 4 | week · 0.09 | old · 0.09 | the · $<10^{-5}$ |
 | 5 | old · 0.06 | next · 0.07 | old · $<10^{-5}$ |
 | **keys** (the subject of *were*) | 13th of 13 · 0.01 | 8th · 0.05 | 2nd · $<10^{-5}$ |
-
-::: {.ask}
-Before the numbers: if attention were an explanation, what should the three columns look like?
 :::
 
 ::: {.footer}
-Demo 3 · Qwen3-0.6B · layer 14, head 0 · rollout: Abnar & Zuidema 2020
+Demo 3 · Qwen3-0.6B · table: rehearsal run, 2026-09-29 · rollout: Abnar & Zuidema 2020
 :::
 
 ## Mechanistic evidence, and the three times this course asks

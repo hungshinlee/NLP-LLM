@@ -3,7 +3,7 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
 """W5 demo 2 的模型：上週的 tiny GPT（W4 demo 1 的 `block_final.GPT`）加一個 `pos="nope"|"rope"` 開關。
 
-上週的 GPT 沒有任何位置編碼（NoPE：位置只從 causal mask 來，W3 p42）。這裡**不複製**它的程式——從檔案路徑載入
+上週的 GPT 沒有任何位置編碼（NoPE：位置只從 causal mask 來，W3 p44）。這裡**不複製**它的程式——從檔案路徑載入
 `../w04_d1_block_scratch/block_final.py`（照 W4 demo 2 的做法，不動 `sys.path`），只把每一層的 `attn` 換成下面的
 `PosAttention`：同一組投影矩陣、同一個 W3 的 attention 函數，差別只在 `pos="rope"` 時對 `q`、`k` 做旋轉。
 

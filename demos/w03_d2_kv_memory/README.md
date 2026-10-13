@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W3 · Demo 2 — predict the KV-cache curve from `config.json`, then measure it (slide p25)
+# W3 · Demo 2 — predict the KV-cache curve from `config.json`, then measure it (slides p26–p28)
 
 The demo reads three numbers from a model's `config.json` — `num_hidden_layers`, `num_key_value_heads`, `head_dim` — plugs them into the ledger formula
 

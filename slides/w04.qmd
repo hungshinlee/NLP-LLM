@@ -61,7 +61,7 @@ format:
 :::
 
 ::: {.footer}
-KV rows: W3 demo 2 rehearsal (W3 p25–26) · formula W3 p24 · left half: schematic
+KV rows: W3 demo 2 rehearsal (W3 p27–28) · formula W3 p25 · left half: schematic
 :::
 
 ## Last week's $24d^2$: say where it comes from
@@ -78,7 +78,7 @@ $24d^2 = 2 \times 12d^2$. Two FLOPs per parameter — so **where are the $12d^2$
 | the rest | $?$ |
 
 ::: {.footer}
-W3 p34 · the half that W3 took on trust is today's first subject
+W3 p36 · the half that W3 took on trust is today's first subject
 :::
 
 ## The problem this week handles, in one picture
@@ -131,7 +131,7 @@ Misconception 1: "the residual connection only fixes vanishing gradients"
 :::
 
 ::: {.footer}
-"2017–2025's standard form", not a law of nature · W3 p47 (induction heads)
+"2017–2025's standard form", not a law of nature · W3 p50 (induction heads)
 :::
 
 ## The block, formally: pre-LN
@@ -261,7 +261,7 @@ Demo 1, second half · live · the gap between the columns is the next slide
 
 | assumption in $12\,n_{\text{layer}} d^2 + Vd$ | what real models do | correction per layer |
 |:---|:---|:---|
-| MHA: $\mathbf{W}^K, \mathbf{W}^V$ are $d \times d$ | **GQA** (W3 p27): $n_{\text{kv}} < n_{\text{head}}$ | $4d^2 \to 2d^2 + 2\,d\,n_{\text{kv}} d_{\text{head}}$ — **down** ($2.5d^2$ at $n_{\text{kv}} = n_{\text{head}}/4$) |
+| MHA: $\mathbf{W}^K, \mathbf{W}^V$ are $d \times d$ | **GQA** (W3 p29): $n_{\text{kv}} < n_{\text{head}}$ | $4d^2 \to 2d^2 + 2\,d\,n_{\text{kv}} d_{\text{head}}$ — **down** ($2.5d^2$ at $n_{\text{kv}} = n_{\text{head}}/4$) |
 | $d_{\text{ff}} = \frac{8}{3}d$ | Llama 3 8B: $3.5d$; Qwen3-0.6B: $3d$ | $8d^2 \to 3\,d\,d_{\text{ff}}$ — **up** ($10.5d^2$, $9d^2$) |
 | $n_{\text{head}} d_{\text{head}} = d$ | Qwen3-0.6B: $2d$ | $\mathbf{W}^Q, \mathbf{W}^O$ are $d \times n_{\text{head}} d_{\text{head}}$ — **up** |
 | one embedding, $Vd$ | `tie_word_embeddings: false` → $2Vd$ | not per layer: $+Vd$ once — **up** |
@@ -289,7 +289,7 @@ Set them equal: $d_{\text{ff}} = \frac{8}{3}d$
 *Shazeer 2020 compared GLU variants at equal parameter count. That is where the number lives — a control variable, not an optimum.*
 :::
 ::: {.column width="50%"}
-**Why $24d^2$ (W3 p34)**
+**Why $24d^2$ (W3 p36)**
 
 $12d^2$ parameters per layer
 
@@ -450,7 +450,7 @@ Search terms, not citations: *Hyper-Connections residual stream* · half-life 1 
 | per layer, per token, forward | FLOPs | in $6ND$? |
 |:---|:---|:---|
 | **weights**: $2 \times 12d^2 = 24d^2$ | the $2N$ per token, layer by layer | yes — this *is* $2N$ |
-| **attention**: $2Ld$ (causal average) | grows with $L$, not with the parameters | no — matters once $L > 12d$ (W3 p34) |
+| **attention**: $2Ld$ (causal average) | grows with $L$, not with the parameters | no — matters once $L > 12d$ (W3 p36) |
 | **unembedding**: $2Vd$, once per token | a matrix multiply on the way out | yes if $N$ includes $Vd$; no in $N_{\text{nv}}$ |
 | Norm, softmax, $\sigma$: $O(Ld)$ | not $O(Ld^2)$ | dropped |
 
@@ -459,7 +459,7 @@ W1 p17 did the $6 = 2 + 4$. Today supplies the $N$ — and shows exactly which t
 :::
 
 ::: {.footer}
-W1 p17 · W3 p34 · the formula is W7's whole week
+W1 p17 · W3 p36 · the formula is W7's whole week
 :::
 
 ## Where the forward FLOPs go as $L$ grows
@@ -471,7 +471,7 @@ $6ND$ keeps the blue and drops the red. At $4\text{k}$ the red is noise; at $32\
 :::
 
 ::: {.footer}
-w04-data.json (flops) · W3 p34 ($L = 12d$) · W3 p30 (decode: $4Ld$) · W1 p17 convention
+w04-data.json (flops) · W3 p36 ($L = 12d$) · W3 p32 (decode: $4Ld$) · W1 p17 convention
 :::
 
 ## AdamW: the update, and where the decay goes
@@ -530,7 +530,7 @@ Rajbhandari 2019 (ZeRO) §3 · $N = 8 \times 10^9$ nominal · activations not in
 : {tbl-colwidths="[20,52,15,13]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p51 · $N \approx 12\,n_{\text{layer}}d^2 + Vd$ is now computable from a `config.json`
+Same master as W1 p16, W3 p54 · $N \approx 12\,n_{\text{layer}}d^2 + Vd$ is now computable from a `config.json`
 :::
 
 # When training breaks {.section-title}
@@ -688,7 +688,7 @@ Open: its interaction with muP, its behaviour under MoE and very large batches. 
 
 ## Next week: where is the position?
 
-- W3 p42 said attention is **permutation-equivariant** without a mask; today's block adds nothing positional — Norm, FFN and the residual are all per-token. Whatever today's model knows about order, it inferred from the **causal mask alone** (and it did learn: 2.18 bits/char, p22)
+- W3 p44 said attention is **permutation-equivariant** without a mask; today's block adds nothing positional — Norm, FFN and the residual are all per-token. Whatever today's model knows about order, it inferred from the **causal mask alone** (and it did learn: 2.18 bits/char, p22)
 - Next week makes position **explicit**: absolute, relative, **RoPE** — asks what that buys over the mask alone, and what happens when the context is longer than anything the model trained on
 - The ledger gets its long-context row: the cost that grows with $L$ even after $L > 12d$
 

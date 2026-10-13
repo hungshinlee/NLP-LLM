@@ -6565,7 +6565,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t167-text_1">
-   <!-- $\text{at } L = 6d \approx 25\text{k (W3 p30)}$ -->
+   <!-- $\text{at } L = 6d \approx 25\text{k (W3 p32)}$ -->
    <g style="fill: #1f2328" transform="translate(0 11.25) scale(0.15 -0.15)">
     <defs>
      <path id="t167-Cmr10-61" d="M 256 628 
@@ -7156,36 +7156,6 @@ Q 1259 2378 1131 2150
 L 1131 622 
 z
 " transform="scale(0.015625)"/>
-     <path id="t167-Cmr10-30" d="M 1600 -141 
-Q 816 -141 533 504 
-Q 250 1150 250 2041 
-Q 250 2597 351 3087 
-Q 453 3578 754 3920 
-Q 1056 4263 1600 4263 
-Q 2022 4263 2290 4056 
-Q 2559 3850 2700 3523 
-Q 2841 3197 2892 2823 
-Q 2944 2450 2944 2041 
-Q 2944 1491 2842 1011 
-Q 2741 531 2444 195 
-Q 2147 -141 1600 -141 
-z
-M 1600 25 
-Q 1956 25 2131 390 
-Q 2306 756 2347 1200 
-Q 2388 1644 2388 2144 
-Q 2388 2625 2347 3031 
-Q 2306 3438 2132 3767 
-Q 1959 4097 1600 4097 
-Q 1238 4097 1063 3765 
-Q 888 3434 847 3029 
-Q 806 2625 806 2144 
-Q 806 1788 823 1472 
-Q 841 1156 916 820 
-Q 991 484 1158 254 
-Q 1325 25 1600 25 
-z
-" transform="scale(0.015625)"/>
      <path id="t167-Cmr10-29" d="M 416 -1600 
 Q 359 -1600 359 -1544 
 Q 359 -1516 372 -1503 
@@ -7226,7 +7196,7 @@ z
     <use xlink:href="#t167-Cmr10-20" transform="translate(895.234375 0)"/>
     <use xlink:href="#t167-Cmr10-70" transform="translate(928.535156 0)"/>
     <use xlink:href="#t167-Cmr10-33" transform="translate(984.052734 0)"/>
-    <use xlink:href="#t167-Cmr10-30" transform="translate(1034.052734 0)"/>
+    <use xlink:href="#t167-Cmr10-32" transform="translate(1034.052734 0)"/>
     <use xlink:href="#t167-Cmr10-29" transform="translate(1084.052734 0)"/>
    </g>
   </g>

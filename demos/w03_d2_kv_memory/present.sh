@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W3 demo 2（投影片 p25「Live: predict the curve from config.json, then measure it」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
+# W3 demo 2（投影片 p27「Live: predict the curve from config.json, then measure it」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
 #
 #   ./present.sh               上課用：Enter 一列一列量 KV cache（彩排時太慢的列顯示彩排值並標「非現場」）；q = 離開
 #   ./present.sh replay        現場失敗時：只顯示課前彩排的表（畫面標明非現場）

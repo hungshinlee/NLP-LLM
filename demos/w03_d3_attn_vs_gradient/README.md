@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W3 · Demo 3 — the same sentence, three rankings (slide p45)
+# W3 · Demo 3 — the same sentence, three rankings (slides p47–p48)
 
 One sentence goes into a small language model once. The demo asks the same question three ways — *for the model's prediction at the last position, which input tokens matter?* — and prints three rankings side by side:
 
@@ -46,7 +46,7 @@ From `runs/rehearsal/rankings.json` (2026-09-29, Qwen3-0.6B, eager, CPU, layer 1
 **Sentence 1** — *The keys that the old man who lives next door lost last week* → the model's top-1 next token is `were` (log-prob −1.43). The three columns disagree almost completely:
 
 - attention (head 0) puts most weight on `lost` (0.29) and `The` (0.24); heads 5 and 11 put over 70 % of their weight on the first token `The`;
-- gradient × input ranks `man` (22 %), `that` (18 %) and `week` (14 %) first; `keys`, the grammatical subject the verb has to agree with, gets 5 % and is in nobody's top five;
+- gradient × input ranks `man` (22 %), `that` (18 %) and `week` (14 %) first; `keys`, the grammatical subject the verb has to agree with, gets 5 % and is in neither the attention nor the gradient × input top five (rollout ranks it second, but with a share of $1.7 \times 10^{-6}$ — after the first token, rollout's leftovers fall off roughly with position, and `keys` is token 2);
 - rollout collapses onto the first token (share 1.000) — with the residual mixed in, every path leads back to position 0, which says more about the method than about the sentence;
 - Spearman attention-vs-gradient×input: −0.10, −0.08, −0.35 for heads 0, 5, 11.
 
