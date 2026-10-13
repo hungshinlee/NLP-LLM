@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W1 demo 2（投影片 p28「Live: the same paragraph, two tokenizers」）。
+"""W1 demo 2（投影片 p29「Live: the same paragraph, two tokenizers」）。
 
 同一段繁體中文，交給兩個 tokenizer 很不一樣的模型，現場算出
 token 數、perplexity、bits-per-byte，讓學生看到：

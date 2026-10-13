@@ -61,7 +61,7 @@ Both loose ends come from the same place: **someone decided what the unit is** �
 :::
 
 ::: {.footer}
-W1 p8, p28, p44–49 · demo 2 rehearsal 2026-09-20: Qwen3.8 PPL 12.23 / BPB 0.81 · Mistral 7B PPL 9.14 / BPB 1.38
+W1 p8, p29, p45–49 · right panel: W1 demo 2 rehearsal, 2026-09-20
 :::
 
 ## The problem this week handles, in one picture
@@ -73,7 +73,7 @@ The model never sees your text. It sees what one trained object sends up — and
 :::
 
 ::: {.footer}
-Pipeline: §3 (p18) · the four token counts: p10 · the three questions are the week's three parts
+Pipeline: §3 (p19) · the four token counts: p10 · the three questions are the week's three parts
 :::
 
 ## The tokenizer is the model's retina
@@ -144,6 +144,20 @@ Never divide by bytes when comparing languages — the byte premium is a propert
 
 ::: {.footer}
 Petrov et al. (NeurIPS 2023) call the cross-language ratio the *tokenization premium*
+:::
+
+## Before Demo 1: nine tokenizers, eight texts
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Why** | p10 compared four tokenizers on one paragraph. The live table widens both axes: tokenizers old and new, English-heavy and Chinese-heavy, one extended for Traditional Chinese — and texts that are not ordinary Chinese prose. |
+| **What runs** | Tokenizers only, no model weights: nine of them on this laptop's CPU, a few seconds. Eight texts — the paragraph, its English and Simplified versions, Taiwanese in Han characters and in Tâi-lô (NFC and NFD), Hakka with 𠊎, eight lines of Python, two numbers — one row at a time, with two tokenizers' cuts painted underneath. |
+| **Watch for** | Mistral and Breeze side by side: the same base vocabulary before and after 29,873 Traditional Chinese tokens. And the rows that are not prose — NFC against NFD, 𠊎, code, digits. |
+:::
+
+::: {.footer}
+Demo 1 · code: `demos/w02_d1_fertility` · tokenizers only, CPU
 :::
 
 ## Live: the full table
@@ -234,7 +248,7 @@ Between the floor and the ceiling sit all the real tokenizers — and where each
 :::
 
 ::: {.footer}
-Condition (a) from W1 p29 · fertility rows for 台語 and 客語 on the live table
+Condition (a) from W1 p30 · fertility rows for 台語 and 客語 on the live table
 :::
 
 ## Misconception 1: "a token is a character" — or "a token is a word"
@@ -371,7 +385,7 @@ The decoder never sees the tokens. It runs the LM, cuts the interval the way the
 :::
 
 ::: {.footer}
-Toy vocabulary {a, b, c} · same four chosen probabilities as p24 · 5 bits, bound ≤ 6
+Toy vocabulary {a, b, c} · same four chosen probabilities as p25 · 5 bits, bound ≤ 6
 :::
 
 ## Training: merge the most frequent adjacent pair, repeat
@@ -702,6 +716,20 @@ Singh & Strouse (2024): forcing right-to-left groups with commas **raises arithm
 Misconception 6 of 10 · arXiv:2402.14903 (rules: its §3) · measured on the next slide
 :::
 
+## Before Demo 3: commas, measured on one model
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Why** | p48: the digit grouping runs left to right while the carry runs right to left, and commas flip the grouping (Singh & Strouse). Measure it: the same model, the same sums, only the writing changes. |
+| **What runs** | Llama 3.1 8B (4-bit MLX), whose pre-tokenizer cuts `1234567` into `123` `456` `7` — not Qwen, which splits per digit; Qwen3 8B is the control. Random 4-, 7- and 10-digit additions written three ways: (A) as written, (B) with commas, (C) a space between digits. 20 problems per cell live; the rehearsal used 50. Thinking off — with it on, the model rewrites the digits itself (W10). |
+| **Watch for** | How the gap between (A) and (B) changes with the number of digits — and whether the control shows it. And what (C), one digit per token, does. |
+:::
+
+::: {.footer}
+Demo 3 · code: `demos/w02_d3_digits` · MLX, Apple silicon only
+:::
+
 ## Live: one model, one set of sums, three ways of writing the numbers
 
 | digits | (A) as written `5591+3092` | (B) with commas `5,591+3,092` | (C) spaced `5 5 9 1 + 3 0 9 2` |
@@ -710,10 +738,9 @@ Misconception 6 of 10 · arXiv:2402.14903 (rules: its §3) · measured on the ne
 | 7 | | | |
 | 10 | | | |
 
-- Same model, same random problems, **only the digit grouping changes**
-- Model: **Llama 3.1 8B** (`\p{N}{1,3}`: `123` `456` `7`) — **not Qwen**, whose per-digit tokenizer makes (A) and (C) the same thing
-- **Qwen3 8B** as the control: per-digit tokens, so (A) and (B) should differ much less
-- Thinking mode **off** — with it on, the model rewrites the digits in its own scratchpad and bypasses the tokenizer (W10)
+::: {.ask}
+Predict before the numbers land: which column is highest, and which is lowest?
+:::
 
 ::: {.footer}
 Demo 3 · live: 20 problems per cell · rehearsal 2026-09-20: 50 per cell, both models 4-bit MLX

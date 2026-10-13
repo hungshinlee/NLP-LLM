@@ -84,7 +84,7 @@ answer = "單一作者 Timothy Nguyen；NeurIPS 2024（arXiv:2407.12034）"
 accept = ["Nguyen", "NeurIPS"]
 reject = ["(?i)et al\\.?|等人"]
 source = "arXiv abs 頁（Comments: NeurIPS 2024），2026-09-16 查證"
-why = "單一作者的論文，模型很容易替它編出共同作者——而且這篇就是今天投影片 p36 的引用"
+why = "單一作者的論文，模型很容易替它編出共同作者——而且這篇就是今天投影片 p37 的引用"
 
 [[questions]]
 id = "paper_kalai"
@@ -92,4 +92,4 @@ text = "《Calibrated Language Models Must Hallucinate》的作者是誰？發�
 answer = "Adam Tauman Kalai 與 Santosh S. Vempala；STOC 2024（arXiv:2311.14648）"
 accept = ["Kalai", "Vempala", "STOC"]
 source = "arXiv abs 頁（Comments: STOC 2024），2026-09-16 查證"
-why = "若模型答對，也可以在 p33 回收：『它答對了——因為這篇被引用很多次，不是 hapax』"
+why = "若模型答對，也可以在 p34 回收：『它答對了——因為這篇被引用很多次，不是 hapax』"

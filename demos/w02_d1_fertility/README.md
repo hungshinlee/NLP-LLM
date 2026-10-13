@@ -1,7 +1,7 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W2 · Demo 1 — one set of texts, nine tokenizers (slide p12)
+# W2 · Demo 1 — one set of texts, nine tokenizers (slides p12–p13)
 
-Eight texts go through nine tokenizers and the table on slide p12 is filled in live: token count, tokens per character, bytes per token. Under each row the demo paints the actual segmentation of two of the tokenizers (Qwen3.8 and Mistral) as coloured blocks. Only tokenizers are loaded — no model weights — so the whole thing runs on CPU in a few seconds.
+Eight texts go through nine tokenizers and the table on slide p13 is filled in live: token count, tokens per character, bytes per token. Under each row the demo paints the actual segmentation of two of the tokenizers (Qwen3.8 and Mistral) as coloured blocks. Only tokenizers are loaded — no model weights — so the whole thing runs on CPU in a few seconds.
 
 The point is misconception 1 of the course: **a token is not a character and not a word**; it is a byte string that was frequent enough in *that* tokenizer's training data. The same Traditional Chinese paragraph costs 141 tokens on one tokenizer and 468 on another; Simplified and Traditional differ only in glyphs and get different counts; two spellings of the same Tâi-lô sentence (NFC vs. NFD) look identical on screen and tokenize differently; the Hakka character 𠊎 is `[UNK]` on one tokenizer and 3–4 byte tokens on the others.
 

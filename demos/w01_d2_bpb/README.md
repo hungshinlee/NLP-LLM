@@ -1,7 +1,7 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W1 · Demo 2 — the same paragraph, two tokenizers (slide p28)
+# W1 · Demo 2 — the same paragraph, two tokenizers (slides p28–p29)
 
-One Traditional Chinese paragraph (209 characters, 627 bytes, written for this course) is scored by two models whose tokenizers split it very differently, and the table on slide p28 is filled in step by step:
+One Traditional Chinese paragraph (209 characters, 627 bytes, written for this course) is scored by two models whose tokenizers split it very differently, and the table on slide p29 is filled in step by step:
 
 | Step | Screen | Fills in |
 |---|---|---|

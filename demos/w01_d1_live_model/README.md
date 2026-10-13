@@ -47,7 +47,7 @@ From `runs/rehearsal/` (2026-09-16, Gemma 4, greedy):
 - **Step 2** — *國道 5 號雪山隧道全長幾公里？哪一年通車？* → the model answers **19.8 km** and **22 December 2006**, in bold, as a tidy bulleted list. The verified answer is about **12.9 km**, opened **16 June 2006** (Freeway Bureau, checked 2026-09-16). Three probe runs gave the identical wrong answer word for word.
 - In `probe`, Gemma 4 got **all five** candidate questions wrong, each time identically across three runs. The backup model's records are in `step{1,2}-backup.json`.
 
-If the model you run gets the question right, that is a fine outcome too: compare the wording of the right answer with the wording of the wrong one on the slide — the tone is the same, which is the point slide p36 (Kalai & Vempala) comes back to.
+If the model you run gets the question right, that is a fine outcome too: compare the wording of the right answer with the wording of the wrong one on the slide — the tone is the same, which is the point slide p37 (Kalai & Vempala) comes back to.
 
 ## Files
 

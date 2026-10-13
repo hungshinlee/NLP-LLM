@@ -384,9 +384,21 @@ The conversion is one line. The total code length is $\sum_{t} -\log_2 P(w_t \mi
 Misconception 2 of 10
 :::
 
-## Live: the same paragraph, two tokenizers
+## Before Demo 2: one paragraph, two models, two denominators
 
-One Traditional Chinese paragraph: 209 characters, 627 bytes. Two open models whose tokenizers split it differently. Identical text, identical bytes.
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Why** | p27 claimed that perplexity cannot be compared across tokenizers and that bits-per-byte can. Test it on one paragraph that neither model has seen. |
+| **What runs** | MLX on this laptop, two open models loaded together: Qwen3.8 27B (2026, a vocabulary rich in Chinese) and Mistral 7B (2024, 32k entries, mostly English), both 4-bit. One Traditional Chinese paragraph written for this course: 209 characters, 627 bytes. Each model reads it once — how it cuts the text, then its perplexity and its bits-per-byte. |
+| **Watch for** | The token counts first: the same 627 bytes, cut two ways — that count is the $T$ in p27's formula. Then, before the next two rows land, which model you expect to score better on each. |
+:::
+
+::: {.footer}
+Demo 2 · code: `demos/w01_d2_bpb` · MLX, Apple silicon only
+:::
+
+## Live: the same paragraph, two tokenizers
 
 | | model A | model B |
 |---|---|---|
@@ -624,6 +636,11 @@ Levy & Goldberg (2014) · with $P_n \propto$ unigram$^{3/4}$, $P(c)$ in the rati
 
 PPMI on a 4-word window, then SVD to 200 dimensions, on the same Shakespeare. Function words removed for display.
 
+::: {.ask}
+Guess first: in this space, which word is nearest to `love`?
+:::
+
+:::: {.fragment}
 | query | nearest neighbours (cosine) |
 |---|---|
 | `love` | **hate .412** · know .405 · him .405 · devotion .394 · romeo .381 |
@@ -633,6 +650,7 @@ PPMI on a 4-word window, then SVD to 200 dimensions, on the same Shakespeare. Fu
 ::: {.claim .warn}
 The nearest neighbour of `love` is `hate`.
 :::
+::::
 
 ::: {.footer}
 Demo 3 · computed for this course · PPMI + truncated SVD, 4,000-word vocabulary

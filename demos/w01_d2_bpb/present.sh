@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W1 demo 2（投影片 p28）課堂與課前的入口。一律離線（HF_HUB_OFFLINE=1）。
+# W1 demo 2（投影片 p29）課堂與課前的入口。一律離線（HF_HUB_OFFLINE=1）。
 #
 #   ./present.sh               上課用：載入兩個模型，按 Enter 逐步填表
 #   ./present.sh replay        現場失敗時：顯示課前彩排的表格（畫面標明非現場）
