@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W5 · Demo 3 — Lost in the middle, scaled down: key-value retrieval with the answer at five positions (slide p29)
+# W5 · Demo 3 — Lost in the middle, scaled down: key-value retrieval with the answer at five positions (slides p31–p32)
 
 A scaled-down replication of the synthetic key–value retrieval experiment of Liu et al., *Lost in the Middle* (TACL 2024, §4), on the same Llama 3.1 8B Instruct (4-bit MLX) that W3 demo 2 measured. $K$ random UUID key–value pairs are written as one JSON object; the model is asked for the value of one key. The pair holding the answer is placed at position $1, \lfloor K/4 \rfloor, \lfloor K/2 \rfloor, \lfloor 3K/4 \rfloor, K$ — the same $K$ pairs, the same question, only the answer's position moves — and exact-match accuracy is recorded at each position, for two context sizes of about 4k and 16k tokens.
 

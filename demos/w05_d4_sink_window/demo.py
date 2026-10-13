@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W5 demo 4：StreamingLLM 的 sink 對照（投影片 p39「Replay (if time): demo 4 — a sliding window with and without the sink」）。
+"""W5 demo 4：StreamingLLM 的 sink 對照（投影片 p43「Replay (if time): demo 4 — a sliding window with and without the sink」）。
 
     ./present.sh inspect    課前：只載 tokenizer，數文字的 token、看 mlx-lm 的 RotatingKVCache 怎麼留 token、
                             驗 RoPE 的旋轉可以合成與反轉（重編位置靠它）→ runs/rehearsal/inspect.json
     ./present.sh rehearse   課前彩排：同一段文字、四種 cache，逐 token 的 NLL → runs/rehearsal/curve.{json,svg}
-    ./present.sh            課堂：replay——每條線 Enter 一次（分格的 perplexity 方塊圖），最後印 p39 的表
+    ./present.sh            課堂：replay——每條線 Enter 一次（分格的 perplexity 方塊圖），最後印 p43 的表
     ./present.sh replay     同上
     ./present.sh fetch      模型已在 W2 demo 3 下載並鎖定，通常不必；換模型時才跑
     ./present.sh fake       沒有 mlx 也能演練流程（曲線是假的，畫面會標明）
@@ -52,7 +52,7 @@ TOKENIZER_FILES = ["tokenizer.json", "tokenizer_config.json", "tokenizer.model",
                    "vocab.json", "merges.txt", "added_tokens.json", "chat_template.jinja", "config.json",
                    "generation_config.json"]
 
-# 四種 cache，依投影片 p39 表格的列序（第四列是建 demo 時加的：庫的 keep 與論文的重編不是同一件事）。
+# 四種 cache，依投影片 p43 表格的列序（第四列是建 demo 時加的：庫的 keep 與論文的重編不是同一件事）。
 VARIANTS = [
     ("full", "full cache"),
     ("window", "window W, no sink"),
@@ -652,7 +652,7 @@ def cmd_replay(args, cfg):
         row = ascii_row(r["bins"], lo, hi)
         print(f"  {r['label'][:53]:<54}{row}   ppl < W {fmt(r['ppl_lt_W'])}, ≥ W {fmt(r['ppl_ge_W'])}")
     if pause:
-        key = wait("Enter = p39 的表")
+        key = wait("Enter = p43 的表")
         if key == "x":
             print()
             return

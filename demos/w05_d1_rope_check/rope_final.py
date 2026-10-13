@@ -3,7 +3,7 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
 """W5 demo 1 的參考實作：RoPE 的三個函數——頻率、成對座標的旋轉、旋轉後的內積。純 `torch`，釘 CPU、float64。
 
-課堂上授課者在 rope_live.py 從零寫同一份（寫的順序見投影片 p18 講稿的【操作】），每寫完一段就
+課堂上授課者在 rope_live.py 從零寫同一份（寫的順序見投影片 p19 講稿的【操作】），每寫完一段就
 `./present.sh live` 跑三個測試（測試本體在 tests.py，兩份實作共用）。這一份是 (1) 課前確認三個測試全過、
 (2) 現場卡住兩分鐘後 `./present.sh show` 切過來、(3) 課後發給學生。
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W5 demo 1 的第二段（投影片 p19 的現場版）：d_head/2 對座標各自的波長 λ_i = 2π/θ_i，對訓練長度 L_train 看哪些對轉不滿一圈。
+"""W5 demo 1 的第二段（投影片 p20 的現場版）：d_head/2 對座標各自的波長 λ_i = 2π/θ_i，對訓練長度 L_train 看哪些對轉不滿一圈。
 
 純算術、純標準函式庫（不需要 torch）：θ_i = base^(−2i/d_head)。
 印兩個底（10⁴ 與 5×10⁵，Llama 3 的底）、兩個訓練長度（256：上週的 tiny GPT；8192：Llama 3 的 L_orig），
