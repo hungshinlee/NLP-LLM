@@ -293,7 +293,7 @@ Schematic: two layers, five tokens · next slide: what each side costs
 
 ## Per step and per sequence, on both sides of the bill
 
-| per layer | **one step** — weights (projections, FFN) | **one step** — attention | **all $L$ steps** |
+| per layer | **one step** — weights (every matrix in the layer) | **one step** — attention | **all $L$ steps** |
 |:---|:---|:---|:---|
 | **no cache** — re-run every position | $O(L\,d^2)$ | $O(L^2 d)$ | $O(L^2 d^2 + L^3 d)$ |
 | **with cache** — the new token only | $O(d^2)$ | $O(L\,d)$ | $O(L\,d^2 + L^2 d)$ |
@@ -458,7 +458,7 @@ Zhang et al. 2501.06425 · Qiu et al. 2505.06708 · Yuan et al. 2502.11089 · ap
 | | forward FLOPs, one layer, one token | grows with |
 |:---|:---|:---|
 | **weights**: $\mathbf{W}^Q, \mathbf{W}^K, \mathbf{W}^V, \mathbf{W}^O$ — four $d \times d$ | $8d^2$ | $d$ |
-| **weights**: the FFN, width $4d$, two matrices | $16d^2$ | $d$ |
+| **weights**: the rest of the layer — opened next week | $16d^2$ | $d$ |
 | **attention**: one query against $L$ keys ($\mathbf{Q}\mathbf{K}^\top$ and $\mathbf{A}\mathbf{V}$) | $4Ld$ — causal average $2Ld$ | $L$ |
 
 - Weight side total: $24d^2 = 2 \times 12d^2$ — the $2N$ per token of the ledger, since $N \approx 12\,n_{\text{layer}}d^2$ (W4 does this accounting)
