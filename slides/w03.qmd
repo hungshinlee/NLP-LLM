@@ -483,9 +483,11 @@ Dao et al., NeurIPS 2022 (2205.14135) · FA-2, FA-3, FA-4: new engineering, same
 
 ## Online softmax: two blocks give the same answer as one
 
-$$m^{(j)} = \max\!\big(m^{(j-1)},\ \max \mathbf{s}^{(j)}\big),\qquad
-\ell^{(j)} = \ell^{(j-1)}\,e^{\,m^{(j-1)} - m^{(j)}} + \sum_i e^{\,s^{(j)}_i - m^{(j)}},\qquad
-\mathbf{o}^{(j)} = \mathbf{o}^{(j-1)}\,e^{\,m^{(j-1)} - m^{(j)}} + \sum_i e^{\,s^{(j)}_i - m^{(j)}}\,\mathbf{v}_i$$
+$$\begin{aligned}
+m^{(j)} &= \max\!\big(m^{(j-1)},\ \max \mathbf{s}^{(j)}\big)\\
+\ell^{(j)} &= \ell^{(j-1)}\,e^{\,m^{(j-1)} - m^{(j)}} + \sum_i e^{\,s^{(j)}_i - m^{(j)}}\\
+\mathbf{o}^{(j)} &= \mathbf{o}^{(j-1)}\,e^{\,m^{(j-1)} - m^{(j)}} + \sum_i e^{\,s^{(j)}_i - m^{(j)}}\,\mathbf{v}_i
+\end{aligned}$$
 
 Output after the last block: $\mathbf{o}/\ell$. The whole trick is the factor $e^{\,m^{(j-1)} - m^{(j)}}$: when the running max moves, everything accumulated so far is rescaled once.
 
