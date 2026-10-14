@@ -555,16 +555,18 @@ Barbero et al. 2504.02732 · Qiu et al. 2505.06708 · row four: a search term, n
 
 With $\mathbf{Q}, \mathbf{K}, \mathbf{V}$ all from $\mathbf{X}$, no mask, and a permutation matrix $\mathbf{P}$:
 
-$$\mathrm{Attn}(\mathbf{P}\mathbf{X}) = \mathrm{softmax}\!\left(\frac{\mathbf{P}\mathbf{X}\mathbf{W}^Q\,(\mathbf{P}\mathbf{X}\mathbf{W}^K)^\top}{\sqrt{d_k}}\right)\mathbf{P}\mathbf{X}\mathbf{W}^V
-= \mathbf{P}\,\mathrm{softmax}\!\left(\frac{\mathbf{X}\mathbf{W}^Q\mathbf{W}^{K\top}\mathbf{X}^\top}{\sqrt{d_k}}\right)\mathbf{P}^\top\mathbf{P}\,\mathbf{X}\mathbf{W}^V
-= \mathbf{P}\,\mathrm{Attn}(\mathbf{X})$$
+$$\begin{aligned}
+\mathrm{Attn}(\mathbf{P}\mathbf{X}) &= \mathrm{softmax}\!\left(\frac{\mathbf{P}\mathbf{X}\mathbf{W}^Q\,(\mathbf{P}\mathbf{X}\mathbf{W}^K)^\top}{\sqrt{d_k}}\right)\mathbf{P}\mathbf{X}\mathbf{W}^V\\
+&= \mathbf{P}\,\mathrm{softmax}\!\left(\frac{\mathbf{X}\mathbf{W}^Q\mathbf{W}^{K\top}\mathbf{X}^\top}{\sqrt{d_k}}\right)\mathbf{P}^\top\mathbf{P}\,\mathbf{X}\mathbf{W}^V
+= \mathbf{P}\,\mathrm{Attn}(\mathbf{X})
+\end{aligned}$$
 
 - so shuffling the tokens shuffles the outputs the same way — **"the cat sat on the mat" and "mat the on sat cat the" produce the same set of vectors**
-- the causal mask breaks the symmetry — and **leaks position**: position $t$ sees exactly $t$ keys, so a causal LM with no positional encoding still infers where it is (Haviv et al. 2022). W5 adds position **explicitly**
+- the causal mask breaks the symmetry — and **leaks position**: position $t$ sees exactly $t$ keys, so a causal LM with no positional encoding still infers where it is (Haviv et al. 2022)
 - checked numerically in `w03-data.json`: $\max|\mathrm{Attn}(\mathbf{P}\mathbf{X}) - \mathbf{P}\,\mathrm{Attn}(\mathbf{X})| = 2 \times 10^{-16}$
 
 ::: {.claim}
-Attention addresses by content and has **no idea where anything is** — only the mask hints at it. W5 is about telling it explicitly, and the ways that break at lengths it never saw.
+Attention addresses by content and has **no idea where anything is** — only the mask hints at it. W5 tells it explicitly.
 :::
 
 ::: {.footer}
