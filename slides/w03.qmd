@@ -119,7 +119,7 @@ W1 p52–p58: BPTT, the Jacobian chain, seq2seq's bottleneck, Bahdanau's read
 
 1. Explain $\mathbf{Q}, \mathbf{K}, \mathbf{V}$ from **two angles** — soft dictionary lookup, differentiable routing — and say where each picture fails; answer what happens if $\mathbf{Q} = \mathbf{K} = \mathbf{V} = \mathbf{X}$
 2. Derive $1/\sqrt{d_k}$ from a **variance argument**, and say why it only fixes initialization
-3. Write the **causal mask**; say why the **KV cache is correct**, and state its cost per step and per sequence — then predict what each of demo 1's five tests checks
+3. Write the **causal mask**; say why the **KV cache is correct**, and state its cost per step and per sequence, on the weights and on attention — then predict what each of demo 1's five tests checks
 4. Compute KV bytes per token for **MHA → MQA → GQA → MLA**, and explain why multi-head does **not** multiply the projection cost
 5. Locate the **two crossovers** — FLOPs and activation memory — an order of magnitude apart; explain FlashAttention as IO, exact, not approximate
 6. State the evidence that **attention weights are not explanations**, both sides — and what would count as mechanistic evidence
@@ -279,16 +279,27 @@ Demo 1 · code: `demos/w03_d1_attention_scratch` · plain torch, CPU, no model
 Demo 1 · live coding, CPU · skeleton: Raschka ch 3 · reference implementation after class
 :::
 
-## Per step and per sequence: say both numbers
+## Two layers, one new token: what "no cache" re-runs
 
-| | per generated token | whole sequence of $L$ tokens |
-|:---|:---|:---|
-| **no cache** — recompute every query against every key | $O(L^2 d)$ | $O(L^3 d)$ |
-| **with cache** — one query against $L$ stored keys | $O(L\,d)$ | $O(L^2 d)$ |
-| what the cache costs | $2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,b$ bytes **per token, kept for the whole conversation** | $M_{\text{KV}}$ |
+{{< include assets/w03/kvchain.inline.qmd >}}
 
 ::: {.claim}
-"From $O(n^2)$ to $O(n)$" is a **per-step** statement. The whole generation is still quadratic — and the price is paid in memory instead: the cache is the state.
+Layer 2's $\mathbf{k}_j, \mathbf{v}_j$ are made from layer 1's row $j$ — so without a cache, every earlier row is re-run at every step. The cache stores the end of that chain.
+:::
+
+::: {.footer}
+Schematic: two layers, five tokens · next slide: what each side costs
+:::
+
+## Per step and per sequence, on both sides of the bill
+
+| per layer | **one step** — weights (projections, FFN) | **one step** — attention | **all $L$ steps** |
+|:---|:---|:---|:---|
+| **no cache** — re-run every position | $O(L\,d^2)$ | $O(L^2 d)$ | $O(L^2 d^2 + L^3 d)$ |
+| **with cache** — the new token only | $O(d^2)$ | $O(L\,d)$ | $O(L\,d^2 + L^2 d)$ |
+
+::: {.claim}
+The cache cuts **both** sides by a factor of $L$ — and for the 7B shape at 32k, most of the cut is on the weight side, not attention (p37). The whole generation stays quadratic, and the price moves to memory: the cache is the state.
 :::
 
 ::: {.footer}
@@ -667,7 +678,7 @@ Michel et al. 1905.10650 · Voita et al. 1905.09418 · Olsson et al. 2209.11895 
 |---|---|---|
 | **1** · multi-head costs $n_{\text{head}}$ times a single head | projections cost the same ($4d^2$); it costs $n_{\text{head}}$ softmaxes and the $n_{\text{kv}}$ in the cache | W4 |
 | **2** · $1/\sqrt{d_k}$ solves the numerics | it sets the temperature at initialization; logits grow in training (W4: QK-norm) | W4 |
-| **3** · the KV cache is an engineering optimization | it is the inference-time state, a consequence of causality; per step $O(Ld)$, per sequence $O(L^2 d)$ | W5, W11 |
+| **3** · the KV cache is an engineering optimization | it is the inference-time state, a consequence of causality; it cuts each step by a factor of $L$ on both sides, and the sequence stays quadratic | W5, W11 |
 | **4** · attention is $O(n^2)$, so it is the bottleneck | which quantity, which phase: memory crosses at $\sim 10^3$ tokens, FLOPs at $12d$; decode is bandwidth-bound | W11 |
 
 : {tbl-colwidths="[34,54,12]"}

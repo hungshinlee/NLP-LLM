@@ -61,7 +61,7 @@ format:
 :::
 
 ::: {.footer}
-W4 p9–p11 · W4 demo 1 rehearsal 2026-10-06 (W4 p23) · W3 p44 · right half: schematic
+W4 p9–p11 · W4 demo 1 rehearsal 2026-10-06 (W4 p23) · W3 p45 · right half: schematic
 :::
 
 ## The problem this week handles, in one picture
@@ -78,14 +78,14 @@ Outline W5 · on the board: p15–16, p22, p36 · replayed: p26, p32, p43
 
 ## What you should be able to do by the end of today
 
-1. Restate W3 p44 and **compare five ways to write the position** — learned absolute, sinusoidal, ALiBi, RoPE, NoPE — saying how each breaks at a length it never saw
-2. **Derive RoPE's relativity** from $\mathbf{R}_m^\top\mathbf{R}_n = \mathbf{R}_{n-m}$; state that it lives in $\mathbf{q}^\top\mathbf{k}$ alone, so the KV cache holds (W3 p15) and MLA's absorption does not commute with it (W3 p31)
+1. Restate W3 p45 and **compare five ways to write the position** — learned absolute, sinusoidal, ALiBi, RoPE, NoPE — saying how each breaks at a length it never saw
+2. **Derive RoPE's relativity** from $\mathbf{R}_m^\top\mathbf{R}_n = \mathbf{R}_{n-m}$; state that it lives in $\mathbf{q}^\top\mathbf{k}$ alone, so the KV cache holds (W3 p15) and MLA's absorption does not commute with it (W3 p32)
 3. Explain extrapolation failure with the wavelength $\lambda_i$; say what **PI, NTK-aware and YaRN** each repair and cost; **read Llama 3.1's `rope_scaling`** and name which one it ships
 4. Explain the **attention sink** as softmax's doing, and why **StreamingLLM** stays stable — and why that is not long-context ability
 5. State the **lost-in-the-middle** design; say why NIAH is a lower bound and what RULER and NoLiMa add
 6. Fill the ledger's long-context row for a real `config.json`: which term is $\propto L$, which $\propto L^2$, where they cross; state the **budget view of sparse attention**
 
-## W3 p44, restated — and the question for today
+## W3 p45, restated — and the question for today
 
 - **No mask**: $\mathrm{Attn}(\mathbf{P}\mathbf{X}) = \mathbf{P}\,\mathrm{Attn}(\mathbf{X})$ for any permutation $\mathbf{P}$ — attention addresses by content and has no idea where anything is
 - **Causal mask**: row $t$ sees exactly $t$ keys. The symmetry is broken and the count leaks position; a causal LM with **no positional term learns to use it** (Haviv et al. 2022) — W4's tiny GPT is the specimen on p4
@@ -96,7 +96,7 @@ If the mask already lets the model learn its position, what does an **explicit**
 :::
 
 ::: {.footer}
-W3 p44 · Haviv et al., Findings of EMNLP 2022 · Misconception 1: "no positions, no order"
+W3 p45 · Haviv et al., Findings of EMNLP 2022 · Misconception 1: "no positions, no order"
 :::
 
 # Five ways to write the position {.section-title}
@@ -227,7 +227,7 @@ $\mathbf{R}_n\mathbf{k}_n$ depends on $n$ alone. Rotate the key once, when token
 - the cached key is the *rotated* key: a stamped key cannot be re-stamped; the query's position is never needed at cache time
 :::
 ::: {.column width="50%"}
-**(b) MLA's absorption breaks — W3 p31**
+**(b) MLA's absorption breaks — W3 p32**
 
 MLA caches a latent $\mathbf{c}_t$ and folds $\mathbf{W}^{UK}$ into the query. With RoPE:
 
@@ -244,7 +244,7 @@ Same three lines: **the cache is correct**; **MLA needs a second key**.
 :::
 
 ::: {.footer}
-W3 p15 · W3 p31 · DeepSeek-AI, arXiv:2405.04434 §2.1
+W3 p15 · W3 p32 · DeepSeek-AI, arXiv:2405.04434 §2.1
 :::
 
 ## Before Demo 1: the proof, run on a machine
@@ -526,7 +526,7 @@ Misconception 6: "longer context is better" — the week's central correction ·
 
 ## Three terms, three powers of $L$
 
-The ledger's two formulas (W1 p16, W3 p54, W4 p44), with $b_{\text{elem}}$ for bytes per element — $b$ is the base this week:
+The ledger's two formulas (W1 p16, W3 p55, W4 p44), with $b_{\text{elem}}$ for bytes per element — $b$ is the base this week:
 
 $$C_{\text{pre}} \approx 2NL + 2\,n_{\text{layer}}L^2 d, \qquad C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld \ \text{ per token}$$
 
@@ -545,7 +545,7 @@ Treat $L$ as the variable. Which of the three is the first to hurt a *server*, a
 :::
 
 ::: {.footer}
-outline W5 §Key math 4 · $12d$: W3 p36 · decode's roofline point does not move: W3 p33
+outline W5 §Key math 4 · $12d$: W3 p37 · decode's roofline point does not move: W3 p34
 :::
 
 ## Llama 3.1 8B by the formula — and what W3 already measured
@@ -571,7 +571,7 @@ $N$: W4 demo 1 · config, timings: W3 demo 2 · Misconception 7: "the bottleneck
 : {tbl-colwidths="[20,52,15,13]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p54, W4 p44 · one row added this week · bytes: $b_{\text{elem}}$
+Same master as W1 p16, W3 p55, W4 p44 · one row added this week · bytes: $b_{\text{elem}}$
 :::
 
 ## Sparse attention, the budget view
@@ -601,7 +601,7 @@ Yuan et al. 2502.11089 · DeepSeek-AI 2512.02556 · Lu et al. 2502.13189 · Zhan
 {{< include assets/w05/sink-window.inline.qmd >}}
 
 ::: {.footer}
-Xiao et al., ICLR 2024 §3 · Gu et al., ICLR 2025 · W3 p42–43 · Misconception 8: "the sink is a bug"
+Xiao et al., ICLR 2024 §3 · Gu et al., ICLR 2025 · W3 p43–44 · Misconception 8: "the sink is a bug"
 :::
 
 ## Before Demo 4 (if time): a window, with and without the sink

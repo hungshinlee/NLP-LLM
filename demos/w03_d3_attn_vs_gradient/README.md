@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W3 · Demo 3 — the same sentence, three rankings (slides p47–p48)
+# W3 · Demo 3 — the same sentence, three rankings (slides p48–p49)
 
 One sentence goes into a small language model once. The demo asks the same question three ways — *for the model's prediction at the last position, which input tokens matter?* — and prints three rankings side by side:
 

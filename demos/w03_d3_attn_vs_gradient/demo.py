@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W3 demo 3：attention 熱圖 vs. gradient × input vs. attention rollout（投影片 p48「Live: the same sentence, three rankings」）。
+"""W3 demo 3：attention 熱圖 vs. gradient × input vs. attention rollout（投影片 p49「Live: the same sentence, three rankings」）。
 
     ./present.sh fetch      下載 Qwen3-0.6B（與備用的 1.7B），revision 鎖進 ../versions.lock（要網路）
     ./present.sh inspect    課前：transformers／torch 版本、eager 與 sdpa 兩種載法對 output_attentions 的行為、層數／head 數、一次前向＋反向的耗時
-    ./present.sh rehearse   課前彩排：每句、每個 head 都算一遍，寫 runs/rehearsal/rankings.json 與 *.svg（講稿與 p48 表格從這裡抄）
+    ./present.sh rehearse   課前彩排：每句、每個 head 都算一遍，寫 runs/rehearsal/rankings.json 與 *.svg（講稿與 p49 表格從這裡抄）
     ./present.sh            課堂：Enter 逐欄揭露（attention → gradient × input → rollout → 換 head …）；n 換句子；q 離開
     ./present.sh replay     現場失敗：只顯示彩排的表（畫面標明非現場）
     ./present.sh fake       沒有模型也能演練流程（數字是假的，畫面會標明）
@@ -17,7 +17,7 @@
         每個 token 的分數 = ⟨∂target/∂e_s, e_s⟩（一階泰勒：「把這個 token 的 embedding 拿掉，target 變多少」），排序用絕對值、正規化成佔比；
   (iii) attention rollout（Abnar & Zuidema 2020）：每層各 head 平均的 attention 矩陣 A_l，Ã_l = (1−r) A_l + r I 後列正規化，
         R = Ã_L ⋯ Ã_1，取最後一列——把 residual 算進去之後「資訊從哪個輸入流到輸出」的比例。
-三欄之間印 Spearman 秩相關；同一層各 head 的第一名各是誰也印出來（換 head 第一欄就整個換掉，這是 p48 的第 6 步）。
+三欄之間印 Spearman 秩相關；同一層各 head 的第一名各是誰也印出來（換 head 第一欄就整個換掉，這是 p49 的第 6 步）。
 
 相依：torch、transformers（版本釘在 ../versions.lock）。Python 3.11+（tomllib）。
 """

@@ -157,7 +157,7 @@ class GPT(nn.Module):
                  norm: str = "pre", qk_norm: bool = False, tie: bool = True):
         super().__init__()
         self.V, self.d, self.n_layer, self.L = V, d, n_layer, L
-        self.emb = nn.Embedding(V, d)                        # E: V × d。沒有位置編碼——W3 p44 說 attention 是 permutation-equivariant，本週的 block 沒有補上這一點（W5）
+        self.emb = nn.Embedding(V, d)                        # E: V × d。沒有位置編碼——W3 p45 說 attention 是 permutation-equivariant，本週的 block 沒有補上這一點（W5）
         self.drop = nn.Dropout(dropout)
         self.blocks = nn.ModuleList([Block(d, n_head, d_ff, n_kv, head_dim, dropout, norm, qk_norm) for _ in range(n_layer)])
         self.norm_f = RMSNorm(d)

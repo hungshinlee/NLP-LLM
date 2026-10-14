@@ -1864,7 +1864,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t163-text_1">
-   <!-- $\text{W3 p42: the first token is where softmax dumps the mass no key deserves (every query can see it). Evict it, and that mass must land on}$ -->
+   <!-- $\text{W3 p43: the first token is where softmax dumps the mass no key deserves (every query can see it). Evict it, and that mass must land on}$ -->
    <g style="fill: #dc2626" transform="translate(0 12.75) scale(0.17 -0.17)">
     <defs>
      <path id="t163-Cmr10-57" d="M 1991 -72 
@@ -2031,47 +2031,6 @@ M 391 1281
 L 1906 1281 
 L 1906 3547 
 L 391 1281 
-z
-" transform="scale(0.015625)"/>
-     <path id="t163-Cmr10-32" d="M 319 0 
-L 319 172 
-Q 319 188 331 206 
-L 1325 1306 
-Q 1550 1550 1690 1715 
-Q 1831 1881 1968 2097 
-Q 2106 2313 2186 2536 
-Q 2266 2759 2266 3009 
-Q 2266 3272 2169 3511 
-Q 2072 3750 1880 3894 
-Q 1688 4038 1416 4038 
-Q 1138 4038 916 3870 
-Q 694 3703 603 3438 
-Q 628 3444 672 3444 
-Q 816 3444 917 3347 
-Q 1019 3250 1019 3097 
-Q 1019 2950 917 2848 
-Q 816 2747 672 2747 
-Q 522 2747 420 2851 
-Q 319 2956 319 3097 
-Q 319 3338 409 3548 
-Q 500 3759 670 3923 
-Q 841 4088 1055 4175 
-Q 1269 4263 1509 4263 
-Q 1875 4263 2190 4108 
-Q 2506 3953 2690 3670 
-Q 2875 3388 2875 3009 
-Q 2875 2731 2753 2481 
-Q 2631 2231 2440 2026 
-Q 2250 1822 1953 1562 
-Q 1656 1303 1563 1216 
-L 838 519 
-L 1453 519 
-Q 1906 519 2211 526 
-Q 2516 534 2534 550 
-Q 2609 631 2688 1141 
-L 2875 1141 
-L 2694 0 
-L 319 0 
 z
 " transform="scale(0.015625)"/>
      <path id="t163-Cmr10-3a" d="M 538 353 
@@ -2975,7 +2934,7 @@ z
     <use xlink:href="#t163-Cmr10-20" transform="translate(152.685547 0)"/>
     <use xlink:href="#t163-Cmr10-70" transform="translate(185.986328 0)"/>
     <use xlink:href="#t163-Cmr10-34" transform="translate(241.503906 0)"/>
-    <use xlink:href="#t163-Cmr10-32" transform="translate(291.503906 0)"/>
+    <use xlink:href="#t163-Cmr10-33" transform="translate(291.503906 0)"/>
     <use xlink:href="#t163-Cmr10-3a" transform="translate(341.503906 0)"/>
     <use xlink:href="#t163-Cmr10-20" transform="translate(369.189453 0)"/>
     <use xlink:href="#t163-Cmr10-74" transform="translate(402.490234 0)"/>
