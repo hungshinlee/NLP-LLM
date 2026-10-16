@@ -22,6 +22,8 @@ project:
     - slides/assets/**
     # 講義 PDF：由 bin/publish.py 從 private repo 的 nlp_llm/handouts/ 複製過來的產物，勿手改
     - handouts/**
+    # 報告範本的 zip：由 bin/publish_report_template.py 從 private repo 的 nlp_llm/report-template/ 打包的產物，勿手改
+    - supplements/*.zip
 
 # 用 zh-TW 而非 zh-Hant：Quarto 只有 _language-zh-TW.yml，給 zh-Hant 會退回簡體的 _language-zh.yml
 lang: zh-TW
@@ -114,6 +116,7 @@ website:
           - href: supplements/midterm-poc.qmd
           - href: supplements/final-paper-mvp.qmd
           - href: supplements/paper-writing-and-narrative.qmd
+          - href: supplements/report-template.qmd
   page-footer:
     left: "自然語言處理與大型語言模型 · Natural Language Processing and Large Language Models · 14 weeks"
     right: "Built with [Quarto](https://quarto.org)"

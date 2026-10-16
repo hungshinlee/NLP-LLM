@@ -10,6 +10,7 @@ on:
       - 'styles.scss'
       - 'scripts/**'
       - 'handouts/**'
+      - 'supplements/*.zip'
       - '.github/workflows/publish.yml'
   workflow_dispatch:
 

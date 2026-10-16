@@ -261,7 +261,8 @@ def build_supplements():
         "They treat both as submissions to ACL / EMNLP / NAACL / COLM / ICLR rather than as "
         "coursework, which is the standard the course is aiming at.",
         "",
-        "**The guides themselves are in Chinese**, matching how the course is taught.",
+        "**The guides themselves are in Chinese**, matching how the course is taught; "
+        "the report template is in English, like the papers you will write.",
         "",
     ] + rows + [
         "",
