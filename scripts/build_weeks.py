@@ -266,7 +266,7 @@ def build_supplements():
         "",
     ] + rows + [
         "",
-        "> **On the hardware assumption.** These guides describe the *term project*, not the course. The course itself asks nothing of your hardware \u2014 it is lectures, and the demos run in class. The topics here were chosen against a single 16 GB CUDA GPU (an RTX 5070 Ti or similar), which is what a QLoRA run or an activation-steering experiment at 1\u20138B actually needs. If you have less, say so early and pick a topic that fits: several of the ten are inference-only or work on weights offline, and need almost no GPU time at all.",
+        "> **On the hardware assumption.** These guides describe the *term project*, not the course. The course itself asks nothing of your hardware \u2014 it is lectures, and the demos run in class. The problem cards were sized against a single 16 GB CUDA GPU (an RTX 5070 Ti or similar), which is what a QLoRA run on a 7\u20138B model, or inference with a few small models, actually needs. If you have less, say so early and pick a card that fits: many of the analysis cards are inference-only, and the tokenizer cards need no GPU at all.",
         "",
     ])))
     return written

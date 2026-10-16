@@ -1,140 +1,681 @@
 ---
-title: "Ten Research Topics for ACL 2027 on a Single Consumer GPU"
-subtitle: "鎖定 ACL 2027：基於單張消費級硬體與臺灣本土多語系語料之大型語言模型前沿研究題庫與技術藍圖"
+title: "Problem Cards for an ACL 2027 Paper"
+subtitle: "選題問題卡：寫一篇 ACL 論文的起點"
 toc-depth: 2
 ---
 
 <!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 supplements/*.md 後重跑腳本。 -->
 
-計算語言學頂級會議（ACL、EMNLP、NAACL）的論文評審取向已產生結構性演進。在工業界龐大算力對通用基準測試的邊際效益遞減之際，學術界更關注具有深厚語言類型學（Linguistic Typology）價值、機制可解釋性（Mechanistic Interpretability）、輕量化表徵工程（Representation Engineering）以及深層文化價值對齊的實證研究。在單張消費級顯示卡（以 NVIDIA RTX 5070 Ti 等級為基準，配備約 16GB 顯存）的硬體限制下，研究設計應聚焦於 1B 至 8B 參數量的小型與中型語言模型（SLMs / MLMs），並結合推論期表徵介入、模型權重空間運算、因果探測以及精準的參數量化低秩微調。
+<!-- 此檔由 bin/publish_supplements.py 從 private repo 的 <course>/supplements/ 過濾產生，請勿在公開 repo 直接編輯。 -->
 
-臺灣本土語言資產包含漢語族（臺灣華語、臺灣台語、臺灣客語）與南島語系（臺灣原住民族語）。這兩大語系在正字法多樣性、句法構造、言談語碼轉換及文化價值觀上呈現鮮明的階梯式複雜度，為驗證大語言模型在非印歐語系下的表徵極限提供了理想的天然實驗室。本報告針對上述條件，深入剖析十個具備學術痛點且高度契合 ACL 2027 審稿標準的論文題目。
+這份文件列出 25 張「問題卡」。每張卡描述一個值得研究的**問題**，不是一個題目：痛點在哪裡、動手之前先蒐集什麼證據、哪些資料與模型確認存在而且拿得到、還有哪些方向沒被做完、會在哪裡踩雷、適合寫成哪一種貢獻。
 
----
+**卡片不指定方法。** 方法是讀完文獻、看完證據之後才決定的事。先挑好方法再去找能套的問題，是審稿人最容易看穿的寫法：introduction 講不出為什麼非這個方法不可，related work 只能列出「也有人用過這個方法」。
 
-## 計算語言學前沿趨勢與消費級硬體範式轉移
+選題不限於這些卡，任何自然語言處理或大型語言模型的問題都可以。文件最後有一張空白卡，用同樣的欄位寫下你自己的問題。
 
-在 16GB 顯存約束下，傳統的全參數預訓練已不可行，研究重點應轉向分析模型內部機理與微調架構的精細優化。透過 4-bit NormalFloat（NF4）量化、分頁優化器（Paged AdamW）、FlashAttention-2 及梯度檢查點技術，參數量 8B 規模的模型在低秩適應（QLoRA）訓練時的顯存消耗可被有效壓縮在 11GB 至 14GB 之間。此外，表徵轉向（Activation Steering）與模型權重算術（Model Arithmetic）等純推論期或離線權重處理技術，完全避開了反向傳播的顯存開銷，為低算力環境開闢了極具競爭力的研究路徑。
+## 卡片上的資訊是怎麼來的
 
-| 技術範式 | 適用模型規模 | 顯存佔用 (16GB 基準) | 計算負載與耗時預估 | ACL 頂會認可之核心學術價值 |
-| --- | --- | --- | --- | --- |
-| **表徵轉向與內部探測 (Activation Steering & Probing)** | 3B 至 8B (半精度或 8-bit 推論) | 8GB – 13GB (快取殘差流激活值) | 極低：僅需數千次前向傳播提取表徵向量，單次實驗耗時數小時 | 揭示多語言跨語言表徵空間的幾何結構與語言隔離機制。 |
-| **權重空間算術 (Model Arithmetic / Task Vectors)** | 1B 至 8B (CPU 或 GPU 離線運算) | 0GB GPU (可在 32GB 系統記憶體完成權重向量差分與合併) | 零訓練成本：幾何向量加減運算僅需數分鐘至半小時 | 探討指令遵循與價值對齊能力在無監督低資源語言間的無失真遷移規律。 |
-| **參數量化低秩適應 (QLoRA / PEFT)** | 7B 至 8B (4-bit 基底 + 16-bit 轉接器) | 11GB – 15GB (微調批次量 1–4，結合梯度累積) | 中等：5,000–15,000 步微調約需 16–36 小時 | 驗證特定語言學語法規則對模型參數空間更新軌跡的因果約束。 |
-| **小型語言模型全參調優 (SLM Full Fine-Tuning)** | 1B 至 1.5B (bfloat16 全參或極高秩 LoRA) | 10GB – 15GB (啟用 ZeRO 技術或輕量化框架) | 中高：約需 24–48 小時訓練週期 | 驗證新型分詞器與形態先驗在邊緣端小型模型中的表徵保留能力。 |
-| **少樣本上下文學習與語言向量 (In-Context Steering)** | 3B 至 8B (4-bit/8-bit 量化推論) | 6GB – 12GB (結合 vLLM 或 llama.cpp 推論加速) | 低：批次推論依評測集規模約耗時數小時 | 系統化度量大模型在少樣本跨方言語境下的語用語意失效邊界。 |
+卡片上每一個資料集、模型、工具與論文，都在 **2026-10-16** 對照官方來源查過：model card、官方 GitHub、出版者頁面、ACL Anthology、OpenReview、PMLR、NeurIPS proceedings、arXiv、政府或機構的官方網頁；寫好之後，再由另一批沒參與撰寫的查核者逐句複核一次。少數只能從次要來源確認、或官方頁面讀不到的地方，卡上會直接寫明。卡上寫「沒有找到」的，意思是我們查了但沒找到，不代表不存在。
 
----
+授權條款、版本與取得方式會變。**動手之前再查一次**；查到的與卡片不一致時，以官方頁面為準，並告訴授課老師。卡片引用的 arXiv 預印本，若之後出了同儕審查版本，引用時改用正式版本（ARR 的規定，見文末〈投稿格式備忘〉）。technical report、model card 與 blog 不是同儕審查的文獻，卡片會在句子裡寫明；你的論文引用它們時也要這樣做。
 
-## 臺灣本土多語系環境之語義障礙與特徵剖析
+卡片上**沒有**顯存用量、訓練時數或預期的分數改善。那些數字取決於你的資料、設定與程式，別人表格裡的數字不能直接搬來規劃，更不能寫進報告。下面〈算力〉一節教你自己算帳、自己量。
 
-臺灣本土語料涵蓋漢語族與南島語族，其在文字系統、音韻構造及句法配置上展現的多元特徵，在大語言模型現行的預訓練與分詞體系中引發了多層次的表徵失效。
+## 怎麼用一張卡
 
-| 語言類別 | 代表語種 / 方言 | 書寫系統與正字法特徵 | 形態句法結構 | 現行大型語言模型之核心表徵障礙 |
-| --- | --- | --- | --- | --- |
-| **臺灣華語 (Taiwan Mandarin)** | 中華民國國語、社群網絡語體 (PTT、Dcard) | 正體漢字；夾雜注音符號縮寫與諧音代字 | 漢語孤立語；富含高語境情態助詞（「啦」、「喔」、「咧」、「耶」） | 受到簡體中文語料語義侵蝕；社群縮寫常遭安全護欄誤判為有害內容。 |
-| **臺灣台語 (Taiwanese Hokkien)** | 泉漳混合腔、各地方方言 | 多軌並存：教育部推薦漢字、臺羅拼音、白話字 (POJ)、漢羅混寫 | 孤立語；七至八個調類，具備嚴格且高度系統化的連讀變調規則 | 子詞分詞器嚴重碎化羅馬拼音（Token Bloat）；漢字與拼音間的幾何語意空間割裂。 |
-| **臺灣客語 (Taiwanese Hakka)** | 四縣腔、海陸腔、大埔腔、饒平腔、詔安腔 | 客家委員會推薦漢字、客語通用拼音 | 孤立語；各腔調間呈現詞彙反序、特定功能詞對立及聲調逆轉現象 | 腔調間語料極度不對稱；微調易引發參數干擾與方言混淆輸出。 |
-| **臺灣原住民族語 (Formosan Languages)** | 泰雅語 (Atayal)、阿美語 (Amis)、排灣語 (Paiwan) 等 16 族語 | 全羅馬化拼寫系統；使用特殊符號標註喉塞音與特定輔音 | 南島語發源核心；動詞居首（VSO/VOS）；具備複雜對稱焦點語態系統 | 極度低資源狀態；SVO 歸納偏置完全失效；詞根與焦點詞綴遭分詞器破壞。 |
+1. **讀兩三張，不要只讀一張。** 比較之後才知道哪個問題讓你在意、哪份資料你真的拿得到。
+2. **先做「先蒐集的證據」。** 每張卡都列了一到兩週內可以完成的觀察，例如把兩三個現成模型跑在 50–100 筆你在意的輸入上、逐筆分類錯誤。這一步的結果直接進期中報告的 Problem Analysis：它證明問題確實存在、而且規模值得一篇論文。證據不支持痛點時，換卡或修正問題；這是研究的正常過程，不是失敗。
+3. **決定貢獻類型。** 方法、資源、分析三選一，可以有主有從。每一種的審稿標準，期中範本的導引框有詳細說明（Supplements 頁的 *Report Template*）。
+4. **從起點文獻往外擴。** 卡片的起點文獻只是入口。沿著它們的引用與被引用往外找，related work 要以你的問題為中心組織，而不是以方法名稱。每一條引用都照範本的規定查證，加上 `\src{}`，BibTeX 要有 `doi` 或 `url`。
+5. **選定 PoC 的形式。** 期中報告的 PoC 三選一：小規模實驗、端到端管線打通、重現一個已發表的結果。分析型與資源型的卡，PoC 往往就是「先蒐集的證據」的擴大版。
 
----
+## 卡片的欄位
 
-## 十大前沿研究選題與技術架構深度解析
+| 欄位 | 內容 |
+|:---|:---|
+| **痛點** | 誰、在什麼情境下、遇到什麼問題；技術上是哪一個環節出錯 |
+| **先蒐集的證據** | 動手做方法之前，一到兩週內能完成、能證明痛點存在而且有規模的觀察 |
+| **已查證的資源** | 資料、模型、工具；附官方連結，與 2026-10-16 查到的關鍵事實和授權 |
+| **起點文獻** | 一到三篇最接近的已發表工作。只是起點，不是 related work 的全部 |
+| **開放方向** | 還沒被做完的問題，寫成問句，不指定方法 |
+| **風險** | 資料授權、評估陷阱、被搶先的可能、算力 |
+| **貢獻類型** | 方法／資源／分析 |
+| **課程週次** | 與哪幾週的內容相連 |
 
-### 題目一：南島語對稱焦點語態系統在自注意力機制中的幾何表徵與跨層解析
+## 算力：16 GB 的記憶體帳
 
-* **核心研究問題與突破口**：臺灣原住民族語句法以動詞居首（Verb-Initial，VSO 或 VOS）及對稱焦點語態系統（Symmetrical Voice System）為顯著特徵。動詞透過主事焦點、受事焦點、處所焦點或工具焦點之詞綴變換，決定核心論元（Pivot）的語意角色與格位。現行主流大模型強烈偏置於印歐語及漢語的主謂賓（SVO）結構，在原住民族語中呈現語法解析崩潰。突破口在於運用模型可解釋性方法，探測內部注意力矩陣是否能自發形成對動詞居首結構的表徵流形，抑或強制將其扭曲為 SVO 幾何空間。
-* **生活化理解**：平常講中文習慣先講「小明（誰）吃（動作）蘋果（對象）」，但原住民族語往往一開口先講動詞，而且動詞身上帶有特殊的「零件」（焦點詞綴）。這個零件會明白告訴聽眾：整句話的主角到底是「吃東西的人」，還是「被吃的那顆蘋果」。從小習慣 SVO 文法的 AI 看到動詞搶先跑出來就容易當機。這個題目就像拿「腦部斷層掃描儀」，一層層檢查 AI 的大腦究竟在第幾層開始搞混誰是主角。
-* **開源基線與實驗設計**：在單張 16GB 顯卡部署 3B 至 8B 開源模型（Llama-3.2-3B 與 Qwen-2.5-7B），全過程僅依賴推論前向傳播快取注意力權重與隱藏狀態。對比句對嚴格控制動詞焦點詞綴變換（如阿美語主事焦點 `-om-` 與受事焦點 `-en`），在各 Transformer 層訓練輕量線性探針（Linear Probes）解碼論元角色。語料取自原住民族委員會語料庫及「族語 E 樂園」之阿美語、泰雅語與排灣語教材，建立包含 1,500 對標註詞綴與論元的探測集。指標包含探針分類準確率、互資訊與語態預測錯誤率。
+課程設定的專題硬體上限是單張 16 GB CUDA GPU。與其相信別人表格裡的顯存數字，不如自己算一次帳，再實際量測：
 
-### 題目二：多軌書寫系統共存下臺灣台語的分詞碎化與語意空間坍塌解耦
+- **權重**：參數數 × 每個參數的 bytes。bf16 與 fp16 是 2 bytes，8-bit 約 1 byte。4-bit 是 0.5 byte 再加上縮放係數：bitsandbytes 預設每 64 個權重共用一個 4 bytes 的係數，所以每個權重實際約 4.5 bits；QLoRA 論文的 double quantization 能壓到約 4.13 bits。bitsandbytes 不量化 embedding 與輸出層，它們仍是 bf16；MLX 的 4-bit 版本則連這兩層也量化。各工具的做法不同，算帳前先看清楚。
+- **例子**：Llama 3.1 8B 有 8,030,261,248 個參數（課程 W4 demo 1 從 safetensors 逐項數出來的），bf16 權重約 16.1 GB（15.0 GiB），幾乎吃掉整張卡，剩下的放不下 CUDA 本身、activation 與 KV cache；課程 W3 demo 2 用的 4-bit 版本（MLX、每 64 個權重一組）權重是 4,517,404,672 bytes，約 4.5 GB。Qwen3-8B 有 8.2B 個參數，embedding 與輸出層不共用，bf16 權重約 16.4 GB（15.3 GiB），同樣放不下；Qwen3-4B 的 bf16 權重約 8.0 GB（7.5 GiB），放得下，可以拿來當未量化的基準。小模型就寬鬆得多：Qwen3-0.6B 有 596,049,920 個參數（同樣來自 W4 demo 1），bf16 權重約 1.2 GB。
+- **別直接相信網頁上的參數數**：Qwen3-0.6B 與 1.7B 的 embedding 與輸出層共用同一個矩陣，但 Hugging Face 頁面顯示的參數數把它算了兩次（0.6B 顯示為 751,632,384）。以 model card 或自己數的為準。
+- **全參數訓練**：用 Adam 做混合精度訓練時，每個參數除了 bf16 權重（2 bytes），還要存梯度（2）、fp32 的主權重（4）、Adam 的一階與二階動差（4 + 4），合計約 16 bytes，**還不含 activation**。8B 模型約 128 GB，不可能；Qwen3-0.6B 也要約 9.5 GB，再加上 activation 才能訓練。
+- **LoRA 與 QLoRA**：凍結的權重照上面算（QLoRA 的凍結權重是 4-bit），梯度與 optimizer 狀態只跟著可訓練的參數走。activation 隨 batch size 與序列長度成長，序列一長常常變成最大的一項。用 transformers 載入 4-bit 權重時注意：`BitsAndBytesConfig` 預設的 4-bit 型別是 `"fp4"`，要用 QLoRA 的 NF4 得明寫 `bnb_4bit_quant_type="nf4"`。
+- **KV cache**：每個 token 要存 $2 \times n_{\text{layer}} \times n_{\text{kv}} \times d_{\text{head}} \times b$ bytes（W3）。Llama 3.1 8B 是 32 層、8 個 KV head、$d_{\text{head}} = 128$，fp16 時每個 token 131,072 bytes（128 KiB）；W3 demo 2 在 1k 到 128k 個 token 實際量到的 cache 大小與這個公式完全一致。32k 個 token 就是 4 GiB，batch 還要再乘上去。Qwen3-4B 與 8B 是 36 層、8 個 KV head，每個 token 144 KiB，32k 個 token 約 4.5 GiB。長文本與推理模型的卡（C1、C3、C4、E1）算帳時別漏了這一項。
+- **分析與資源類的題目**多半只需要推論或抽特徵，記憶體壓力小得多；tokenizer 類的題目（A1、B1、B2）甚至不必載入模型。這是它們在單卡條件下的優勢，不是退而求其次。
 
-* **核心研究問題與突破口**：臺灣台語長期處於文字多軌並行狀態：教育部推薦漢字、臺羅拼音、教會白話字（POJ）與漢羅混寫。現有 BPE 子詞分詞器在處理臺羅或混寫時，會將音節切分成瑣碎的位元組碎片（Token Bloat），不僅浪費上下文窗口，更使同一概念在不同書寫系統下的嵌入向量在幾何空間中嚴重割裂。突破口在於不進行昂貴的重新預訓練，設計音節解構先驗轉接層，在表徵層重整幾何對齊。
-* **生活化理解**：臺灣人寫台語很靈活，有人寫「食飽未」、有人寫「tsia̍h-pá--buē」、有人寫「食飽--bē」，大家一看都懂。但 AI 用的「文字切碎機」（分詞器）碰到台羅拼音時，會把一個完整的字切成四五個破碎字母，既佔記憶體，又讓 AI 誤以為漢字和拼音是毫無關聯的兩碼事。這個題目就是要幫 AI 配上一副「特製眼鏡」，教它看穿拼音和漢字的外表差異，一眼認出它們底子裡是同一碗飯。
-* **開源基線與實驗設計**：選用 Qwen-2.5-1.5B 或 Llama-3.2-1B，凍結模型主體，僅在輸入嵌入層訓練輕量化正字法對齊轉接層（Orthographic Alignment Adapter）。以 InfoNCE 對比損失對齊漢字、臺羅與漢羅混寫之隱藏狀態：
+記憶體的實際用量用 `torch.cuda.max_memory_allocated()` 量（它不含 CUDA context 與 allocator 預留的空間，`nvidia-smi` 看到的會更多），連同 GPU 型號、batch size 與序列長度寫進報告的 efficiency 表。**寫量到的數字，不寫估計值。**
 
-$$\mathcal{L}_{\text{align}} = - \log \frac{\exp(\text{sim}(\mathbf{e}_{\text{Han}}, \mathbf{e}_{\text{Tailo}}) / \tau)}{\sum \exp(\text{sim}(\mathbf{e}_{\text{Han}}, \mathbf{e}_{j}) / \tau)}$$
+## 卡片總覽
 
+| 卡 | 問題 | 貢獻類型 | 課程週次 |
+|:--|:--|:--|:--|
+| [A1](#a1) | 同一句話，台語與客語要多付幾倍的 token？ | 分析，可延伸為資源 | W2、W11 |
+| [A2](#a2) | 台語的四種寫法，模型當成同一種語言嗎？ | 分析 | W2、W14 |
+| [A3](#a3) | 要模型寫台語，它寫出來的是台語還是華語？ | 資源與分析 | W2、W12、W14 |
+| [A4](#a4) | 繁體字不等於臺灣用語：模型的繁體中文裡有多少大陸用語？ | 分析，可延伸為資源 | W7、W14 |
+| [A5](#a5) | 臺灣的 benchmark 有多少錯題、多少已經被模型看過？ | 資源與分析 | W7、W14 |
+| [A6](#a6) | 客語：模型讀得懂、寫得出幾個腔調？ | 資源或分析 | W2、W12 |
+| [A7](#a7) | 原住民族語：模型從幾乎沒有資料開始 | 方法、分析或資源 | W2、W8、W12 |
+| [A8](#a8) | 用台語或客語提問，安全護欄還擋得住嗎？ | 分析，可延伸為資源 | W9、W13、W14 |
+| [B1](#b1) | 「1234萬5678」與「12,345,678」：數字的寫法會影響算術嗎？ | 分析，可延伸為方法 | W2 |
+| [B2](#b2) | 繁體中文的詞表裡，有多少沒學好的 token？ | 分析 | W2、W7 |
+| [C1](#c1) | 繁體中文的長文件裡，答案放在中間就找不到嗎？ | 分析或資源 | W5 |
+| [C2](#c2) | 量化之後，繁體中文與台語掉得比英文多嗎？ | 分析 | W11 |
+| [C3](#c3) | 壓縮 KV cache 之後，模型還聽得懂中文的指令嗎？ | 分析 | W3、W11 |
+| [C4](#c4) | 小型推理模型的思考預算：想多久才夠？ | 分析 | W10 |
+| [D1](#d1) | 擴充詞表、繼續預訓練之後，模型忘了什麼？ | 分析 | W2、W7、W8 |
+| [D2](#d2) | 用 LoRA 微調成某個領域的模型之後，它還記得什麼？ | 分析，可延伸為方法 | W8 |
+| [D3](#d3) | 偏好對齊之後回答變長了：是變好，還是只是變長？ | 分析，可延伸為方法 | W9、W14 |
+| [D4](#d4) | 用繁體中文問推理模型，它用什麼語言想？ | 分析 | W2、W10 |
+| [E1](#e1) | 臺灣法規的 RAG：條文該怎麼切？ | 分析或資源 | W12 |
+| [E2](#e2) | RAG 附上的引用，真的支持那句話嗎？ | 分析或資源 | W12、W14 |
+| [E3](#e3) | 小型開放模型當 agent：工具呼叫壞在哪裡？ | 分析，可延伸為資源 | W13 |
+| [F1](#f1) | LLM 當評審，在繁體中文上可信嗎？ | 分析，可延伸為資源 | W9、W14 |
+| [F2](#f2) | 只改 prompt 的格式，繁體中文 benchmark 的排名會翻嗎？ | 分析 | W14 |
+| [F3](#f3) | 模型在中間層用哪一種語言「想」？ | 分析 | W2、W14 |
+| [F4](#f4) | 臺灣情境下的社會偏見，現有的 benchmark 量得到嗎？ | 資源與分析 | W14 |
 
+分析型的卡占多數，因為在單卡、一學期的條件下，分析與資源型的題目比較容易做得扎實。這不代表方法型的題目不受歡迎：許多卡都寫了「可延伸為方法」，先把問題量清楚，期末再決定要不要提出方法，你的方法也才有明確的對手。
 
-語料採用教育部《臺灣台語常用詞辭典》例句庫，建構 50,000 組三向平行對齊條目。指標評估跨書寫檢索平均倒數排名（MRR）、詞義餘弦相似度方差及序列長度壓縮比。
+## A. 臺灣的語言
 
-### 題目三：基於中間層表徵轉向之極低資源臺灣原住民族語推理能力無微調激發
+先講清楚資料的取得方式。**台語的 TAT 語料，以及族語E樂園與原住民族語言線上辭典的資料，由授課老師提供**，要用的組直接向老師索取。TAT 是語音語料，但它的轉寫包括漢羅台文與台羅等多種寫法，是少數同一批內容有不只一種台文寫法的資料；第一、二冊合計約 100 小時、200 位說話人。TAT 由中華民國計算語言學學會（ACLCLP）發行（見 [ACLCLP 的中文語料頁](https://www.aclclp.org.tw/use_mat_c.php)），課程用的是學術版授權：限學術、教育及公益研究，不得營利，也不得轉給第三方（[授權書](https://www.aclclp.org.tw/doc/tat_vol.pdf)第 2 條）。拿到的資料只能用在課程與研究裡，不要放上 GitHub、雲端硬碟或任何公開的地方。族語的兩份資料限非商業用途：FormosanBank 轉載它們時，記錄的授權是族語E樂園 CC BY-NC-SA 4.0、線上辭典 CC BY-NC 4.0（這是 FormosanBank 的紀錄，兩個官方網站上的條款我們沒能讀到）。
 
-* **核心研究問題與突破口**：瀕危原住民族語缺乏充足訓練語料，進行傳統監督式微調（SFT）易破壞預訓練模型的泛化與常識推理能力。表徵工程研究發現，大模型在深層共用跨語言語意概念流，非通用語言任務失敗多因中間層未能將目標語言映射至推理流形。突破口在於純推論期表徵介入，無需反向傳播更新參數即可激發推理能力。
-* **生活化理解**：用中文問 AI 邏輯題它能侃侃而談，換成泰雅語問完全同一題卻立刻胡言亂語。這不是因為 AI 缺乏智商，而是「語言切換開關卡住了」，不知道如何把族語訊號傳到思考腦區。傳統做法是逼模型死背族語文章（容易引發記憶錯亂且成本昂貴），但最新技術發現，只要在它思考到一半的中間層輕輕推一把「方向盤」（轉向向量），就能直接把族語推進推理空間，完全不用重練模型。
-* **開源基線與實驗設計**：在單卡部署 Llama-3.1-8B 或 Qwen-2.5-7B。利用少量華語與族語（泰雅語、排灣語）平行句對，在前向傳播中計算特定層的平均激活差值作為語言轉向向量：
+這一組資源的授權特別雜：同一部辭典在不同網站上的授權說法可能不一樣，「禁止改作」（ND）與「非商業」（NC）都很常見。動手前先決定你的成果要不要發佈資料；要發佈，就只能選允許改作與散布的來源，或者只發佈程式與標註、不發佈原文。
 
-$$\mathbf{v}_{\text{steering}} = \frac{1}{N}\sum_{i=1}^{N} \left(\mathbf{h}_{\text{Mandarin}}^{(l, i)} - \mathbf{h}_{\text{Formosan}}^{(l, i)}\right)$$
+### A1　同一句話，台語與客語要多付幾倍的 token？ {#a1}
 
+- **痛點**：token 數決定 API 的費用、context 裝得下多少內容、生成要多久。Petrov et al. 用 FLORES-200 的同一批句子比較，發現同樣的內容，不同語言切出來的 token 數最多差到 15 倍；他們的表格已經包含簡體中文、繁體中文與粵語。但 FLORES-200 與後繼的 FLORES+ 都沒有台語、客語與臺灣原住民族語；後來一篇用 FLORES+ 比較 21 種語言變體的研究也說明，因為缺資料，沒有納入大多數的漢語方言（例如台語）。台語還有漢字、台羅、白話字、漢羅四種寫法，羅馬字帶聲調符號，同一個字母加上調號在 Unicode 裡可以有不同的編碼方式，切出來的 token 數也可能不同。問題是：同樣的內容，台語（各種寫法）與客語要比華語多付幾倍的 token？臺灣自己調整過詞表的模型，幫到的是華語，還是也幫到了台語與客語？
+- **先蒐集的證據**：拿 iCorpus-100 的 100 句（同一句有華語、台語漢字、台羅、白話字四個版本），用五六個 tokenizer 算每一句的 token 數與相對華語的倍數；台羅與白話字再分別用 Unicode 的 NFC 與 NFD 兩種正規化各算一次。tokenizer 只需要下載 tokenizer 檔，不必載入模型，筆電就能做。
+- **已查證的資源**：
+  - [iCorpus-100](https://huggingface.co/datasets/Bohanlu/iCorpus-100)：100 句，欄位有華語、台語漢字、台羅、白話字與英文；README 寫 CC BY-NC 4.0（非商業）。英文是 GPT-3.5 翻的；它是中研院 iCorpus 的子集，而 iCorpus 本身[只接受洽詢授權](https://iptt.sinica.edu.tw/shares/465)。
+  - tokenizer：[Qwen3](https://huggingface.co/Qwen/Qwen3-8B)（Apache-2.0；技術報告說詞表 151,669 個，`config.json` 的 151,936 是補齊後的 embedding 大小）；[Llama 3.1](https://huggingface.co/meta-llama/Llama-3.1-8B)（需申請，Llama 3.1 Community License）；[Gemma 3](https://huggingface.co/google/gemma-3-4b-it)（需申請，Gemma Terms of Use）；[Breeze-7B](https://huggingface.co/MediaTek-Research/Breeze-7B-Base-v1_0)（Apache-2.0，在 Mistral 的詞表上加了約 30,000 個繁體中文 token）；[Llama-Breeze2-8B](https://huggingface.co/MediaTek-Research/Llama-Breeze2-8B-Instruct)（沿用 Llama 3 的 tokenizer，只加了特殊 token；與 Breeze-7B 正好是一組對照）；[TAIDE](https://huggingface.co/taide/Llama-3.1-TAIDE-LX-8B-Chat)（需申請，TAIDE 模型授權條款，申請時有個資蒐集告知）。
+  - [教育部《臺灣台語常用詞辭典》](https://sutian.moe.edu.tw/)：辭典文字只提供 ODS 檔下載，例句有漢字、台羅、音檔與華語翻譯；台羅只標本調。授權見 A2。
+  - [教育部《臺灣客語辭典》](https://hakkadict.moe.edu.tw/resource_download)：四縣、海陸、大埔、饒平、詔安、南四縣六個腔調各一個 ODS 檔（2026-09-08 更新）；授權見 A6。
+- **起點文獻**：
+  - Petrov et al., “Language Model Tokenizers Introduce Unfairness Between Languages,” *NeurIPS 2023*. [NeurIPS](https://proceedings.neurips.cc/paper_files/paper/2023/hash/74bb24dca8334adce292883b4b651eda-Abstract-Conference.html)
+  - Ahia et al., “Do All Languages Cost the Same? Tokenization in the Era of Commercial Language Models,” *EMNLP 2023*, pp. 9904–9923. [ACL Anthology](https://aclanthology.org/2023.emnlp-main.614/)
+  - Rust et al., “How Good is Your Tokenizer? On the Monolingual Performance of Multilingual Language Models,” *ACL 2021*, pp. 3118–3135. [ACL Anthology](https://aclanthology.org/2021.acl-long.243/)　用 fertility 等指標衡量 tokenizer 的品質。
+  - Husain et al., “RomanSetu: Efficiently unlocking multilingual capabilities of Large Language Models via Romanization,” *ACL 2024*, pp. 15593–15615. [ACL Anthology](https://aclanthology.org/2024.acl-long.833/)　印度語系文字改寫成羅馬字之後，以 Llama 2 的 tokenizer 計算，fertility 降低 2–4 倍；台羅帶調號，會不會反過來？
+  - Wen-Yi, Jo & Mimno, “Do Chinese models speak Chinese languages?,” *FAccT 2026*. [DOI](https://doi.org/10.1145/3805689.3812333)（ACM 的頁面我們沒能打開，出處依 arXiv 2504.00289 v3 與 DataCite 的紀錄）　用 FLORES+ 比較 21 種語言變體，含華語的繁簡與粵語。
+- **開放方向**：
+  - 台語的四種寫法、客語的各腔調，相對華語的 token 倍數各是多少？
+  - Unicode 正規化（NFC、NFD）讓台羅的 token 數差多少？各家 tokenizer 的處理一樣嗎？
+  - 臺灣調整過的詞表，對台語漢字有沒有幫助？
+  - token 倍數高的寫法，模型的表現也比較差嗎？比較時要用與 tokenizer 無關的量（例如每個 byte 的 bits），不能直接比 perplexity。
+- **風險**：iCorpus-100 只有 100 句，又是非商業授權；四種寫法之間的對應不完全是一對一，「同樣的內容」要寫清楚怎麼對齊；客語辭典禁止改作；需要申請的 tokenizer 要先同意條款。
+- **貢獻類型**：分析，可延伸為資源（同內容、多書寫的台語與客語平行句）。
+- **課程週次**：W2（tokenization）、W11（推論成本）。
 
+### A2　台語的四種寫法，模型當成同一種語言嗎？ {#a2}
 
-在執行族語推理推論時加回殘差流。語料採集原住民族委員會新聞與辭典例句（約 1,000 句平行對），並建構 300 道跨語言常識邏輯推理測試題。評估指標為常識問答準確率、困惑度（Perplexity）降低幅度及語言保真度。
+- **痛點**：台語可以寫成漢字、台羅、白話字或漢羅混寫，各有自己的使用者與資料：教育部辭典用漢字加台羅，閩南語維基百科主要用白話字（首頁寫著 208,232 篇），各部歷史辭典的寫法又各不相同。Lu et al. 研究四種寫法下的台語與華語互譯，實際評估的是漢字與白話字兩種（台羅先轉成白話字，漢羅只用於訓練），白話字相關方向的分數最低；他們也用自己的翻譯模型把羅馬字的單語資料轉成台語漢字、再繼續預訓練，結果與原本相當或略好。換句話說，同一句台語換一種寫法，模型的翻譯表現就不同。另一方面，RomanLens 研究五種印度語言與中文、喬治亞語，發現模型對本來的文字與羅馬字轉寫的同一個概念，內部表徵相當接近。問題是：同一句台語寫成漢字、台羅、白話字，模型內部當成同一個意思嗎？從一種寫法學到的知識，換一種寫法還用得上嗎？
+- **先蒐集的證據**：用 iCorpus-100 的同一批句子，請兩三個模型把台語漢字、台羅、白話字三種版本各翻成華語，比較翻譯品質；另取一個開放權重的模型，逐層計算三種寫法的句子表徵之間的相似度，看它們在哪一層靠攏、或始終分開。
+- **已查證的資源**：
+  - iCorpus-100：見 A1。
+  - [教育部《臺灣台語常用詞辭典》](https://sutian.moe.edu.tw/)：辭典網站的[版權聲明](https://sutian.moe.edu.tw/zh-hant/piantsip/pankhuan-singbing/)是 CC BY-ND 3.0 TW（禁止改作）；但數位發展部的[臺灣主權 AI 訓練語料庫](https://taic.moda.gov.tw/datasets/27045f38-a424-4f96-a9e2-fdeadde5a305)把同一部辭典列為「姓名標示-非商業性-禁止改作」加上 AI 訓練專用條款。**兩處的說法不一致，但都禁止改作**；發佈衍生資料之前要先釐清。
+  - [ChhoeTaigi 資料庫](https://github.com/ChhoeTaigi/ChhoeTaigiDatabase)：9 部辭典、共 353,511 筆的 CSV，含白話字、台羅（README 稱為教育部羅馬拼音）、漢羅與華語對照；**授權各部不同**，從 CC0（iTaigi 華台對照典）、CC BY-SA 4.0、CC BY-NC-SA 3.0 TW 到 CC BY-ND 3.0 TW（教育部辭典）都有。
+  - [臺灣言語工具](https://github.com/i3thuan5/tai5-uan5_gian5-gi2_kang1-ku7)：白話字與台羅互轉、調號與數字調互轉等；授權是 CPAL-1.0，不是常見的寬鬆授權，用之前讀條款。
+  - [閩南語維基百科](https://zh-min-nan.wikipedia.org/)：以白話字為主；授權我們沒能從官方頁面確認。
+- **起點文獻**：
+  - Lu et al., “Enhancing Taiwanese Hokkien Dual Translation by Exploring and Standardizing of Four Writing Systems,” *LREC-COLING 2024*, pp. 6077–6090. [ACL Anthology](https://aclanthology.org/2024.lrec-main.538/)　以 TAIDE-7B 為底；台羅在實驗中先轉成白話字，漢羅只用於訓練，所以實際評估的只有漢字與白話字。釋出的模型是 CC BY-NC-SA 4.0。
+  - Saji et al., “RomanLens: The Role Of Latent Romanization In Multilinguality In LLMs,” *Findings of ACL 2025*, pp. 26410–26429. [ACL Anthology](https://aclanthology.org/2025.findings-acl.1354/)　涵蓋五種印度語言與中文、喬治亞語；跨文字比較內部表徵的方法可以直接借用。
+  - Chen et al., “Speech-to-Speech Translation for a Real-world Unwritten Language,” *Findings of ACL 2023*, pp. 4969–4983. [ACL Anthology](https://aclanthology.org/2023.findings-acl.307/)　把台語當成「沒有統一書寫系統」的語言，以華語文字為中介。
+- **開放方向**：
+  - 三種寫法的同一句話，在模型的哪一層靠攏？還是始終各自分開？
+  - 統一成漢字會不會丟掉資訊（例如羅馬字的聲調）？什麼時候值得？
+  - 只用一種寫法的資料微調，另外兩種寫法的表現會跟著變好嗎？
+- **風險**：寫法之間的轉換不是一對一（漢字有推薦用字與習慣用字之分），轉換錯誤會混進結果；調號的 Unicode 正規化要統一（見 A1）；評估需要讀得懂台文的人。
+- **貢獻類型**：分析。
+- **課程週次**：W2、W14（可解釋性）。
 
-### 題目四：多方言任務向量解耦：臺灣客語（四縣與海陸）之無衝突模型合併
+### A3　要模型寫台語，它寫出來的是台語還是華語？ {#a3}
 
-* **核心研究問題與突破口**：臺灣客語之四縣腔與海陸腔存在聲調反轉對稱性（如四縣陰平對應海陸低平或中降調），且詞彙語序及機能詞存在結構差異。直接將混合腔調語料進行聯合微調，易導致參數空間干擾，造成方言混淆（Dialect Intrusion）。突破口在於利用權重空間算術（Model Merging / Task Vectors），在獨立微調後透過幾何投影解耦方言衝突。
-* **生活化理解**：臺灣客語的四縣腔與海陸腔就像一對性格對稱的雙胞胎，發音調值系統性相反，有時連詞彙都剛好顛倒。若硬塞給同一個 AI 學習，AI 會出現嚴重的「方言精神分裂」，講出來的句子四縣混海陸。這個題目利用了「模型權重加減法」：先在顯卡上讓一個分身專精四縣、另一個分身專精海陸，最後像調雞尾酒一樣用純數學將兩者記憶特徵無損融合，做出一款切換自如且不衝突的客語模型。
-* **開源基線與實驗設計**：基底模型選用 Qwen-2.5-7B，利用 QLoRA（Rank=16）分別獨立訓練四縣腔轉接器 $\Delta \theta_{\text{Sixian}}$ 與海陸腔轉接器 $\Delta \theta_{\text{Hailu}}$。隨後在 CPU/RAM 中利用 Ties-Merging 或 DARE 進行符號消歧與修剪：
+- **痛點**：Lu et al. 在附錄裡記下一個觀察：要 GPT-4 翻成台語漢字時，它大多寫出華語，只夾雜少數台語與粵語的詞，作者因此在報告中捨棄了這部分的結果。這只是一句觀察，沒有量化。粵語的處境類似：HKCanto-Eval 的作者把模型的部分失敗歸因於華語的影響，但我們讀到的粵語 benchmark 都沒有一個指標量測輸出到底有多「粵」。2026-10-16 查證時，沒有找到量化 LLM 生成的台語文字裡華語成分的研究。難處在於台語與華語共用漢字，一句話是不是台語，不能只看字，要看用詞與語法：華語的「不」「在」，在台語推薦用字裡是「毋」「佇」。問題是：怎麼量一段漢字文字的台語程度？哪些模型、哪些提示方式寫得出真正的台語？
+- **先蒐集的證據**：請三四個模型把 50 句華語翻成台語漢字，請讀得懂台文的人逐句標成台語、華語或混雜；同時試一個簡單的自動指標（例如以辭典為基礎，統計台語特有詞與華語特有詞的比例），看它與人的判斷是否一致。
+- **已查證的資源**：
+  - 教育部《臺灣台語常用詞辭典》的例句：漢字、台羅、音檔與華語翻譯四個部分齊全，適合做華台對照。授權見 A2。
+  - [iTaigi 華台對照典](https://github.com/ChhoeTaigi/ChhoeTaigiDatabase)：CC0，19,046 筆，收在 ChhoeTaigi 資料庫裡。
+  - [Taigi-Llama-2-Translator-7B](https://huggingface.co/Bohanlu/Taigi-Llama-2-Translator-7B)：Lu et al. 釋出的翻譯模型，CC BY-NC-SA 4.0。
+  - TAT 的漢羅台文與台羅轉寫：由授課老師提供，見本組開頭。
+- **起點文獻**：
+  - Lu et al. 2024（見 A2）的附錄 C：本卡的出發點。
+  - Lu et al., “Exploring Methods for Building Dialects-Mandarin Code-Mixing Corpora: A Case Study in Taiwanese Hokkien,” *Findings of EMNLP 2022*, pp. 6287–6305. [ACL Anthology](https://aclanthology.org/2022.findings-emnlp.469/)
+  - Jiang et al., “How Well Do LLMs Handle Cantonese? Benchmarking Cantonese Capabilities of Large Language Models,” *Findings of NAACL 2025*, pp. 4464–4505. [ACL Anthology](https://aclanthology.org/2025.findings-naacl.253/)　粵語的對照組：五個粵語 benchmark，但沒有量測輸出是否偏向書面中文。另見 HKCanto-Eval（Cheng et al., [arXiv 2503.12440](https://arxiv.org/abs/2503.12440)，只有 arXiv 版），它把部分失敗歸因於華語的影響。
+- **開放方向**：
+  - 能不能定義一個自動指標，量測漢字文字的台語程度，而且與台語母語者的判斷一致？
+  - 用台語下指令、在 context 裡附上辭典條目（接 W12 的 RAG），或給幾個例句，哪一種最能讓模型寫出台語？
+  - 模型的華語化，集中在詞彙、虛詞還是語序？
+- **風險**：台語漢字的用字規範本身有爭議，標註前要先定規範；需要讀得懂台文的標註者；教育部辭典禁止改作，用它做出的指標或資料要能發佈，先確認條款。
+- **貢獻類型**：資源與分析（一套量測台語程度的指標與標註資料）。
+- **課程週次**：W2、W12、W14。
 
-$$\theta_{\text{merged}} = \theta_{\text{base}} + \lambda_1 \text{Prune}(\Delta \theta_{\text{Sixian}}) + \lambda_2 \text{Prune}(\Delta \theta_{\text{Hailu}})$$
+### A4　繁體字不等於臺灣用語：模型的繁體中文裡有多少大陸用語？ {#a4}
 
+- **痛點**：模型輸出繁體字，不代表用的是臺灣的詞。Lyu et al. 整理了 110 個兩岸說法不同的詞，請 11 個模型（包括 Breeze 與 Taiwan-LLM）看定義說出那個詞：用繁體中文問時，平均有 37.5 個詞（標準差 15.2）答成了大陸的說法；反過來，用簡體問時答成臺灣說法的平均只有 4.4 個。Tang et al. 則在情感分析任務上發現，模型處理臺灣華語的表現比大陸華語差。VisTW 量了視覺語言模型用臺灣華語提問時、回答裡混入簡體字的比例（3%–19%），但沒有量大陸用語。換句話說，單一詞的命名與簡體字的混入都有人量過，但開放式生成裡大陸用語的密度還沒有；TAIDE、Breeze 2 等較新的臺灣模型也不在 Lyu et al. 的實驗裡。問題是：模型寫一段繁體中文時，大陸用語與簡體字出現得多頻繁？跟模型、題材、提示方式有什麼關係？
+- **先蒐集的證據**：請三四個模型用繁體中文回答 100 個開放式問題（科技、飲食、日常生活等題材各一部分），用 OpenCC 的臺灣詞彙表自動標出疑似大陸用語、統計簡體字的比例，再人工檢查一部分，估計自動偵測的漏抓與誤抓。
+- **已查證的資源**：
+  - [OpenCC](https://github.com/BYVoid/OpenCC)：Apache-2.0。`s2twp` 把簡體轉成臺灣正體並套用臺灣慣用詞，`tw2sp` 反過來；臺灣詞彙表 `TWPhrases.txt` 目前約 800 條，約一半是資訊科技用語，其餘多是外國人名、地名的譯名與醫學、化學用語；只能當起點，不是完整的兩岸詞彙表。
+  - [SC-TC-Bench](https://github.com/brucelyu17/SC-TC-Bench)：Lyu et al. 的 110 個詞與定義（CSV）；repo 頁面上看不到授權。
+  - [zhtw-mcp](https://github.com/sysprog21/zhtw-mcp)：MIT，以 OpenCC 為基礎、超過 1,100 條規則的繁體中文用語檢查工具。它是軟體與研討會演講（COSCUP 2026），不是論文；引用時寫明。
+- **起點文獻**：
+  - Lyu et al., “Characterizing Bias: Benchmarking Large Language Models in Simplified versus Traditional Chinese,” *FAccT 2025*, pp. 2815–2846. [DOI](https://doi.org/10.1145/3715275.3732182)　**這張卡最接近的前人工作，動手前一定要讀**；你要做的是它沒有做的部分。
+  - Tang et al., “Using Contextually Aligned Online Reviews to Measure LLMs' Performance Disparities Across Language Varieties,” *NAACL 2025* (short), pp. 342–355. [ACL Anthology](https://aclanthology.org/2025.naacl-short.29/)
+  - Tam et al., “VisTW: Benchmarking Vision-Language Models for Taiwanese Mandarin in Taiwan,” *Findings of ACL 2026*, pp. 36711–36756. [ACL Anthology](https://aclanthology.org/2026.findings-acl.1830/)　簡體字混入的量法可以借用。
+- **開放方向**：
+  - 開放式生成裡，大陸用語的密度有多高？集中在哪些題材？
+  - 系統提示寫「請使用臺灣用語」有沒有用？用多少？
+  - 大陸用語與簡體字的混入，跟模型在中間層或思考過程偏向簡體有關嗎（接 F3、D4）？
+- **風險**：哪些詞算「大陸用語」本身有爭議，而且會變（有些詞在臺灣也已經通用），判斷標準要先定、要有人複核；自動偵測的詞彙表小，漏抓的會很多；題目只談語言使用，不涉及政治立場的評價。
+- **貢獻類型**：分析，可延伸為資源（有人工標註的開放式生成語料）。
+- **課程週次**：W7（預訓練資料的組成）、W14。
 
+### A5　臺灣的 benchmark 有多少錯題、多少已經被模型看過？ {#a5}
 
-語料選取客家委員會客語認證題庫與辭典，各構建 10,000 句單方言文本。評估指標包含四縣與海陸生成 BLEU/chrF++、方言詞彙洩漏率與多輪對話一致性保留率。
+- **痛點**：比較繁體中文模型最常用的兩個知識 benchmark 是 TMLU 與 TMMLU+，都發表於 COLM 2024，題目都來自臺灣的各種考試。英文的 MMLU 已經有人抽樣 5,700 題（57 科各 100 題）重新標註，估計全部題目裡有 6.49% 有錯（期中範本的 Evaluation Plan 也引了這篇）。TMMLU+ 在 2026 年 9 月 7 日釋出 v1.1：197 題更正答案，539 題整題刪除；它說先用四種規則掃出 6,116 題可疑的題目、逐題再檢查，其中 691 題交給人工複查，但沒有說明規則與第一輪檢查是人還是模型做的，也沒有公布逐題的修改紀錄。污染方面，兩篇論文都用 Min-K% 一類的方法估計過，但這類方法只能提供間接的證據（期中範本 Evaluation Plan 談污染的那一段）。問題是：v1.1 裡還剩多少錯題？錯在哪裡？修正之後，模型的排名會變嗎？哪些題目已經被模型看過？
+- **先蒐集的證據**：比對 TMMLU+ 的 v1.0 與 v1.1，整理被更正與刪除的題目集中在哪些科目；從 v1.1 的兩三個科目各抽 50 題，由熟悉該科的組員逐題核對答案；再用三個模型在 v1.0 與 v1.1 上各跑一次，看排名是否改變。
+- **已查證的資源**：
+  - [TMMLU+](https://huggingface.co/datasets/ikala/tmmluplus)：MIT；v1.1 共 66 科、22,203 題，v1.0 仍可以用 `revision="v1.0"` 載入。**陷阱**：lm-evaluation-harness 的 `tmmluplus` 任務沒有指定 revision，所以 2026 年 9 月 7 日以後跑出來的數字用的是 v1.1，不能直接和之前發表的數字比較。
+  - TMLU：lm-evaluation-harness 有 `tmlu` 任務，資料指向 Hugging Face 的 `miulab/tmlu`，但 2026-10-16 查證時這個資料集打不開（頁面回應 404），作者的 [GitHub repo](https://github.com/MiuLab/TMLU) 只有程式碼、沒有寫授權。要用 TMLU，先寫信問作者。
+  - [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)：MIT。
+- **起點文獻**：
+  - Tam et al., “TMMLU+: An Improved Traditional Chinese Evaluation Suite for Foundation Models,” *COLM 2024*. [OpenReview](https://openreview.net/forum?id=95TayIeqJ4)　arXiv 第一版的標題不同。
+  - Chen et al., “Measuring Taiwanese Mandarin Language Understanding,” *COLM 2024*. [OpenReview](https://openreview.net/forum?id=7jSMMvXLri)　§5.1 比較了 TMLU 與 TMMLU+ 的污染程度。
+  - Gema et al., “Are We Done with MMLU?,” *NAACL 2025*, pp. 5069–5096. [ACL Anthology](https://aclanthology.org/2025.naacl-long.262/)　逐題重新標註的方法學。
+  - Balepur et al., “BenchMarker: An Education-Inspired Toolkit for Highlighting Flaws in Multiple-Choice Benchmarks,” *ACL 2026*, pp. 15793–15824. [ACL Anthology](https://aclanthology.org/2026.acl-long.719/)　用 LLM 評審找出選擇題的三類缺陷：污染、捷徑與寫作錯誤（最後一類依 19 條教育測驗的規則判斷），可以借用到繁體中文。
+- **開放方向**：
+  - v1.1 的殘餘錯誤率是多少？錯誤集中在哪些科目、哪一類（答案錯、題目不完整、選項重複、因法規或制度改變而過時）？
+  - 修正錯題之後，模型之間的排名有多少改變？
+  - 用 LLM 評審自動找錯題，在繁體中文的考題上可靠嗎（接 F1）？
+- **風險**：核對答案需要該科的專業知識，挑你們熟悉的科目；污染偵測方法的結論要保守，只能說「有證據顯示」而不是「確定看過」；發佈修正後的題目前，先確認 TMMLU+ 的授權與原始考題的權利。
+- **貢獻類型**：資源與分析。
+- **課程週次**：W14（評估），W7（預訓練資料與污染）。
 
-### 題目五：華台語碼轉換中言談標記與情態助詞的語用連貫性因果追蹤
+### A6　客語：模型讀得懂、寫得出幾個腔調？ {#a6}
 
-* **核心研究問題與突破口**：臺灣日常對話高頻夾帶語碼轉換（CSW），常見在標準華語句構中嵌入台語言談標記（如「按呢」、「代誌」）與句末情態助詞（如「啦」、「捏」、「講」）。通用大模型往往以嚴格書面規範進行語法修正，抹除標記背後承載的情緒強度與人際語用語意。突破口在於結合因果中介分析，定量定位處理語碼轉換焦點的神經迴路。
-* **生活化理解**：臺灣人講話很習慣「國台語混雜」，例如「你按呢講我就了解了啦！」或「這件代誌感覺怪怪的捏～」。句中的「按呢」、「代誌」以及句尾的「捏」，根本不是文法錯誤，而是表達人際距離與情感轉折的靈魂。但國外大模型就像個嚴肅的外國老師，看到這種混雜句就判定為病句，完全忽略背後的語氣焦點。這個題目化身神經網絡偵探，揪出大腦深處到底哪幾顆神經元在解讀這些「台味語助詞」。
-* **開源基線與實驗設計**：單卡部署 Llama-3.1-8B 或 Qwen-2.5-7B。採用因果中介分析（Causal Mediation Analysis）與激活修補（Activation Patching），對輸入中的台語言談標記進行反事實替換，測量各注意力頭對語用連貫輸出的中介效應。語料選自 PTT（Gossiping、Taiwanese 看板）與自然口語對話，篩選標註 8,000 條具備語用標籤（轉折、強調、確認、情緒）之真實語段。指標評估切換點預測困惑度、語用連貫性人機一致性得分及抗幻覺率。
+- **痛點**：客語的文字資源比台語更少。FLORES+、NLLB-200、MADLAD-400 這些多語言資源都沒有客語。客語有四縣、海陸、大埔、饒平、詔安、南四縣六個腔調，書寫又有漢字、教育部的臺灣客家語拼音方案，以及客語維基百科主要使用的白話字（Pha̍k-fa-sṳ）。ROCLING 近幾年的客語論文多半是語音辨識。最接近的 LLM 研究是 Lai et al.：他們把 LLaMA2-70B 擴充詞表、繼續預訓練，再用機器翻譯產生的指令資料微調成台語與客語模型，在 1,000 題的客語閱讀選擇題上答對 87.7%。問題是：現在能放進 16 GB 的開放模型，讀得懂、寫得出客語嗎？不同腔調、不同寫法差多少？
+- **先蒐集的證據**：從教育部客語辭典取兩個腔調、各 50 個例句，請兩三個模型做客語翻華語與華語翻客語，請會說客語的人評分；同時算這些句子的 token 成本（接 A1）。
+- **已查證的資源**：
+  - [教育部《臺灣客語辭典》](https://hakkadict.moe.edu.tw/resource_download)：約 15,000 個主詞條與 7,000 個附錄詞條，六個腔調各一個 ODS 檔。授權是 CC BY-ND 3.0 TW（禁止改作），寫在辭典的「答客問／版本授權」頁。
+  - [HAT](https://www.aclclp.org.tw/use_mat_c.php)（臺灣客語語音資料庫）：ACLCLP 發行，除了語音，還有四縣與海陸的客華平行辭庫，各 50,000 筆，含漢字與拼音。授權允許研究與商業用途，但禁止轉授權與散布；向 ACLCLP 申請。
+  - [臺灣客語語料庫](https://corpus.hakka.gov.tw/)（客家委員會）：書面語料 600 萬字、口語語料 40 萬字，六個腔調；取得方式與授權我們沒能從頁面讀到。
+  - [臺灣主權 AI 訓練語料庫](https://taic.moda.gov.tw/)（數位發展部）：2026 年 7 月與客委會合作加入約 2,000 萬個 token 的客語資料，需申請。它把教育部《臺灣客語辭典》列為「CC授權-姓名標示-禁止改作+臺灣主權AI訓練資料授權條款-第1版」、「僅授權AI訓練使用」，與辭典網站上的授權不同（同一部辭典在不同網站上的授權說法不一，見本組開頭）；授權條款全文的頁面我們沒能讀到。
+  - 客語維基百科：英文維基百科的維基百科列表（2026-10-16 讀取）記為 10,501 篇，以白話字為主；客語維基本身我們沒能打開。
+- **起點文獻**：
+  - Lai et al., “Construction of Large Language Models for Taigi and Hakka Using Transfer Learning,” *O-COCOSDA 2024*. [DOI](https://doi.org/10.1109/O-COCOSDA64382.2024.10800470)
+  - Hung & Huang, “A Preliminary Study on Mandarin-Hakka neural machine translation using small-sized data,” *ROCLING 2022*, pp. 307–315. [ACL Anthology](https://aclanthology.org/2022.rocling-1.38/)
+  - Chang et al., “Integrating Hybrid AI Approaches for Enhanced Translation in Minority Languages,” *Applied Sciences* 15(16), 9039, 2025. [DOI](https://doi.org/10.3390/app15169039)　約 81,000 組客華句對，其中約 72,000 組是用規則式翻譯從客語句子產生的華語，另外約 9,000 組由母語者整理。
+  - Chang, Li, Lee & Lee, “Enhancing Low-Resource Minority Language Translation with LLMs and Retrieval-Augmented Generation for Cultural Nuances,” arXiv [2505.10829](https://arxiv.org/abs/2505.10829), 2025（arXiv 的資料寫已被 IntelliSys 2025 接受）。把辭典放進 context 的客語翻譯。
+- **開放方向**：
+  - 開放模型的客語能力，在不同腔調之間差多少？跟網路上各腔調文字的多寡有關嗎？
+  - 漢字、教育部拼音、白話字三種寫法，哪一種模型最讀得懂？三者之間怎麼轉換？
+  - 把辭典條目放進 context（接 W12），能補回多少？
+- **風險**：需要會說客語、最好會讀客語文字的評估者；辭典禁止改作、HAT 不可再散布，衍生資料能否發佈要先看條款；各腔調的用字與拼音不完全一致。
+- **貢獻類型**：資源或分析。
+- **課程週次**：W2、W12。
 
-### 題目六：臺灣本土社會偏見審計：交織性視角下的機率分佈差分評測
+### A7　原住民族語：模型從幾乎沒有資料開始 {#a7}
 
-* **核心研究問題與突破口**：既有評測集中於常規性別或族群，忽略臺灣本土脈絡下的交織性（Intersectionality）偏見（如原住民政策福利標籤、新住民群體文化偏誤、南北城鄉發展刻板印象等）。此外，傳統生成式評測開銷過大，突破口在於建立基於模型詞彙預測對數機率差分（Log-Probability Differentials）的無生成審計管線，適合消費級顯卡高效執行。
-* **生活化理解**：國外測 AI 偏見通常只看黑白種族或男女刻板印象。但臺灣社會有自己的文化情境：比如升學制度下對原住民族的刻板印象、大眾對「天龍國」與「南部北漂」的地域偏見，或是新住民家庭的文化標籤，且這些標籤常常重疊交織在一起。叫模型寫長文來測偏見非常耗電耗顯存，這個題目是做一套「AI 詞彙測謊器」，偷偷看它在填空時預測特定形容詞的機率差，用最少算力測出 AI 潛意識裡的本土偏見。
-* **開源基線與實驗設計**：基準模型納入 Taiwan-LLM-7B、Qwen-2.5-7B 與 Llama-3.1-8B。透過無生成式推論，直接計算目標群體與屬性詞彙的條件機率差分：
+- **痛點**：臺灣有 16 個法定原住民族，族語之下還有許多方言。NLLB-200、FLORES+、MADLAD-400 都沒有任何一種臺灣南島語；語言辨識工具 GlotLID 倒是認得其中幾種。維基百科上，阿美語、泰雅語、撒奇萊雅語、賽德克語、排灣語各有幾百到兩千多篇文章。FormosanBench 在泰雅、阿美、排灣三種語言上評估 LLM，發現零樣本、10-shot 與微調之後的表現都遠低於高資源語言。另一方面，資料其實正在累積：Zheng et al. 用原住民族語言線上辭典整理出 16 種語言的平行資料，加入雙語詞彙後翻譯明顯進步；FormosanMT 整理出將近 50 萬組與華語、英文的平行句。問題是：在這麼少的資料下，什麼做法最有效？把辭典與文法放進 context、微調小型翻譯模型，還是讓相近的語言共享資料？
+- **先蒐集的證據**：選一兩種語言，從族語E樂園取 50 個句子，比較三種做法的翻譯品質（chrF）：LLM 零樣本、LLM 加上辭典條目、FormosanBank 釋出的 NLLB 模型；請組員檢查錯在詞彙還是語法。
+- **已查證的資源**：
+  - 族語E樂園與[原住民族語言線上辭典](https://e-dictionary.ilrdf.org.tw/)：由授課老師提供，限非商業用途，見本組開頭。
+  - [FormosanBank](https://github.com/FormosanBank/FormosanBank)：17 種臺灣南島語的文字與音訊集合；**限非商業用途，未經書面許可不得用於商業 AI**。Hugging Face 上的 [`formosan-mt`](https://huggingface.co/datasets/FormosanBank/formosan-mt) 有 744,304 筆、15 種語言的平行資料（其中有合成的訓練資料），另有以 NLLB 為底的翻譯模型。
+  - [GlotLID](https://huggingface.co/cis-lmu/glotlid)：語言辨識，v3 支援 2,102 個標籤，包含阿美語（`ami`）與魯凱語（`dru`）；授權是 Apache-2.0 加上額外的聲明。
+- **起點文獻**：
+  - Zheng, Marrese-Taylor & Matsuo, “Improving Low-Resource Machine Translation for Formosan Languages Using Bilingual Lexical Resources,” *Findings of ACL 2024*, pp. 11248–11259. [ACL Anthology](https://aclanthology.org/2024.findings-acl.670/)　論文說資料放在 GitHub；2026-10-16 查證時那個 repo 只有一個 README，裡面連到一個名為 “Formosan-Mandarin Data” 的 Google Drive 資料夾，資料夾的內容我們沒能看到。
+  - Scheppat et al., “FormosanMT: A Multilingual Parallel Corpus of the Formosan Language Family,” *LREC 2026*, pp. 3445–3455. [ACL Anthology](https://aclanthology.org/2026.lrec-1.273/)　**這張卡最接近的資源論文**。
+  - Lin, Chen & Zhang, “FormosanBench: Benchmarking Low-Resource Austronesian Languages in the Era of Large Language Models,” *Findings of EMNLP 2025*, pp. 16527–16539. [ACL Anthology](https://aclanthology.org/2025.findings-emnlp.897/)
+  - Lin, Lin & Kao, “From Scarcity to Scalability: Lexicon and Grammar Enhanced Amis to Mandarin Translation with GPT Models,” *ROCLING 2025*, pp. 167–175. [ACL Anthology](https://aclanthology.org/2025.rocling-main.20/)　把詞彙與文法放進 prompt 的阿美語翻譯。
+- **開放方向**：
+  - 辭典與文法放進 context，對哪些語言、哪一類句子最有幫助？
+  - 相近的語言之間共享資料，幫助有多大？
+  - 只有幾千組句對時，評估集要多大，分數才有意義？
+- **風險**：幾乎所有資料都限非商業用途；族語資料涉及族群的文化與權益，發佈模型或衍生資料前應與資料提供者確認範圍；同一種語言的書寫與方言不一致，評估前要先處理；查證時，我們對這一主題的文獻搜尋並不完整，動手前自己再搜一次。
+- **貢獻類型**：方法、分析或資源。
+- **課程週次**：W2、W8（少量資料的微調）、W12。
 
-$$\Delta \mathcal{S}_{\text{bias}} = \log P(W_{\text{stereotype}} \mid X_{\text{context}}) - \log P(W_{\text{anti-stereotype}} \mid X_{\text{context}})$$
+### A8　用台語或客語提問，安全護欄還擋得住嗎？ {#a8}
 
+- **痛點**：多項研究發現，把有害的請求翻成低資源語言，常能繞過 GPT-4 等模型的安全機制；阿拉伯語的研究更發現，標準阿拉伯文擋得住，改用羅馬字轉寫或網路上的拉丁字母阿拉伯文就擋不住了。台語的台羅、白話字，客語的白話字，正是同一類的寫法。安全分類模型的語言涵蓋也很窄：Llama Guard 3 支援 8 種語言，沒有中文；ShieldGemma 只有英文；臺灣的 Breeze-Guard-26 支援臺灣華語與英文，但沒有台語與客語，而它的作者把華語、台語、客語的夾雜列為未來的工作。反過來，護欄也可能過度拒絕：無害的台語問題，會不會因為看不懂而被擋下？問題是：現有的安全分類模型與經過安全對齊的模型，在台語與客語的各種寫法上，攔截率與誤擋率各是多少？
+- **先蒐集的證據**：從現有的安全 benchmark 取 50 題有害與 50 題無害的請求（TS-Bench 本身就有一半是容易被誤擋的無害題；也可以用 XSTest 這類專門測過度拒絕的題目），由組員翻成台語漢字與台羅，分別交給 Breeze-Guard-26 與一兩個經過安全對齊的開放模型，計算各種寫法的攔截率與誤擋率。**本題只做量測**：不設計新的攻擊方法，論文與報告只公布統計結果，不公布翻譯後的有害請求全文。
+- **已查證的資源**：
+  - [Breeze-Guard-26](https://huggingface.co/MediaTek-Research/Breeze-Guard-26)：Apache-2.0，不需申請；8B，以 Llama-Breeze2-8B-Instruct 為底，只判斷使用者的 prompt，涵蓋 6 類臺灣特有的風險。model card 的範例程式碼寫的模型名稱是 `Breeze-Guard-8B`，與 repo 名稱不同。
+  - [TS-Bench](https://github.com/mtkresearch/TS-Bench)：Apache-2.0，README 說供研究使用；`data/TSB400.csv` 有 400 題臺灣華語的提示，有害與容易被誤擋的無害各 200 題，涵蓋 6 類風險。不在 Hugging Face 上，在 GitHub。
+  - [XSTest](https://github.com/paul-rottger/xstest)：CC BY 4.0，測量過度拒絕。
+  - [SafetyBench](https://huggingface.co/datasets/thu-coai/SafetyBench)：MIT，中英文選擇題，中文是簡體。
+  - [Llama Guard 3](https://huggingface.co/meta-llama/Llama-Guard-3-8B)：需申請；支援的語言沒有中文，可以當作對照。
+- **起點文獻**：
+  - Yong, Menghini & Bach, “Low-Resource Languages Jailbreak GPT-4,” *NeurIPS 2023 SoLaR workshop*. [arXiv 2310.02446](https://arxiv.org/abs/2310.02446)（workshop 論文）。
+  - Deng et al., “Multilingual Jailbreak Challenges in Large Language Models,” *ICLR 2024*. [OpenReview](https://openreview.net/forum?id=vESNKdEMGp)
+  - Al Ghanim et al., “Jailbreaking LLMs with Arabic Transliteration and Arabizi,” *EMNLP 2024*, pp. 18584–18600. [ACL Anthology](https://aclanthology.org/2024.emnlp-main.1034/)　**羅馬字轉寫的直接類比**。
+  - Röttger et al., “XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language Models,” *NAACL 2024*, pp. 5377–5400. [ACL Anthology](https://aclanthology.org/2024.naacl-long.301/)
+  - Hsu et al., “Taiwan Safety Benchmark and Breeze Guard: Toward Trustworthy AI for Taiwanese Mandarin,” arXiv [2603.07286](https://arxiv.org/abs/2603.07286), 2026（只有 arXiv 版）。**這張卡最接近的前人工作**：它把華語、台語、客語的夾雜列為未來的工作。
+  - Yong et al., “The State of Multilingual LLM Safety Research: From Measuring The Language Gap To Mitigating It,” *EMNLP 2025*, pp. 15845–15860. [ACL Anthology](https://aclanthology.org/2025.emnlp-main.800/)　約 300 篇論文的回顧，入門先讀。
+- **開放方向**：
+  - 台語漢字、台羅、客語，各自的攔截率與誤擋率是多少？漢字與羅馬字差多少？
+  - 分類模型擋不住的，是看不懂內容，還是沒把它歸到正確的風險類別？
+  - 華語、台語、客語夾雜的請求，結果又如何？
+- **風險**：**倫理風險高**：只做量測、只公布統計，翻譯後的有害請求不公開；期中範本的 Ethical Considerations（選做）這時應該寫；翻譯品質會直接影響結果，要請讀得懂台文的人複核；查證時，我們沒能完成台語與客語安全評估的文獻搜尋，動手前自己再搜一次。
+- **貢獻類型**：分析，可延伸為資源（只對研究者提供的評估集）。
+- **課程週次**：W9（偏好對齊）、W13（agent 的安全）、W14。
 
+## B. Tokenization：模型看到的字
 
-語料基於臺灣社會變遷基本調查與社群論壇，編纂審校 3,500 組交織性偏見測試句對。評估指標包含刻板印象偏向分數（Stereotype Score）、情感極性差距（Sentiment Disparity）與不同族群拒答一致性比率。
+這一組的共同點：問題在模型讀進文字之前就發生了。很多證據只需要 tokenizer 與少量推論，筆電就能開始做。A1 的 token 成本也屬於這一類。
 
-### 題目七：本土語境安全護欄的輕量化塑模：抵禦方言混淆與台羅諧音越獄攻擊
+### B1　「1234萬5678」與「12,345,678」：數字的寫法會影響算術嗎？ {#b1}
 
-* **核心研究問題與突破口**：主流安全對齊護欄多偏重標準英語及現代標準中文，面對臺灣台語俚語、臺羅拼音污衊詞或注音符號諧音縮寫時，容易產生防禦盲區，遭受越獄（Jailbreak）繞過。突破口在於針對 Llama-Guard 等開源護欄模型進行本土化重錨，以低秩微調提升其對變形方言詞彙的安全邊界辨別力。
-* **生活化理解**：科技大廠的安全警衛只看得懂標準英文或普通話。若網路惡意者改用台語國罵、台羅拼音黑話，或是注音符號縮寫（例如用「ㄍㄢˋ」代換字詞）去下達詐騙或騷擾指令，外國警衛常當作無害符號直接放行，造成防護破口（這就是越獄攻擊）！這個題目就像為臺灣社群訓練一位精通本土黑話與注音火星文的微型專屬保全，用一般顯卡就能學會精準攔截有害言論，且不誤傷親切鄉土話。
-* **開源基線與實驗設計**：以 Llama-Guard-3-8B 為基礎，在單張 16GB 顯卡上進行 4-bit QLoRA 連續微調。於分類頭前植入雙重語意重錨層，將注音縮寫與臺羅拼寫映射至對齊的安全範疇。語料利用 TWLLM 對話日誌與 PTT 檢舉語料，清洗出 10,000 筆本土安全風險文本及 10,000 筆良性口語對話，並構造諧音與拼音對抗樣本。評估指標包含有害內容攔截率（Macro F1）、良性語用語境誤殺率（FPR）及對抗樣本防禦成功率。
+- **痛點**：英文與千分位逗號是三位一組，中文的萬、億是四位一組。tokenizer 切數字的方式又各不相同：Qwen 的 tokenizer 把數字切成單一個位數；Llama 3 的 pre-tokenizer 則從左邊起每三位切一塊（Meta 公開的 tokenizer 程式碼裡的規則是 `\p{N}{1,3}`）。Singh & Strouse 發現，GPT-3.5 與 GPT-4 這類由左至右三位一切的 tokenizer，在推論時加上千分位逗號、讓切法改成由右至左對齊之後，算術的準確率最多提高 20%。照 Llama 3 的規則推算，「1234萬5678」會被切成 `123`、`4`、`萬`、`567`、`8`，每一塊都沒有對齊萬進位（這是我們依規則推算的，不是論文的結果）。此外，「一」到「億」這些中文數字字元在 Unicode 裡屬於文字而不是數字，不經過數字的切分規則（「〇」是例外，它屬於數字類）；臺灣公文常見的全形數字，在只做 NFC 正規化的 tokenizer 裡也不會變成半形。問題是：數字寫成萬進位、千分位、中文數字或全形，小模型的算術會差多少？這跟 tokenizer 的切法有什麼關係？
+- **先蒐集的證據**：產生 200 題 8–12 位數的加減法，每題寫成五種格式（純數字、千分位、萬進位混寫、中文數字、全形數字），讓一個 Qwen3 與一個 Llama 3.1 的模型作答，比較各格式的準確率；同時列出每種格式在兩個 tokenizer 下實際切出來的 token。
+- **已查證的資源**：
+  - Qwen3 與 Llama 3.1 的 tokenizer：見 A1。Qwen 的技術報告寫明數字切成單一位數；Qwen3 的技術報告說沿用 Qwen 的 tokenizer，但沒有重述這條規則，動手時自己用 tokenizer 驗證一次。
+  - Llama 3 的切分規則在 [`meta-llama/llama-models`](https://github.com/meta-llama/llama-models) 的 `models/llama3/tokenizer.py`（Llama 3 Community License）。
+- **起點文獻**：
+  - Singh & Strouse, “Tokenization counts: the impact of tokenization on arithmetic in frontier LLMs,” arXiv [2402.14903](https://arxiv.org/abs/2402.14903), 2024（只有 arXiv 版）。
+  - Reddy et al., “1,729 vs. 1729: The Effect of Scripts and Formats on LLM Numeracy,” *Findings of ACL 2026*, pp. 10679–10696. [ACL Anthology](https://aclanthology.org/2026.findings-acl.518/)　**這張卡最接近的前人工作，動手前一定要讀**。它測了 20 種數字文字（含簡體中文）與 6 種分組格式（含印度的 3-2-2），但沒有測萬進位；它附錄 C.4 給模型的中文數字對照表把「亿」寫成 100000（應為 10⁸），引用它的中文結果時要留意。
+  - Xu et al., “NUMCoT: Numerals and Units of Measurement in Chain-of-Thought Reasoning using Large Language Models,” *Findings of ACL 2024*, pp. 14268–14290. [ACL Anthology](https://aclanthology.org/2024.findings-acl.848/)　已經指出英文三位一組、中文四位一組的差異；它做的是數字與文字的轉換、單位換算與數學應用題，沒有比較不同分組寫法下的算術。
+  - Schwartz et al., “NumeroLogic: Number Encoding for Enhanced LLMs' Numerical Reasoning,” *EMNLP 2024*, pp. 206–212. [ACL Anthology](https://aclanthology.org/2024.emnlp-main.12/)　在數字前面標出位數，可以當作方法的對照。
+- **開放方向**：
+  - 萬進位的寫法，對單一位數切分與三位一切的 tokenizer，影響一樣嗎？
+  - 繁體的「萬」「億」與簡體的「万」「亿」，結果有差嗎？
+  - 先把數字正規化成某一種格式再交給模型，能補回多少？
+- **風險**：題目要控制位數與進位次數，否則格式的效果會被難度混淆；小模型在長位數上可能全錯，先找到一個準確率不在天花板也不在地板的範圍；中文數字的寫法有多種（「一千零五」「一〇〇五」），要先定義。
+- **貢獻類型**：分析，可延伸為方法。
+- **課程週次**：W2。
 
-### 題目八：基於歷史音韻類型學先驗的閩客方言零樣本結構遷移
+### B2　繁體中文的詞表裡，有多少沒學好的 token？ {#b2}
 
-* **核心研究問題與突破口**：臺灣台語與客語同屬漢語族南方方言，歷史音韻學實證二者共享大量中古漢語音韻結構（如入聲韻尾 `-p`, `-t`, `-k` 及鼻音韻尾 `-m`），句法同構性極高。現行 NLP 將二者視為孤立語言，忽略音韻類型學先驗。突破口在於將同源音韻特徵編碼為幾何投影約束，利用台語較充裕的資源引導客語的零樣本跨方言結構遷移。
-* **生活化理解**：會講台語的人聽客家話常有似曾相識的親切感，因為兩者在古漢語裡系出同門，保留了許多相似的閉口音和急促短音。但在傳統電腦眼裡，台語和客語被切成完全互不認識的語言，客語因為資料少而一直學不好。這個題目的巧妙之處在於「把語言學家的小抄交給 AI」，將發音對應規則寫進演算法，讓 AI 憑著台語文法基礎，在幾乎沒讀過客語句子的情況下也能「舉一反三」猜出客語結構。
-* **開源基線與實驗設計**：選用 Qwen-2.5-3B 小型模型。在模型淺層嵌入端引入音韻對齊正則化損失（Phonological Regularization Loss），將臺羅音素與客語拼音映射至同構潛在空間。語料利用中研院方言調查及教育部台客語辭典，萃取 5,000 組同源詞素（Cognate Morphemes）與對應語音演變規則。指標包含跨方言詞性標注準確率（POS Accuracy）、零樣本翻譯 chrF++ 與同源詞預測對齊度。
+- **痛點**：tokenizer 的詞表與模型的訓練資料往往不是同一批文字。詞表裡有、訓練時卻幾乎沒出現的 token，embedding 沒學好，一旦出現在輸入裡，模型可能輸出怪異的東西（俗稱 glitch token）。Land & Bartolo 提出自動偵測這類 token 的方法，在多個模型裡找到中文的例子，例如 GPT-4o 詞表裡來自中文廣告的 token。他們的 repo 持續更新偵測結果，其中 InternLM2.5 沒學好的 token 有不少是繁體中文的長片段（例如「現時由南極條約體系管理」；看起來像維基百科的固定句型，這是我們的推測）。另一篇研究分析了 GPT 與另外 23 個 LLM 的詞表，發現 GPT-4o 系列的詞表裡，超過 23% 的長中文 token（三個字以上）與色情或賭博有關，是其中最嚴重的；但它完全沒有討論繁體中文。2026-10-16 查證時，這些結果都沒有涵蓋臺灣的模型。問題是：臺灣模型擴充的繁體中文 token 裡，有多少沒學好？它們從哪裡來？會在臺灣使用者的輸入裡被觸發嗎？
+- **先蒐集的證據**：用 Magikarp 的 embedding 指標（不需要跑生成，只讀權重）掃 Breeze-7B 與 TAIDE-LX-7B 的詞表，列出最可疑的前 200 個 token，人工分類它們的來源（維基百科、新聞、廣告、論壇）；再挑 20 個用 Magikarp 的驗證 prompt 確認。
+- **已查證的資源**：
+  - [Magikarp](https://github.com/cohere-ai/magikarp)：Apache-2.0；目前的版本需要 `transformers>=5.5.0,<6.0.0`。`results/summary.md` 有各模型已偵測的結果，可以先看。
+  - Breeze-7B：見 A1。[TAIDE-LX-7B](https://huggingface.co/taide/TAIDE-LX-7B)：以 Llama 2 7B 為底，model card 說額外擴充了 24,720 個中文字元與字詞；需要登入 Hugging Face、同意 TAIDE 的授權條款與個資告知。Llama 3.1 版的 TAIDE，model card 沒有提到擴充詞表。Llama-Breeze2 沿用 Llama 3 的 tokenizer，沒有新的中文 token，可以當對照。
+- **起點文獻**：
+  - Land & Bartolo, “Fishing for Magikarp: Automatically Detecting Under-trained Tokens in Large Language Models,” *EMNLP 2024*, pp. 11631–11646. [ACL Anthology](https://aclanthology.org/2024.emnlp-main.649/)　引用它的中文例子時用 Anthology 的 PDF：arXiv 的 HTML 版把其中一個罕用字顯示錯了。
+  - Zhang et al., “Speculating LLMs' Chinese Training Data Pollution from Their Tokens,” *EMNLP 2025*, pp. 26113–26133. [ACL Anthology](https://aclanthology.org/2025.emnlp-main.1327/)　**這張卡最接近的前人工作**。
+  - Li et al., “Glitch Tokens in Large Language Models: Categorization Taxonomy and Effective Detection,” *Proceedings of the ACM on Software Engineering* 1(FSE), pp. 2075–2097, 2024. [DOI](https://doi.org/10.1145/3660799)
+  - Chizhov et al., “BPE Gets Picky: Efficient Vocabulary Refinement During Tokenizer Training,” *EMNLP 2024*, pp. 16587–16604. [ACL Anthology](https://aclanthology.org/2024.emnlp-main.925/)　從訓練 tokenizer 的一端減少這類 token。
+- **開放方向**：
+  - 臺灣模型擴充的 token 裡，沒學好的比例多高？集中在哪些來源？
+  - 這些 token 在真實的臺灣文字（新聞、法規、論壇）裡多常出現？出現時模型的行為會變嗎？
+  - 擴充詞表後繼續預訓練的資料量，跟沒學好的 token 數量有什麼關係（接 D1）？
+- **風險**：可疑 token 的內容可能涉及色情或賭博，報告時要處理呈現方式；只列出 token 不夠，要證明它們對行為有影響；驗證需要跑模型，7B 的模型要用 4-bit 或 8-bit；TAIDE 需要申請。
+- **貢獻類型**：分析。
+- **課程週次**：W2、W7（預訓練資料）。
 
-### 題目九：跨語言事實衝突的神經元因果追蹤與本土知識編輯
+## C. 長文本與推論效率
 
-* **核心研究問題與突破口**：大模型在處理本土文化歷史知識時存在嚴重的「跨語言事實不一致性」：以華語提問能正確回答，換成台語或客語提問時卻常產出荒謬幻覺。機制解釋性指出知識本身儲存於深層殘差流，但在向非通用語言解碼轉化時路徑斷裂。突破口在於運用因果軌跡追蹤定位知識神經元，並以模型編輯（Model Editing）技術修復語言解碼路由。
-* **生活化理解**：用國語問 AI「臺灣第一位醫學博士是誰？」，它能自信答出「杜聰明」；換成台語問「臺灣頭一位醫學博士是誰？」，它可能立刻胡謅一個虛構人物甚至是古代日本武將！明明同一個大腦已經記住這段臺灣文史，換了在地語言問卻當場失憶。這個題目就像拿起神經外科手術刀，追蹤到底哪幾顆神經元在儲存知識，找出台語提問路徑為何在最後解碼時斷線，並嘗試在神經網絡裡直接「接線修復」。
-* **開源基線與實驗設計**：於 16GB 顯卡部署 7B/8B 模型（Llama-3.1-8B、Qwen-2.5-7B）。對實體 Token 注入高斯噪聲並逐步修復隱藏層神經元激活（Causal Tracing），定位知識儲存的神經元集合，再評估 ROME 或表徵補丁技術修復解碼通路。語料採集臺灣維基百科與地方文史志，構建 2,500 組華、台、客三語平行對齊的事實三元組（主體-關係-客體）。指標包含神經元定位精確率、探針事實召回率與跨語言事實一致性比率。
+在 16 GB 的卡上，量化與有限的 context 不是選項，是日常。這一組問的是：為了放進這張卡所做的取捨，在繁體中文上的代價是什麼？算帳的方法見〈算力〉一節。
 
-### 題目十：文化課綱接地之合成對話自舉與小型語言模型能力注入
+### C1　繁體中文的長文件裡，答案放在中間就找不到嗎？ {#c1}
 
-* **核心研究問題與突破口**：本土語言教學與復振的核心障礙在於口語互動語料極度匱乏。通用大模型直接生成合成對話易產生嚴重「翻譯腔」及文化錯位。突破口在於利用結構化文化課綱引導大模型自舉（Bootstrapping）生成高保真對話，再以直接偏好優化（DPO）將能力注入 1B–3B 邊緣端小型語言模型（SLMs）。
-* **生活化理解**：我們希望在中小學生的平板電腦裡裝一個會講道地母語、陪孩子聊天的家教小 AI，但平板跑不動大模型，市面上的小模型講起母語又充斥著死板的「Google 翻譯腔」，毫無臺灣夜市或民俗的人情味。這個題目分成兩步：第一步像「編劇」，讓性能較好的大模型依照教育部的鄉土課綱，自動編寫出一萬多段道地在地對話劇本；第二步像「傳功」，用一般顯卡把劇本精華濃縮灌入輕量小模型中，讓小模型也能開口說出有文化溫度的本土語言。
-* **開源基線與實驗設計**：基底模型選用 Llama-3.2-1B 或 Qwen-2.5-1.5B。第一階段以 8B 模型在單卡上執行結構化 Prompt 自舉合成本土情境對話；第二階段以 QLoRA 結合 DPO 進行小型模型微調，損失函數加入長度與重複懲罰。語料以教育部母語教學手冊為本，提煉 600 個民俗、地理與飲食文化本體概念，生成 15,000 組多輪本土語言對話（台、客、族語）。指標包含文化接地忠實度、語言地道性盲測評分與對話多樣性指標。
+- **痛點**：Liu et al. 發現，關鍵資訊放在輸入的開頭或結尾時模型表現最好，放在中間就變差（lost in the middle）。中文已經有長文本 benchmark：LongBench（v1）有 5 個中文任務；CLongEval 有 7 個任務、7,267 題、從 1K 到 100K 的長度，而且它的 §4.4 已經觀察到 lost in the middle；多語言的大海撈針研究也發現，針放在非英語系的語言、又放在中間時，表現最差。但這些中文資料看起來都是簡體（CLongEval 的論文沒有明說），Breeze 2 的長文本評估也只做了合成的 passkey 檢索。2026-10-16 查證時，沒有找到繁體中文的長文本 benchmark。還有一個中文特有的問題：同一份文件，不同 tokenizer 切出來的 token 數不同，於是在各模型的 context 裡占的比例也不同，而有研究指出 lost in the middle 的程度跟輸入占 context 的比例有關，輸入占 context 一半以內時最明顯（Veseli et al., [arXiv 2508.07479](https://arxiv.org/abs/2508.07479)，只有 arXiv 版）。問題是：在真實的臺灣長文件（判決書、法規、立法院公報）上，位置效應有多大？跟 tokenizer 有關嗎？
+- **先蒐集的證據**：取 20 份繁體中文的長文件，各寫兩三個只能從文件裡找到答案的問題，把答案所在的段落移到五個不同的位置，讓兩個模型作答，畫出準確率與位置的關係；再用 OpenCC 轉成簡體做一次，看位置效應是否相同。
+- **已查證的資源**：
+  - [LongBench](https://github.com/THUDM/LongBench)（v1）：GitHub repo 是 MIT；Hugging Face 的資料卡沒有授權欄位，原始資料（DuReader 等）各有條款。repo 的首頁現在介紹的是 v2，而 v2 只有英文。
+  - [CLongEval](https://github.com/zexuanqiu/CLongEval)：程式碼 MIT；資料的授權我們沒能確認。
+  - [RULER](https://github.com/NVIDIA/RULER)：Apache-2.0，13 個合成任務，只有英文；它的任務設計可以改寫成繁體中文。
+  - [lost-in-the-middle](https://github.com/nelson-liu/lost-in-the-middle)：MIT，Liu et al. 的實驗程式。
+  - 長文件的來源之一：E1 的法規開放資料。
+- **起點文獻**：
+  - Liu et al., “Lost in the Middle: How Language Models Use Long Contexts,” *TACL* 12, pp. 157–173, 2024. [ACL Anthology](https://aclanthology.org/2024.tacl-1.9/)　arXiv 的註記寫 2023，正式刊出是 2024 年的第 12 卷。
+  - Qiu et al., “CLongEval: A Chinese Benchmark for Evaluating Long-Context Large Language Models,” *Findings of EMNLP 2024*, pp. 3985–4004. [ACL Anthology](https://aclanthology.org/2024.findings-emnlp.230/)　**這張卡最接近的前人工作**。
+  - Hengle et al., “Multilingual Needle in a Haystack: Investigating Long-Context Behavior of Multilingual Large Language Models,” *NAACL 2025*, pp. 5165–5180. [ACL Anthology](https://aclanthology.org/2025.naacl-long.267/)
+  - Hsieh et al., “RULER: What's the Real Context Size of Your Long-Context Language Models?,” *COLM 2024*. [OpenReview](https://openreview.net/forum?id=kIoBbc76Sy)
+- **開放方向**：
+  - 繁體中文的長文件，位置效應與簡體、英文一樣嗎？
+  - 位置效應用「token 位置」或「字的位置」來看，哪一個比較穩定？
+  - 真實文件的結構（法規的條號、判決書的段落）能不能減輕位置效應？
+- **風險**：問題要確定模型不看文件就答不出來，否則量到的是背景知識而不是長文本能力；公開文件可能在訓練資料裡；長 context 的 KV cache 很吃記憶體（32k 個 token 在 Llama 3.1 8B 上就是 4 GiB），見〈算力〉；context 長度要看 checkpoint：2025 年 4 月釋出的 Qwen3 混合模式模型原生是 32,768，Qwen3-4B-Thinking-2507 是 262,144，論文裡寫明你用的是哪一個。
+- **貢獻類型**：分析，或資源（一份繁體中文長文件的評估集）。
+- **課程週次**：W5（位置編碼與長文本）。
 
----
+### C2　量化之後，繁體中文與台語掉得比英文多嗎？ {#c2}
 
-## 研發時程推進與同行評審策略矩陣（半年期規劃）
+- **痛點**：在 16 GB 的卡上，7–8B 的模型幾乎都得量化，所以這門課大部分的實驗結果其實是量化模型的結果。Marchisio et al. 發現，自動指標嚴重低估量化的傷害：日文在自動評估上平均只掉 1.7%，人工評估卻掉了 16.0%；非拉丁文字的語言平均受傷更重；35B 模型用 4-bit 量化後，中文的數學題最多掉了 17.3%。但他們的人工評估只涵蓋西、法、韓、日、英，沒有中文；中文的自動評估也沒有說明是簡體還是繁體；而 GPTQ 等方法的校正資料是 128 筆英文。另一篇研究發現，長文本任務上量化的傷害在非英文輸入時更嚴重。2026-10-16 查證時，沒有找到針對繁體中文或台語的量化研究。問題是：同一個模型量化到 8-bit、4-bit 之後，繁體中文與台語的表現掉得比英文多嗎？用繁體中文的資料校正，能補回多少？
+- **先蒐集的證據**：Qwen3-4B 的 bf16 權重約 7.5 GiB，放得進 16 GB，可以拿來當未量化的基準；比較它的 bf16、8-bit 與兩三種 4-bit 版本，在一小份 TMMLU+、一小份英文題目，與 30–50 題繁體中文開放式生成（由組員盲評）上的表現。
+- **已查證的資源**：
+  - [bitsandbytes](https://github.com/bitsandbytes-foundation/bitsandbytes)：MIT。**注意**：transformers 的 `BitsAndBytesConfig` 預設的 4-bit 型別是 `"fp4"`，要用 NF4 得明寫 `bnb_4bit_quant_type="nf4"`。
+  - [llama.cpp](https://github.com/ggml-org/llama.cpp)：MIT，支援 1.5 到 8-bit 的整數量化。
+  - [GPTQModel](https://github.com/ModelCloud/GPTQModel)：Apache-2.0。[llm-compressor](https://github.com/vllm-project/llm-compressor)：Apache-2.0，接手了 AWQ。**AutoGPTQ 與 AutoAWQ 都已在 2025 年封存、不再維護**，網路上的舊教學還在用它們，別跟著用。
+- **起點文獻**：
+  - Marchisio et al., “How Does Quantization Affect Multilingual LLMs?,” *Findings of EMNLP 2024*, pp. 15928–15947. [ACL Anthology](https://aclanthology.org/2024.findings-emnlp.935/)
+  - Dettmers et al., “QLoRA: Efficient Finetuning of Quantized LLMs,” *NeurIPS 2023*, pp. 10088–10115. [NeurIPS](https://proceedings.neurips.cc/paper_files/paper/2023/hash/1feb87871436031bdc0f2beaa62a049b-Abstract-Conference.html)　NF4 的出處。
+  - Mekala et al., “Does quantization affect models' performance on long-context tasks?,” *EMNLP 2025*, pp. 9422–9470. [ACL Anthology](https://aclanthology.org/2025.emnlp-main.479/)
+  - Chimoto, Elhoushi & Bassett, “Calibrating Beyond English: Language Diversity for Better Quantized Multilingual LLMs,” *EACL 2026*, pp. 4822–4838. [ACL Anthology](https://aclanthology.org/2026.eacl-long.223/)　用多語言的資料校正，與「用繁體中文校正」的想法直接重疊，動手前一定要讀。
+- **開放方向**：
+  - 繁體中文、台語與英文，在同一種量化下各掉多少？自動指標與人工評估的落差，在中文上也那麼大嗎？
+  - 校正資料換成繁體中文或台語，能補回多少？會不會反過來傷到英文？
+  - 量化傷害集中在哪一類任務：知識題、數學，還是生成的流暢度？
+- **風險**：差距可能很小，要用成對的統計檢定，題目要夠多；量化方法、group size、校正資料都會影響結果，要固定並寫清楚；人工評估要盲評。
+- **貢獻類型**：分析。
+- **課程週次**：W11（推論效率）。
 
-針對有限算力與為期半年的緊湊研發週期，研究團隊應採取「語言學假說驅動、機制探測先行、資料開源奠基」的高效推進策略。此路徑能規避龐大預訓練的算力劣勢，最大化突出論文在方法論新穎性與語言多樣性上的審稿優勢。
+### C3　壓縮 KV cache 之後，模型還聽得懂中文的指令嗎？ {#c3}
 
-| 研發時程 (半年期) | 階段里程碑與核心任務 | 16GB 單卡實驗重點 | 產出成果與審查防禦點 |
-| --- | --- | --- | --- |
-| **第一階段：第 1–2 個月 (問題建模與語料工程)** | 鎖定具體題目；完成本土語料清洗、形態語意標註與對齊字典構建；建立 baseline 測試管線。 | 部署 1B–8B 開源模型推論環境；提取基準數據；測量分詞碎化率（Token Bloat）與零樣本崩潰邊界。 | 完成專用 Benchmark 資料集草案與自動化評估管線，確保資料標註一致性。 |
-| **第二階段：第 3–4 個月 (核心機制探測與實驗反覆運算)** | 執行機制探測、層級激活提取、表徵轉向向量計算或 QLoRA 輕量微調；深入分析幾何表徵與注意力權重。 | 密集運算期：批量快取隱藏層 Activation、訓練線性探針、執行 Task Vector 權重合併或 DPO 偏好注入。 | 取得超越 Baseline 的核心實證曲線；產出注意力熱力圖、因果軌跡流向圖等具備強說服力之可視化圖表。 |
-| **第三階段：第 5–6 個月 (消融實驗、論文撰寫與 ARR 預審)** | 論文撰寫；整理開源程式碼庫與輕量化模型權重；將成果投遞至 ACL Rolling Review (ARR) 爭取預先修訂機會。 | 執行消融實驗（Ablation Study）、跨語種錯誤案例深入分析（Error Analysis）及統計顯著性檢驗。 | 根據 ARR 評審意見完成針對性的小規模對比修正，完善方法邊界討論，確保獲頂級評分推薦。 |
+- **痛點**：長 context 的 KV cache 很大，常見的省法是丟掉一部分（StreamingLLM、SnapKV、H2O 等）。先前的研究在一些標準 benchmark 上看不太出壓縮造成的退化；Chen et al.（ACL 2026）反駁這一點，發現多條指令同時出現時，有些指令退化得特別快，等於被模型完全忽略，退化最快的一類正是「用某種語言回答」；系統提示也可能因此外洩。他們的實驗看起來全部是英文（論文沒有明說，這是我們從它的 prompt 判斷的）。中文多了一層問題：同樣的內容，中文切出的 token 數與英文不同，同一個壓縮比例丟掉的內容量也就不同（這是待驗證的假設）。問題是：壓縮 KV cache 之後，繁體中文的指令與系統提示，會比英文更快被忽略嗎？
+- **先蒐集的證據**：把 50 個多指令的 prompt（每個含兩三條可以自動檢查的指令，例如字數、格式、必須包含的詞）寫成繁體中文與英文兩個版本，用 kvpress 在 Qwen3 的小型模型上試兩三種壓縮方法、三個壓縮比例，比較兩種語言的指令遵循率。
+- **已查證的資源**：
+  - [kvpress](https://github.com/NVIDIA/kvpress)（NVIDIA）：Apache-2.0，`pip install kvpress`；預設在 prefill 階段壓縮，內建數十種方法（StreamingLLM、SnapKV、TOVA、H2O 的 ObservedAttention、K-Norm 等）。KV cache 的量化則可以用 transformers 的 `QuantizedCache`。
+- **起點文獻**：
+  - Chen et al., “The Pitfalls of KV Cache Compression,” *ACL 2026*, pp. 41530–41553. [ACL Anthology](https://aclanthology.org/2026.acl-long.1926/)　**這張卡最接近的前人工作，英文版的問題它幾乎做完了**；你的貢獻在中文與跨語言的比較。注意它沒有量 perplexity，不能拿它當「perplexity 不變」的出處。
+  - Xiao et al., “Efficient Streaming Language Models with Attention Sinks,” *ICLR 2024*. [OpenReview](https://openreview.net/forum?id=NG7sS51zVF)
+  - Li et al., “SnapKV: LLM Knows What You are Looking for Before Generation,” *NeurIPS 2024*, pp. 22947–22970. [OpenReview](https://openreview.net/forum?id=poE54GOq2l)
+  - Yuan et al., “KV Cache Compression, But What Must We Give in Return? A Comprehensive Benchmark of Long Context Capable Approaches,” *Findings of EMNLP 2024*, pp. 4623–4648. [ACL Anthology](https://aclanthology.org/2024.findings-emnlp.266/)
+  - 若要拿 perplexity 當指標，先讀 Fang et al., “What is Wrong with Perplexity for Long-context Language Modeling?,” *ICLR 2025*：它主張 perplexity 不適合評估長文本能力。
+- **開放方向**：
+  - 中文指令被忽略的速度與英文相同嗎？跟 token 數的差異有關嗎？
+  - 指令放在 prompt 的開頭、中間或結尾，被壓縮掉的機率一樣嗎（接 C1）？
+  - 哪一種壓縮方法對中文最友善？
+- **風險**：查證時，我們對「多語言的 KV 壓縮」這一塊的文獻搜尋並不完整，動手前一定要自己再搜一次；中文指令的自動檢查器要自己寫，寫錯就會量錯；小模型本來的指令遵循率就不高，先確認未壓縮時的基準夠高。
+- **貢獻類型**：分析。
+- **課程週次**：W3（KV cache 的大小公式）、W11。
 
-本技術藍圖所列題目的共同特質，在於將計算語言學的實證視角從單純的「模型規模追逐」轉向「語言內部表徵本質的挖掘」。只要學生能牢牢掌握臺灣語料的結構獨特性，並善用表徵轉向、模型算術與因果探針等低顯存技術工具，即使在單張 RTX 5070 Ti 的環境下，亦能在 ACL 2027 展現兼具學術厚度與工程優雅性的頂級研究成果。
+### C4　小型推理模型的思考預算：想多久才夠？ {#c4}
+
+- **痛點**：推理模型會在回答前先「想」一段，想得越久越花時間與記憶體。s1 提出 budget forcing：思考超過預算就強制結束，不夠就在後面接一個「Wait」要它繼續想。另一篇研究發現推理模型在簡單的題目上也會想很久（overthinking）。Qwen3 的技術報告描述了它的思考預算做法：思考長度到達上限時，手動中止，並插入一句要模型直接作答的指示；但預算與準確率的曲線只展示了最大的 Qwen3-235B-A22B。Yong et al. 在 1.5B 到 32B 的模型上做過 0.5k 到 8k 個 token 的 budget forcing，題目包含簡體中文的 MGSM，但沒有測繁體中文，也沒有分語言畫預算曲線。能放進 16 GB 的小模型、用繁體中文出題時，曲線長什麼樣子，我們沒有找到。問題是：小型推理模型的準確率怎麼隨思考預算變化？從哪裡開始想再多也沒用？中文題目要的預算比英文多嗎？
+- **先蒐集的證據**：用 Qwen3-1.7B 與 4B 的思考模式，在 100 題繁體中文數學應用題（以及對應的英文版）上，試 256、512、1k、2k、4k 個 token 的預算，記錄準確率、實際思考長度與觸頂的比例。
+- **已查證的資源**：
+  - 2025 年 4 月釋出的 Qwen3 混合模式模型（例如 Qwen3-1.7B、Qwen3-4B）：`enable_thinking` 預設開啟，`/think` 與 `/no_think` 可以在 prompt 裡切換；model card **沒有提供預算控制**，要自己實作。之後的 Qwen3-4B-Thinking-2507 只有思考模式，論文裡寫明你用的是哪一個 checkpoint。model card 也寫明思考模式不要用 greedy decoding，建議 `Temperature=0.6`、`TopP=0.95`、`TopK=20`、`MinP=0`。
+  - [DeepSeek-R1-Distill-Qwen-7B](https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B)：MIT；它的底模是 Qwen2.5-Math-7B，而 Qwen 自己說這系列不建議用在數學以外的任務。bf16 權重約 15 GB，要用 4-bit 或 8-bit。
+  - [s1](https://github.com/simplescaling/s1)：Apache-2.0；它的模型是 32B，放不進 16 GB，但 budget forcing 的做法可以照搬。
+- **起點文獻**：
+  - Muennighoff et al., “s1: Simple test-time scaling,” *EMNLP 2025*, pp. 20275–20321. [ACL Anthology](https://aclanthology.org/2025.emnlp-main.1025/)
+  - Snell et al., “Scaling LLM Test-Time Compute Optimally Can be More Effective than Scaling Parameters for Reasoning,” *ICLR 2025*. [OpenReview](https://openreview.net/forum?id=4FWAwZtd2n)　arXiv 版的標題不同，引用時用 ICLR 版。
+  - Chen et al., “Do NOT Think That Much for 2+3=? On the Overthinking of Long Reasoning Models,” *ICML 2025*. [OpenReview](https://openreview.net/forum?id=MSbU3L7V00)　arXiv 版的標題是 “…of o1-like LLMs”。
+  - Aggarwal & Welleck, “L1: Controlling How Long A Reasoning Model Thinks With Reinforcement Learning,” *COLM 2025*. [OpenReview](https://openreview.net/forum?id=4jdIxXBNve)　用訓練控制長度，是 budget forcing 以外的另一條路。Yong et al., “Crosslingual Reasoning through Test-Time Scaling”（[arXiv 2505.05408](https://arxiv.org/abs/2505.05408)，只有 arXiv 版）是多語言預算實驗最接近的前人工作。Qwen3 的技術報告（arXiv [2505.09388](https://arxiv.org/abs/2505.09388)）是 technical report，不是同儕審查的論文。
+- **開放方向**：
+  - 小模型的預算曲線在哪裡飽和？跟模型大小、題目難度有什麼關係？
+  - 繁體中文題目需要的預算比英文多嗎？思考的語言（接 D4）會不會影響需要的長度？
+  - 被強制中止的推理，錯誤集中在哪裡：算錯、還沒算完，還是答案抽取失敗？
+- **風險**：思考的 KV cache 很吃記憶體（Qwen3-4B 每個 token 144 KiB，想 32k 個 token 就是 4.5 GiB），見〈算力〉；要多次取樣，計算量會乘上去；查證時我們對繁體中文思考預算的文獻搜尋並不完整，動手前自己再搜一次。
+- **貢獻類型**：分析。
+- **課程週次**：W10（reasoning 與 test-time compute）。
+
+## D. 訓練與對齊
+
+這一組的共同點：訓練之後分數上升，可是有些東西變了、沒人量。在 16 GB 的卡上，這組題目多半選小模型配 LoRA，或直接拿別人已經訓練好的「前後兩個模型」來比較，不必自己重訓。
+
+### D1　擴充詞表、繼續預訓練之後，模型忘了什麼？ {#d1}
+
+- **痛點**：要讓一個以英文為主的模型擅長繁體中文，常見的做法是在詞表裡加入中文 token，再用中文資料繼續預訓練。Chinese LLaMA 另外訓練一個 20,000 詞的中文 tokenizer 併進原本的詞表，詞表從 32,000 擴充到 49,953；Breeze-7B 在 Mistral-7B 上加了 29,873 個，詞表變成 61,872 個，技術報告說中文語料的壓縮率約為原本的兩倍。效率的收穫很清楚，代價卻少有人量。Li & Lee 用 10 億個繁體中文 token 繼續預訓練 Llama-2-7b-chat（沒有擴充詞表），發現輸出格式與可靠性都退化了，重複生成的問題尤其嚴重，知識則大致沒受影響；LoRA 等 adapter 也沒能完全避免這些退化。另一篇研究在印地語、阿拉伯語、土耳其語與坦米爾語上比較了詞表擴充與繼續預訓練的設計，但沒有研究中文。問題是：對繁體中文而言，擴充詞表本身，在繼續預訓練之外又多帶來了哪些遺忘？
+- **先蒐集的證據**：Breeze-7B-Base 與它的底模 Mistral-7B-v0.1 是現成的一對。用 8-bit 或 4-bit 載入，在兩三個英文與繁體中文的 benchmark、一小份程式或數學題上比較兩者；同時在你自己的繁體中文文字上量兩個 tokenizer 每個字平均幾個 token，確認壓縮率。
+- **已查證的資源**：
+  - [Breeze-7B-Base-v1_0](https://huggingface.co/MediaTek-Research/Breeze-7B-Base-v1_0)：Apache-2.0；由 [Mistral-7B-v0.1](https://huggingface.co/mistralai/Mistral-7B-v0.1)（Apache-2.0）繼續訓練而來；model card 寫「約 30,000 個」繁體中文 token、詞表由 32k 擴充到 62k，context 長度 8k。精確的 29,873 出自它的技術報告。
+  - [TMMLU+](https://huggingface.co/datasets/ikala/tmmluplus)：MIT；也在 [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)（MIT）裡。
+- **起點文獻**：
+  - Li & Lee, “Examining Forgetting in Continual Pre-training of Aligned Large Language Models,” arXiv [2401.03129](https://arxiv.org/abs/2401.03129), 2024（只有 arXiv 版，標為 work in progress）。**這張卡與 D2 最接近的前人工作，動手前一定要讀**；引用它的數字前，先對照 PDF 的表格，查證時發現正文的描述與表格的數字不完全一致。
+  - Tejaswi, Gupta & Choi, “Exploring Design Choices for Building Language-Specific LLMs,” *Findings of EMNLP 2024*, pp. 10485–10500. [ACL Anthology](https://aclanthology.org/2024.findings-emnlp.614/)
+  - Cui, Yang & Yao, “Efficient and Effective Text Encoding for Chinese LLaMA and Alpaca,” arXiv [2304.08177](https://arxiv.org/abs/2304.08177), 2023（只有 arXiv 版）。Breeze-7B 的技術報告（Hsu et al., arXiv [2403.02712](https://arxiv.org/abs/2403.02712)）是 technical report，不是同儕審查的論文。
+  - 另一條路線：Minixhofer, Ponti & Vulić, “Zero-Shot Tokenizer Transfer,” *NeurIPS 2024*（[arXiv 2405.07883](https://arxiv.org/abs/2405.07883)，NeurIPS 2024 的論文；引用時改用 proceedings 版）。用 hypernetwork 直接預測新 tokenizer 的 embedding，可以當作「遺忘比較少」的對照。
+- **開放方向**：
+  - 遺忘來自新 token 的 embedding、還是來自繼續預訓練的資料？能不能設計一個實驗把兩者分開？
+  - 忘掉的是哪一類能力：英文、程式、數學、安全拒答，還是輸出格式？
+  - 新加入的 token，在訓練之後真的被用上了嗎（接 B2）？
+- **風險**：Breeze-7B 與 Mistral-7B 之間不只差在詞表，還差在資料與訓練流程，用這一對只能看出「整套做法」的效果，不能歸因到詞表；要歸因得自己做受控實驗，16 GB 只夠在小模型上做。7B 模型的 bf16 權重放不進 16 GB 的卡，見〈算力〉。
+- **貢獻類型**：分析。
+- **課程週次**：W2（tokenization）、W7（pre-training）、W8（遺忘）。
+
+### D2　用 LoRA 微調成某個領域的模型之後，它還記得什麼？ {#d2}
+
+- **痛點**：期末專題常見的做法是拿一個小模型，用 LoRA 在臺灣的某個領域（法規、醫療衛教、客服）上微調，只報告該領域的分數。LoRA 不是模型壓縮，推論時的參數並沒有變少；它的好處是可訓練的參數少，也比全參數微調忘得少：Biderman et al. 發現 LoRA「學得比較少，也忘得比較少」。Shuttleworth et al. 則發現 LoRA 訓練出來的權重有一些原本沒有的高奇異值方向（intruder dimensions），遺忘集中在這些方向上，把它們縮小，模型對預訓練分布的建模就明顯變好。這些結論都來自英文的任務；在繁體中文的領域微調上，遺忘的形狀一樣嗎？
+- **先蒐集的證據**：用 LoRA 把 Qwen3-0.6B 或 1.7B 在一份小的繁體中文領域資料上微調，比較微調前後在該領域、一般繁體中文知識（如 TMMLU+ 的幾個科目）、英文，以及輸出格式遵循上的表現；同時對 LoRA 的更新做 SVD，看看有沒有 intruder dimensions。
+- **已查證的資源**：
+  - [PEFT](https://github.com/huggingface/peft) 與 [TRL](https://github.com/huggingface/trl)：都是 Apache-2.0。課程 W8 的 demo 用的是 MLX 的 `mlx_lm.lora`，原理相同。
+  - Qwen3 系列：見〈算力〉。
+  - 領域資料的一個例子：[`lianghsun/tw-law-article-chat`](https://huggingface.co/datasets/lianghsun/tw-law-article-chat)，CC BY-SA 4.0，涵蓋 993 部法規的 1,652 組問答，**是 LLM 合成的**；需要登入、分享聯絡資訊並經人工核准才能下載。用它要在論文裡寫明，也要注意 ShareAlike。
+- **起點文獻**：
+  - Hu et al., “LoRA: Low-Rank Adaptation of Large Language Models,” *ICLR 2022*. [OpenReview](https://openreview.net/forum?id=nZeVKeeFYf9)
+  - Biderman et al., “LoRA Learns Less and Forgets Less,” *TMLR*, 2024 (Featured Certification). [OpenReview](https://openreview.net/forum?id=aloEru2qCG)
+  - Shuttleworth et al., “LoRA vs Full Fine-tuning: An Illusion of Equivalence,” *NeurIPS 2025*（poster；[arXiv 2410.21228](https://arxiv.org/abs/2410.21228)，引用時改用 proceedings 版）。課程 W8 的核心文獻。
+  - Li & Lee 2024（見 D1）：在繁體中文的繼續預訓練上，LoRA 與 (IA)³ 都沒能完全避免遺忘。
+- **開放方向**：
+  - 遺忘隨 rank、學習率與訓練步數怎麼變？有沒有一個「學到夠多、忘得夠少」的區間？
+  - 繁體中文的領域微調，也會產生 intruder dimensions 嗎？縮小它們，遺忘能恢復多少？
+  - 哪一種評估最早偵測到遺忘：一般文字的 perplexity、知識題，還是格式遵循？
+- **風險**：只在一個領域、一個模型上做，結論撐不起「LoRA 會……」的說法，至少要兩個模型家族；評估集若與微調資料重疊，「沒有遺忘」可能是假象；LLM 合成的資料可能帶有產生它的模型的錯誤與風格。
+- **貢獻類型**：分析，可延伸為方法。
+- **課程週次**：W8。
+
+### D3　偏好對齊之後回答變長了：是變好，還是只是變長？ {#d3}
+
+- **痛點**：RLHF 與 DPO 之後，模型的回答常常變長，而 LLM 評審又偏好長回答，兩者疊在一起，就分不清「變好」與「變長」。Singhal et al. 發現 reward 的提升大多來自回答變長，只用長度當 reward，就能重現大部分 RLHF 的改善。Park et al. 指出 DPO 會利用長度，加上簡單的正則化之後，控制長度的勝率最多改善 20%。AlpacaEval 加上長度控制之後，與 Chatbot Arena 排名的 Spearman 相關從 0.94 提高到 0.98。這些研究都在英文上做；中文還有一個英文沒有的問題：「長度」用字數算還是 token 數算，答案取決於 tokenizer。2026-10-16 查證時，沒有找到在中文或繁體中文上研究 DPO 長度偏誤的論文，也沒有找到授權寬鬆、由人標註的繁體中文偏好資料。
+- **先蒐集的證據**：用 TRL 在 Qwen3-0.6B 上跑一次小規模的 DPO，比較訓練前後回答的字數與 token 數分布；再拿 30–50 組回答，請組員與一個 LLM 評審在「原樣」與「截成相同長度」兩種條件下各判一次，看偏好是否翻轉。
+- **已查證的資源**：
+  - [TRL](https://github.com/huggingface/trl) 的 `DPOTrainer`：Apache-2.0。`loss_type` 預設是 sigmoid（原始 DPO；新版的預設值寫成 `["sigmoid"]` 這樣的 list，也接受字串），另有 `"ipo"`、`"sigmoid_norm"`（文件說這就是 SimPO 用的長度正規化）等；`ld_alpha` 是 LD-DPO 的長度參數。
+  - 中文偏好資料（授權都要再確認）：[`llamafactory/DPO-En-Zh-20k`](https://huggingface.co/datasets/llamafactory/DPO-En-Zh-20k) 標 Apache-2.0，其中文部分來自 [`wenbopan/Chinese-dpo-pairs`](https://huggingface.co/datasets/wenbopan/Chinese-dpo-pairs)（MIT），看起來以簡體為主；我們找到的繁體中文偏好資料都需要申請、都是合成的，授權是 CC BY-NC-SA 4.0 或 CC BY-SA 4.0（例如 D2 提到的 `lianghsun/tw-law-article-chat`，也附有 LLM 產生的 chosen／rejected 配對）。
+- **起點文獻**：
+  - Rafailov et al., “Direct Preference Optimization: Your Language Model is Secretly a Reward Model,” *NeurIPS 2023*, pp. 53728–53741. [NeurIPS](https://proceedings.neurips.cc/paper_files/paper/2023/hash/a85b405ed65c6477a4fe8302b5e06ce7-Abstract-Conference.html)
+  - Singhal et al., “A Long Way to Go: Investigating Length Correlations in RLHF,” *COLM 2024*. [OpenReview](https://openreview.net/forum?id=G8LaO1P0xv)
+  - Park et al., “Disentangling Length from Quality in Direct Preference Optimization,” *Findings of ACL 2024*, pp. 4998–5017. [ACL Anthology](https://aclanthology.org/2024.findings-acl.297/)
+  - Dubois, Liang & Hashimoto, “Length-Controlled AlpacaEval: A Simple Debiasing of Automatic Evaluators,” *COLM 2024*. [OpenReview](https://openreview.net/forum?id=CybBmzWBX0)　arXiv 版的標題與作者不同（多一位作者），引用時用 COLM 版。
+  - Hu et al., “Explaining Length Bias in LLM-Based Preference Evaluations,” *Findings of EMNLP 2025*, pp. 6763–6794. [ACL Anthology](https://aclanthology.org/2025.findings-emnlp.358/)　把勝率拆成「回答本身的好」與「資訊量」兩部分，**最接近這張卡的問法**。
+- **開放方向**：
+  - 中文回答的長度偏誤，用字數與用 token 數量，結論一樣嗎？
+  - DPO 之後多出來的長度，是多了資訊、多了客套話，還是多了重複？
+  - 偏好資料從簡體轉成繁體（例如用 OpenCC），會不會引入新的偏誤？
+- **風險**：繁體中文偏好資料的授權與來源都有問題，NC 授權限制發佈，合成資料可能違反產生它的商用模型的使用條款；DPO 的結果對超參數敏感，要多跑幾個 seed；評審本身的長度偏好要先量（接 F1）。
+- **貢獻類型**：分析，可延伸為方法。
+- **課程週次**：W9（DPO 的推導與手刻 loss）、W14。
+
+### D4　用繁體中文問推理模型，它用什麼語言想？ {#d4}
+
+- **痛點**：DeepSeek-R1 的論文提到，只用 RL 訓練的 R1-Zero 會在推理過程中混用語言；R1 因此加了一個「語言一致性」reward，算法是思考過程中目標語言的詞所占的比例（arXiv v2 的 §3.2.1）；論文的 §6 也說明 R1 目前針對中文與英文最佳化。後續研究發現，輸入英文或中文時，推理大多維持在輸入的語言，英文是主要的內部轉接語言，中文的程度較小；強迫模型用使用者的語言推理，準確率會下降。但這些研究都把「中文」當成一種語言：一篇用的是簡體中文的題目，另一篇用 LangDetect 判斷思考的語言，報告裡只有「ZH」一類，沒有說明繁體與簡體是否分開算（LangDetect 本身有 zh-cn 與 zh-tw 兩種）。問題是：用繁體中文提問時，推理模型的思考是繁體、簡體還是英文？這跟答對與否有關嗎？
+- **先蒐集的證據**：用 Qwen3 的小型模型開啟思考模式，問 50–100 題繁體中文的數學或常識題，逐題統計思考內容裡繁體字、簡體字與英文的比例（只計繁簡寫法不同的字），再對照最後答案的文字與對錯。
+- **已查證的資源**：
+  - [Qwen3-4B-Thinking-2507](https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507)：Apache-2.0，只有思考模式，原生 context 262,144。
+  - [Qwen3-8B](https://huggingface.co/Qwen/Qwen3-8B) 等混合模式的模型：`enable_thinking` 預設為 True，也可以在 prompt 裡加 `/think`、`/no_think` 切換；model card 建議思考模式用 `Temperature=0.6`、`TopP=0.95`、`TopK=20`、`MinP=0`。
+  - [OpenCC](https://github.com/BYVoid/OpenCC)：Apache-2.0，繁簡轉換，可以用來判斷一個字是否有繁簡兩種寫法。
+- **起點文獻**：
+  - Guo et al., “DeepSeek-R1 incentivizes reasoning in LLMs through reinforcement learning,” *Nature* 645, pp. 633–638, 2025. [DOI](https://doi.org/10.1038/s41586-025-09422-z)　上面引用的語言混用與語言一致性 reward，我們是在 arXiv 版（2501.12948 v2）讀到的，Nature 版的原文沒能讀到；arXiv 的 v1 與 v2 章節編號不同，引用時寫明版本。
+  - Wang et al., “Language Mixing in Reasoning Language Models: Patterns, Impact, and Internal Causes,” *EMNLP 2025*, pp. 2637–2665. [ACL Anthology](https://aclanthology.org/2025.emnlp-main.132/)
+  - Qi et al., “When Models Reason in Your Language: Controlling Thinking Language Comes at the Cost of Accuracy,” *Findings of EMNLP 2025*, pp. 20279–20296. [ACL Anthology](https://aclanthology.org/2025.findings-emnlp.1103/)
+  - Yong et al., “Crosslingual Reasoning through Test-Time Scaling,” arXiv [2505.05408](https://arxiv.org/abs/2505.05408), 2025（只有 arXiv 版）。
+- **開放方向**：
+  - 繁體提問、簡體思考的情況有多常見？隨模型大小與題型怎麼變？
+  - 思考用簡體或英文，最後的答案也會混入簡體字或大陸用語嗎（接 A4）？
+  - 以「目標語言詞的比例」為 reward，對繁體與簡體是否一視同仁？這會怎樣影響繁體使用者？
+- **風險**：繁簡共用的字很多，只能用寫法不同的字來判斷，樣本量要夠；思考預算的上限會截斷推理，要報告預算與觸頂的比例（期中範本 Measures 一節）；取樣有隨機性，每題要跑多次。
+- **貢獻類型**：分析。
+- **課程週次**：W10（reasoning 與 test-time compute）、W2。
+
+## E. 檢索與 agent
+
+這一組的共同點：問題不在模型本身，而在模型外面的系統怎麼切資料、怎麼引用、怎麼呼叫工具。系統的每一個環節都可以單獨量，這正是好的分析題目。
+
+### E1　臺灣法規的 RAG：條文該怎麼切？ {#e1}
+
+- **痛點**：用 RAG 回答法律問題，第一步是把法規切成檢索單位。臺灣的法規有條、項、款、目的層級，條文之間互相引用（「準用」第幾條），還有修正前後的版本；使用者的問法則是口語，與條文的用語相去甚遠。2026 年一篇針對德國民法典的研究，比較了依法規結構切分、固定長度視窗、語意分群、RAPTOR 等六類、九種做法，發現**順著法規本身結構切**的召回率最高，蓋過結構的複雜做法反而比較差。另一篇研究則發現，語意切分多花的計算成本並不值得。問題是：這個結論在繁體中文的法規上成立嗎？條、項、款、目哪一層才是對的單位？口語問題與條文用語的落差，該由切分還是由查詢改寫來處理？
+- **先蒐集的證據**：挑一兩部常被查詢的法律，寫 50 個口語問題並標出答案所在的條、項；比較三四種切分方式在 BM25 與一個 dense retriever 上的 recall@k，再逐題看檢索失敗的原因：切斷了、引用鏈沒跟上，還是用語不同。
+- **已查證的資源**：
+  - [中文法規_法律資料檔下載](https://data.gov.tw/dataset/18289)（政府資料開放平臺）：全國法規資料庫收錄的法律，XML 或 ZIP，法務部資訊處提供，每月更新。授權是[政府資料開放授權條款－第1版](https://data.gov.tw/license)，可以改作與再散布，條款寫明與 CC BY 4.0 相容；使用時依條款附件的「顯名聲明」標示來源。施行細則等「命令」層級的法規在另一個資料集（中文法規_命令資料檔下載）。資料以「條」為單位，法務部在資料集頁面上回覆民眾時表示無法再細分；條內的項、款、目要自己切，這一步本身就是研究的一部分。
+  - [`lianghsun/tw-law-article-chat`](https://huggingface.co/datasets/lianghsun/tw-law-article-chat)：見 D2。
+  - Wang et al. 的臺灣法規跨語言檢索資料（[arXiv 2410.11450](https://arxiv.org/abs/2410.11450)）：口語化的英文法律問題配上中文版本，涵蓋民法、刑法與行政法規；論文是 CC BY 4.0，**資料本身的授權與取得方式沒有寫明**。
+  - TW-LegalBench（[arXiv 2606.18699](https://arxiv.org/abs/2606.18699)）：超過 16,000 題國家考試選擇題、117 題附官方評分要點的申論題，與超過 14,000 筆判決預測；arXiv 的資料寫將發表於 ICAIL 2026。**資料授權沒有寫明**。
+- **起點文獻**：
+  - Prior, Milanova & Schultz, “Chunking German Legal Code,” arXiv [2605.19806](https://arxiv.org/abs/2605.19806), 2026（arXiv 的資料寫已被 ICAIL 2026 的 ASAIL workshop 接受，我們沒有打開 workshop 的論文集確認）。**這張卡最接近的前人工作，動手前一定要讀**；你的貢獻是檢驗它的結論在繁體中文與臺灣法規結構上是否成立。
+  - Qu, Tu & Bao, “Is Semantic Chunking Worth the Computational Cost?,” *Findings of NAACL 2025*, pp. 2155–2177. [ACL Anthology](https://aclanthology.org/2025.findings-naacl.114/)
+  - Chen et al., “Dense X Retrieval: What Retrieval Granularity Should We Use?,” *EMNLP 2024*, pp. 15159–15177. [ACL Anthology](https://aclanthology.org/2024.emnlp-main.845/)　以命題（proposition）為檢索單位。
+  - Reuter et al., “Towards Reliable Retrieval in RAG Systems for Large Legal Datasets,” *NLLP Workshop 2025*, pp. 17–30. [ACL Anthology](https://aclanthology.org/2025.nllp-1.3/)　檢索到錯的文件（document-level retrieval mismatch），以及在每個 chunk 前面加上文件摘要的做法。
+- **開放方向**：
+  - 條、項、款、目哪一層當檢索單位最好？要不要把上層的條號與法規名稱一起放進 chunk？
+  - 「準用」等引用鏈，要在切分時展開，還是在檢索後追蹤？
+  - 口語問題與條文用語的落差，查詢改寫能補回多少？
+- **風險**：問題由組員自己寫，容易寫成「條文的改寫」，高估檢索效果，最好找不熟法律的人來問；法規會修正，資料要記下版本日期；**本題只評估檢索，不提供法律意見**，論文與 demo 都要寫明。
+- **貢獻類型**：分析，或資源（一份口語問題對應條文的測試集）。
+- **課程週次**：W12（RAG 與 context engineering）。
+
+### E2　RAG 附上的引用，真的支持那句話嗎？ {#e2}
+
+- **痛點**：RAG 系統會在回答的句子後面附上來源，讓人以為每句話都查得到。Liu et al. 檢查了四個生成式搜尋引擎，只有 51.5% 的句子完全有引用支持，引用也只有 74.5% 真的支持它所附的句子。ALCE 發現，在 ELI5 上，最好的模型也有一半的時間引用不完整。更麻煩的是，引用「正確」不等於模型真的「用了」它：Wallat et al. 發現，最多 57% 的引用缺乏忠實性（faithfulness），是事後補上的。中文已有 WebCiteS，是以網路搜尋結果為來源、7,000 筆人工標註的摘要；但 2026-10-16 查證時，沒有找到針對繁體中文、以政府文件或法規為來源的引用支持度研究。
+- **先蒐集的證據**：用課程 W12 的最小 RAG，以一小批政府公開文件為來源回答 50 個問題，請兩位組員把每一組「句子—引用」標成完全支持、部分支持、不支持，計算一致性與各類比例；再看一個 NLI 模型或 LLM 評審能不能重現人的判斷。
+- **已查證的資源**：
+  - [ALCE](https://github.com/princeton-nlp/ALCE)：程式碼是 MIT；它重新散布的資料（ASQA、QAMPARI、ELI5）各有授權，README 沒有寫明。
+  - WebCiteS：見起點文獻；論文的註腳說資料與程式碼以 Apache-2.0 釋出。
+- **起點文獻**：
+  - Rashkin et al., “Measuring Attribution in Natural Language Generation Models,” *Computational Linguistics* 49(4), pp. 777–840, 2023. [ACL Anthology](https://aclanthology.org/2023.cl-4.2/)　AIS（Attributable to Identified Sources）的定義與標註規範。
+  - Gao et al., “Enabling Large Language Models to Generate Text with Citations,” *EMNLP 2023*, pp. 6465–6488. [ACL Anthology](https://aclanthology.org/2023.emnlp-main.398/)
+  - Liu, Zhang & Liang, “Evaluating Verifiability in Generative Search Engines,” *Findings of EMNLP 2023*, pp. 7001–7025. [ACL Anthology](https://aclanthology.org/2023.findings-emnlp.467/)
+  - Wallat et al., “Correctness is not Faithfulness in Retrieval Augmented Generation Attributions,” *ICTIR 2025*, pp. 22–32. [DOI](https://doi.org/10.1145/3731120.3744592)
+  - Deng et al., “WebCiteS: Attributed Query-Focused Summarization on Chinese Web Search Results with Citations,” *ACL 2024*, pp. 15095–15114. [ACL Anthology](https://aclanthology.org/2024.acl-long.806/)　語言最接近的前人工作。
+- **開放方向**：
+  - 繁體中文的「部分支持」主要是哪幾種：數字不符、範圍擴大、把兩份文件拼在一起？
+  - 拿來自動判斷支持度的 NLI 模型或 LLM 評審，在繁體中文上與人的一致性多高（接 F1）？
+  - 檢索到的段落越多，引用的支持度是上升還是下降？
+- **風險**：「支持」的判斷本身有主觀成分，標註規範要先定、先試標；政府文件的授權要逐份確認；只用一個 RAG 系統，結論只能說到那個系統。
+- **貢獻類型**：分析或資源（有人工標註的繁體中文引用支持度資料）。
+- **課程週次**：W12、W14。
+
+### E3　小型開放模型當 agent：工具呼叫壞在哪裡？ {#e3}
+
+- **痛點**：agent 的 benchmark 大多以大型 API 模型為對象。τ-bench 上，gpt-4o 完成不到一半的任務，在零售情境下 pass^8 不到 25%；它預設的模擬使用者也是 gpt-4o，在 16 GB 的卡上做研究，就得換成本機模型，benchmark 的難度也跟著改變。小模型壞的方式也不一樣：Hammer 指出，function calling 的分數在不同 benchmark 之間差很多，原因之一是模型過度貼合特定的函式命名慣例。工具呼叫的錯誤分類已經有好幾套，繁體中文的 function calling 也已經有人做過在地化的 benchmark 與訓練方法（見起點文獻），所以這張卡要有自己的角度：**臺灣情境的參數**，例如民國紀年的日期、以「萬」為單位的金額（接 B1）、臺灣的地址格式；我們讀到的繁體中文研究都沒有處理這些。
+- **先蒐集的證據**：從 BFCL 挑 50 個簡單的函式呼叫，改寫成需要臺灣情境參數的繁體中文版本（日期寫成民國年、金額寫成「3 萬 5 千元」），讓三個能放進 16 GB 的模型作答，逐筆分類錯誤：選錯函式、漏參數、格式錯、數值換算錯。
+- **已查證的資源**：
+  - [BFCL](https://github.com/ShishirPatil/gorilla/tree/main/berkeley-function-call-leaderboard)：README 說排行榜的統計與訓練模型的資料以 Apache-2.0 釋出，目前是 V4；本機模型用 vLLM（預設）或 sglang 跑。[Hugging Face 上的資料卡](https://huggingface.co/datasets/gorilla-llm/Berkeley-Function-Calling-Leaderboard)提醒**不要用 `load_dataset` 載入**。
+  - [τ-bench](https://github.com/sierra-research/tau-bench)：MIT；README 說原 repo 的任務不再更新，改指向 [τ³-bench](https://github.com/sierra-research/tau2-bench)（MIT）。
+  - [Model Context Protocol](https://modelcontextprotocol.io/specification/latest)：目前的規格版本是 2026-07-28。這是規格文件，不是論文，引用時寫明版本與讀取日期。
+- **起點文獻**：
+  - Patil et al., “The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models,” *ICML 2025*, PMLR 267, pp. 48371–48392. [PMLR](https://proceedings.mlr.press/v267/patil25a.html)
+  - Yao et al., “τ-bench: A Benchmark for Tool-Agent-User Interaction in Real-World Domains,” *ICLR 2025*. [ICLR](https://proceedings.iclr.cc/paper_files/paper/2025/hash/1b126cc38b8638e07bef37e7b2bb72bf-Abstract-Conference.html)
+  - Lin et al., “Robust Function-Calling for On-Device Language Model via Function Masking,” *ICLR 2025*. [ICLR](https://proceedings.iclr.cc/paper_files/paper/2025/hash/d45e0bfb5a39477d56b55c0824200008-Abstract-Conference.html)
+  - Shen et al., “Small LLMs Are Weak Tool Learners: A Multi-LLM Agent,” *EMNLP 2024*, pp. 16658–16680. [ACL Anthology](https://aclanthology.org/2024.emnlp-main.929/)
+  - Lee et al., “Assessing the Necessity and Impact of Localized Traditional Chinese Function Calling Benchmarks,” *ROCLING 2024*, pp. 215–220. [ACL Anthology](https://aclanthology.org/2024.rocling-1.26/)；Chen et al., “Enhancing Function-Calling Capabilities in LLMs: Strategies for Prompt Formats, Data Integration, and Multilingual Translation,” *NAACL 2025* (Industry Track), pp. 99–111. [ACL Anthology](https://aclanthology.org/2025.naacl-industry.9/)　**繁體中文 function calling 最接近的前人工作，動手前一定要讀**。
+- **開放方向**：
+  - 臺灣情境的參數（民國年、萬進位、地址）讓錯誤率增加多少？錯在理解還是在格式？
+  - 函式說明寫成中文或英文，小模型的表現一樣嗎？
+  - 用本機小模型取代 gpt-4o 當模擬使用者，τ-bench 的排名會變嗎？
+- **風險**：錯誤分類已經很擁擠，相關工作要讀夠，貢獻才講得清楚；改寫的題目要有人複核答案；agent 的評估成本高，先從單步呼叫做起，不要一開始就做多輪任務。
+- **貢獻類型**：分析，可延伸為資源。
+- **課程週次**：W13（agentic systems）。
+
+## F. 評估與分析
+
+這一組的共同點：同一批模型，換一種量法，數字與排名就可能改變；或者，一個廣為流傳的說法，在繁體中文與臺灣的語言上還沒有人驗證過。分析型的論文最適合從這裡起步，而且多半只需要推論。
+
+### F1　LLM 當評審，在繁體中文上可信嗎？ {#f1}
+
+- **痛點**：開放式回答越來越常交給另一個 LLM 打分數，可是評審本身的可信度幾乎都是在英文或簡體中文上驗證的。AlignBench 用 GPT-4（`gpt-4-0613`）當評審，在 400 個中文問題上與人工評分比對（論文沒有寫明簡繁，GitHub 上釋出的資料是簡體），整體的 sample-level Pearson 是 0.638，開放式問答與寫作兩類最低（0.539、0.544）。跨 25 種語言的研究發現，評審在不同語言之間的判斷並不一致，平均 Fleiss' κ 約 0.3。常用的開源評審 Prometheus 2，model card 列出的語言只有英文。最接近的是 VisTW：它在視覺語言模型的臺灣華語回答上，比對了 gemini-2.0-flash 評審與三位人工評分，Spearman 約 0.82–0.85。2026-10-16 查證時，沒有找到在純文字的繁體中文回答上比對 LLM 評審與人工評分的研究。問題是：拿 LLM 評審來比較繁體中文的回答，它的判斷跟臺灣的讀者一致嗎？它會不會偏好簡體字、大陸用語，或比較長的回答？
+- **先蒐集的證據**：挑 50–100 個繁體中文的開放式問題（最好有一部分需要臺灣的在地知識或用語），收兩個模型的回答；請兩三位組員各自獨立評分，再請兩個 LLM 評審在兩種順序下各判一次。比較評審與人的一致性、人與人的一致性，並統計評審在兩種順序下改判的比例。
+- **已查證的資源**：
+  - [Prometheus 2](https://huggingface.co/prometheus-eval/prometheus-7b-v2.0)（7B）：Apache-2.0，以 Mistral-7B-Instruct-v0.2 為底；model card 列出的語言只有英文，並註明它的訓練資料受 OpenAI 使用條款約束。8x7B 版在 16 GB 的卡上不實際。
+  - [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)：MIT。
+- **起點文獻**：
+  - Zheng et al., “Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena,” *NeurIPS 2023* (Datasets and Benchmarks Track). [NeurIPS](https://proceedings.neurips.cc/paper_files/paper/2023/hash/91f18a1287b398d378ef22505bf41832-Abstract.html)　位置、冗長與自我偏好三種偏誤；期中範本的 Measures 一節也引了它。
+  - Liu et al., “AlignBench: Benchmarking Chinese Alignment of Large Language Models,” *ACL 2024*, pp. 11621–11640. [ACL Anthology](https://aclanthology.org/2024.acl-long.624/)　§4.1 與 Table 4 是評審與人工評分的比對。
+  - Tam et al., VisTW（*Findings of ACL 2026*，見 A4）：臺灣華語的評審驗證，但對象是視覺語言模型。
+  - Fu & Liu, “How Reliable is Multilingual LLM-as-a-Judge?,” *Findings of EMNLP 2025*, pp. 11040–11053. [ACL Anthology](https://aclanthology.org/2025.findings-emnlp.587/)　25 種語言含中文，例句是簡體，沒有提到繁體。
+  - Thakur et al., “Judging the Judges: Evaluating Alignment and Vulnerabilities in LLMs-as-Judges,” *GEM² workshop at ACL 2025*, pp. 404–430. [ACL Anthology](https://aclanthology.org/2025.gem-1.33/)（workshop 論文）。另有 Doğruöz et al. 的回顧（[arXiv 2607.02235](https://arxiv.org/abs/2607.02235)，2026）：在 650 篇 ACL Anthology 的 LLM-as-judge 論文裡，只有 33 篇處理多語言或低資源的情境；arXiv 的資料寫它將發表於 Findings of EMNLP 2026，我們沒能在 Anthology 上確認。
+- **開放方向**：
+  - 評審與臺灣讀者的一致性，比人與人之間低多少？在哪些題型差最多？
+  - 同一個回答改成簡體字或大陸用語、意思不變，評審的分數會變嗎（接 A4）？
+  - 需要臺灣在地知識的題目，評審是否無法分辨對錯，只看流暢度？
+  - 評審的 rubric 寫成中文或英文，結果一樣嗎？
+- **風險**：人工評分的人數少，一致性的信賴區間很寬，要先算清楚需要多少題；用閉源模型當評審，要記下版本字串與查詢日期；評審與被評的模型不要來自同一家族。
+- **貢獻類型**：分析，可延伸為資源（一份有人工評分的繁體中文評審驗證集）。
+- **課程週次**：W14（評估），W9（偏好資料也常由 LLM 標註）。
+
+### F2　只改 prompt 的格式，繁體中文 benchmark 的排名會翻嗎？ {#f2}
+
+- **痛點**：臺灣的模型常拿 TMMLU+ 與 TMLU 比高下，而這兩個 benchmark 在 lm-evaluation-harness 裡的預設 prompt 是一行中文說明、題目與選項，最後接英文的 `Answer:`，再比較各選項字母的 log-likelihood（多數科目是 A 到 D，TMLU 有幾科到 E）。英文 benchmark 上已經知道，換一種 prompt 模板，分數可以差很多；改變選項順序或選答方式這類小改動，MMLU 的排名最多可以移動 8 名。但也有研究主張，所謂的 prompt 敏感度，有一部分來自評估方式本身（log-likelihood 計分與死板的答案比對），而不是模型的缺陷。2026-10-16 查證時，沒有找到針對繁體中文 benchmark 的 prompt 敏感度研究。
+- **先蒐集的證據**：選四到六個能放進 16 GB 的模型，在 TMMLU+ 的幾個科目上跑三到五種只差一處的模板（`Answer:` 改 `答案：`、拿掉說明行、選項改用其他標記、換選項順序），計算每種模板下的排名與兩兩之間的 Kendall's τ；同一批模板再用生成式作答與答案抽取跑一次。
+- **已查證的資源**：
+  - [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)：MIT。`tmmluplus` 與 `tmlu` 兩個任務的模板都是 YAML。TMMLU+ 的 `Answer:` 在共用模板裡，改一行就好；中文說明行在每一科各自的 `description`，可以改 `_generate_configs.py` 重新產生；換選項順序則要改 `utils.py` 的 `process_docs`。harness 把兩者引為 arXiv 預印本，但它們都已發表於 COLM 2024（見 A5）。
+  - [TMMLU+](https://huggingface.co/datasets/ikala/tmmluplus)：MIT，66 科；2026 年 10 月剛釋出 v1.1，harness 沒有指定 revision，**實驗時自己固定版本**（見 A5）。TMLU 的資料 2026-10-16 在 Hugging Face 上打不開，也見 A5。
+- **起點文獻**：
+  - Mizrahi et al., “State of What Art? A Call for Multi-Prompt LLM Evaluation,” *TACL* 12, pp. 933–949, 2024. [ACL Anthology](https://aclanthology.org/2024.tacl-1.52/)
+  - Alzahrani et al., “When Benchmarks are Targets: Revealing the Sensitivity of Large Language Model Leaderboards,” *ACL 2024*, pp. 13787–13805. [ACL Anthology](https://aclanthology.org/2024.acl-long.744/)　改選項順序或選答方式，排名最多移動 8 名（只隨機打亂選項時最多 5 名）。
+  - Sclar et al., “Quantifying Language Models' Sensitivity to Spurious Features in Prompt Design,” *ICLR 2024*. [OpenReview](https://openreview.net/forum?id=RIu5lyNXjT)　LLaMA-2-13B 上，只改格式最多差 76 個百分點。
+  - Hua et al., “Flaw or Artifact? Rethinking Prompt Sensitivity in Evaluating LLMs,” *EMNLP 2025*, pp. 19889–19899. [ACL Anthology](https://aclanthology.org/2025.emnlp-main.1006/)　**反方的論證，一定要讀**：harness 的 TMLU 與 TMMLU+ 正是用它批評的 log-likelihood 字母計分。
+  - TMMLU+ 與 TMLU 的論文：見 A5。
+- **開放方向**：
+  - 中文說明、英文 `Answer:` 這種混合模板，對哪些模型有利？
+  - 排名的變動，有多少在改用生成式作答之後就消失了？
+  - 要幾種模板，排名才穩定？多模板的平均該怎麼報告？
+- **風險**：模型數少時，Kendall's τ 的變動本身就大；benchmark 的錯題與污染會混進結果（接 A5）；結論要分清楚是「模型對格式敏感」還是「計分方式對格式敏感」。另有 Biderman et al. 談可重現評估的實務經驗（[arXiv 2405.14782](https://arxiv.org/abs/2405.14782)，2026-10-16 查證時仍只有 arXiv 版）。
+- **貢獻類型**：分析。
+- **課程週次**：W14。
+
+### F3　模型在中間層用哪一種語言「想」？ {#f3}
+
+- **痛點**：Wendler et al. 用 logit lens 觀察 Llama-2：例如要把法文的詞翻成中文時，中間層解碼出來的 token 語意已經正確，但英文版本的機率比中文高；作者據此主張模型抽象的「概念空間」比較靠近英文。注意，**他們沒有說模型「先翻成英文」**，把兩者混為一談是過度推論。後續研究發現，以中文為主的模型（ChineseLLaMA2、Baichuan2）會同時啟動多個潛在語言，挑最接近的那一個。這些研究涵蓋的中文都沒有區分繁簡，也沒有台語。問題是：輸入繁體中文時，中間層的潛在語言是英文、簡體中文還是繁體中文？輸入台語漢字或台羅時呢？
+- **先蒐集的證據**：照 Wendler et al. 的設計（翻譯與填空，答案限定為單一 token），用 logit lens 看兩三個開放權重的模型，逐層追蹤答案的英文、簡體、繁體三種寫法的機率。先挑繁簡寫法不同、而且都是單一 token 的字詞，30–50 個就夠看出趨勢。
+- **已查證的資源**：
+  - [TransformerLens](https://github.com/TransformerLensOrg/TransformerLens) 與 [nnsight](https://github.com/ndif-team/nnsight)：都是 MIT；nnsight 的論文發表於 ICLR 2025。
+  - [tuned-lens](https://github.com/AlignmentResearch/tuned-lens)：MIT。它的論文（Belrose et al., [arXiv 2303.08112](https://arxiv.org/abs/2303.08112)）2026-10-16 查證時仍只有 arXiv 版。
+  - Qwen3 系列與 Llama 3.1 8B：見〈算力〉一節。Llama 3.1 的 model card 列出的支援語言沒有中文，正好可以和以中英文為主的 Qwen3 對照。
+- **起點文獻**：
+  - Wendler et al., “Do Llamas Work in English? On the Latent Language of Multilingual Transformers,” *ACL 2024*, pp. 15366–15394. [ACL Anthology](https://aclanthology.org/2024.acl-long.820/)
+  - Zhong et al., “What Language Do Non-English-Centric Large Language Models Think in?,” *Findings of ACL 2025*, pp. 26333–26346. [ACL Anthology](https://aclanthology.org/2025.findings-acl.1350/)　研究日、中、法、阿拉伯語，以英文為基準（翻譯任務限英、法、日、中）；從頭以中文為主訓練的 Baichuan2 主要依賴中文，在英文模型上繼續預訓練的 ChineseLLaMA2 則混用英文與中文。沒有提到繁體，也沒有研究 Qwen。它的 arXiv 版（2408.10811）標題不同，是 “Beyond English-Centric LLMs: What Language Do Multilingual Language Models Think in?”，引用時用 Findings 版。
+  - Dumas et al., “Separating Tongue from Thought: Activation Patching Reveals Language-Agnostic Concept Representations in Transformers,” *ACL 2025*, pp. 31822–31841. [ACL Anthology](https://aclanthology.org/2025.acl-long.1536/)　用 activation patching 而不是 logit lens，結論是存在與語言無關的概念表徵。
+  - logit lens 這個方法最早出自 nostalgebraist 2020 年在 LessWrong 發表的一篇 [blog 文章](https://www.lesswrong.com/posts/AcKRB8wDpdaN6v6ru/interpreting-gpt-the-logit-lens)，不是同儕審查的論文；引用時要寫明。
+- **開放方向**：
+  - 中間層對繁體與簡體的偏好，跟模型輸出時混入簡體字或大陸用語的頻率有關嗎（接 A4）？
+  - 台語漢字與台羅輸入，潛在語言是華語、英文，還是兩者都不是？
+  - logit lens 與 tuned lens 的結論一致嗎？哪一種更適合中文？
+- **風險**：logit lens 在前幾層不可靠，結論要用第二種方法交叉驗證；繁簡共用的字無法區分，能用的字詞比想像少；「比較靠近英文」與「先翻成英文」是不同的主張，論文裡要用前者的強度寫；不同 tokenizer 下「單一 token」的條件不同，跨模型比較要小心。
+- **貢獻類型**：分析。
+- **課程週次**：W2（tokenizer 決定哪些字是單一 token）、W14（可解釋性）。
+
+### F4　臺灣情境下的社會偏見，現有的 benchmark 量得到嗎？ {#f4}
+
+- **痛點**：BBQ 用「資訊不足」與「資訊充足」兩種情境的問答題量測偏見，已有多種文化改編：中國大陸的 CBBQ 涵蓋 14 個社會面向；韓國的 KoBBQ 把 BBQ 的題目分成「直接沿用」「需要換目標群體」「不適用而刪除」三類，再加上韓國特有的四類偏見，並以大規模問卷驗證。臺灣已有 TWBias，涵蓋性別與原住民族、外省、客家、福佬等族群，但它的量法是比較成對句子的 perplexity，不是問答題。2026-10-16 查證時，沒有找到以 BBQ 形式、為臺灣社會改編的 benchmark。問題是：同一個模型，用 perplexity 量與用問答題量，偏見的結論一致嗎？CBBQ 的題目有多少能直接用在臺灣？
+- **先蒐集的證據**：從 BBQ 與 CBBQ 各抽 50 題，請兩三位組員依 KoBBQ 的三類各自分類（直接沿用、需要換目標群體、不適用），計算一致性；分歧的題目往往就是臺灣情境的特殊之處。另一條路：取 TWBias 的少量資料與幾題自編的問答題，比較兩種量法對同一批模型的結論。
+- **已查證的資源**：
+  - [BBQ](https://github.com/nyu-mll/BBQ)：CC BY 4.0。lm-evaluation-harness 內有 `bbq` 任務。
+  - [CBBQ](https://github.com/YFHuangxxxx/CBBQ)：README 寫明 CC BY-SA 4.0（repo 裡沒有 LICENSE 檔）。**ShareAlike：從它改編的資料，發佈時也必須用 CC BY-SA。**
+  - [KoBBQ](https://github.com/naver-ai/KoBBQ)：repo 的 LICENSE 是 MIT。
+  - TWBias：資料附在 [ACL Anthology 的論文頁](https://aclanthology.org/2024.findings-emnlp.507/)上；論文說資料與程式碼放在 GitHub，但沒有給網址，也沒有寫授權。使用前先問作者。
+- **起點文獻**：
+  - Parrish et al., “BBQ: A hand-built bias benchmark for question answering,” *Findings of ACL 2022*, pp. 2086–2105. [ACL Anthology](https://aclanthology.org/2022.findings-acl.165/)
+  - Jin et al., “KoBBQ: Korean Bias Benchmark for Question Answering,” *TACL* 12, pp. 507–524, 2024. [ACL Anthology](https://aclanthology.org/2024.tacl-1.28/)　文化改編的方法學，最值得仿照。
+  - Huang & Xiong, “CBBQ: A Chinese Bias Benchmark Dataset Curated with Human-AI Collaboration for Large Language Models,” *LREC-COLING 2024*, pp. 2917–2929. [ACL Anthology](https://aclanthology.org/2024.lrec-main.260/)
+  - Hsieh et al., “TWBias: A Benchmark for Assessing Social Bias in Traditional Chinese Large Language Models through a Taiwan Cultural Lens,” *Findings of EMNLP 2024*, pp. 8688–8704. [ACL Anthology](https://aclanthology.org/2024.findings-emnlp.507/)　**這張卡最接近的前人工作，動手前一定要讀。** 另見 Lyu et al. 比較模型在簡體與繁體中文上的偏見（*FAccT 2025*，[DOI](https://doi.org/10.1145/3715275.3732182)）。
+- **開放方向**：
+  - perplexity 式與問答式的偏見量測，對同一批模型的排名一致嗎？
+  - 從 BBQ 或 CBBQ 改編到臺灣，哪幾類題目需要換目標群體，哪幾類根本不適用？
+  - 同一題用繁體中文、英文、台語漢字問，偏見的程度一樣嗎？
+- **風險**：**這是倫理風險最高的一張卡。** 題目本身寫著刻板印象，資料要說明用途、限制使用方式；涉及族群的判斷要有該群體的人參與，不能只靠組員或 LLM 產生；若做問卷，先確認學校是否要求倫理審查；期中範本的 Ethical Considerations（選做）這時應該寫。CBBQ 的 ShareAlike 會限制衍生資料的授權。
+- **貢獻類型**：資源與分析。
+- **課程週次**：W14（評估與安全）。
+
+## 寫你自己的卡
+
+選題不限於上面這些卡，但**必須是自然語言處理或大型語言模型的問題**：研究對象是語言、文字，或處理它們的模型。用同樣的欄位寫下你自己的問題，期中報告的 Problem Analysis 與 Related Work 就有了骨架：
+
+```text
+問題：（一句話，寫成問句）
+痛點：誰、在什麼情境下、遇到什麼問題；技術上是哪一個環節出錯
+先蒐集的證據：一到兩週內能完成的觀察；做完之後，什麼結果會讓你放棄這個問題？
+已查證的資源：每一項附官方連結、授權、你查證的日期
+起點文獻：一到三篇，每篇寫一句它做了什麼、沒做什麼
+開放方向：兩到四個問句
+風險：資料授權、評估陷阱、被搶先的可能、算力
+貢獻類型：方法／資源／分析
+```
+
+「什麼結果會讓你放棄」這一欄最常被跳過，卻最能檢驗問題是否想清楚：如果任何結果都不會讓你改變計畫，你蒐集的就不是證據。
+
+## 投稿格式備忘
+
+- **ACL 2027**：在日本京都舉行，2027 年 8 月 17–22 日。透過 ARR 投稿，[第一次徵稿](https://www.aclweb.org/portal/content/acl-2027-first-call-papers)寫的截稿日是 **2027 年 1 月 4 日**（UTC−12 的 23:59）；commitment 的日期還沒公布。徵稿啟事寫 workshop 在 8 月 18–19 日，另一份官方的 workshop 徵件啟事卻寫 8 月 21–22 日，兩者不一致。ARR 的[日期頁](https://aclrollingreview.org/dates)目前只列到 2026 年 10 月的週期。日期以官網的最新公告為準。
+- **其他 venue**：NAACL 2027 與 COLING 2027 用的是 2026 年 10 月 12 日截稿的 ARR 週期，已經過了；EMNLP 2027 只公布預計 2027 年 11 月初、在墨西哥或中美洲舉行；COLM 2027 還沒有公布。以 2026-10-16 的公告來看，期末論文寫完之後，時間上最接近的 \*ACL 截稿就是 ACL 2027。
+- **格式**：課程的報告範本採 ARR 的 long paper 格式：正文最多 8 頁，Limitations 一節必寫、不計頁數；細節見範本的 README（Supplements 頁的 *Report Template*）。ARR 會在週期之間修改規定，真的投稿前再查一次 call for papers。
+- **引用**：ARR 規定，文獻若有同儕審查的版本，就要引用那個版本（取代預印本，或與預印本並列）。卡片上標為「只有 arXiv 版」的文獻，寫論文時先查有沒有正式發表的版本；arXiv 的 Comments 欄常常沒有更新，卡片上就有好幾篇 arXiv 版與正式版的標題不同。
+- **AI 助理**：ARR 要求在 Responsible NLP checklist 的 E1 說明 AI 助理的使用；範本的導引框有說明。
+
+## 版本
+
+- 2026-10-16：由前一版的十個預設方法的題目，改寫為 25 張問題卡；新增資源型、分析型，以及臺灣的語言、tokenization、長文本與推論效率、訓練與對齊、檢索與 agent、評估方向的卡片；移除未經查證的顯存與訓練時數表，改為教你自己算帳；所有資源重新對照官方來源查證，並經第二輪獨立查核。

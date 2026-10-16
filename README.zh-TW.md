@@ -39,7 +39,7 @@
 | Demo 程式（`demos/wNN_dK_*/`） | ✓ | ✓ | ✓ | ✓ | — |
 | 講義 | [數學先修（PDF）](handouts/w01-math-prerequisites.pdf) | | | | |
 
-**Syllabus** 頁有算力帳本（全課共用的座標系）、讀任何一篇論文時要問的四個問題，以及**半衰期地圖**——標明哪些週次幾年不用動、哪些每次開課前要重掃 arXiv `cs.CL` / `cs.LG` 與 ACL / EMNLP / NeurIPS / ICLR / ICML / COLM 的最新議程。**Resources** 頁列核心教科書、每週一篇論文、推導與手刻元件清單，以及 demo 跑在上面的工具鏈。**Supplements** 有四份中文指南：期中 PoC 報告、期末論文、論文寫作，以及十個以單張 16 GB GPU 為預算的研究題目。
+**Syllabus** 頁有算力帳本（全課共用的座標系）、讀任何一篇論文時要問的四個問題，以及**半衰期地圖**——標明哪些週次幾年不用動、哪些每次開課前要重掃 arXiv `cs.CL` / `cs.LG` 與 ACL / EMNLP / NeurIPS / ICLR / ICML / COLM 的最新議程。**Resources** 頁列核心教科書、每週一篇論文、推導與手刻元件清單，以及 demo 跑在上面的工具鏈。**Supplements** 有四份中文指南：期中 PoC 報告、期末論文、論文寫作，以及以單張 16 GB GPU 為預算、幫忙選題的問題卡。
 
 ## 給修課同學
 
