@@ -26,9 +26,9 @@ toc-depth: 2
 
 1. **讀兩三張，不要只讀一張。** 比較之後才知道哪個問題讓你在意、哪份資料你真的拿得到。
 2. **先做「先蒐集的證據」。** 每張卡都列了一到兩週內可以完成的觀察，例如把兩三個現成模型跑在 50–100 筆你在意的輸入上、逐筆分類錯誤。這一步的結果直接進期中報告的 Problem Analysis：它證明問題確實存在、而且規模值得一篇論文。證據不支持痛點時，換卡或修正問題；這是研究的正常過程，不是失敗。
-3. **決定貢獻類型。** 方法、資源、分析三選一，可以有主有從。每一種的審稿標準，期中範本的導引框有詳細說明（Supplements 頁的 *Report Template*）。
+3. **決定貢獻類型。** 方法、資源、分析三種，可以有主有從，但只能有一個主要類型。每一種的審稿標準，期中範本的導引框有詳細說明（Supplements 頁的 *Report Template*）。
 4. **從起點文獻往外擴。** 卡片的起點文獻只是入口。沿著它們的引用與被引用往外找，related work 要以你的問題為中心組織，而不是以方法名稱。每一條引用都照範本的規定查證，加上 `\src{}`，BibTeX 要有 `doi` 或 `url`。
-5. **選定 PoC 的形式。** 期中報告的 PoC 三選一：小規模實驗、端到端管線打通、重現一個已發表的結果。分析型與資源型的卡，PoC 往往就是「先蒐集的證據」的擴大版。
+5. **選定 PoC 的形式。** 期中報告的 PoC 有三種：小規模試行、端到端管線打通、重現或對照一個已知結果，至少完成一項（見〈[期中報告](midterm-poc.qmd)〉頁）。分析型與資源型的卡，PoC 往往就是「先蒐集的證據」的擴大版。
 
 ## 卡片的欄位
 
@@ -45,17 +45,17 @@ toc-depth: 2
 
 ## 算力：16 GB 的記憶體帳
 
-課程設定的專題硬體上限是單張 16 GB CUDA GPU。與其相信別人表格裡的顯存數字，不如自己算一次帳，再實際量測：
+課程設定的專題硬體上限是單張 16 GB CUDA GPU，由各組自備（多數有實驗室的機器）。與其相信別人表格裡的顯存數字，不如自己算一次帳，再實際量測：
 
 - **權重**：參數數 × 每個參數的 bytes。bf16 與 fp16 是 2 bytes，8-bit 約 1 byte。4-bit 是 0.5 byte 再加上縮放係數：bitsandbytes 預設每 64 個權重共用一個 4 bytes 的係數，所以每個權重實際約 4.5 bits；QLoRA 論文的 double quantization 能壓到約 4.13 bits。bitsandbytes 不量化 embedding 與輸出層，它們仍是 bf16；MLX 的 4-bit 版本則連這兩層也量化。各工具的做法不同，算帳前先看清楚。
 - **例子**：Llama 3.1 8B 有 8,030,261,248 個參數（課程 W4 demo 1 從 safetensors 逐項數出來的），bf16 權重約 16.1 GB（15.0 GiB），幾乎吃掉整張卡，剩下的放不下 CUDA 本身、activation 與 KV cache；課程 W3 demo 2 用的 4-bit 版本（MLX、每 64 個權重一組）權重是 4,517,404,672 bytes，約 4.5 GB。Qwen3-8B 有 8.2B 個參數，embedding 與輸出層不共用，bf16 權重約 16.4 GB（15.3 GiB），同樣放不下；Qwen3-4B 的 bf16 權重約 8.0 GB（7.5 GiB），放得下，可以拿來當未量化的基準。小模型就寬鬆得多：Qwen3-0.6B 有 596,049,920 個參數（同樣來自 W4 demo 1），bf16 權重約 1.2 GB。
 - **別直接相信網頁上的參數數**：Qwen3-0.6B 與 1.7B 的 embedding 與輸出層共用同一個矩陣，但 Hugging Face 頁面顯示的參數數把它算了兩次（0.6B 顯示為 751,632,384）。以 model card 或自己數的為準。
 - **全參數訓練**：用 Adam 做混合精度訓練時，每個參數除了 bf16 權重（2 bytes），還要存梯度（2）、fp32 的主權重（4）、Adam 的一階與二階動差（4 + 4），合計約 16 bytes，**還不含 activation**。8B 模型約 128 GB，不可能；Qwen3-0.6B 也要約 9.5 GB，再加上 activation 才能訓練。
 - **LoRA 與 QLoRA**：凍結的權重照上面算（QLoRA 的凍結權重是 4-bit），梯度與 optimizer 狀態只跟著可訓練的參數走。activation 隨 batch size 與序列長度成長，序列一長常常變成最大的一項。用 transformers 載入 4-bit 權重時注意：`BitsAndBytesConfig` 預設的 4-bit 型別是 `"fp4"`，要用 QLoRA 的 NF4 得明寫 `bnb_4bit_quant_type="nf4"`。
-- **KV cache**：每個 token 要存 $2 \times n_{\text{layer}} \times n_{\text{kv}} \times d_{\text{head}} \times b$ bytes（W3）。Llama 3.1 8B 是 32 層、8 個 KV head、$d_{\text{head}} = 128$，fp16 時每個 token 131,072 bytes（128 KiB）；W3 demo 2 在 1k 到 128k 個 token 實際量到的 cache 大小與這個公式完全一致。32k 個 token 就是 4 GiB，batch 還要再乘上去。Qwen3-4B 與 8B 是 36 層、8 個 KV head，每個 token 144 KiB，32k 個 token 約 4.5 GiB。長文本與推理模型的卡（C1、C3、C4、E1）算帳時別漏了這一項。
-- **分析與資源類的題目**多半只需要推論或抽特徵，記憶體壓力小得多；tokenizer 類的題目（A1、B1、B2）甚至不必載入模型。這是它們在單卡條件下的優勢，不是退而求其次。
+- **KV cache**：每個 token 要存 $2 \times n_{\text{layer}} \times n_{\text{kv}} \times d_{\text{head}} \times b$ bytes（W3）。Llama 3.1 8B 是 32 層、8 個 KV head、$d_{\text{head}} = 128$，fp16 時每個 token 131,072 bytes（128 KiB）；W3 demo 2 在 1k 到 128k 個 token 實際量到的 cache 大小與這個公式完全一致。32k 個 token 就是 4 GiB，batch 還要再乘上去。Qwen3-4B 與 8B 是 36 層、8 個 KV head，每個 token 144 KiB，32k 個 token 約 4.5 GiB。長文本與推理模型的卡（C1、C3、C4、D4、E1）算帳時別漏了這一項。
+- **分析與資源類的題目**多半只需要推論或抽特徵，記憶體壓力小得多；A1 只需要 tokenizer，B2 的偵測只讀權重，甚至不必跑模型。這是它們在單卡條件下的優勢，不是退而求其次。
 
-記憶體的實際用量用 `torch.cuda.max_memory_allocated()` 量（它不含 CUDA context 與 allocator 預留的空間，`nvidia-smi` 看到的會更多），連同 GPU 型號、batch size 與序列長度寫進報告的 efficiency 表。**寫量到的數字，不寫估計值。**
+記憶體的實際用量用 `torch.cuda.max_memory_allocated()` 量（它不含 CUDA context 與 allocator 預留的空間，`nvidia-smi` 看到的會更多），連同 GPU 型號、batch size 與序列長度寫進報告的 efficiency 表。**表裡寫量到的數字；還沒量的估計值要標明是估計，不能當成量到的。**
 
 ## 卡片總覽
 
@@ -91,7 +91,7 @@ toc-depth: 2
 
 ## A. 臺灣的語言
 
-先講清楚資料的取得方式。**台語的 TAT 語料，以及族語E樂園與原住民族語言線上辭典的資料，由授課老師提供**，要用的組直接向老師索取。TAT 是語音語料，但它的轉寫包括漢羅台文與台羅等多種寫法，是少數同一批內容有不只一種台文寫法的資料；第一、二冊合計約 100 小時、200 位說話人。TAT 由中華民國計算語言學學會（ACLCLP）發行（見 [ACLCLP 的中文語料頁](https://www.aclclp.org.tw/use_mat_c.php)），課程用的是學術版授權：限學術、教育及公益研究，不得營利，也不得轉給第三方（[授權書](https://www.aclclp.org.tw/doc/tat_vol.pdf)第 2 條）。拿到的資料只能用在課程與研究裡，不要放上 GitHub、雲端硬碟或任何公開的地方。族語的兩份資料限非商業用途：FormosanBank 轉載它們時，記錄的授權是族語E樂園 CC BY-NC-SA 4.0、線上辭典 CC BY-NC 4.0（這是 FormosanBank 的紀錄，兩個官方網站上的條款我們沒能讀到）。
+先講清楚資料的取得方式。**台語的 TAT、客語的 HAT，以及族語E樂園與原住民族語言線上辭典的資料，要用的組私下聯繫授課老師。** TAT 是語音語料，但它的轉寫包括漢羅台文與台羅等多種寫法，是少數同一批內容有不只一種台文寫法的資料；第一、二冊合計約 100 小時、200 位說話人。HAT 除了語音，還有四縣與海陸的客華平行辭庫（見 A6）。拿到的資料只能用在課程與研究裡，不要轉給別人，也不要放上 GitHub、雲端硬碟或任何公開的地方。
 
 這一組資源的授權特別雜：同一部辭典在不同網站上的授權說法可能不一樣，「禁止改作」（ND）與「非商業」（NC）都很常見。動手前先決定你的成果要不要發佈資料；要發佈，就只能選允許改作與散布的來源，或者只發佈程式與標註、不發佈原文。
 
@@ -149,7 +149,7 @@ toc-depth: 2
   - 教育部《臺灣台語常用詞辭典》的例句：漢字、台羅、音檔與華語翻譯四個部分齊全，適合做華台對照。授權見 A2。
   - [iTaigi 華台對照典](https://github.com/ChhoeTaigi/ChhoeTaigiDatabase)：CC0，19,046 筆，收在 ChhoeTaigi 資料庫裡。
   - [Taigi-Llama-2-Translator-7B](https://huggingface.co/Bohanlu/Taigi-Llama-2-Translator-7B)：Lu et al. 釋出的翻譯模型，CC BY-NC-SA 4.0。
-  - TAT 的漢羅台文與台羅轉寫：由授課老師提供，見本組開頭。
+  - TAT 的漢羅台文與台羅轉寫：私下聯繫授課老師，見本組開頭。
 - **起點文獻**：
   - Lu et al. 2024（見 A2）的附錄 C：本卡的出發點。
   - Lu et al., “Exploring Methods for Building Dialects-Mandarin Code-Mixing Corpora: A Case Study in Taiwanese Hokkien,” *Findings of EMNLP 2022*, pp. 6287–6305. [ACL Anthology](https://aclanthology.org/2022.findings-emnlp.469/)
@@ -209,7 +209,7 @@ toc-depth: 2
 - **先蒐集的證據**：從教育部客語辭典取兩個腔調、各 50 個例句，請兩三個模型做客語翻華語與華語翻客語，請會說客語的人評分；同時算這些句子的 token 成本（接 A1）。
 - **已查證的資源**：
   - [教育部《臺灣客語辭典》](https://hakkadict.moe.edu.tw/resource_download)：約 15,000 個主詞條與 7,000 個附錄詞條，六個腔調各一個 ODS 檔。授權是 CC BY-ND 3.0 TW（禁止改作），寫在辭典的「答客問／版本授權」頁。
-  - [HAT](https://www.aclclp.org.tw/use_mat_c.php)（臺灣客語語音資料庫）：ACLCLP 發行，除了語音，還有四縣與海陸的客華平行辭庫，各 50,000 筆，含漢字與拼音。授權允許研究與商業用途，但禁止轉授權與散布；向 ACLCLP 申請。
+  - [HAT](https://www.aclclp.org.tw/use_mat_c.php)（臺灣客語語音資料庫）：除了語音，還有四縣與海陸的客華平行辭庫，各 50,000 筆，含漢字與拼音。私下聯繫授課老師，見本組開頭。
   - [臺灣客語語料庫](https://corpus.hakka.gov.tw/)（客家委員會）：書面語料 600 萬字、口語語料 40 萬字，六個腔調；取得方式與授權我們沒能從頁面讀到。
   - [臺灣主權 AI 訓練語料庫](https://taic.moda.gov.tw/)（數位發展部）：2026 年 7 月與客委會合作加入約 2,000 萬個 token 的客語資料，需申請。它把教育部《臺灣客語辭典》列為「CC授權-姓名標示-禁止改作+臺灣主權AI訓練資料授權條款-第1版」、「僅授權AI訓練使用」，與辭典網站上的授權不同（同一部辭典在不同網站上的授權說法不一，見本組開頭）；授權條款全文的頁面我們沒能讀到。
   - 客語維基百科：英文維基百科的維基百科列表（2026-10-16 讀取）記為 10,501 篇，以白話字為主；客語維基本身我們沒能打開。
@@ -222,7 +222,7 @@ toc-depth: 2
   - 開放模型的客語能力，在不同腔調之間差多少？跟網路上各腔調文字的多寡有關嗎？
   - 漢字、教育部拼音、白話字三種寫法，哪一種模型最讀得懂？三者之間怎麼轉換？
   - 把辭典條目放進 context（接 W12），能補回多少？
-- **風險**：需要會說客語、最好會讀客語文字的評估者；辭典禁止改作、HAT 不可再散布，衍生資料能否發佈要先看條款；各腔調的用字與拼音不完全一致。
+- **風險**：需要會說客語、最好會讀客語文字的評估者；辭典禁止改作、向老師拿的語料不可再散布，衍生資料能否發佈要先看條款；各腔調的用字與拼音不完全一致。
 - **貢獻類型**：資源或分析。
 - **課程週次**：W2、W12。
 
@@ -231,7 +231,7 @@ toc-depth: 2
 - **痛點**：臺灣有 16 個法定原住民族，族語之下還有許多方言。NLLB-200、FLORES+、MADLAD-400 都沒有任何一種臺灣南島語；語言辨識工具 GlotLID 倒是認得其中幾種。維基百科上，阿美語、泰雅語、撒奇萊雅語、賽德克語、排灣語各有幾百到兩千多篇文章。FormosanBench 在泰雅、阿美、排灣三種語言上評估 LLM，發現零樣本、10-shot 與微調之後的表現都遠低於高資源語言。另一方面，資料其實正在累積：Zheng et al. 用原住民族語言線上辭典整理出 16 種語言的平行資料，加入雙語詞彙後翻譯明顯進步；FormosanMT 整理出將近 50 萬組與華語、英文的平行句。問題是：在這麼少的資料下，什麼做法最有效？把辭典與文法放進 context、微調小型翻譯模型，還是讓相近的語言共享資料？
 - **先蒐集的證據**：選一兩種語言，從族語E樂園取 50 個句子，比較三種做法的翻譯品質（chrF）：LLM 零樣本、LLM 加上辭典條目、FormosanBank 釋出的 NLLB 模型；請組員檢查錯在詞彙還是語法。
 - **已查證的資源**：
-  - 族語E樂園與[原住民族語言線上辭典](https://e-dictionary.ilrdf.org.tw/)：由授課老師提供，限非商業用途，見本組開頭。
+  - 族語E樂園與[原住民族語言線上辭典](https://e-dictionary.ilrdf.org.tw/)：私下聯繫授課老師，見本組開頭。
   - [FormosanBank](https://github.com/FormosanBank/FormosanBank)：17 種臺灣南島語的文字與音訊集合；**限非商業用途，未經書面許可不得用於商業 AI**。Hugging Face 上的 [`formosan-mt`](https://huggingface.co/datasets/FormosanBank/formosan-mt) 有 744,304 筆、15 種語言的平行資料（其中有合成的訓練資料），另有以 NLLB 為底的翻譯模型。
   - [GlotLID](https://huggingface.co/cis-lmu/glotlid)：語言辨識，v3 支援 2,102 個標籤，包含阿美語（`ami`）與魯凱語（`dru`）；授權是 Apache-2.0 加上額外的聲明。
 - **起點文獻**：
@@ -647,7 +647,7 @@ toc-depth: 2
   - perplexity 式與問答式的偏見量測，對同一批模型的排名一致嗎？
   - 從 BBQ 或 CBBQ 改編到臺灣，哪幾類題目需要換目標群體，哪幾類根本不適用？
   - 同一題用繁體中文、英文、台語漢字問，偏見的程度一樣嗎？
-- **風險**：**這是倫理風險最高的一張卡。** 題目本身寫著刻板印象，資料要說明用途、限制使用方式；涉及族群的判斷要有該群體的人參與，不能只靠組員或 LLM 產生；若做問卷，先確認學校是否要求倫理審查；期中範本的 Ethical Considerations（選做）這時應該寫。CBBQ 的 ShareAlike 會限制衍生資料的授權。
+- **風險**：**這是倫理風險最高的一張卡。** 題目本身寫著刻板印象，資料要說明用途、限制使用方式；涉及族群的判斷要有該群體的人參與，不能只靠組員或 LLM 產生；期中範本的 Ethical Considerations（選做）這時應該寫。CBBQ 的 ShareAlike 會限制衍生資料的授權。
 - **貢獻類型**：資源與分析。
 - **課程週次**：W14（評估與安全）。
 
@@ -672,10 +672,11 @@ toc-depth: 2
 
 - **ACL 2027**：在日本京都舉行，2027 年 8 月 17–22 日。透過 ARR 投稿，[第一次徵稿](https://www.aclweb.org/portal/content/acl-2027-first-call-papers)寫的截稿日是 **2027 年 1 月 4 日**（UTC−12 的 23:59）；commitment 的日期還沒公布。徵稿啟事寫 workshop 在 8 月 18–19 日，另一份官方的 workshop 徵件啟事卻寫 8 月 21–22 日，兩者不一致。ARR 的[日期頁](https://aclrollingreview.org/dates)目前只列到 2026 年 10 月的週期。日期以官網的最新公告為準。
 - **其他 venue**：NAACL 2027 與 COLING 2027 用的是 2026 年 10 月 12 日截稿的 ARR 週期，已經過了；EMNLP 2027 只公布預計 2027 年 11 月初、在墨西哥或中美洲舉行；COLM 2027 還沒有公布。以 2026-10-16 的公告來看，期末論文寫完之後，時間上最接近的 \*ACL 截稿就是 ACL 2027。
-- **格式**：課程的報告範本採 ARR 的 long paper 格式：正文最多 8 頁，Limitations 一節必寫、不計頁數；細節見範本的 README（Supplements 頁的 *Report Template*）。ARR 會在週期之間修改規定，真的投稿前再查一次 call for papers。
+- **格式**：課程的報告範本採 ARR 的 long paper 格式：正文最多 8 頁，Limitations 一節必寫、不計頁數（頁數限制只用在期末論文，期中報告篇幅不限）；細節見範本的 README（Supplements 頁的 *Report Template*）。ARR 會在週期之間修改規定，真的投稿前再查一次 call for papers。
 - **引用**：ARR 規定，文獻若有同儕審查的版本，就要引用那個版本（取代預印本，或與預印本並列）。卡片上標為「只有 arXiv 版」的文獻，寫論文時先查有沒有正式發表的版本；arXiv 的 Comments 欄常常沒有更新，卡片上就有好幾篇 arXiv 版與正式版的標題不同。
 - **AI 助理**：ARR 要求在 Responsible NLP checklist 的 E1 說明 AI 助理的使用；範本的導引框有說明。
 
 ## 版本
 
 - 2026-10-16：由前一版的十個預設方法的題目，改寫為 25 張問題卡；新增資源型、分析型，以及臺灣的語言、tokenization、長文本與推論效率、訓練與對齊、檢索與 agent、評估方向的卡片；移除未經查證的顯存與訓練時數表，改為教你自己算帳；所有資源重新對照官方來源查證，並經第二輪獨立查核。
+- 2026-10-16 晚：受限語料（TAT、HAT、族語E樂園、原住民族語言線上辭典）改為私下聯繫授課老師；專題算力由各組自備；貢獻類型與 PoC 的說法改為與〈期中報告〉頁一致（只能有一個主要類型、PoC 至少完成一項）。

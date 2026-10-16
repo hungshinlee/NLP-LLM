@@ -258,15 +258,17 @@ def build_supplements():
         "",
         "These guides back the two assessed deliverables \u2014 the midterm report (40%) "
         "and the final paper (60%) \u2014 from picking a topic through to the write-up. "
-        "They treat both as submissions to ACL / EMNLP / NAACL / COLM / ICLR rather than as "
-        "coursework, which is the standard the course is aiming at.",
+        "Both are written in the ACL Rolling Review long-paper format of the report template "
+        "below, and held to the standard of a conference submission rather than of "
+        "coursework. The final-paper and writing guides predate the template and will be "
+        "revised; where they differ from it, the template governs.",
         "",
         "**The guides themselves are in Chinese**, matching how the course is taught; "
         "the report template is in English, like the papers you will write.",
         "",
     ] + rows + [
         "",
-        "> **On the hardware assumption.** These guides describe the *term project*, not the course. The course itself asks nothing of your hardware \u2014 it is lectures, and the demos run in class. The problem cards were sized against a single 16 GB CUDA GPU (an RTX 5070 Ti or similar), which is what a QLoRA run on a 7\u20138B model, or inference with a few small models, actually needs. If you have less, say so early and pick a card that fits: many of the analysis cards are inference-only, and the tokenizer cards need no GPU at all.",
+        "> **On the hardware assumption.** These guides describe the *term project*, not the course. The course itself asks nothing of your hardware \u2014 it is lectures, and the demos run in class. The project does: the problem cards were sized against a single 16 GB CUDA GPU (an RTX 5070 Ti or similar), which you provide yourself, usually your lab's machine; that is what a QLoRA run on a 7\u20138B model, or inference with a few small models, actually needs. If you have less, say so early and pick a card that fits: many of the analysis cards are inference-only, and the tokenizer cards need no GPU at all.",
         "",
     ])))
     return written

@@ -8,7 +8,7 @@ toc-depth: 2
 
 <!-- 此檔由 bin/publish_report_template.py 從 private repo 的 nlp_llm/report-template/README.md 產生，請勿在公開 repo 直接編輯；zip 也是同一支腳本的產物。 -->
 
-**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (37 files, 440 KB; version `6205a9f`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
+**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (37 files, 443 KB; version `8dd3d06`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
 
 This is the Prism project template for the midterm report and the final paper.
 Both use the ACL Rolling Review (ARR) long-paper format, the format of ACL, EMNLP, NAACL
@@ -44,15 +44,21 @@ The topic is yours to choose, as long as it is a problem in natural language pro
 about large language models.
 
 1. Import the template (the zip file) into Prism as a new project.
-2. Compile `midterm/main.tex` for the midterm report and `final/main.tex` for the final paper,
+2. Rename the project to `[NLP-LLM] <title>`, where `<title>` is the title of your topic
+   (for example, `[NLP-LLM] Mainland Vocabulary in Traditional Chinese Output`). Then share it
+   with the instructor (hungshinlee@gmail.com) with edit access. One group member imports the
+   template and shares the project with the other members too; a working title is fine until
+   the topic is settled. Sharing the project is how you hand in: there is no separate PDF to
+   submit, and the instructor will announce the deadline for the final version of each report.
+3. Compile `midterm/main.tex` for the midterm report and `final/main.tex` for the final paper,
    with pdfLaTeX (the default) and BibTeX. If your paper must show Chinese, Taiwanese Hokkien
    or Hakka text, read "Chinese or Taiwanese text in the PDF" below first.
-3. Compile once and read every blue box in the PDF before you start writing.
+4. Compile once and read every blue box in the PDF before you start writing.
    For the midterm, start with the six "Before you write" boxes after the abstract: they cover
    how to find, investigate and choose a problem. Keep a record of your candidates, searches
    and AI-assisted steps from the first day; the midterm has an optional appendix
    (Problem Discovery Log) where you can include it.
-4. Fill in the authors in `main.tex`. For each group member: the English name exactly as it
+5. Fill in the authors in `main.tex`. For each group member: the English name exactly as it
    appears on the passport, given name first (e.g. `Hung-Shin Lee`), the student ID, and an
    email address.
 
@@ -67,13 +73,19 @@ about large language models.
 
 - Change `\showguidestrue` to `\showguidesfalse` in `main.tex` and all blue boxes disappear,
   so you can see the real length of your report.
-- The red markers do **not** disappear. **Before you hand in, search the source for `\fillin`
-  and `\pending`; none may remain.**
+- The red markers do **not** disappear. **Before the deadline, set `\showguidesfalse` in `main.tex`,
+  compile, and look through the PDF: no red marker may remain.** One exception: in the midterm
+  report, the cells of the planned-results table (Evaluation Plan) stay `\pending` until the
+  final paper. In the proof-of-concept table, delete a row you did not run, and write `--`
+  where there is no published or predicted value to expect. (Searching the source also finds
+  the markers that the guidance boxes mention; the PDF is what counts.)
 - **Every measured number in every table must come from your own code.** If you have not run
   it yet, write `\pending`; never fill a cell with the value you hope to get. The only other
-  numbers allowed are ones labeled as such: rows marked as reported by other papers, and the
+  numbers allowed are ones labeled as such: rows marked as reported by other papers; the
   "Expected" column of the midterm's proof-of-concept table (the published or predicted value
-  you compare against).
+  you compare against); and planned quantities labeled as plans, such as the target size of a
+  dataset you will build or an estimate of GPU hours (`500 (target)`, `about 20 GPU-hours
+  (estimate)`).
 - **Every claim you attribute to a paper carries `\src{...}`**, placed right after the citation:
   `\citet{smith2024}\src{Sec.~4.2, Tab.~3} show that ...`. When one sentence attributes two
   claims to the same paper, give each claim its own note. Open the PDF, find the passage, write
@@ -86,7 +98,9 @@ about large language models.
 - `Limitations` (required), `Ethical Considerations`, `Acknowledgments`, the references and
   the appendices do **not** count toward the 8 pages.
 - The abstract has at most 200 words.
-- The midterm report does not need to fill all 8 pages.
+- The 8-page limit applies to the final paper. The midterm report has no length limit, in
+  either direction; it keeps the same layout. The 200-word limit for the abstract applies to
+  both.
 - An accepted paper gets one more page (9) for the camera-ready version; a short paper has 4
   pages of content (5 in the camera-ready version).
 
@@ -98,7 +112,8 @@ about large language models.
 - Each report has its own `references.bib` in its folder. When you start the final paper,
   copy the entries you still cite from `midterm/references.bib`.
 - **Export every entry from an official source**: ACL Anthology, OpenReview, the NeurIPS
-  proceedings, PMLR, or DBLP; arXiv only for papers that have no published version. Do not
+  proceedings, PMLR, the publisher's page reached through the DOI (ACM, IEEE, Nature, ...), or
+  DBLP; arXiv only for papers that have no published version. Do not
   type entries from memory, and do not let an AI assistant produce them: AI assistants invent
   plausible-looking papers that do not exist.
 - **Every entry has a `doi` or a `url` field** that points to its official record, so that
@@ -174,6 +189,11 @@ in the root or inside the folder. Do not edit it.
 **After I hide the blue boxes, BibTeX says `I found no \citation commands`.**
 All citations in the untouched template are inside the blue boxes, so hiding them leaves no
 `\cite` at all. The message goes away once you add your own `\citet` or `\citep`.
+
+**Can I use Prism's built-in AI?**
+Yes, under the same rules as any other AI assistant (see the Acknowledgments section of the
+midterm template): use it for editing and for checking, never to produce references, BibTeX
+entries or numbers, and say in the Acknowledgments what you used it for.
 
 **Can I write Chinese in comments?**
 Yes. Comments starting with `%` never reach the PDF, so Chinese is fine there under any
