@@ -4,7 +4,7 @@
 <!-- summary: The LaTeX project for both reports, in ACL Rolling Review long-paper format, with guidance written from an ARR reviewer's point of view. Download the ZIP and import it into Prism. -->
 <!-- 此檔由 bin/publish_report_template.py 從 private repo 的 nlp_llm/report-template/README.md 產生，請勿在公開 repo 直接編輯；zip 也是同一支腳本的產物。 -->
 
-**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (37 files, 443 KB; version `8dd3d06`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
+**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (37 files, 443 KB; version `09d5d5c`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
 
 This is the Prism project template for the midterm report and the final paper.
 Both use the ACL Rolling Review (ARR) long-paper format, the format of ACL, EMNLP, NAACL
@@ -40,12 +40,14 @@ The topic is yours to choose, as long as it is a problem in natural language pro
 about large language models.
 
 1. Import the template (the zip file) into Prism as a new project.
-2. Rename the project to `[NLP-LLM] <title>`, where `<title>` is the title of your topic
-   (for example, `[NLP-LLM] Mainland Vocabulary in Traditional Chinese Output`). Then share it
-   with the instructor (hungshinlee@gmail.com) with edit access. One group member imports the
-   template and shares the project with the other members too; a working title is fine until
-   the topic is settled. Sharing the project is how you hand in: there is no separate PDF to
-   submit, and the instructor will announce the deadline for the final version of each report.
+2. Rename the project to `[NLP-LLM] <title>`, where `<title>` is the English title of your
+   report (for example, `[NLP-LLM] Mainland Vocabulary in Traditional Chinese Output`). Then
+   share it with the instructor (hungshinlee@gmail.com) with edit access. One group member
+   imports the template and shares the project with the other members too; a working title is
+   fine until the topic is settled. Sharing the project is how you hand in: there is no
+   separate PDF to submit. The instructor announces each deadline; at the midterm deadline,
+   the instructor compiles `midterm/main.tex` as it stands and grades that PDF, so make sure
+   it compiles.
 3. Compile `midterm/main.tex` for the midterm report and `final/main.tex` for the final paper,
    with pdfLaTeX (the default) and BibTeX. If your paper must show Chinese, Taiwanese Hokkien
    or Hakka text, read "Chinese or Taiwanese text in the PDF" below first.
@@ -97,8 +99,8 @@ about large language models.
 - The 8-page limit applies to the final paper. The midterm report has no length limit, in
   either direction; it keeps the same layout. The 200-word limit for the abstract applies to
   both.
-- An accepted paper gets one more page (9) for the camera-ready version; a short paper has 4
-  pages of content (5 in the camera-ready version).
+- An accepted paper gets one more page (9) for the camera-ready version. (ARR also has short
+  papers, with 4 pages of content; the final paper of this course is a long paper.)
 
 ## References
 

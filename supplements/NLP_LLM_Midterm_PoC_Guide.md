@@ -4,7 +4,7 @@
 <!-- summary: The route through the midterm: from a problem card to evidence, a contribution type, verified related work, an evaluation plan and at least one proof of concept, written in the ARR long-paper template; with the rules for using AI and a hand-in checklist. -->
 <!-- 此檔由 bin/publish_supplements.py 從 private repo 的 <course>/supplements/ 過濾產生，請勿在公開 repo 直接編輯。 -->
 
-期中報告是一份**研究提案加上概念驗證（proof of concept, PoC）**，用 ACL Rolling Review（ARR）long paper 的格式，寫在〈[報告範本](report-template.qmd)〉裡：下載 zip、匯入 Prism 成為一個專案，改名為 `[NLP-LLM] <題目>`，再以可編輯權限分享給組員與授課老師（見範本頁的 Getting started）。**分享就是交件**：老師會公告最後版本的期限，不用另交 PDF。標準和投稿一樣：證據、引用、數字都要經得起審稿人檢查，只是實驗還沒做完。
+期中報告是一份**研究提案加上概念驗證（proof of concept, PoC）**，用 ACL Rolling Review（ARR）long paper 的格式，寫在〈[報告範本](report-template.qmd)〉裡：下載 zip、匯入 Prism 成為一個專案，改名為 `[NLP-LLM] <題目>`（`<題目>` 用報告的英文標題），再以可編輯權限分享給組員與授課老師（見範本頁的 Getting started）。**分享就是交件，不用另交 PDF**：老師公告期限，期限當下把 `midterm/main.tex` 編譯成 PDF 打分數，所以期限前要確認它編譯得過。標準和投稿一樣：證據、引用、數字都要經得起審稿人檢查，只是實驗還沒做完。
 
 這一頁是路線圖：期中要回答什麼、按什麼順序做、每一步寫進範本的哪裡。**寫作與研究的細節都在範本的藍色導引框裡**，這裡不重複；兩者若有出入，以範本為準，並告訴授課老師。選題的起點見〈[選題問題卡](topics-for-acl27.qmd)〉；題目不限於問題卡，但必須是自然語言處理或大型語言模型的問題。
 
@@ -21,13 +21,13 @@ ARR 的審稿表把 **Soundness**（主張有沒有證據支持）與 **Exciteme
 | 別人做過什麼？這份工作新在哪裡？ | §3 Related Work |
 | 怎麼知道成功了沒？（一個也可能證明你錯了的評估設計） | §4 Proposed Approach、§5 Evaluation Plan |
 | 現在有東西跑得起來嗎？ | §6 Proof of Concept |
-| 做得完嗎？門檻在哪裡？ | §5 的 Compute Budget and Statistics（單張 16 GB GPU 與 API 預算）、§7 Plan Toward the Final Paper（風險、目標會議的水準） |
+| 做得完嗎？門檻在哪裡？ | §5 的 Compute Budget and Statistics（GPU 與 API 預算）、§7 Plan Toward the Final Paper（風險、目標會議的水準） |
 
 ## 路線：七步
 
 ### 1. 選題：先寫下十個候選
 
-從問題卡、自己使用語言技術的經驗與專業背景、課程每週最後講到的「方法在哪裡壞掉」與它更正的錯誤觀念、Resources 頁列出的四個課程補不上的缺口、論文的 Limitations 與 OpenReview 上公開的審稿意見、shared task（例如 SemEval、WMT）、Transformers 或 lm-evaluation-harness 這類工具在 GitHub 上的 issue 找起。PTT、Dcard 或 Hugging Face 模型討論頁上的抱怨是線索，不是證據，先自己重現一次。**至少寫下十個候選再開始篩**，第一個想法很少是最好的。篩的時候問六件事：痛點有沒有證據、解決了對誰有價值、和前人差在哪裡、資料拿不拿得到且單張 16 GB GPU 一學期做得完、你和這個領域的人想不想知道答案、下一個模型版本出來之後還重不重要（「模型 X 做不到 Y」常常幾個月就過期，關於機制、語言、測量或資源的問題通常不會）。不是 NLP／LLM 的問題、找了一週還看不到痛點的證據、資料拿不到、或答案不用做實驗就猜得到，就換。受限的語料（TAT、HAT、族語E樂園、原住民族語言線上辭典）私下聯繫授課老師，見問題卡 A 組開頭。
+從問題卡、自己使用語言技術的經驗與專業背景、課程每週最後講到的「方法在哪裡壞掉」與它更正的錯誤觀念、Resources 頁列出的四個課程補不上的缺口、論文的 Limitations 與 OpenReview 上公開的審稿意見、shared task（例如 SemEval、WMT）、Transformers 或 lm-evaluation-harness 這類工具在 GitHub 上的 issue 找起。PTT、Dcard 或 Hugging Face 模型討論頁上的抱怨是線索，不是證據，先自己重現一次。**至少寫下十個候選再開始篩**，第一個想法很少是最好的。篩的時候問六件事：痛點有沒有證據、解決了對誰有價值、和前人差在哪裡、資料拿不拿得到、你們的 GPU 一學期做不做得完、你和這個領域的人想不想知道答案、下一個模型版本出來之後還重不重要（「模型 X 做不到 Y」常常幾個月就過期，關於機制、語言、測量或資源的問題通常不會）。不是 NLP／LLM 的問題、找了一週還看不到痛點的證據、資料拿不到、或答案不用做實驗就猜得到，就換。受限的語料（TAT、HAT、族語E樂園、原住民族語言線上辭典）私下聯繫授課老師，見問題卡 A 組開頭。
 
 **讀範本**：`sections/00-finding-a-problem.tex` 的六個導引框：第 2 框是腦力激盪的方法（失敗日記、五個為什麼……），第 3 框列了把直覺變成數字的工具（tokenizer、infini-gram、依語言代碼篩 Hugging Face Hub 上的資料集、lm-evaluation-harness），第 4 框是用 AI 調查與查證的方法。這個檔只有導引，框關掉之後什麼都不印。候選清單、搜尋紀錄與 AI 輔助的過程，可以放進附錄的 Problem Discovery Log（選做）。
 
@@ -73,7 +73,7 @@ ARR 的審稿表把 **Soundness**（主張有沒有證據支持）與 **Exciteme
 
 ### 7. 計畫、限制與 AI 使用聲明，然後自我審稿
 
-§7 寫目標會議（透過 ARR 投稿的 \*ACL 會議、TACL、COLM、ICLR……），以及那裡最近被接受、和你最接近的三篇論文，當作你的標準；剩下的工作依風險排序，最能消除風險的先做（通常是資料與評估，而不是自己的方法），每個決策點寫成「如果……就……」。Limitations 是 ARR 的必要章節，寫具體、會限制你主張的地方。Ethical Considerations 在期中選做，範本的框列了該寫的四種情況：要找人寫題目、標註或評分；用到授權、使用條款或散布權不清楚或有限制的資料、網站、模型或 API；資料可能含個資或冒犯內容；涉及社群語言，或成果可能被拿來誤導、冒充或繞過安全機制。本課不要求送倫理審查，但同意（以及有付費時的合理報酬）照樣要規劃。AI 的使用寫在 Acknowledgments。
+§7 寫目標會議（透過 ARR 投稿的 \*ACL 會議、TACL、COLM、ICLR……；不論目標是哪裡，期末論文都用 ARR long paper 的格式），以及那裡最近被接受、和你最接近的三篇論文，當作你的標準；剩下的工作依風險排序，最能消除風險的先做（通常是資料與評估，而不是自己的方法），每個決策點寫成「如果……就……」。Limitations 是 ARR 的必要章節，寫具體、會限制你主張的地方。Ethical Considerations 在期中選做，範本的框列了該寫的四種情況：要找人寫題目、標註或評分；用到授權、使用條款或散布權不清楚或有限制的資料、網站、模型或 API；資料可能含個資或冒犯內容；涉及社群語言，或成果可能被拿來誤導、冒充或繞過安全機制。本課不要求送倫理審查，但同意（以及有付費時的合理報酬）照樣要規劃。AI 的使用寫在 Acknowledgments。
 
 期限前自我審稿：照 ARR 審稿表的結構寫一份審稿意見（摘要、優點、編號的缺點與建議，以及 Soundness、Excitement 與 Overall assessment 各一個判斷與理由；摘要寫不進三句話，表示報告還不夠清楚），再逐條核對 ARR 審稿指南要審稿人檢查的常見問題，以及每篇 ARR 投稿都要填的 Responsible NLP checklist（計畫書裡很多項還是計畫，就寫計畫）。也可以請另一個 AI 獨立寫一份，它找到而你漏掉的缺點，再看一次。能修的修掉，修不了的寫進 Limitations。
 
@@ -90,7 +90,7 @@ ARR 的審稿表把 **Soundness**（主張有沒有證據支持）與 **Exciteme
 
 ## 篇幅與格式
 
-- **長度**：期中報告**篇幅不限**，沒有上限也沒有下限，版面照範本。頁數限制只用在期末論文：ARR long paper 的正文最多 8 頁，圖表都要放在裡面；Limitations（必寫）、Ethical Considerations、Acknowledgments、參考文獻與附錄不計入。把導引框關掉（`\showguidesfalse`）才看得到真正的長度。
+- **長度**：期中報告**篇幅不限**，沒有上限也沒有下限，版面照範本。頁數限制只用在期末論文：期末一律是 ARR long paper，正文最多 8 頁，圖表都要放在裡面；Limitations（必寫）、Ethical Considerations、Acknowledgments、參考文獻與附錄不計入。把導引框關掉（`\showguidesfalse`）才看得到真正的長度。
 - **附錄**：放在參考文獻之後，審稿人可以讀但不一定讀，報告本身要能獨立讀懂。Problem Discovery Log 與 Closest Prior Work 兩節選做；Reproducibility Details 列軟體版本、checkpoint、API 版本與查詢日期、GPU、種子。
 - **摘要**：最多 200 字（英文字數），期中與期末都一樣。
 - **語言**：全文英文。範本預設用 pdfLaTeX，排不了中文字；需要在 PDF 裡放中文、台語或客語的例子時，照範本 README 的〈Chinese or Taiwanese text in the PDF〉改用 XeLaTeX，每段中文都包在 `\zh{...}` 裡，並查編譯紀錄裡有沒有 `Missing character`。範本的 XeLaTeX 設定還沒在 Prism 上測過，找不到中文字型時告訴老師。（`%` 開頭的註解則可以直接寫中文。）
@@ -136,7 +136,7 @@ NLP 的好論文，常來自對語言與模型行為的仔細觀察，而不只�
 - **從錯誤分析切入**：一筆一筆讀失敗的輸出，分辨問題出在 tokenization、prompt 格式、答案抽取、檢索，還是模型本身。
 - **你的背景是優勢**：語言學、法律、醫療、教育、新聞的專業知識，常是找到好問題、選對評估方式的關鍵。
 
-專題的算力由各組自備（多數有實驗室的機器）；問題卡與範本以單張 16 GB GPU 為規劃的上限，問題卡的〈算力〉一節教你算記憶體帳。
+專題的算力由各組自備（多數有實驗室的機器）。問題卡與範本以單張 16 GB GPU 為**規劃的基準，不是上限**：組裡的卡更大可以用，在 §5 的 Compute Budget 寫明用的硬體。問題卡的〈算力〉一節教你算記憶體帳。
 
 ## 交件前檢查
 
@@ -149,8 +149,9 @@ NLP 的好論文，常來自對語言與模型行為的仔細觀察，而不只�
 - Acknowledgments 寫明 AI 的使用。
 - PDF 裡有中文、台語或客語的話，用 XeLaTeX 編譯、每段都包在 `\zh{...}` 裡，編譯紀錄裡沒有 `Missing character`。
 - §7 的紅旗清單逐條看過，自我審稿做過一次。
-- Prism 專案已改名為 `[NLP-LLM] <題目>`，並以可編輯權限分享給授課老師。分享就是交件，不用另交 PDF；期限以老師的公告為準。
+- `midterm/main.tex` 在 Prism 上編譯得過：期限當下，老師就是把它編譯成 PDF 來打分數。
+- Prism 專案已改名為 `[NLP-LLM] <題目>`（報告的英文標題），並以可編輯權限分享給授課老師。分享就是交件，不用另交 PDF；期限以老師的公告為準。
 
 ## 版本
 
-- 2026-10-16：改寫成路線圖，對齊 ARR long paper 的 Prism 範本與〈選題問題卡〉。前一版各章節的寫作規範、以 Gemini 為例的 AI 指引與舉例的 baseline 已移除，細節改由範本的導引框負責。交件改為分享 Prism 專案（不另交 PDF）；期中篇幅不限。
+- 2026-10-16：改寫成路線圖，對齊 ARR long paper 的 Prism 範本與〈選題問題卡〉。前一版各章節的寫作規範、以 Gemini 為例的 AI 指引與舉例的 baseline 已移除，細節改由範本的導引框負責。交件改為分享 Prism 專案（不另交 PDF，期限當下老師編譯 `midterm/` 打分數）；期中篇幅不限；期末一律是 long paper；16 GB 是規劃基準、不是上限。

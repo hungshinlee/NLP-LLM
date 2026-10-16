@@ -268,7 +268,7 @@ def build_supplements():
         "",
     ] + rows + [
         "",
-        "> **On the hardware assumption.** These guides describe the *term project*, not the course. The course itself asks nothing of your hardware \u2014 it is lectures, and the demos run in class. The project does: the problem cards were sized against a single 16 GB CUDA GPU (an RTX 5070 Ti or similar), which you provide yourself, usually your lab's machine; that is what a QLoRA run on a 7\u20138B model, or inference with a few small models, actually needs. If you have less, say so early and pick a card that fits: many of the analysis cards are inference-only, and the tokenizer cards need no GPU at all.",
+        "> **On the hardware assumption.** These guides describe the *term project*, not the course. The course itself asks nothing of your hardware \u2014 it is lectures, and the demos run in class. The project does: the problem cards were sized against a single 16 GB CUDA GPU (an RTX 5070 Ti or similar), which you provide yourself, usually your lab's machine; that is what a QLoRA run on a 7\u20138B model, or inference with a few small models, actually needs. It is a planning baseline, not a cap. If you have less, say so early and pick a card that fits: many of the analysis cards are inference-only, and the tokenizer cards need no GPU at all.",
         "",
     ])))
     return written
