@@ -87,14 +87,3 @@ ARR 與主流會議目前將 Limitations 設為強制審查項目。缺少此節
 * **Computational Overhead**：誠實揭露訓練所需的 GPU-hours、峰值顯存（Peak VRAM）、推論延遲或 API Token 成本。
 * **Generalization Bounds**：明確界定本方法的適用範圍。若僅在繁體中文或特定法律語料上驗證，需誠實說明尚未在多語言、跨領域環境中獲得泛化驗證。
 * **Risks & Biases**：評估模型是否存在潛在毒性（Toxicity）、幻覺誤導或領域特有偏見（Domain-specific Bias）。
-
----
-
-## 五、 審稿評分量表（對齊 ARR 評審維度）
-
-論文將依據頂會標準進行綜合評定：
-
-* **Soundness (1–5 分)**：實驗設計是否公正？基線是否充分且未被弱化？消融實驗是否完備？數據結論是否與推論吻合？
-* **Excitement / Novelty (1–5 分)**：提出的觀點是真正推進了領域認知，還是僅為工程性質的堆砌？
-* **Reproducibility (1–5 分)**：超參數（Learning Rate, Batch Size, Scheduler）、資料切分、Prompt Templates 與開源代碼庫是否完整透明？
-* **Clarity & Presentation (1–5 分)**：論文敘事邏輯是否順暢？圖表是否具備高自明性？LaTeX 排版是否有 Overfull hbox 等格式缺陷？
