@@ -8,7 +8,7 @@ toc-depth: 2
 
 <!-- 此檔由 bin/publish_report_template.py 從 private repo 的 nlp_llm/report-template/README.md 產生，請勿在公開 repo 直接編輯；zip 也是同一支腳本的產物。 -->
 
-**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (36 files, 431 KB; version `7d5d390`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
+**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (37 files, 440 KB; version `6205a9f`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
 
 This is the Prism project template for the midterm report and the final paper.
 Both use the ACL Rolling Review (ARR) long-paper format, the format of ACL, EMNLP, NAACL
@@ -101,6 +101,11 @@ about large language models.
   proceedings, PMLR, or DBLP; arXiv only for papers that have no published version. Do not
   type entries from memory, and do not let an AI assistant produce them: AI assistants invent
   plausible-looking papers that do not exist.
+- **Every entry has a `doi` or a `url` field** that points to its official record, so that
+  anyone can check it with one click (a course rule; the official exports include one).
+- Technical reports, model cards, blog posts and leaderboards are cited too, but say what they
+  are in the sentence itself ("the X technical report, which is not peer-reviewed, states ..."),
+  and give the date you read a number from a model card or a leaderboard.
 - If a paper has a peer-reviewed version, cite it in addition to or instead of the preprint
   (an ARR rule). arXiv's "Comments" line is often not updated after acceptance, so search the
   ACL Anthology and OpenReview by title too.
