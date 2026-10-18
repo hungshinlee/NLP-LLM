@@ -1,0 +1,27 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W6 demo 2（投影片 p17「Replay: demo 2 — expert load and loss, three balancing rules」）的設定
+#
+# 全部**課前彩排、課堂只 replay**。模型是 W4 demo 1 的 tiny GPT（block_final.GPT）把每一層的 FFN 換成 MoE 層（moe_gpt.py）；
+# 語料、字元表、held-out 切點、尺寸（[tiny]）與訓練超參數（[train]：batch 64、3000 步、AdamW 1e-3、cosine、clip 1.0、dropout 0.1）
+# **全部沿 W4 demo 1 的 demo_config.toml，這裡不再寫一份**——「同一份語料、同一個 seed」是大綱〈課堂 demo 建議〉2 的規定。
+# 改這個檔只能換 MoE 的形狀、三種平衡法的係數、記錄的頻率；要換模型尺寸或步數就改 W4 那份（會連帶改 W4、W5 的 demo）。
+
+[shared]
+demo1 = "../w04_d1_block_scratch"      # 從這裡載 block_final.py（GPT、SwiGLU）、train.py（語料、device、param groups、lr 排程、評估），並讀它的 demo_config.toml
+
+[moe]
+n_E = 8                  # expert 數
+k = 2                    # 每個 token 選幾個
+d_E = 344                # 每個 expert 的寬：d_ff/2 = 688/2，使每 token 活化的 expert 參數 k·3·d·d_E = 528,384 與 W4 的 FFN 3·d·d_ff 逐個相等
+                         # （大綱寫 d_ff/4，k = 2 時那是一半；第 2 步算過，w06-data.json 的 demo2；第 4 步 2026-10-18 定案 d_ff/2）
+bias_step = 0.001        # (iii) 偏置的更新步長 γ：Wang et al. 2024 §4.3 的 u = 0.001；DeepSeek-V3 §2.1.2 叫 γ
+
+[balance]
+settings = ["none", "switch", "bias"]   # (i)(ii)(iii)，依投影片表格的欄序
+alpha = 0.01             # (ii) Switch 的 α = 10^-2（Fedus et al. 2022 §2.2）
+starved_below = 0.01     # 「餓死」的門檻：份額 f_i < 1%（大綱：「被選到 < 1% 的 expert 數」）
+
+[record]
+every = 25               # 每隔幾步記一次：held-out 子集的 loss 與逐層逐 expert 的負載（大綱：每 25 步）
+held_windows = 32        # held-out 子集：固定取 held-out 文字開頭的 32 個不重疊視窗（32 × 256 = 8,192 個字元），每次用同一批 token 量負載，曲線才可比
+full_eval_every = 500    # 另外每 500 步與最後一步跑 W4 的完整 held-out 尺（視窗 L、stride 128），好跟 W4 的 2.184 bits/char 對

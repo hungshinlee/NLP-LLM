@@ -221,7 +221,7 @@ Shazeer 2017 §4 · Fedus 2022 §2.2 · Zoph 2022 §3.3 · Wang 2024 §3 · Deep
 :::
 
 ::: {.footer}
-Demo 2 · `demos/w06_d2_moe_balance` · torch on MPS · W4 demo 1's `GPT` · not yet built (2026-10-18)
+Demo 2 · `demos/w06_d2_moe_balance` · torch on MPS · W4 demo 1's `GPT` · built 2026-10-18 · not rehearsed
 :::
 
 ## Replay: demo 2 — expert load and loss, three balancing rules
@@ -239,7 +239,7 @@ Demo 2 · `demos/w06_d2_moe_balance` · torch on MPS · W4 demo 1's `GPT` · not
 :::
 
 ::: {.footer}
-Demo 2 · replay · `w06_d2_moe_balance/` · not yet built (2026-10-18) · axes blank on purpose
+Demo 2 · replay · `w06_d2_moe_balance/` · built 2026-10-18 · not rehearsed · axes blank on purpose
 :::
 
 ## Where MoE moves the cost — and two sources of nondeterminism
