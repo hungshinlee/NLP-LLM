@@ -717,7 +717,7 @@ Open: its interaction with muP, its behaviour under MoE and very large batches. 
 ::: {.prose}
 | The belief | What is true | Returns |
 |---|---|---|
-| **6** · pre-LN is the end of the story | the trunk grows $\propto \ell$; 2024–2025 adds a Norm after the sub-layer; DyT asks what Norm does | W6 |
+| **6** · pre-LN is the end of the story | the trunk grows $\propto \ell$; 2024–2025 adds a Norm after the sub-layer; DyT asks what Norm does | — |
 | **7** · middle layers are removable, so layers are redundant | only middle layers, only on some metrics, usually after healing | W11 |
 | **8** · a loss spike means dirty data | the same batch at another step does not spike; the logit statistics move first | W7 |
 | **9** · hyperparameter tuning has no principles | muP gives one for width; depth, MoE and scale are its open edges | W7 |
