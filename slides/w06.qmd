@@ -221,25 +221,25 @@ Shazeer 2017 §4 · Fedus 2022 §2.2 · Zoph 2022 §3.3 · Wang 2024 §3 · Deep
 :::
 
 ::: {.footer}
-Demo 2 · `demos/w06_d2_moe_balance` · torch on MPS · W4 demo 1's `GPT` · built 2026-10-18 · not rehearsed
+Demo 2 · `demos/w06_d2_moe_balance` · torch on MPS · W4 demo 1's `GPT` · rehearsed 2026-10-18
 :::
 
 ## Replay: demo 2 — expert load and loss, three balancing rules
 
-![](assets/w06/balance-axes.svg){width="100%"}
+{{< include assets/w06/balance.inline.qmd >}}
 
-::: {.fragment fragment-index=1}
+::: {.fragment fragment-index=4}
 | | (i) none | (ii) Switch $\mathcal{L}_{\text{aux}}$ | (iii) loss-free bias |
 |:---|:---|:---|:---|
-| largest expert load, final (ideal $1/8 = 0.125$) | | | |
-| experts below 1% of tokens, final | | | |
-| held-out loss (nats/char) | | | |
+| largest expert load, final (ideal $1/8 = 0.125$; max $1/k = 0.5$) | $0.397$ (worst layer $0.500$) | $0.151$ ($0.159$) | $0.147$ ($0.163$) |
+| experts below 1% of slots, final (per layer) | $2.5$ (worst $6$ of $8$) | $0$ | $0$ |
+| held-out loss (nats/char) | $1.392$ | $1.447$ | $1.421$ |
 
 : {tbl-colwidths="[40,20,20,20]"}
 :::
 
 ::: {.footer}
-Demo 2 · replay · `w06_d2_moe_balance/` · built 2026-10-18 · not rehearsed · axes blank on purpose
+Demo 2 · replay · `w06_d2_moe_balance/` · rehearsed 2026-10-18 · 3000 steps each · mean over 6 layers (worst layer)
 :::
 
 ## Where MoE moves the cost — and two sources of nondeterminism

@@ -25,8 +25,8 @@ A fact worth knowing before reading the numbers: with $d_E = d_{\text{ff}}/2$ an
 | Other folders | imports `../w04_d1_block_scratch/block_final.py` (the `GPT` and `SwiGLU`) and `train.py` (corpus, device, optimiser groups, the held-out measure), and reads that folder's `demo_config.toml`; `block_final.py` in turn imports W3 demo 1's `attention_final.py`. Keep the folder layout. |
 | Corpus | `slides/_corpus/tinyshakespeare.txt`, not in the repository — see W4 demo 1's README for where to download it (about 1.1 MB). |
 | Device | training uses `mps` on Apple silicon and falls back to the CPU (slow); `cuda` is accepted by the code but has never been run. `replay`, `show` and `summarize` need no device at all. |
-| Memory / time | 14,286,336 parameters, 4,775,424 active per token. Training time on the machine below: to be measured (`rehearse --steps 30` prints the time for 30 steps of each setting; multiply by 100). A 30-step smoke test on a 2-core CPU container with batch 8 took about 50 s per setting. |
-| Portability | nothing platform-specific; tested only on an Apple M5 Max (64 GB), macOS 27, Python 3.12, torch 2.14.0 |
+| Memory / time | 14,286,336 parameters, 4,775,424 active per token. On the machine below the three runs took 60, 36 and 43 minutes (the collapsed run is slowest: its two surviving experts each process every token). `replay` is instant. |
+| Portability | nothing platform-specific; tested only on an Apple M5 Max (64 GB), macOS 27.0.1, Python 3.12, torch 2.14.0 |
 
 ## Run it
 
@@ -45,9 +45,20 @@ Without `present.sh`: `python demo.py replay`, `python demo.py rehearse`, and so
 
 ## What you should see
 
-The rehearsal has not been run yet; this section is filled in from `runs/rehearsal/summary.json` once it has. Until then, the only numbers are from the 30-step smoke test on a CPU container with batch 8: within those 30 steps — inside the learning-rate warmup — every layer of run (i) had already collapsed onto two experts ($\max f = 0.499$, six of eight experts below 1%), run (ii) was already pulling the largest share down (0.388, two starved per layer on average), and run (iii) looked like run (i) because the bias had only moved by $\pm 0.03$. What 3000 steps do to each of them is the question the demo asks.
+From `runs/rehearsal/summary.json` (2026-10-18, Apple M5 Max, macOS 27.0.1, Python 3.12, torch 2.14.0, `mps`). Final values after 3000 steps, mean over the six layers with the worst layer in parentheses:
 
-A caveat the program prints every time: this is a character-level model of fourteen million parameters with eight experts, one seed, and $\alpha$ and $\gamma$ taken from the papers without tuning. The *shape* of each curve is the shape of a mechanism. None of the numbers is a threshold for any model with 256 experts, and if the three runs do not separate at this scale, the conclusion is "this scale cannot see the difference", not "the three methods are the same".
+| | (i) none | (ii) Switch $\mathcal{L}_{\text{aux}}$ | (iii) loss-free bias |
+|---|---|---|---|
+| largest expert share (ideal $1/8 = 0.125$; at most $1/k = 0.5$) | 0.397 (0.500) | 0.151 (0.159) | 0.147 (0.163) |
+| experts below 1% of slots, per layer | 2.5 (6 of 8) | 0 | 0 |
+| held-out loss, fixed subset (nats/char) | 1.392 | 1.447 | 1.421 |
+| held-out, W4's full measure (bits/char) | 2.280 | 2.367 | 2.306 |
+
+What happens along the way is more telling than the end points. **Without a balancing term, every layer collapses within 25 steps** — inside the learning-rate warmup, with the learning rate still below $3 \times 10^{-4}$: all tokens go to the same two experts (share 0.499 each), the other six receive nothing. The router keeps learning and some layers pick other experts back up; at the end two layers are still fully collapsed, two sit at 0.46–0.48, two at about 0.2, and 15 of the 48 experts are starved. **Switch's auxiliary loss** balances the layers within 100 steps (0.164) and holds them there; the price is the held-out loss, 0.055 nats/char above run (i). **The auxiliary-loss-free bias collapses exactly like run (i) first** — a step of $\gamma = 0.001$ per update cannot do anything in 25 steps — and then pulls the layers back: 0.285 at step 500, 0.193 at 1500, level by the end, no expert starved, at a cost of 0.029 nats/char. Its bias vector ends between $-0.84$ and $+1.15$. The `replay` command prints the two curves as sparklines and each layer's final shares as a row of bars.
+
+One thing the table on the slide does not show: all three MoE models are *worse* on W4's full measure than W4's dense model (2.184 bits/char), and their held-out loss reaches its minimum around step 2000 and rises afterwards. Same compute per token, three times the parameters, the same one megabyte of text: the extra parameters overfit. That is a statement about this corpus size, not about mixtures of experts, and it is where next week's scaling laws begin.
+
+A caveat the program prints every time: this is a character-level model of fourteen million parameters with eight experts, one seed, and $\alpha$ and $\gamma$ taken from the papers without tuning. The *shape* of each curve is the shape of a mechanism. None of the numbers is a threshold for any model with 256 experts.
 
 ## Files
 
