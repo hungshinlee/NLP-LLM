@@ -124,7 +124,7 @@ the week's first metaphor · fails at Mixtral §5 · Misconception 2: "experts a
 :::
 
 ::: {.footer}
-Demo 1 · `demos/w06_d1_activation_ratio` · standard library only · built 2026-10-18, not yet rehearsed
+Demo 1 · `demos/w06_d1_activation_ratio` · standard library only · rehearsed 2026-10-18
 :::
 
 ## Live: demo 1 — $N_{\text{total}}$, $N_{\text{active}}$, $\rho$ from the config
@@ -145,7 +145,7 @@ Before the script runs: for Qwen3-30B-A3B, $k/n_E = 8/128 = 6.25\%$. Will $\rho$
 :::
 
 ::: {.footer}
-Demo 1 · live · `w06_d1_activation_ratio/` · built 2026-10-18, not yet rehearsed · flagship rows: abstracts
+Demo 1 · live · `w06_d1_activation_ratio/` · rehearsed 2026-10-18 · flagship rows: abstracts
 :::
 
 ## The MoE layer, formally: W4's FFN slot with a desk in front

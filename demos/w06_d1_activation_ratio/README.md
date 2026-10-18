@@ -52,7 +52,16 @@ Without `present.sh`: `python3 fetch_configs.py`, `python3 count_moe.py count`, 
 
 For Qwen3-30B-A3B the two columns agree to the parameter: $N_{\text{total}} = 30{,}532{,}122{,}624$, which is exactly the index's `total_size` of 61,064,245,248 bytes divided by 2 (bf16). With $n_E = 128$, $k = 8$: $N_{\text{active}} \approx 3.35$ B and $\rho \approx 11.0\%$ — well above $k/n_E = 6.25\%$, because the attention projections and the two embedding matrices (about 1.53 B, 46 % of $N_{\text{active}}$) are paid whatever $k$ is. That gap is the floor on slide p13.
 
-The other three rows, and the rehearsal record in `runs/rehearsal/ratios.json`, are filled in after the instructor's rehearsal.
+From the rehearsal record `runs/rehearsal/ratios.json` (2026-10-18, Apple M5 Max, macOS 27.0.1, Python 3.12.14; every number from the safetensors headers, and for each fetched model the shapes × dtype bytes equal the index's `total_size`):
+
+| model | $n_E$ / $k$ / $n_S$ | $N_{\text{total}}$ | $N_{\text{active}}$ | $\rho$ | $k/n_E$ | floor / $N_{\text{active}}$ |
+|---|---|---|---|---|---|---|
+| Gemma 4 26B-A4B (text model; MLX 4-bit file) | 128 / 8 / 0 | 25.23 B | 3.82 B | 15.2 % | 6.25 % | 48 % |
+| Qwen3-30B-A3B | 128 / 8 / 0 | 30.53 B | 3.35 B | 11.0 % | 6.25 % | 46 % |
+| Qwen3-Next-80B-A3B | 512 / 10 / 1 | 79.67 B | 3.87 B | 4.9 % | 1.95 % | 56 % |
+| Kimi Linear 48B-A3B | 256 / 8 / 1 | 49.12 B | 3.48 B | 7.1 % | 3.13 % | 50 % |
+
+What the two columns disagreed on: Gemma 4 has dense FFN tensors (535 M in all) in **every one of its 30 layers next to the 128 experts** — so each layer runs a dense FFN *and* a MoE block, which is why its $\rho$ is the highest of the four; its checkpoint also carries a 0.57 B vision tower, listed and excluded. Qwen3-Next's checkpoint stores a 1.65 B MTP module (excluded), and its attention layers do have the output gate (the file agrees with the formula). Kimi Linear's 20 KDA layers come to 790 M, from the file only; its index `total_size / 2` is 82,560 above $N$ because a few small tensors are stored in fp32 — the bytes agree, the "÷ 2" does not.
 
 ## Files
 
