@@ -36,7 +36,7 @@ Why `store` applies no $\phi$: the keys in (d) *are* the vectors being stored (t
 | Packages | `torch` only (`2.14.0` is pinned in `demos/versions.lock`; nothing else is imported). No model, no download, no network. |
 | Device | **CPU, deliberately, in float64.** `linear_final.py` sets `torch.set_default_device("cpu")` and `torch.set_default_dtype(torch.float64)`. Apple's Metal backend has no double type, and on the GPU the small-$L$ timings in (b) would be dominated by launch overhead. |
 | Memory / time | (b) at $L = 8192$ allocates an $8192 \times 8192$ float64 matrix (512 MB) for the quadratic form; the whole run takes a few seconds |
-| Portability | should run on any machine where `torch` installs (nothing platform-specific is used); built and checked on an x86-64 Linux VM with torch 2.14.1; the rehearsal record below is from the instructor's machine when present |
+| Portability | should run on any machine where `torch` installs (nothing platform-specific is used); tested on an Apple M5 Max, macOS 27.0.1, Python 3.12.14, torch 2.14.0 (the rehearsal record below), and once on an x86-64 Linux VM with torch 2.14.1 during the build — (a), (c) and (d) agreed to the digit, (b) differed only in the speed-up |
 
 ## Run it
 
@@ -56,11 +56,11 @@ Suggested order if you write it yourself, matching the class: `phi` → `attn_qu
 
 ## What you should see
 
-Until the instructor's rehearsal record is checked in (`runs/rehearsal/tests.json`), these are the values from the build check (x86-64 Linux, torch 2.14.1, 2 threads, float64):
+From `runs/rehearsal/tests.json` (2026-10-19, Apple M5 Max, macOS 27.0.1, Python 3.12.14, torch 2.14.0, CPU, float64, 6 threads; all four tests in 1.06 s):
 
 - (a) relative difference $1.6 \times 10^{-15}$ (absolute $1.8 \times 10^{-11}$ on outputs of order $10^4$ — there is no denominator in (a)).
-- (b) linear becomes faster between $L = 32$ and $L = 128$ on 2 threads; about $16\times$ faster at $L = 8192$. Expect the crossover and the ratio to move with the machine.
-- (c) relative difference $1.6 \times 10^{-15}$.
+- (b) quadratic: 44 µs, 129 µs, 0.61 ms, 5.6 ms, 86 ms; linear: 46 µs, 126 µs, 0.38 ms, 0.70 ms, 3.0 ms for $L = 32, 128, 512, 2048, 8192$. The lines cross between $L = 32$ and $L = 128$ and are level at $L = 128$; linear is $28\times$ faster at $L = 8192$. On a 2-thread x86-64 VM the crossover was in the same interval and the speed-up at 8192 was $16$–$21\times$ — expect the ratio to move with the machine.
+- (c) relative difference $1.2 \times 10^{-15}$.
 - (d) orthogonal keys: $\sim 10^{-16}$ for $m \le 128$, then 0.62, 0.88, 1.20, 1.63, 1.94 at $m = 160, 192, 256, 384, 512$. Random keys: 0.50, 0.71, 0.86, 1.00, 1.12, 1.22, 1.42, 1.73, 2.01 for the nine values of $m$ — the same as $\sqrt{(m-1)/128}$ to two decimals. Random keys with the delta rule: 0.35, 0.51, 0.64, 0.74, 0.82, 0.89, 0.99, 1.12, 1.20. Same key twice: additive $= \mathbf{v}_1 + \mathbf{v}_2$, delta $= \mathbf{v}_2$, both to $10^{-16}$.
 
 Same seeds, same torch version: you should see these digits for (a), (c) and (d); for (b) expect the same magnitudes only.
@@ -73,4 +73,4 @@ Same seeds, same torch version: you should see these digits for (a), (c) and (d)
 | `linear_live.py` | the file written live in class; `./present.sh reset` empties it |
 | `tests.py` | the four tests; `python tests.py <module>` runs them against any module exposing the functions above |
 | `present.sh` | entry point; uses `../.venv/bin/python` |
-| `runs/rehearsal/tests.json` | the rehearsal record, once checked in |
+| `runs/rehearsal/tests.json` | the rehearsal record quoted above |

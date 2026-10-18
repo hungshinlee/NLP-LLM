@@ -303,7 +303,7 @@ outline W6 §Key math 3 · Katharopoulos et al. 2020 §3.3–3.4 · $\mathbf{o}_
 :::
 
 ::: {.footer}
-Demo 3 · `demos/w06_d3_linear_scratch` · plain torch, CPU, float64 · built 2026-10-19, rehearsal pending
+Demo 3 · `demos/w06_d3_linear_scratch` · plain torch, CPU, float64 · rehearsed 2026-10-19
 :::
 
 ## Live: demo 3 — equal to float64, a crossover, a notebook filling up
@@ -328,13 +328,13 @@ Demo 3 · `demos/w06_d3_linear_scratch` · plain torch, CPU, float64 · built 20
 
 | $L$ | 32 | 128 | 512 | 2048 | 8192 |
 |:---|:---|:---|:---|:---|:---|
-| quadratic, s | | | | | |
-| linear, s | | | | | |
+| quadratic, s | $4.4 \times 10^{-5}$ | $1.3 \times 10^{-4}$ | $6.1 \times 10^{-4}$ | $5.6 \times 10^{-3}$ | $8.6 \times 10^{-2}$ |
+| linear, s | $4.6 \times 10^{-5}$ | $1.3 \times 10^{-4}$ | $3.8 \times 10^{-4}$ | $7.0 \times 10^{-4}$ | $3.0 \times 10^{-3}$ |
 
 : {tbl-colwidths="[25,15,15,15,15,15]"}
 
 ::: {.footer}
-Demo 3 · live · `w06_d3_linear_scratch/` · built 2026-10-19, rehearsal pending · table blank on purpose
+Demo 3 · live · `w06_d3_linear_scratch/` · rehearsed 2026-10-19 · table: rehearsal values, M5 Max CPU, 6 threads
 :::
 
 ## The notebook's capacity: at most $d_{\text{head}}$ pairs, cleanly
