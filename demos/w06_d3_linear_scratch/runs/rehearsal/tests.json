@@ -1,0 +1,158 @@
+{
+ "date": "2026-10-19T01:55:05",
+ "impl": "linear_final.py",
+ "torch": "2.14.0",
+ "python": "3.12.14",
+ "machine": "arm64",
+ "macos": "27.0.1",
+ "device": "cpu",
+ "dtype": "float64",
+ "threads": 6,
+ "elapsed_s": 1.0584158897399902,
+ "tests": {
+  "a": {
+   "status": "ok",
+   "message": "L = 256, d_head = 128: max |quadratic - linear| = 1.8e-11 on outputs up to 11068 (relative 1.6e-15)",
+   "L": 256,
+   "d_head": 128,
+   "max_abs_diff": 1.8189894035458565e-11,
+   "max_rel_diff": 1.6435013501131977e-15,
+   "max_abs_output": 11067.769450999063
+  },
+  "b": {
+   "status": "ok",
+   "message": "linear becomes faster between L = 32 and L = 128 (theory: L = d_head = 128); speed-up at L = 8192: 28x\n      L                 32       128       512      2048      8192\n      quadratic   4.40e-05  1.29e-04  6.10e-04  5.61e-03  8.64e-02  s\n      linear      4.64e-05  1.26e-04  3.80e-04  6.98e-04  3.04e-03  s\n      ratio            0.9       1.0       1.6       8.0      28.4",
+   "threads": 6,
+   "rows": [
+    {
+     "L": 32,
+     "quadratic_s": 4.400010220706463e-05,
+     "linear_s": 4.643748980015516e-05,
+     "ratio": 0.9475125032903395,
+     "repeats": 200
+    },
+    {
+     "L": 128,
+     "quadratic_s": 0.00012897956185042858,
+     "linear_s": 0.00012641691137105227,
+     "ratio": 1.0202714213753772,
+     "repeats": 100
+    },
+    {
+     "L": 512,
+     "quadratic_s": 0.0006095623830333352,
+     "linear_s": 0.00038043700624257326,
+     "ratio": 1.6022688987429041,
+     "repeats": 30
+    },
+    {
+     "L": 2048,
+     "quadratic_s": 0.005613083951175213,
+     "linear_s": 0.0006979168392717838,
+     "ratio": 8.042625761877279,
+     "repeats": 7
+    },
+    {
+     "L": 8192,
+     "quadratic_s": 0.08635204192250967,
+     "linear_s": 0.003041124902665615,
+     "ratio": 28.394769924385592,
+     "repeats": 3
+    }
+   ],
+   "crossover": "linear becomes faster between L = 32 and L = 128 (theory: L = d_head = 128)"
+  },
+  "c": {
+   "status": "ok",
+   "message": "64 steps of the recurrence vs. cumsum in one shot: max difference 3.6e-15 (relative 1.2e-15)",
+   "L": 64,
+   "d_head": 128,
+   "max_abs_diff": 3.552713678800501e-15,
+   "max_rel_diff": 1.199296312116896e-15
+  },
+  "d": {
+   "status": "ok",
+   "message": "orthogonal keys: 8.8e-16 at m = d_head, 0.62 at m = 1.25 d_head; random keys: 0.50 already at m = d_head/4, 1.00 at m = d_head; delta rule 0.74 at m = d_head\n      m      m/d   orthogonal keys   random keys   random + delta   sqrt((m-1)/d)\n        32   0.25          3.72e-16         0.495            0.345           0.492\n        64   0.50          5.09e-16         0.706            0.514           0.702\n        96   0.75          6.59e-16         0.861            0.635           0.862\n       128   1.00          8.83e-16         0.996            0.738           0.996\n       160   1.25          6.24e-01         1.121            0.818           1.115\n       192   1.50          8.76e-01         1.222            0.887           1.222\n       256   2.00          1.20e+00         1.420            0.994           1.411\n       384   3.00          1.63e+00         1.732            1.121           1.730\n       512   4.00          1.94e+00         2.008            1.197           1.998\n      same key written twice: additive recall = v1 + v2 (to 5e-16), delta recall = v2 (to 3e-16) — overwritten, not stacked",
+   "d_head": 128,
+   "trials": 5,
+   "rows": [
+    {
+     "m": 32,
+     "m_over_d": 0.25,
+     "rel_err_orthogonal_keys": 3.7202117813153647e-16,
+     "rel_err_random_keys": 0.49519289538934075,
+     "rel_err_random_keys_delta": 0.34538539491052667,
+     "sqrt_interference": 0.4921254921257382
+    },
+    {
+     "m": 64,
+     "m_over_d": 0.5,
+     "rel_err_orthogonal_keys": 5.085452204921455e-16,
+     "rel_err_random_keys": 0.7064421037608611,
+     "rel_err_random_keys_delta": 0.5135063258971391,
+     "sqrt_interference": 0.701560760020114
+    },
+    {
+     "m": 96,
+     "m_over_d": 0.75,
+     "rel_err_orthogonal_keys": 6.590529322980481e-16,
+     "rel_err_random_keys": 0.8614663094238781,
+     "rel_err_random_keys_delta": 0.6346476589020926,
+     "sqrt_interference": 0.8615030470056388
+    },
+    {
+     "m": 128,
+     "m_over_d": 1.0,
+     "rel_err_orthogonal_keys": 8.834755225519268e-16,
+     "rel_err_random_keys": 0.9962136959734599,
+     "rel_err_random_keys_delta": 0.7383569140438635,
+     "sqrt_interference": 0.9960860906568267
+    },
+    {
+     "m": 160,
+     "m_over_d": 1.25,
+     "rel_err_orthogonal_keys": 0.6237524477377885,
+     "rel_err_random_keys": 1.1207785756599296,
+     "rel_err_random_keys_delta": 0.8180131177345776,
+     "sqrt_interference": 1.114534656257938
+    },
+    {
+     "m": 192,
+     "m_over_d": 1.5,
+     "rel_err_orthogonal_keys": 0.8764118374226862,
+     "rel_err_random_keys": 1.2219662335876402,
+     "rel_err_random_keys_delta": 0.8871187107208752,
+     "sqrt_interference": 1.221551267855754
+    },
+    {
+     "m": 256,
+     "m_over_d": 2.0,
+     "rel_err_orthogonal_keys": 1.201027643470996,
+     "rel_err_random_keys": 1.41991394693062,
+     "rel_err_random_keys_delta": 0.9938763631195989,
+     "sqrt_interference": 1.4114487238295268
+    },
+    {
+     "m": 384,
+     "m_over_d": 3.0,
+     "rel_err_orthogonal_keys": 1.6315243405940734,
+     "rel_err_random_keys": 1.7316716689847405,
+     "rel_err_random_keys_delta": 1.1210920479569007,
+     "sqrt_interference": 1.729794062887256
+    },
+    {
+     "m": 512,
+     "m_over_d": 4.0,
+     "rel_err_orthogonal_keys": 1.9359200777153902,
+     "rel_err_random_keys": 2.008340167231706,
+     "rel_err_random_keys_delta": 1.1972039017725704,
+     "sqrt_interference": 1.9980459203932226
+    }
+   ],
+   "same_key_twice": {
+    "additive_vs_v1_plus_v2": 5.033381667732852e-16,
+    "delta_vs_v2": 3.476828743286497e-16
+   }
+  }
+ }
+}

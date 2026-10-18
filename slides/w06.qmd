@@ -303,7 +303,7 @@ outline W6 §Key math 3 · Katharopoulos et al. 2020 §3.3–3.4 · $\mathbf{o}_
 :::
 
 ::: {.footer}
-Demo 3 · `demos/w06_d3_linear_scratch` · plain torch, CPU, float64 · not yet built (2026-10-18)
+Demo 3 · `demos/w06_d3_linear_scratch` · plain torch, CPU, float64 · built 2026-10-19, rehearsal pending
 :::
 
 ## Live: demo 3 — equal to float64, a crossover, a notebook filling up
@@ -314,7 +314,7 @@ Demo 3 · `demos/w06_d3_linear_scratch` · plain torch, CPU, float64 · not yet 
 
 1. `attn_quadratic(Q, K, V)` and `attn_linear(Q, K, V)`, $\phi = \mathrm{elu} + 1$
 2. `step(S, z, k, v, q)` — one token of the causal recurrence
-3. `store(keys, vals)` / `recall(S, k)` — the notebook, additive; then one line of the delta rule
+3. `store(keys, vals)` / `recall(S, k)` — the notebook, additive; then `delta_write(S, k, v)`, one line
 :::
 ::: {.column width="50%"}
 **Tests — predict each before it runs**
@@ -334,7 +334,7 @@ Demo 3 · `demos/w06_d3_linear_scratch` · plain torch, CPU, float64 · not yet 
 : {tbl-colwidths="[25,15,15,15,15,15]"}
 
 ::: {.footer}
-Demo 3 · live · `w06_d3_linear_scratch/` · not yet built (2026-10-18) · table blank on purpose
+Demo 3 · live · `w06_d3_linear_scratch/` · built 2026-10-19, rehearsal pending · table blank on purpose
 :::
 
 ## The notebook's capacity: at most $d_{\text{head}}$ pairs, cleanly
