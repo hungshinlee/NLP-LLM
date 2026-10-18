@@ -1889,7 +1889,7 @@ z
    </g>
   </g>
  </g>
-</svg><text x="560" y="322" font-size="15" fill="#1f2328" text-anchor="middle" font-weight="700">MiniMax-M2</text><text x="560" y="342" font-size="14" fill="#6b7280" text-anchor="middle" font-weight="400">9.8B / 229.9B</text><text x="560" y="360" font-size="13" fill="#6b7280" text-anchor="middle" font-weight="400">2026-05</text></g><g class="fragment" data-fragment-index="4"><rect x="685" y="212.208" width="110" height="87.7922" rx="4" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><svg x="722.065" y="188.208" width="35.87" height="17" viewBox="0 0 35.87 17"><defs>
+</svg><text x="560" y="322" font-size="15" fill="#1f2328" text-anchor="middle" font-weight="700">MiniMax-M2</text><text x="560" y="342" font-size="14" fill="#6b7280" text-anchor="middle" font-weight="400">9.8B / 229.9B</text><text x="560" y="360" font-size="13" fill="#6b7280" text-anchor="middle" font-weight="400">2026-05</text></g><g class="fragment" data-fragment-index="4"><rect x="685" y="227.614" width="110" height="72.3864" rx="4" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><svg x="722.065" y="203.614" width="35.87" height="17" viewBox="0 0 35.87 17"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t22-figure_1">
@@ -1903,7 +1903,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t22-text_1">
-   <!-- $3.7\%$ -->
+   <!-- $3.1\%$ -->
    <g style="fill: #0b5cad" transform="translate(0 12.916016) scale(0.17 -0.17)">
     <defs>
      <path id="t22-Cmr10-6e" d="M 609 494 
@@ -1976,32 +1976,20 @@ Q 750 0 644 106
 Q 538 213 538 353 
 z
 " transform="scale(0.015625)"/>
-     <path id="t22-Cmr10-7f" d="M 1113 166 
-Q 1113 522 1175 862 
-Q 1238 1203 1358 1536 
-Q 1478 1869 1648 2189 
-Q 1819 2509 2022 2791 
-L 2606 3603 
-L 1875 3603 
-Q 738 3603 703 3572 
-Q 619 3469 544 2981 
-L 359 2981 
-L 569 4325 
-L 756 4325 
-L 756 4306 
-Q 756 4191 1147 4156 
-Q 1538 4122 1913 4122 
-L 3103 4122 
-L 3103 3956 
-Q 3103 3950 3101 3947 
-Q 3100 3944 3097 3938 
-L 2216 2700 
-Q 1891 2219 1809 1631 
-Q 1728 1044 1728 166 
-Q 1728 41 1637 -50 
-Q 1547 -141 1422 -141 
-Q 1294 -141 1203 -50 
-Q 1113 41 1113 166 
+     <path id="t22-Cmr10-64" d="M 594 0 
+L 594 225 
+Q 1394 225 1394 428 
+L 1394 3788 
+Q 1063 3628 556 3628 
+L 556 3853 
+Q 1341 3853 1741 4263 
+L 1831 4263 
+Q 1853 4263 1873 4245 
+Q 1894 4228 1894 4206 
+L 1894 428 
+Q 1894 225 2694 225 
+L 2694 0 
+L 594 0 
 z
 " transform="scale(0.015625)"/>
      <path id="t22-Cmr10-30" d="M 891 -231 
@@ -2074,12 +2062,12 @@ z
     </defs>
     <use xlink:href="#t22-Cmr10-6e"/>
     <use xlink:href="#t22-Cmmi10-33" transform="translate(50 0)"/>
-    <use xlink:href="#t22-Cmr10-7f" transform="translate(77.685547 0)"/>
+    <use xlink:href="#t22-Cmr10-64" transform="translate(77.685547 0)"/>
     <use xlink:href="#t22-Cmr10-30" transform="translate(127.685547 0)"/>
    </g>
   </g>
  </g>
-</svg><text x="740" y="322" font-size="15" fill="#1f2328" text-anchor="middle" font-weight="700">Kimi K3</text><text x="740" y="342" font-size="14" fill="#6b7280" text-anchor="middle" font-weight="400">104B / 2.8T</text><text x="740" y="360" font-size="13" fill="#6b7280" text-anchor="middle" font-weight="400">2026-07</text></g><g class="fragment" data-fragment-index="5"><rect x="865" y="227.614" width="110" height="72.3864" rx="4" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><svg x="902.065" y="203.614" width="35.87" height="17" viewBox="0 0 35.87 17"><defs>
+</svg><text x="740" y="322" font-size="15" fill="#1f2328" text-anchor="middle" font-weight="700">DeepSeek-V4-Pro</text><text x="740" y="342" font-size="14" fill="#6b7280" text-anchor="middle" font-weight="400">49B / 1.6T</text><text x="740" y="360" font-size="13" fill="#6b7280" text-anchor="middle" font-weight="400">2026-06</text></g><g class="fragment" data-fragment-index="5"><rect x="865" y="212.208" width="110" height="87.7922" rx="4" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><svg x="902.065" y="188.208" width="35.87" height="17" viewBox="0 0 35.87 17"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t23-figure_1">
@@ -2093,7 +2081,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t23-text_1">
-   <!-- $3.1\%$ -->
+   <!-- $3.7\%$ -->
    <g style="fill: #0b5cad" transform="translate(0 12.916016) scale(0.17 -0.17)">
     <defs>
      <path id="t23-Cmr10-6e" d="M 609 494 
@@ -2166,20 +2154,32 @@ Q 750 0 644 106
 Q 538 213 538 353 
 z
 " transform="scale(0.015625)"/>
-     <path id="t23-Cmr10-64" d="M 594 0 
-L 594 225 
-Q 1394 225 1394 428 
-L 1394 3788 
-Q 1063 3628 556 3628 
-L 556 3853 
-Q 1341 3853 1741 4263 
-L 1831 4263 
-Q 1853 4263 1873 4245 
-Q 1894 4228 1894 4206 
-L 1894 428 
-Q 1894 225 2694 225 
-L 2694 0 
-L 594 0 
+     <path id="t23-Cmr10-7f" d="M 1113 166 
+Q 1113 522 1175 862 
+Q 1238 1203 1358 1536 
+Q 1478 1869 1648 2189 
+Q 1819 2509 2022 2791 
+L 2606 3603 
+L 1875 3603 
+Q 738 3603 703 3572 
+Q 619 3469 544 2981 
+L 359 2981 
+L 569 4325 
+L 756 4325 
+L 756 4306 
+Q 756 4191 1147 4156 
+Q 1538 4122 1913 4122 
+L 3103 4122 
+L 3103 3956 
+Q 3103 3950 3101 3947 
+Q 3100 3944 3097 3938 
+L 2216 2700 
+Q 1891 2219 1809 1631 
+Q 1728 1044 1728 166 
+Q 1728 41 1637 -50 
+Q 1547 -141 1422 -141 
+Q 1294 -141 1203 -50 
+Q 1113 41 1113 166 
 z
 " transform="scale(0.015625)"/>
      <path id="t23-Cmr10-30" d="M 891 -231 
@@ -2252,12 +2252,12 @@ z
     </defs>
     <use xlink:href="#t23-Cmr10-6e"/>
     <use xlink:href="#t23-Cmmi10-33" transform="translate(50 0)"/>
-    <use xlink:href="#t23-Cmr10-64" transform="translate(77.685547 0)"/>
+    <use xlink:href="#t23-Cmr10-7f" transform="translate(77.685547 0)"/>
     <use xlink:href="#t23-Cmr10-30" transform="translate(127.685547 0)"/>
    </g>
   </g>
  </g>
-</svg><text x="920" y="322" font-size="15" fill="#1f2328" text-anchor="middle" font-weight="700">DeepSeek-V4-Pro</text><text x="920" y="342" font-size="14" fill="#6b7280" text-anchor="middle" font-weight="400">49B / 1.6T</text><text x="920" y="360" font-size="13" fill="#6b7280" text-anchor="middle" font-weight="400">2026-06</text></g><svg x="1020" y="86" width="87.45" height="15" viewBox="0 0 87.45 15"><defs>
+</svg><text x="920" y="322" font-size="15" fill="#1f2328" text-anchor="middle" font-weight="700">Kimi K3</text><text x="920" y="342" font-size="14" fill="#6b7280" text-anchor="middle" font-weight="400">104B / 2.8T</text><text x="920" y="360" font-size="13" fill="#6b7280" text-anchor="middle" font-weight="400">2026-07</text></g><svg x="1020" y="86" width="87.45" height="15" viewBox="0 0 87.45 15"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t24-figure_1">

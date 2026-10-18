@@ -156,13 +156,19 @@ $$\mathbf{r}_t = \mathbf{W}^R\mathbf{x}_t \in \mathbb{R}^{n_E},$$
 
 $$g_i = \mathrm{softmax}(\mathbf{r}_t)_i \ \text{(Switch, Mixtral, Qwen3)}\ \text{ or }\ \sigma(r_{t,i}) \text{ renormalised over } \mathcal{T}_t \ \text{(DeepSeek-V3)}$$
 
+::: {.fragment fragment-index=2}
+$$\mathbf{y}_t = \sum_{i \in \mathcal{T}_t} g_i(\mathbf{x}_t)\,E_i(\mathbf{x}_t) + \sum_{j=1}^{n_S} E^{\text{s}}_j(\mathbf{x}_t), \qquad \mathcal{T}_t = \mathrm{TopK}_k(\mathbf{r}_t)$$
+:::
+
 ::: {.footer}
 outline W6 §Key math 1 · Shazeer et al. 2017 · Fedus et al. 2022 · DeepSeek-V3 §2.1.2 · W4 p9, p19
 :::
 
 ## The accounting: $N_{\text{total}}$, $N_{\text{active}}$, and why $\rho$ has a floor
 
-$$N_{\text{total}} \approx n_{\text{layer}}\big(N_{\text{attn}} + (n_E + n_S)\,3\,d\,d_E + n_E d\big) + 2Vd, \qquad N_{\text{active}}: \text{ the same with } n_E \to k$$
+$$N_{\text{total}} \approx n_{\text{layer}}\big(N_{\text{attn}} + (n_E + n_S)\,3\,d\,d_E + n_E d\big) + 2Vd$$
+
+$$N_{\text{active}} \approx n_{\text{layer}}\big(N_{\text{attn}} + (k + n_S)\,3\,d\,d_E + n_E d\big) + 2Vd \qquad (n_E + n_S \to k + n_S)$$
 
 ::: {.fragment fragment-index=1}
 $$\rho = \frac{N_{\text{active}}}{N_{\text{total}}} \;>\; \frac{n_{\text{layer}}N_{\text{attn}} + 2Vd}{N_{\text{total}}} \qquad\text{the floor: attention and embeddings are paid either way}$$
@@ -191,6 +197,8 @@ five abstracts · Abnar et al., ICML 2025 · Misconception 3: "lower activation 
 :::
 
 ## Load balancing: why experts collapse, three ways to stop it
+
+$$\mathcal{L}_{\text{aux}} = \alpha\,n_E\sum_{i=1}^{n_E} f_i\,P_i \qquad\qquad \mathcal{T}_t = \mathrm{TopK}_k(\mathbf{r}_t + \mathbf{u}),\quad u_i \leftarrow u_i + \gamma\,\mathrm{sign}(\bar{c} - c_i)$$
 
 ![](assets/w06/collapse.svg){width="100%"}
 
@@ -262,6 +270,8 @@ the week's second metaphor · W2 p6 · W1 p62 · fails at "summary" and at "whic
 
 ## Softmax blocks the bracket; drop it and the bracket moves
 
+$$\underbrace{\big(\phi(\mathbf{Q})\,\phi(\mathbf{K})^\top\big)\,\mathbf{V}}_{O(L^2 d_{\text{head}})\ \text{— W3's only route}} \;=\; \underbrace{\phi(\mathbf{Q})\,\big(\phi(\mathbf{K})^\top\mathbf{V}\big)}_{O(L\,d_{\text{head}}^2)\ \text{— once } \exp \to \phi}$$
+
 {{< include assets/w06/assoc.inline.qmd >}}
 
 ::: {.footer}
@@ -269,6 +279,12 @@ outline W6 §Key math 3 · Katharopoulos et al., ICML 2020 §3.2 Eq. (7): $\phi 
 :::
 
 ## Causal: the sum becomes a recurrence, and the notebook
+
+$$\mathbf{o}_t^\top = \phi(\mathbf{q}_t)^\top \sum_{s \leq t}\phi(\mathbf{k}_s)\mathbf{v}_s^\top \quad\Rightarrow\quad \mathbf{S}_t = \mathbf{S}_{t-1} + \phi(\mathbf{k}_t)\mathbf{v}_t^\top, \qquad \mathbf{z}_t = \mathbf{z}_{t-1} + \phi(\mathbf{k}_t)$$
+
+::: {.fragment fragment-index=1}
+$$\mathbf{o}_t = \frac{\mathbf{S}_t^\top\phi(\mathbf{q}_t)}{\mathbf{z}_t^\top\phi(\mathbf{q}_t)}$$
+:::
 
 {{< include assets/w06/recurrence.inline.qmd >}}
 
@@ -355,7 +371,7 @@ w06-data.json capacity · Misconception 5: "linear attention is a cheaper, worse
 |:---|:---|:---|:---|
 | **linear attention** (2020) | $\mathbf{I}$ | $\phi(\mathbf{k}_t)\mathbf{v}_t^\top$ | nothing fades; the notebook fills |
 | **RetNet** (2023) | $\gamma\,\mathbf{I}$, $\gamma$ fixed, one per head | $\mathbf{k}_t\mathbf{v}_t^\top$ | old ink fades at a constant rate |
-| **Mamba-2 / SSD** (2024) | $\gamma_t\,\mathbf{I}$, $\gamma_t = \exp(\Delta_t a_t)$ from the input | $\mathbf{k}_t\mathbf{v}_t^\top$ | the input decides how fast to forget |
+| **Mamba-2 / SSD** (2024) | $\gamma_t\,\mathbf{I}$, $\gamma_t = \exp(\Delta_t a)$: $a < 0$ fixed per head, $\Delta_t$ from the input | $\mathbf{k}_t\mathbf{v}_t^\top$ | the input decides how fast to forget |
 | **GLA** (2024) | $\mathrm{diag}(\boldsymbol{\gamma}_t)$, one rate per dimension | $\mathbf{k}_t\mathbf{v}_t^\top$ | some rows fade faster than others |
 | **DeltaNet** (2024) | $\mathbf{I} - \beta_t\mathbf{k}_t\mathbf{k}_t^\top$ | $\beta_t\,\mathbf{k}_t\mathbf{v}_t^\top$ | erase along $\mathbf{k}_t$ before writing (p29) |
 | **Gated DeltaNet** (2025) | $\gamma_t(\mathbf{I} - \beta_t\mathbf{k}_t\mathbf{k}_t^\top)$ | $\beta_t\,\mathbf{k}_t\mathbf{v}_t^\top$ | both; what Qwen3-Next ships |
@@ -387,6 +403,16 @@ outline W6 §Key math 4 · Yang et al., NeurIPS 2024 §2.2 · GDN, ICLR 2025 · 
 
 ## S4 → Mamba: selection is W1's gate, and it costs the convolution
 
+$$\mathbf{h}' = \mathbf{A}\mathbf{h} + \mathbf{B}\,x,\ \ y = \mathbf{C}^\top\mathbf{h} \quad\xrightarrow{\ \text{step } \Delta\ }\quad \mathbf{h}_t = \bar{\mathbf{A}}\mathbf{h}_{t-1} + \bar{\mathbf{B}}\,x_t,\ \ \bar{\mathbf{A}} = \exp(\Delta\mathbf{A})$$
+
+::: {.fragment fragment-index=1}
+$$\text{Mamba: }\ \mathbf{B}_t,\ \mathbf{C}_t = \mathrm{Linear}(\mathbf{x}_t), \quad \Delta_t = \mathrm{softplus}\big(\mathrm{Linear}(\mathbf{x}_t) + \text{param}\big), \quad \mathbf{A} \text{ input-free}$$
+:::
+
+::: {.fragment fragment-index=2}
+$$\text{Mamba-2: }\ \mathbf{A} = a\mathbf{I},\ a < 0 \;\Rightarrow\; \bar{\mathbf{A}}_t = \exp(\Delta_t a)\,\mathbf{I} = \gamma_t\mathbf{I}, \qquad \mathbf{q}_t = \mathbf{C}_t,\ \mathbf{k}_t = \mathbf{B}_t,\ \mathbf{v}_t = x_t$$
+:::
+
 ![](assets/w06/ssm.svg){width="100%"}
 
 ::: {.claim}
@@ -397,7 +423,11 @@ outline W6 §Key math 4 · Yang et al., NeurIPS 2024 §2.2 · GDN, ICLR 2025 · 
 Gu, Goel & Ré 2022 · Gu & Dao 2024 §3.2 Alg. 2 · Misconception 6: "Mamba is the RNN revived"
 :::
 
-## SSD: unroll the recurrence, and a semiseparable mask appears
+## SSD: unrolled, the recurrence is a semiseparable mask
+
+$$\mathbf{S}_t = \gamma_t\mathbf{S}_{t-1} + \mathbf{k}_t\mathbf{v}_t^\top \;\Rightarrow\; \mathbf{S}_t = \sum_{s \leq t}\Lambda_{ts}\,\mathbf{k}_s\mathbf{v}_s^\top, \qquad \Lambda_{ts} = \prod_{r=s+1}^{t}\gamma_r \ (t \geq s),\ 0 \text{ above the diagonal}$$
+
+$$\mathbf{o}_t^\top = \sum_{s \leq t}\Lambda_{ts}\,(\mathbf{q}_t^\top\mathbf{k}_s)\,\mathbf{v}_s^\top \quad\Longleftrightarrow\quad \mathbf{O} = \big(\boldsymbol{\Lambda} \circ \mathbf{Q}\mathbf{K}^\top\big)\mathbf{V}$$
 
 {{< include assets/w06/lambda.inline.qmd >}}
 
@@ -421,6 +451,10 @@ W1 p62 · W5 p49 · Misconception 7: "a fixed state has no position information"
 ## Per layer: the KV line and the flat line cross at $L^\star$
 
 {{< include assets/w06/crossover.inline.qmd >}}
+
+::: {.fragment fragment-index=1}
+$$2\,n_{\text{kv}}\,d_{\text{head}}\,L^\star = n_{\text{head}}\,d_{\text{head}}^2 \;\Rightarrow\; L^\star = \frac{n_{\text{head}}\,d_{\text{head}}}{2\,n_{\text{kv}}} = 64 \text{ (MHA)},\ 256 \text{ (GQA-8, } 32 \times 128 / 16)$$
+:::
 
 ::: {.footer}
 outline W6 §Key math 6 · W3 demo 2's config · GLA: $n_{\text{head}}d_kd_v$ · Mamba-2: $n_{\text{head}}d_{\text{head}}d_{\text{state}}$
@@ -539,10 +573,10 @@ Clark 2022 · Abnar 2025 · W2 p62 · W4 p55 · Misconception 9: "results compar
 ::: {.column width="50%"}
 **Kimi Linear (arXiv:2510.26692), "beats full MLA under a fair comparison"**
 
-- fixed: **same training recipe and tokens, same parameter budget** (48B/3B both) — ask: iso-*active* or iso-*total*?
-- varied: the attention layer type (KDA hybrid vs. all-MLA vs. GDN hybrid)
-- the throughput numbers: at *which* $L$? (the abstract's 6× decode is at 1M)
-- not fixed by the abstract: the hybrid ratio (chosen by ablation, §5.2), the recall-specific tasks
+- fixed (§5.4): **same architecture, parameter count, training setup** — 48B/3B, 1.4T tokens, a 4k pre-training window; iso-*active* and iso-*total* at once
+- varied: the attention layer type (KDA hybrid · all-MLA · GDN hybrid)
+- throughput at *which* $L$? the abstract's 6× decode is at 1M; training saw 4k
+- the ratio (§5.2): 0:1 … 15:1 judged by **perplexity**; 0:1 "performed poorly" — on perplexity, which hides recall (p42)
 :::
 ::: {.column width="50%"}
 **DeepSeek-V3 (arXiv:2412.19437) §2.1.2, aux-loss-free vs. auxiliary loss**
