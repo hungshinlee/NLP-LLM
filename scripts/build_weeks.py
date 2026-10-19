@@ -143,6 +143,8 @@ _DEMO_LINK = re.compile(r"^\[Demo (\d+) · (.+?)\]\((\S+)\)$")
 _DEMO_PLAIN = re.compile(r"^Demo (\d+) · (.+)$")
 
 def _demo_title(cell):
+    # 大綱裡 `|  [Demo` 多打一個空格就比不中、整格原樣上站（2026-10-19 NLP-LLM W5、W6）——先 strip
+    cell = cell.strip()
     m = _DEMO_LINK.match(cell)
     if m:
         return "[**Demo %s**](%s)<br>[%s]{.demo-sub}" % (m.group(1), m.group(3), m.group(2))
