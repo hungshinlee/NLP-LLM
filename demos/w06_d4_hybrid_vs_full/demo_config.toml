@@ -1,0 +1,75 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W6 demo 4（投影片 p37「Replay + live: demo 4 — cache against L, and recall」）的設定
+#
+# 改這個檔就能換模型、換 context 長度、換題數，不必動程式。
+
+[demo]
+title = "W6 · Replay + live: demo 4 — a parallel hybrid against full attention: cache against L, and recall"
+# 跑的順序（rehearse、replay、show 都照這個序）。optional = true 的模型只在 --model 點名時跑。
+order = ["qwen3_8b", "falcon_h1", "mamba2"]
+# (b) 每個（檔次 × 位置）幾題；彩排 = 模型數 × len(sizes) × 5 × q 次生成。
+q = 20
+# (b) 題目的亂數種子：與 W5 demo 3 相同，K 也相同（下面 [[sizes]].k），所以是同一批鍵值對、同一個答案鍵——
+# 兩個模型答的是 W5 問 Llama 3.1 8B 的那 200 題。現場 show 用 seed + live_offset，和彩排的題不同。
+seed = 20261012
+live_offset = 1000
+# (b) 生成：值只有一個 UUID（36 字元，約 20 多個 token），48 夠；temperature 0 = greedy。
+max_tokens = 48
+temperature = 0.0
+# 課堂（show）的現場題：[檔次, 答案位置]，每題兩個模型各答一次。位置：first / quarter / middle / three_quarter / last。
+live_questions = [["4k", "middle"], ["16k", "middle"], ["16k", "first"]]
+
+# ── (a) cache 對 L ─────────────────────────────────────────────
+[memory]
+# 量哪幾個 prompt 長度。與 p37 圖的橫軸一致；"max" 不用（Falcon-H1 名義 262144、Qwen3-8B 40960，都不量到底）。
+contexts = [1024, 4096, 8192, 16384, 32768]
+max_context = 0
+# prefill 分塊大小，與 mlx-lm generate_step 的 prefill_step_size 預設相同（2048）；Falcon-H1 的 SSM 在每塊裡再以 256 一步走 ssm_attn。
+prefill_step_size = 2048
+# 假 token 的亂數種子（prefill 的內容不影響記憶體，只影響可重現性）。
+seed = 20261019
+
+# ── (b) 兩個 context 檔次 ──────────────────────────────────────
+# K 固定為 W5 demo 3 在 Llama 3.1 tokenizer 下校準出的值（runs/rehearsal/inspect.json：4,101／16,182 tok），不再校準——
+# 這樣兩個模型答的是同一批題。Qwen3 與 Falcon-H1 的 tokenizer 下實際 token 數由 inspect 印出（UUID 的 hex 切分略有不同）。
+[[sizes]]
+label = "4k"
+target_tokens = 4096
+k = 81
+
+[[sizes]]
+label = "16k"
+target_tokens = 16384
+k = 326
+
+# ── 提示詞（逐字同 W5 demo 3）───────────────────────────────────
+[prompt]
+system = "Answer with the value only: a single UUID, no other words."
+instruction = "Extract the value corresponding to the specified key in the JSON object below."
+question = "Key: \"{key}\"\nCorresponding value:"
+
+# ── 模型 ───────────────────────────────────────────────────────
+# 形狀（層數、KV head、head_dim、SSM 狀態）**由程式現場讀 config.json 與探針**，note 只是備課時的印象值。
+[models.qwen3_8b]
+repo = "mlx-community/Qwen3-8B-4bit"
+label = "Qwen3-8B (4-bit MLX, full attention)"
+short = "Qwen3-8B"
+note = "36 層、8 個 KV head、head_dim 128、名義長度 40960；每 token 144 KiB；已在 W3 demo 2 鎖在 ../versions.lock，不必 fetch。chat template 接受 enable_thinking=False"
+revision = ""
+
+[models.falcon_h1]
+repo = "mlx-community/Falcon-H1-7B-Instruct-4bit"
+label = "Falcon-H1-7B-Instruct (4-bit MLX, parallel hybrid)"
+short = "Falcon-H1-7B"
+note = "44 層每層 attention（2 個 KV head、head_dim 128）+ Mamba-2（24 head × 128 × d_state 256）並聯；attn_layer_indices null；每 token 44 KiB + 固定狀態；名義長度 262144。第一次要 fetch（約 4.3 GB）"
+revision = ""
+
+# 若時間：純 Mamba-2，才會是平線。只做 (a)（base 模型、沒有 chat template，(b) 不適用）；能不能載待實測。
+[models.mamba2]
+repo = "mlx-community/Mamba-Codestral-7B-v0.1-4bit"
+label = "Mamba-Codestral-7B (4-bit MLX, pure Mamba-2)"
+short = "Mamba-Codestral-7B"
+note = "mlx-lm 的 mamba2.py；每層 ArraysCache(size=2)、沒有 KV；約 4.1 GB。optional：fetch --only mamba2、rehearse --model mamba2 --part memory"
+revision = ""
+optional = true
+parts = ["memory"]

@@ -1,0 +1,466 @@
+{
+ "models": {
+  "qwen3_8b": {
+   "cells": [
+    {
+     "size": "4k",
+     "K": 81,
+     "pos_name": "first",
+     "pos_label": "1",
+     "pos": 1,
+     "n": 20,
+     "em": 15,
+     "lenient": 15,
+     "acc": 0.75,
+     "acc_lenient": 0.75,
+     "kinds": {
+      "correct": 15,
+      "key": 5
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 5576,
+     "mean_seconds": 3.87,
+     "mean_prompt_tps": 1691
+    },
+    {
+     "size": "4k",
+     "K": 81,
+     "pos_name": "quarter",
+     "pos_label": "⌊K/4⌋",
+     "pos": 20,
+     "n": 20,
+     "em": 16,
+     "lenient": 16,
+     "acc": 0.8,
+     "acc_lenient": 0.8,
+     "kinds": {
+      "key": 2,
+      "correct": 16,
+      "other_value": 2
+     },
+     "mean_offset": 10.5,
+     "mean_prompt_tokens": 5576,
+     "mean_seconds": 4.12,
+     "mean_prompt_tps": 1630
+    },
+    {
+     "size": "4k",
+     "K": 81,
+     "pos_name": "middle",
+     "pos_label": "⌊K/2⌋",
+     "pos": 40,
+     "n": 20,
+     "em": 17,
+     "lenient": 17,
+     "acc": 0.85,
+     "acc_lenient": 0.85,
+     "kinds": {
+      "other_value": 2,
+      "correct": 17,
+      "key": 1
+     },
+     "mean_offset": -13.0,
+     "mean_prompt_tokens": 5576,
+     "mean_seconds": 4.04,
+     "mean_prompt_tps": 1661
+    },
+    {
+     "size": "4k",
+     "K": 81,
+     "pos_name": "three_quarter",
+     "pos_label": "⌊3K/4⌋",
+     "pos": 60,
+     "n": 20,
+     "em": 17,
+     "lenient": 17,
+     "acc": 0.85,
+     "acc_lenient": 0.85,
+     "kinds": {
+      "other_value": 2,
+      "correct": 17,
+      "not_in_context": 1
+     },
+     "mean_offset": 9.0,
+     "mean_prompt_tokens": 5576,
+     "mean_seconds": 3.84,
+     "mean_prompt_tps": 1667
+    },
+    {
+     "size": "4k",
+     "K": 81,
+     "pos_name": "last",
+     "pos_label": "K",
+     "pos": 81,
+     "n": 20,
+     "em": 20,
+     "lenient": 20,
+     "acc": 1.0,
+     "acc_lenient": 1.0,
+     "kinds": {
+      "correct": 20
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 5576,
+     "mean_seconds": 3.82,
+     "mean_prompt_tps": 1673
+    },
+    {
+     "size": "16k",
+     "K": 326,
+     "pos_name": "first",
+     "pos_label": "1",
+     "pos": 1,
+     "n": 20,
+     "em": 16,
+     "lenient": 16,
+     "acc": 0.8,
+     "acc_lenient": 0.8,
+     "kinds": {
+      "correct": 16,
+      "key": 4
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 22163,
+     "mean_seconds": 17.32,
+     "mean_prompt_tps": 1327
+    },
+    {
+     "size": "16k",
+     "K": 326,
+     "pos_name": "quarter",
+     "pos_label": "⌊K/4⌋",
+     "pos": 81,
+     "n": 20,
+     "em": 5,
+     "lenient": 5,
+     "acc": 0.25,
+     "acc_lenient": 0.25,
+     "kinds": {
+      "other_value": 11,
+      "correct": 5,
+      "not_in_context": 2,
+      "key": 2
+     },
+     "mean_offset": -32.0,
+     "mean_prompt_tokens": 22163,
+     "mean_seconds": 17.35,
+     "mean_prompt_tps": 1323
+    },
+    {
+     "size": "16k",
+     "K": 326,
+     "pos_name": "middle",
+     "pos_label": "⌊K/2⌋",
+     "pos": 163,
+     "n": 20,
+     "em": 3,
+     "lenient": 3,
+     "acc": 0.15,
+     "acc_lenient": 0.15,
+     "kinds": {
+      "key": 4,
+      "not_in_context": 5,
+      "correct": 3,
+      "other_value": 8
+     },
+     "mean_offset": -10.2,
+     "mean_prompt_tokens": 22163,
+     "mean_seconds": 17.31,
+     "mean_prompt_tps": 1326
+    },
+    {
+     "size": "16k",
+     "K": 326,
+     "pos_name": "three_quarter",
+     "pos_label": "⌊3K/4⌋",
+     "pos": 244,
+     "n": 20,
+     "em": 3,
+     "lenient": 3,
+     "acc": 0.15,
+     "acc_lenient": 0.15,
+     "kinds": {
+      "key": 2,
+      "not_in_context": 6,
+      "other_value": 9,
+      "correct": 3
+     },
+     "mean_offset": -30.9,
+     "mean_prompt_tokens": 22163,
+     "mean_seconds": 17.27,
+     "mean_prompt_tps": 1329
+    },
+    {
+     "size": "16k",
+     "K": 326,
+     "pos_name": "last",
+     "pos_label": "K",
+     "pos": 326,
+     "n": 20,
+     "em": 19,
+     "lenient": 19,
+     "acc": 0.95,
+     "acc_lenient": 0.95,
+     "kinds": {
+      "key": 1,
+      "correct": 19
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 22163,
+     "mean_seconds": 17.24,
+     "mean_prompt_tps": 1331
+    }
+   ],
+   "date": "2026-10-19T10:23:18",
+   "model": "mlx-community/Qwen3-8B-4bit",
+   "revision": "545dc4251c05440727734bcd94334791f6ab0192",
+   "label": "Qwen3-8B (4-bit MLX, full attention)",
+   "short": "Qwen3-8B",
+   "key": "qwen3_8b",
+   "fake": false,
+   "q": 20,
+   "seconds_total": 2124,
+   "peak_memory_gb": 8.467834924,
+   "max_position_embeddings": 40960,
+   "rope_scaling": null,
+   "think_supported": true,
+   "system_merged": false,
+   "render_error": null,
+   "system": "Answer with the value only: a single UUID, no other words.",
+   "instruction": "Extract the value corresponding to the specified key in the JSON object below.",
+   "temperature": 0.0
+  },
+  "falcon_h1": {
+   "cells": [
+    {
+     "size": "4k",
+     "K": 81,
+     "pos_name": "first",
+     "pos_label": "1",
+     "pos": 1,
+     "n": 20,
+     "em": 0,
+     "lenient": 0,
+     "acc": 0.0,
+     "acc_lenient": 0.0,
+     "kinds": {
+      "no_uuid": 20
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 5999,
+     "mean_seconds": 4.98,
+     "mean_prompt_tps": 1353
+    },
+    {
+     "size": "4k",
+     "K": 81,
+     "pos_name": "quarter",
+     "pos_label": "⌊K/4⌋",
+     "pos": 20,
+     "n": 20,
+     "em": 0,
+     "lenient": 0,
+     "acc": 0.0,
+     "acc_lenient": 0.0,
+     "kinds": {
+      "no_uuid": 20
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 5999,
+     "mean_seconds": 4.98,
+     "mean_prompt_tps": 1348
+    },
+    {
+     "size": "4k",
+     "K": 81,
+     "pos_name": "middle",
+     "pos_label": "⌊K/2⌋",
+     "pos": 40,
+     "n": 20,
+     "em": 0,
+     "lenient": 0,
+     "acc": 0.0,
+     "acc_lenient": 0.0,
+     "kinds": {
+      "no_uuid": 20
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 5999,
+     "mean_seconds": 5.05,
+     "mean_prompt_tps": 1357
+    },
+    {
+     "size": "4k",
+     "K": 81,
+     "pos_name": "three_quarter",
+     "pos_label": "⌊3K/4⌋",
+     "pos": 60,
+     "n": 20,
+     "em": 0,
+     "lenient": 0,
+     "acc": 0.0,
+     "acc_lenient": 0.0,
+     "kinds": {
+      "no_uuid": 20
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 5999,
+     "mean_seconds": 5.06,
+     "mean_prompt_tps": 1340
+    },
+    {
+     "size": "4k",
+     "K": 81,
+     "pos_name": "last",
+     "pos_label": "K",
+     "pos": 81,
+     "n": 20,
+     "em": 0,
+     "lenient": 0,
+     "acc": 0.0,
+     "acc_lenient": 0.0,
+     "kinds": {
+      "no_uuid": 20
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 5999,
+     "mean_seconds": 5.02,
+     "mean_prompt_tps": 1344
+    },
+    {
+     "size": "16k",
+     "K": 326,
+     "pos_name": "first",
+     "pos_label": "1",
+     "pos": 1,
+     "n": 20,
+     "em": 0,
+     "lenient": 0,
+     "acc": 0.0,
+     "acc_lenient": 0.0,
+     "kinds": {
+      "no_uuid": 20
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 23870,
+     "mean_seconds": 20.26,
+     "mean_prompt_tps": 1227
+    },
+    {
+     "size": "16k",
+     "K": 326,
+     "pos_name": "quarter",
+     "pos_label": "⌊K/4⌋",
+     "pos": 81,
+     "n": 20,
+     "em": 0,
+     "lenient": 0,
+     "acc": 0.0,
+     "acc_lenient": 0.0,
+     "kinds": {
+      "no_uuid": 20
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 23870,
+     "mean_seconds": 20.19,
+     "mean_prompt_tps": 1234
+    },
+    {
+     "size": "16k",
+     "K": 326,
+     "pos_name": "middle",
+     "pos_label": "⌊K/2⌋",
+     "pos": 163,
+     "n": 20,
+     "em": 0,
+     "lenient": 0,
+     "acc": 0.0,
+     "acc_lenient": 0.0,
+     "kinds": {
+      "no_uuid": 20
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 23870,
+     "mean_seconds": 20.28,
+     "mean_prompt_tps": 1229
+    },
+    {
+     "size": "16k",
+     "K": 326,
+     "pos_name": "three_quarter",
+     "pos_label": "⌊3K/4⌋",
+     "pos": 244,
+     "n": 20,
+     "em": 0,
+     "lenient": 0,
+     "acc": 0.0,
+     "acc_lenient": 0.0,
+     "kinds": {
+      "no_uuid": 20
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 23870,
+     "mean_seconds": 20.39,
+     "mean_prompt_tps": 1221
+    },
+    {
+     "size": "16k",
+     "K": 326,
+     "pos_name": "last",
+     "pos_label": "K",
+     "pos": 326,
+     "n": 20,
+     "em": 0,
+     "lenient": 0,
+     "acc": 0.0,
+     "acc_lenient": 0.0,
+     "kinds": {
+      "no_uuid": 20
+     },
+     "mean_offset": null,
+     "mean_prompt_tokens": 23870,
+     "mean_seconds": 20.25,
+     "mean_prompt_tps": 1229
+    }
+   ],
+   "date": "2026-10-19T11:05:29",
+   "model": "mlx-community/Falcon-H1-7B-Instruct-4bit",
+   "revision": "3a0e8b0b266ed0b837dd9a49a3dd248237c464fa",
+   "label": "Falcon-H1-7B-Instruct (4-bit MLX, parallel hybrid)",
+   "short": "Falcon-H1-7B",
+   "key": "falcon_h1",
+   "fake": false,
+   "q": 20,
+   "seconds_total": 2530,
+   "peak_memory_gb": 8.998118212,
+   "max_position_embeddings": 262144,
+   "rope_scaling": null,
+   "think_supported": true,
+   "system_merged": false,
+   "render_error": null,
+   "system": "Answer with the value only: a single UUID, no other words.",
+   "instruction": "Extract the value corresponding to the specified key in the JSON object below.",
+   "temperature": 0.0
+  }
+ },
+ "date": "2026-10-19T11:05:29",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "fake": false
+}

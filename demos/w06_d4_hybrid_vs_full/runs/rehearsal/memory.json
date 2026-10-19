@@ -1,0 +1,417 @@
+{
+ "models": {
+  "qwen3_8b": {
+   "model": "mlx-community/Qwen3-8B-4bit",
+   "revision": "545dc4251c05440727734bcd94334791f6ab0192",
+   "label": "Qwen3-8B (4-bit MLX, full attention)",
+   "short": "Qwen3-8B",
+   "key": "qwen3_8b",
+   "fake": false,
+   "baseline_active_bytes": 4607731720,
+   "prefill_step_size": 2048,
+   "config": {
+    "model_type": "qwen3",
+    "num_hidden_layers": 36,
+    "num_attention_heads": 32,
+    "num_key_value_heads": 8,
+    "hidden_size": 4096,
+    "head_dim": 128,
+    "head_dim_in_config": true,
+    "max_position_embeddings": 40960,
+    "vocab_size": 151936,
+    "rope_scaling": null,
+    "quantization": {
+     "group_size": 64,
+     "bits": 4
+    }
+   },
+   "raw_keys": {
+    "max_position_embeddings": 40960
+   },
+   "bytes_per_elem": 2,
+   "kv_dtype": "mlx.core.bfloat16",
+   "kv_probe_shape": [
+    1,
+    8,
+    256,
+    128
+   ],
+   "n_attn_layers": 36,
+   "layer_types": {
+    "KVCache": 36
+   },
+   "probe_parts": [
+    {
+     "layer": 0,
+     "class": "KVCache",
+     "part": "keys",
+     "kind": "kv",
+     "shape": [
+      1,
+      8,
+      256,
+      128
+     ],
+     "dtype": "mlx.core.bfloat16",
+     "nbytes": 524288
+    },
+    {
+     "layer": 0,
+     "class": "KVCache",
+     "part": "values",
+     "kind": "kv",
+     "shape": [
+      1,
+      8,
+      256,
+      128
+     ],
+     "dtype": "mlx.core.bfloat16",
+     "nbytes": 524288
+    }
+   ],
+   "weight_bytes": 4607731712,
+   "kv_bytes_per_token": 147456,
+   "fixed_state_bytes": 0,
+   "ssm_state_dtype": null,
+   "fixed_state_formula": null,
+   "contexts": [
+    {
+     "L": 1024,
+     "label": "1k"
+    },
+    {
+     "L": 4096,
+     "label": "4k"
+    },
+    {
+     "L": 8192,
+     "label": "8k"
+    },
+    {
+     "L": 16384,
+     "label": "16k"
+    },
+    {
+     "L": 32768,
+     "label": "32k"
+    }
+   ],
+   "rows": [
+    {
+     "L": 1024,
+     "cache_nbytes": 150994944,
+     "kv_nbytes": 150994944,
+     "ssm_state_nbytes": 0,
+     "conv_state_nbytes": 0,
+     "active_delta": 150994944,
+     "peak_delta": 788533300,
+     "seconds": 0.45983219146728516,
+     "prefill_tps": 2226.8993319769625,
+     "fake": false,
+     "label": "1k",
+     "date": "2026-10-19T09:39:24"
+    },
+    {
+     "L": 4096,
+     "cache_nbytes": 603979776,
+     "kv_nbytes": 603979776,
+     "ssm_state_nbytes": 0,
+     "conv_state_nbytes": 0,
+     "active_delta": 603979776,
+     "peak_delta": 1354768428,
+     "seconds": 1.1210758686065674,
+     "prefill_tps": 3653.6331881722613,
+     "fake": false,
+     "label": "4k",
+     "date": "2026-10-19T09:39:25"
+    },
+    {
+     "L": 8192,
+     "cache_nbytes": 1207959552,
+     "kv_nbytes": 1207959552,
+     "ssm_state_nbytes": 0,
+     "conv_state_nbytes": 0,
+     "active_delta": 1207959552,
+     "peak_delta": 1862279200,
+     "seconds": 2.4647088050842285,
+     "prefill_tps": 3323.7192089797595,
+     "fake": false,
+     "label": "8k",
+     "date": "2026-10-19T09:39:27"
+    },
+    {
+     "L": 16384,
+     "cache_nbytes": 2415919104,
+     "kv_nbytes": 2415919104,
+     "ssm_state_nbytes": 0,
+     "conv_state_nbytes": 0,
+     "active_delta": 2415919104,
+     "peak_delta": 3019907104,
+     "seconds": 6.899850368499756,
+     "prefill_tps": 2374.5442473359603,
+     "fake": false,
+     "label": "16k",
+     "date": "2026-10-19T09:39:34"
+    },
+    {
+     "L": 32768,
+     "cache_nbytes": 4831838208,
+     "kv_nbytes": 4831838208,
+     "ssm_state_nbytes": 0,
+     "conv_state_nbytes": 0,
+     "active_delta": 4831838208,
+     "peak_delta": 5519712288,
+     "seconds": 18.454432010650635,
+     "prefill_tps": 1775.616826412677,
+     "fake": false,
+     "label": "32k",
+     "date": "2026-10-19T09:39:53"
+    }
+   ]
+  },
+  "falcon_h1": {
+   "model": "mlx-community/Falcon-H1-7B-Instruct-4bit",
+   "revision": "3a0e8b0b266ed0b837dd9a49a3dd248237c464fa",
+   "label": "Falcon-H1-7B-Instruct (4-bit MLX, parallel hybrid)",
+   "short": "Falcon-H1-7B",
+   "key": "falcon_h1",
+   "fake": false,
+   "baseline_active_bytes": 4272152804,
+   "prefill_step_size": 2048,
+   "config": {
+    "model_type": "falcon_h1",
+    "num_hidden_layers": 44,
+    "num_attention_heads": 12,
+    "num_key_value_heads": 2,
+    "hidden_size": 3072,
+    "head_dim": 128,
+    "head_dim_in_config": true,
+    "max_position_embeddings": 262144,
+    "vocab_size": 130049,
+    "rope_scaling": null,
+    "quantization": {
+     "group_size": 64,
+     "bits": 4,
+     "mode": "affine"
+    }
+   },
+   "raw_keys": {
+    "attn_layer_indices": null,
+    "mamba_chunk_size": 256,
+    "mamba_conv_bias": true,
+    "mamba_d_conv": 4,
+    "mamba_d_head": 128,
+    "mamba_d_ssm": 3072,
+    "mamba_d_state": 256,
+    "mamba_expand": 2,
+    "mamba_n_groups": 1,
+    "mamba_n_heads": 24,
+    "mamba_norm_before_gate": false,
+    "mamba_proj_bias": false,
+    "mamba_rms_norm": true,
+    "mamba_use_mlp": true,
+    "max_position_embeddings": 262144
+   },
+   "bytes_per_elem": 2,
+   "kv_dtype": "mlx.core.bfloat16",
+   "kv_probe_shape": [
+    1,
+    2,
+    256,
+    128
+   ],
+   "n_attn_layers": 44,
+   "layer_types": {
+    "CacheList(ArraysCache, KVCache)": 44
+   },
+   "probe_parts": [
+    {
+     "layer": 0,
+     "class": "ArraysCache",
+     "part": "[0]",
+     "kind": "conv_state",
+     "shape": [
+      1,
+      3,
+      3584
+     ],
+     "dtype": "mlx.core.bfloat16",
+     "nbytes": 21504
+    },
+    {
+     "layer": 0,
+     "class": "ArraysCache",
+     "part": "[1]",
+     "kind": "ssm_state",
+     "shape": [
+      1,
+      24,
+      128,
+      256
+     ],
+     "dtype": "mlx.core.float32",
+     "nbytes": 3145728
+    },
+    {
+     "layer": 0,
+     "class": "KVCache",
+     "part": "keys",
+     "kind": "kv",
+     "shape": [
+      1,
+      2,
+      256,
+      128
+     ],
+     "dtype": "mlx.core.bfloat16",
+     "nbytes": 131072
+    },
+    {
+     "layer": 0,
+     "class": "KVCache",
+     "part": "values",
+     "kind": "kv",
+     "shape": [
+      1,
+      2,
+      256,
+      128
+     ],
+     "dtype": "mlx.core.bfloat16",
+     "nbytes": 131072
+    }
+   ],
+   "weight_bytes": 4268656192,
+   "kv_bytes_per_token": 45056,
+   "fixed_state_bytes": 139358208,
+   "ssm_state_dtype": "mlx.core.float32",
+   "fixed_state_formula": {
+    "n_layer": 44,
+    "mamba_n_heads": 24,
+    "mamba_d_head": 128,
+    "mamba_d_state": 256,
+    "ssm_elems_per_layer": 786432,
+    "ssm_bytes_per_layer": 3145728,
+    "ssm_bytes_total": 138412032,
+    "state_bytes_per_elem": 4,
+    "conv_dim": 3584,
+    "conv_elems_per_layer": 10752
+   },
+   "contexts": [
+    {
+     "L": 1024,
+     "label": "1k"
+    },
+    {
+     "L": 4096,
+     "label": "4k"
+    },
+    {
+     "L": 8192,
+     "label": "8k"
+    },
+    {
+     "L": 16384,
+     "label": "16k"
+    },
+    {
+     "L": 32768,
+     "label": "32k"
+    }
+   ],
+   "rows": [
+    {
+     "L": 1024,
+     "cache_nbytes": 185495552,
+     "kv_nbytes": 46137344,
+     "ssm_state_nbytes": 138412032,
+     "conv_state_nbytes": 946176,
+     "active_delta": 508952584,
+     "peak_delta": 2527809924,
+     "seconds": 0.7110588550567627,
+     "prefill_tps": 1440.1058262867084,
+     "fake": false,
+     "label": "1k",
+     "date": "2026-10-19T09:39:54"
+    },
+    {
+     "L": 4096,
+     "cache_nbytes": 323907584,
+     "kv_nbytes": 184549376,
+     "ssm_state_nbytes": 138412032,
+     "conv_state_nbytes": 946176,
+     "active_delta": 970326024,
+     "peak_delta": 3987294468,
+     "seconds": 1.7020289897918701,
+     "prefill_tps": 2406.539503478653,
+     "fake": false,
+     "label": "4k",
+     "date": "2026-10-19T09:39:56"
+    },
+    {
+     "L": 8192,
+     "cache_nbytes": 508456960,
+     "kv_nbytes": 369098752,
+     "ssm_state_nbytes": 138412032,
+     "conv_state_nbytes": 946176,
+     "active_delta": 1154875392,
+     "peak_delta": 4177086716,
+     "seconds": 3.7975289821624756,
+     "prefill_tps": 2157.1922264396057,
+     "fake": false,
+     "label": "8k",
+     "date": "2026-10-19T09:40:00"
+    },
+    {
+     "L": 16384,
+     "cache_nbytes": 877555712,
+     "kv_nbytes": 738197504,
+     "ssm_state_nbytes": 138412032,
+     "conv_state_nbytes": 946176,
+     "active_delta": 1523974144,
+     "peak_delta": 4478028028,
+     "seconds": 8.24772596359253,
+     "prefill_tps": 1986.4869507453286,
+     "fake": false,
+     "label": "16k",
+     "date": "2026-10-19T09:40:08"
+    },
+    {
+     "L": 32768,
+     "cache_nbytes": 1615753216,
+     "kv_nbytes": 1476395008,
+     "ssm_state_nbytes": 138412032,
+     "conv_state_nbytes": 946176,
+     "active_delta": 2262171648,
+     "peak_delta": 5228808444,
+     "seconds": 19.123459815979004,
+     "prefill_tps": 1713.4974693554154,
+     "fake": false,
+     "label": "32k",
+     "date": "2026-10-19T09:40:27"
+    }
+   ]
+  }
+ },
+ "date": "2026-10-19T09:40:27",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.0.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "fake": false
+}
