@@ -18,6 +18,8 @@ max_tokens = 48
 temperature = 0.0
 # 課堂（show）的現場題：[檔次, 答案位置]，每題兩個模型各答一次。位置：first / quarter / middle / three_quarter / last。
 live_questions = [["4k", "middle"], ["16k", "middle"], ["16k", "first"]]
+# probe：每個模型先答這幾個普通問題（看回覆成不成句），再答 K = 5／20 的小題。
+probe_questions = ["What is the capital of France? Answer in one word.", "Reply with exactly this string and nothing else: 3f2a9c1e-7b4d-4e8f-9a6b-0c1d2e3f4a5b"]
 
 # ── (a) cache 對 L ─────────────────────────────────────────────
 [memory]

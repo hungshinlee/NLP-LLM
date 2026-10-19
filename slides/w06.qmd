@@ -474,29 +474,29 @@ outline W6 §formal (hybrid) · configs read 2026-10-18 · Zuo et al. 2025 (abst
 | | |
 |:---|:-----------------|
 | **Why** | p34 computed where the flat line and the KV line cross; p35 said a parallel hybrid still pays KV, with a smaller constant plus a fixed state. Measure both on real models of comparable size: Falcon-H1-7B-Instruct (parallel hybrid) against Qwen3-8B (full attention), both 4-bit MLX. |
-| **What runs** | Recorded before class; two or three questions live. (a) W3 demo 2's method: prompts from 1k to 32k tokens, the cache's bytes and the prefill time, one line per model, the formula lines of p35 underneath. (b) W5 demo 3's key–value retrieval at 4k and 16k, five positions, twenty questions each, per model. |
+| **What runs** | Recorded before class; two or three questions live. (a) W3 demo 2's method: prompts from 1k to 32k tokens, the cache's bytes and the prefill time, one line per model, the formula lines of p35 underneath. (b) W5 demo 3's key–value retrieval, the same questions and the same $K$ ($81$ and $326$ pairs), five positions, twenty questions each, per model. |
 | **Watch for** | (a) **The hybrid's line will not be flat** — it has attention in every layer. Predict its slope relative to Qwen3-8B's, and whether it starts above zero. (b) Falcon-H1 has attention heads too: does it lose recall, and if so, where? Either answer is a lesson. |
 :::
 
 ::: {.footer}
-Demo 4 · `demos/w06_d4_hybrid_vs_full` · mlx-lm, two 4-bit models · built 2026-10-19, unrehearsed
+Demo 4 · `demos/w06_d4_hybrid_vs_full` · mlx-lm, two 4-bit models · rehearsed 2026-10-19
 :::
 
 ## Replay + live: demo 4 — cache against $L$, and recall
 
-![](assets/w06/hybrid-axes.svg){width="100%"}
+{{< include assets/w06/hybrid-measured.inline.qmd >}}
 
-::: {.fragment fragment-index=1}
-| accuracy, 20 questions each | first | ⌊K/4⌋ | ⌊K/2⌋ | ⌊3K/4⌋ | last |
+::: {.fragment fragment-index=2}
+| exact match / 20 · $K = 81$ (≈ 5.6k tok) · $K = 326$ (≈ 22k tok) | first | ⌊K/4⌋ | ⌊K/2⌋ | ⌊3K/4⌋ | last |
 |:---|:---|:---|:---|:---|:---|
-| Qwen3-8B, 4k · 16k | | | | | |
-| Falcon-H1-7B, 4k · 16k | | | | | |
+| Qwen3-8B (full attention) | 15 · 16 | 16 · 5 | 17 · 3 | 17 · 3 | 20 · 19 |
+| Falcon-H1-7B (parallel hybrid) — no reply was a UUID | 0 · 0 | 0 · 0 | 0 · 0 | 0 · 0 | 0 · 0 |
 
-: {tbl-colwidths="[30,14,14,14,14,14]"}
+: {tbl-colwidths="[40,12,12,12,12,12]"}
 :::
 
 ::: {.footer}
-Demo 4 · replay + live · `w06_d4_hybrid_vs_full/` · built 2026-10-19, unrehearsed · formula lines only
+Demo 4 · replay + live · `w06_d4_hybrid_vs_full/` · rehearsed 2026-10-19 · (a) cache tensors after prefill · (b) same 200 questions as W5 demo 3
 :::
 
 ## The ledger, week 6: MoE filled in, fixed state added

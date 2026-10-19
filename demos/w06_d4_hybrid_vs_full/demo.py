@@ -5,6 +5,7 @@
 （投影片 p37「Replay + live: demo 4 — cache against L, and recall」；p36 是前導頁）。
 
     ./present.sh fetch                 第一次：下載 Falcon-H1-7B-Instruct-4bit 並鎖定 revision（Qwen3-8B-4bit 已在 W3 demo 2 鎖定）
+    ./present.sh probe                 課前：每個模型答一個普通問題與 K = 5／20 的小題，看回覆成不成句（彩排後加：分清「模型答不出」與「載入的模型有問題」）
     ./present.sh inspect               課前：兩個模型各載一次，印每層 cache 的類型與每個狀態張量的形狀／dtype、每 token 的 KV 公式、
                                        固定狀態的 bytes、chat template 是否吃 system／enable_thinking、兩個 tokenizer 下兩檔 prompt 的 token 數
     ./present.sh rehearse              課前彩排：每個模型先 memory（1k → 32k 各一次 prefill）再 recall（兩檔 × 五個位置 × Q 題）
@@ -375,10 +376,11 @@ def run_recall(m, cfg: dict, Q: int, sizes: list[dict]) -> dict:
 def print_slide_table(summaries: dict, cfg: dict) -> None:
     """p37 的十格：一個模型一列（兩檔並排），五個位置一欄。"""
     sizes = [s["label"] for s in cfg["sizes"]]
-    print(f"  {'exact match, Q per cell':<34}" + "".join(f"{lab:>14}" for _, lab, _ in W5.POSITIONS))
+    Ks = " · ".join(str(s["k"]) for s in cfg["sizes"])
+    print(f"  {'exact match /Q, K = ' + Ks:<34}" + "".join(f"{lab:>14}" for _, lab, _ in W5.POSITIONS))
     for key, summ in summaries.items():
         cells = {(c["size"], c["pos_name"]): c for c in summ["cells"]}
-        row = f"  {summ.get('short', summ['label'])[:22] + ', ' + ' · '.join(sizes):<34}"
+        row = f"  {summ.get('short', summ['label'])[:22] + ', K = ' + Ks:<34}"
         for name, _, _ in W5.POSITIONS:
             parts = []
             for s in sizes:
@@ -535,6 +537,31 @@ def cmd_inspect(args, cfg):
     note(f"→ {path.relative_to(HERE)}")
 
 
+def cmd_probe(args, cfg):
+    """每個模型：一個普通問題 + 一題 K = 5 的 key-value retrieval，印原始回覆。回覆不成句就是載入的模型有問題，不是 recall。"""
+    for key in model_keys(cfg, args):
+        m = make_recall_model(key, cfg, args)
+        banner(f"probe  ·  {m.label}" + (f"  {RED}[FAKE]{RESET}" if m.fake else ""))
+        for q in cfg["demo"].get("probe_questions", ["What is the capital of France? Answer in one word."]):
+            msgs = [{"role": "user", "content": q}]
+            if m.fake:
+                text, st = "(fake) Paris", {"seconds": 0.0}
+            else:
+                try:
+                    prompt = m.tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True, enable_thinking=False)
+                except TypeError:
+                    prompt = m.tokenizer.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+                text, st = m.answer(cfg, prompt)
+            print(f"  {BOLD}Q:{RESET} {q}\n  {BOLD}A:{RESET} {text.strip()[:200]!r}   {GREY}{st.get('seconds')} s{RESET}")
+        for K in (5, 20):
+            q = W5.make_question(K, int(cfg["demo"]["seed"]) + 7 * K)
+            r = W5.ask(m, cfg, q, max(1, K // 2))
+            print(f"  {BOLD}K = {K}, answer at {max(1, K // 2)}:{RESET} {W5.mark(r)}  reply {r['reply'][:120]!r}   {GREY}{r['seconds']} s, {r.get('prompt_tokens')} tokens{RESET}"
+                  + (f"   {AMBER}{W5.describe_wrong(r)}{RESET}" if not r["em"] and W5.describe_wrong(r) else ""))
+        print()
+        del m
+
+
 def cmd_rehearse(args, cfg):
     parts = [args.part] if args.part else ["memory", "recall"]
     Q = int(args.q or cfg["demo"]["q"])
@@ -642,11 +669,11 @@ def main(argv=None):
     p.add_argument("--size", help="rehearse：只做一檔（4k / 16k）")
     p.add_argument("--q", type=int, help="rehearse：每格幾題；小於 demo_config 的 q 就是煙霧測試，寫到 runs/smoke/")
     sub = p.add_subparsers(dest="cmd", required=True)   # present.sh 把選項放在子命令前面，所以選項全掛在主 parser
-    for c in ("fetch", "inspect", "rehearse", "show", "replay"):
+    for c in ("fetch", "inspect", "probe", "rehearse", "show", "replay"):
         sub.add_parser(c)
     args = p.parse_args(argv)
     cfg = load_cfg()
-    {"fetch": cmd_fetch, "inspect": cmd_inspect, "rehearse": cmd_rehearse, "show": cmd_show, "replay": cmd_replay}[args.cmd](args, cfg)
+    {"fetch": cmd_fetch, "inspect": cmd_inspect, "probe": cmd_probe, "rehearse": cmd_rehearse, "show": cmd_show, "replay": cmd_replay}[args.cmd](args, cfg)
 
 
 if __name__ == "__main__":
