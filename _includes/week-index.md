@@ -7,7 +7,7 @@
 | **W3** | [Transformer I: Attention Mechanics, Complexity, and Building It by Hand](weeks/w03.qmd)<br>[Transformer I：attention 的機制、複雜度與手刻]{.wk-zh} | Architecture | [▶ Open](slides/w03.qmd) |
 | **W4** | [Transformer II: The Full Block, Parameter Accounting, and Training Dynamics](weeks/w04.qmd)<br>[Transformer II：完整 block、參數記帳與訓練動力學]{.wk-zh} | Architecture | [▶ Open](slides/w04.qmd) |
 | **W5** | [Positional Encoding, Long Context, and the Limits of Context](weeks/w05.qmd)<br>[位置編碼、長文本與 context 的極限]{.wk-zh} | Architecture | [▶ Open](slides/w05.qmd) |
-| **W6** | Architecture Routes: MoE, SSMs, and Linear Attention<br>[架構路線：MoE、SSM 與 linear attention]{.wk-zh} | Architecture | [▶ Open](slides/w06.qmd) |
+| **W6** | [Architecture Routes: MoE, SSMs, and Linear Attention](weeks/w06.qmd)<br>[架構路線：MoE、SSM 與 linear attention]{.wk-zh} | Architecture | [▶ Open](slides/w06.qmd) |
 | **W7** | Pre-training: Scaling Laws and Data Curation<br>[Pre-training：scaling laws 與資料策展]{.wk-zh} | Training | — |
 | **W8** | Post-training I: SFT, PEFT, and Forgetting<br>[Post-training I：SFT、PEFT 與遺忘]{.wk-zh} | Training | — |
 | **W9** | Post-training II: Preference Alignment and Reinforcement Learning<br>[Post-training II：偏好對齊與強化學習]{.wk-zh} | Training | — |
