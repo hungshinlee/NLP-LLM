@@ -671,7 +671,9 @@
      0.4607
     ],
     "negative_steps": 10,
-    "ema_mean_last20": 0.632
+    "ema_mean_last20": 0.632,
+    "sd_g_about_mean": 0.991,
+    "sd_ema_about_mean_from20": 0.164
    },
    {
     "label": "flips sign",
@@ -761,9 +763,24 @@
      0.1866
     ],
     "negative_steps": 19,
-    "ema_mean_last20": 0.012
+    "ema_mean_last20": 0.012,
+    "sd_g_about_mean": 0.792,
+    "sd_ema_about_mean_from20": 0.131
    }
   ],
+  "start": 20,
+  "sd_ratio_theory": 0.229,
+  "angle": {
+   "shared_direction": [
+    0.6,
+    0.0
+   ],
+   "threshold_deg": 45,
+   "batch_off": 26,
+   "batch_n": 40,
+   "ema_off_from20": 0,
+   "ema_n": 20
+  },
   "weights_sum_limit": 10.0,
   "note": "synthetic gradients (mean + N(0,1)), not from any model; ema = (1 - mu) M_t, i.e. Adam's m_t with beta_1 = mu (before bias correction)"
  }
