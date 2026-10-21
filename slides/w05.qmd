@@ -73,7 +73,7 @@ Three claims hide inside "a 128k context window": the architecture **allows** it
 :::
 
 ::: {.footer}
-Outline W5 · on the board: p15–16, p22, p36 · replayed: p26, p32, p43
+Outline W5 · on the board: p17–18, p24, p38 · replayed: p28, p34, p45
 :::
 
 ## What you should be able to do by the end of today
@@ -85,18 +85,56 @@ Outline W5 · on the board: p15–16, p22, p36 · replayed: p26, p32, p43
 5. State the **lost-in-the-middle** design; say why NIAH is a lower bound and what RULER and NoLiMa add
 6. Fill the ledger's long-context row for a real `config.json`: which term is $\propto L$, which $\propto L^2$, where they cross; state the **budget view of sparse attention**
 
-## W3 p45, restated — and the question for today
+## W3 p45, restated
 
 - **No mask**: $\mathrm{Attn}(\mathbf{P}\mathbf{X}) = \mathbf{P}\,\mathrm{Attn}(\mathbf{X})$ for any permutation $\mathbf{P}$ — attention addresses by content and has no idea where anything is
-- **Causal mask**: row $t$ sees exactly $t$ keys. The symmetry is broken and the count leaks position; a causal LM with **no positional term learns to use it** (Haviv et al. 2022) — W4's tiny GPT is the specimen on p4
+- **Causal mask**: row $t$ sees exactly $t$ keys. The symmetry breaks (p8), and the count leaks position once there is an anchor (p9); a causal LM with **no positional term learns to use it** (Haviv et al. 2022) — W4's tiny GPT is the specimen on p4
 - So "without positional encoding the model cannot tell order" is **false** for a causal LM. It was true of the un-masked encoder; that is where the sentence comes from
-
-::: {.ask}
-If the mask already lets the model learn its position, what does an **explicit** position buy? Write one sentence. Keep it: we come back to it at p46.
-:::
 
 ::: {.footer}
 W3 p45 · Haviv et al., Findings of EMNLP 2022 · Misconception 1: "no positions, no order"
+:::
+
+## Why the mask breaks it: scores move, the mask stays
+
+{{< include assets/w05/maskperm.inline.qmd >}}
+
+::: {.fragment fragment-index=3}
+$$\mathrm{Attn}_{\mathbf{M}}(\mathbf{P}\mathbf{X}) = \mathbf{P}\,\mathrm{softmax}\big(\mathbf{S} + \mathbf{P}^\top\mathbf{M}\mathbf{P}\big)\,\mathbf{V} = \mathbf{P}\,\mathrm{Attn}_{\mathbf{P}^\top\mathbf{M}\mathbf{P}}(\mathbf{X})$$
+
+::: {.claim}
+Shuffling the input = keeping the order under **another mask**. With no mask, $\mathbf{P}^\top\mathbf{0}\,\mathbf{P} = \mathbf{0}$; the causal $\mathbf{M}$ is its own shuffle only when nothing moves.
+:::
+:::
+
+::: {.fragment fragment-index=4}
+::: {.small}
+Checked (`w05-data.json`, float64, $n = 6$): no mask $8.9 \times 10^{-16}$ · causal $5.97$ · causal against $\mathrm{Attn}_{\mathbf{P}^\top\mathbf{M}\mathbf{P}}(\mathbf{X})$: $8.9 \times 10^{-16}$
+:::
+:::
+
+::: {.footer}
+$\mathbf{S}$: the logits $s_{mn}$ · $\mathbf{M}$: $0$ allowed, $-\infty$ masked (W3 p13) · without a mask: W3 p45
+:::
+
+## A count is a position only with an anchor
+
+{{< include assets/w05/anchor.inline.qmd >}}
+
+::: {.fragment fragment-index=4}
+::: {.claim}
+Haviv et al. **conjecture** this channel; Kazemnejad et al. **prove** a first layer can build it. Whether trained models use it has not been shown.
+:::
+:::
+
+::: {.fragment fragment-index=5}
+::: {.ask}
+If the mask already lets the model learn its position, what does an **explicit** position buy? Write one sentence. Keep it: we come back to it at p48.
+:::
+:::
+
+::: {.footer}
+Haviv et al. 2022, abstract · Kazemnejad et al., NeurIPS 2023, Thm 1 (§5.1, App. C.1)
 :::
 
 # Five ways to write the position {.section-title}
@@ -106,7 +144,7 @@ W3 p45 · Haviv et al., Findings of EMNLP 2022 · Misconception 1: "no positions
 ![](assets/w05/stamps.svg){width="100%"}
 
 ::: {.footer}
-the week's metaphor · it fails at NoPE (no stamp, still a position) and at the sink (p41)
+the week's metaphor · it fails at NoPE (no stamp, still a position) and at the sink (p43)
 :::
 
 ## Learned absolute and sinusoidal: the stamp is added to $\mathbf{x}$
@@ -149,7 +187,7 @@ $$\mathbf{q}_m \leftarrow \mathbf{R}_m \mathbf{q}_m, \qquad \mathbf{k}_n \leftar
 $$\mathbf{R}(\alpha) = \begin{pmatrix}\cos\alpha & -\sin\alpha\\ \sin\alpha & \cos\alpha\end{pmatrix}$$
 
 - $\theta_i = b^{-2i/d_{\text{head}}}$, $i = 0, \dots, d_{\text{head}}/2 - 1$: the **same frequencies as sinusoidal**, now acting per head, on pairs of coordinates
-- the base: $b = 10^4$ in RoFormer; $5 \times 10^5$ in the Llama 3 family (p28 says why it moved)
+- the base: $b = 10^4$ in RoFormer; $5 \times 10^5$ in the Llama 3 family (p30 says why it moved)
 - in code there is no matrix: the pair $(x_{2i}, x_{2i+1})$ becomes $(x_{2i}\cos m\theta_i - x_{2i+1}\sin m\theta_i,\ x_{2i}\sin m\theta_i + x_{2i+1}\cos m\theta_i)$ — "rotate-half"
 - **$\mathbf{V}$ is not rotated.** Position enters the logit and nowhere else
 
@@ -194,12 +232,12 @@ $$\mathbf{R}_m^\top\mathbf{R}_n = \mathbf{R}(-m\theta)\,\mathbf{R}(n\theta) = \m
 
 ::: {.fragment fragment-index=2}
 ::: {.small}
-Checked numerically (`w05-data.json`, float64): $m - n$ fixed, $m$ shifted over ten values — the RoPE score moves by $1.5 \times 10^{-15}$; the *additive* sinusoidal stamp, same shift, moves by $9.6$ (the cross terms of p10).
+Checked numerically (`w05-data.json`, float64): $m - n$ fixed, $m$ shifted over ten values — the RoPE score moves by $1.5 \times 10^{-15}$; the *additive* sinusoidal stamp, same shift, moves by $9.6$ (the cross terms of p12).
 :::
 :::
 
 ::: {.footer}
-outline W5 §Key math 2 · the key step: $\mathbf{R}_m^\top\mathbf{R}_n = \mathbf{R}_{n-m}$ · demo 1 checks it (p19)
+outline W5 §Key math 2 · the key step: $\mathbf{R}_m^\top\mathbf{R}_n = \mathbf{R}_{n-m}$ · demo 1 checks it (p21)
 :::
 
 ## Any $d_{\text{head}}$: pairs never mix, and $\mathbf{V}$ stays put
@@ -252,8 +290,8 @@ W3 p15 · W3 p32 · DeepSeek-AI, arXiv:2405.04434 §2.1
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p15–p16 proved on the board that the score depends on $m - n$ alone, and p17 drew two consequences from it. Written as code, the proof becomes a number: how close to exact it holds, and what breaks the property. |
-| **What runs** | An editor and a terminal; plain `torch`, pinned to the CPU in float64 — Metal has no double, W3 Demo 1's reason. Three functions written live, with the three tests run after each; after two minutes, the finished `rope_final.py` takes over. Then the wavelengths of all 64 pairs (p20). |
+| **Why** | p17–p18 proved on the board that the score depends on $m - n$ alone, and p19 drew two consequences from it. Written as code, the proof becomes a number: how close to exact it holds, and what breaks the property. |
+| **What runs** | An editor and a terminal; plain `torch`, pinned to the CPU in float64 — Metal has no double, W3 Demo 1's reason. Three functions written live, with the three tests run after each; after two minutes, the finished `rope_final.py` takes over. Then the wavelengths of all 64 pairs (p22). |
 | **Expect** | Test (a) — fix $m - n$, shift $m$ — should hold to floating-point rounding; if it does not, the rotation is wrong. Tests (b) and (c) are controls: what each one does is the prediction on the next slide. |
 :::
 
@@ -346,7 +384,7 @@ Chen et al. 2023 · bloc97 2023 (forum post) · Peng et al. 2023, v3 2026-02 · 
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p22–p24 said which pairs break past $L_{\text{train}}$ and what PI and NTK-aware do about it. Measure it on a model small enough to retrain: last week's tiny GPT, trained at length 256, read at 1,024. |
+| **Why** | p24–p26 said which pairs break past $L_{\text{train}}$ and what PI and NTK-aware do about it. Measure it on a model small enough to retrain: last week's tiny GPT, trained at length 256, read at 1,024. |
 | **What runs** | Recorded before class, replayed here. W4's tiny GPT retrained twice from the same seed — NoPE, and RoPE with $b = 10^4$ — then the RoPE model with [PI ($s = 4$)]{style="white-space: nowrap;"} and with NTK-aware, without retraining. On screen: the average loss at each position of a 1,024-character window, one line per model. |
 | **Watch for** | Draw the four lines first. Which is lowest inside 256, and what each does past it — against the dashed line at $\ln 65$, the loss of guessing uniformly among the 65 characters. |
 :::
@@ -407,7 +445,7 @@ Grattafiori et al., arXiv:2407.21783 §3.4 (body) · `transformers` llama3 rope 
 ## The base has a floor; and $b$ is why Llama 3 moved from $10^4$ to $5 \times 10^5$
 
 - **Men et al. 2024**: the base $b$ bounds the reachable context length from below — too small a $b$ and the "long-context ability" is superficial: perplexity looks fine, retrieval does not (abstract). "Raise $b$" is therefore not a free knob
-- **Llama 3** ships $b = 5 \times 10^5$ (herd paper §3.4, in the body): more pairs never complete a turn at 8k — p20's 29 vs. 14 — which is the point: those pairs are the slow hands that reach 128k
+- **Llama 3** ships $b = 5 \times 10^5$ (herd paper §3.4, in the body): more pairs never complete a turn at 8k — p22's 29 vs. 14 — which is the point: those pairs are the slow hands that reach 128k
 - **Xiong et al. 2023** (Llama 2 long-context continued pre-training): the change to the RoPE base is in the body; the abstract only says it "discusses the limitation"
 - the three repairs plus a larger base are **the toolbox every 2024–2026 long-context release draws from**; the `rope_scaling` block is where to look first
 
@@ -434,7 +472,7 @@ Liu et al., Lost in the Middle, TACL 12 (2024) §2, §4 · this week's reading, 
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p30 showed the design: move only the answer's position, measure accuracy. Run its cleanest version (Liu et al. §4) on this laptop, with the model W3 Demo 2 measured. |
+| **Why** | p32 showed the design: move only the answer's position, measure accuracy. Run its cleanest version (Liu et al. §4) on this laptop, with the model W3 Demo 2 measured. |
 | **What runs** | $K$ random UUID key–value pairs as JSON; ask for one key's value. The answer pair sits at position $1, \lfloor K/4 \rfloor, \lfloor K/2 \rfloor, \lfloor 3K/4 \rfloor, K$; $Q = 20$ questions each; exact match. Llama 3.1 8B Instruct, 4-bit MLX, at $K = 81$ ($\approx 4.1\text{k}$ tokens) and $K = 326$ ($\approx 16.2\text{k}$). Three questions live; the table from the rehearsal. |
 | **Watch for** | Whether the paper's U appears — accuracy against the answer's position — and whether it deepens from $4\text{k}$ to $16\text{k}$. |
 :::
@@ -580,7 +618,7 @@ If each query reads only $k$ keys: the attention side per layer per token goes f
 
 | how the $k$ are chosen | examples | what it cannot do |
 |:---|:---|:---|
-| **fixed pattern** — no choice to make | sliding window; StreamingLLM's sinks + window (p41) | see anything outside the pattern |
+| **fixed pattern** — no choice to make | sliding window; StreamingLLM's sinks + window (p43) | see anything outside the pattern |
 | **eviction** at inference — scored, then dropped | H₂O: keep the "heavy hitters" by accumulated attention (NeurIPS 2023) | be seen in training: an approximation the model never learned to live with |
 | **trainable selection** — part of the model | **NSA** (ACL 2025 best paper): compress + select + window, end-to-end · **DSA** (DeepSeek-V3.2): shipped · **MoBA**: block selection (preprint) | nothing by construction; the cost moves into the selector's quality and hardware alignment |
 
@@ -609,7 +647,7 @@ Xiao et al., ICLR 2024 §3 · Gu et al., ICLR 2025 · W3 p43–44 · Misconcepti
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p41 drew three caches and claimed that the window without the sink collapses while keeping the first few tokens does not. Measure it on a text longer than the window. |
+| **Why** | p43 drew three caches and claimed that the window without the sink collapses while keeping the first few tokens does not. Measure it on a text longer than the window. |
 | **What runs** | Recorded before class, replayed here: W1's tinyshakespeare opening (20,000 characters, 5,455 tokens) through Llama 3.1 8B (4-bit MLX), per-token perplexity under each cache — full; a sliding window of $W = 512$; the window plus the first $n_{\text{sink}}$ tokens. One line per cache, before and after token $W$. |
 | **Watch for** | What the window without the sink does right after token $W$ — and whether keeping the sink brings it back to the full cache's level. |
 :::
@@ -680,17 +718,17 @@ Xiao et al., ICLR 2024 · Misconception 9: "StreamingLLM solved long context"
 ## The opening question, answered
 
 ::: {.ask}
-p7 asked: if the mask already lets the model learn position, what does an **explicit** position buy?
+p9 asked: if the mask already lets the model learn position, what does an **explicit** position buy?
 :::
 
 - **Not order.** W4's model had order from the mask alone (p4)
-- **Extrapolation you can reason about**: with RoPE the failure has a mechanism — $r_i < 1$ pairs enter unseen phases (p22) — and therefore repairs that act on $\theta_i$ alone (p23–p27). A model that infers position from the mask has no knob to turn
-- **Resolution at long range**: $d_{\text{head}}/2$ frequencies from $2\pi$ to $2\pi b$ give every distance scale its own channel (p20); the base is a design decision with a floor (p28)
-- **And a bill, independent of the encoding**: $M_{\text{KV}} \propto L$, decode $\propto L$, prefill $\propto L^2$ — the ledger's new row (p38), the reason W6 replaces what produces the KV
-- **And a gap the encoding cannot close**: nominal $\neq$ effective (p34); the needle's design decides what a score means
+- **Extrapolation you can reason about**: with RoPE the failure has a mechanism — $r_i < 1$ pairs enter unseen phases (p24) — and therefore repairs that act on $\theta_i$ alone (p25–p29). A model that infers position from the mask has no knob to turn
+- **Resolution at long range**: $d_{\text{head}}/2$ frequencies from $2\pi$ to $2\pi b$ give every distance scale its own channel (p22); the base is a design decision with a floor (p30)
+- **And a bill, independent of the encoding**: $M_{\text{KV}} \propto L$, decode $\propto L$, prefill $\propto L^2$ — the ledger's new row (p40), the reason W6 replaces what produces the KV
+- **And a gap the encoding cannot close**: nominal $\neq$ effective (p36); the needle's design decides what a score means
 
 ::: {.footer}
-compare with your sentence from p7 · Misconception 10: "with 1M context, RAG is over" — W12
+compare with your sentence from p9 · Misconception 10: "with 1M context, RAG is over" — W12
 :::
 
 ## Ten things this week said no to (1 of 2)
@@ -752,7 +790,7 @@ Five weeks in: the unit (W2), what it may attend to (W3), what carries the resul
 
 **Sinks, streaming, sparse** · Xiao et al., *Efficient Streaming Language Models with Attention Sinks*, ICLR 2024 (arXiv:2309.17453) · Gu et al., *When Attention Sink Emerges in Language Models: An Empirical View*, ICLR 2025 Spotlight (arXiv:2410.10781) · Yuan et al., *Native Sparse Attention*, ACL 2025 best paper (arXiv:2502.11089) · DeepSeek-AI, *DeepSeek-V3.2*, arXiv:2512.02556 · Lu et al., *MoBA*, arXiv:2502.13189 (preprint) · Zhang et al., *H₂O: Heavy-Hitter Oracle*, NeurIPS 2023 (arXiv:2306.14048)
 
-**Data and figures** · Every number on these slides is arithmetic on the definitions ($\theta_i$, $\lambda_i$, the three repairs, the two ledger formulas), or read from two earlier rehearsal records: W3 demo 2's `curve.json` (Llama 3.1 8B's `config.json` fields, KV bytes, prefill timings, 2026-09-29) and W4 demo 1's `tests.json`/`train.json` ($N$ to the parameter; the tiny GPT's 2.18 bits/char, 2026-10-06). The U-curve, the stamps, the phase circles and the cache rows are schematics. **All four demos were rehearsed on 2026-10-12**; the records are in each demo's `runs/rehearsal/`, and the curves and tables on p26, p32 and p43 are those measurements.
+**Data and figures** · Every number on these slides is arithmetic on the definitions ($\theta_i$, $\lambda_i$, the three repairs, the two ledger formulas, the shuffle check on p8), or read from two earlier rehearsal records: W3 demo 2's `curve.json` (Llama 3.1 8B's `config.json` fields, KV bytes, prefill timings, 2026-09-29) and W4 demo 1's `tests.json`/`train.json` ($N$ to the parameter; the tiny GPT's 2.18 bits/char, 2026-10-06). The U-curve, the stamps, the phase circles, the cache rows and the shuffled grids of p8–p9 are schematics. **All four demos were rehearsed on 2026-10-12**; the records are in each demo's `runs/rehearsal/`, and the curves and tables on p28, p34 and p45 are those measurements.
 
 **Search terms, not citations** · *Qwen2.5-1M technical report dual chunk attention* · *DeepSeek-V4 million-token context* — examples of nominal length; no scores quoted
 :::

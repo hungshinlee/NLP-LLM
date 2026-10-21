@@ -1280,5 +1280,57 @@
    }
   },
   "position_encoding": "none (NoPE): the W4 GPT has no positional term; order comes from the causal mask only"
+ },
+ "maskperm": {
+  "n": 6,
+  "d": 4,
+  "seed": 21,
+  "perm": [
+   0,
+   3,
+   4,
+   2,
+   5,
+   1
+  ],
+  "nomask_max_abs_diff": 8.881784197001252e-16,
+  "causal_max_abs_diff": 5.969085731463418,
+  "causal_vs_permuted_mask_max_abs_diff": 8.881784197001252e-16,
+  "permuted_mask_equals_causal": false,
+  "anchor": {
+   "causal": [
+    1.0,
+    0.5,
+    0.333333333333,
+    0.25,
+    0.2,
+    0.166666666667
+   ],
+   "nomask": [
+    0.166666666667,
+    0.166666666667,
+    0.166666666667,
+    0.166666666667,
+    0.166666666667,
+    0.166666666667
+   ],
+   "no_anchor_causal": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "expected_causal": [
+    1.0,
+    0.5,
+    0.333333333333,
+    0.25,
+    0.2,
+    0.166666666667
+   ]
+  },
+  "source": "pure Python float64; construction after Kazemnejad et al. 2023, Thm 1 / App. C.1"
  }
 }

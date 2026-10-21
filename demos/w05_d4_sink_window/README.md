@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W5 · Demo 4 — A sliding window with and without the sink: per-token perplexity under four KV caches (slides p42–p43)
+# W5 · Demo 4 — A sliding window with and without the sink: per-token perplexity under four KV caches (slides p44–p45)
 
 The same text, the same model, the same tokenizer — only the rule for what the KV cache keeps changes. Per-token negative log-likelihood is recorded under four caches: everything kept; only the last $W$ tokens kept; the last $W$ plus the first $n_{\text{sink}}$ tokens, at their original positions; and the last $W$ plus the first $n_{\text{sink}}$ with positions re-indexed inside the cache, which is what StreamingLLM (Xiao et al., ICLR 2024, §3) does. Everything is rehearsed beforehand and replayed in class, one line at a time.
 
@@ -11,7 +11,7 @@ Why the first few tokens matter: softmax must put weight *somewhere*, and a head
 
 Why there are two "with sink" lines: in mlx-lm (0.32.0) the rotation for the position is applied to $\mathbf{q}$ and $\mathbf{k}$ *before* they enter the cache, at the token's absolute position in the stream, so the library's `RotatingKVCache(keep=n)` keeps the first $n$ tokens at their original positions — the sink's distance from the query grows without bound. StreamingLLM §3 assigns positions inside the cache instead, so the sinks stay a fixed distance of about $W + n_{\text{sink}}$ away. `SinkWindowCache` in `demo.py` does the re-indexing by hand: RoPE is a rotation, so a stored key can be re-rotated to any position at any time. At 5k tokens — far inside this model's nominal length of 131,072 — the two should behave similarly; the point of the fourth line is that a library argument named after the paper's idea need not implement it, and `inspect` prints the source lines that show where the positions are assigned. Read the source, not the README (course appendix C).
 
-What this does not show: a cache that forgets gracefully is not a cache that remembers. Nothing that left the window can be retrieved; p44 is about that.
+What this does not show: a cache that forgets gracefully is not a cache that remembers. Nothing that left the window can be retrieved; p46 is about that.
 
 ## Requirements
 

@@ -61,7 +61,7 @@ format:
 :::
 
 ::: {.footer}
-W5 p38 · W5 p43 · W3 demo 2 rehearsal 2026-09-29 (16 GiB at 128k) · w05-data.json
+W5 p40 · W5 p45 · W3 demo 2 rehearsal 2026-09-29 (16 GiB at 128k) · w05-data.json
 :::
 
 ## The problem this week handles, in one picture
@@ -100,7 +100,7 @@ Outline W6 · on the board: p13, p21–22, p25, p29, p31 · live: p11, p24 · re
 - (b) is the ledger's KV row: W3 p26 said "W6 the mechanism"
 
 ::: {.footer}
-W1 p16 · W3 p26 · W5 p38 · Misconception 1: "MoE is model compression"
+W1 p16 · W3 p26 · W5 p40 · Misconception 1: "MoE is model compression"
 :::
 
 # Route 1: MoE — splitting $N$ {.section-title}
@@ -443,7 +443,7 @@ outline W6 §Key math 5 · Dao & Gu 2024: Def. 3.1, §5.1, §6 (**assigned**) ·
 - so there is nothing to extrapolate and nothing to repair: no PI, no NTK-aware, no YaRN. Length generalisation rides on decay and locality — **a different inductive bias, not an absence of one**
 
 ::: {.footer}
-W1 p62 · W5 p49 · Misconception 7: "a fixed state has no position information"
+W1 p62 · W5 p51 · Misconception 7: "a fixed state has no position information"
 :::
 
 # The ledger: KV cache vs. a fixed state {.section-title}
@@ -515,7 +515,7 @@ Demo 4 · replay + live · `w06_d4_hybrid_vs_full/` · rehearsed 2026-10-19 · (
 : {tbl-colwidths="[17,53,12,18]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p55, W4 p44, W5 p38 · one row filled, one row added · bytes: $b$
+Same master as W1 p16, W3 p55, W4 p44, W5 p40 · one row filled, one row added · bytes: $b$
 :::
 
 # 2026: three routes, none has won {.section-title}
@@ -536,7 +536,7 @@ outline W6 §LO 5 · Du et al. 2510.26692 · Waleffe et al. 2406.07887 · DeepSe
 
 ## Open weights are not open methods; why one team went back
 
-- **Two absences to say out loud**: Qwen3-Next has **no technical report** — a blog post and a model card, yet it is a baseline in 2026 papers; **Llama 4 has none either** (W5 p13). Their designs can only be cited from model cards, and these slides say so every time
+- **Two absences to say out loud**: Qwen3-Next has **no technical report** — a blog post and a model card, yet it is a baseline in 2026 papers; **Llama 4 has none either** (W5 p15). Their designs can only be cited from model cards, and these slides say so every time
 - **MiniMax-M2's team post, 2025-10-29** (on behalf of the pre-training lead), three reasons for returning to full attention — a **company post, not peer-reviewed**:
   1. evaluation cannot see the gap: hybrids matched full attention on early benchmarks; the deficits showed in multi-hop reasoning later — "the real bottleneck is the limitations of evaluation"
   2. linear attention is "far more sensitive to numerical precision" — the state is a long running sum (p22)
