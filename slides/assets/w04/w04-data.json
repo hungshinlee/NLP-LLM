@@ -356,6 +356,9 @@
    4
   ],
   "seed": 7,
+  "construction": "Gaussian entries, first column scaled x4 (built on purpose so one direction dominates)",
+  "sv_ratio_max_min": 13.85,
+  "top_share_sq": 0.942,
   "sv_before": [
    11.146,
    2.336,
