@@ -655,7 +655,7 @@ schematic · colour = the symptom · numbers = the rows of the previous table ·
 Misconception 8: "a loss spike means dirty data" · PaLM §5.1 · Wortsman 2023
 :::
 
-# Hyperparameters at scale {.section-title}
+# Hyperparameters and optimizers at scale {.section-title}
 
 ## muP: tune small, transfer wide — and where it stops
 
@@ -665,6 +665,20 @@ Misconception 8: "a loss spike means dirty data" · PaLM §5.1 · Wortsman 2023
 
 ::: {.footer}
 Misconception 9: "tuning has no principles" — it has one, for width · Yang 2021
+:::
+
+## Where $\mathbf{M}_t$ comes from: momentum
+
+$$\mathbf{M}_t = \mu\,\mathbf{M}_{t-1} + \mathbf{G}_t = \sum\nolimits_{k=0}^{t-1} \mu^k\,\mathbf{G}_{t-k}, \qquad \mathbf{G}_t = \nabla_{\mathbf{W}}\mathcal{L}\ \text{on batch } t, \quad \mathbf{M}_0 = \mathbf{0}$$
+
+{{< include assets/w04/momentum.inline.qmd >}}
+
+::: {.claim}
+Same sum as Adam's $\mathbf{m}_t$. **What differs is the step**: Adam equalizes every **entry**, Muon every **singular direction**.
+:::
+
+::: {.footer}
+Heavy-ball form, as in Muon's definition · Adam's $\mathbf{m}_t$ (p41) is this sum times $(1-\beta_1)$
 :::
 
 ## Muon: orthogonalized momentum, not second order
