@@ -57,6 +57,7 @@ Tested on one machine only — an Apple M5 Max (64 GB, no CUDA), macOS 27.0, Pyt
 - Dehghani et al., **Scaling Vision Transformers to 22 Billion Parameters**, arXiv:2302.05442 (2023) — the most-cited use of QK-norm in large-scale training
 - Chowdhery et al., **PaLM: Scaling Language Modeling with Pathways**, arXiv:2204.02311 (2022) — the source of z-loss; the loss-spike and "skip the batch" experience is in the body
 - Takase et al., **Spike No More: Stabilizing the Pre-training of Large Language Models**, COLM 2025 (arXiv:2312.16903) — another spike mechanism: sub-layer outputs that are large relative to the shortcut
+- Shazeer & Stern, **Adafactor: Adaptive Learning Rates with Sublinear Memory Cost**, ICML 2018 (arXiv:1804.04235) — §5: a second-moment estimate that decays too slowly goes out of date, and the update becomes larger than intended; the source of update clipping
 - Yang et al., **Tensor Programs V: Tuning Large Neural Networks via Zero-Shot Hyperparameter Transfer**, NeurIPS 2021 (arXiv:2203.03466) — muP
 - Bordelon et al., **Depthwise Hyperparameter Transfer in Residual Networks: Dynamics and Scaling Limit**, arXiv:2309.16620 (2023); Dey et al., **Don't be lazy: CompleteP enables compute-efficient deep transformers**, arXiv:2505.01618 (2025) — transfer across depth; the two papers scale the residual branch by different powers
 - Blake et al., **u-μP: The Unit-Scaled Maximal Update Parametrization**, arXiv:2407.17465 (2024) — muP combined with unit scaling and low precision
