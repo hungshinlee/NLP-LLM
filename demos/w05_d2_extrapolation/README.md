@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W5 · Demo 2 — Length extrapolation on last week's tiny GPT: NoPE vs. RoPE, then PI and NTK-aware without retraining (slides p27–p28)
+# W5 · Demo 2 — Length extrapolation on last week's tiny GPT: NoPE vs. RoPE, then PI and NTK-aware without retraining (slides p29–p30)
 
 Last week's tiny GPT (W4 demo 1: character-level, six layers, $d = 256$, trained on windows of $L = 256$ characters) has **no positional encoding** — position is inferred from the causal mask alone (NoPE). This demo trains a second copy that is identical in every respect except one: RoPE on $\mathbf{q}$ and $\mathbf{k}$, base $b = 10^4$. Same corpus, same held-out text, same hyperparameters, same 3000 steps, same random initialisation. Then both are run on held-out windows of 256, 512 and 1024 characters — one, two and four times the training length — and the **loss at each position** is recorded. Finally the RoPE model is run twice more **without any retraining**, with its $\theta_i$ changed: position interpolation ($s = 4$) and NTK-aware base scaling. Four curves, four columns in the table on the slide.
 
@@ -20,7 +20,7 @@ Both change only the frequencies $\theta_i = b^{-2i/d_{\text{head}}}$ and leave 
 | position interpolation (PI) | positions $m \to m/s$, equivalently $\theta_i \to \theta_i/s$ — every pair slowed down by the same factor | positions 0–1023 are presented as 0–255.75 |
 | NTK-aware | the base: $b \to b\,s^{d_{\text{head}}/(d_{\text{head}} - 2)}$ — the lowest-frequency pair is slowed by exactly $s$, the highest almost not at all | $b = 10^4 \to 43{,}873$ |
 
-With $d_{\text{head}} = 32$ there are 16 rotating pairs; at $b = 10^4$, 9 of them never complete a full turn within the training length of 256 (the program prints this). The slides' figure on p22 uses $d_{\text{head}} = 128$, where the count is 38 of 64.
+With $d_{\text{head}} = 32$ there are 16 rotating pairs; at $b = 10^4$, 9 of them never complete a full turn within the training length of 256 (the program prints this). The slides' figure on p24 uses $d_{\text{head}} = 128$, where the count is 38 of 64.
 
 ## Requirements
 

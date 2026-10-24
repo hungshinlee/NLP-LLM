@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W5 · Demo 1 — RoPE's relativity, checked to float64 (slides p20–p21; the wavelength table is slide p22)
+# W5 · Demo 1 — RoPE's relativity, checked to float64 (slides p22–p23; the wavelength table is slide p24)
 
 In class the instructor writes three functions live in `rope_live.py`, running the tests after each one:
 
@@ -9,7 +9,7 @@ In class the instructor writes three functions live in `rope_live.py`, running t
 | `rotate(x, m, theta)` | `x: (..., d_head)`, `m`: a position, `theta`: the output of `rope_angles` → same shape as `x` | treats coordinates $(2i, 2i+1)$ as a point in the plane and rotates it by $m\theta_i$ — the matrix $\mathbf{R}_m$ applied to $\mathbf{x}$. Adjacent pairing is used here; Hugging Face's Llama code pairs $(i, i + d_{\text{head}}/2)$ ("rotate-half"). Same $\mathbf{R}_m$, different ordering of the coordinates. |
 | `score(q, k, m, n, theta)` | → scalar | $(\mathbf{R}_m\mathbf{q})^\top(\mathbf{R}_n\mathbf{k})$ |
 
-`rope_final.py` is the finished reference implementation; `tests.py` holds the three tests and is shared by both files, so you can write your own version in `rope_live.py` and test it step by step — functions you have not written yet are reported as `skip`, not as failures. `wavelengths.py` is the second half of the demo: the table behind slide p22.
+`rope_final.py` is the finished reference implementation; `tests.py` holds the three tests and is shared by both files, so you can write your own version in `rope_live.py` and test it step by step — functions you have not written yet are reported as `skip`, not as failures. `wavelengths.py` is the second half of the demo: the table behind slide p24.
 
 ## The three tests
 

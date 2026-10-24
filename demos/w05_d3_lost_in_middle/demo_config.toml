@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W5 demo 3（投影片 p32「Replay + live: demo 3 — key-value retrieval, answer at five positions」）的設定
+# W5 demo 3（投影片 p37「Replay + live: demo 3 — key-value retrieval, answer at five positions」）的設定
 #
 # 改這個檔就能換模型、換 context 檔次、換題數，不必動程式。
 
@@ -43,7 +43,7 @@ question = "Key: \"{key}\"\nCorresponding value:"
 [models.primary]
 repo = "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit"
 label = "Llama 3.1 8B Instruct (4-bit MLX)"
-note = "max_position_embeddings 131072、rope_scaling llama3 factor 8（p27 現場讀）；兩檔都遠在名義長度之內"
+note = "max_position_embeddings 131072、rope_scaling llama3 factor 8（p31 現場讀）；兩檔都遠在名義長度之內"
 revision = ""
 
 [models.backup]

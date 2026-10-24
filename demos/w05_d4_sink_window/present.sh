@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W5 demo 4（投影片 p43「Replay (if time): demo 4 — a sliding window with and without the sink」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
+# W5 demo 4（投影片 p49「Replay (if time): demo 4 — a sliding window with and without the sink」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
 #
-#   ./present.sh               上課用 = replay：每條線 Enter 一次（分格的 perplexity 方塊圖），最後印 p43 的表；不載模型
+#   ./present.sh               上課用 = replay：每條線 Enter 一次（分格的 perplexity 方塊圖），最後印 p49 的表；不載模型
 #   ./present.sh replay        同上
 #   ./present.sh inspect       課前確認：只載 tokenizer，數文字的 token；印 mlx-lm 在哪裡旋轉、RotatingKVCache(keep) 留了什麼；驗 RoPE 可合成／反轉
 #   ./present.sh rehearse      課前彩排：同一段文字、四種 cache 的逐 token NLL → runs/rehearsal/{curve.json,curve.svg,tokens.json}

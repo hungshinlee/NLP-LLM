@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W5 demo 1（投影片 p19「Live: demo 1 — RoPE's relativity, checked to float64」）課前與課堂的入口。純 torch、釘 CPU、float64，不碰 Hugging Face。
+# W5 demo 1（投影片 p23「Live: demo 1 — RoPE's relativity, checked to float64」）課前與課堂的入口。純 torch、釘 CPU、float64，不碰 Hugging Face。
 #
 #   ./present.sh               課前：對參考實作 rope_final.py 跑三個測試，全部 ok 才上台
 #   ./present.sh live          課堂：對 rope_live.py 跑三個測試（寫到哪測到哪，沒寫的標 skip）
 #   ./present.sh show          現場卡住兩分鐘：切到參考實作，d_head = 4 的小例子逐步印出 + 三個測試
 #   ./present.sh rehearse      課前彩排：三個測試 + 寫 runs/rehearsal/tests.json（講稿裡的實測值從這裡抄）
 #   ./present.sh replay        現場連參考實作都跑不了時：顯示彩排紀錄（畫面標明非現場）
-#   ./present.sh wavelengths   p20 的現場版：64 對的波長對 L_train，轉不滿一圈的著色，最後對投影片的 w05-data.json（純標準函式庫）
+#   ./present.sh wavelengths   p24 的現場版：64 對的波長對 L_train，轉不滿一圈的著色，最後對投影片的 w05-data.json（純標準函式庫）
 #   ./present.sh reset         上課前把 rope_live.py 清空到只剩開頭的註解與 import torch
 #
 # macOS 內建的是 bash 3.2：不要用 ${var,,} 這類 4.x 語法。

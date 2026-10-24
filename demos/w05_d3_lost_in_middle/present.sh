@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W5 demo 3（投影片 p32「Replay + live: demo 3 — key-value retrieval, answer at five positions」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
+# W5 demo 3（投影片 p37「Replay + live: demo 3 — key-value retrieval, answer at five positions」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
 #
 #   ./present.sh               上課用：載模型，現場三題（答案在開頭／中間／結尾），每題 Enter；r = 彩排的表；x = 離開
 #   ./present.sh replay        現場失敗時：只印課前彩排的表（不載模型）
