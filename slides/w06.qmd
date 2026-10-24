@@ -587,7 +587,7 @@ Demo 4 · replay + live · `w06_d4_hybrid_vs_full/` · rehearsed 2026-10-19 · W
 : {tbl-colwidths="[17,53,12,18]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p55, W4 p44, W5 p43 · one row filled, one row added · bytes: $b$
+Same master as W1 p16, W3 p55, W4 p46, W5 p43 · one row filled, one row added · bytes: $b$
 :::
 
 # 2026: three routes, none has won — and why the table decides {.section-title}
@@ -632,11 +632,11 @@ MiniMax team post 2025-10-29 · Misconception 8: "SSMs replace Transformers / hy
 : {tbl-colwidths="[26,24,50]"}
 
 ::: {.claim}
-First question for any table: **what did this row hold fixed?** Second: was the baseline tuned (W4 p53)? Only then: who won.
+First question for any table: **what did this row hold fixed?** Second: was the baseline tuned (W4 p55)? Only then: who won.
 :::
 
 ::: {.footer}
-Clark 2022 · Abnar 2025 · W2 p62 · W4 p53 · Misconception 9: "results compare directly"
+Clark 2022 · Abnar 2025 · W2 p62 · W4 p55 · Misconception 9: "results compare directly"
 :::
 
 ## Two tables taken apart: Kimi Linear, DeepSeek-V3 §2

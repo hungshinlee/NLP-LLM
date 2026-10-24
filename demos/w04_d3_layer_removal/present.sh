@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W4 demo 3（投影片 p35「Live: skip one layer at a time, and measure the perplexity」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
+# W4 demo 3（投影片 p36「Live: skip one layer at a time, and measure the perplexity」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
 #
 #   ./present.sh               上課用：載模型 → 印 baseline → 停下來等學生預測 → Enter → 28 個點一個一個長出來 → 總表（存 runs/live/）
 #   ./present.sh replay        現場失敗時：用課前彩排的紀錄走同一套畫面（畫面標明非現場）

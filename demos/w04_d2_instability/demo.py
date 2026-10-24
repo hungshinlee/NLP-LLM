@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W4 demo 2：訓練不穩定的復現（彩排預錄、課堂 replay）。投影片 p31（設定 (i)）與 p47（設定 (ii)(iii)）。
+"""W4 demo 2：訓練不穩定的復現（彩排預錄、課堂 replay）。投影片 p32（設定 (i)）與 p49（設定 (ii)(iii)）。
 
 同一個 tiny GPT（demo 1 的 block_final.GPT）、同一份語料，每 log_every 步記四個統計量：
   loss、max|s_ij|（softmax 前的 attention logit，所有層所有 head 的最大絕對值）、輸出層的 log Z（logsumexp 的平均）、全模型梯度範數，
-另記每一層的梯度範數（p31 的「哪一層的梯度先不對」）。
+另記每一層的梯度範數（p32 的「哪一層的梯度先不對」）。
 
   ./present.sh rehearse            三組全部跑（幾十分鐘，看開頭印的估計）→ runs/rehearsal/{i,ii,iii}.json + *.svg
   ./present.sh rehearse i          只跑一組；--depth 24、--lr 3e-3、--steps、--mult 1,3,10,30、--z-loss 1e-4、--clip 1.0 覆蓋 demo_config.toml
-  ./present.sh replay i            課堂（p31）：pre vs. post 的表、兩條 loss 與梯度範數曲線、第 0 步逐層梯度範數
-  ./present.sh replay ii           課堂（p47）：三個 LR 的表（spike 步數、spike 時與 500 步前的 max|s_ij|、log Z）與四條曲線
-  ./present.sh replay iii          課堂（p47 第四列）：10× 開 QK-norm，對 (ii) 的 10× 並排
+  ./present.sh replay i            課堂（p32）：pre vs. post 的表、兩條 loss 與梯度範數曲線、第 0 步逐層梯度範數
+  ./present.sh replay ii           課堂（p49）：三個 LR 的表（spike 步數、spike 時與 500 步前的 max|s_ij|、log Z）與四條曲線
+  ./present.sh replay iii          課堂（p49 第四列）：10× 開 QK-norm，對 (ii) 的 10× 並排
   ./present.sh show i|ii|iii       只印表格（投影機上字太小時用；也是 replay 的退路）
   ./present.sh estimate            不訓練，只用 demo 1 probe.json 的每步秒數估三組要跑多久
   ./present.sh baselines           字元級 unigram／bigram 對同一份 held-out 的 cross-entropy（nats/char）→ runs/rehearsal/baselines.json；

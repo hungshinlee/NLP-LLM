@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W4 demo 3：逐層跳過一層、量 perplexity（投影片 p35「Live: skip one layer at a time, and measure the perplexity」）。
+"""W4 demo 3：逐層跳過一層、量 perplexity（投影片 p36「Live: skip one layer at a time, and measure the perplexity」）。
 
     ./present.sh fetch      下載 Qwen3-0.6B（與備用的 1.7B）；W3 demo 3 已 fetch 過的話只會確認 ../versions.lock 的 revision（要網路）
     ./present.sh inspect    課前：版本、device、decoder layer 的回傳格式、hook 恆等化是否真的「沒改動」、一次前向幾秒 → runs/rehearsal/inspect.json
@@ -19,7 +19,7 @@ perplexity，然後把第 i 層的 forward 換成恆等——**參數沒有刪�
   - 代價：那一層仍然算了一次（結果被丟掉）。0.6B、兩段各約兩百 token 的文字，多算一層不到一秒。
 
 除了 perplexity，每個點另記兩個「不同性質的指標」：top-1 next-token accuracy（對真正的下一個 token）與 top-1 agreement
-（與 baseline 的預測是否一致）。perplexity 對擾動敏感、accuracy 類指標遲鈍——這是 p36「只在某類指標上」那一列的同一份資料版本。
+（與 baseline 的預測是否一致）。perplexity 對擾動敏感、accuracy 類指標遲鈍——這是 p37「只在某類指標上」那一列的同一份資料版本。
 
 相依：torch、transformers（版本釘在 ../versions.lock）。Python 3.11+（tomllib）。
 """
@@ -304,7 +304,7 @@ def print_summary(base: dict, pts: list[dict], n_layer: int) -> None:
           + f";   most expensive: " + ", ".join(f"{lab(r)} (×{(r['ppl']/base['ppl']) if math.isfinite(r['ppl']) else float('inf'):.1f})" for r in dearest))
     accs = [r["top1_acc"] for r in fin]
     print(f"  {GREY}top-1 accuracy: baseline {base['top1_acc']*100:.1f}%, skipped-layer range {min(accs)*100:.1f}%–{max(accs)*100:.1f}%  "
-          f"— the slow metric; perplexity is the fast one (p36){RESET}")
+          f"— the slow metric; perplexity is the fast one (p37){RESET}")
 
 
 # ── SVG（不用 matplotlib；退路與投影用）─────────────────────────

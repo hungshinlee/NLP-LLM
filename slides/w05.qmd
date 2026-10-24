@@ -608,7 +608,7 @@ Misconception 6: "longer context is better" — the week's central correction ·
 
 ## Three terms, three powers of $L$
 
-The ledger's two formulas (W1 p16, W3 p55, W4 p44), with $b_{\text{elem}}$ for bytes per element — $b$ is the base this week:
+The ledger's two formulas (W1 p16, W3 p55, W4 p46), with $b_{\text{elem}}$ for bytes per element — $b$ is the base this week:
 
 $$C_{\text{pre}} \approx 2NL + 2\,n_{\text{layer}}L^2 d, \qquad C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld \ \text{ per token}$$
 
@@ -653,7 +653,7 @@ $N$: W4 demo 1 · config, timings: W3 demo 2 · Misconception 7: "the bottleneck
 : {tbl-colwidths="[20,52,15,13]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p55, W4 p44 · one row added this week · bytes: $b_{\text{elem}}$
+Same master as W1 p16, W3 p55, W4 p46 · one row added this week · bytes: $b_{\text{elem}}$
 :::
 
 ## Sparse attention, the budget view

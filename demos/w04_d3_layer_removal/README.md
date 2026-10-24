@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W4 · Demo 3 — skip one layer at a time, and measure the perplexity (slides p34–p35)
+# W4 · Demo 3 — skip one layer at a time, and measure the perplexity (slides p35–p36)
 
 Take a fixed text, measure the teacher-forced perplexity of Qwen3-0.6B on it (the baseline), then for each of its 28 decoder layers replace that layer's forward pass by the identity — **the parameters are not removed; the layer simply adds nothing to the residual stream this time** — and measure again. Twenty-eight points, printed one per line: perplexity, the multiple of the baseline, top-1 next-token accuracy, agreement with the baseline's predictions, and a bar of $\log_2(\text{ppl}/\text{baseline})$ (green below 1.15×, amber below 2×, red at 2× and above, capped at 16×). In class the model is loaded, the baseline is printed, and the run **pauses** so that predictions can be made before the 28 points appear.
 
@@ -8,7 +8,7 @@ Take a fixed text, measure the teacher-forced perplexity of Qwen3-0.6B on it (th
 | Text | two paragraphs: a Traditional Chinese one (W1 demo 2's `zh_city.txt`, 627 bytes) and its English translation (W2 demo 1's `zh_city_en.txt`, 754 bytes), both written for this course | same content, two languages; each is run separately and the perplexity is pooled over tokens, with per-text numbers kept — the layer dependence differs between the two |
 | Perplexity | summed NLL over both texts ÷ number of predicted tokens, `add_special_tokens=False`, first token not predicted | the W1 demo 2 definition. Comparable only with this demo's own baseline, not with W1's numbers (different tokenizer, different model) |
 | "Skipping" | a `forward_hook` on `model.model.layers[i]` that returns the layer's input `hidden_states` in place of its output | the module is not swapped out (the Qwen3 forward reads `attention_type` from each layer to pick the mask, so an `nn.Identity` would break it); independent of whether the layer returns a tensor (transformers 5.x) or a tuple (4.x) — `inspect` prints which. The skipped layer still computes once and the result is dropped: under a second for 0.6B |
-| Extra metrics | top-1 accuracy against the true next token; top-1 agreement with the baseline's prediction | a cheap stand-in for the "QA-style metrics fall slowly while loss falls fast" observation on p36 — same direction, not a benchmark |
+| Extra metrics | top-1 accuracy against the true next token; top-1 agreement with the baseline's prediction | a cheap stand-in for the "QA-style metrics fall slowly while loss falls fast" observation on p37 — same direction, not a benchmark |
 | Windows | class: skip 1 layer; rehearsal also 2 and 4 consecutive layers | "skip $k$ consecutive layers" is the optional extension |
 | Device | `mps` default; `--device cpu` | forward only, no gradients, no attention weights: 8–10 ms per forward, **0.22 s for all 28 points** on the M5 Max — so `show` deliberately pauses 0.4 s per point (`show_pace`), otherwise the curve appears all at once |
 

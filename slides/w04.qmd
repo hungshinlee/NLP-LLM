@@ -46,7 +46,7 @@ format:
 
 <!-- 此檔由 bin/publish_slides.py 從投影片正本產生（中文講稿區塊已剝除），請勿直接編輯。正本在 private repo 的 <course>/slides/。 -->
 
-# The matrix last week never named {.section-title}
+# What did W3 add its result into? The matrix it never named {.section-title}
 
 ## Where we are: week 4 of 14
 
@@ -90,7 +90,7 @@ One matrix, $L \times d$, enters at the embedding and leaves at the unembedding;
 :::
 
 ::: {.footer}
-Outline W4 · on the board: p19, p25, p43 · the symptoms: p46
+Outline W4 · on the board: p19, p26, p45 · the symptoms: p48
 :::
 
 ## What you should be able to do by the end of today
@@ -103,14 +103,14 @@ Outline W4 · on the board: p19, p25, p43 · the symptoms: p46
 6. **Diagnose** three instability symptoms and pair each with a repair; say why statistics come before data
 7. State what **muP** claims and where it stops; write **Muon**'s update and say why it is not second order
 
-# The residual stream {.section-title}
+# What is that matrix? One bus per token: the residual stream {.section-title}
 
 ## One bus per token: every layer reads, computes, adds back
 
 {{< include assets/w04/bus.inline.qmd >}}
 
 ::: {.claim}
-**Each token owns a bus of width $d$.** Attention moves data *between* buses; the FFN computes *on* one bus. Every layer does the same three things, and the third is always an addition.
+**Each token owns a bus of width $d$.** Attention moves data *between* buses; the FFN (feed-forward network) computes *on* one bus. Every layer does the same three things, and the third is always an addition.
 :::
 
 ::: {.footer}
@@ -123,9 +123,9 @@ Misconception 1: "the residual connection only fixes vanishing gradients"
 | The picture says | What is actually true | Returns |
 |---|---|---|
 | **(a)** layers are independent, pluggable modules | adjacent layers often work in pairs — W3's induction head is two layers cooperating | W14 |
-| **(b)** a layer reads the values on the bus | every read goes through a Norm first: a layer reads the *direction* of the stream, rescaled | p25 |
+| **(b)** a layer reads the values on the bus | every read goes through a Norm first: a layer reads the *direction* of the stream, rescaled | p26 |
 | **(c)** the bus has room for everything | $d$ dimensions are shared by every sub-layer of every block; what is written interferes — superposition | W14 |
-| **(d)** one bus per token is *the* design | 2026 redesigns the bus itself: hyper-connections, several learnable mixed streams (DeepSeek-V4's mHC) | p37 |
+| **(d)** one bus per token is *the* design | 2026 redesigns the bus itself: hyper-connections, several learnable mixed streams (DeepSeek-V4's mHC, manifold-constrained hyper-connections) | p63 |
 
 : {tbl-colwidths="[30,58,12]"}
 :::
@@ -139,7 +139,7 @@ Misconception 1: "the residual connection only fixes vanishing gradients"
 {{< include assets/w04/block.inline.qmd >}}
 
 ::: {.claim}
-Two sub-layers, each **Norm → function → add**. The trunk is the residual stream; the branches are what training changes. Where the Norm sits: p25.
+Two sub-layers, each **Norm → function → add** — *pre-LN*: the layer normalization (LN) sits before each sub-layer. The trunk is the residual stream; the branches are what training changes. Why the position matters: p26.
 :::
 
 ::: {.footer}
@@ -152,7 +152,7 @@ For one row $\mathbf{x} \in \mathbb{R}^d$:
 
 $$\mathrm{LayerNorm}(\mathbf{x}) = \frac{\mathbf{x} - \mu}{\sqrt{\sigma^2 + \epsilon}} \odot \boldsymbol{\gamma} + \boldsymbol{\beta}, \qquad \mathrm{RMSNorm}(\mathbf{x}) = \frac{\mathbf{x}}{\sqrt{\frac{1}{d}\sum_{i=1}^{d} x_i^2 + \epsilon}} \odot \boldsymbol{\gamma}$$
 
-- RMSNorm **does not subtract the mean** and **has no $\boldsymbol{\beta}$**: one reduction fewer, one parameter vector fewer
+- RMSNorm (*root mean square*) **does not subtract the mean** and **has no $\boldsymbol{\beta}$**: one reduction fewer, one parameter vector fewer
 - Zhang & Sennrich's argument: re-centering is not what makes LayerNorm work; **re-scaling** is — an empirical result
 - The same spirit removes the bias from every linear layer: no quality lost, fewer parameters — **engineering simplification, not theory**
 
@@ -165,7 +165,7 @@ Misconception 2: "biases don't matter, so drop them" — practice, not theory
 ![](assets/w04/swiglu.svg){width="100%"}
 
 ::: {.footer}
-Shazeer 2020 · names as in Hugging Face: `gate_proj`, `up_proj`, `down_proj`
+Shazeer 2020 · SwiGLU: a GLU (gated linear unit) with a Swish gate; $\sigma$ = SiLU (sigmoid linear unit); ReLU = rectified linear unit · names as in Hugging Face: `gate_proj`, `up_proj`, `down_proj`
 :::
 
 ## Where the stream ends: one Norm, one $d \times V$ matrix
@@ -184,7 +184,7 @@ From here the loss of W1 takes over: cross-entropy on $\mathbf{z}$, and $C \appr
 W2 p42: the vocabulary's share · W1 p23: cross-entropy
 :::
 
-# Demo 1: assemble the block {.section-title}
+# Demo 1: the block on paper becomes a model that runs {.section-title}
 
 ## Before Demo 1: from the block on paper to a model that runs
 
@@ -209,7 +209,7 @@ Demo 1 · code: `demos/w04_d1_block_scratch` · plain torch · attention from W3
 1. `RMSNorm(d)` — one line of math, one parameter vector
 2. `SwiGLU(d, d_ff)` — three `nn.Linear`, no bias
 3. `Block(d, n_head, d_ff)` — two sub-layers around W3's `scaled_dot_product_attention`, pre-LN
-4. `GPT(V, d, n_layer, ...)` — embedding, $n_{\text{layer}}$ blocks, final Norm, tied unembedding
+4. `GPT(V, d, n_layer, ...)` — generative pre-trained Transformer: embedding, $n_{\text{layer}}$ blocks, final Norm, tied unembedding
 :::
 ::: {.column width="50%"}
 **Tests — predict first: which one needs the accounting?**
@@ -222,10 +222,10 @@ Demo 1 · code: `demos/w04_d1_block_scratch` · plain torch · attention from W3
 :::
 
 ::: {.footer}
-Demo 1 · live coding, `torch` on MPS · RAS ch 4 · attention from W3 demo 1
+Demo 1 · live coding, `torch` on MPS (Metal Performance Shaders, Apple silicon) · RAS ch 4 · attention from W3 demo 1
 :::
 
-# Parameter accounting {.section-title}
+# How much does one layer add to it? Parameter accounting {.section-title}
 
 ## One layer, term by term
 
@@ -317,7 +317,23 @@ $= 24d^2$ forward, per layer, per token
 Two numbers this course has been using on trust now come from the same table.
 :::
 
-# Norm: three decisions {.section-title}
+# Where does the Norm sit — and does a gradient get home? Three decisions {.section-title}
+
+## At a glance: the pre-LN Transformer
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Name** | **Pre-LN** — *pre-layer-normalization*: the Norm before each sub-layer, the trunk never normalized. Named and analysed by Xiong et al., ICML 2020 (arXiv:2002.04745); the placement is older — GPT-2 (2019) already had it, the 2017 Transformer and BERT are **Post-LN**. |
+| **The question** | Why does a Transformer need learning-rate warm-up at all? In Post-LN, at initialization, "the expected gradients of the parameters near the output layer are large" — so a large learning rate is unstable. |
+| **The idea** | The Norm inside the branch: $\mathbf{x} + f(\mathrm{Norm}(\mathbf{x}))$, not $\mathrm{Norm}(\mathbf{x} + f(\mathbf{x}))$. Then "the gradients are well-behaved at initialization": the identity path crosses no Norm. |
+| **What it added** | "This motivates us to remove the warm-up stage for the training of Pre-LN Transformers" — the abstract's claim. For this course: the fourth wire, an $\mathbf{I}$ that survives the product (p26). |
+| **What it leaves open** | A trunk that only grows (p27); the 2024–2025 return of a Norm *after* the sub-layer (p28); warm-up stayed in practice — Adam's reason (p43); whether the theorem shows at our scale: demo 2 (i), p32. |
+:::
+
+::: {.footer}
+Xiong et al. 2020 · the Jacobian: p26 · the price: p27 · the repair: p28 · demo 2 (i): p32
+:::
 
 ## Where: the fourth wire
 
@@ -340,7 +356,7 @@ Each sub-layer adds an $O(1)$ term to a stream of norm $\propto \sqrt{\ell}$: th
 :::
 
 ::: {.footer}
-Three consequences: demo 3 (p35), Peri-LN (p27), CompleteP (p53)
+Three consequences: demo 3 (p36), Peri-LN (p28), CompleteP (p55)
 :::
 
 ## 2024–2025: the Norm comes back after the sub-layer
@@ -348,10 +364,10 @@ Three consequences: demo 3 (p35), Peri-LN (p27), CompleteP (p53)
 ::: {.prose}
 | who | what they do to the block | what it repairs |
 |---|---|---|
-| **Gemma 2** (2024) | Norm on the branch **and** on its output — both pre- and post-norm; logit soft-capping | the growing trunk (p26); the growing logits (p46) |
+| **Gemma 2** (2024) | Norm on the branch **and** on its output — both pre- and post-norm; logit soft-capping | the growing trunk (p27); the growing logits (p48) |
 | **OLMo 2** (2024) | *reordered norm*: Norm on the sub-layer output, inside the residual; plus QK-norm and z-loss | the same, as a public recipe |
-| **Peri-LN** (ICML 2025) | names the pattern and measures the variance growth of pre-LN | the mechanism of p26, as a paper |
-| **DyT** (CVPR 2025) | the other side: replace Norm by elementwise $\tanh(\alpha x)$ and still train | asks what Norm was doing at all — mostly vision, mid-size LMs; "being tested" |
+| **Peri-LN** (ICML 2025) | names the pattern and measures the variance growth of pre-LN | the mechanism of p27, as a paper |
+| **DyT**, Dynamic Tanh (CVPR 2025) | the other side: replace Norm by elementwise $\tanh(\alpha x)$ and still train | asks what Norm was doing at all — mostly vision, mid-size LMs; "being tested" |
 
 : {tbl-colwidths="[18,50,32]"}
 :::
@@ -365,14 +381,14 @@ Misconception 6: "pre-LN is the end of the story" — a default under repair
 $$s_{ij} = \frac{\mathbf{q}_i^\top \mathbf{k}_j}{\sqrt{d_{\text{head}}}} \quad\longrightarrow\quad s_{ij} = \mathrm{RMSNorm}(\mathbf{q}_i)^\top\,\mathrm{RMSNorm}(\mathbf{k}_j)\,/\,\sqrt{d_{\text{head}}}$$
 
 - W3 p19: $1/\sqrt{d_{\text{head}}}$ sets the temperature **at initialization**; nothing stops $\|\mathbf{q}\|\|\mathbf{k}\|$ from growing during training
-- **QK-norm** bounds the logit **by construction**, in two lines — the learned gains are the only way up:
+- **QK-norm** (query–key normalization) bounds the logit **by construction**, in two lines — the learned gains are the only way up:
 
 ::: {.small}
 $\mathbf{u} = \mathbf{q}/\mathrm{rms}(\mathbf{q})$ has $\sum_i u_i^2 = d_{\text{head}}$, so $\|\mathbf{u} \odot \boldsymbol{\gamma}_q\|^2 = \sum_i u_i^2\,\gamma_{q,i}^2 \leq d_{\text{head}}\,\|\boldsymbol{\gamma}_q\|_\infty^2$; the same for $\mathbf{k}$. Cauchy–Schwarz, then divide by $\sqrt{d_{\text{head}}}$:
 $$|s_{ij}| \;\leq\; \sqrt{d_{\text{head}}}\;\|\boldsymbol{\gamma}_q\|_\infty\,\|\boldsymbol{\gamma}_k\|_\infty, \qquad \text{at initialization } (\boldsymbol{\gamma} = \mathbf{1}):\ |s_{ij}| \leq \sqrt{d_{\text{head}}} \approx 11.3 \text{ for } d_{\text{head}} = 128$$
 :::
 
-- Origin: Henry et al. 2020; scaled up in ViT-22B; adopted by OLMo 2 and Qwen3. The symptom it prevents is the second picture on p46
+- Origin: Henry et al. 2020; scaled up in ViT-22B; adopted by OLMo 2 and Qwen3. The symptom it prevents is the second picture on p48
 
 ::: {.footer}
 Henry 2020 · Dehghani 2023 · OLMo 2 · Qwen3 (search term, report not verified)
@@ -391,8 +407,8 @@ simulated · w04-data.json (qknorm) · our derivation · the 1,448 breaks the 2-
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p25 read the two Jacobians: pre-LN keeps an $\mathbf{I}$ on the gradient's path, post-LN does not — so post-LN should need warmup more. Train Demo 1's model both ways and see. A proxy of a proxy: 12.7 million parameters, not billions, so only the shape carries over. |
-| **What runs** | Recorded before class, replayed here: Demo 1's model at 16 layers, pre-LN and post-LN, no warmup, the same learning rate, 1,000 steps. On screen: a table, the loss and gradient-norm curves, and every layer's gradient norm at step 0. The same program returns on p47: three learning rates, then QK-norm. |
+| **Why** | p26 read the two Jacobians: pre-LN keeps an $\mathbf{I}$ on the gradient's path, post-LN does not — so post-LN should need warmup more. Train Demo 1's model both ways and see. A proxy of a proxy: 12.7 million parameters, not billions, so only the shape carries over. |
+| **What runs** | Recorded before class, replayed here: Demo 1's model at 16 layers, pre-LN and post-LN, no warmup, the same learning rate, 1,000 steps. On screen: a table, the loss and gradient-norm curves, and every layer's gradient norm at step 0. The same program returns on p49: three learning rates, then QK-norm. |
 | **Watch for** | Whether post-LN without warmup trains, diverges, or stalls — read its loss against the unigram and bigram levels printed beside it. And at step 0, before any update: which layers' gradients look different between the two. |
 :::
 
@@ -415,7 +431,7 @@ Before the curves: from the two Jacobians, **which one needs warmup more**, and 
 Demo 2, setting (i) · rehearsed, replayed · a proxy of a proxy: the shape only
 :::
 
-# The FFN, and what a layer is worth {.section-title}
+# What is one layer worth? The FFN, and a layer skipped at a time {.section-title}
 
 ## The FFN as a key-value memory — a reading, not a mechanism
 
@@ -424,7 +440,7 @@ Demo 2, setting (i) · rehearsed, replayed · a proxy of a proxy: the shape only
 - Two thirds of the parameters sit here; "knowledge lives in the FFN" is **consistent with capacity**, and correlational as evidence
 
 ::: {.claim}
-A key-value reading tells you where to *look*; it does not tell you what *causes* the output. The intervention experiments (ROME and after) are W14 — the fourth reading question.
+A key-value reading tells you where to *look*; it does not tell you what *causes* the output. The intervention experiments (ROME, rank-one model editing, and after) are W14 — the fourth reading question.
 :::
 
 ::: {.footer}
@@ -436,7 +452,7 @@ Geva et al., EMNLP 2021 · W1 p21: the four questions · W14
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | On the bus, every layer only adds a term (p9), and under pre-LN the later terms are relatively small (p26). If that were the whole story, removing any one layer would cost little. Test it on a trained model, one layer at a time. |
+| **Why** | On the bus, every layer only adds a term (p9), and under pre-LN the later terms are relatively small (p27). If that were the whole story, removing any one layer would cost little. Test it on a trained model, one layer at a time. |
 | **What runs** | Qwen3-0.6B — W3 Demo 3's model, 28 layers — on a fixed text: W1's Chinese paragraph and its English version. Skipping layer $i$ sets its forward to the identity; no parameter is deleted. Perplexity once with every layer, then 28 times with one skipped: a line per layer, about eleven seconds. |
 | **Watch for** | Three guesses before Enter — the first layer, a middle one, the last one: which costs the most? Then where the curve departs from the guesses. |
 :::
@@ -459,7 +475,7 @@ Demo 3 · live · Qwen3-0.6B (W3 demo 3) · one layer's forward set to the ident
 | the claim | the qualification | where it shows |
 |---|---|---|
 | middle layers can be removed | **only middle layers** — the first layers are catastrophic; the last is clearly worse, not catastrophic, in a single-layer test; the literature's "first and last" cuts a deep *block* and heals. Veit et al.'s ensemble argument applies to the middle | the two ends of today's curve |
-| the model still works | **on some metrics** — Gromov et al.: QA benchmarks fall slowly, loss falls fast. Perplexity is the fast one | today's curve is steeper than theirs |
+| the model still works | **on some metrics** — Gromov et al.: question-answering (QA) benchmarks fall slowly, loss falls fast. Perplexity is the fast one | today's curve is steeper than theirs |
 | so layers are redundant | **usually after healing** — a short fine-tune after removal; ShortGPT scores layers by *block influence* before cutting | not done today |
 
 : {tbl-colwidths="[26,52,22]"}
@@ -469,21 +485,7 @@ Demo 3 · live · Qwen3-0.6B (W3 demo 3) · one layer's forward set to the ident
 Misconception 7: "middle layers are removable, so layers are redundant"
 :::
 
-## The bus itself is being redesigned
-
-- **Hyper-connections** (2024–2025): instead of one residual stream per token, several streams with **learnable mixing** between them at every layer — the bus becomes a small bus *fabric*
-- **DeepSeek-V4** (model card, 2026-04): states that its residual connection uses a manifold-constrained variant (mHC) — a specification document, not a paper
-- What stays: every layer still *adds*; what changes: *into which of several streams*, and with what weights
-
-::: {.claim}
-The bus metaphor is **2017–2025's standard form**. Keep the three operations — read, compute, add — and expect the wiring to change.
-:::
-
-::: {.footer}
-Search terms, not citations: *Hyper-Connections residual stream* · half-life 1 yr
-:::
-
-# The ledger: $6ND$, and the optimizer row {.section-title}
+# What does training it cost? $6ND$, and the optimizer row in bytes {.section-title}
 
 ## $C \approx 6ND$, reconciled with this week's accounting
 
@@ -514,6 +516,34 @@ $6ND$ keeps the blue and drops the red. At $4\text{k}$ the red is noise; at $32\
 w04-data.json (flops) · W3 p37 ($L = 12d$) · W3 p33 (decode: $4Ld$) · W1 p17 convention
 :::
 
+## One training step vs. one forward pass: three walks, 16 bytes
+
+{{< include assets/w04/trainstep.inline.qmd >}}
+
+::: {.claim}
+Training walks the same stream **three times** — forward, backward, update. Inference keeps the first walk and $2$ of the $16$ bytes; W8 removes the other two walks, W11 serves the one that is left.
+:::
+
+::: {.footer}
+W1 p17 ($6 = 2 + 4$) · W3 p55 (KV cache) · ZeRO §3 (p45) · the update is per step, $6N$ per token
+:::
+
+## At a glance: AdamW
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Name** | **AdamW** — **Adam** (*adaptive moment estimation*, Kingma & Ba, ICLR 2015: two running moments per parameter) with **decoupled weight decay**, the "W": Loshchilov & Hutter, ICLR 2019 (arXiv:1711.05101). |
+| **The question** | L2 regularization and weight decay "are equivalent for standard stochastic gradient descent (when rescaled by the learning rate)" — for Adam? "This is *not* the case for adaptive gradient algorithms, such as Adam." |
+| **The idea** | "Decoupling the weight decay from the optimization steps taken w.r.t. the loss function": $\lambda\boldsymbol{\theta}_t$ sits outside the division by $\sqrt{\hat{\mathbf{v}}_t}$, so every parameter decays at the same rate (p43–p44). |
+| **What it added** | It "decouples the optimal choice of weight decay factor from the setting of the learning rate" and, the abstract claims, "substantially improves Adam's generalization performance" — not re-measured here. The default of LLM pre-training, 2019–2024. |
+| **What it leaves open** | The two moments' cost: $8$ of $16$ bytes (p45). Why warm-up stays; an out-of-date $\hat{\mathbf{v}}_t$ mid-training (p48). Is *per entry* the right unit for a matrix? Muon (p56–p58). |
+:::
+
+::: {.footer}
+Kingma & Ba 2015 · Loshchilov & Hutter 2019 · update p43 · the one step p44 · bytes p45
+:::
+
 ## AdamW: the update, and where the decay goes
 
 $$\mathbf{m}_t = \beta_1 \mathbf{m}_{t-1} + (1-\beta_1)\,\mathbf{g}_t,\qquad \mathbf{v}_t = \beta_2 \mathbf{v}_{t-1} + (1-\beta_2)\,\mathbf{g}_t^{\odot 2}$$
@@ -521,7 +551,7 @@ $$\mathbf{m}_t = \beta_1 \mathbf{m}_{t-1} + (1-\beta_1)\,\mathbf{g}_t,\qquad \ma
 $$\boldsymbol{\theta}_{t+1} = \boldsymbol{\theta}_t - \eta_t\left(\frac{\hat{\mathbf{m}}_t}{\sqrt{\hat{\mathbf{v}}_t} + \epsilon} + \lambda\,\boldsymbol{\theta}_t\right), \qquad \hat{\mathbf{m}}_t = \frac{\mathbf{m}_t}{1-\beta_1^t},\ \hat{\mathbf{v}}_t = \frac{\mathbf{v}_t}{1-\beta_2^t}$$
 
 - Everything is **elementwise**: each parameter gets its own step size $\eta_t/(\sqrt{\hat v_t} + \epsilon)$
-- $\hat{\mathbf{v}}_t$ is a running estimate of $\mathbf{g}^2$; early on it is a poor one — **the Adam-side reason warmup stays** (p25)
+- $\hat{\mathbf{v}}_t$ is a running estimate of $\mathbf{g}^2$; early on it is a poor one — **the Adam-side reason warmup stays** (p26)
 - The $\lambda\boldsymbol{\theta}_t$ sits **outside** the division: that is the "W" in AdamW, and the next slide
 
 ::: {.footer}
@@ -548,11 +578,11 @@ Steady state, $\eta = 10^{-3}$, $\lambda = 0.1$, $\theta = 1$ · `w04-data.json`
 {{< include assets/w04/bytes.inline.qmd >}}
 
 ::: {.claim}
-**16 bytes per parameter** before a single activation: an 8B model needs 128 GB to fine-tune in full — twice this machine, eight times the project GPU. That number is W8.
+**16 bytes per parameter** before a single activation: an 8B model needs 128 GB to fine-tune in full — twice this machine, eight times the project GPU. W8 starts here.
 :::
 
 ::: {.footer}
-Rajbhandari 2019 (ZeRO) §3 · $N = 8 \times 10^9$ nominal · activations not included
+Rajbhandari 2019 (ZeRO, Zero Redundancy Optimizer) §3 · bf16 = bfloat16, fp32 = IEEE single · $N = 8 \times 10^9$ nominal · no activations
 :::
 
 ## The ledger, week 4: the optimizer row gets its number
@@ -573,7 +603,7 @@ Rajbhandari 2019 (ZeRO) §3 · $N = 8 \times 10^9$ nominal · activations not in
 Same master as W1 p16, W3 p55 · $N \approx 12\,n_{\text{layer}}d^2 + Vd$ is now computable from a `config.json`
 :::
 
-# When training breaks {.section-title}
+# How does training it break — and which number do you read first? {.section-title}
 
 ## Three symptoms, one picture each
 
@@ -620,12 +650,12 @@ measured: demo 2 rehearsal 2026-10-06 · ii.json, iii.json, baselines.json · ti
 
 | symptom | repair | who uses it | what it does |
 |:---|:---|:---|:---|
-| attention logit growth | **QK-norm** | OLMo 2, Qwen3, ViT-22B | bounds $s_{ij}$ by construction (p28) |
+| attention logit growth | **QK-norm** | OLMo 2, Qwen3, ViT-22B | bounds $s_{ij}$ by construction (p29) |
 | | **logit soft-cap** $s \leftarrow c\tanh(s/c)$ | Gemma 2 | bounds $s_{ij}$ after the fact |
 | | **QK-clip** | Kimi K2 (MuonClip) | clips $\mathbf{W}^Q, \mathbf{W}^K$ inside the optimizer |
 | output logit divergence | **z-loss** $\alpha(\log Z)^2$, $\alpha = 10^{-4}$ | PaLM, OLMo 2 | pulls $\log Z$ toward $0$ |
-| loss spike, any cause | **gradient clipping**, **warmup** | everyone | caps the step; waits for $\hat{\mathbf{v}}_t$ (p41) |
-| the trunk's growth | **post-norm on the output** (p27) | Gemma 2, OLMo 2, Peri-LN | keeps the added term $O(1)$ relative to the stream |
+| loss spike, any cause | **gradient clipping**, **warmup** | everyone | caps the step; waits for $\hat{\mathbf{v}}_t$ (p43) |
+| the trunk's growth | **post-norm on the output** (p28) | Gemma 2, OLMo 2, Peri-LN | keeps the added term $O(1)$ relative to the stream |
 
 ::: {.footer}
 Takase 2023: a second spike mechanism — sub-layer outputs too large for the shortcut
@@ -636,7 +666,7 @@ Takase 2023: a second spike mechanism — sub-layer outputs too large for the sh
 ![](assets/w04/repairs.svg){width="100%"}
 
 ::: {.footer}
-schematic · colour = the symptom · numbers = the rows of the previous table · p28 · p46 · p49
+schematic · colour = the symptom · numbers = the rows of the previous table · p29 · p48 · p51
 :::
 
 ## Statistics first, data second
@@ -646,7 +676,7 @@ schematic · colour = the symptom · numbers = the rows of the previous table ·
 |---|---|
 | blame the data: "a bad batch caused the spike" | PaLM's experience: skipping the offending batch helps — **but the same batch fed at another point does not spike**. It is a state problem, not a data problem |
 | look for the bad examples first | Wortsman et al. reproduce logit growth and divergence at small scale with a high LR and **no special data**: the causes are architectural and optimizer-side |
-| treat the spike as the event | the spike is the *last* event. $\max\lvert s_{ij}\rvert$, $\log Z$ and the gradient norm move first (p47) — log them, read them, then go to the data |
+| treat the spike as the event | the spike is the *last* event. $\max\lvert s_{ij}\rvert$, $\log Z$ and the gradient norm move first (p49) — log them, read them, then go to the data |
 
 : {tbl-colwidths="[32,68]"}
 :::
@@ -655,16 +685,32 @@ schematic · colour = the symptom · numbers = the rows of the previous table ·
 Misconception 8: "a loss spike means dirty data" · PaLM §5.1 · Wortsman 2023
 :::
 
-# Hyperparameters and optimizers at scale {.section-title}
+# Is there a principle behind the knobs? muP and Muon {.section-title}
 
 ## muP: tune small, transfer wide — and where it stops
 
-- **Claim** (Tensor Programs V): scale the initialization, the learning rate and the output multiplier with width $d$ at the right powers, so that every layer's activations **and every step's change in activations** stay $\Theta(1)$ as $d$ grows. Then the optimal hyperparameters do not depend on $d$: tune on a small model, transfer for free
+- **Claim** (muP, the Maximal Update Parametrization — Tensor Programs V): scale the initialization, the learning rate and the output multiplier with width $d$ at the right powers, so that every layer's activations **and every step's change in activations** stay $\Theta(1)$ as $d$ grows. Then the optimal hyperparameters do not depend on $d$: tune on a small model, transfer for free
 - **Rules of thumb under Adam**: hidden-layer LR $\propto 1/d$, output layer multiplied by $1/d$, input layer unchanged — *check the paper's table before quoting*
-- **Three limits, each a paper**: (a) width only — depth needs its own parametrization: Bordelon et al., CompleteP scale each residual branch by $n_{\text{layer}}^{-\alpha}$, with different $\alpha$; (b) at industrial scale and for MoE, transfer is questioned (Zhou et al., 2026); (c) u-μP merges it with unit scaling for low precision — the original defaults were not optimal
+- **Three limits, each a paper**: (a) width only — depth needs its own parametrization: Bordelon et al., CompleteP scale each residual branch by $n_{\text{layer}}^{-\alpha}$, with different $\alpha$; (b) at industrial scale and for MoE, transfer is questioned (Zhou et al., 2026); (c) u-μP (unit-scaled μP) merges it with unit scaling for low precision — the original defaults were not optimal
 
 ::: {.footer}
 Misconception 9: "tuning has no principles" — it has one, for width · Yang 2021
+:::
+
+## At a glance: Muon
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Name** | **Muon** — "MomentUm Orthogonalized by Newton-Schulz". Jordan et al., blog post, 2024-12-08 — **a blog, not a paper**; scaled to LLM size by Liu et al. 2025 (Moonshot, arXiv:2502.16982). |
+| **The question** | For a weight *matrix*, is one step size per entry (AdamW, p43) the right unit? The post's observation: SGD-momentum and Adam updates "typically have very high condition number. That is, they are almost low-rank matrices". |
+| **The idea** | "An optimizer for 2D parameters of neural network hidden layers": **orthogonalize** the momentum — $\mathbf{U}\boldsymbol{\Sigma}\mathbf{V}^\top \mapsto \mathbf{U}\mathbf{V}^\top$ — by a Newton–Schulz iteration, matrix multiplies only. |
+| **What it added** | An equal step in every singular direction; the NanoGPT speed-run records as evidence; scalars, vectors, embedding and output head stay on AdamW. On *why*: "we speculate" — rare directions get amplified. |
+| **What it leaves open** | Where $\mathbf{M}_t$ comes from, and why orthogonalize it rather than the raw gradient (p57); why one dominant direction is bad, and what is conjecture (p58); not second order (p58); muP, MoE, large batches — the 2026 status (p59). |
+:::
+
+::: {.footer}
+Jordan et al. 2024 (blog) · momentum: p57 · the update and the three readings: p58 · status: p59
 :::
 
 ## Where $\mathbf{M}_t$ comes from: momentum
@@ -678,7 +724,7 @@ Same sum as Adam's $\mathbf{m}_t$. **What differs is the step**: Adam equalizes 
 :::
 
 ::: {.footer}
-Heavy-ball form, as in Muon's definition · Adam's $\mathbf{m}_t$ (p41) is this sum times $(1-\beta_1)$
+Heavy-ball form, as in Muon's definition · Adam's $\mathbf{m}_t$ (p43) is this sum times $(1-\beta_1)$
 :::
 
 ## Muon: orthogonalized momentum, not second order
@@ -686,7 +732,7 @@ Heavy-ball form, as in Muon's definition · Adam's $\mathbf{m}_t$ (p41) is this 
 ![](assets/w04/muon.svg){width="100%"}
 
 ::: {.claim}
-$\mathbf{M}_t = \mu\mathbf{M}_{t-1} + \mathbf{G}_t$, then $\mathbf{W} \leftarrow \mathbf{W} - \eta\,\mathrm{NS}(\mathbf{M}_t)$ with $\mathrm{NS}(\mathbf{M}) \approx \mathbf{U}\mathbf{V}^\top$. **No Hessian is estimated or inverted.**
+$\mathbf{M}_t = \mu\mathbf{M}_{t-1} + \mathbf{G}_t$, then $\mathbf{W} \leftarrow \mathbf{W} - \eta\,\mathrm{NS}(\mathbf{M}_t)$, Newton–Schulz, with $\mathrm{NS}(\mathbf{M}) \approx \mathbf{U}\mathbf{V}^\top$. **No Hessian is estimated or inverted.**
 :::
 
 ::: {.footer}
@@ -740,6 +786,20 @@ Open: its interaction with muP, its behaviour under MoE and very large batches. 
 : {tbl-colwidths="[34,54,12]"}
 :::
 
+## The bus itself is being redesigned
+
+- **Hyper-connections** (2024–2025): instead of one residual stream per token, several streams with **learnable mixing** between them at every layer — the bus becomes a small bus *fabric*
+- **DeepSeek-V4** (model card, 2026-04): states that its residual connection uses a manifold-constrained variant (mHC) — a specification document, not a paper
+- What stays: every layer still *adds*; what changes: *into which of several streams*, and with what weights
+
+::: {.claim}
+The bus metaphor is **2017–2025's standard form**. Keep the three operations — read, compute, add — and expect the wiring to change.
+:::
+
+::: {.footer}
+Search terms, not citations: *Hyper-Connections residual stream* · half-life 1 yr
+:::
+
 ## Next week: where is the position?
 
 - W3 p45 said attention is **permutation-equivariant** without a mask; today's block adds nothing positional — Norm, FFN and the residual are all per-token. Whatever today's model knows about order, it inferred from the **causal mask alone** (and it did learn: 2.18 bits/char, p23)
@@ -771,7 +831,57 @@ Four weeks in: the unit (W2), what it may attend to (W3), what carries the resul
 
 **Hyperparameters and Muon** · Yang et al., *Tensor Programs V*, NeurIPS 2021 (arXiv:2203.03466) · Bordelon et al., *Depthwise Hyperparameter Transfer in Residual Networks*, arXiv:2309.16620 · Dey et al., *Don't be lazy: CompleteP*, arXiv:2505.01618 · Blake et al., *u-μP*, arXiv:2407.17465 · Zhou et al., *How to Set the Learning Rate for Large-Scale Pre-training?*, arXiv:2601.05049 · Jordan et al., *Muon: An optimizer for hidden layers in neural networks*, 2024-12-08 — **a blog post, not a paper** · Liu et al., *Muon is Scalable for LLM Training*, arXiv:2502.16982 · Bai et al., *Kimi K2: Open Agentic Intelligence*, arXiv:2507.20534 — a technical report · DeepSeek, *DeepSeek V4 Technical Documentation*, model card, 2026-04-27 — **a specification document, not a paper**
 
-**Data and figures** · The KV rows on p4 are W3 demo 2's rehearsal record (2026-09-29); the accounting numbers are arithmetic on W1 p16's paper configuration with $V = 2^{17}$ as an order of magnitude; the norm-growth curves are a Gaussian simulation ($d = 256$, 64 layers, 40 trials); the AdamW table is a one-parameter steady-state approximation; the Muon singular values are a $6 \times 4$ random matrix under the classical Newton–Schulz iteration; the bus, block, Jacobian, symptom and layer-removal figures are schematics. No `config.json` number appears on these slides: demo 1 reads them live.
+**Data and figures** · The KV rows on p4 are W3 demo 2's rehearsal record (2026-09-29); the accounting numbers are arithmetic on W1 p16's paper configuration with $V = 2^{17}$ as an order of magnitude; the norm-growth curves are a Gaussian simulation ($d = 256$, 64 layers, 40 trials); the AdamW table is a one-parameter steady-state approximation; the Muon singular values are a $6 \times 4$ random matrix (first column $\times 4$ on purpose) under the classical Newton–Schulz iteration; the momentum figure uses synthetic gradients; the bus, block, Jacobian, symptom, repair-placement and training-step figures are diagrams; the layer-removal figure draws demo 3's 28 measured points over a predicted shape, and the instability figure is demo 2's rehearsal record. No `config.json` number appears on these slides: demo 1 reads them live.
 
 **Search terms, not citations** · *Hyper-Connections residual stream* · *manifold-constrained hyper-connections* · *Qwen3 technical report QK-Norm* · *RAdam variance of the adaptive learning rate warmup* · Kaplan et al. 2020 §2.1 (W7) for $N$ without embeddings
 :::
+
+## Acronyms in this deck, A–G
+
+| | |
+|:----|:----------------|
+| Adam | not an acronym: the name is derived from *adaptive moment estimation*, Kingma & Ba 2015 (p42) |
+| AdamW | Adam with decoupled weight decay — the "W" — Loshchilov & Hutter 2019 (p42) |
+| bf16 | bfloat16, the 16-bit "brain floating point" format: the weights and gradients of p41 and p45 |
+| BW | memory bandwidth, in the ledger's decode row (W3) |
+| CE | cross-entropy, the loss (W1) |
+| DyT | Dynamic Tanh, Zhu et al. 2025: $\tanh(\alpha x)$ in place of a Norm (p28) |
+| FFN | feed-forward network: the block's second sub-layer, three matrices here (p9) |
+| FLOPs | floating-point operations (W1) |
+| fp32 | 32-bit IEEE single precision: the master weights and the two moments of p41 and p45 |
+| GLU | gated linear unit; SwiGLU is the variant with a Swish gate (p13) |
+| GPT | generative pre-trained Transformer: demo 1's class, and GPT-2's name (p17) |
+| GQA | grouped-query attention (W3) |
+
+## Acronyms in this deck, K–P
+
+| | |
+|:----|:----------------|
+| KV | key–value, as in the KV cache (W3) |
+| LN | layer normalization; pre-LN / post-LN say where it sits relative to the sub-layer (p11; the formula, p12) |
+| LR | learning rate (p26) |
+| MHA | multi-head attention, with $n_{\text{kv}} = n_{\text{head}}$ (W3) |
+| mHC | manifold-constrained hyper-connections, the name on DeepSeek-V4's model card (p10; p63) |
+| MoE | mixture of experts: the ledger's last row (W1; W6) |
+| MPS | Metal Performance Shaders: `torch`'s backend on Apple silicon, where demos 1–3 ran (p17) |
+| muP, μP | Maximal Update Parametrization, Yang et al. 2021 (p55) |
+| Muon | MomentUm Orthogonalized by Newton-Schulz, Jordan et al. 2024 (p56) |
+| NS | Newton–Schulz, the iteration that orthogonalizes $\mathbf{M}_t$ (p58) |
+| PEFT | parameter-efficient fine-tuning (p45; W8) |
+| Peri-LN | the paper's name for a Norm on both the input and the output of the sub-layer, Kim et al. 2025 (p28) |
+
+## Acronyms in this deck, Q–Z
+
+| | |
+|:----|:----------------|
+| QA | question answering, the kind of benchmark Gromov et al. score (p37) |
+| QK-norm | query–key normalization: an RMSNorm on $\mathbf{q}$ and on $\mathbf{k}$ before the dot product, Henry et al. 2020 (p29) |
+| ReLU | rectified linear unit, the gate-free FFN's nonlinearity (p13) |
+| RMSNorm | root-mean-square layer normalization, Zhang & Sennrich 2019 (p12) |
+| ROME | Rank-One Model Editing, Meng et al. 2022: the intervention experiment of W14 (p34) |
+| SGD | stochastic gradient descent (p42) |
+| SiLU | sigmoid linear unit, $z \cdot \mathrm{sigmoid}(z)$, also called Swish (p13) |
+| SOAP | ShampoO with Adam in the Preconditioner's eigenbasis, Vyas et al. 2024: the Shampoo line named on p58 |
+| SwiGLU | the GLU with a Swish (SiLU) gate, Shazeer 2020 (p13) |
+| u-μP | the Unit-Scaled Maximal Update Parametrization, Blake et al. 2024 (p55) |
+| ZeRO | Zero Redundancy Optimizer, Rajbhandari et al. 2019: the source of the 16-byte accounting (p45) |
