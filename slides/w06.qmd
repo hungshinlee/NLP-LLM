@@ -387,12 +387,12 @@ $$\mathbf{S}_t^\top\phi(\mathbf{k}_s) \;=\; \underbrace{\mathbf{v}_s\,\|\phi(\ma
 outline W6 §Key math 3 · the root shared by Jelassi et al., Zoology and BASED · W1 p62
 :::
 
-## The same curve in Python — and what "cheaper, worse" gets wrong
+## What demo 3 (d) measured — and what "cheaper, worse" gets wrong
 
-{{< include assets/w06/capacity.inline.qmd >}}
+{{< include assets/w06/capacity-measured.inline.qmd >}}
 
 ::: {.footer}
-w06-data.json capacity · Misconception 5: "linear attention is a cheaper, worse attention"
+Demo 3 (d), rehearsed 2026-10-19 · Misconception 5: "a cheaper, worse attention"
 :::
 
 # What 2023–2025 changed: how the notebook forgets {.section-title}
@@ -743,7 +743,7 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 
 **Hybrids and the three routes** · Lieber et al., *Jamba*, arXiv:2403.19887 (2024) · Waleffe et al., *An Empirical Study of Mamba-based Language Models*, arXiv:2406.07887 (2024) · NVIDIA, *Nemotron-H*, arXiv:2504.03624 (2025) · Zuo et al., *Falcon-H1*, arXiv:2507.22448 (2025) · Du et al., *Kimi Linear: An Expressive, Efficient Attention Architecture*, arXiv:2510.26692 (2025; v2 Nov. 2025) — **assigned reading** · Kimi Team, *Kimi K3: Open Frontier Intelligence*, arXiv:2607.24653 (2026) — CC BY-NC-ND 4.0 · Qwen Team, *Qwen3-Next-80B-A3B* model card and blog post, September 2025 — **a model card and a blog post, not a paper; no technical report exists** · Wu et al., *MiniMax-01*, arXiv:2501.08313 (2025) · Chen et al., *The MiniMax-M2 Series*, arXiv:2605.26494 (2026) — the abstract says nothing about the form of attention · MiniMax, *Why Did M2 End Up as a Full Attention Model?*, team post, 2025-10-29 — **a company post, not a paper** · DeepSeek-AI, *DeepSeek-V2* arXiv:2405.04434 · *DeepSeek-V3.2* arXiv:2512.02556 · *DeepSeek-V4* arXiv:2606.19348 · He et al., *Defeating Nondeterminism in LLM Inference*, Thinking Machines Lab blog, September 2025 — **a company blog post, not a paper** · Meta AI, *The Llama 4 herd*, April 2025 — **a blog post, not a paper**
 
-**Data and figures** · Every number on these slides is one of: arithmetic on a `config.json` (snapshots of 2026-10-18 under `assets/w06/configs/`, read by `make_demo_w06.py`), a total/active count copied from an abstract (five flagships), pure-Python arithmetic on the definitions (FLOP counts, the capacity curves at $d_{\text{head}} = 32$), or a number from an earlier week's rehearsal (W3 demo 2's `curve.json`, W5's `w05-data.json`). The triage desk, the notebook, the MoE layer, the collapse loop, the SSM boxes, the two-algorithms picture, the block with two slots and the $\boldsymbol{\Lambda}$ matrix are schematics. **All four demos were built and rehearsed on the M5 Max (2026-10-18/19)**; their records are checked in under `demos/w06_d*/runs/rehearsal/` and the tables on p18, p26 and p42 and the curves on p18 and p42 are those records. The table on p12 is blank on purpose: it is filled in class.
+**Data and figures** · Every number on these slides is one of: arithmetic on a `config.json` (snapshots of 2026-10-18 under `assets/w06/configs/`, read by `make_demo_w06.py`), a total/active count copied from an abstract (five flagships), pure-Python arithmetic on the definitions (FLOP counts), a number from an earlier week's rehearsal (W3 demo 2's `curve.json`, W5's `w05-data.json`), or this week's rehearsal records (demo 2's load curves, demo 3's recall curves, demo 4's cache sizes). The triage desk, the notebook, the MoE layer, the collapse loop, the SSM boxes, the two-algorithms picture, the block with two slots and the $\boldsymbol{\Lambda}$ matrix are schematics. **All four demos were built and rehearsed on the M5 Max (2026-10-18/19)**; their records are checked in under `demos/w06_d*/runs/rehearsal/` and the tables on p18, p26 and p42 and the curves on p18 and p42 are those records. The table on p12 is blank on purpose: it is filled in class.
 :::
 
 ## Acronyms in this deck, A–G
