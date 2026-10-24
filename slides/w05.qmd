@@ -341,8 +341,8 @@ Demo 1 · code: `demos/w05_d1_rope_check` · plain torch, CPU, float64
 **Tests — predict each before it runs**
 
 - **(a)** fix $m - n$, shift $m$ over ten values: max difference of the score → $10^{-15}$?
-- **(b)** control: the *additive* sinusoidal stamp under the same shift → the score **moves**
-- **(c)** rotate $\mathbf{v}$ as well: the attention output changes with $m$ — the counter-example to "rotate everything"
+- **(b)** control: the *additive* sinusoidal stamp under the same shift — does the score move? If so, in which of its four terms?
+- **(c)** rotate $\mathbf{v}$ as well — does the attention output change with $m$? And its norm?
 - then the picture on the next slide: $d_{\text{head}}/2$ wavelengths against $L_{\text{train}}$
 :::
 :::
