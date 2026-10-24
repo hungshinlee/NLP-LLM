@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W6 demo 2：MoE 的三種平衡法——expert 負載與 held-out loss（彩排預錄、課堂 replay）。投影片 p17（p16 前導頁）。
+"""W6 demo 2：MoE 的三種平衡法——expert 負載與 held-out loss（彩排預錄、課堂 replay）。投影片 p18（p17 前導頁）。
 
 W4 demo 1 的 tiny GPT，每一層的 FFN 換成 MoE 層（n_E = 8、k = 2、d_E = d_ff/2；moe_gpt.py），同一份語料、同一個 seed，三組設定各訓一次：
   (i)   none     沒有平衡項
@@ -13,7 +13,7 @@ W4 demo 1 的 tiny GPT，每一層的 FFN 換成 MoE 層（n_E = 8、k = 2、d_E
   ./present.sh rehearse            全套：三組各 3000 步 → runs/rehearsal/{none,switch,bias}.json + summary.json + curves.svg
   ./present.sh train switch        只訓一組（none|switch|bias）→ runs/rehearsal/<setting>.json（不動其他兩組；之後 ./present.sh summarize）
   ./present.sh summarize           只從三個 json 重寫 summary.json 與 curves.svg
-  ./present.sh replay              課堂（p17）：Enter 一組——(i) → (ii) → (iii)：最後的指標、每層 8 格負載長條、兩條曲線；最後印 p17 的表
+  ./present.sh replay              課堂（p18）：Enter 一組——(i) → (ii) → (iii)：最後的指標、每層 8 格負載長條、兩條曲線；最後印 p18 的表
   ./present.sh show                只印表（投影機上字太小時用；也是 replay 的退路）
   ./present.sh estimate            不訓練，用 W4 demo 1 probe.json 的每步秒數估 rehearse 要跑多久（MoE 一層跑 8 個 expert，實際會比它慢）
   ./present.sh rehearse --steps 30 煙霧測試：30 步 × 三組 + 全套紀錄，寫到 runs/smoke/（不碰 runs/rehearsal/）
@@ -202,7 +202,7 @@ def bar8(f: list[float], width: int = 48) -> str:
 def print_table(summary: dict) -> None:
     S = [s for s in ("none", "switch", "bias") if s in summary["table"]]
     n_E = summary["moe"]["n_E"]
-    print(f"\n  {BOLD}p17's table — final values (step {summary['steps'] - 1}; load on the fixed held-out subset; mean over {summary['n_layer']} layers, worst layer in parentheses){RESET}")
+    print(f"\n  {BOLD}p18's table — final values (step {summary['steps'] - 1}; load on the fixed held-out subset; mean over {summary['n_layer']} layers, worst layer in parentheses){RESET}")
     print(f"    {'':<46}" + "".join(f"{SHORT[s]:>26}" for s in S))
     print(f"    {f'largest expert load, final (ideal 1/{n_E} = {1 / n_E:.3f}; max 1/{summary['moe']['k']})':<46}" + "".join(f"{summary['table'][s]['max_f']:>18.3f} ({summary['table'][s]['max_f_worst']:.3f})" for s in S))
     print(f"    {'experts below 1% of slots, final (per layer)':<46}" + "".join(f"{summary['table'][s]['starved']:>18.1f} ({summary['table'][s]['starved_worst']})" for s in S))

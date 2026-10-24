@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W6 demo 1（投影片 p10 前導頁、p11「Live: demo 1 — N_total, N_active, ρ from the config」）的設定
+# W6 demo 1（投影片 p11 前導頁、p12「Live: demo 1 — N_total, N_active, ρ from the config」）的設定
 #
 # 四個模型、四列表格。順序就是投影片表格的順序（count 不帶參數時照這個順序印）。
 # 換模型只改這裡；鍵名的解讀規則在 count_moe.py 的 moe_spec()，加新家族時在那裡加鍵名。

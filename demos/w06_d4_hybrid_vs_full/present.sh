@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W6 demo 4（投影片 p37「Replay + live: demo 4 — cache against L, and recall」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
+# W6 demo 4（投影片 p42「Replay + live: demo 4 — cache against L, and recall」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
 #
 #   ./present.sh                       上課用：載兩個模型；Enter 一題（兩個模型各答一次）、m 印 (a) 的表、r 印 (b) 的表、x 離開
 #   ./present.sh replay                現場失敗時：只印課前彩排的 (a)(b)（不載模型）；replay memory / replay recall 只印一半

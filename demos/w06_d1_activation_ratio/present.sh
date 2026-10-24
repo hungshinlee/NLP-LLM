@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W6 demo 1（投影片 p11「Live: demo 1 — N_total, N_active, ρ from the config」）課前與課堂的入口。純標準函式庫，不載任何模型。
+# W6 demo 1（投影片 p12「Live: demo 1 — N_total, N_active, ρ from the config」）課前與課堂的入口。純標準函式庫，不載任何模型。
 #
 #   ./present.sh fetch             課前（要網路）：抓三個遠端模型的 config.json、safetensors index 與每個 shard 的 header（不抓權重）→ configs/
 #   ./present.sh keys qwen30       課堂第一步：印 config 裡所有含 expert／moe／shared／router 的鍵，再印這支程式怎麼解讀
 #   ./present.sh keys gemma        同上，本機的 Gemma 4（鍵在 text_config 底下、top_k_experts、dense 的 intermediate_size 並存）
 #   ./present.sh count             四列：逐項記帳（config 的式子 vs. safetensors 的形狀）→ N_total、N_active、ρ；最後一張總表照投影片的欄
 #   ./present.sh count qwen30      只算一個（名字見 demo_config.toml：gemma、qwen30、qwen_next、kimi）
-#   ./present.sh floor qwen30      地板：attention + norm + embedding 佔 N_active 的比例——接 p13
+#   ./present.sh floor qwen30      地板：attention + norm + embedding 佔 N_active 的比例——接 p14
 #   ./present.sh rehearse          課前彩排：count 全部 + 寫 runs/rehearsal/ratios.json（講稿裡的實測值從這裡抄）
 #   ./present.sh replay            現場卡住：印彩排紀錄（畫面標明非現場）
 #

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W6 demo 1（投影片 p11「Live: demo 1 — N_total, N_active, ρ from the config」）：從 config.json 算 MoE 的 activation ratio。
+"""W6 demo 1（投影片 p12「Live: demo 1 — N_total, N_active, ρ from the config」）：從 config.json 算 MoE 的 activation ratio。
 
     ./present.sh keys qwen30          # 印 config 裡所有含 expert／moe／shared／router 的鍵（含 text_config 底下的），再說這支程式怎麼解讀它們
     ./present.sh count                # 四列（demo_config.toml 的順序）：逐項記帳 → N_total、N_active、ρ；config 的式子對 safetensors 的實際形狀
     ./present.sh count qwen30 kimi    # 只算幾個
-    ./present.sh floor qwen30         # 地板：attention（含 linear／SSM 層）+ norm + embedding 佔 N_active 的比例——接 p13 的式子
+    ./present.sh floor qwen30         # 地板：attention（含 linear／SSM 層）+ norm + embedding 佔 N_active 的比例——接 p14 的式子
     ./present.sh rehearse             # count 全部 + 寫 runs/rehearsal/ratios.json
     ./present.sh replay               # 印彩排紀錄（畫面標明非現場）
 
@@ -575,7 +575,7 @@ def print_count(r: dict, src: Source) -> None:
 
 def print_floor(r: dict, src: Source) -> None:
     a, cl, fl, m, b = r["answer"], r["config_ledger"], r["file_ledger"], r["moe"], r["base"]
-    print(f"\n{BOLD}{src.repo}{RESET}  — the floor (p13: attention and embeddings are paid whatever k is)")
+    print(f"\n{BOLD}{src.repo}{RESET}  — the floor (p14: attention and embeddings are paid whatever k is)")
     g = (lambda c: fl["by"][c]) if fl else (lambda c: {"attention": cl["attention"], "linear": cl["linear"], "norms": cl["norms"],
                                                      "embedding": cl["embedding"], "head": 0, "shared": cl["shared"], "router": cl["router"],
                                                      "dense": cl["dense"]}[c])

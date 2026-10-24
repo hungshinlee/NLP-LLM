@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W6 · Demo 2 — Three ways to balance a mixture of experts, on last week's tiny GPT (slides p16–p17)
+# W6 · Demo 2 — Three ways to balance a mixture of experts, on last week's tiny GPT (slides p17–p18)
 
 W4 demo 1's tiny GPT (character-level, six layers, $d = 256$, windows of $L = 256$ characters) has a dense feed-forward block in every layer. This demo replaces each of those blocks with a **mixture-of-experts layer**: a router $\mathbf{W}^R \in \mathbb{R}^{8 \times 256}$, eight experts (each is W4's `SwiGLU`, half as wide: $d_E = 344$), and every token is sent to the **two** experts with the largest router logits, weighted by the softmax of the logits. Nothing else changes: same corpus, same held-out text, same hyperparameters, same 3000 steps, same random initialisation. The model is trained three times, once per balancing rule:
 

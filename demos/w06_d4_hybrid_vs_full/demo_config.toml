@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W6 demo 4（投影片 p37「Replay + live: demo 4 — cache against L, and recall」）的設定
+# W6 demo 4（投影片 p42「Replay + live: demo 4 — cache against L, and recall」）的設定
 #
 # 改這個檔就能換模型、換 context 長度、換題數，不必動程式。
 
@@ -23,7 +23,7 @@ probe_questions = ["What is the capital of France? Answer in one word.", "Reply 
 
 # ── (a) cache 對 L ─────────────────────────────────────────────
 [memory]
-# 量哪幾個 prompt 長度。與 p37 圖的橫軸一致；"max" 不用（Falcon-H1 名義 262144、Qwen3-8B 40960，都不量到底）。
+# 量哪幾個 prompt 長度。與 p42 圖的橫軸一致；"max" 不用（Falcon-H1 名義 262144、Qwen3-8B 40960，都不量到底）。
 contexts = [1024, 4096, 8192, 16384, 32768]
 max_context = 0
 # prefill 分塊大小，與 mlx-lm generate_step 的 prefill_step_size 預設相同（2048）；Falcon-H1 的 SSM 在每塊裡再以 256 一步走 ssm_attn。

@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W6 · Demo 1 — $N_{\text{total}}$, $N_{\text{active}}$ and $\rho$ from a `config.json` (slides p10–p11; the general formula is slide p13)
+# W6 · Demo 1 — $N_{\text{total}}$, $N_{\text{active}}$ and $\rho$ from a `config.json` (slides p11–p12; the general formula is slide p14)
 
 The compute ledger has said "memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$" since week 1 without a number. The numbers live in each model's `config.json` — and reading an MoE config is the ticket to reading any 2026 open-weight model. This demo extends W4's `count_params.py` with an MoE branch and runs it on four models: Gemma 4 26B-A4B (the model on the instructor's machine, W1 demo 1), Qwen3-30B-A3B, Qwen3-Next-80B-A3B and Kimi Linear 48B-A3B.
 
@@ -50,7 +50,7 @@ Without `present.sh`: `python3 fetch_configs.py`, `python3 count_moe.py count`, 
 
 ## What you should see
 
-For Qwen3-30B-A3B the two columns agree to the parameter: $N_{\text{total}} = 30{,}532{,}122{,}624$, which is exactly the index's `total_size` of 61,064,245,248 bytes divided by 2 (bf16). With $n_E = 128$, $k = 8$: $N_{\text{active}} \approx 3.35$ B and $\rho \approx 11.0\%$ — well above $k/n_E = 6.25\%$, because the attention projections and the two embedding matrices (about 1.53 B, 46 % of $N_{\text{active}}$) are paid whatever $k$ is. That gap is the floor on slide p13.
+For Qwen3-30B-A3B the two columns agree to the parameter: $N_{\text{total}} = 30{,}532{,}122{,}624$, which is exactly the index's `total_size` of 61,064,245,248 bytes divided by 2 (bf16). With $n_E = 128$, $k = 8$: $N_{\text{active}} \approx 3.35$ B and $\rho \approx 11.0\%$ — well above $k/n_E = 6.25\%$, because the attention projections and the two embedding matrices (about 1.53 B, 46 % of $N_{\text{active}}$) are paid whatever $k$ is. That gap is the floor on slide p14.
 
 From the rehearsal record `runs/rehearsal/ratios.json` (2026-10-18, Apple M5 Max, macOS 27.0.1, Python 3.12.14; every number from the safetensors headers, and for each fetched model the shapes × dtype bytes equal the index's `total_size`):
 

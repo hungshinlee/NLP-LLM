@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W6 demo 3（投影片 p24「Live: demo 3 — equal to float64, a crossover, a notebook filling up」）課前與課堂的入口。
+# W6 demo 3（投影片 p26「Live: demo 3 — equal to float64, a crossover, a notebook filling up」）課前與課堂的入口。
 # 純 torch、釘 CPU、float64，不碰 Hugging Face、不載模型。
 #
 #   ./present.sh               課前：對參考實作 linear_final.py 跑四個測試，全部 ok 才上台

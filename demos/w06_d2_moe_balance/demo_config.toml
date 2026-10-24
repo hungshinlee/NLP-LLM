@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W6 demo 2（投影片 p17「Replay: demo 2 — expert load and loss, three balancing rules」）的設定
+# W6 demo 2（投影片 p18「Replay: demo 2 — expert load and loss, three balancing rules」）的設定
 #
 # 全部**課前彩排、課堂只 replay**。模型是 W4 demo 1 的 tiny GPT（block_final.GPT）把每一層的 FFN 換成 MoE 層（moe_gpt.py）；
 # 語料、字元表、held-out 切點、尺寸（[tiny]）與訓練超參數（[train]：batch 64、3000 步、AdamW 1e-3、cosine、clip 1.0、dropout 0.1）

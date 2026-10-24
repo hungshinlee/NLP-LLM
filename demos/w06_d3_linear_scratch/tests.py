@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W6 demo 3 的四個測試（投影片 p24 右欄 (a)–(d)）。linear_final.py 與 linear_live.py 共用。
+"""W6 demo 3 的四個測試（投影片 p26 右欄 (a)–(d)）。linear_final.py 與 linear_live.py 共用。
 
     python3 tests.py linear_live          # 課堂：對 live 版跑（等同 ./present.sh live）；還沒寫的函數會標 skip
     python3 tests.py linear_final         # 等同 python3 linear_final.py
@@ -34,7 +34,7 @@ BOLD, DIM, RESET, GREEN, RED, AMBER, GREY = "\033[1m", "\033[2m", "\033[0m", "\0
 
 D_HEAD = 128
 L_EQUAL = 256                                       # (a) 的序列長
-L_TIMING = [32, 128, 512, 2048, 8192]               # (b) 的五個 L（投影片 p24 的表）
+L_TIMING = [32, 128, 512, 2048, 8192]               # (b) 的五個 L（投影片 p26 的表）
 REPEATS = {32: 200, 128: 100, 512: 30, 2048: 7, 8192: 3}
 L_CAUSAL = 64                                       # (c) 的步數
 M_LIST = [D_HEAD // 4, D_HEAD // 2, 3 * D_HEAD // 4, D_HEAD, 5 * D_HEAD // 4, 3 * D_HEAD // 2, 2 * D_HEAD, 3 * D_HEAD, 4 * D_HEAD]

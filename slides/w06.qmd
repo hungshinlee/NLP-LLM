@@ -73,7 +73,7 @@ Two replacements, two bills — and in 2026 **no route has won**: hybrid-linear,
 :::
 
 ::: {.footer}
-Outline W6 · on the board: p13, p21–22, p25, p29, p31 · live: p11, p24 · replayed: p17, p37
+Outline W6 · on the board: p14, p23–24, p27, p31, p34 · live: p12, p26 · replayed: p18, p42
 :::
 
 ## What you should be able to do by the end of today
@@ -95,7 +95,7 @@ Outline W6 · on the board: p13, p21–22, p25, p29, p31 · live: p11, p24 · re
 **(b)** W5 said the KV cache is $\propto L$. Can a model carry its context in something that does **not** grow with $L$ at all — and if so, what would it have to give up?
 :::
 
-- Write one line for each. Keep them: p45 comes back to both.
+- Write one line for each. Keep them: p50 comes back to both.
 - (a) is the ledger's $2N$ row: **W1 p16 wrote "MoE: memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$"** and left the numbers blank — today fills them
 - (b) is the ledger's KV row: W3 p26 said "W6 the mechanism"
 
@@ -103,7 +103,7 @@ Outline W6 · on the board: p13, p21–22, p25, p29, p31 · live: p11, p24 · re
 W1 p16 · W3 p26 · W5 p40 · Misconception 1: "MoE is model compression"
 :::
 
-# Route 1: MoE — splitting $N$ {.section-title}
+# Route 1: can FLOPs stop following $N$? — MoE {.section-title}
 
 ## The triage desk: one metaphor for the weight side
 
@@ -113,13 +113,29 @@ W1 p16 · W3 p26 · W5 p40 · Misconception 1: "MoE is model compression"
 the week's first metaphor · fails at Mixtral §5 · Misconception 2: "experts are domain experts"
 :::
 
+## At a glance: Mixture of Experts (MoE)
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Name** | **Mixture of experts** (MoE): today's layer is Shazeer et al.'s *Sparsely-Gated Mixture-of-Experts Layer* (2017), made standard by Switch Transformer (2022). The term goes back to Jacobs et al. 1991 — a lineage not covered here. |
+| **The question** | A network's capacity to absorb information is limited by its parameter count, and every parameter costs FLOPs on every example. Can capacity grow without the computation growing with it? |
+| **The idea** | Many feed-forward blocks (the experts) behind a trainable gate; each token runs only the $k$ the gate picks — *conditional computation*: parameters that exist but are idle for this token. |
+| **What it added** | Shazeer: "greater than 1000x improvements in model capacity" at a minor cost in efficiency, 137B parameters between LSTM layers. Switch: $k = 1$ and a simple balancing loss — the recipe 2024–2026 flagships still follow (p14, p16). |
+| **What it leaves open** | A discrete gate (p13); experts that starve, and a balancing term that fights the main loss (p16, p18); FLOPs saved reappear as memory, communication and router quality (p19) — and which $N$ a scaling law means (W7). |
+:::
+
+::: {.footer}
+Shazeer et al. 2017 · Fedus et al., JMLR 2022 · mechanism: p13–p16 · numbers: p12, p15
+:::
+
 ## Before Demo 1: the activation ratio, from `config.json`
 
 ::: {.prose}
 | | |
 |:---|:-----------------|
 | **Why** | The ledger's MoE row has said "memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$" since W1 without a number. The numbers live in a `config.json` — and reading one is the ticket to reading any 2026 open-weight model. W4's `count_params.py` gets an MoE branch. |
-| **What runs** | An editor and a terminal; pure standard library, no model loaded. The script prints every key whose name contains `expert`, we decide what each means, then it computes $N_{\text{total}}$, $N_{\text{active}}$, $\rho$ for the MoE on this machine (Gemma 4 26B-A4B, W1 demo 1) and for three configs fetched without weights: Qwen3-30B-A3B, Qwen3-Next-80B-A3B, Kimi Linear 48B-A3B. |
+| **What runs** | An editor and a terminal; pure standard library, no model loaded. The script prints every key whose name contains `expert`, we decide what each means, then it computes $N_{\text{total}}$, $N_{\text{active}}$, $\rho$ for the MoE on this machine (Gemma 4 26B-A4B, W1 demo 1) and for three configs fetched without weights: Qwen3-30B-A3B, Qwen3-Next-80B-A3B, Kimi Linear 48B-A3B (the suffix A3B: 3 B *active* parameters). |
 | **Watch for** | The key names are **not standardised** — Qwen, DeepSeek, Kimi and Google each name the shared expert, the top-$k$ and the expert width differently; that is part of the lesson. Then: how far is each $\rho$ above the ratio of experts chosen to experts present, $k/n_E$? |
 :::
 
@@ -215,7 +231,7 @@ Shazeer 2017 §4 · Fedus 2022 §2.2 · Zoph 2022 §3.3 · Wang 2024 §3 · Deep
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p15 said what collapse is and what each fix does to it. Watch it happen on a model small enough to train three times: W4's tiny GPT with its FFN replaced by an MoE layer ($n_E = 8$, $k = 2$), same corpus, same seed. |
+| **Why** | p16 said what collapse is and what each fix does to it. Watch it happen on a model small enough to train three times: W4's tiny GPT with its FFN replaced by an MoE layer ($n_E = 8$, $k = 2$), same corpus, same seed. |
 | **What runs** | Recorded before class, replayed here. Three runs: (i) no balancing term; (ii) Switch's $\mathcal{L}_{\text{aux}}$ with $\alpha = 10^{-2}$; (iii) the auxiliary-loss-free bias. Every 25 steps: held-out loss, and the per-expert load $f_i$ — the largest load against $1/n_E$, and how many experts fall below 1%. |
 | **Watch for** | Draw the three load curves first. Does (i) collapse, how fast, to how many experts? Does (ii) pay for its balance in loss? Does (iii) get both? At this scale they may not separate — that is a result too. |
 :::
@@ -231,15 +247,15 @@ Demo 2 · `demos/w06_d2_moe_balance` · torch on MPS · W4 demo 1's `GPT` · reh
 ::: {.fragment fragment-index=4}
 | | (i) none | (ii) Switch $\mathcal{L}_{\text{aux}}$ | (iii) loss-free bias |
 |:---|:---|:---|:---|
-| largest expert load, final (ideal $1/8 = 0.125$; max $1/k = 0.5$) | $0.397$ (worst layer $0.500$) | $0.151$ ($0.159$) | $0.147$ ($0.163$) |
-| experts below 1% of slots, final (per layer) | $2.5$ (worst $6$ of $8$) | $0$ | $0$ |
+| largest expert load at the end (ideal $1/8$; max $1/k = 0.5$) | $0.397$ ($0.500$) | $0.151$ ($0.159$) | $0.147$ ($0.163$) |
+| experts below 1% of slots at the end, per layer | $2.5$ ($6$ of $8$) | $0$ | $0$ |
 | held-out loss (nats/char) | $1.392$ | $1.447$ | $1.421$ |
 
 : {tbl-colwidths="[40,20,20,20]"}
 :::
 
 ::: {.footer}
-Demo 2 · replay · `w06_d2_moe_balance/` · rehearsed 2026-10-18 · 3000 steps each · mean over 6 layers (worst layer)
+Demo 2 · replay · `w06_d2_moe_balance/` · rehearsed 2026-10-18 · table: mean over 6 layers (worst)
 :::
 
 ## Where MoE moves the cost — and two sources of nondeterminism
@@ -258,7 +274,7 @@ Demo 2 · replay · `w06_d2_moe_balance/` · rehearsed 2026-10-18 · 3000 steps 
 Fedus §2.2 · Thinking Machines blog 2025-09 · Misconception 4: "nondeterminism is the router"
 :::
 
-# Route 2: a fixed-size state {.section-title}
+# Route 2: can the state stop following $L$? — a fixed-size state {.section-title}
 
 ## The transcript and the notebook: one metaphor for the attention side
 
@@ -266,6 +282,22 @@ Fedus §2.2 · Thinking Machines blog 2025-09 · Misconception 4: "nondeterminis
 
 ::: {.footer}
 the week's second metaphor · W2 p6 · W1 p62 · fails at "summary" and at "which layers"
+:::
+
+## At a glance: linear attention
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Name** | **Linear attention**, Katharopoulos, Vyas, Pappas & Fleuret, *Transformers are RNNs: Fast Autoregressive Transformers with Linear Attention*, ICML 2020. Every row of the p30 table is a descendant. |
+| **The question** | Self-attention costs $O(L^2)$ in time and memory and is "prohibitively slow for very long sequences" (the abstract). Where exactly does the square come from, and is it necessary? |
+| **The idea** | Write the similarity as a kernel, $\exp(\mathbf{q}^\top\mathbf{k}) \to \phi(\mathbf{q})^\top\phi(\mathbf{k})$ with a finite-dimensional $\phi$; then matrix products are associative and the $L \times L$ matrix is never formed. |
+| **What it added** | $O(L)$ instead of $O(L^2)$; and the causal version is a recurrence with a fixed state — "Transformers are RNNs" — "up to 4000x faster on autoregressive prediction of very long sequences" (abstract). |
+| **What it leaves open** | A fixed state holds a bounded amount (p27–p28); later variants drop the normaliser (p24); nothing fades — the next five years are about $\mathbf{G}_t$ (p29–p36). |
+:::
+
+::: {.footer}
+Katharopoulos et al., ICML 2020 · derivation: p23–p24 · capacity: p27 · live: p26
 :::
 
 ## Softmax blocks the bracket; drop it and the bracket moves
@@ -297,7 +329,7 @@ outline W6 §Key math 3 · Katharopoulos et al. 2020 §3.3–3.4 · $\mathbf{o}_
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p21–p22 proved that the two orderings are equal in mathematics and different in computation, and that the causal version is a recurrence with a fixed state. Written as code, each claim becomes a number: a difference, a crossover, a recall error. |
+| **Why** | p23–p24 proved that the two orderings are equal in mathematics and different in computation, and that the causal version is a recurrence with a fixed state. Written as code, each claim becomes a number: a difference, a crossover, a recall error. |
 | **What runs** | An editor and a terminal; plain `torch`, pinned to the CPU in float64 — W3 demo 1's reason. Four pieces written live, a test after each; after two minutes, `linear_final.py` takes over. (a) both orderings on random inputs; (b) timing at $d_{\text{head}} = 128$ for $L \in \{32, \dots, 8192\}$; (c) the recurrence against the one-shot cumulative sum; (d) write $m$ pairs into $\mathbf{S}$ and read them back. |
 | **Expect / watch for** | (a) and (c): equal to float64 rounding, or something is wrong. (b): where do the two timing lines cross — near $L = d_{\text{head}}$? (d): **predict the recall-error curve against $m$ before it runs**, for orthogonal keys and for random keys. |
 :::
@@ -334,7 +366,7 @@ Demo 3 · `demos/w06_d3_linear_scratch` · plain torch, CPU, float64 · rehearse
 : {tbl-colwidths="[25,15,15,15,15,15]"}
 
 ::: {.footer}
-Demo 3 · live · `w06_d3_linear_scratch/` · rehearsed 2026-10-19 · table: rehearsal values, M5 Max CPU, 6 threads
+Demo 3 · live · `w06_d3_linear_scratch/` · rehearsed 2026-10-19 · table: M5 Max CPU, 6 threads
 :::
 
 ## The notebook's capacity: at most $d_{\text{head}}$ pairs, cleanly
@@ -363,7 +395,7 @@ outline W6 §Key math 3 · the root shared by Jelassi et al., Zoology and BASED 
 w06-data.json capacity · Misconception 5: "linear attention is a cheaper, worse attention"
 :::
 
-# One recurrence, six gates {.section-title}
+# What 2023–2025 changed: how the notebook forgets {.section-title}
 
 ## One equation for 2023–2025: $\mathbf{S}_t = \mathbf{G}_t\,\mathbf{S}_{t-1} + \mathbf{k}_t\mathbf{v}_t^\top$
 
@@ -372,10 +404,10 @@ w06-data.json capacity · Misconception 5: "linear attention is a cheaper, worse
 | **linear attention** (2020) | $\mathbf{I}$ | $\phi(\mathbf{k}_t)\mathbf{v}_t^\top$ | nothing fades; the notebook fills |
 | **RetNet** (2023) | $\gamma\,\mathbf{I}$, $\gamma$ fixed, one per head | $\mathbf{k}_t\mathbf{v}_t^\top$ | old ink fades at a constant rate |
 | **Mamba-2 / SSD** (2024) | $\gamma_t\,\mathbf{I}$, $\gamma_t = \exp(\Delta_t a)$: $a < 0$ fixed per head, $\Delta_t$ from the input | $\mathbf{k}_t\mathbf{v}_t^\top$ | the input decides how fast to forget |
-| **GLA** (2024) | $\mathrm{diag}(\boldsymbol{\gamma}_t)$, one rate per dimension | $\mathbf{k}_t\mathbf{v}_t^\top$ | some rows fade faster than others |
-| **DeltaNet** (2024) | $\mathbf{I} - \beta_t\mathbf{k}_t\mathbf{k}_t^\top$ | $\beta_t\,\mathbf{k}_t\mathbf{v}_t^\top$ | erase along $\mathbf{k}_t$ before writing (p29) |
-| **Gated DeltaNet** (2025) | $\gamma_t(\mathbf{I} - \beta_t\mathbf{k}_t\mathbf{k}_t^\top)$ | $\beta_t\,\mathbf{k}_t\mathbf{v}_t^\top$ | both; what Qwen3-Next ships |
-| **KDA** (Kimi Linear, 2025) | $(\mathbf{I} - \beta_t\mathbf{k}_t\mathbf{k}_t^\top)\,\mathrm{diag}(\boldsymbol{\gamma}_t)$ | $\beta_t\,\mathbf{k}_t\mathbf{v}_t^\top$ | per-dimension decay, then erase; a DPLR special case |
+| **GLA**, gated linear attention (2024) | $\mathrm{diag}(\boldsymbol{\gamma}_t)$, one rate per dimension | $\mathbf{k}_t\mathbf{v}_t^\top$ | some rows fade faster than others |
+| **DeltaNet** (2024) | $\mathbf{I} - \beta_t\mathbf{k}_t\mathbf{k}_t^\top$ | $\beta_t\,\mathbf{k}_t\mathbf{v}_t^\top$ | erase along $\mathbf{k}_t$ before writing (p31) |
+| **Gated DeltaNet** (GDN, 2025) | $\gamma_t(\mathbf{I} - \beta_t\mathbf{k}_t\mathbf{k}_t^\top)$ | $\beta_t\,\mathbf{k}_t\mathbf{v}_t^\top$ | both; what Qwen3-Next ships |
+| **KDA**, Kimi Delta Attention (2025) | $(\mathbf{I} - \beta_t\mathbf{k}_t\mathbf{k}_t^\top)\,\mathrm{diag}(\boldsymbol{\gamma}_t)$ | $\beta_t\,\mathbf{k}_t\mathbf{v}_t^\top$ | per-dimension decay, then erase; a special case of DPLR (diagonal-plus-low-rank) transitions |
 
 : {tbl-colwidths="[21,33,14,32]"}
 
@@ -392,13 +424,29 @@ $$\mathbf{S}_t = \mathbf{S}_{t-1} - \beta_t\,\mathbf{k}_t\big(\mathbf{S}_{t-1}^\
 :::
 
 ::: {.fragment fragment-index=2}
-- **read the first factor**: $(\mathbf{I} - \beta_t\mathbf{k}_t\mathbf{k}_t^\top)$ removes a fraction $\beta_t$ of the old state's component along $\mathbf{k}_t$ — *erase before writing*. A key that reappears **overwrites** instead of piling up: exactly the interference term of p25, cleared on that one direction
-- add decay and you have Gated DeltaNet; make the decay per-dimension and you have KDA; let the state be a small network and the step be any self-supervised loss and you have **TTT** (Sun et al., ICML 2025) — the delta rule generalised
+- **read the first factor**: $(\mathbf{I} - \beta_t\mathbf{k}_t\mathbf{k}_t^\top)$ removes a fraction $\beta_t$ of the old state's component along $\mathbf{k}_t$ — *erase before writing*. A key that reappears **overwrites** instead of piling up: exactly the interference term of p27, cleared on that one direction
+- add decay and you have Gated DeltaNet (GDN); make the decay per-dimension and you have KDA; let the state be a small network and the step be any self-supervised loss and you have **test-time training** (TTT; Sun et al., ICML 2025) — the delta rule generalised
 - the price: $\mathbf{G}_t$ is no longer diagonal, so the chunked algorithm needs the WY / DPLR representation — DeltaNet's and Kimi Linear's actual contribution
 :::
 
 ::: {.footer}
 outline W6 §Key math 4 · Yang et al., NeurIPS 2024 §2.2 · GDN, ICLR 2025 · TTT, ICML 2025
+:::
+
+## At a glance: Mamba-2 and state space duality (SSD)
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Name** | **Mamba-2**, and the framework behind it, **state space duality** (SSD): Dao & Gu, *Transformers are SSMs*, ICML 2024. An **SSM** (state-space model) is a linear dynamical system on a hidden state — the line S4 (2022) → Mamba (2024) → Mamba-2. |
+| **The question** | Mamba-class SSMs had matched Transformers "at small to medium scale". Are the two families really different — and can an SSM borrow the Transformer's hardware-friendly training? |
+| **The idea** | Restrict $\mathbf{A}$ to a scalar times the identity; the recurrence then unrolls into a matmul with a *structured semiseparable* mask — one computation, a recurrent form and a matrix form. |
+| **What it added** | SSM ↔ linear attention, one row of p30; a chunked algorithm — matmuls within a chunk, one state across chunks — "2-8X faster" than Mamba's scan; the design inside Falcon-H1's SSM half (p42). |
+| **What it leaves open** | The state is still a notebook — p27's bound applies, so what ships is a hybrid (p39–p40); and the duality holds for *linear* recurrences only — the gates of p31 need their own algorithms. |
+:::
+
+::: {.footer}
+Dao & Gu, ICML 2024 · S4 → Mamba: p33 · SSD unrolled: p34 · two roads: p35
 :::
 
 ## S4 → Mamba: selection is W1's gate, and it costs the convolution
@@ -416,11 +464,11 @@ $$\text{Mamba-2: }\ \mathbf{A} = a\mathbf{I},\ a < 0 \;\Rightarrow\; \bar{\mathb
 ![](assets/w06/ssm.svg){width="100%"}
 
 ::: {.claim}
-"Mamba is the RNN's comeback" is half right. What is new is **selection** (in-context choice, which S4 cannot do) and **parallel training** (next two slides) — the second is what killed the RNN in W1, and it is gone.
+"Mamba is the RNN's comeback" is half right. What is new is **selection** (in-context choice, which S4 cannot do) and **parallel training** (the next three slides) — the second is what killed the RNN in W1, and it is gone.
 :::
 
 ::: {.footer}
-Gu, Goel & Ré 2022 · Gu & Dao 2024 §3.2 Alg. 2 · Misconception 6: "Mamba is the RNN revived"
+S4: Structured State Space sequence model · Misconception 6: "Mamba is the RNN revived"
 :::
 
 ## SSD: unrolled, the recurrence is a semiseparable mask
@@ -435,10 +483,22 @@ $$\mathbf{o}_t^\top = \sum_{s \leq t}\Lambda_{ts}\,(\mathbf{q}_t^\top\mathbf{k}_
 outline W6 §Key math 5 · Dao & Gu 2024: Def. 3.1, §5.1, §6 (**assigned**) · mlx-lm `ssm.py`
 :::
 
+## One state, two roads: matmul to train, one step to decode
+
+{{< include assets/w06/two-algorithms.inline.qmd >}}
+
+::: {.claim}
+Same parameters, same $\mathbf{O}$: a sequence goes in as chunks and comes out of matmuls; one token goes in and comes out of one recurrence step. Training never runs the recurrence; decoding never forms a matrix.
+:::
+
+::: {.footer}
+outline W6 §Key math 5 · Dao & Gu §6 · mlx-lm `ssm.py` 2026-10-18 · Katharopoulos §3.4
+:::
+
 ## Why this recurrence trains in parallel, and where position went
 
 - **W1 p62**: the RNN lost on *parallelism along the sequence*, not on quality; its fixed state was always an asset at inference. In 2024 the training half got solved — minimal LSTMs and GRUs that train in parallel (Feng et al. 2024, a preprint), and SSD: one operation, two algorithms
-- the mechanism is p31: the recurrence unrolls into a matmul with a **semiseparable** mask, so a chunk of tokens is one matrix product. What made the LSTM sequential was a *nonlinearity inside the recurrence*; the family of p28 keeps the state update **linear in $\mathbf{S}$**, and that is the whole trick
+- the mechanism is p34–p35: the recurrence unrolls into a matmul with a **semiseparable** mask, so a chunk of tokens is one matrix product. What made the LSTM sequential was a *nonlinearity inside the recurrence*; the family of p30 keeps the state update **linear in $\mathbf{S}$**, and that is the whole trick
 - **position**: no $\theta_i$, no $\mathbf{R}_m$, no stamp (W5). Order lives in the recurrence — *what was written first has faded most* — plus a short causal convolution (`short_conv_kernel_size: 4` in Kimi Linear's and Qwen3-Next's configs) for local order
 - so there is nothing to extrapolate and nothing to repair: no PI, no NTK-aware, no YaRN. Length generalisation rides on decay and locality — **a different inductive bias, not an absence of one**
 
@@ -446,7 +506,7 @@ outline W6 §Key math 5 · Dao & Gu 2024: Def. 3.1, §5.1, §6 (**assigned**) ·
 W1 p62 · W5 p51 · Misconception 7: "a fixed state has no position information"
 :::
 
-# The ledger: KV cache vs. a fixed state {.section-title}
+# The bill: when the notebook is smaller, and what it cannot pay {.section-title}
 
 ## Per layer: the KV line and the flat line cross at $L^\star$
 
@@ -468,13 +528,25 @@ outline W6 §Key math 6 · W3 demo 2's config · GLA: $n_{\text{head}}d_kd_v$ ·
 outline W6 §formal (hybrid) · configs read 2026-10-18 · Zuo et al. 2025 (abstract: *parallel hybrid*)
 :::
 
+## One block, two slots: where each route plugs in
+
+{{< include assets/w06/block-slots.inline.qmd >}}
+
+::: {.claim}
+The two routes never touch the same slot, so a model picks one of each: **"MoE and hybrid" is a conjunction, not a trade-off.**
+:::
+
+::: {.footer}
+W4 p9 · configs read 2026-10-18 · DeepSeek-V3.2 / V4 abstracts · Misconception: "MoE or hybrid"
+:::
+
 ## Before Demo 4: a parallel hybrid against full attention
 
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p34 computed where the flat line and the KV line cross; p35 said a parallel hybrid still pays KV, with a smaller constant plus a fixed state. Measure both on real models of comparable size: Falcon-H1-7B-Instruct (parallel hybrid) against Qwen3-8B (full attention), both 4-bit MLX. |
-| **What runs** | Recorded before class; two or three questions live. (a) W3 demo 2's method: prompts from 1k to 32k tokens, the cache's bytes and the prefill time, one line per model, the formula lines of p35 underneath. (b) W5 demo 3's key–value retrieval, the same questions and the same $K$ ($81$ and $326$ pairs), five positions, twenty questions each, per model. |
+| **Why** | p38 computed where the flat line and the KV line cross; p39 said a parallel hybrid still pays KV, with a smaller constant plus a fixed state. Measure both on real models of comparable size: Falcon-H1-7B-Instruct (parallel hybrid) against Qwen3-8B (full attention), both 4-bit MLX. |
+| **What runs** | Recorded before class; two or three questions live. (a) W3 demo 2's method: prompts from 1k to 32k tokens, the cache's bytes and the prefill time, one line per model, the formula lines of p39 underneath. (b) W5 demo 3's key–value retrieval, the same questions and the same $K$ ($81$ and $326$ pairs), five positions, twenty questions each, per model. |
 | **Watch for** | (a) **The hybrid's line will not be flat** — it has attention in every layer. Predict its slope relative to Qwen3-8B's, and whether it starts above zero. (b) Falcon-H1 has attention heads too: does it lose recall, and if so, where? Either answer is a lesson. |
 :::
 
@@ -496,7 +568,7 @@ Demo 4 · `demos/w06_d4_hybrid_vs_full` · mlx-lm, two 4-bit models · rehearsed
 :::
 
 ::: {.footer}
-Demo 4 · replay + live · `w06_d4_hybrid_vs_full/` · rehearsed 2026-10-19 · (a) cache tensors after prefill · (b) same 200 questions as W5 demo 3
+Demo 4 · replay + live · `w06_d4_hybrid_vs_full/` · rehearsed 2026-10-19 · W5's 200 questions
 :::
 
 ## The ledger, week 6: MoE filled in, fixed state added
@@ -518,14 +590,14 @@ Demo 4 · replay + live · `w06_d4_hybrid_vs_full/` · rehearsed 2026-10-19 · (
 Same master as W1 p16, W3 p55, W4 p44, W5 p40 · one row filled, one row added · bytes: $b$
 :::
 
-# 2026: three routes, none has won {.section-title}
+# 2026: three routes, none has won — and why the table decides {.section-title}
 
 ## The three routes, with the source of every claim
 
 | route | what it attacks | what it pays | who ships it (source level) |
 |:---|:---|:---|:---|
 | **hybrid-linear** | the KV row: most layers a fixed state, a few layers full attention for recall | capacity $\leq d_{\text{head}}$ in the linear layers; a layer ratio with no principle; immature kernels | Qwen3-Next 3:1 (**model card + config**; no report) · Kimi Linear 20:7 (**body §4 + config**) · Falcon-H1, parallel (**abstract**) · Kimi K3's KDA (**abstract**) · Waleffe et al.: 7% attention beats the 8B Transformer at 3.5T tokens (**abstract**) |
-| **sparse** | the *reading* of the KV row: each query reads $k$ keys; the KV itself unchanged (W5) | selector quality; hardware alignment of the selection | DeepSeek-V3.2 DSA · V4 CSA + HCA (**abstracts**) |
+| **sparse** | the *reading* of the KV row: each query reads $k$ keys; the KV itself unchanged (W5) | selector quality; hardware alignment of the selection | DeepSeek-V3.2 DSA, DeepSeek Sparse Attention · V4 CSA + HCA, Compressed / Heavily Compressed Attention (**abstracts**) |
 | **back to full attention** | nothing — declines both bets | the whole KV row, as in W5 | MiniMax-M2 (**a team post, 2025-10-29, not a paper**; the paper's abstract says nothing about attention) |
 
 : {tbl-colwidths="[15,27,24,34]"}
@@ -539,7 +611,7 @@ outline W6 §LO 5 · Du et al. 2510.26692 · Waleffe et al. 2406.07887 · DeepSe
 - **Two absences to say out loud**: Qwen3-Next has **no technical report** — a blog post and a model card, yet it is a baseline in 2026 papers; **Llama 4 has none either** (W5 p15). Their designs can only be cited from model cards, and these slides say so every time
 - **MiniMax-M2's team post, 2025-10-29** (on behalf of the pre-training lead), three reasons for returning to full attention — a **company post, not peer-reviewed**:
   1. evaluation cannot see the gap: hybrids matched full attention on early benchmarks; the deficits showed in multi-hop reasoning later — "the real bottleneck is the limitations of evaluation"
-  2. linear attention is "far more sensitive to numerical precision" — the state is a long running sum (p22)
+  2. linear attention is "far more sensitive to numerical precision" — the state is a long running sum (p24)
   3. "the infrastructure for linear and sparse attention is much less mature"
 - Kimi Linear, the same month, claims the opposite under a fair comparison. **Both are 2025 evidence. Neither settles it.** The layer ratio is still a hyperparameter without a principle; no one ships a pure SSM flagship (Jelassi, Zoology), and no one has shown the hybrid ratio *should* be 3:1
 
@@ -555,7 +627,7 @@ MiniMax team post 2025-10-29 · Misconception 8: "SSMs replace Transformers / hy
 | **iso-parameters** (same $N_{\text{total}}$) | dense over MoE | dense uses all of $N$ every token; the MoE uses $\rho N$ |
 | **iso-latency / iso-throughput** | depends on the serving stack | all-to-all, batch size, kernel maturity: two engines can swap the ranking |
 | **iso-tokens, same tokenizer** | the control everyone forgets (W2 p62) | a tokenizer changes the token count and the per-token loss at once |
-| **recall tasks vs. perplexity** | full attention on recall; hybrids on throughput | the hybrid ratio decides recall (p25); perplexity hides it (Zoology) |
+| **recall tasks vs. perplexity** | full attention on recall; hybrids on throughput | the hybrid ratio decides recall (p27); perplexity hides it (Zoology) |
 
 : {tbl-colwidths="[26,24,50]"}
 
@@ -576,14 +648,14 @@ Clark 2022 · Abnar 2025 · W2 p62 · W4 p53 · Misconception 9: "results compar
 - fixed (§5.4): **same architecture, parameter count, training setup** — 48B/3B, 1.4T tokens, a 4k pre-training window; iso-*active* and iso-*total* at once
 - varied: the attention layer type (KDA hybrid · all-MLA · GDN hybrid)
 - throughput at *which* $L$? the abstract's 6× decode is at 1M; training saw 4k
-- the ratio (§5.2): 0:1 … 15:1 judged by **perplexity**; 0:1 "performed poorly" — on perplexity, which hides recall (p42)
+- the ratio (§5.2): 0:1 … 15:1 judged by **perplexity**; 0:1 "performed poorly" — on perplexity, which hides recall (p47)
 :::
 ::: {.column width="50%"}
 **DeepSeek-V3 (arXiv:2412.19437) §2.1.2, aux-loss-free vs. auxiliary loss**
 
 - fixed: model, data, steps — the balancing rule varies
 - ask: is the comparison at **equal balance** (then loss decides) or at equal loss (then balance decides)? The two are different claims
-- ask: how much of the main loss does the auxiliary term cost — that is the "conflict" of p15 made measurable
+- ask: how much of the main loss does the auxiliary term cost — that is the "conflict" of p16 made measurable
 - not in the abstract: the size of the complementary sequence-wise loss V3 still keeps
 :::
 :::
@@ -604,10 +676,10 @@ For each: write the one control you would add before believing the headline.
 p7 asked: (a) 671B/37B — how much memory? (b) Can the state stop growing with $L$, and what does it give up?
 :::
 
-- **(a) The 671B's worth.** MoE adds parameters and removes FLOPs: memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$, and the bill moves to capacity, all-to-all and the router (p13, p18). $\rho$ fell from 8.9% to 3.1% in two years and has a floor (p14)
-- **(b) Yes — a $d_{\text{head}} \times d_{\text{head}}$ state, once softmax is gone** (p21–p22). It gives up **exact recall beyond $d_{\text{head}}$ pairs** (p25) — so 2026 keeps a few attention layers, or chooses which keys to read, or keeps all of them (p40)
-- the same recurrence, six gates (p28); one operation, two algorithms (p31) — which is why this recurrence trains in parallel and W1's did not (p32)
-- **and a method**: before "who won", ask what the row held fixed (p42)
+- **(a) The 671B's worth.** MoE adds parameters and removes FLOPs: memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$, and the bill moves to capacity, all-to-all and the router (p14, p19). $\rho$ fell from 8.9% to 3.1% in two years and has a floor (p15)
+- **(b) Yes — a $d_{\text{head}} \times d_{\text{head}}$ state, once softmax is gone** (p23–p24). It gives up **exact recall beyond $d_{\text{head}}$ pairs** (p27) — so 2026 keeps a few attention layers, or chooses which keys to read, or keeps all of them (p45)
+- the same recurrence, six gates (p30); one operation, two algorithms (p34–p35) — which is why this recurrence trains in parallel and W1's did not (p36)
+- **and a method**: before "who won", ask what the row held fixed (p47)
 
 ::: {.footer}
 compare with your two lines from p7 · W7: which $N$ does a scaling law mean for an MoE?
@@ -647,7 +719,7 @@ compare with your two lines from p7 · W7: which $N$ does a scaling law mean for
 - the fixed state returns in W11 (the roofline, where a state that never grows is a bandwidth story) and the recall bound in W12 (why retrieval still has a job)
 
 ::: {.ask}
-Before then: **Kimi Linear** (the whole paper — read §4 and §5.2 with p42 in hand), **Dao & Gu §6** (the SSD algorithm, the picture of p31), and **DeepSeek-V3 §2** (self-study; the MoE section we took apart).
+Before then: **Kimi Linear** (the whole paper — read §4 and §5.2 with p47 in hand), **Dao & Gu §6** (the SSD algorithm, the pictures of p34–p35), and **DeepSeek-V3 §2** (self-study; the MoE section we took apart).
 :::
 
 ::: {.claim}
@@ -659,7 +731,7 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 ::: {.cite}
 **Textbooks** · none covers this week: Jurafsky & Martin, *Speech and Language Processing*, 3rd ed., **2026-08-19 draft release**, ch 7 treats the dense Transformer only (MoE appears once, in passing, in §7.8; no section on SSMs or linear attention — table of contents checked 2026-10-18) · the reading stands in: Sun et al., *Speed Always Wins: A Survey on Efficient Architectures for Large Language Models*, arXiv:2508.09834 (2025; still v1 as of October 2026)
 
-**Mixture of Experts** · Shazeer et al., *Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer*, arXiv:1701.06538 (2017) · Lepikhin et al., *GShard*, arXiv:2006.16668 (2020) · Fedus, Zoph & Shazeer, *Switch Transformers*, JMLR 23(120), 2022 (arXiv:2101.03961) · Zoph et al., *ST-MoE*, arXiv:2202.08906 (2022) · Jiang et al., *Mixtral of Experts*, arXiv:2401.04088 (2024) — §5 routing analysis · Dai et al., *DeepSeekMoE*, ACL 2024 (arXiv:2401.06066) · Wang et al., *Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts*, arXiv:2408.15664 (2024) · DeepSeek-AI, *DeepSeek-V3 Technical Report*, arXiv:2412.19437 — §2.1.2 · Clark et al., *Unified Scaling Laws for Routed Language Models*, ICML 2022 (PMLR 162; arXiv:2202.01169) · Ludziejewski et al., *Scaling Laws for Fine-Grained Mixture of Experts*, ICML 2024 (PMLR 235; arXiv:2402.07871, Krajewski first on arXiv) · Abnar et al., *Parameters vs FLOPs: Scaling Laws for Optimal Sparsity for Mixture-of-Experts Language Models*, ICML 2025 (PMLR 267; arXiv:2501.12370)
+**Mixture of Experts** · Jacobs, Jordan, Nowlan & Hinton, *Adaptive Mixtures of Local Experts*, Neural Computation 3(1), 1991 — the term; named once (p10) · Shazeer et al., *Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer*, arXiv:1701.06538 (2017) · Lepikhin et al., *GShard*, arXiv:2006.16668 (2020) · Fedus, Zoph & Shazeer, *Switch Transformers*, JMLR 23(120), 2022 (arXiv:2101.03961) · Zoph et al., *ST-MoE*, arXiv:2202.08906 (2022) · Jiang et al., *Mixtral of Experts*, arXiv:2401.04088 (2024) — §5 routing analysis · Dai et al., *DeepSeekMoE*, ACL 2024 (arXiv:2401.06066) · Wang et al., *Auxiliary-Loss-Free Load Balancing Strategy for Mixture-of-Experts*, arXiv:2408.15664 (2024) · DeepSeek-AI, *DeepSeek-V3 Technical Report*, arXiv:2412.19437 — §2.1.2 · Clark et al., *Unified Scaling Laws for Routed Language Models*, ICML 2022 (PMLR 162; arXiv:2202.01169) · Ludziejewski et al., *Scaling Laws for Fine-Grained Mixture of Experts*, ICML 2024 (PMLR 235; arXiv:2402.07871, Krajewski first on arXiv) · Abnar et al., *Parameters vs FLOPs: Scaling Laws for Optimal Sparsity for Mixture-of-Experts Language Models*, ICML 2025 (PMLR 267; arXiv:2501.12370)
 
 **Linear attention and the recurrence family** · Katharopoulos et al., *Transformers are RNNs*, ICML 2020 (PMLR 119; arXiv:2006.16236) · Sun et al., *Retentive Network*, arXiv:2307.08621 (2023) — **a preprint, not peer-reviewed** · Yang et al., *Gated Linear Attention Transformers with Hardware-Efficient Training*, ICML 2024 (PMLR 235; arXiv:2312.06635) · Yang et al., *Parallelizing Linear Transformers with the Delta Rule over Sequence Length*, NeurIPS 2024 (arXiv:2406.06484) · Yang, Kautz & Hatamizadeh, *Gated Delta Networks*, ICLR 2025 (arXiv:2412.06464) · Sun et al., *Learning to (Learn at Test Time)*, ICML 2025 (PMLR 267; arXiv:2407.04620) · Arora et al., *Simple linear attention language models balance the recall-throughput tradeoff* (BASED), ICML 2024 (PMLR 235; arXiv:2402.18668) · Arora et al., *Zoology*, ICLR 2024 (arXiv:2312.04927) · Jelassi et al., *Repeat After Me*, ICML 2024 (PMLR 235; arXiv:2402.01032)
 :::
@@ -671,5 +743,51 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 
 **Hybrids and the three routes** · Lieber et al., *Jamba*, arXiv:2403.19887 (2024) · Waleffe et al., *An Empirical Study of Mamba-based Language Models*, arXiv:2406.07887 (2024) · NVIDIA, *Nemotron-H*, arXiv:2504.03624 (2025) · Zuo et al., *Falcon-H1*, arXiv:2507.22448 (2025) · Du et al., *Kimi Linear: An Expressive, Efficient Attention Architecture*, arXiv:2510.26692 (2025; v2 Nov. 2025) — **assigned reading** · Kimi Team, *Kimi K3: Open Frontier Intelligence*, arXiv:2607.24653 (2026) — CC BY-NC-ND 4.0 · Qwen Team, *Qwen3-Next-80B-A3B* model card and blog post, September 2025 — **a model card and a blog post, not a paper; no technical report exists** · Wu et al., *MiniMax-01*, arXiv:2501.08313 (2025) · Chen et al., *The MiniMax-M2 Series*, arXiv:2605.26494 (2026) — the abstract says nothing about the form of attention · MiniMax, *Why Did M2 End Up as a Full Attention Model?*, team post, 2025-10-29 — **a company post, not a paper** · DeepSeek-AI, *DeepSeek-V2* arXiv:2405.04434 · *DeepSeek-V3.2* arXiv:2512.02556 · *DeepSeek-V4* arXiv:2606.19348 · He et al., *Defeating Nondeterminism in LLM Inference*, Thinking Machines Lab blog, September 2025 — **a company blog post, not a paper** · Meta AI, *The Llama 4 herd*, April 2025 — **a blog post, not a paper**
 
-**Data and figures** · Every number on these slides is one of: arithmetic on a `config.json` (snapshots of 2026-10-18 under `assets/w06/configs/`, read by `make_demo_w06.py`), a total/active count copied from an abstract (five flagships), pure-Python arithmetic on the definitions (FLOP counts, the capacity curves at $d_{\text{head}} = 32$), or a number from an earlier week's rehearsal (W3 demo 2's `curve.json`, W5's `w05-data.json`). The triage desk, the notebook, the MoE layer, the collapse loop, the SSM boxes and the $\boldsymbol{\Lambda}$ matrix are schematics. **None of the four demos has been built or rehearsed (2026-10-18)**: the tables on p11, p17, p24, p37 and the axes on p17 and p37 are blank on purpose.
+**Data and figures** · Every number on these slides is one of: arithmetic on a `config.json` (snapshots of 2026-10-18 under `assets/w06/configs/`, read by `make_demo_w06.py`), a total/active count copied from an abstract (five flagships), pure-Python arithmetic on the definitions (FLOP counts, the capacity curves at $d_{\text{head}} = 32$), or a number from an earlier week's rehearsal (W3 demo 2's `curve.json`, W5's `w05-data.json`). The triage desk, the notebook, the MoE layer, the collapse loop, the SSM boxes, the two-algorithms picture, the block with two slots and the $\boldsymbol{\Lambda}$ matrix are schematics. **All four demos were built and rehearsed on the M5 Max (2026-10-18/19)**; their records are checked in under `demos/w06_d*/runs/rehearsal/` and the tables on p18, p26 and p42 and the curves on p18 and p42 are those records. The table on p12 is blank on purpose: it is filled in class.
 :::
+
+## Acronyms in this deck, A–G
+
+| | |
+|:----|:----------------|
+| A3B, A4B | a model-name suffix: 3 B (4 B) *active* parameters per token (p11) |
+| CSA | Compressed Sparse Attention, DeepSeek-V4 (p45) |
+| DPLR | diagonal-plus-low-rank: the structure of KDA's transition matrix (p30) |
+| DSA | DeepSeek Sparse Attention, DeepSeek-V3.2 (p45) |
+| FFN | feed-forward network: the block's weight-side sublayer (W4) |
+| FFT | fast Fourier transform: how S4's convolution is computed |
+| FLOPs | floating-point operations (W1) |
+| GDN | Gated DeltaNet (p30); the abbreviation is Kimi Linear's, the paper writes Gated DeltaNet |
+| GLA | gated linear attention (p30) |
+| GQA | grouped-query attention (W3) |
+| GRU | gated recurrent unit (W1) |
+
+## Acronyms in this deck, H–R
+
+| | |
+|:----|:----------------|
+| HCA | Heavily Compressed Attention, DeepSeek-V4 (p45) |
+| KDA | Kimi Delta Attention: Kimi Linear's linear layer (p30) |
+| KV | key–value (cache) (W3) |
+| LLM, LM | large language model (W1); language model |
+| LO | learning objective: the six of p6 |
+| LSTM | long short-term memory (W1) |
+| MHA | multi-head attention (W3) |
+| MLA | multi-head latent attention (W3) |
+| MoE | mixture of experts (p10) |
+| MPS | Metal Performance Shaders: PyTorch's backend for the Apple GPU (W4 demos) |
+| NTK | neural tangent kernel, as in NTK-aware scaling (W5) |
+| PI | position interpolation (W5) |
+| RNN | recurrent neural network (W1) |
+
+## Acronyms in this deck, S–Y
+
+| | |
+|:----|:----------------|
+| S4 | Structured State Space sequence model, Gu, Goel & Ré 2022 (p33) |
+| SSD | state space duality, Dao & Gu 2024 (p32) |
+| SSM | state-space model (p32) |
+| TTT | test-time training (p31) |
+| UUID | universally unique identifier: the keys and values of demo 4's retrieval task (W5) |
+| WY | the WY representation of a product of Householder matrices (DeltaNet §3.1); W and Y name its two factors, not words (p31) |
+| YaRN | Yet another RoPE extensioN (W5) |
