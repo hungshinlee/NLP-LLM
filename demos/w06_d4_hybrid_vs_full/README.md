@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W6 · Demo 4 — A parallel hybrid against full attention: cache against $L$, and recall (slides p41–p42)
+# W6 · Demo 4 — A parallel hybrid against full attention: cache against $L$, and recall (slides p45–p46)
 
 Two models of comparable size, both 4-bit MLX: **Qwen3-8B** (full attention in every layer, 36 layers, 8 KV heads) and **Falcon-H1-7B-Instruct** (a *parallel* hybrid: every one of its 44 layers runs a Mamba-2 block and an attention block side by side and adds their outputs; 2 KV heads). Two measurements:
 

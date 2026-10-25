@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W5 demo 2（投影片 p30「Replay: demo 2 — NoPE vs. RoPE, then PI and NTK-aware without retraining」）課前與課堂的入口。
+# W5 demo 2（投影片 p32「Replay: demo 2 — NoPE vs. RoPE, then PI and NTK-aware without retraining」）課前與課堂的入口。
 # 純 torch（訓練走 MPS，沒有就退 CPU）；不碰 Hugging Face。模型與語料都來自 ../w04_d1_block_scratch（從檔案路徑載入）。
 #
 #   ./present.sh rehearse            課前彩排（約 20 分鐘）：訓 nope、訓 rope → runs/weights/；量四組 → runs/rehearsal/*.json + curves.svg
 #   ./present.sh train rope          只訓一個版本（nope|rope）→ runs/weights/<variant>.pt
 #   ./present.sh measure             只量（讀 runs/weights/）：nope、rope、rope+PI、rope+NTK → runs/rehearsal/
-#   ./present.sh replay              課堂（p30）：Enter 一條線——nope → rope → PI → NTK；最後印 p30 的表
+#   ./present.sh replay              課堂（p32）：Enter 一條線——nope → rope → PI → NTK；最後印 p32 的表
 #   ./present.sh show                只印表（替代 replay 的退路；不等 Enter）
 #   ./present.sh estimate            不訓練：用 W4 demo 1 probe.json 的每步秒數估 rehearse 要多久
 #   ./present.sh rehearse --steps 30 煙霧測試：30 步 + 全套量測，寫到 runs/smoke/

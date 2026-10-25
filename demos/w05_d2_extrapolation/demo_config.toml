@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W5 demo 2（投影片 p30「Replay: demo 2 — NoPE vs. RoPE, then PI and NTK-aware without retraining」）的設定
+# W5 demo 2（投影片 p32「Replay: demo 2 — NoPE vs. RoPE, then PI and NTK-aware without retraining」）的設定
 #
 # 全部**課前彩排、課堂只 replay**。模型是上週的 tiny GPT（W4 demo 1 的 block_final.GPT）加一個 pos 開關（rope_gpt.py）；
 # 語料、字元表、held-out 切點、尺寸（[tiny]）與訓練超參數（[train]：batch 64、3000 步、AdamW 1e-3、cosine、clip 1.0、dropout 0.1）
@@ -22,7 +22,7 @@ save_weights = true      # 訓完把 state_dict 存到 runs/weights/<variant>.pt
 lengths = [256, 512, 1024]       # 訓練長度、2 倍、4 倍
 batch = 16                       # 1024 長的視窗，一批 16 個：attention 權重 16 × 8 × 1024² × 4 bytes ≈ 0.5 GB
 bin = 64                         # replay／SVG 把逐位置的 loss 每 64 個位置平均成一格（1024 → 16 格）；json 裡存的仍是逐位置
-split_at = 256                   # p30 表格的兩列：位置 < 256 與 256–1024（都從 L_eval = 1024 那一次前向取）
+split_at = 256                   # p32 表格的兩列：位置 < 256 與 256–1024（都從 L_eval = 1024 那一次前向取）
 
 [scale]
 # 兩個「不重訓」的修法，都只改 θ_i，套在訓好的 RoPE 版上再量一次（大綱：PI s = 4、NTK-aware 改底）。

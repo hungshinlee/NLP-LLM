@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
 """W6 demo 4：並聯 hybrid（Falcon-H1-7B）對 full attention（Qwen3-8B）——cache 對 L 的兩條線，以及 key-value retrieval
-（投影片 p42「Replay + live: demo 4 — cache against L, and recall」；p41 是前導頁）。
+（投影片 p46「Replay + live: demo 4 — cache against L, and recall」；p45 是前導頁）。
 
     ./present.sh fetch                 第一次：下載 Falcon-H1-7B-Instruct-4bit 並鎖定 revision（Qwen3-8B-4bit 已在 W3 demo 2 鎖定）
     ./present.sh probe                 課前：每個模型答一個普通問題與 K = 5／20 的小題，看回覆成不成句（彩排後加：分清「模型答不出」與「載入的模型有問題」）
@@ -374,7 +374,7 @@ def run_recall(m, cfg: dict, Q: int, sizes: list[dict]) -> dict:
 
 
 def print_slide_table(summaries: dict, cfg: dict) -> None:
-    """p42 的十格：一個模型一列（兩檔並排），五個位置一欄。"""
+    """p46 的十格：一個模型一列（兩檔並排），五個位置一欄。"""
     sizes = [s["label"] for s in cfg["sizes"]]
     Ks = " · ".join(str(s["k"]) for s in cfg["sizes"])
     print(f"  {'exact match /Q, K = ' + Ks:<34}" + "".join(f"{lab:>14}" for _, lab, _ in W5.POSITIONS))

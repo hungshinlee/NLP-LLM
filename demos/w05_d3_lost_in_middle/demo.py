@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W5 demo 3：lost-in-the-middle 的縮小復現（投影片 p37「Replay + live: demo 3 — key-value retrieval, answer at five positions」）。
+"""W5 demo 3：lost-in-the-middle 的縮小復現（投影片 p39「Replay + live: demo 3 — key-value retrieval, answer at five positions」）。
 
     ./present.sh inspect    課前：只載 tokenizer，校準兩檔的 K、印一題的 prompt 長相與 token 數 → runs/rehearsal/inspect.json
     ./present.sh rehearse   課前彩排：兩檔 × 五個位置 × Q 題，每題一次生成 → runs/rehearsal/{rehearsal,summary}.json
@@ -49,7 +49,7 @@ TOKENIZER_FILES = ["tokenizer.json", "tokenizer_config.json", "tokenizer.model",
                    "generation_config.json"]
 UUID_RE = re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}", re.I)
 
-# 五個位置，依投影片 p37 右表的列序。index 是 1-indexed。
+# 五個位置，依投影片 p39 右表的列序。index 是 1-indexed。
 POSITIONS = [("first", "1", lambda K: 1),
              ("quarter", "⌊K/4⌋", lambda K: max(1, K // 4)),
              ("middle", "⌊K/2⌋", lambda K: max(1, K // 2)),

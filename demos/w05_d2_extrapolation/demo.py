@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W5 demo 2：長度外推——NoPE vs. RoPE，然後 PI 與 NTK-aware 不重訓（彩排預錄、課堂 replay）。投影片 p30。
+"""W5 demo 2：長度外推——NoPE vs. RoPE，然後 PI 與 NTK-aware 不重訓（彩排預錄、課堂 replay）。投影片 p32。
 
 上週的 tiny GPT（字元級、L = 256、NoPE）再訓一個 RoPE 版（底 10^4），同一份語料、同一個 held-out、同一組超參數、同樣 3000 步；
 對 held-out 以 L_eval ∈ {256, 512, 1024} 各做一次前向，記**每個位置的平均 loss**（nats/char 對位置）；
@@ -10,7 +10,7 @@
   ./present.sh rehearse            全套：訓 nope、訓 rope（各約 9–10 分鐘，W4 實測）→ runs/weights/*.pt；量四組 → runs/rehearsal/*.json + curves.svg
   ./present.sh train rope          只訓一個版本（nope|rope）
   ./present.sh measure             只量：讀 runs/weights/ 的兩個權重，量 nope、rope、rope+PI、rope+NTK → json + svg
-  ./present.sh replay              課堂（p30）：Enter 一條線——nope → rope → PI → NTK；最後印 p30 那張表（位置 < 256 / 256–1024）與每個 L_eval 的平均
+  ./present.sh replay              課堂（p32）：Enter 一條線——nope → rope → PI → NTK；最後印 p32 那張表（位置 < 256 / 256–1024）與每個 L_eval 的平均
   ./present.sh show                只印表（投影機上字太小時用；也是 replay 的退路）
   ./present.sh estimate            不訓練，用 W4 demo 1 probe.json 的每步秒數估 rehearse 要跑多久
   ./present.sh rehearse --steps 30 煙霧測試：30 步 + 全套量測，寫到 runs/smoke/（不碰 runs/rehearsal/）
@@ -240,7 +240,7 @@ def spark(vals: list[float], lo: float, hi: float) -> str:
 def print_tables(results: dict, summary: dict) -> None:
     Lmax = str(max(summary["lengths"]))
     split = summary["split_at"]
-    print(f"\n  {BOLD}p30's table — mean loss (nats/char) from the L_eval = {Lmax} forward pass{RESET}")
+    print(f"\n  {BOLD}p32's table — mean loss (nats/char) from the L_eval = {Lmax} forward pass{RESET}")
     print(f"    {'':<32}" + "".join(f"{LABEL[n].split(',')[0].split(' (')[0]:>22}" for n in RUNS))
     print(f"    {f'positions < {split}':<32}" + "".join(f"{summary['table'][n]['below']:>22.4f}" for n in RUNS))
     print(f"    {f'positions {split}–{Lmax}':<32}" + "".join(f"{summary['table'][n]['from']:>22.4f}" for n in RUNS))

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W5 demo 1 的三個測試（投影片 p23 右欄 (a)–(c)）。rope_final.py 與 rope_live.py 共用。
+"""W5 demo 1 的三個測試（投影片 p25 右欄 (a)–(c)）。rope_final.py 與 rope_live.py 共用。
 
     python3 tests.py rope_live            # 課堂：對 live 版跑（等同 ./present.sh live）；還沒寫的函數會標 skip
     python3 tests.py rope_final           # 等同 python3 rope_final.py

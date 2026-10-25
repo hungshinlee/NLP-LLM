@@ -7326,7 +7326,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t79-text_1">
-   <!-- $\text{``the summary usually suffices; sometimes you need the transcript'' = the case for hybrids; no time stamp (W5 p55)}$ -->
+   <!-- $\text{``the summary usually suffices; sometimes you need the transcript'' = the case for hybrids; no time stamp (W5 p57)}$ -->
    <g style="fill: #1f2328" transform="translate(0 15) scale(0.2 -0.2)">
     <defs>
      <path id="t79-Cmr10-60" d="M 891 2497 
@@ -8191,6 +8191,34 @@ Q 625 716 597 720
 Q 569 725 556 728 
 z
 " transform="scale(0.015625)"/>
+     <path id="t79-Cmr10-37" d="M 1113 166 
+Q 1113 522 1175 862 
+Q 1238 1203 1358 1536 
+Q 1478 1869 1648 2189 
+Q 1819 2509 2022 2791 
+L 2606 3603 
+L 1875 3603 
+Q 738 3603 703 3572 
+Q 619 3469 544 2981 
+L 359 2981 
+L 569 4325 
+L 756 4325 
+L 756 4306 
+Q 756 4191 1147 4156 
+Q 1538 4122 1913 4122 
+L 3103 4122 
+L 3103 3956 
+Q 3103 3950 3101 3947 
+Q 3100 3944 3097 3938 
+L 2216 2700 
+Q 1891 2219 1809 1631 
+Q 1728 1044 1728 166 
+Q 1728 41 1637 -50 
+Q 1547 -141 1422 -141 
+Q 1294 -141 1203 -50 
+Q 1113 41 1113 166 
+z
+" transform="scale(0.015625)"/>
      <path id="t79-Cmr10-29" d="M 416 -1600 
 Q 359 -1600 359 -1544 
 Q 359 -1516 372 -1503 
@@ -8325,7 +8353,7 @@ z
     <use xlink:href="#t79-Cmr10-20" transform="translate(4868.261719 0)"/>
     <use xlink:href="#t79-Cmr10-70" transform="translate(4901.5625 0)"/>
     <use xlink:href="#t79-Cmr10-35" transform="translate(4957.080078 0)"/>
-    <use xlink:href="#t79-Cmr10-35" transform="translate(5007.080078 0)"/>
+    <use xlink:href="#t79-Cmr10-37" transform="translate(5007.080078 0)"/>
     <use xlink:href="#t79-Cmr10-29" transform="translate(5057.080078 0)"/>
    </g>
   </g>
