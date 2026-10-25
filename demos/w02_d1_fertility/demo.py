@@ -504,7 +504,7 @@ def print_ledger(cfg, key, args):
         print(f"  N ≈ {N:,}  ({N/1e9:.2f} B)" + (f"   名稱上是 {spec['params_nominal']/1e9:.0f}B" if spec.get("params_nominal") else ""))
     if N:
         print(f"\n  {BOLD}{'Vd' if e['tie'] else '2Vd'} / N = {e['emb_params']/N:.3f}  →  {100*e['emb_params']/N:.1f}% 的參數是詞表{RESET}")
-        note("  對照投影片 p40 那張圖：125M 的模型配 128K 詞表是 70%，175B 是 1.8%；這個模型落在中間。")
+        note("  對照投影片 p46 那張圖：125M 的模型配 128K 詞表是 70%，175B 是 1.8%；這個模型落在中間。")
     tc = text_config(c)
     return {"config": {k: tc.get(k) for k in ("vocab_size", "hidden_size", "num_hidden_layers", "intermediate_size",
                                                "num_attention_heads", "num_key_value_heads", "head_dim", "tie_word_embeddings", "_from")},

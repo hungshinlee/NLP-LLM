@@ -626,7 +626,7 @@ MiniMax team post 2025-10-29 · Misconception 8: "SSMs replace Transformers / hy
 | **iso-FLOPs** (same compute per token) | MoE over dense | more parameters for the same FLOPs: knowledge bought with memory, which this row does not charge for |
 | **iso-parameters** (same $N_{\text{total}}$) | dense over MoE | dense uses all of $N$ every token; the MoE uses $\rho N$ |
 | **iso-latency / iso-throughput** | depends on the serving stack | all-to-all, batch size, kernel maturity: two engines can swap the ranking |
-| **iso-tokens, same tokenizer** | the control everyone forgets (W2 p62) | a tokenizer changes the token count and the per-token loss at once |
+| **iso-tokens, same tokenizer** | the control everyone forgets (W2 p67) | a tokenizer changes the token count and the per-token loss at once |
 | **recall tasks vs. perplexity** | full attention on recall; hybrids on throughput | the hybrid ratio decides recall (p27); perplexity hides it (Zoology) |
 
 : {tbl-colwidths="[26,24,50]"}
@@ -636,7 +636,7 @@ First question for any table: **what did this row hold fixed?** Second: was the 
 :::
 
 ::: {.footer}
-Clark 2022 · Abnar 2025 · W2 p62 · W4 p55 · Misconception 9: "results compare directly"
+Clark 2022 · Abnar 2025 · W2 p67 · W4 p55 · Misconception 9: "results compare directly"
 :::
 
 ## Two tables taken apart: Kimi Linear, DeepSeek-V3 §2
