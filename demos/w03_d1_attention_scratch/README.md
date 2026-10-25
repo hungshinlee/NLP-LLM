@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W3 · Demo 1 — attention and a KV cache, from scratch (slides p21–p22)
+# W3 · Demo 1 — attention and a KV cache, from scratch (slides p22–p23)
 
 In class the instructor writes three functions live in `attention_live.py`, running the tests after each one:
 

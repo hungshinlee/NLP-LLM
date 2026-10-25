@@ -61,7 +61,7 @@ format:
 :::
 
 ::: {.footer}
-KV rows: W3 demo 2 rehearsal (W3 p28–29) · formula W3 p26 · left half: schematic
+KV rows: W3 demo 2 rehearsal (W3 p29–p30) · formula W3 p27 · left half: schematic
 :::
 
 ## Last week's $24d^2$: say where it comes from
@@ -78,7 +78,7 @@ $24d^2 = 2 \times 12d^2$. Two FLOPs per parameter — so **where are the $12d^2$
 | the rest | $?$ |
 
 ::: {.footer}
-W3 p37 · the half that W3 took on trust is today's first subject
+W3 p39 · the half that W3 took on trust is today's first subject
 :::
 
 ## The problem this week handles, in one picture
@@ -131,7 +131,7 @@ Misconception 1: "the residual connection only fixes vanishing gradients"
 :::
 
 ::: {.footer}
-"2017–2025's standard form", not a law of nature · W3 p51 (induction heads)
+"2017–2025's standard form", not a law of nature · W3 p54 (induction heads)
 :::
 
 ## The block, formally: pre-LN
@@ -273,7 +273,7 @@ Demo 1, second half · live · the gap between the columns is the next slide
 
 | assumption in $12\,n_{\text{layer}} d^2 + Vd$ | what real models do | correction per layer |
 |:---|:---|:---|
-| MHA: $\mathbf{W}^K, \mathbf{W}^V$ are $d \times d$ | **GQA** (W3 p30): $n_{\text{kv}} < n_{\text{head}}$ | $4d^2 \to 2d^2 + 2\,d\,n_{\text{kv}} d_{\text{head}}$ — **down** ($2.5d^2$ at $n_{\text{kv}} = n_{\text{head}}/4$) |
+| MHA: $\mathbf{W}^K, \mathbf{W}^V$ are $d \times d$ | **GQA** (W3 p31): $n_{\text{kv}} < n_{\text{head}}$ | $4d^2 \to 2d^2 + 2\,d\,n_{\text{kv}} d_{\text{head}}$ — **down** ($2.5d^2$ at $n_{\text{kv}} = n_{\text{head}}/4$) |
 | $d_{\text{ff}} = \frac{8}{3}d$ | Llama 3 8B: $3.5d$; Qwen3-0.6B: $3d$ | $8d^2 \to 3\,d\,d_{\text{ff}}$ — **up** ($10.5d^2$, $9d^2$) |
 | $n_{\text{head}} d_{\text{head}} = d$ | Qwen3-0.6B: $2d$ | $\mathbf{W}^Q, \mathbf{W}^O$ are $d \times n_{\text{head}} d_{\text{head}}$ — **up** |
 | one embedding, $Vd$ | `tie_word_embeddings: false` → $2Vd$ | not per layer: $+Vd$ once — **up** |
@@ -301,7 +301,7 @@ Set them equal: $d_{\text{ff}} = \frac{8}{3}d$
 *Shazeer 2020 compared GLU variants at equal parameter count. That is where the number lives — a control variable, not an optimum.*
 :::
 ::: {.column width="50%"}
-**Why $24d^2$ (W3 p37)**
+**Why $24d^2$ (W3 p39)**
 
 $12d^2$ parameters per layer
 
@@ -380,7 +380,7 @@ Misconception 6: "pre-LN is the end of the story" — a default under repair
 
 $$s_{ij} = \frac{\mathbf{q}_i^\top \mathbf{k}_j}{\sqrt{d_{\text{head}}}} \quad\longrightarrow\quad s_{ij} = \mathrm{RMSNorm}(\mathbf{q}_i)^\top\,\mathrm{RMSNorm}(\mathbf{k}_j)\,/\,\sqrt{d_{\text{head}}}$$
 
-- W3 p19: $1/\sqrt{d_{\text{head}}}$ sets the temperature **at initialization**; nothing stops $\|\mathbf{q}\|\|\mathbf{k}\|$ from growing during training
+- W3 p20: $1/\sqrt{d_{\text{head}}}$ sets the temperature **at initialization**; nothing stops $\|\mathbf{q}\|\|\mathbf{k}\|$ from growing during training
 - **QK-norm** (query–key normalization) bounds the logit **by construction**, in two lines — the learned gains are the only way up:
 
 ::: {.small}
@@ -492,7 +492,7 @@ Misconception 7: "middle layers are removable, so layers are redundant"
 | per layer, per token, forward | FLOPs | in $6ND$? |
 |:---|:---|:---|
 | **weights**: $2 \times 12d^2 = 24d^2$ | the $2N$ per token, layer by layer | yes — this *is* $2N$ |
-| **attention**: $2Ld$ (causal average) | grows with $L$, not with the parameters | no — matters once $L > 12d$ (W3 p37) |
+| **attention**: $2Ld$ (causal average) | grows with $L$, not with the parameters | no — matters once $L > 12d$ (W3 p39) |
 | **unembedding**: $2Vd$, once per token | a matrix multiply on the way out | yes if $N$ includes $Vd$; no in $N_{\text{nv}}$ |
 | Norm, softmax, $\sigma$: $O(Ld)$ | not $O(Ld^2)$ | dropped |
 
@@ -501,7 +501,7 @@ W1 p17 did the $6 = 2 + 4$. Today supplies the $N$ — and shows exactly which t
 :::
 
 ::: {.footer}
-W1 p17 · W3 p37 · the formula is W7's whole week
+W1 p17 · W3 p39 · the formula is W7's whole week
 :::
 
 ## Where the forward FLOPs go as $L$ grows
@@ -513,7 +513,7 @@ $6ND$ keeps the blue and drops the red. At $4\text{k}$ the red is noise; at $32\
 :::
 
 ::: {.footer}
-w04-data.json (flops) · W3 p37 ($L = 12d$) · W3 p33 (decode: $4Ld$) · W1 p17 convention
+w04-data.json (flops) · W3 p39 ($L = 12d$) · W3 p35 (decode: $4Ld$) · W1 p17 convention
 :::
 
 ## One training step vs. one forward pass: three walks, 16 bytes
@@ -525,7 +525,7 @@ Training walks the same stream **three times** — forward, backward, update. In
 :::
 
 ::: {.footer}
-W1 p17 ($6 = 2 + 4$) · W3 p55 (KV cache) · ZeRO §3 (p45) · the update is per step, $6N$ per token
+W1 p17 ($6 = 2 + 4$) · W3 p58 (KV cache) · ZeRO §3 (p45) · the update is per step, $6N$ per token
 :::
 
 ## At a glance: AdamW
@@ -600,7 +600,7 @@ Rajbhandari 2019 (ZeRO, Zero Redundancy Optimizer) §3 · bf16 = bfloat16, fp32 
 : {tbl-colwidths="[20,52,15,13]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p55 · $N \approx 12\,n_{\text{layer}}d^2 + Vd$ is now computable from a `config.json`
+Same master as W1 p16, W3 p58 · $N \approx 12\,n_{\text{layer}}d^2 + Vd$ is now computable from a `config.json`
 :::
 
 # How does training it break — and which number do you read first? {.section-title}
@@ -802,7 +802,7 @@ Search terms, not citations: *Hyper-Connections residual stream* · half-life 1 
 
 ## Next week: where is the position?
 
-- W3 p45 said attention is **permutation-equivariant** without a mask; today's block adds nothing positional — Norm, FFN and the residual are all per-token. Whatever today's model knows about order, it inferred from the **causal mask alone** (and it did learn: 2.18 bits/char, p23)
+- W3 p48 said attention is **permutation-equivariant** without a mask; today's block adds nothing positional — Norm, FFN and the residual are all per-token. Whatever today's model knows about order, it inferred from the **causal mask alone** (and it did learn: 2.18 bits/char, p23)
 - Next week makes position **explicit**: absolute, relative, **RoPE** — asks what that buys over the mask alone, and what happens when the context is longer than anything the model trained on
 - The ledger gets its long-context row: the cost that grows with $L$ even after $L > 12d$
 
@@ -875,7 +875,7 @@ Four weeks in: the unit (W2), what it may attend to (W3), what carries the resul
 | | |
 |:----|:----------------|
 | QA | question answering, the kind of benchmark Gromov et al. score (p37) |
-| QK-norm | query–key normalization: an RMSNorm on $\mathbf{q}$ and on $\mathbf{k}$ before the dot product, Henry et al. 2020 (p29) |
+| QK-norm | query–key normalization: an RMSNorm on $\mathbf{q}$ and on $\mathbf{k}$ before the dot product, Henry et al. 2020 (W3; the formula p29) |
 | ReLU | rectified linear unit, the gate-free FFN's nonlinearity (p13) |
 | RMSNorm | root-mean-square layer normalization, Zhang & Sennrich 2019 (p12) |
 | ROME | Rank-One Model Editing, Meng et al. 2022: the intervention experiment of W14 (p34) |

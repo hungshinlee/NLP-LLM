@@ -61,7 +61,7 @@ format:
 :::
 
 ::: {.footer}
-W4 p9–p11 · W4 demo 1 rehearsal 2026-10-06 (W4 p23) · W3 p45 · right half: schematic
+W4 p9–p11 · W4 demo 1 rehearsal 2026-10-06 (W4 p23) · W3 p48 · right half: schematic
 :::
 
 ## The problem this week handles, in one picture
@@ -78,21 +78,21 @@ Outline W5 · on the board: p18–19, p26, p41 · replayed: p30, p37, p49
 
 ## What you should be able to do by the end of today
 
-1. Restate W3 p45 and **compare five ways to write the position** — learned absolute, sinusoidal, ALiBi, RoPE, NoPE — saying how each breaks at a length it never saw
-2. **Derive RoPE's relativity** from $\mathbf{R}_m^\top\mathbf{R}_n = \mathbf{R}_{n-m}$; state that it lives in $\mathbf{q}^\top\mathbf{k}$ alone, so the KV cache holds (W3 p15) and MLA's absorption does not commute with it (W3 p32)
+1. Restate W3 p48 and **compare five ways to write the position** — learned absolute, sinusoidal, ALiBi, RoPE, NoPE — saying how each breaks at a length it never saw
+2. **Derive RoPE's relativity** from $\mathbf{R}_m^\top\mathbf{R}_n = \mathbf{R}_{n-m}$; state that it lives in $\mathbf{q}^\top\mathbf{k}$ alone, so the KV cache holds (W3 p16) and MLA's absorption does not commute with it (W3 p34)
 3. Explain extrapolation failure with the wavelength $\lambda_i$; say what **PI, NTK-aware and YaRN** each repair and cost; **read Llama 3.1's `rope_scaling`** and name which one it ships
 4. Explain the **attention sink** as softmax's doing, and why **StreamingLLM** stays stable — and why that is not long-context ability
 5. State the **lost-in-the-middle** design; say why NIAH is a lower bound and what RULER and NoLiMa add
 6. Fill the ledger's long-context row for a real `config.json`: which term is $\propto L$, which $\propto L^2$, where they cross; state the **budget view of sparse attention**
 
-## W3 p45, restated
+## W3 p48, restated
 
 - **No mask**: $\mathrm{Attn}(\mathbf{P}\mathbf{X}) = \mathbf{P}\,\mathrm{Attn}(\mathbf{X})$ for any permutation $\mathbf{P}$ — attention addresses by content and has no idea where anything is
 - **Causal mask**: row $t$ sees exactly $t$ keys. The symmetry breaks (p8), and the count leaks position once there is an anchor (p9); a causal LM with **no positional term learns to use it** (Haviv et al. 2022) — W4's tiny GPT is the specimen on p4
 - So "without positional encoding the model cannot tell order" is **false** for a causal LM. It was true of the un-masked encoder; that is where the sentence comes from
 
 ::: {.footer}
-W3 p45 · Haviv et al., Findings of EMNLP 2022 · Misconception 1: "no positions, no order"
+W3 p48 · Haviv et al., Findings of EMNLP 2022 · Misconception 1: "no positions, no order"
 :::
 
 ## Why the mask breaks it: scores move, the mask stays
@@ -114,7 +114,7 @@ Checked (`w05-data.json`, float64, $n = 6$): no mask $8.9 \times 10^{-16}$ · ca
 :::
 
 ::: {.footer}
-$\mathbf{S}$: the logits $s_{mn}$ · $\mathbf{M}$: $0$ allowed, $-\infty$ masked (W3 p13) · without a mask: W3 p45
+$\mathbf{S}$: the logits $s_{mn}$ · $\mathbf{M}$: $0$ allowed, $-\infty$ masked (W3 p14) · without a mask: W3 p48
 :::
 
 ## A count is a position only with an anchor
@@ -274,14 +274,14 @@ RoFormer §3.2–3.3 · Misconception 3: "RoPE makes attention depend only on re
 
 ::: {.columns}
 ::: {.column width="50%"}
-**(a) The KV cache holds — W3 p15**
+**(a) The KV cache holds — W3 p16**
 
 $\mathbf{R}_n\mathbf{k}_n$ depends on $n$ alone. Rotate the key once, when token $n$ arrives, and store it: later queries at any $m$ get $m - n$ for free.
 
 - the cached key is the *rotated* key: a stamped key cannot be re-stamped; the query's position is never needed at cache time
 :::
 ::: {.column width="50%"}
-**(b) MLA's absorption breaks — W3 p32**
+**(b) MLA's absorption breaks — W3 p34**
 
 MLA caches a latent $\mathbf{c}_t$ and folds $\mathbf{W}^{UK}$ into the query. With RoPE:
 
@@ -298,7 +298,7 @@ Same three lines: **the cache is correct**; **MLA needs a second key**.
 :::
 
 ::: {.footer}
-W3 p15 · W3 p32 · DeepSeek-AI, arXiv:2405.04434 §2.1
+W3 p16 · W3 p34 · DeepSeek-AI, arXiv:2405.04434 §2.1
 :::
 
 ## Where the stamp goes: prefill, decode, and the cache
@@ -608,7 +608,7 @@ Misconception 6: "longer context is better" — the week's central correction ·
 
 ## Three terms, three powers of $L$
 
-The ledger's two formulas (W1 p16, W3 p55, W4 p46), with $b_{\text{elem}}$ for bytes per element — $b$ is the base this week:
+The ledger's two formulas (W1 p16, W3 p58, W4 p46), with $b_{\text{elem}}$ for bytes per element — $b$ is the base this week:
 
 $$C_{\text{pre}} \approx 2NL + 2\,n_{\text{layer}}L^2 d, \qquad C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld \ \text{ per token}$$
 
@@ -627,7 +627,7 @@ Treat $L$ as the variable. Which of the three is the first to hurt a *server*, a
 :::
 
 ::: {.footer}
-outline W5 §Key math 4 · $12d$: W3 p37 · decode's roofline point does not move: W3 p34
+outline W5 §Key math 4 · $12d$: W3 p39 · decode's roofline point does not move: W3 p36
 :::
 
 ## Llama 3.1 8B by the formula — and what W3 already measured
@@ -653,7 +653,7 @@ $N$: W4 demo 1 · config, timings: W3 demo 2 · Misconception 7: "the bottleneck
 : {tbl-colwidths="[20,52,15,13]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p55, W4 p46 · one row added this week · bytes: $b_{\text{elem}}$
+Same master as W1 p16, W3 p58, W4 p46 · one row added this week · bytes: $b_{\text{elem}}$
 :::
 
 ## Sparse attention, the budget view
@@ -683,7 +683,7 @@ Yuan et al. 2502.11089 · DeepSeek-AI 2512.02556 · Lu et al. 2502.13189 · Zhan
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Name** | **StreamingLLM**, Xiao et al., *Efficient Streaming Language Models with Attention Sinks*, ICLR 2024 (arXiv:2309.17453). The name is the framework's; "attention sink" is the observation it rests on (W3 p43). |
+| **Name** | **StreamingLLM**, Xiao et al., *Efficient Streaming Language Models with Attention Sinks*, ICLR 2024 (arXiv:2309.17453). The name is the framework's; "attention sink" is the observation it rests on (W3 p46). |
 | **The question** | Deployment "in streaming applications such as multi-round dialogue" (abstract): caching every KV "consumes extensive memory", and models "cannot generalize to longer texts than the training sequence length". |
 | **The idea** | The first tokens act as a sink — "strong attention scores towards initial tokens … even if they are not semantically important". Keep their KV, slide a window over the rest; no fine-tuning. |
 | **What it added** | The abstract's claims: stable language modelling "with up to 4 million tokens and more", and "up to 22.2× speedup" over recomputing the window; a pre-training variant with a placeholder token as a dedicated sink. |
@@ -699,7 +699,7 @@ Xiao et al., ICLR 2024 · mechanism: p47 · demo 4: p49 · what it is not: p50
 {{< include assets/w05/sink-window.inline.qmd >}}
 
 ::: {.footer}
-Xiao et al., ICLR 2024 §3 · Gu et al., ICLR 2025 · W3 p43–44 · Misconception 8: "the sink is a bug"
+Xiao et al., ICLR 2024 §3 · Gu et al., ICLR 2025 · W3 p46–p47 · Misconception 8: "the sink is a bug"
 :::
 
 ## Before Demo 4 (if time): a window, with and without the sink

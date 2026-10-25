@@ -1,12 +1,12 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W3 demo 2（投影片 p28「Live: predict the curve from config.json, then measure it」）的設定
+# W3 demo 2（投影片 p29「Live: predict the curve from config.json, then measure it」）的設定
 #
 # 改這個檔就能換模型、換 context 長度，不必動程式。
 
 [demo]
 title = "W3 · Live: predict the curve from config.json, then measure it"
 # 量哪幾個 context 長度。"max" = 模型 config.json 的 max_position_embeddings（可用 max_context 蓋掉）。
-# 與投影片 p28 表格的五列逐一對應；改了這裡表格也要改。
+# 與投影片 p29 表格的五列逐一對應；改了這裡表格也要改。
 contexts = [1024, 4096, 8192, 32768, "max"]
 # 模型上限太大時的蓋子（0 = 不蓋）。Llama 3.1 是 131072；量到那裡的 prefill 時間待實測。
 max_context = 0

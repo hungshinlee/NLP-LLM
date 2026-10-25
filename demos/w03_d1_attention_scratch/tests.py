@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W3 demo 1 的五個測試（投影片 p22 右欄 (a)–(e)）。attention_final.py 與 attention_live.py 共用。
+"""W3 demo 1 的五個測試（投影片 p23 右欄 (a)–(e)）。attention_final.py 與 attention_live.py 共用。
 
     python3 tests.py attention_live          # 課堂：對 live 版跑（等同 ./present.sh live）；還沒寫的函數會標 skip
     python3 tests.py attention_final         # 等同 python3 attention_final.py
@@ -25,7 +25,7 @@ RUNS = HERE / "runs" / "rehearsal"
 BOLD, DIM, RESET, GREEN, RED, AMBER, GREY = "\033[1m", "\033[2m", "\033[0m", "\033[32m", "\033[31m", "\033[33m", "\033[90m"
 
 TOL = 1e-5          # (a)、(c) 的容忍誤差，float32
-ENTROPY_DK = [16, 128, 1024]   # (d)：與 p18 的圖（w03-data.json 的 variance）同一組 d_k
+ENTROPY_DK = [16, 128, 1024]   # (d)：與 p19 的圖（w03-data.json 的 variance）同一組 d_k
 ENTROPY_KEYS, ENTROPY_TRIALS, ENTROPY_SEED = 64, 200, 3   # 同上：64 個 key、200 次、seed 3
 
 

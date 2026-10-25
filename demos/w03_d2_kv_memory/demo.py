@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W3 demo 2：KV cache 的記憶體實測對照公式（投影片 p28「Live: predict the curve from config.json, then measure it」）。
+"""W3 demo 2：KV cache 的記憶體實測對照公式（投影片 p29「Live: predict the curve from config.json, then measure it」）。
 
     ./present.sh inspect    課前：讀 config.json 的三個數、探 KV 的 dtype、印每 token 的 bytes 與各 context 的預測值
     ./present.sh rehearse   課前彩排：每個 context 各跑一次 prefill，記 cache 張量大小、Δactive、Δpeak、耗時 → runs/rehearsal/curve.json

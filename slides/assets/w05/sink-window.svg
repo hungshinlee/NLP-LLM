@@ -1864,7 +1864,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t144-text_1">
-   <!-- $\text{W3 p43: the first token is where softmax dumps the mass no key deserves — every query can see it.}$ -->
+   <!-- $\text{W3 p46: the first token is where softmax dumps the mass no key deserves — every query can see it.}$ -->
    <g style="fill: #dc2626" transform="translate(0 15.15625) scale(0.2 -0.2)">
     <defs>
      <path id="t144-Cmr10-57" d="M 1991 -72 
@@ -2031,6 +2031,61 @@ M 391 1281
 L 1906 1281 
 L 1906 3547 
 L 391 1281 
+z
+" transform="scale(0.015625)"/>
+     <path id="t144-Cmr10-36" d="M 1600 -141 
+Q 1203 -141 937 70 
+Q 672 281 526 617 
+Q 381 953 325 1322 
+Q 269 1691 269 2069 
+Q 269 2575 466 3084 
+Q 663 3594 1045 3928 
+Q 1428 4263 1953 4263 
+Q 2172 4263 2361 4180 
+Q 2550 4097 2658 3936 
+Q 2766 3775 2766 3547 
+Q 2766 3416 2677 3327 
+Q 2588 3238 2456 3238 
+Q 2331 3238 2240 3328 
+Q 2150 3419 2150 3547 
+Q 2150 3672 2240 3762 
+Q 2331 3853 2456 3853 
+L 2491 3853 
+Q 2409 3969 2261 4023 
+Q 2113 4078 1953 4078 
+Q 1759 4078 1595 3993 
+Q 1431 3909 1300 3765 
+Q 1169 3622 1081 3448 
+Q 994 3275 945 3053 
+Q 897 2831 884 2637 
+Q 872 2444 872 2150 
+Q 984 2413 1190 2580 
+Q 1397 2747 1656 2747 
+Q 1941 2747 2175 2631 
+Q 2409 2516 2578 2311 
+Q 2747 2106 2836 1843 
+Q 2925 1581 2925 1313 
+Q 2925 938 2758 598 
+Q 2591 259 2287 59 
+Q 1984 -141 1600 -141 
+z
+M 1600 63 
+Q 1847 63 1997 175 
+Q 2147 288 2217 473 
+Q 2288 659 2305 848 
+Q 2322 1038 2322 1313 
+Q 2322 1675 2287 1931 
+Q 2253 2188 2100 2383 
+Q 1947 2578 1631 2578 
+Q 1372 2578 1205 2403 
+Q 1038 2228 961 1961 
+Q 884 1694 884 1447 
+Q 884 1363 891 1319 
+Q 891 1309 889 1303 
+Q 888 1297 884 1288 
+Q 884 1013 940 731 
+Q 997 450 1156 256 
+Q 1316 63 1600 63 
 z
 " transform="scale(0.015625)"/>
      <path id="t144-Cmr10-3a" d="M 538 353 
@@ -2817,7 +2872,7 @@ z
     <use xlink:href="#t144-Cmr10-20" transform="translate(152.685547 0.484375)"/>
     <use xlink:href="#t144-Cmr10-70" transform="translate(185.986328 0.484375)"/>
     <use xlink:href="#t144-Cmr10-34" transform="translate(241.503906 0.484375)"/>
-    <use xlink:href="#t144-Cmr10-33" transform="translate(291.503906 0.484375)"/>
+    <use xlink:href="#t144-Cmr10-36" transform="translate(291.503906 0.484375)"/>
     <use xlink:href="#t144-Cmr10-3a" transform="translate(341.503906 0.484375)"/>
     <use xlink:href="#t144-Cmr10-20" transform="translate(369.189453 0.484375)"/>
     <use xlink:href="#t144-Cmr10-74" transform="translate(402.490234 0.484375)"/>

@@ -3,7 +3,7 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
 """W3 demo 1 的參考實作：scaled dot-product attention、causal mask、帶 KV cache 的 decode step。純 `torch`，釘 CPU。
 
-課堂上授課者在 attention_live.py 從零寫同一份（寫的順序見投影片 p22 講稿的【操作】），每寫完一段就
+課堂上授課者在 attention_live.py 從零寫同一份（寫的順序見投影片 p23 講稿的【操作】），每寫完一段就
 `./present.sh live` 跑五個測試（測試本體在 tests.py，兩份實作共用）。這一份是 (1) 課前確認五個測試全過、
 (2) 現場卡住兩分鐘後 `./present.sh show` 切過來、(3) 課後發給學生。
 

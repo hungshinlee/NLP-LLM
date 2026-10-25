@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W3 demo 3（投影片 p49「Live: the same sentence, three rankings」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
+# W3 demo 3（投影片 p52「Live: the same sentence, three rankings」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
 #
 #   ./present.sh               上課用：先算好所有句子，然後 Enter 逐欄揭露（attention → gradient × input → rollout → 換 head …）；n = 下一句；q = 離開
 #   ./present.sh replay        現場失敗時：用課前彩排的紀錄走同一套揭露（畫面標明非現場）

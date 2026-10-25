@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W3 demo 1（投影片 p22「Live: attention and a KV cache, from scratch」）課前與課堂的入口。純 torch、釘 CPU，不碰 Hugging Face。
+# W3 demo 1（投影片 p23「Live: attention and a KV cache, from scratch」）課前與課堂的入口。純 torch、釘 CPU，不碰 Hugging Face。
 #
 #   ./present.sh               課前：對參考實作 attention_final.py 跑五個測試，全部 ok 才上台
 #   ./present.sh live          課堂：對 attention_live.py 跑五個測試（寫到哪測到哪，沒寫的標 skip）

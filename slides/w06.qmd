@@ -97,10 +97,10 @@ Outline W6 · on the board: p14, p23–24, p27, p31, p34 · live: p12, p26 · re
 
 - Write one line for each. Keep them: p50 comes back to both.
 - (a) is the ledger's $2N$ row: **W1 p16 wrote "MoE: memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$"** and left the numbers blank — today fills them
-- (b) is the ledger's KV row: W3 p26 said "W6 the mechanism"
+- (b) is the ledger's KV row: W3 p27 said "W6 the mechanism"
 
 ::: {.footer}
-W1 p16 · W3 p26 · W5 p43 · Misconception 1: "MoE is model compression"
+W1 p16 · W3 p27 · W5 p43 · Misconception 1: "MoE is model compression"
 :::
 
 # Route 1: can FLOPs stop following $N$? — MoE {.section-title}
@@ -307,7 +307,7 @@ $$\underbrace{\big(\phi(\mathbf{Q})\,\phi(\mathbf{K})^\top\big)\,\mathbf{V}}_{O(
 {{< include assets/w06/assoc.inline.qmd >}}
 
 ::: {.footer}
-outline W6 §Key math 3 · Katharopoulos et al., ICML 2020 §3.2 Eq. (7): $\phi = \mathrm{elu} + 1$ · W3 p23
+outline W6 §Key math 3 · Katharopoulos et al., ICML 2020 §3.2 Eq. (7): $\phi = \mathrm{elu} + 1$ · W3 p24
 :::
 
 ## Causal: the sum becomes a recurrence, and the notebook
@@ -587,7 +587,7 @@ Demo 4 · replay + live · `w06_d4_hybrid_vs_full/` · rehearsed 2026-10-19 · W
 : {tbl-colwidths="[17,53,12,18]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p55, W4 p46, W5 p43 · one row filled, one row added · bytes: $b$
+Same master as W1 p16, W3 p58, W4 p46, W5 p43 · one row filled, one row added · bytes: $b$
 :::
 
 # 2026: three routes, none has won — and why the table decides {.section-title}
