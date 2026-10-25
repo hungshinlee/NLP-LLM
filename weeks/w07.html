@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-TW" xml:lang="zh-TW"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.19">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>W7｜Pre-training: Scaling Laws and Data Curation – 自然語言處理與大型語言模型</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-389b1098d7ba9db9b0b92d755544736b.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-63bc95077cddfa9acfc57d3c4d4e5824.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "沒有結果",
+    "search-matching-documents-text": "符合的文件",
+    "search-copy-link-title": "複製搜尋連結",
+    "search-hide-matches-text": "隱藏其他符合的結果",
+    "search-more-match-text": "更多符合結果",
+    "search-more-matches-text": "更多符合結果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "Search",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "送出",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<!-- 展示模式：隱藏左右導覽，把內容拉滿整個頁寬。CSS 在 styles.scss 的 html.present-mode。
+
+     為什麼不直接用 Quarto 的 reader mode：navbar 那顆按鈕的 inline onclick 呼叫
+     window.quartoToggleReader，而它由 site_libs/quarto-html/quarto.js 定義——那支在本
+     script 之後才載入，會把任何同名覆寫吃掉；而且它的實作只調整過場速度，不會收起側欄。
+     所以這裡 (a) 用自己的函式名，(b) 在 document 的 capture 階段攔截那顆按鈕的點擊
+     （capture 早於 target 階段，stopPropagation 就能讓 inline onclick 不執行），
+     完全不依賴 script 載入順序。
+
+     class 掛在 <html> 而非 <body>：本 script 在 <head> 執行，掛 html 才不會換頁時閃一下。 -->
+<script>
+(function () {
+  var KEY = 'nlpllm-present-mode';
+  var root = document.documentElement;
+
+  // 進站立即套用，早於首次繪製
+  try { if (localStorage.getItem(KEY)) root.classList.add('present-mode'); } catch (e) {}
+
+  window.togglePresentMode = function (on) {
+    if (on === undefined) on = !root.classList.contains('present-mode');
+    root.classList.toggle('present-mode', on);
+    try { on ? localStorage.setItem(KEY, '1') : localStorage.removeItem(KEY); } catch (e) {}
+  };
+
+  // navbar 的按鈕：capture 階段接手，並阻止 Quarto 的 inline onclick
+  document.addEventListener('click', function (e) {
+    var t = e.target && e.target.closest && e.target.closest('.quarto-reader-toggle');
+    if (!t) return;
+    e.preventDefault();
+    e.stopPropagation();
+    window.togglePresentMode();
+  }, true);
+
+  // 快捷鍵 z；在輸入框內不攔截
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var t = e.target, tag = (t && t.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || (t && t.isContentEditable)) return;
+    if (e.key === 'z' || e.key === 'Z') { e.preventDefault(); window.togglePresentMode(); }
+  }, true);
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.querySelector('.quarto-reader-toggle');
+    if (b) b.setAttribute('title', 'Presentation mode — hide side navigation (z)');
+  });
+})();
+</script>
+
+  <script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.18.7/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.7/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-search-results"></div>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#where-this-fits" id="toc-where-this-fits" class="nav-link active" data-scroll-target="#where-this-fits">Where This Fits</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/hungshinlee/NLP-LLM/blob/main/weeks/w07.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/hungshinlee/NLP-LLM/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">W7｜Pre-training: Scaling Laws and Data Curation</h1>
+<p class="subtitle lead">Part II — Training · Pre-training：scaling laws 與資料策展</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
+<section id="where-this-fits" class="level2">
+<h2 class="anchored" data-anchor-id="where-this-fits">Where This Fits</h2>
+<p>Part II opens here. Six weeks have taken a Transformer apart until every layer has a cost: W1’s ledger wrote <span class="math inline">C_{\text{train}} \approx 6ND</span> and had you compute what a 7B model costs at <span class="math inline">D \approx 20N</span>; W4 counted <span class="math inline">N</span> matrix by matrix; W6 split <span class="math inline">N</span> into <span class="math inline">N_{\text{total}}</span> and <span class="math inline">N_{\text{active}}</span>. This week asks what that formula <strong>does not</strong> answer: <strong>given a compute budget <span class="math inline">C</span>, how should <span class="math inline">N</span> and <span class="math inline">D</span> be split?</strong> — and who said 20, on what grounds. The first half is one of the course’s three mathematical peaks: put Chinchilla’s fitted form <span class="math inline">\mathcal{L}(N, D) = E + AN^{-\alpha} + BD^{-\beta}</span> under the constraint <span class="math inline">6ND = C</span>, derive the first-order condition on the board, and see that <strong>the optimum is where the two marginal returns are equal</strong>, that the exponent <span class="math inline">\beta/(\alpha+\beta)</span> is the structure and 20 is only a fitted constant; then read two 2024 papers that reconcile Kaplan’s <span class="math inline">N^* \propto C^{0.73}</span> with Chinchilla’s <span class="math inline">C^{0.50}</span> — the gap comes from how <span class="math inline">N</span> is counted (W4’s “which <span class="math inline">N</span>”), from warmup, and from <strong>re-tuning the hyperparameters at every size</strong> — the first time “a scaling law is a fit, not a measurement” is taught as methodology. <strong>The 2026 message is unchanged: Chinchilla has not been overturned, but its question has been rewritten</strong> — from “optimal under one training-compute budget” to “optimal under several cost axes”: inference (Sardana 2024 → Roberts 2026, which puts the number of test-time samples into the same budget), precision (Kumar), the data ceiling (Muennighoff), plus W6’s “which <span class="math inline">N</span> does a scaling law mean for an MoE” (Clark, Abnar) and W2’s <span class="math inline">V</span> (Tao). Every added axis moves the optimum, and the models shipped in 2026 are almost all overtrained — not against Chinchilla, but optimising a different objective. The second half is <strong>data</strong>: compute decides how many tokens to buy; who decides which tokens, and how? One public, reproducible pipeline (Common Crawl → extraction → language identification → quality filtering → deduplication → decontamination → mixing and ordering), each stage with a failure mode; the verbatim copy in W1’s <span class="math inline">n = 8</span> generation gets its answer here (deduplication); <strong>MMLU appears for the first time here, and so, in the same breath, do contamination and the error rate of its questions</strong> (W14 develops both); W2’s Traditional Chinese data gap looks for its place among FineWeb2’s thousand-plus languages — and finds that <strong>it has no subset of its own</strong>: GlotLID sorts Han characters into one script (<code>cmn_Hani</code>, no Traditional/Simplified split), Hakka <code>hak_Hani</code> has 74 documents and Taiwanese <code>nan_Latn</code> 2,891 (dataset card, read 2026-10-26). It is also a week of training in reading evidence: synthetic data is taught as a pair — <em>Rephrasing the Web</em> (2024, optimistic) next to <em>BeyondWeb</em> (2025, the same first author’s negative result); model collapse assumes that new data <strong>replace</strong> old data while practice <strong>accumulates</strong> them, and Gerstgrasser et al.&nbsp;prove that accumulation does not collapse, so it is taught as “a theoretical claim stronger than its evidence”, not as consensus. <strong>The compute-optimal arithmetic is run live by the instructor, the small-scale fit and its extrapolation are rehearsed in advance and replayed, and MinHash is written live</strong>; you do not need to run anything.</p>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<ol type="1">
+<li>On the board, derive the first-order condition from <span class="math inline">\mathcal{L}(N, D) = E + AN^{-\alpha} + BD^{-\beta}</span> and <span class="math inline">6ND = C</span>; state what the optimum means (the marginal returns of <span class="math inline">N</span> and <span class="math inline">D</span> are equal), <span class="math inline">N^{*} \propto C^{\beta/(\alpha+\beta)}</span> and <span class="math inline">D^{*} \propto C^{\alpha/(\alpha+\beta)}</span>; explain why <span class="math inline">D/N \approx 20</span> is a fitted constant while the exponent is the structure; and say what each of Chinchilla’s three estimation methods holds fixed.</li>
+<li>Explain where the gap between Kaplan (<span class="math inline">N^{*} \propto C^{0.73}</span>) and Chinchilla (<span class="math inline">C^{0.50}</span>) comes from — whether <span class="math inline">N</span> counts the embeddings and the last layer’s compute (W4’s “which <span class="math inline">N</span>”), warmup length, and whether the optimizer is re-tuned at every scale — and state Besiroglu et al.’s three charges against the original Chinchilla fit (inconsistent with the first two methods, fails to fit the extracted data, confidence intervals implausibly narrow); say what “Chinchilla was not overturned but rewritten” means.</li>
+<li>Write each 2024–2026 correction as “one term added to the cost” and re-derive the first-order condition: inference-aware (<span class="math inline">6ND + 2N D_{\text{inf}}</span>; the inference term taxes <span class="math inline">N</span> only → a smaller <span class="math inline">N</span> and a larger <span class="math inline">D</span>; Roberts’s <span class="math inline">T^2</span> puts the number of samples <span class="math inline">k</span> into the same budget), precision-aware (<span class="math inline">N_{\text{eff}} = N \cdot g(P)</span>; post-training-quantization degradation grows with training data), data-constrained (<span class="math inline">D_{\text{eff}}</span> saturates with epochs; up to about 4 epochs are nearly free); for an MoE, say which <span class="math inline">N</span> a scaling law means (<span class="math inline">6N_{\text{active}}D</span> for compute, <span class="math inline">N_{\text{total}}</span> for capacity; Clark’s effective parameter count, Abnar’s optimal sparsity), and for <span class="math inline">V</span>, recall W2’s derivation.</li>
+<li>List five methodological reasons a scaling-law fit goes wrong, with one paper each: too few points to extrapolate from (the (Mis)Fitting checklist); the collinear design <span class="math inline">D = kN</span> that makes the coefficients of <span class="math inline">N</span> and <span class="math inline">D</span> unidentifiable (Kricheli); hyperparameters not re-tuned at each size (Porian; muP is one answer); a learning-rate schedule tied to the training length (Hägele’s and MiniCPM’s constant + cooldown); loss and downstream ability not lying on one curve (Gadre’s power law against Schaeffer’s metric argument) — and point to which one is happening in demo 2’s fit.</li>
+<li>Describe each stage of a public, reproducible pre-training data pipeline (a Common Crawl snapshot → extraction → language identification → quality filtering, rules against a classifier → deduplication, MinHash/LSH → decontamination, <span class="math inline">n</span>-gram overlap → PII), give one failure mode and one public reference per stage (FineWeb/FineWeb-Edu, DCLM, Dolma, Nemotron-CC, FineWeb2), and write the one line by which MinHash estimates Jaccard and what the LSH band parameters tune.</li>
+<li>Explain the state of data mixing and ordering: small-scale proxies that predict the mixture (DoReMi, RegMix, DataDecide, Shukor) and their still-open transferability; mid-training/annealing that puts high-quality and domain data into the cooldown (OLMo 2’s Dolmino; Blakeney’s domain upsampling); and the other half of the recipe — stability (OLMo 2 §3’s reordered norm, QK-norm and z-loss; Kimi K2’s MuonClip with zero spikes) — as the precondition for a small-scale fit to extrapolate at all.</li>
+<li>State the known limits of synthetic data in pre-training (Rephrasing the Web → BeyondWeb’s “no silver bullet” → Niklaus’s 2026 systematic study), separate the theoretical assumption of model collapse (replacement) from practice (accumulation; Gerstgrasser et al.&nbsp;prove a finite bound under accumulation), and, the first time MMLU is mentioned, say contamination and the 6.49% error rate of its questions (Gema et al.) in the same breath.</li>
+</ol>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li><strong>Textbooks</strong>: the pre-training half of JM3 ch 7 <em>Transformers and Pretraining</em> (2026-08-19 release); LLMBook’s data-preparation and pre-training chapters as the Chinese companion; XZ’s pre-training chapter.</li>
+</ul>
+<p><strong>Scaling laws (the backbone)</strong> - Kaplan et al., <strong>Scaling Laws for Neural Language Models</strong>, arXiv:2001.08361 (2020) — the abstract: loss is a power law in <span class="math inline">N</span>, <span class="math inline">D</span> and <span class="math inline">C</span> across seven orders of magnitude; larger models are more sample-efficient, so train large and stop early; <strong><span class="math inline">N</span> excludes embeddings in §2.1</strong> (closing W4’s open item); an arXiv preprint - Hoffmann et al., <strong>Training Compute-Optimal Large Language Models</strong>, NeurIPS 2022 (arXiv:2203.15556; published under the title <em>An empirical analysis of compute-optimal large language model training</em>) — Chinchilla; the abstract: model size and training tokens should be scaled <strong>equally</strong>; 70B on 4× the data; <strong>assigned reading this week: §3, the three estimation methods</strong> - Besiroglu et al., <strong>Chinchilla Scaling: A replication attempt</strong>, arXiv:2404.10102 (2024) — the abstract: the reported fit is inconsistent with the first two methods, fails to fit the extracted data, and reports confidence intervals so narrow they would need 600,000 experiments; <strong>assigned reading this week, in full, as methodology</strong>; an arXiv preprint - Porian et al., <strong>Resolving Discrepancies in Compute-Optimal Scaling of Language Models</strong>, NeurIPS 2024 Spotlight (arXiv:2406.19146) — the abstract: three causes of the Kaplan–Chinchilla gap — last-layer computational cost, warmup duration, scale-dependent optimizer tuning; careful learning-rate decay is not essential - Pearce &amp; Song, <strong>Reconciling Kaplan and Chinchilla Scaling Laws</strong>, TMLR 2024 (arXiv:2406.12907) — the abstract: much of the gap comes from Kaplan counting non-embedding rather than total parameters, at small scale; the source of <span class="math inline">N^{*} \propto C^{0.73}</span> against <span class="math inline">C^{0.50}</span> - Li, Kudugunta &amp; Zettlemoyer, <strong>(Mis)Fitting Scaling Laws: A Survey of Scaling Law Fitting Techniques in Deep Learning</strong>, ICLR 2025 (arXiv:2502.18969, under a shorter title) — the abstract: of more than 50 papers surveyed, 45 fit a power law and most under-report what is needed to reproduce them; <strong>the survey of choice for this block</strong> - Kricheli et al., <strong>Tokens-per-Parameter Coverage Is Critical for Robust LLM Scaling Law Extrapolation</strong>, NeurIPS 2026 (arXiv:2605.08541, v3 October 2026) — the abstract: the collinear design <span class="math inline">D = kN</span> makes the Gauss–Newton problem ill-conditioned when <span class="math inline">\alpha \approx \beta</span>, the scale coefficients unidentifiable and extrapolation off the training ray fragile; non-collinear designs win 97.3% of held-out comparisons - Gadre et al., <strong>Language models scale reliably with over-training and on downstream tasks</strong>, ICLR 2025 (arXiv:2403.08540) — the abstract: 104 models; a 32× over-trained run and a compute-optimal run both predicted from experiments with 300× less compute; a power law from perplexity to average downstream top-1 error - Schaeffer, Miranda &amp; Koyejo, <strong>Are Emergent Abilities of Large Language Models a Mirage?</strong>, NeurIPS 2023 Outstanding Paper (arXiv:2304.15004) — the abstract: emergence comes from the choice of metric; nonlinear or discontinuous metrics produce the jumps - Wei et al., <strong>Emergent Abilities of Large Language Models</strong>, TMLR 2022 (arXiv:2206.07682) — the abstract: the definition — absent in smaller models, present in larger ones, not predictable by extrapolation</p>
+<p><strong>The correction axes: inference, precision, data, two <span class="math inline">N</span>’s, <span class="math inline">V</span></strong> - Sardana et al., <strong>Beyond Chinchilla-Optimal: Accounting for Inference in Language Model Scaling Laws</strong>, ICML 2024 (PMLR 235; arXiv:2401.00448) — the abstract: with large expected inference demand, train <strong>smaller and longer</strong>; quality keeps improving to 10,000 tokens per parameter - Roberts et al., <strong>Test-Time Scaling Makes Overtraining Compute-Optimal</strong>, COLM 2026 (arXiv:2604.01411) — the abstract: <span class="math inline">T^2</span> (Train-to-Test) scaling laws jointly optimise <span class="math inline">N</span>, <span class="math inline">D</span> and the number of inference samples; the optimum shifts “radically” into the overtraining regime and survives post-training; <strong>the cleanest 2026 rewrite of Chinchilla</strong>, carrying the inference axis to test time (W10) - Kumar et al., <strong>Scaling Laws for Precision</strong>, ICLR 2025 Oral (arXiv:2411.04330) — the abstract: low-precision training reduces the effective parameter count; post-training-quantization degradation grows with training data until more pre-training data becomes harmful (W11) - Muennighoff et al., <strong>Scaling Data-Constrained Language Models</strong>, NeurIPS 2023 Oral (arXiv:2305.16264) — the abstract: at fixed compute, up to 4 epochs of repeated data change the loss negligibly; beyond that, the value of added compute decays to zero - Sadhukhan et al., <strong>Kinetics: Rethinking Test-Time Scaling Laws</strong>, NeurIPS 2025 (arXiv:2506.05333; the NeurIPS page uses the singular <em>Law</em>) — the abstract: compute-optimal analyses overlook the memory-access bottlenecks of inference-time strategies; under test-time scaling, attention rather than parameter count is the dominant cost (W10, W11) - Clark et al., <strong>Unified Scaling Laws for Routed Language Models</strong>, ICML 2022 (PMLR 162; arXiv:2202.01169) and Abnar et al., <strong>Parameters vs FLOPs: Scaling Laws for Optimal Sparsity for Mixture-of-Experts Language Models</strong>, ICML 2025 (PMLR 267; arXiv:2501.12370) — cited in W6: an effective parameter count (abstract); an optimal sparsity under each constraint (abstract); this week only answers “which <span class="math inline">N</span> does a scaling law mean for an MoE” - Tao et al., <strong>Scaling Laws with Vocabulary: Larger Models Deserve Larger Vocabularies</strong>, NeurIPS 2024 (arXiv:2407.13623) and Limisiewicz et al., <strong>Compute Optimal Tokenization</strong>, arXiv:2605.01188 (May 2026) — cited and derived in W2; this week lists them as the fourth variable (the latter a single, unreplicated preprint) - Hägele et al., <strong>Scaling Laws and Compute-Optimal Training Beyond Fixed Training Durations</strong>, NeurIPS 2024 Spotlight (arXiv:2405.18392) — the abstract: the cosine schedule ties training to a fixed length; constant learning rate plus cooldown scales as predictably; stochastic weight averaging helps at no cost - Hu et al., <strong>MiniCPM: Unveiling the Potential of Small Language Models with Scalable Training Strategies</strong>, COLM 2024 (arXiv:2404.06395) — the abstract: the Warmup-Stable-Decay (WSD) scheduler is named here; with it, the data–model scaling law is swept without retraining, giving a much higher compute-optimal data ratio than Chinchilla</p>
+<p><strong>Data curation</strong> - Penedo et al., <strong>The FineWeb Datasets: Decanting the Web for the Finest Text Data at Scale</strong>, NeurIPS 2024 Datasets &amp; Benchmarks (arXiv:2406.17557) — the abstract: 96 Common Crawl snapshots, 15T tokens; FineWeb-Edu, 1.3T tokens, “dramatically” better on MMLU and ARC; the classifier’s training and per-dump deduplication are in the body (§3); <strong>the standard reference for classifier-based filtering</strong>, and the corpus of demos 2–4 - Penedo et al., <strong>FineWeb2: One Pipeline to Scale Them All — Adapting Pre-Training Data Processing to Every Language</strong>, arXiv:2506.20920 (2025) — the abstract: over 1000 languages, almost 100 snapshots, 20 TB and 5 billion documents; <strong>from the dataset card’s language table: <code>cmn_Hani</code> (no Traditional/Simplified split) 2.42 TB, <code>yue_Hani</code> 315k documents, <code>hak_Hani</code> 74, <code>nan_Latn</code> 2,891 (read 2026-10-26)</strong> — required reading for the Traditional Chinese, Taiwanese and Hakka discussion; an arXiv preprint - Li et al., <strong>DataComp-LM: In search of the next generation of training sets for language models</strong>, NeurIPS 2024 Datasets &amp; Benchmarks (arXiv:2406.11794) — the abstract: a 240T-token standardised pool; model-based filtering is key; 7B on 2.6T tokens reaches 64% on MMLU — the only controlled benchmark of data curation - Soldaini et al., <strong>Dolma: an Open Corpus of Three Trillion Tokens for Language Model Pretraining Research</strong>, ACL 2024 Best Resource Paper (arXiv:2402.00159; Anthology 2024.acl-long.840) — the abstract: a three-trillion-token English corpus with its toolkit - Su et al., <strong>Nemotron-CC: Transforming Common Crawl into a Refined Long-Horizon Pretraining Dataset</strong>, ACL 2025 (arXiv:2412.02595; Anthology 2025.acl-long.123) — the abstract: classifier ensembling, synthetic rephrasing, <strong>less reliance on heuristic filters</strong>; 6.3T tokens matching DCLM on MMLU with four times the unique real tokens - Wang et al., <strong>Ultra-FineWeb: Efficient Data Filtering and Verification for High-Quality LLM Training Data</strong>, arXiv:2505.05427 (2025) — the abstract: one pipeline applied to FineWeb and Chinese FineWeb, about 1T English and 120B Chinese tokens; one of the few that put Chinese through the same filtering pipeline; an arXiv preprint - Lee et al., <strong>Deduplicating Training Data Makes Language Models Better</strong>, ACL 2022 (arXiv:2107.06499; Anthology 2022.acl-long.577) — the abstract: one 61-word English sentence repeated over 60,000 times in C4; over 1% of unprompted output copied verbatim from training data; deduplication cuts memorised output tenfold, and train–test overlap affects over 4% of standard validation sets; <strong>this is where W1’s <span class="math inline">n = 8</span> is closed</strong> - Carlini et al., <strong>Quantifying Memorization Across Neural Language Models</strong>, ICLR 2023 (arXiv:2202.07646) — the abstract: three log-linear relationships — memorisation grows with model capacity, with the number of times an example is duplicated, and with the length of the prompting context - Dodge et al., <strong>Documenting Large Webtext Corpora: A Case Study on the Colossal Clean Crawled Corpus</strong>, EMNLP 2021 (arXiv:2104.08758; Anthology 2021.emnlp-main.98) — the abstract: C4 contains text from patents and military websites, machine-translated text and evaluation examples from other benchmarks; blocklist filtering disproportionately removes text from and about minority individuals — <strong>the first public audit of over-filtering</strong> - Broder, <strong>On the resemblance and containment of documents</strong>, Proc. Compression and Complexity of SEQUENCES 1997 (DOI 10.1109/sequen.1997.666900), and Broder, Charikar, Frieze &amp; Mitzenmacher, <strong>Min-wise independent permutations</strong>, STOC 1998 / JCSS 60(3), 2000 (DOI 10.1006/jcss.1999.1690) — the source of MinHash; the three lines written live in demo 4 - Gao et al., <strong>The Pile: An 800GB Dataset of Diverse Text for Language Modeling</strong>, arXiv:2101.00027 (2020) — the abstract: 825 GiB, 22 subsets; where the multi-source mixture line begins; an arXiv preprint - Albalak et al., <strong>A Survey on Data Selection for Language Models</strong>, arXiv:2402.16827 (2024; v3 August 2024) — cited as the arXiv preprint; <strong>no verifiable newer survey for 2025–2026</strong> - Common Crawl, <strong>commoncrawl.org</strong>, home and overview pages (retrieved 2026-10-26) — <strong>a foundation’s website, not a paper</strong>: over 300 billion pages spanning 15 years, 3–5 billion new pages a month, petabytes; latest snapshot CC-MAIN-2026-43 - Hugging Face, the <strong><code>HuggingFaceFW/fineweb</code>, <code>fineweb-edu</code> and <code>fineweb-2</code> dataset cards</strong> (read 2026-10-26) — <strong>dataset cards, not papers</strong>: ODC-By 1.0; the <code>sample-10BT</code> / <code>100BT</code> / <code>350BT</code> subsets; FineWeb2’s 1,870 configs and language-distribution CSV (GlotLID identifies script, not Traditional vs.&nbsp;Simplified)</p>
+<p><strong>Mixtures, ordering, mid-training, stability</strong> - Team OLMo, <strong>2 OLMo 2 Furious</strong>, arXiv:2501.00656 (shorter version at COLM 2025; v3 October 2025) — the abstract: Dolmino Mix 1124, introduced in the <strong>annealing phase</strong>, improves downstream performance substantially; a recipe for training stability and per-token efficiency (§3’s reordered norm, QK-norm and z-loss are in the body, cited in W4); <strong>the best single artifact for teaching data ordering</strong>, because the recipe is fully public - Team OLMo, <strong>Olmo 3</strong>, arXiv:2512.13961 (December 2025; v2 April 2026) — the abstract: 7B and 32B, the full model flow released (every stage, checkpoint and data point); the size of Dolma 3 and the mid-training recipe are in the body and the release notes, not the abstract, <strong>so no numbers are quoted here</strong>; an arXiv preprint - Xie et al., <strong>DoReMi: Optimizing Data Mixtures Speeds Up Language Model Pretraining</strong>, NeurIPS 2023 Spotlight (arXiv:2305.10429) — the abstract: a 280M proxy model sets domain weights by Group DRO for an 8B model (30× larger) - Liu et al., <strong>RegMix: Data Mixture as Regression for Language Model Pre-training</strong>, ICLR 2025 (arXiv:2407.01492) — the abstract: 512 models of 1M parameters, 1B tokens each, fit a regression; <strong>web text correlates with downstream performance more strongly than data perceived as high-quality, such as Wikipedia</strong> - Magnusson et al., <strong>DataDecide: How to Predict Best Pretraining Data with Small Experiments</strong>, ICML 2025 (PMLR 267; arXiv:2504.11393) — the abstract: 25 corpora, models up to 1B, 3 seeds; the ranking at 150M predicts the best at 1B about 80% of the time - Shukor et al., <strong>Scaling Laws for Optimal Data Mixtures</strong>, NeurIPS 2025 (arXiv:2507.09404) — the abstract: the domain-weight vector enters the scaling law; a few small runs estimate it, and it extrapolates to larger sizes and unseen mixtures - Blakeney et al., <strong>Does your data spark joy? Performance gains from domain upsampling at the end of training</strong>, arXiv:2406.03476 (2024; ICML 2024 ES-FoMo II workshop, not the main conference) — the abstract: upsampling domain data over the last 10–20% of training is optimal; +6.9 pp on MMLU for 7B at 1T tokens - Kimi Team, <strong>Kimi K2: Open Agentic Intelligence</strong>, arXiv:2507.20534 (2025; v2 February 2026) — cited in W4; the abstract: MuonClip’s QK-clip addresses instability, and K2 was pre-trained on 15.5T tokens with <strong>zero loss spikes</strong> — this week’s shipped example of “stability is the precondition of scaling” - (muP, Muon, OLMo 2 §3 and PaLM’s spike observation are listed in W4’s references and not repeated here)</p>
+<p><strong>Synthetic data and model collapse</strong> - Maini et al., <strong>Rephrasing the Web: A Recipe for Compute and Data-Efficient Language Modeling</strong>, ACL 2024 (arXiv:2401.16380; Anthology 2024.acl-long.757) — the abstract: pre-training on C4 about 3× faster; perplexity better by more than 10% at the same compute (the optimistic half) - DatologyAI (Maini et al.), <strong>BeyondWeb: Lessons from Scaling Synthetic Data for Trillion-scale Pretraining</strong>, arXiv:2508.10975 (2025) — the abstract, verbatim: “there’s no silver bullet for generating high-quality synthetic pretraining data”; a 3B model on 180B tokens beats an 8B model at the same budget on Cosmopedia; <strong>taught side by side with the previous entry, the course’s best negative result</strong>; an arXiv preprint from a company lab - Qin et al., <strong>Scaling Laws of Synthetic Data for Language Models</strong>, COLM 2025 (arXiv:2503.19551) — the abstract: SynthLLM’s synthetic data follows a rectified scaling law, plateaus near 300B tokens, and larger models peak with fewer tokens - Niklaus et al., <strong>How Can We Synthesize High-Quality Pretraining Data? A Systematic Study of Prompt Design, Generator Model, and Source Data</strong>, COLM 2026 (arXiv:2604.13977; v2 July 2026) — the abstract: controlled experiments over a trillion tokens; structured output formats beat web baselines; <strong>a generator above 1B parameters brings no further gain</strong>; the choice of source data matters substantially; FinePhrase, 486B tokens - Gunasekar et al., <strong>Textbooks Are All You Need</strong>, arXiv:2306.11644 (2023) — the abstract: phi-1, 1.3B, trained on 6B tokens of filtered web text and 1B of GPT-3.5 synthetic textbooks; where the optimistic case for synthetic data begins; an arXiv preprint - Shumailov et al., <strong>AI models collapse when trained on recursively generated data</strong>, Nature 631, 755–759 (2024; DOI 10.1038/s41586-024-07566-y; arXiv:2305.17493 under the title <em>The Curse of Recursion</em>) — the arXiv abstract: model-generated content in training causes irreversible defects and the tails of the original distribution disappear; <strong>the setting replaces the training data at every generation</strong> - Gerstgrasser et al., <strong>Is Model Collapse Inevitable? Breaking the Curse of Recursion by Accumulating Real and Synthetic Data</strong>, COLM 2024 (arXiv:2404.01413) — the abstract: replacement does tend to collapse; <strong>accumulation</strong> avoids it, and the test error is proven to have a finite bound independent of the number of iterations - Dohmatob, Feng &amp; Kempe, <strong>Model Collapse Demystified: The Case of Regression</strong>, NeurIPS 2024 (arXiv:2402.07712) — the abstract: analytic formulae in high-dimensional regression, modified scaling laws with crossovers; the theoretical side</p>
+<p><strong>First mentioned here, developed in W14</strong> - Gema et al., <strong>Are We Done with MMLU?</strong>, NAACL 2025 (arXiv:2406.04127; Anthology 2025.naacl-long.262) — the abstract: an estimated 6.49% of MMLU questions contain errors, 57% in the Virology subset; MMLU-Redux re-annotates 5,700 questions - Oren et al., <strong>Proving Test Set Contamination in Black Box Language Models</strong>, ICLR 2024 Oral (arXiv:2310.17623) — the abstract: provable guarantees of contamination without pre-training data or weights (every ordering of an exchangeable benchmark should be equally likely); works for models as small as 1.4B, test sets of 1000 examples, and datasets appearing only a few times; an audit of five public models finds “little evidence for pervasive contamination” - The 13-gram decontamination convention of GPT-3: Brown et al.&nbsp;2020 (cited in W1), Appendix C</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> 回到頂端</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "已複製");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "已複製");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/hungshinlee\.github\.io\/NLP-LLM\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/hungshinlee/NLP-LLM/blob/main/weeks/w07.qmd" class="toc-action"><i class="bi bi-github"></i>View source</a></li><li><a href="https://github.com/hungshinlee/NLP-LLM/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
