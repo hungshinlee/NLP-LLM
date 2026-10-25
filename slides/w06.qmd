@@ -1,4 +1,5 @@
 ---
+# 此檔由 bin/publish_slides.py 從投影片正本產生（中文講稿區塊已剝除），請勿直接編輯。正本在 private repo 的 <course>/slides/。
 title: "Architecture Routes: MoE, SSMs, and Linear Attention"
 subtitle: "NLP & Large Language Models · Week 6"
 author: "Hung-Shin Lee"
@@ -43,8 +44,6 @@ format:
           })();
           </script>
 ---
-
-<!-- 此檔由 bin/publish_slides.py 從投影片正本產生（中文講稿區塊已剝除），請勿直接編輯。正本在 private repo 的 <course>/slides/。 -->
 
 # Two ledger rows nobody has touched {.section-title}
 
@@ -537,7 +536,7 @@ The two routes never touch the same slot, so a model picks one of each: **"MoE a
 :::
 
 ::: {.footer}
-W4 p9 · configs read 2026-10-18 · DeepSeek-V3.2 / V4 abstracts · Misconception: "MoE or hybrid"
+W4 p9 · Misconception 8: "MoE or hybrid"
 :::
 
 ## Before Demo 4: a parallel hybrid against full attention
@@ -616,7 +615,7 @@ outline W6 §LO 5 · Du et al. 2510.26692 · Waleffe et al. 2406.07887 · DeepSe
 - Kimi Linear, the same month, claims the opposite under a fair comparison. **Both are 2025 evidence. Neither settles it.** The layer ratio is still a hyperparameter without a principle; no one ships a pure SSM flagship (Jelassi, Zoology), and no one has shown the hybrid ratio *should* be 3:1
 
 ::: {.footer}
-MiniMax team post 2025-10-29 · Misconception 8: "SSMs replace Transformers / hybrids won"
+MiniMax team post 2025-10-29 · Misconception 9: "SSMs replace Transformers / hybrids won"
 :::
 
 ## Reading an architecture paper: what does the row hold fixed?
@@ -636,7 +635,7 @@ First question for any table: **what did this row hold fixed?** Second: was the 
 :::
 
 ::: {.footer}
-Clark 2022 · Abnar 2025 · W2 p67 · W4 p55 · Misconception 9: "results compare directly"
+Clark 2022 · Abnar 2025 · W2 p67 · W4 p55 · Misconception 10: "results compare directly"
 :::
 
 ## Two tables taken apart: Kimi Linear, DeepSeek-V3 §2
@@ -685,7 +684,7 @@ p7 asked: (a) 671B/37B — how much memory? (b) Can the state stop growing with 
 compare with your two lines from p7 · W7: which $N$ does a scaling law mean for an MoE?
 :::
 
-## Nine things this week said no to (1 of 2)
+## Ten things this week said no to (1 of 2)
 
 ::: {.prose}
 | The belief | What is true | Returns |
@@ -699,15 +698,16 @@ compare with your two lines from p7 · W7: which $N$ does a scaling law mean for
 : {tbl-colwidths="[34,54,12]"}
 :::
 
-## Nine things this week said no to (2 of 2)
+## Ten things this week said no to (2 of 2)
 
 ::: {.prose}
 | The belief | What is true | Returns |
 |---|---|---|
 | **6** · Mamba is the RNN revived | half: new are selection (in-context choice) and parallel training — what killed the RNN in W1 | — |
 | **7** · a fixed state has no position information | order lives in the recurrence (first written, most faded) plus a short convolution; nothing to extrapolate or repair | — |
-| **8** · SSMs replace Transformers / hybrids are the 2026 default | three routes ship at once; no pure-SSM flagship; the ratio has no principle; MiniMax-M2 went back | W11, W14 |
-| **9** · architecture results compare directly | iso-FLOPs, -params, -latency, -tokens give different winners; ask what the row held fixed, then whether the baseline was tuned | W7, W14 |
+| **8** · a model is MoE *or* hybrid | two slots of one block: MoE swaps the FFN, hybrid / linear / sparse the attention; Qwen3-Next and Kimi Linear swap both | — |
+| **9** · SSMs replace Transformers / hybrids are the 2026 default | three routes ship at once; no pure-SSM flagship; the ratio has no principle; MiniMax-M2 went back | W11, W14 |
+| **10** · architecture results compare directly | iso-FLOPs, -params, -latency, -tokens give different winners; ask what the row held fixed, then whether the baseline was tuned | W7, W14 |
 
 : {tbl-colwidths="[34,54,12]"}
 :::

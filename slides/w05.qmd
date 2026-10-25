@@ -1,4 +1,5 @@
 ---
+# 此檔由 bin/publish_slides.py 從投影片正本產生（中文講稿區塊已剝除），請勿直接編輯。正本在 private repo 的 <course>/slides/。
 title: "Positional Encoding, Long Context, and the Limits of Context"
 subtitle: "NLP & Large Language Models · Week 5"
 author: "Hung-Shin Lee"
@@ -43,8 +44,6 @@ format:
           })();
           </script>
 ---
-
-<!-- 此檔由 bin/publish_slides.py 從投影片正本產生（中文講稿區塊已剝除），請勿直接編輯。正本在 private repo 的 <course>/slides/。 -->
 
 # The hole W3 left open: what does writing the position down buy? {.section-title}
 

@@ -1,4 +1,5 @@
 ---
+# 此檔由 bin/publish_slides.py 從投影片正本產生（中文講稿區塊已剝除），請勿直接編輯。正本在 private repo 的 <course>/slides/。
 title: "Transformer I: Attention Mechanics, Complexity, and Building It by Hand"
 subtitle: "NLP & Large Language Models · Week 3"
 author: "Hung-Shin Lee"
@@ -43,8 +44,6 @@ format:
           })();
           </script>
 ---
-
-<!-- 此檔由 bin/publish_slides.py 從投影片正本產生（中文講稿區塊已剝除），請勿直接編輯。正本在 private repo 的 <course>/slides/。 -->
 
 # What does it cost to let every row read every other row? The number last week promised {.section-title}
 
