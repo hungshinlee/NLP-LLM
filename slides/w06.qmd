@@ -281,7 +281,7 @@ Fedus §2.2 · Thinking Machines blog 2025-09 · Misconception 4: "nondeterminis
 ![](assets/w06/notebook.svg){width="100%"}
 
 ::: {.footer}
-the week's second metaphor · W2 p6 · W1 p62 · fails at "summary" and at "which layers"
+the week's second metaphor · W2 p6 · W1 p67 · fails at "summary" and at "which layers"
 :::
 
 ## At a glance: linear attention
@@ -384,7 +384,7 @@ $$\mathbf{S}_t^\top\phi(\mathbf{k}_s) \;=\; \underbrace{\mathbf{v}_s\,\|\phi(\ma
 :::
 
 ::: {.footer}
-outline W6 §Key math 3 · the root shared by Jelassi et al., Zoology and BASED · W1 p62
+outline W6 §Key math 3 · the root shared by Jelassi et al., Zoology and BASED · W1 p67
 :::
 
 ## What demo 3 (d) measured — and what "cheaper, worse" gets wrong
@@ -497,13 +497,13 @@ outline W6 §Key math 5 · Dao & Gu §6 · mlx-lm `ssm.py` 2026-10-18 · Katharo
 
 ## Why this recurrence trains in parallel, and where position went
 
-- **W1 p62**: the RNN lost on *parallelism along the sequence*, not on quality; its fixed state was always an asset at inference. In 2024 the training half got solved — minimal LSTMs and GRUs that train in parallel (Feng et al. 2024, a preprint), and SSD: one operation, two algorithms
+- **W1 p67**: the RNN lost on *parallelism along the sequence*, not on quality; its fixed state was always an asset at inference. In 2024 the training half got solved — minimal LSTMs and GRUs that train in parallel (Feng et al. 2024, a preprint), and SSD: one operation, two algorithms
 - the mechanism is p34–p35: the recurrence unrolls into a matmul with a **semiseparable** mask, so a chunk of tokens is one matrix product. What made the LSTM sequential was a *nonlinearity inside the recurrence*; the family of p30 keeps the state update **linear in $\mathbf{S}$**, and that is the whole trick
 - **position**: no $\theta_i$, no $\mathbf{R}_m$, no stamp (W5). Order lives in the recurrence — *what was written first has faded most* — plus a short causal convolution (`short_conv_kernel_size: 4` in Kimi Linear's and Qwen3-Next's configs) for local order
 - so there is nothing to extrapolate and nothing to repair: no PI, no NTK-aware, no YaRN. Length generalisation rides on decay and locality — **a different inductive bias, not an absence of one**
 
 ::: {.footer}
-W1 p62 · W5 p55 · Misconception 7: "a fixed state has no position information"
+W1 p67 · W5 p55 · Misconception 7: "a fixed state has no position information"
 :::
 
 # The bill: when the notebook is smaller, and what it cannot pay {.section-title}
