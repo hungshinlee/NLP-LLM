@@ -1,0 +1,34 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W7 demo 4：去重與 decontamination（投影片 p46 前導頁、p47「Live: demo 4」）。
+# 換語料、換參數只改這裡；三個函數的簽名在 dedup_final.py 開頭。
+
+[corpus]
+# demo 2 的語料（../w07_corpus/，由 ../w07_d2_scaling_fit/present.sh fetch --corpus both 抓）。
+# 鍵名是 run / decontam 的 --corpus 值；edu 是 demo 2 訓練用的那一份、預設。
+edu = "../w07_corpus/fineweb_edu.jsonl"
+web = "../w07_corpus/fineweb.jsonl"
+default = "edu"
+dumps = "all"            # 預設掃整份樣本（十個 dump）；--dumps CC-MAIN-2013-20,CC-MAIN-2023-14 只掃兩個
+
+[minhash]
+n = 5                    # word n-gram（FineWeb §3.4 用 5-gram）
+k_h = 128                # 簽章數；估計的標準差 sqrt(J(1-J)/k_h)
+seed = 0                 # (a_i, b_i) 的種子；所有文件同一組
+bands = 16               # (b, r) = (16, 8)：門檻 (1/b)^(1/r) ≈ 0.71
+rows = 8
+also = ["32x4", "8x16", "14x8"]   # run 之後再按 Enter 跑的 (b, r)；14x8 是 FineWeb 的（112 hash 用前 112 個簽章）
+show_pairs = 2           # 並排印幾對 near-duplicate
+show_chars = 420         # 每份印幾個字元
+hist_edges = [0.5, 0.6, 0.7, 0.8, 0.9, 1.0]   # Ĵ 的直方圖
+
+[decontam]
+n = 13                   # GPT-3 §4 的 13-gram
+# MMLU 的 test split（MIT）。fetch 把 parquet 轉成 data/mmlu_test.jsonl（question, subject, choices, answer）。
+mmlu_repo = "cais/mmlu"
+mmlu_path = "all/test-00000-of-00001.parquet"
+mmlu_license = "MIT"
+# MMLU-Redux 2.0 的 Virology 子集（CC BY 4.0）：Gema et al. 重標的 100 題，error_type 不是 ok 的就是有問題的題。
+redux_repo = "edinburgh-dawg/mmlu-redux-2.0"
+redux_path = "virology/data-00000-of-00001.arrow"
+redux_license = "CC BY 4.0"
+redux_show = 2           # 課堂印幾題 wrong_groundtruth

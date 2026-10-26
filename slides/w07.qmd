@@ -676,33 +676,33 @@ LSH = locality-sensitive hashing · FineWeb §3.4: 112 hashes, 14 × 8, per snap
 | | |
 |:---|:-----------------|
 | **Why** | p44–p45 on the board become thirty lines that run on demo 2's corpus — and the two stages that W1's $n = 8$ and MMLU's first mention need are the same code with a different threshold. |
-| **What runs** | **(a) Live**, standard library, CPU: `shingles(text, n=5)`, `minhash(shingles, k_h=128)`, `lsh_candidates(sigs, b=16, r=8)`; run on documents from **two different Common Crawl dumps** (FineWeb deduplicated per dump, so cross-dump near-duplicates should survive); report candidate pairs, the $\widehat{J}$ distribution, two pairs side by side; change $(b, r)$ once. `tests.py`: identical documents give $\widehat{J} = 1$; a known-$J$ pair is within $\pm 2/\sqrt{k_h}$; all $J > 0.9$ pairs are candidates. **(b) Live**: MMLU's test questions (`cais/mmlu`) scanned for 13-gram overlap with the same corpus. |
-| **Watch for** | How many cross-dump near-duplicates survive in 200 MB; what the pairs look like (boilerplate, mirrors, real copies?); how the count moves with $(b, r)$. For (b): a 200 MB sample catches almost nothing — the point of p48. |
+| **What runs** | **(a) Live**, standard library, CPU: `shingles(text, n=5)`, `minhash(shingles, k_h=128)`, `lsh_candidates(sigs, b=16, r=8)`, a test after each (identical documents give $\widehat{J} = 1$; a known-$J$ pair is within $\pm 2/\sqrt{k_h}$; all $J > 0.9$ pairs are candidates). Then on the 200 MB FineWeb-Edu sample — **ten Common Crawl dumps**, pairs reported within and across (FineWeb deduplicated per dump); $\widehat{J}$ and exact $J$ per pair, two side by side; change $(b, r)$. **(b) Live**: MMLU's 14,042 test questions scanned for a 13-gram shared with the same corpus. |
+| **Watch for** | Within a dump or across — where do the $J \geq 0.9$ pairs sit? What the pairs are (re-crawls, mirrors, templates, copies). How the count moves with $(b, r)$ while the high-$J$ pairs stay. For (b): not how many hits, but **where** the shared 13-gram sits — a leaked question, or a famous text the question quotes. |
 :::
 
 ::: {.footer}
-Demo 4 · `demos/w07_d4_dedup_decontam` · standard library · `cais/mmlu` · not yet built (2026-10-26)
+Demo 4 · `demos/w07_d4_dedup_decontam` · standard library · `cais/mmlu` · built 2026-10-26
 :::
 
 ## Live: demo 4 — near-duplicates across dumps; MMLU vs. the corpus
 
 | | value |
 |:---|:---|
-| documents scanned (two dumps) | |
-| candidate pairs, $(b, r) = (16, 8)$ | |
-| candidate pairs after changing $(b, r)$ to | |
-| pairs with $\widehat{J} \geq 0.9$ | |
-| what the near-duplicates are | |
-| **MMLU test questions with a 13-gram hit in the corpus** | |
+| documents scanned (FineWeb-Edu sample, ten dumps) | 41,829 · 200 MB |
+| candidate pairs, $(b, r) = (16, 8)$ | **13** — 12 across dumps, 1 within a dump |
+| candidate pairs at $(32, 4)$ / $(8, 16)$ / FineWeb's $(14, 8)$ | 74 / 8 / 13 |
+| pairs with exact $J \geq 0.9$ | **8** (six with $J = 1$) — the same 8 under every setting |
+| what the near-duplicates are | 5 × one URL re-crawled in a later dump · 2 × http/www/case variants of one page · 2 × copies across sites · 4 × same-site templates or moved pages |
+| **MMLU test questions with a 13-gram hit in the corpus** | **37** of 14,042 — **34 quote a famous text** as their stimulus; 1 question + answer found verbatim on a revision-card site |
 
-: {tbl-colwidths="[60,40]"}
+: {tbl-colwidths="[42,58]"}
 
 ::: {.ask}
-Before (b) runs: 14,042 questions against 200 MB of FineWeb-Edu. How many hits — zero, a handful, hundreds?
+Before (b) runs: 14,042 questions against 200 MB of FineWeb-Edu. How many hits — zero, a handful, hundreds? And what would a hit *be*?
 :::
 
 ::: {.footer}
-Demo 4 · live · `w07_d4_dedup_decontam/` · not yet built (2026-10-26) · table blank on purpose
+Demo 4 · live · `w07_d4_dedup_decontam/` · run 2026-10-26 · `runs/rehearsal/summary.json`
 :::
 
 ## Decontamination — and what p37 promised about MMLU

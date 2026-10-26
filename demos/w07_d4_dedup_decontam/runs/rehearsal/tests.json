@@ -1,0 +1,108 @@
+{
+ "date": "2026-10-26T19:13:58",
+ "python": "3.12.14",
+ "machine": "Darwin arm64",
+ "impl": "dedup_final",
+ "tests": {
+  "i": {
+   "status": "ok",
+   "seconds": 0.0012479170691221952,
+   "words": 50,
+   "shingles": 46,
+   "exact_J": 1.0,
+   "estimate": 1.0,
+   "k_h": 128
+  },
+  "ii": {
+   "status": "ok",
+   "seconds": 0.04285629210062325,
+   "k_h": 128,
+   "size": 1000,
+   "pairs": [
+    {
+     "J": 0.7497812773403325,
+     "estimate": 0.7265625,
+     "error": -0.023218777340332508,
+     "sd": 0.038284432366726254,
+     "tol": 0.17677669529663687,
+     "inside": true
+    },
+    {
+     "J": 0.30039011703511054,
+     "estimate": 0.28125,
+     "error": -0.019140117035110538,
+     "sd": 0.04051966098994636,
+     "tol": 0.17677669529663687,
+     "inside": true
+    }
+   ]
+  },
+  "iii": {
+   "status": "ok",
+   "seconds": 1.2973269161302596,
+   "k_h": 128,
+   "b": 16,
+   "r": 8,
+   "pairs": 60,
+   "candidates": 35,
+   "missed_high": 0,
+   "cross_pair_fp": 0,
+   "levels": {
+    "0.10": {
+     "pairs": 6,
+     "candidates": 0,
+     "fraction": 0.0,
+     "s_curve": 1.5999998881355282e-07
+    },
+    "0.30": {
+     "pairs": 6,
+     "candidates": 0,
+     "fraction": 0.0,
+     "s_curve": 0.001049243597475602
+    },
+    "0.50": {
+     "pairs": 6,
+     "candidates": 0,
+     "fraction": 0.0,
+     "s_curve": 0.06070190410618359
+    },
+    "0.60": {
+     "pairs": 8,
+     "candidates": 3,
+     "fraction": 0.375,
+     "s_curve": 0.23739955038556326
+    },
+    "0.70": {
+     "pairs": 8,
+     "candidates": 6,
+     "fraction": 0.75,
+     "s_curve": 0.6132677123375208
+    },
+    "0.80": {
+     "pairs": 8,
+     "candidates": 8,
+     "fraction": 1.0,
+     "s_curve": 0.9470487961682148
+    },
+    "0.90": {
+     "pairs": 6,
+     "candidates": 6,
+     "fraction": 1.0,
+     "s_curve": 0.9998774538341496
+    },
+    "0.95": {
+     "pairs": 6,
+     "candidates": 6,
+     "fraction": 1.0,
+     "s_curve": 0.9999999728728609
+    },
+    "0.99": {
+     "pairs": 6,
+     "candidates": 6,
+     "fraction": 1.0,
+     "s_curve": 1.0
+    }
+   }
+  }
+ }
+}

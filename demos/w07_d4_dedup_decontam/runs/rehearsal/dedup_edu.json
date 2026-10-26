@@ -1,0 +1,2407 @@
+{
+ "date": "2026-10-26T19:13:59",
+ "impl": "dedup_final",
+ "python": "3.12.14",
+ "machine": "Darwin arm64",
+ "cpu_count": 18,
+ "corpus": {
+  "corpus": "edu",
+  "file": "fineweb_edu.jsonl",
+  "dumps_requested": "all",
+  "docs": 41829,
+  "dumps": {
+   "CC-MAIN-2013-20": 4982,
+   "CC-MAIN-2013-48": 5350,
+   "CC-MAIN-2014-10": 1000,
+   "CC-MAIN-2017-26": 4456,
+   "CC-MAIN-2017-30": 5650,
+   "CC-MAIN-2017-34": 1000,
+   "CC-MAIN-2020-05": 4338,
+   "CC-MAIN-2020-10": 4834,
+   "CC-MAIN-2023-14": 7224,
+   "CC-MAIN-2023-23": 2995
+  },
+  "text_bytes": 200004308
+ },
+ "minhash": {
+  "n": 5,
+  "k_h": 128,
+  "seed": 0
+ },
+ "signature_seconds": null,
+ "no_signature": 0,
+ "settings": [
+  {
+   "candidates": 13,
+   "cross_dump": 12,
+   "same_dump": 1,
+   "same_url": 5,
+   "est_ge_0_9": 8,
+   "J_ge_0_9": 8,
+   "J_lt_0_75": 3,
+   "exact_1": 6,
+   "hist": {
+    "[0.5, 0.6)": 0,
+    "[0.6, 0.7)": 2,
+    "[0.7, 0.8)": 3,
+    "[0.8, 0.9)": 0,
+    "[0.9, 1.0)": 1,
+    "= 1.0": 7,
+    "< 0.5": 0
+   },
+   "pairs": [
+    {
+     "i": 1209,
+     "j": 2533,
+     "estimate": 0.7890625,
+     "J": 0.7129060579455663,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-05",
+      "CC-MAIN-2017-26"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.247nnu.ng/2020/01/sudden-death-in-young-male-people-heart.html",
+      "http://www.mayoclinic.org/diseases-conditions/sudden-cardiac-arrest/in-depth/sudden-death/art-20047571?p=1"
+     ],
+     "chars": [
+      5847,
+      6781
+     ],
+     "kind": "different sites (copy / mirror)"
+    },
+    {
+     "i": 3077,
+     "j": 27037,
+     "estimate": 0.984375,
+     "J": 0.9852289512555391,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://en.wikipedia.org/wiki/Black_skimmer",
+      "http://en.wikipedia.org/wiki/Black_Skimmer"
+     ],
+     "chars": [
+      3952,
+      3936
+     ],
+     "kind": "same page, URL differs only in scheme / www / case"
+    },
+    {
+     "i": 3145,
+     "j": 32874,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.braingle.com/brainteasers/30441/birbal-the-wise-iii.html",
+      "http://www.braingle.com/brainteasers/30441/birbal-the-wise-iii.html"
+     ],
+     "chars": [
+      1993,
+      1993
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 4604,
+     "j": 19452,
+     "estimate": 0.71875,
+     "J": 0.7562814070351759,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.leapfrog.com/en/leapfrog_parents/preschool/learning_for_life/magnificent_museum.html",
+      "http://www.leapfrog.com/en-us/learning-path/activities/activity-magnificent-museum.html"
+     ],
+     "chars": [
+      2073,
+      1792
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 7557,
+     "j": 9815,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2020-05"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.ihs.com/products/chemical/technology/pep/chemicals-from-agricultural-wastes.aspx?pu=1&rd=chemihs",
+      "https://ihsmarkit.com/products/chemical-technology-pep-chemicals-from-agricultural-wastes-2004.html"
+     ],
+     "chars": [
+      3335,
+      3334
+     ],
+     "kind": "different sites (copy / mirror)"
+    },
+    {
+     "i": 10780,
+     "j": 35490,
+     "estimate": 0.625,
+     "J": 0.5771428571428572,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/pettrone",
+      "https://www.ancestry.com/family-trees/gazel"
+     ],
+     "chars": [
+      820,
+      804
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11650,
+     "j": 32128,
+     "estimate": 1.0,
+     "J": 0.9938757655293088,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.h-net.org/reviews/showrev.php?id=14256",
+      "http://www.h-net.org/reviews/showrev.php?id=14256"
+     ],
+     "chars": [
+      7240,
+      7253
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 11777,
+     "j": 32269,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.drnickens.com/Tetragrammaton.htm",
+      "http://www.drnickens.com/Tetragrammaton.htm"
+     ],
+     "chars": [
+      3695,
+      3695
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 13881,
+     "j": 30000,
+     "estimate": 0.78125,
+     "J": 0.7885939036381514,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-05",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://creation.com/life-at-the-extremes",
+      "http://creation.com/life-at-the-extremes"
+     ],
+     "chars": [
+      19870,
+      25146
+     ],
+     "kind": "same page, URL differs only in scheme / www / case"
+    },
+    {
+     "i": 20763,
+     "j": 21011,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2023-14",
+      "CC-MAIN-2020-10"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.hwalibrary.com/cgi-bin/get/hwa.cgi?action=getmagazine&InfoID=1333893081&GetMag=TW&byYear=&page=&return=magazines",
+      "https://www.hwalibrary.com/cgi-bin/get/hwa.cgi?action=getmagazine&InfoID=1333893081"
+     ],
+     "chars": [
+      4201,
+      4201
+     ],
+     "kind": "same site, different path (moved page?)"
+    },
+    {
+     "i": 22272,
+     "j": 31958,
+     "estimate": 0.6015625,
+     "J": 0.525,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/subtraction%20mark",
+      "https://www.merriam-webster.com/dictionary/hickory%20bark%20borer"
+     ],
+     "chars": [
+      801,
+      723
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 22960,
+     "j": 36595,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://physics.ucr.edu/~wudka/Physics7/Notes_www/node52.html",
+      "http://physics.ucr.edu/~wudka/Physics7/Notes_www/node52.html"
+     ],
+     "chars": [
+      3429,
+      3429
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 26535,
+     "j": 39746,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.swissinfo.ch/eng/sci-tech/au-revoir_rosetta-comet-mission-ends-with-a-bang/42484950",
+      "http://www.swissinfo.ch/eng/sci-tech/au-revoir_rosetta-comet-mission-ends-with-a-bang/42484950"
+     ],
+     "chars": [
+      4287,
+      4287
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    }
+   ],
+   "b": 16,
+   "r": 8,
+   "k_used": 128,
+   "threshold": 0.7071067811865476,
+   "lsh_seconds": 0.4546189308166504
+  },
+  {
+   "candidates": 74,
+   "cross_dump": 44,
+   "same_dump": 30,
+   "same_url": 5,
+   "est_ge_0_9": 8,
+   "J_ge_0_9": 8,
+   "J_lt_0_75": 64,
+   "exact_1": 6,
+   "hist": {
+    "[0.5, 0.6)": 2,
+    "[0.6, 0.7)": 10,
+    "[0.7, 0.8)": 3,
+    "[0.8, 0.9)": 0,
+    "[0.9, 1.0)": 1,
+    "= 1.0": 7,
+    "< 0.5": 51
+   },
+   "pairs": [
+    {
+     "i": 864,
+     "j": 3067,
+     "estimate": 0.296875,
+     "J": 0.2198952879581152,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.emedicinehealth.com/food_safety_serving-health/article_em.htm",
+      "http://www.emedicinehealth.com/script/main/art.asp?articlekey=136476&ref=127917"
+     ],
+     "chars": [
+      763,
+      843
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 1209,
+     "j": 2533,
+     "estimate": 0.7890625,
+     "J": 0.7129060579455663,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-05",
+      "CC-MAIN-2017-26"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.247nnu.ng/2020/01/sudden-death-in-young-male-people-heart.html",
+      "http://www.mayoclinic.org/diseases-conditions/sudden-cardiac-arrest/in-depth/sudden-death/art-20047571?p=1"
+     ],
+     "chars": [
+      5847,
+      6781
+     ],
+     "kind": "different sites (copy / mirror)"
+    },
+    {
+     "i": 3077,
+     "j": 27037,
+     "estimate": 0.984375,
+     "J": 0.9852289512555391,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://en.wikipedia.org/wiki/Black_skimmer",
+      "http://en.wikipedia.org/wiki/Black_Skimmer"
+     ],
+     "chars": [
+      3952,
+      3936
+     ],
+     "kind": "same page, URL differs only in scheme / www / case"
+    },
+    {
+     "i": 3104,
+     "j": 11925,
+     "estimate": 0.34375,
+     "J": 0.34104046242774566,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.schoodoodle.com/home/sch/page_86597_4951/its-a-leaf-life-scienceplants",
+      "http://www.schoodoodle.com/page_64031_4951/running-to-fame"
+     ],
+     "chars": [
+      757,
+      781
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3104,
+     "j": 27392,
+     "estimate": 0.28125,
+     "J": 0.3067484662576687,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.schoodoodle.com/home/sch/page_86597_4951/its-a-leaf-life-scienceplants",
+      "http://www.schoodoodle.com/page_87453_1516/demonstrates-basic-knowledge-assessment"
+     ],
+     "chars": [
+      757,
+      700
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3145,
+     "j": 32874,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.braingle.com/brainteasers/30441/birbal-the-wise-iii.html",
+      "http://www.braingle.com/brainteasers/30441/birbal-the-wise-iii.html"
+     ],
+     "chars": [
+      1993,
+      1993
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 3194,
+     "j": 11947,
+     "estimate": 0.4296875,
+     "J": 0.47808764940239046,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.ucsfhealth.org/tests/003583.html",
+      "http://svh-mt.org/body_iframe.cfm?id=213&action=detail&AEArticleID=003583&AEProductID=Adam2004_5117&AEProjectTypeIDURL=APT_1"
+     ],
+     "chars": [
+      2588,
+      1932
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 3469,
+     "j": 7119,
+     "estimate": 0.2734375,
+     "J": 0.24961715160796324,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130411T1134",
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20121105T1736"
+     ],
+     "chars": [
+      2186,
+      2151
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3469,
+     "j": 11265,
+     "estimate": 0.3046875,
+     "J": 0.2835130970724191,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130411T1134",
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130112T1610"
+     ],
+     "chars": [
+      2186,
+      2224
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3469,
+     "j": 27170,
+     "estimate": 0.2890625,
+     "J": 0.24808575803981622,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130411T1134",
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130203T1434"
+     ],
+     "chars": [
+      2186,
+      2164
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3469,
+     "j": 32406,
+     "estimate": 0.2578125,
+     "J": 0.24427480916030533,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130411T1134",
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20121111T0828"
+     ],
+     "chars": [
+      2186,
+      2135
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3605,
+     "j": 3985,
+     "estimate": 0.203125,
+     "J": 0.22195985832349469,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-26"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://ideas.repec.org/p/ubc/clssrn/clsrn_admin-2011-21.html",
+      "https://ideas.repec.org/p/cgd/wpaper/293.html"
+     ],
+     "chars": [
+      4664,
+      2487
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3605,
+     "j": 30798,
+     "estimate": 0.2890625,
+     "J": 0.24555555555555555,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://ideas.repec.org/p/ubc/clssrn/clsrn_admin-2011-21.html",
+      "https://ideas.repec.org/a/gam/jagris/v3y2013i3p381-397d26957.html"
+     ],
+     "chars": [
+      4664,
+      3095
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3605,
+     "j": 36753,
+     "estimate": 0.1640625,
+     "J": 0.12983770287141075,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://ideas.repec.org/p/ubc/clssrn/clsrn_admin-2011-21.html",
+      "http://ideas.repec.org/p/ces/ceswps/_1941.html"
+     ],
+     "chars": [
+      4664,
+      8863
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3985,
+     "j": 30798,
+     "estimate": 0.2734375,
+     "J": 0.26628895184135976,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://ideas.repec.org/p/cgd/wpaper/293.html",
+      "https://ideas.repec.org/a/gam/jagris/v3y2013i3p381-397d26957.html"
+     ],
+     "chars": [
+      2487,
+      3095
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3985,
+     "j": 36753,
+     "estimate": 0.140625,
+     "J": 0.1274928774928775,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://ideas.repec.org/p/cgd/wpaper/293.html",
+      "http://ideas.repec.org/p/ces/ceswps/_1941.html"
+     ],
+     "chars": [
+      2487,
+      8863
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 4604,
+     "j": 19452,
+     "estimate": 0.71875,
+     "J": 0.7562814070351759,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.leapfrog.com/en/leapfrog_parents/preschool/learning_for_life/magnificent_museum.html",
+      "http://www.leapfrog.com/en-us/learning-path/activities/activity-magnificent-museum.html"
+     ],
+     "chars": [
+      2073,
+      1792
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 6738,
+     "j": 10421,
+     "estimate": 0.375,
+     "J": 0.3763157894736842,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-26"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.anagrammer.com/scrabble/dentines",
+      "https://www.anagrammer.com/scrabble/undouble"
+     ],
+     "chars": [
+      1658,
+      1461
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 6813,
+     "j": 10285,
+     "estimate": 0.6328125,
+     "J": 0.5706214689265536,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-26"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/fishel",
+      "https://www.ancestry.com/family-trees/wiegle"
+     ],
+     "chars": [
+      813,
+      808
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 6813,
+     "j": 10780,
+     "estimate": 0.640625,
+     "J": 0.5706214689265536,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-26"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/fishel",
+      "https://www.ancestry.com/family-trees/pettrone"
+     ],
+     "chars": [
+      813,
+      820
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 6813,
+     "j": 35490,
+     "estimate": 0.59375,
+     "J": 0.5706214689265536,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/fishel",
+      "https://www.ancestry.com/family-trees/gazel"
+     ],
+     "chars": [
+      813,
+      804
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 6813,
+     "j": 39901,
+     "estimate": 0.6015625,
+     "J": 0.5706214689265536,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/fishel",
+      "https://www.ancestry.com/family-trees/frischer"
+     ],
+     "chars": [
+      813,
+      824
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 7119,
+     "j": 11265,
+     "estimate": 0.25,
+     "J": 0.24205748865355523,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20121105T1736",
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130112T1610"
+     ],
+     "chars": [
+      2151,
+      2224
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 7119,
+     "j": 27170,
+     "estimate": 0.28125,
+     "J": 0.25862068965517243,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20121105T1736",
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130203T1434"
+     ],
+     "chars": [
+      2151,
+      2164
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 7119,
+     "j": 32406,
+     "estimate": 0.25,
+     "J": 0.2566510172143975,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20121105T1736",
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20121111T0828"
+     ],
+     "chars": [
+      2151,
+      2135
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 7557,
+     "j": 9815,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2020-05"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.ihs.com/products/chemical/technology/pep/chemicals-from-agricultural-wastes.aspx?pu=1&rd=chemihs",
+      "https://ihsmarkit.com/products/chemical-technology-pep-chemicals-from-agricultural-wastes-2004.html"
+     ],
+     "chars": [
+      3335,
+      3334
+     ],
+     "kind": "different sites (copy / mirror)"
+    },
+    {
+     "i": 9164,
+     "j": 17737,
+     "estimate": 0.1328125,
+     "J": 0.13179571663920922,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2020-05",
+      "CC-MAIN-2020-05"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.teacherspayteachers.com/Product/Decoding-Multisyllabic-Words-Worksheets-Passage-Using-Jackie-Robinson-Rap-Song-5165526",
+      "https://shop.counselorkeri.com/products/conflict-resolution-activity-resolving-conflicts-classroom-guidance-lesson"
+     ],
+     "chars": [
+      2786,
+      1716
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 9555,
+     "j": 26659,
+     "estimate": 0.2109375,
+     "J": 0.1804733727810651,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-05",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://timberry.com/celebrating-independence-read-the-document/",
+      "http://1stmichiganassembly.info/index.php/handbook/appendix-d"
+     ],
+     "chars": [
+      1560,
+      3284
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 10009,
+     "j": 22490,
+     "estimate": 0.359375,
+     "J": 0.3117782909930716,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://openstudy.com/updates/50aec0fbe4b0e906b4a5a9f5",
+      "http://openstudy.com/updates/5615bf62e4b0549a6872fbde"
+     ],
+     "chars": [
+      1431,
+      2192
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 10285,
+     "j": 10780,
+     "estimate": 0.6328125,
+     "J": 0.5771428571428572,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-26"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/wiegle",
+      "https://www.ancestry.com/family-trees/pettrone"
+     ],
+     "chars": [
+      808,
+      820
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 10285,
+     "j": 35490,
+     "estimate": 0.671875,
+     "J": 0.5771428571428572,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/wiegle",
+      "https://www.ancestry.com/family-trees/gazel"
+     ],
+     "chars": [
+      808,
+      804
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 10285,
+     "j": 39901,
+     "estimate": 0.640625,
+     "J": 0.5771428571428572,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/wiegle",
+      "https://www.ancestry.com/family-trees/frischer"
+     ],
+     "chars": [
+      808,
+      824
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 10780,
+     "j": 35490,
+     "estimate": 0.625,
+     "J": 0.5771428571428572,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/pettrone",
+      "https://www.ancestry.com/family-trees/gazel"
+     ],
+     "chars": [
+      820,
+      804
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 10780,
+     "j": 39901,
+     "estimate": 0.640625,
+     "J": 0.5771428571428572,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/pettrone",
+      "https://www.ancestry.com/family-trees/frischer"
+     ],
+     "chars": [
+      820,
+      824
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11265,
+     "j": 23413,
+     "estimate": 0.2890625,
+     "J": 0.2605421686746988,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130112T1610",
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20121114T0408"
+     ],
+     "chars": [
+      2224,
+      2233
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11265,
+     "j": 27170,
+     "estimate": 0.2734375,
+     "J": 0.24242424242424243,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130112T1610",
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130203T1434"
+     ],
+     "chars": [
+      2224,
+      2164
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11265,
+     "j": 32406,
+     "estimate": 0.2421875,
+     "J": 0.2405446293494705,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130112T1610",
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20121111T0828"
+     ],
+     "chars": [
+      2224,
+      2135
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11650,
+     "j": 32128,
+     "estimate": 1.0,
+     "J": 0.9938757655293088,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.h-net.org/reviews/showrev.php?id=14256",
+      "http://www.h-net.org/reviews/showrev.php?id=14256"
+     ],
+     "chars": [
+      7240,
+      7253
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 11777,
+     "j": 32269,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.drnickens.com/Tetragrammaton.htm",
+      "http://www.drnickens.com/Tetragrammaton.htm"
+     ],
+     "chars": [
+      3695,
+      3695
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 13881,
+     "j": 30000,
+     "estimate": 0.78125,
+     "J": 0.7885939036381514,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-05",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://creation.com/life-at-the-extremes",
+      "http://creation.com/life-at-the-extremes"
+     ],
+     "chars": [
+      19870,
+      25146
+     ],
+     "kind": "same page, URL differs only in scheme / www / case"
+    },
+    {
+     "i": 14004,
+     "j": 22010,
+     "estimate": 0.4296875,
+     "J": 0.4692737430167598,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/Beaufort%20cipher",
+      "https://www.merriam-webster.com/dictionary/fireflooding"
+     ],
+     "chars": [
+      845,
+      784
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14004,
+     "j": 22272,
+     "estimate": 0.4375,
+     "J": 0.4371584699453552,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/Beaufort%20cipher",
+      "https://www.merriam-webster.com/dictionary/subtraction%20mark"
+     ],
+     "chars": [
+      845,
+      801
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14004,
+     "j": 31958,
+     "estimate": 0.4921875,
+     "J": 0.47337278106508873,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/Beaufort%20cipher",
+      "https://www.merriam-webster.com/dictionary/hickory%20bark%20borer"
+     ],
+     "chars": [
+      845,
+      723
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14004,
+     "j": 39564,
+     "estimate": 0.421875,
+     "J": 0.4307692307692308,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/Beaufort%20cipher",
+      "https://www.merriam-webster.com/dictionary/Cephalaspis"
+     ],
+     "chars": [
+      845,
+      915
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14004,
+     "j": 39842,
+     "estimate": 0.3828125,
+     "J": 0.4221105527638191,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/Beaufort%20cipher",
+      "https://www.merriam-webster.com/dictionary/Amratian"
+     ],
+     "chars": [
+      845,
+      915
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14383,
+     "j": 39769,
+     "estimate": 0.390625,
+     "J": 0.44612068965517243,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://puthu.blogspot.com/2010/02/brain-damaging-habits.html",
+      "http://deepdadabhai.blogspot.com/2011/08/do-you-know_26.html"
+     ],
+     "chars": [
+      1682,
+      2452
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 18048,
+     "j": 30179,
+     "estimate": 0.2265625,
+     "J": 0.2134944612286002,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.innovations-report.com/html/reports/environment-sciences/report-41659.html",
+      "http://www.innovations-report.com/html/reports/energy-engineering/report-5977.html"
+     ],
+     "chars": [
+      3401,
+      4301
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 18048,
+     "j": 31369,
+     "estimate": 0.3671875,
+     "J": 0.3452513966480447,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.innovations-report.com/html/reports/environment-sciences/report-41659.html",
+      "http://www.innovations-report.com/html/reports/life-sciences/report-31304.html"
+     ],
+     "chars": [
+      3401,
+      4380
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 19202,
+     "j": 19387,
+     "estimate": 0.3828125,
+     "J": 0.461038961038961,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-48",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.readwritethink.org/util/email.html?url=/classroom-resources/lesson-plans/recording-readers-theatre-developing-1151.html?tab=3&title=Recording+Readers+Theatre%3A+Developing+Comprehension+and+Fluency+With+Audio+Texts&id=1151",
+      "http://www.readwritethink.org/util/email.html?url=/classroom-resources/calendar-activities/groundhog-february-20630.html&title=Groundhog+Day+is+February+2&id=20630"
+     ],
+     "chars": [
+      792,
+      738
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 19635,
+     "j": 32839,
+     "estimate": 0.390625,
+     "J": 0.4318181818181818,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-48",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.babylon.com/definition/yellow_lupine/English",
+      "http://www.babylon.com/definition/what's%20wrong/"
+     ],
+     "chars": [
+      749,
+      597
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 19882,
+     "j": 32999,
+     "estimate": 0.328125,
+     "J": 0.35406698564593303,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-48",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://answers.christianbook.com/answers/2016/product/6010979/accelerated-christian-education-word-building-pace-1084-grade-7-questions-answers/questions.htm",
+      "http://reviews.christianbook.com/2016/6011328/accelerated-christian-education-algebra-1-pace-1102-reviews/reviews.htm"
+     ],
+     "chars": [
+      809,
+      1139
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 19980,
+     "j": 23370,
+     "estimate": 0.421875,
+     "J": 0.4276094276094276,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-48",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.nsf.gov/news/news_summ.jsp?cntn_id=115647&org=CNS&from=news",
+      "http://www.nsf.gov/news/news_summ.jsp?cntn_id=123597&org=CHE&from=news"
+     ],
+     "chars": [
+      1402,
+      1336
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 20763,
+     "j": 21011,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2023-14",
+      "CC-MAIN-2020-10"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.hwalibrary.com/cgi-bin/get/hwa.cgi?action=getmagazine&InfoID=1333893081&GetMag=TW&byYear=&page=&return=magazines",
+      "https://www.hwalibrary.com/cgi-bin/get/hwa.cgi?action=getmagazine&InfoID=1333893081"
+     ],
+     "chars": [
+      4201,
+      4201
+     ],
+     "kind": "same site, different path (moved page?)"
+    },
+    {
+     "i": 20811,
+     "j": 41782,
+     "estimate": 0.25,
+     "J": 0.22181372549019607,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2023-14",
+      "CC-MAIN-2023-23"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://coursescholars.com/what-led-to-the-rise-of-political-parties-in-the-1790s/",
+      "https://pay4essay.net/2021/09/28/2-pages-current-event-report/"
+     ],
+     "chars": [
+      3003,
+      2798
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 22010,
+     "j": 31958,
+     "estimate": 0.5078125,
+     "J": 0.4878048780487805,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/fireflooding",
+      "https://www.merriam-webster.com/dictionary/hickory%20bark%20borer"
+     ],
+     "chars": [
+      784,
+      723
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 22010,
+     "j": 39564,
+     "estimate": 0.421875,
+     "J": 0.4421052631578947,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/fireflooding",
+      "https://www.merriam-webster.com/dictionary/Cephalaspis"
+     ],
+     "chars": [
+      784,
+      915
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 22272,
+     "j": 31958,
+     "estimate": 0.6015625,
+     "J": 0.525,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/subtraction%20mark",
+      "https://www.merriam-webster.com/dictionary/hickory%20bark%20borer"
+     ],
+     "chars": [
+      801,
+      723
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 22272,
+     "j": 39842,
+     "estimate": 0.4140625,
+     "J": 0.40404040404040403,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/subtraction%20mark",
+      "https://www.merriam-webster.com/dictionary/Amratian"
+     ],
+     "chars": [
+      801,
+      915
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 22960,
+     "j": 36595,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://physics.ucr.edu/~wudka/Physics7/Notes_www/node52.html",
+      "http://physics.ucr.edu/~wudka/Physics7/Notes_www/node52.html"
+     ],
+     "chars": [
+      3429,
+      3429
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 23789,
+     "j": 36089,
+     "estimate": 0.4921875,
+     "J": 0.43769470404984423,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-48",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.catholic.org/encyclopedia/view.php?id=55",
+      "http://www.catholic.org/encyclopedia/view.php?id=1006"
+     ],
+     "chars": [
+      2751,
+      3110
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 26535,
+     "j": 39746,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.swissinfo.ch/eng/sci-tech/au-revoir_rosetta-comet-mission-ends-with-a-bang/42484950",
+      "http://www.swissinfo.ch/eng/sci-tech/au-revoir_rosetta-comet-mission-ends-with-a-bang/42484950"
+     ],
+     "chars": [
+      4287,
+      4287
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 26603,
+     "j": 31958,
+     "estimate": 0.28125,
+     "J": 0.2983425414364641,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/muskwood",
+      "https://www.merriam-webster.com/dictionary/hickory%20bark%20borer"
+     ],
+     "chars": [
+      757,
+      723
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 27170,
+     "j": 32406,
+     "estimate": 0.2578125,
+     "J": 0.25902668759811615,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-48",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20130203T1434",
+      "http://www.timeanddate.com/astronomy/moon/light.html?iso=20121111T0828"
+     ],
+     "chars": [
+      2164,
+      2135
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 27291,
+     "j": 27320,
+     "estimate": 0.1328125,
+     "J": 0.13852813852813853,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-48",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.wordnik.com/words/indument",
+      "http://www.wordnik.com/words/darnel"
+     ],
+     "chars": [
+      751,
+      1115
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 27291,
+     "j": 27648,
+     "estimate": 0.203125,
+     "J": 0.1657142857142857,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-48",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.wordnik.com/words/indument",
+      "http://www.wordnik.com/words/low%20water"
+     ],
+     "chars": [
+      751,
+      632
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 27320,
+     "j": 27648,
+     "estimate": 0.171875,
+     "J": 0.125,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-48",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.wordnik.com/words/darnel",
+      "http://www.wordnik.com/words/low%20water"
+     ],
+     "chars": [
+      1115,
+      632
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 30179,
+     "j": 31905,
+     "estimate": 0.234375,
+     "J": 0.2269345238095238,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.innovations-report.com/html/reports/energy-engineering/report-5977.html",
+      "http://www.innovations-report.com/html/reports/medicine-health/antibodies-from-ebola-survivor-protect-mice-and-ferrets-against-related-viruses.html"
+     ],
+     "chars": [
+      4301,
+      6303
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 30675,
+     "j": 35590,
+     "estimate": 0.3046875,
+     "J": 0.3458980044345898,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://musicterms.artopium.com/r/Roll.htm",
+      "https://musicterms.artopium.com/h/Hocket.htm"
+     ],
+     "chars": [
+      1899,
+      1761
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 30798,
+     "j": 36753,
+     "estimate": 0.171875,
+     "J": 0.14236824093086928,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://ideas.repec.org/a/gam/jagris/v3y2013i3p381-397d26957.html",
+      "http://ideas.repec.org/p/ces/ceswps/_1941.html"
+     ],
+     "chars": [
+      3095,
+      8863
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 31763,
+     "j": 35273,
+     "estimate": 0.1875,
+     "J": 0.17288801571709234,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.elgaronline.com/view/9781782544364.00028.xml",
+      "https://www.elgaronline.com/view/9780857933423.00010.xml"
+     ],
+     "chars": [
+      2100,
+      1758
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 31958,
+     "j": 39564,
+     "estimate": 0.4921875,
+     "J": 0.4444444444444444,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/hickory%20bark%20borer",
+      "https://www.merriam-webster.com/dictionary/Cephalaspis"
+     ],
+     "chars": [
+      723,
+      915
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 31958,
+     "j": 39842,
+     "estimate": 0.484375,
+     "J": 0.43478260869565216,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/hickory%20bark%20borer",
+      "https://www.merriam-webster.com/dictionary/Amratian"
+     ],
+     "chars": [
+      723,
+      915
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 35490,
+     "j": 39901,
+     "estimate": 0.609375,
+     "J": 0.5771428571428572,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/gazel",
+      "https://www.ancestry.com/family-trees/frischer"
+     ],
+     "chars": [
+      804,
+      824
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 41369,
+     "j": 41782,
+     "estimate": 0.234375,
+     "J": 0.23722149410222804,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2023-23",
+      "CC-MAIN-2023-23"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://doctormyessay.com/2022/01/14/essay-deviant-behavior-sociology-homework-help/",
+      "https://pay4essay.net/2021/09/28/2-pages-current-event-report/"
+     ],
+     "chars": [
+      2925,
+      2798
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    }
+   ],
+   "b": 32,
+   "r": 4,
+   "k_used": 128,
+   "threshold": 0.42044820762685725,
+   "lsh_seconds": 0.7004971504211426
+  },
+  {
+   "candidates": 8,
+   "cross_dump": 8,
+   "same_dump": 0,
+   "same_url": 5,
+   "est_ge_0_9": 8,
+   "J_ge_0_9": 8,
+   "J_lt_0_75": 0,
+   "exact_1": 6,
+   "hist": {
+    "[0.5, 0.6)": 0,
+    "[0.6, 0.7)": 0,
+    "[0.7, 0.8)": 0,
+    "[0.8, 0.9)": 0,
+    "[0.9, 1.0)": 1,
+    "= 1.0": 7,
+    "< 0.5": 0
+   },
+   "pairs": [
+    {
+     "i": 3077,
+     "j": 27037,
+     "estimate": 0.984375,
+     "J": 0.9852289512555391,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://en.wikipedia.org/wiki/Black_skimmer",
+      "http://en.wikipedia.org/wiki/Black_Skimmer"
+     ],
+     "chars": [
+      3952,
+      3936
+     ],
+     "kind": "same page, URL differs only in scheme / www / case"
+    },
+    {
+     "i": 3145,
+     "j": 32874,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.braingle.com/brainteasers/30441/birbal-the-wise-iii.html",
+      "http://www.braingle.com/brainteasers/30441/birbal-the-wise-iii.html"
+     ],
+     "chars": [
+      1993,
+      1993
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 7557,
+     "j": 9815,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2020-05"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.ihs.com/products/chemical/technology/pep/chemicals-from-agricultural-wastes.aspx?pu=1&rd=chemihs",
+      "https://ihsmarkit.com/products/chemical-technology-pep-chemicals-from-agricultural-wastes-2004.html"
+     ],
+     "chars": [
+      3335,
+      3334
+     ],
+     "kind": "different sites (copy / mirror)"
+    },
+    {
+     "i": 11650,
+     "j": 32128,
+     "estimate": 1.0,
+     "J": 0.9938757655293088,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.h-net.org/reviews/showrev.php?id=14256",
+      "http://www.h-net.org/reviews/showrev.php?id=14256"
+     ],
+     "chars": [
+      7240,
+      7253
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 11777,
+     "j": 32269,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.drnickens.com/Tetragrammaton.htm",
+      "http://www.drnickens.com/Tetragrammaton.htm"
+     ],
+     "chars": [
+      3695,
+      3695
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 20763,
+     "j": 21011,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2023-14",
+      "CC-MAIN-2020-10"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.hwalibrary.com/cgi-bin/get/hwa.cgi?action=getmagazine&InfoID=1333893081&GetMag=TW&byYear=&page=&return=magazines",
+      "https://www.hwalibrary.com/cgi-bin/get/hwa.cgi?action=getmagazine&InfoID=1333893081"
+     ],
+     "chars": [
+      4201,
+      4201
+     ],
+     "kind": "same site, different path (moved page?)"
+    },
+    {
+     "i": 22960,
+     "j": 36595,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://physics.ucr.edu/~wudka/Physics7/Notes_www/node52.html",
+      "http://physics.ucr.edu/~wudka/Physics7/Notes_www/node52.html"
+     ],
+     "chars": [
+      3429,
+      3429
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 26535,
+     "j": 39746,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.swissinfo.ch/eng/sci-tech/au-revoir_rosetta-comet-mission-ends-with-a-bang/42484950",
+      "http://www.swissinfo.ch/eng/sci-tech/au-revoir_rosetta-comet-mission-ends-with-a-bang/42484950"
+     ],
+     "chars": [
+      4287,
+      4287
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    }
+   ],
+   "b": 8,
+   "r": 16,
+   "k_used": 128,
+   "threshold": 0.8781260801866497,
+   "lsh_seconds": 0.26356029510498047
+  },
+  {
+   "candidates": 13,
+   "cross_dump": 12,
+   "same_dump": 1,
+   "same_url": 5,
+   "est_ge_0_9": 8,
+   "J_ge_0_9": 8,
+   "J_lt_0_75": 3,
+   "exact_1": 6,
+   "hist": {
+    "[0.5, 0.6)": 0,
+    "[0.6, 0.7)": 2,
+    "[0.7, 0.8)": 3,
+    "[0.8, 0.9)": 0,
+    "[0.9, 1.0)": 1,
+    "= 1.0": 7,
+    "< 0.5": 0
+   },
+   "pairs": [
+    {
+     "i": 1209,
+     "j": 2533,
+     "estimate": 0.7857142857142857,
+     "J": 0.7129060579455663,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-05",
+      "CC-MAIN-2017-26"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.247nnu.ng/2020/01/sudden-death-in-young-male-people-heart.html",
+      "http://www.mayoclinic.org/diseases-conditions/sudden-cardiac-arrest/in-depth/sudden-death/art-20047571?p=1"
+     ],
+     "chars": [
+      5847,
+      6781
+     ],
+     "kind": "different sites (copy / mirror)"
+    },
+    {
+     "i": 3077,
+     "j": 27037,
+     "estimate": 0.9821428571428571,
+     "J": 0.9852289512555391,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://en.wikipedia.org/wiki/Black_skimmer",
+      "http://en.wikipedia.org/wiki/Black_Skimmer"
+     ],
+     "chars": [
+      3952,
+      3936
+     ],
+     "kind": "same page, URL differs only in scheme / www / case"
+    },
+    {
+     "i": 3145,
+     "j": 32874,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.braingle.com/brainteasers/30441/birbal-the-wise-iii.html",
+      "http://www.braingle.com/brainteasers/30441/birbal-the-wise-iii.html"
+     ],
+     "chars": [
+      1993,
+      1993
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 4604,
+     "j": 19452,
+     "estimate": 0.7142857142857143,
+     "J": 0.7562814070351759,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.leapfrog.com/en/leapfrog_parents/preschool/learning_for_life/magnificent_museum.html",
+      "http://www.leapfrog.com/en-us/learning-path/activities/activity-magnificent-museum.html"
+     ],
+     "chars": [
+      2073,
+      1792
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 7557,
+     "j": 9815,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2020-05"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.ihs.com/products/chemical/technology/pep/chemicals-from-agricultural-wastes.aspx?pu=1&rd=chemihs",
+      "https://ihsmarkit.com/products/chemical-technology-pep-chemicals-from-agricultural-wastes-2004.html"
+     ],
+     "chars": [
+      3335,
+      3334
+     ],
+     "kind": "different sites (copy / mirror)"
+    },
+    {
+     "i": 10780,
+     "j": 35490,
+     "estimate": 0.6339285714285714,
+     "J": 0.5771428571428572,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-26",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ancestry.com/family-trees/pettrone",
+      "https://www.ancestry.com/family-trees/gazel"
+     ],
+     "chars": [
+      820,
+      804
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11650,
+     "j": 32128,
+     "estimate": 1.0,
+     "J": 0.9938757655293088,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.h-net.org/reviews/showrev.php?id=14256",
+      "http://www.h-net.org/reviews/showrev.php?id=14256"
+     ],
+     "chars": [
+      7240,
+      7253
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 11777,
+     "j": 32269,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.drnickens.com/Tetragrammaton.htm",
+      "http://www.drnickens.com/Tetragrammaton.htm"
+     ],
+     "chars": [
+      3695,
+      3695
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 13881,
+     "j": 30000,
+     "estimate": 0.7767857142857143,
+     "J": 0.7885939036381514,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-05",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://creation.com/life-at-the-extremes",
+      "http://creation.com/life-at-the-extremes"
+     ],
+     "chars": [
+      19870,
+      25146
+     ],
+     "kind": "same page, URL differs only in scheme / www / case"
+    },
+    {
+     "i": 20763,
+     "j": 21011,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2023-14",
+      "CC-MAIN-2020-10"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.hwalibrary.com/cgi-bin/get/hwa.cgi?action=getmagazine&InfoID=1333893081&GetMag=TW&byYear=&page=&return=magazines",
+      "https://www.hwalibrary.com/cgi-bin/get/hwa.cgi?action=getmagazine&InfoID=1333893081"
+     ],
+     "chars": [
+      4201,
+      4201
+     ],
+     "kind": "same site, different path (moved page?)"
+    },
+    {
+     "i": 22272,
+     "j": 31958,
+     "estimate": 0.6071428571428571,
+     "J": 0.525,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.merriam-webster.com/dictionary/subtraction%20mark",
+      "https://www.merriam-webster.com/dictionary/hickory%20bark%20borer"
+     ],
+     "chars": [
+      801,
+      723
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 22960,
+     "j": 36595,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2013-48"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://physics.ucr.edu/~wudka/Physics7/Notes_www/node52.html",
+      "http://physics.ucr.edu/~wudka/Physics7/Notes_www/node52.html"
+     ],
+     "chars": [
+      3429,
+      3429
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    },
+    {
+     "i": 26535,
+     "j": 39746,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": true,
+     "urls": [
+      "http://www.swissinfo.ch/eng/sci-tech/au-revoir_rosetta-comet-mission-ends-with-a-bang/42484950",
+      "http://www.swissinfo.ch/eng/sci-tech/au-revoir_rosetta-comet-mission-ends-with-a-bang/42484950"
+     ],
+     "chars": [
+      4287,
+      4287
+     ],
+     "kind": "same URL, re-crawled in another dump"
+    }
+   ],
+   "b": 14,
+   "r": 8,
+   "k_used": 112,
+   "threshold": 0.7190084519372291,
+   "lsh_seconds": 0.34261608123779297
+  }
+ ]
+}

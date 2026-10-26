@@ -1,0 +1,4463 @@
+{
+ "date": "2026-10-26T19:14:01",
+ "impl": "dedup_final",
+ "python": "3.12.14",
+ "machine": "Darwin arm64",
+ "cpu_count": 18,
+ "corpus": {
+  "corpus": "web",
+  "file": "fineweb.jsonl",
+  "dumps_requested": "all",
+  "docs": 64823,
+  "dumps": {
+   "CC-MAIN-2013-20": 6784,
+   "CC-MAIN-2015-14": 6017,
+   "CC-MAIN-2016-30": 6818,
+   "CC-MAIN-2017-34": 10979,
+   "CC-MAIN-2018-34": 7379,
+   "CC-MAIN-2019-35": 8210,
+   "CC-MAIN-2020-45": 7912,
+   "CC-MAIN-2022-21": 10724
+  },
+  "text_bytes": 200005432
+ },
+ "minhash": {
+  "n": 5,
+  "k_h": 128,
+  "seed": 0
+ },
+ "signature_seconds": null,
+ "no_signature": 0,
+ "settings": [
+  {
+   "candidates": 6,
+   "cross_dump": 3,
+   "same_dump": 3,
+   "same_url": 0,
+   "est_ge_0_9": 1,
+   "J_ge_0_9": 1,
+   "J_lt_0_75": 4,
+   "exact_1": 1,
+   "hist": {
+    "[0.5, 0.6)": 0,
+    "[0.6, 0.7)": 2,
+    "[0.7, 0.8)": 1,
+    "[0.8, 0.9)": 1,
+    "[0.9, 1.0)": 0,
+    "= 1.0": 1,
+    "< 0.5": 1
+   },
+   "pairs": [
+    {
+     "i": 1675,
+     "j": 24190,
+     "estimate": 0.8046875,
+     "J": 0.8216123499142367,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://publichealth.uic.edu/departments/communityhealthsciences/",
+      "http://publichealth.uic.edu/areas-study"
+     ],
+     "chars": [
+      4010,
+      3813
+     ],
+     "kind": "same site, different path (moved page?)"
+    },
+    {
+     "i": 5170,
+     "j": 15157,
+     "estimate": 0.6484375,
+     "J": 0.660377358490566,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.vcsdata.com/company.html?companyinfo=Elan-Emerging-Technologies-Pvt-Ltd",
+      "http://www.vcsdata.com/company.html?companyinfo=Fujitsu-India-Pvt-Ltd"
+     ],
+     "chars": [
+      293,
+      300
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 6126,
+     "j": 33899,
+     "estimate": 0.796875,
+     "J": 0.7346938775510204,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.waterstones.com/book/the-brain-pack/ron-van-der-meer/ad-dudink/9781902413013",
+      "https://www.waterstones.com/book/sonas-na-casca/gloria-a-truitt/len-ebert/9781907277207"
+     ],
+     "chars": [
+      484,
+      474
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11229,
+     "j": 14038,
+     "estimate": 0.625,
+     "J": 0.5851063829787234,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://scitation.aip.org/content/aip/journal/rsi/83/8/10.1063/1.4745385",
+      "http://scitation.aip.org/content/aip/journal/jap/103/3/10.1063/1.2837027"
+     ],
+     "chars": [
+      491,
+      481
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14930,
+     "j": 45264,
+     "estimate": 0.4765625,
+     "J": 0.42857142857142855,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.medhelp.org/user_journals/show/182497/Hope-to-sleep",
+      "http://www.medhelp.org/posts/Heart-Disease/Sore-breasts/show/523863"
+     ],
+     "chars": [
+      1320,
+      2111
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 24026,
+     "j": 43351,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.foodandthoughts.blogspot.com/2012/08/i-baked.html",
+      "http://foodandthoughts.blogspot.com/2012/08/"
+     ],
+     "chars": [
+      584,
+      584
+     ],
+     "kind": "same site, different path (moved page?)"
+    }
+   ],
+   "b": 16,
+   "r": 8,
+   "k_used": 128,
+   "threshold": 0.7071067811865476,
+   "lsh_seconds": 0.7586722373962402
+  },
+  {
+   "candidates": 194,
+   "cross_dump": 88,
+   "same_dump": 106,
+   "same_url": 0,
+   "est_ge_0_9": 1,
+   "J_ge_0_9": 1,
+   "J_lt_0_75": 192,
+   "exact_1": 1,
+   "hist": {
+    "[0.5, 0.6)": 12,
+    "[0.6, 0.7)": 3,
+    "[0.7, 0.8)": 1,
+    "[0.8, 0.9)": 1,
+    "[0.9, 1.0)": 0,
+    "= 1.0": 1,
+    "< 0.5": 176
+   },
+   "pairs": [
+    {
+     "i": 384,
+     "j": 13171,
+     "estimate": 0.359375,
+     "J": 0.27037037037037037,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.rep-am.com/articles/2012/11/14/news/local/doc50a39e8c2af29434981983.prt",
+      "http://rep-am.com/articles/2012/10/04/news/local/674208.prt"
+     ],
+     "chars": [
+      1022,
+      1091
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 384,
+     "j": 29068,
+     "estimate": 0.3515625,
+     "J": 0.2517241379310345,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.rep-am.com/articles/2012/11/14/news/local/doc50a39e8c2af29434981983.prt",
+      "http://rep-am.com/articles/2012/11/20/sports/uconn/685238.prt"
+     ],
+     "chars": [
+      1022,
+      1084
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 393,
+     "j": 22015,
+     "estimate": 0.5234375,
+     "J": 0.4781144781144781,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://simpsonator.deviantart.com/",
+      "http://leesmyth.deviantart.com/"
+     ],
+     "chars": [
+      1478,
+      1374
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 603,
+     "j": 24099,
+     "estimate": 0.2265625,
+     "J": 0.21804511278195488,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://foursquare.com/v/kim-hua-guan-bak-kwa/4d3fcbfacb84b60c116d80ab",
+      "https://foursquare.com/v/marshfield-city-pool/4de79ea8fa763961426b45ba"
+     ],
+     "chars": [
+      546,
+      458
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 765,
+     "j": 52821,
+     "estimate": 0.2265625,
+     "J": 0.22868217054263565,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://blog.adafruit.com/2015/08/01/benkaufman-will-no-longer-serve-as-the-ceo-of-quirky-makerbusiness/",
+      "https://blog.adafruit.com/2013/11/08/arduino-on-pi-piday-raspberrypi-raspberry_pi/"
+     ],
+     "chars": [
+      1092,
+      883
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 866,
+     "j": 56365,
+     "estimate": 0.2578125,
+     "J": 0.22764227642276422,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://support.oracle.com/knowledge/Middleware/1322875_1.html",
+      "https://support.oracle.com/knowledge/PeopleSoft%20Enterprise/1362716_1.html"
+     ],
+     "chars": [
+      504,
+      424
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 1221,
+     "j": 51575,
+     "estimate": 0.5390625,
+     "J": 0.4857142857142857,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://imgur.com/PCj7n",
+      "http://imgur.com/4yg14"
+     ],
+     "chars": [
+      273,
+      356
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 1475,
+     "j": 14245,
+     "estimate": 0.3046875,
+     "J": 0.22972972972972974,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.thelancasternews.com/content/heath-springs-short-funds-upgrade-town-park",
+      "http://www.spencermagnet.com/content/letter-are-you-santa%E2%80%99s-team"
+     ],
+     "chars": [
+      422,
+      639
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 1513,
+     "j": 52759,
+     "estimate": 0.265625,
+     "J": 0.22840409956076135,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.fool.com/investing/general/2013/06/24/tibco-software-hits-estimates-but-gaap-results-la.aspx",
+      "http://www.fool.com/investing/general/2013/05/15/wuxi-pharmatech-beats-on-both-top-and-bottom-lines.aspx"
+     ],
+     "chars": [
+      2582,
+      2525
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 1559,
+     "j": 21134,
+     "estimate": 0.3515625,
+     "J": 0.2892561983471074,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.abovetopsecret.com/forum/thread771390/pg3",
+      "http://www.abovetopsecret.com/forum/thread236150/pg1"
+     ],
+     "chars": [
+      572,
+      361
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 1675,
+     "j": 24190,
+     "estimate": 0.8046875,
+     "J": 0.8216123499142367,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://publichealth.uic.edu/departments/communityhealthsciences/",
+      "http://publichealth.uic.edu/areas-study"
+     ],
+     "chars": [
+      4010,
+      3813
+     ],
+     "kind": "same site, different path (moved page?)"
+    },
+    {
+     "i": 1709,
+     "j": 2014,
+     "estimate": 0.390625,
+     "J": 0.40397350993377484,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://triblive.com/sports/autoracing/2814576-74/earnhardt-everything-hendrick-week-car-doctor-cleared-didn-free-headache",
+      "http://triblive.com/business/headlines/5796260-74/787-faa-boeing"
+     ],
+     "chars": [
+      3519,
+      2850
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 1721,
+     "j": 2083,
+     "estimate": 0.3984375,
+     "J": 0.3865546218487395,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://polarisnetwork.wikia.com/wiki/FOR_SPACEDONIA!",
+      "http://resistance.wikia.com/wiki/File:ReconDrone.jpg"
+     ],
+     "chars": [
+      437,
+      564
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 1721,
+     "j": 3639,
+     "estimate": 0.4140625,
+     "J": 0.38016528925619836,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://polarisnetwork.wikia.com/wiki/FOR_SPACEDONIA!",
+      "http://ringofhonor.wikia.com/wiki/File:CM_punk.jpg"
+     ],
+     "chars": [
+      437,
+      578
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 1721,
+     "j": 13475,
+     "estimate": 0.265625,
+     "J": 0.26436781609195403,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://polarisnetwork.wikia.com/wiki/FOR_SPACEDONIA!",
+      "http://rbooks.wikia.com/wiki/File:Warriors.jpg"
+     ],
+     "chars": [
+      437,
+      919
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 1721,
+     "j": 19024,
+     "estimate": 0.3984375,
+     "J": 0.36220472440944884,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://polarisnetwork.wikia.com/wiki/FOR_SPACEDONIA!",
+      "http://reddead.wikia.com/wiki/File:Photo-3.PNG"
+     ],
+     "chars": [
+      437,
+      602
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 1721,
+     "j": 49597,
+     "estimate": 0.2890625,
+     "J": 0.2754491017964072,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://polarisnetwork.wikia.com/wiki/FOR_SPACEDONIA!",
+      "http://thedcnation.wikia.com/wiki/File:Nightwing.png"
+     ],
+     "chars": [
+      437,
+      913
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 2083,
+     "j": 3639,
+     "estimate": 0.4453125,
+     "J": 0.4264705882352941,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://resistance.wikia.com/wiki/File:ReconDrone.jpg",
+      "http://ringofhonor.wikia.com/wiki/File:CM_punk.jpg"
+     ],
+     "chars": [
+      564,
+      578
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 2083,
+     "j": 8317,
+     "estimate": 0.375,
+     "J": 0.410958904109589,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://resistance.wikia.com/wiki/File:ReconDrone.jpg",
+      "http://gundam.wikia.com/wiki/File:Emilio_Ribisi.jpg"
+     ],
+     "chars": [
+      564,
+      663
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 2083,
+     "j": 19024,
+     "estimate": 0.453125,
+     "J": 0.42857142857142855,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://resistance.wikia.com/wiki/File:ReconDrone.jpg",
+      "http://reddead.wikia.com/wiki/File:Photo-3.PNG"
+     ],
+     "chars": [
+      564,
+      602
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 2083,
+     "j": 49597,
+     "estimate": 0.3359375,
+     "J": 0.3333333333333333,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://resistance.wikia.com/wiki/File:ReconDrone.jpg",
+      "http://thedcnation.wikia.com/wiki/File:Nightwing.png"
+     ],
+     "chars": [
+      564,
+      913
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 2083,
+     "j": 51948,
+     "estimate": 0.3671875,
+     "J": 0.3973509933774834,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://resistance.wikia.com/wiki/File:ReconDrone.jpg",
+      "http://piratesonline.wikia.com/wiki/File:Screenshot_2010-10-27_07-44-54.jpg"
+     ],
+     "chars": [
+      564,
+      683
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 2093,
+     "j": 7988,
+     "estimate": 0.3125,
+     "J": 0.325,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.sabrespace.com/2007/02/21/paetsch-proving-to-be-buffalo-s-unsung-hero/",
+      "https://www.sabrespace.com/2002/01/04/conroy-ignites-the-flames/?yr=2013&month=2&dy=&cid=mini"
+     ],
+     "chars": [
+      544,
+      430
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3314,
+     "j": 50531,
+     "estimate": 0.34375,
+     "J": 0.26422764227642276,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.mycarrollnews.com/content/spring-signals-annual-tchs-alumni-banquet?mini=calendar-date%2F2013-06",
+      "http://www.lasvegasoptic.com/content/officials-eye-use-tasers-jail?quicktabs_2=1"
+     ],
+     "chars": [
+      956,
+      894
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 3540,
+     "j": 53654,
+     "estimate": 0.3828125,
+     "J": 0.35785953177257523,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://digital.lib.umd.edu/archivesum/actions.DisplayEADAbstract.do?source=/MdU.ead.histms.0241.xml&style=abstract&docname=/MdU.ead.histms.0241.xml",
+      "http://digital.lib.umd.edu/archivesum/actions.DisplayEADAbstract.do?source=/MdU.ead.histms.0347.xml&style=abstract&docname=/MdU.ead.histms.0347.xml"
+     ],
+     "chars": [
+      1526,
+      1297
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3597,
+     "j": 8431,
+     "estimate": 0.4765625,
+     "J": 0.5113122171945701,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://wyrk.com/tags/msnbc/",
+      "http://kisselpaso.com/tags/valentines-dates-ideas/"
+     ],
+     "chars": [
+      1009,
+      1034
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 3597,
+     "j": 22006,
+     "estimate": 0.359375,
+     "J": 0.3684210526315789,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://wyrk.com/tags/msnbc/",
+      "http://keanradio.com/tags/psychopaths/"
+     ],
+     "chars": [
+      1009,
+      1341
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 3597,
+     "j": 41494,
+     "estimate": 0.4296875,
+     "J": 0.4430379746835443,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://wyrk.com/tags/msnbc/",
+      "http://wgna.com/tags/sports-announcers/"
+     ],
+     "chars": [
+      1009,
+      1046
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 3597,
+     "j": 46689,
+     "estimate": 0.453125,
+     "J": 0.44140625,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://wyrk.com/tags/msnbc/",
+      "http://92moose.fm/tags/obamacare/"
+     ],
+     "chars": [
+      1009,
+      1200
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 3623,
+     "j": 59439,
+     "estimate": 0.2109375,
+     "J": 0.20394736842105263,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.alibris.com/Warwick-of-the-Knobs-a-story-of-Stringtown-County-Kentucky-John-Uri-Lloyd/book/7125276",
+      "https://www.alibris.com/search/books/isbn/9780131536890"
+     ],
+     "chars": [
+      897,
+      1548
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 3639,
+     "j": 13475,
+     "estimate": 0.28125,
+     "J": 0.3036649214659686,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://ringofhonor.wikia.com/wiki/File:CM_punk.jpg",
+      "http://rbooks.wikia.com/wiki/File:Warriors.jpg"
+     ],
+     "chars": [
+      578,
+      919
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 3639,
+     "j": 19024,
+     "estimate": 0.4140625,
+     "J": 0.4027777777777778,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://ringofhonor.wikia.com/wiki/File:CM_punk.jpg",
+      "http://reddead.wikia.com/wiki/File:Photo-3.PNG"
+     ],
+     "chars": [
+      578,
+      602
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 4270,
+     "j": 26653,
+     "estimate": 0.4375,
+     "J": 0.3804347826086957,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.racer.com/rossi-stays-on-top-on-second-test-day/email/163208/5/",
+      "http://www.racer.com/rain-changes-the-game-for-day-two-of-the-2006-scca-national-championship-runoffs/email/142259/5/"
+     ],
+     "chars": [
+      365,
+      407
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 4611,
+     "j": 8353,
+     "estimate": 0.15625,
+     "J": 0.15411436541143655,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://ideas.repec.org/a/bla/rdevec/v16y2012i3p378-393.html",
+      "https://ideas.repec.org/p/ecb/ecbwps/20020136.html"
+     ],
+     "chars": [
+      4918,
+      6176
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 4611,
+     "j": 52617,
+     "estimate": 0.2578125,
+     "J": 0.23422562141491396,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://ideas.repec.org/a/bla/rdevec/v16y2012i3p378-393.html",
+      "http://ideas.repec.org/p/wpa/wuwpot/0303001.html"
+     ],
+     "chars": [
+      4918,
+      3615
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 4717,
+     "j": 24160,
+     "estimate": 0.4453125,
+     "J": 0.3908450704225352,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.gemvara.com/Palladium-Two-Stone-Fire-Opal-Jewelry/jewelry/b/?gem=Opal+fire&met=Pall&sts=2stone",
+      "http://www.gemvara.com/Solitaire-Citrine-Stackable-Jewelry-by-Gemvara-Essentials/jewelry/b/?des=9&gem=Citrine+yellow&pts=59&sts=solitaire"
+     ],
+     "chars": [
+      1259,
+      1084
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 4962,
+     "j": 24484,
+     "estimate": 0.265625,
+     "J": 0.25280898876404495,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.periodpaper.com/products/1963-print-videnie-ponomarja-vision-verger-tarasij-town-destruction-varlaam-141441-xam6-057",
+      "https://www.periodpaper.com/products/1931-ad-canadian-national-railway-observation-train-cars-tourism-travel-vacation-122867-col2-154"
+     ],
+     "chars": [
+      794,
+      629
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 5064,
+     "j": 13180,
+     "estimate": 0.484375,
+     "J": 0.5160818713450293,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.alldiscountbooks.net/_9780884963691_i_.html",
+      "http://www.alldiscountbooks.net/_9789004092181_i_.html"
+     ],
+     "chars": [
+      2826,
+      3438
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 5064,
+     "j": 20179,
+     "estimate": 0.2578125,
+     "J": 0.2675,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.alldiscountbooks.net/_9780884963691_i_.html",
+      "http://www.alldiscountbooks.net/_0444509208_i_.html"
+     ],
+     "chars": [
+      2826,
+      3354
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 5064,
+     "j": 34662,
+     "estimate": 0.4609375,
+     "J": 0.4776725304465494,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.alldiscountbooks.net/_9780884963691_i_.html",
+      "http://www.alldiscountbooks.net/_9780809312351_i_.html"
+     ],
+     "chars": [
+      2826,
+      3680
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 5170,
+     "j": 15157,
+     "estimate": 0.6484375,
+     "J": 0.660377358490566,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.vcsdata.com/company.html?companyinfo=Elan-Emerging-Technologies-Pvt-Ltd",
+      "http://www.vcsdata.com/company.html?companyinfo=Fujitsu-India-Pvt-Ltd"
+     ],
+     "chars": [
+      293,
+      300
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 5238,
+     "j": 19024,
+     "estimate": 0.3515625,
+     "J": 0.3953488372093023,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://marineofmovies.wikia.com/wiki/File:Remington870PoliceStd.jpg",
+      "http://reddead.wikia.com/wiki/File:Photo-3.PNG"
+     ],
+     "chars": [
+      802,
+      602
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 5693,
+     "j": 52016,
+     "estimate": 0.2109375,
+     "J": 0.18181818181818182,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2019-35",
+      "CC-MAIN-2019-35"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.mejakantormodera.com/product/glory-md-4718/",
+      "http://www.kaamranhafeez.com/product/baskets-n-booze-barrons-cartoon-2/"
+     ],
+     "chars": [
+      252,
+      309
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 5873,
+     "j": 5904,
+     "estimate": 0.2109375,
+     "J": 0.17419354838709677,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.marieyngson.com/r2497134-301-5325-west-boulevard",
+      "https://www.matthewcallaghan.com/Properties.php/Details/431/408-4557-blackcomb-way-le-chamois-whistler-bc"
+     ],
+     "chars": [
+      1677,
+      2018
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 5873,
+     "j": 18034,
+     "estimate": 0.234375,
+     "J": 0.2,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.marieyngson.com/r2497134-301-5325-west-boulevard",
+      "https://www.beyondthekeys.com/Properties.php/Details/145/107-5500-lynas-lane-the-hamptons-richmond-bc"
+     ],
+     "chars": [
+      1677,
+      1588
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 5873,
+     "j": 52214,
+     "estimate": 0.1953125,
+     "J": 0.18779342723004694,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.marieyngson.com/r2497134-301-5325-west-boulevard",
+      "http://www.aminlahijani.com/Properties.php/Details/144"
+     ],
+     "chars": [
+      1677,
+      1833
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 5890,
+     "j": 31599,
+     "estimate": 0.203125,
+     "J": 0.17486338797814208,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.zeidlers.com/flowers/silk-arrangement-succulents/",
+      "https://www.zeidlers.com/flowers/meet-you-at-9/"
+     ],
+     "chars": [
+      538,
+      761
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 5904,
+     "j": 18034,
+     "estimate": 0.34375,
+     "J": 0.2850467289719626,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.matthewcallaghan.com/Properties.php/Details/431/408-4557-blackcomb-way-le-chamois-whistler-bc",
+      "https://www.beyondthekeys.com/Properties.php/Details/145/107-5500-lynas-lane-the-hamptons-richmond-bc"
+     ],
+     "chars": [
+      2018,
+      1588
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 5904,
+     "j": 52214,
+     "estimate": 0.390625,
+     "J": 0.2687224669603524,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.matthewcallaghan.com/Properties.php/Details/431/408-4557-blackcomb-way-le-chamois-whistler-bc",
+      "http://www.aminlahijani.com/Properties.php/Details/144"
+     ],
+     "chars": [
+      2018,
+      1833
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 6126,
+     "j": 33899,
+     "estimate": 0.796875,
+     "J": 0.7346938775510204,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.waterstones.com/book/the-brain-pack/ron-van-der-meer/ad-dudink/9781902413013",
+      "https://www.waterstones.com/book/sonas-na-casca/gloria-a-truitt/len-ebert/9781907277207"
+     ],
+     "chars": [
+      484,
+      474
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 6126,
+     "j": 41889,
+     "estimate": 0.5390625,
+     "J": 0.44755244755244755,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.waterstones.com/book/the-brain-pack/ron-van-der-meer/ad-dudink/9781902413013",
+      "https://www.waterstones.com/book/architectural-design-and-composition/henk-mihl/clemens-steenbergen/9789068683219"
+     ],
+     "chars": [
+      484,
+      698
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 7789,
+     "j": 59319,
+     "estimate": 0.265625,
+     "J": 0.21686746987951808,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://hotpads.com/505-drexel-st-mckinney-tx-75069-smnk71/pad",
+      "https://hotpads.com/373-stone-mountain-st-lawrenceville-ga-30046-sm91ac/a4/pad"
+     ],
+     "chars": [
+      354,
+      348
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 7878,
+     "j": 48063,
+     "estimate": 0.28125,
+     "J": 0.324468085106383,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.freelancer.com/projects/SEO-Wordpress/Spanish-Football-Blog-writer/",
+      "https://www.freelancer.com/projects/Linux-Software-Architecture/Help-Fix-issues-Bulk-SMS/"
+     ],
+     "chars": [
+      763,
+      685
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 8300,
+     "j": 38958,
+     "estimate": 0.5234375,
+     "J": 0.48641975308641977,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.businessrays.com/scotland/govan/classifieds/free-ads",
+      "http://www.businessrays.com/pennsylvania/hatboro/classifieds/free-ads"
+     ],
+     "chars": [
+      2284,
+      2356
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 8317,
+     "j": 8332,
+     "estimate": 0.2734375,
+     "J": 0.30412371134020616,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://gundam.wikia.com/wiki/File:Emilio_Ribisi.jpg",
+      "http://gcse.wikia.com/wiki/File:12-02-~1.JPG"
+     ],
+     "chars": [
+      663,
+      799
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 8317,
+     "j": 19024,
+     "estimate": 0.3359375,
+     "J": 0.38961038961038963,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://gundam.wikia.com/wiki/File:Emilio_Ribisi.jpg",
+      "http://reddead.wikia.com/wiki/File:Photo-3.PNG"
+     ],
+     "chars": [
+      663,
+      602
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 8353,
+     "j": 52617,
+     "estimate": 0.1796875,
+     "J": 0.15847860538827258,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://ideas.repec.org/p/ecb/ecbwps/20020136.html",
+      "http://ideas.repec.org/p/wpa/wuwpot/0303001.html"
+     ],
+     "chars": [
+      6176,
+      3615
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 8418,
+     "j": 13310,
+     "estimate": 0.078125,
+     "J": 0.11007025761124122,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.newgrounds.com/portal/view/454331/review_sort/score",
+      "http://www.newgrounds.com/portal/view/342487?footer_feature=users"
+     ],
+     "chars": [
+      1045,
+      1557
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 8418,
+     "j": 17383,
+     "estimate": 0.125,
+     "J": 0.14029850746268657,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.newgrounds.com/portal/view/454331/review_sort/score",
+      "http://www.newgrounds.com/portal/view/466412"
+     ],
+     "chars": [
+      1045,
+      1052
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 8418,
+     "j": 32341,
+     "estimate": 0.140625,
+     "J": 0.13019390581717452,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.newgrounds.com/portal/view/454331/review_sort/score",
+      "http://www.newgrounds.com/portal/view/452318/review_page/9"
+     ],
+     "chars": [
+      1045,
+      1193
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 8418,
+     "j": 53781,
+     "estimate": 0.140625,
+     "J": 0.13583815028901733,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.newgrounds.com/portal/view/454331/review_sort/score",
+      "http://www.newgrounds.com/portal/view/619317/review_page/4"
+     ],
+     "chars": [
+      1045,
+      1103
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 8431,
+     "j": 22006,
+     "estimate": 0.3046875,
+     "J": 0.3633217993079585,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://kisselpaso.com/tags/valentines-dates-ideas/",
+      "http://keanradio.com/tags/psychopaths/"
+     ],
+     "chars": [
+      1034,
+      1341
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 8431,
+     "j": 41494,
+     "estimate": 0.359375,
+     "J": 0.43568464730290457,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://kisselpaso.com/tags/valentines-dates-ideas/",
+      "http://wgna.com/tags/sports-announcers/"
+     ],
+     "chars": [
+      1034,
+      1046
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 8431,
+     "j": 46689,
+     "estimate": 0.3984375,
+     "J": 0.42911877394636017,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://kisselpaso.com/tags/valentines-dates-ideas/",
+      "http://92moose.fm/tags/obamacare/"
+     ],
+     "chars": [
+      1034,
+      1200
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 8971,
+     "j": 54387,
+     "estimate": 0.4375,
+     "J": 0.42857142857142855,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.theoriginalrecord.com/database/search/search/alessander",
+      "http://www.theoriginalrecord.com/database/search/search/inverary"
+     ],
+     "chars": [
+      962,
+      1004
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 8971,
+     "j": 56152,
+     "estimate": 0.484375,
+     "J": 0.4712041884816754,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.theoriginalrecord.com/database/search/search/alessander",
+      "http://www.theoriginalrecord.com/database/search/search/actun"
+     ],
+     "chars": [
+      962,
+      912
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 9837,
+     "j": 59551,
+     "estimate": 0.40625,
+     "J": 0.37037037037037035,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.360cities.net/image/penmon-point-lighthouse-and-puffin-island-wales",
+      "https://www.360cities.net/es/image/up-eryl-farchog-wales"
+     ],
+     "chars": [
+      589,
+      655
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 9839,
+     "j": 59116,
+     "estimate": 0.296875,
+     "J": 0.3968253968253968,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.morewords.com/ends-with/aryl/",
+      "http://www.morewords.com/ends-with/apathy/"
+     ],
+     "chars": [
+      294,
+      246
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 10610,
+     "j": 33144,
+     "estimate": 0.3125,
+     "J": 0.2682926829268293,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2022-21"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://michigandispensaries.us/mid-michigan/crystal-caregiver-supply?replytocom=22793",
+      "https://newerblog.odedsharon.com/?p=625"
+     ],
+     "chars": [
+      315,
+      315
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 11019,
+     "j": 54329,
+     "estimate": 0.21875,
+     "J": 0.23618090452261306,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.ip-adress.com/whois/timekrei.com",
+      "http://www.ip-adress.com/whois/hanspor.com"
+     ],
+     "chars": [
+      1125,
+      1691
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11229,
+     "j": 14038,
+     "estimate": 0.625,
+     "J": 0.5851063829787234,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://scitation.aip.org/content/aip/journal/rsi/83/8/10.1063/1.4745385",
+      "http://scitation.aip.org/content/aip/journal/jap/103/3/10.1063/1.2837027"
+     ],
+     "chars": [
+      491,
+      481
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11290,
+     "j": 14930,
+     "estimate": 0.3203125,
+     "J": 0.25467625899280577,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.medhelp.org/posts/Cancer-Surgery/normal-life-after-colon-rectal-cancer/show/238079",
+      "https://www.medhelp.org/user_journals/show/182497/Hope-to-sleep"
+     ],
+     "chars": [
+      3569,
+      1320
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11306,
+     "j": 46411,
+     "estimate": 0.390625,
+     "J": 0.408,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.anagrammer.com/scrabble/cryonic",
+      "http://www.anagrammer.com/scrabble/biogeny"
+     ],
+     "chars": [
+      1024,
+      1128
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11306,
+     "j": 51751,
+     "estimate": 0.3125,
+     "J": 0.36042402826855124,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.anagrammer.com/scrabble/cryonic",
+      "http://www.anagrammer.com/scrabble/hearsay"
+     ],
+     "chars": [
+      1024,
+      1349
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11306,
+     "j": 55143,
+     "estimate": 0.25,
+     "J": 0.29850746268656714,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.anagrammer.com/scrabble/cryonic",
+      "http://www.anagrammer.com/scrabble/croaks"
+     ],
+     "chars": [
+      1024,
+      1628
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11423,
+     "j": 47677,
+     "estimate": 0.3203125,
+     "J": 0.3372093023255814,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.idakoos.com/apron/ahava",
+      "http://www.idakoos.com/tshirt+ringer/serbia"
+     ],
+     "chars": [
+      604,
+      689
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11508,
+     "j": 32483,
+     "estimate": 0.40625,
+     "J": 0.39285714285714285,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://studentvip.com.au/uts/subjects/75403",
+      "https://studentvip.com.au/usq/subjects/nur8040"
+     ],
+     "chars": [
+      597,
+      610
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11537,
+     "j": 43292,
+     "estimate": 0.1953125,
+     "J": 0.21754385964912282,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://edentraffic.com.ipaddress.com/",
+      "http://tuteeapp.com.ipaddress.com/"
+     ],
+     "chars": [
+      1042,
+      922
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 12594,
+     "j": 35897,
+     "estimate": 0.296875,
+     "J": 0.2518518518518518,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.localtom.com/wv/williamson/hurley-drug-co-10570726.html",
+      "http://www.localtom.com/nd/dickinson/paw-claw-pet-palace-11203861.html"
+     ],
+     "chars": [
+      1300,
+      703
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 12594,
+     "j": 36822,
+     "estimate": 0.2421875,
+     "J": 0.19596541786743515,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.localtom.com/wv/williamson/hurley-drug-co-10570726.html",
+      "http://www.localtom.com/ga/duluth/hilton-garden-inn-14376788.html"
+     ],
+     "chars": [
+      1300,
+      1164
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 12594,
+     "j": 42148,
+     "estimate": 0.2734375,
+     "J": 0.24727272727272728,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.localtom.com/wv/williamson/hurley-drug-co-10570726.html",
+      "http://www.localtom.com/mi/canton/plymouth-canton-gym-express-20375721.html"
+     ],
+     "chars": [
+      1300,
+      748
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 13180,
+     "j": 34662,
+     "estimate": 0.375,
+     "J": 0.42632850241545894,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.alldiscountbooks.net/_9789004092181_i_.html",
+      "http://www.alldiscountbooks.net/_9780809312351_i_.html"
+     ],
+     "chars": [
+      3438,
+      3680
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 13188,
+     "j": 16667,
+     "estimate": 0.4140625,
+     "J": 0.41935483870967744,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://m.koco.com/high-school-playbook/Call-of-the-night-Bam-Bam-takes-it-to-the-house/16787378",
+      "http://m.kitv.com/politics/Navy-Boasts-New-Indoor-Ocean/23814324"
+     ],
+     "chars": [
+      408,
+      442
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 13310,
+     "j": 17383,
+     "estimate": 0.1015625,
+     "J": 0.10955710955710955,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.newgrounds.com/portal/view/342487?footer_feature=users",
+      "http://www.newgrounds.com/portal/view/466412"
+     ],
+     "chars": [
+      1557,
+      1052
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 13310,
+     "j": 32341,
+     "estimate": 0.09375,
+     "J": 0.10329670329670329,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.newgrounds.com/portal/view/342487?footer_feature=users",
+      "http://www.newgrounds.com/portal/view/452318/review_page/9"
+     ],
+     "chars": [
+      1557,
+      1193
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 13310,
+     "j": 53781,
+     "estimate": 0.109375,
+     "J": 0.10681818181818181,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.newgrounds.com/portal/view/342487?footer_feature=users",
+      "http://www.newgrounds.com/portal/view/619317/review_page/4"
+     ],
+     "chars": [
+      1557,
+      1103
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 13475,
+     "j": 19024,
+     "estimate": 0.328125,
+     "J": 0.35638297872340424,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://rbooks.wikia.com/wiki/File:Warriors.jpg",
+      "http://reddead.wikia.com/wiki/File:Photo-3.PNG"
+     ],
+     "chars": [
+      919,
+      602
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 14083,
+     "j": 55152,
+     "estimate": 0.3671875,
+     "J": 0.3253424657534247,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://kuklaskorner.com/hockey/comments/kings_fire_murray",
+      "http://kuklaskorner.com/hockey/comments/is_the_monster_a_1_goalie"
+     ],
+     "chars": [
+      855,
+      1263
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14083,
+     "j": 62645,
+     "estimate": 0.375,
+     "J": 0.3215547703180212,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://kuklaskorner.com/hockey/comments/kings_fire_murray",
+      "http://kuklaskorner.com/hockey/comments/notes_from_clarke"
+     ],
+     "chars": [
+      855,
+      1166
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14241,
+     "j": 20152,
+     "estimate": 0.359375,
+     "J": 0.38580246913580246,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.scoop.it/t/anthro-of-the-body/?tag=stigma",
+      "http://www.scoop.it/t/mindfulness-by-brenda-bentley?page=2"
+     ],
+     "chars": [
+      1265,
+      1565
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14581,
+     "j": 27851,
+     "estimate": 0.2578125,
+     "J": 0.31007751937984496,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://kingsjerseyshop.com/men-s-white-brooks-shoes.html",
+      "http://garlandnissan.com/all-i-can-do-chords-cars.html"
+     ],
+     "chars": [
+      559,
+      513
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 14581,
+     "j": 33897,
+     "estimate": 0.2421875,
+     "J": 0.2867647058823529,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://kingsjerseyshop.com/men-s-white-brooks-shoes.html",
+      "http://edmradiostation.com/hands-free-dog-leash-nz.html"
+     ],
+     "chars": [
+      559,
+      553
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 14930,
+     "j": 16820,
+     "estimate": 0.4609375,
+     "J": 0.354,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.medhelp.org/user_journals/show/182497/Hope-to-sleep",
+      "http://www.medhelp.org/posts/Breast-Cancer/Breast-cancer/show/1717949"
+     ],
+     "chars": [
+      1320,
+      2563
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14930,
+     "j": 18716,
+     "estimate": 0.4296875,
+     "J": 0.4059633027522936,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.medhelp.org/user_journals/show/182497/Hope-to-sleep",
+      "http://www.medhelp.org/posts/Hepatitis-C/treatment-for-hep-c/show/954930"
+     ],
+     "chars": [
+      1320,
+      2220
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14930,
+     "j": 33449,
+     "estimate": 0.484375,
+     "J": 0.4392059553349876,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.medhelp.org/user_journals/show/182497/Hope-to-sleep",
+      "http://www.medhelp.org/posts/Ovarian-Cancer/woried-about-this-ovary/show/279747"
+     ],
+     "chars": [
+      1320,
+      2121
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14930,
+     "j": 44779,
+     "estimate": 0.4609375,
+     "J": 0.34705882352941175,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.medhelp.org/user_journals/show/182497/Hope-to-sleep",
+      "http://www.medhelp.org/posts/Heart-Rhythm/QTc-interval/show/1571390"
+     ],
+     "chars": [
+      1320,
+      2505
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14930,
+     "j": 45264,
+     "estimate": 0.4765625,
+     "J": 0.42857142857142855,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.medhelp.org/user_journals/show/182497/Hope-to-sleep",
+      "http://www.medhelp.org/posts/Heart-Disease/Sore-breasts/show/523863"
+     ],
+     "chars": [
+      1320,
+      2111
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14930,
+     "j": 51634,
+     "estimate": 0.40625,
+     "J": 0.37341772151898733,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.medhelp.org/user_journals/show/182497/Hope-to-sleep",
+      "http://www.medhelp.org/posts/Menopause/Pain-Heavy-Thighs/show/1059181"
+     ],
+     "chars": [
+      1320,
+      2506
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 16540,
+     "j": 27233,
+     "estimate": 0.2109375,
+     "J": 0.2208067940552017,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.vitals.com/doctors/Dr_Helen_Tatunay.html",
+      "http://www.vitals.com/doctors/Dr_James_A_Lee_3.html"
+     ],
+     "chars": [
+      1794,
+      2092
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 16567,
+     "j": 51683,
+     "estimate": 0.390625,
+     "J": 0.38323353293413176,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://query.nytimes.com/gst/abstract.html?res=9901E3D9143CE33ABC4A53DFB466838E679EDE",
+      "http://query.nytimes.com/gst/abstract.html?res=9B02E5D9143DE134BC4F53DFBF668383679EDE"
+     ],
+     "chars": [
+      700,
+      741
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 16667,
+     "j": 20039,
+     "estimate": 0.40625,
+     "J": 0.41935483870967744,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://m.kitv.com/politics/Navy-Boasts-New-Indoor-Ocean/23814324",
+      "http://m.wcvb.com/weather/check-holiday-forecast-around-the-region/20288382"
+     ],
+     "chars": [
+      442,
+      423
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 16729,
+     "j": 60954,
+     "estimate": 0.4140625,
+     "J": 0.45454545454545453,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.tripadvisor.com/Attraction_Review-g52607-d1554830-Reviews-Millcreek_Mall-Erie_Pennsylvania.html",
+      "https://www.tripadvisor.com/Attraction_Review-g34102-d491805-Reviews-Apalachicola_Bluffs_and_Ravines_Preserve-Bristol_Florida.html"
+     ],
+     "chars": [
+      494,
+      493
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 16799,
+     "j": 51634,
+     "estimate": 0.265625,
+     "J": 0.26772793053545585,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.medhelp.org/posts/Hepatitis-C/Cautiously-optimistic-results-week1--ANC-dropped/show/1626473",
+      "http://www.medhelp.org/posts/Menopause/Pain-Heavy-Thighs/show/1059181"
+     ],
+     "chars": [
+      2534,
+      2506
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 16820,
+     "j": 44779,
+     "estimate": 0.34375,
+     "J": 0.25587828492392806,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.medhelp.org/posts/Breast-Cancer/Breast-cancer/show/1717949",
+      "http://www.medhelp.org/posts/Heart-Rhythm/QTc-interval/show/1571390"
+     ],
+     "chars": [
+      2563,
+      2505
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 16820,
+     "j": 51634,
+     "estimate": 0.328125,
+     "J": 0.2692867540029112,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.medhelp.org/posts/Breast-Cancer/Breast-cancer/show/1717949",
+      "http://www.medhelp.org/posts/Menopause/Pain-Heavy-Thighs/show/1059181"
+     ],
+     "chars": [
+      2563,
+      2506
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 16836,
+     "j": 18746,
+     "estimate": 0.3046875,
+     "J": 0.2978723404255319,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://utah.rivals.com/news/quick-release-a-focus",
+      "https://uga.rivals.com/news/longo-is-ready-to-visit-athens"
+     ],
+     "chars": [
+      365,
+      458
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 16868,
+     "j": 32483,
+     "estimate": 0.3359375,
+     "J": 0.32,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://studentvip.com.au/mu/subjects/llb356",
+      "https://studentvip.com.au/usq/subjects/nur8040"
+     ],
+     "chars": [
+      637,
+      610
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 17383,
+     "j": 32341,
+     "estimate": 0.1484375,
+     "J": 0.12947658402203857,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.newgrounds.com/portal/view/466412",
+      "http://www.newgrounds.com/portal/view/452318/review_page/9"
+     ],
+     "chars": [
+      1052,
+      1193
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 17383,
+     "j": 53781,
+     "estimate": 0.171875,
+     "J": 0.13505747126436782,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.newgrounds.com/portal/view/466412",
+      "http://www.newgrounds.com/portal/view/619317/review_page/4"
+     ],
+     "chars": [
+      1052,
+      1103
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 17442,
+     "j": 20431,
+     "estimate": 0.6171875,
+     "J": 0.6185567010309279,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.beatport.com/artist/the-phb/597451",
+      "https://www.beatport.com/artist/adina-edwards/554871"
+     ],
+     "chars": [
+      598,
+      500
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 17442,
+     "j": 44873,
+     "estimate": 0.3828125,
+     "J": 0.43795620437956206,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.beatport.com/artist/the-phb/597451",
+      "https://www.beatport.com/artist/white-rabbit-learns-to-fly/152119"
+     ],
+     "chars": [
+      598,
+      701
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 18034,
+     "j": 52214,
+     "estimate": 0.375,
+     "J": 0.3178294573643411,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.beyondthekeys.com/Properties.php/Details/145/107-5500-lynas-lane-the-hamptons-richmond-bc",
+      "http://www.aminlahijani.com/Properties.php/Details/144"
+     ],
+     "chars": [
+      1588,
+      1833
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 18157,
+     "j": 52016,
+     "estimate": 0.375,
+     "J": 0.38666666666666666,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2022-21",
+      "CC-MAIN-2019-35"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.urth-skin.com/product/2-x-refillable-eco-pouches-inside-out-beauty-collagen-peptides-250grams/",
+      "http://www.kaamranhafeez.com/product/baskets-n-booze-barrons-cartoon-2/"
+     ],
+     "chars": [
+      354,
+      309
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 18716,
+     "j": 33449,
+     "estimate": 0.3984375,
+     "J": 0.3351449275362319,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.medhelp.org/posts/Hepatitis-C/treatment-for-hep-c/show/954930",
+      "http://www.medhelp.org/posts/Ovarian-Cancer/woried-about-this-ovary/show/279747"
+     ],
+     "chars": [
+      2220,
+      2121
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 18716,
+     "j": 44779,
+     "estimate": 0.375,
+     "J": 0.28072837632776937,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.medhelp.org/posts/Hepatitis-C/treatment-for-hep-c/show/954930",
+      "http://www.medhelp.org/posts/Heart-Rhythm/QTc-interval/show/1571390"
+     ],
+     "chars": [
+      2220,
+      2505
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 18716,
+     "j": 45264,
+     "estimate": 0.4375,
+     "J": 0.39365671641791045,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.medhelp.org/posts/Hepatitis-C/treatment-for-hep-c/show/954930",
+      "http://www.medhelp.org/posts/Heart-Disease/Sore-breasts/show/523863"
+     ],
+     "chars": [
+      2220,
+      2111
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 19867,
+     "j": 36821,
+     "estimate": 0.3359375,
+     "J": 0.30097087378640774,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.compositiontoday.com/show_video.asp?video_id=489488",
+      "http://www.compositiontoday.com/show_video.asp?video_id=458715"
+     ],
+     "chars": [
+      400,
+      399
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 20298,
+     "j": 55407,
+     "estimate": 0.2890625,
+     "J": 0.3170731707317073,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://tokyojungle.wikia.com/wiki/File:Horse_a_thumb.png",
+      "http://timanderic.wikia.com/wiki/File:Tumblr_l6vgs59hX31qcym1wo1_500.png"
+     ],
+     "chars": [
+      1453,
+      1281
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 20320,
+     "j": 57383,
+     "estimate": 0.3359375,
+     "J": 0.3377049180327869,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2019-35"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://folksy.com/items/7017673-Cute-Teddy-Bear-Wall-Hanging-Nursery-Wall-Art-Birthday-Bunting-Bear",
+      "https://folksy.com/items/7276496-Ticket-Sleeve-Oyster-card-cover-Made-from-Liberty-Lawn-"
+     ],
+     "chars": [
+      1364,
+      1217
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 20320,
+     "j": 61818,
+     "estimate": 0.390625,
+     "J": 0.36082474226804123,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2019-35"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://folksy.com/items/7017673-Cute-Teddy-Bear-Wall-Hanging-Nursery-Wall-Art-Birthday-Bunting-Bear",
+      "https://folksy.com/items/7249326-Hand-Crocheted-Forest-Hat-"
+     ],
+     "chars": [
+      1364,
+      1126
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 20431,
+     "j": 44873,
+     "estimate": 0.4453125,
+     "J": 0.5,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.beatport.com/artist/adina-edwards/554871",
+      "https://www.beatport.com/artist/white-rabbit-learns-to-fly/152119"
+     ],
+     "chars": [
+      500,
+      701
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 20434,
+     "j": 22484,
+     "estimate": 0.328125,
+     "J": 0.4174757281553398,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://bloggfokus.com/dr-christopher-beach.html",
+      "http://moomettesgramsmusings.com/ufirst-used-cars.html"
+     ],
+     "chars": [
+      511,
+      473
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 20434,
+     "j": 58907,
+     "estimate": 0.359375,
+     "J": 0.42452830188679247,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://bloggfokus.com/dr-christopher-beach.html",
+      "http://abitofluckfarm.com/mexican-food-in-lake-elsinore.html"
+     ],
+     "chars": [
+      511,
+      517
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 21688,
+     "j": 57497,
+     "estimate": 0.328125,
+     "J": 0.32189973614775724,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.autotrader.ca/cars/chevrolet/corvette/2015/bc/west%20vancouver/?hprc=True&amp;amp;wcp=True&amp;amp;sts=New-Used&amp;amp;srt=23&amp;amp;prv=Alberta&amp;amp;vpt=53.19855%2C-114.44813%2C53.89129%2C-112.56173%2C&amp;amp;loc=Edmonton%2C+Alberta&amp;amp;rcp=10&amp;amp;rcs=0&amp;srt=23&amp;adr=Edmonton%2C+AB&amp;vpt=53.19854%2C-114.44813%2C53.89131%2C-112.56173%2C&amp;loc=Edmonton%2C+&amp;rcp=10&amp;rcs=0&srt=23&adr=Edmonton%2C+AB&vpt=53.19854%2C-114.44813%2C53.89131%2C-112.56173%2C&loc=West+Vancouver%2C+BC&rcp=10&rcs=0&prv=British+Columbia",
+      "https://www.autotrader.ca/cars/chevrolet/equinox/2011/bc/vernon/?srt=3&prv=British%20Columbia&loc=Vernon%2C%20BC&hprc=True&wcp=True"
+     ],
+     "chars": [
+      1558,
+      1814
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 22006,
+     "j": 36796,
+     "estimate": 0.2578125,
+     "J": 0.28688524590163933,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://keanradio.com/tags/psychopaths/",
+      "http://710keel.com/category/human-interest/page/11/"
+     ],
+     "chars": [
+      1341,
+      1462
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 22006,
+     "j": 41494,
+     "estimate": 0.375,
+     "J": 0.40559440559440557,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://keanradio.com/tags/psychopaths/",
+      "http://wgna.com/tags/sports-announcers/"
+     ],
+     "chars": [
+      1341,
+      1046
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 22006,
+     "j": 46689,
+     "estimate": 0.3125,
+     "J": 0.32,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://keanradio.com/tags/psychopaths/",
+      "http://92moose.fm/tags/obamacare/"
+     ],
+     "chars": [
+      1341,
+      1200
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 22484,
+     "j": 42707,
+     "estimate": 0.328125,
+     "J": 0.35714285714285715,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://moomettesgramsmusings.com/ufirst-used-cars.html",
+      "http://firststreetplayhouse.com/cafe-in-mahopac-ny.html"
+     ],
+     "chars": [
+      473,
+      489
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 22484,
+     "j": 58907,
+     "estimate": 0.328125,
+     "J": 0.3669724770642202,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://moomettesgramsmusings.com/ufirst-used-cars.html",
+      "http://abitofluckfarm.com/mexican-food-in-lake-elsinore.html"
+     ],
+     "chars": [
+      473,
+      517
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 24026,
+     "j": 43351,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.foodandthoughts.blogspot.com/2012/08/i-baked.html",
+      "http://foodandthoughts.blogspot.com/2012/08/"
+     ],
+     "chars": [
+      584,
+      584
+     ],
+     "kind": "same site, different path (moved page?)"
+    },
+    {
+     "i": 24264,
+     "j": 40973,
+     "estimate": 0.1796875,
+     "J": 0.24369747899159663,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.expatistan.com/cost-of-living/comparison/aligarh/yangzhou",
+      "https://www.expatistan.com/cost-of-living/comparison/allahabad/shaoxing"
+     ],
+     "chars": [
+      861,
+      810
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 24729,
+     "j": 37347,
+     "estimate": 0.359375,
+     "J": 0.3917525773195876,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2019-35"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://researchr.org/publication/biocomp-2009",
+      "https://researchr.org/publication/LiZWM18"
+     ],
+     "chars": [
+      490,
+      461
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 26816,
+     "j": 38862,
+     "estimate": 0.21875,
+     "J": 0.1926605504587156,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.wbiw.com/state/archive/2012/04/police_body_found_was_missing-print.html",
+      "http://www.wbiw.com/local/archive/2009/04/lyons_man_sentenced_to_240_mon-print.html"
+     ],
+     "chars": [
+      817,
+      750
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 26943,
+     "j": 34753,
+     "estimate": 0.140625,
+     "J": 0.14814814814814814,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.metalunderground.com/news/details.cfm?newsid=85058",
+      "http://www.metalunderground.com/news/details.cfm?newsid=99085"
+     ],
+     "chars": [
+      1195,
+      1043
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 27156,
+     "j": 33096,
+     "estimate": 0.2109375,
+     "J": 0.2049469964664311,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2022-21",
+      "CC-MAIN-2022-21"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.ksl.com/article/36183395",
+      "https://www.ksl.com/article/32847995"
+     ],
+     "chars": [
+      1191,
+      953
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 27233,
+     "j": 53802,
+     "estimate": 0.15625,
+     "J": 0.1487603305785124,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.vitals.com/doctors/Dr_James_A_Lee_3.html",
+      "http://www.vitals.com/doctors/Dr_Abigail_Dahan.html"
+     ],
+     "chars": [
+      2092,
+      1724
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 27238,
+     "j": 35746,
+     "estimate": 0.265625,
+     "J": 0.26881720430107525,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.urbandictionary.com/define.php?term=brown-capping&defid=3184725",
+      "http://www.urbandictionary.com/define.php?term=soulcanoes&defid=3648524"
+     ],
+     "chars": [
+      344,
+      334
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 27238,
+     "j": 53579,
+     "estimate": 0.2578125,
+     "J": 0.2631578947368421,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.urbandictionary.com/define.php?term=brown-capping&defid=3184725",
+      "http://www.urbandictionary.com/define.php?term=Twitterea&defid=3254346"
+     ],
+     "chars": [
+      344,
+      311
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 27383,
+     "j": 39683,
+     "estimate": 0.34375,
+     "J": 0.3548387096774194,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://ratemydrawings.com/drawings/manga-original/907944.html",
+      "http://ratemydrawings.com/drawings/manga/366153.htmlu"
+     ],
+     "chars": [
+      761,
+      484
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 27851,
+     "j": 33897,
+     "estimate": 0.2734375,
+     "J": 0.30708661417322836,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://garlandnissan.com/all-i-can-do-chords-cars.html",
+      "http://edmradiostation.com/hands-free-dog-leash-nz.html"
+     ],
+     "chars": [
+      513,
+      553
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 28340,
+     "j": 48547,
+     "estimate": 0.2734375,
+     "J": 0.2946859903381642,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2019-35",
+      "CC-MAIN-2019-35"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://careers.leidos.com/jobs/4395759-systems-engineer",
+      "https://careers.leidos.com/jobs/4360346-electrical-designer-electric-utility-distribution-honolulu"
+     ],
+     "chars": [
+      3529,
+      4234
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 28402,
+     "j": 54749,
+     "estimate": 0.5703125,
+     "J": 0.4703703703703704,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2019-35",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.anagrammer.com/scrabble/insure",
+      "https://www.anagrammer.com/scrabble/spense"
+     ],
+     "chars": [
+      1321,
+      1156
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 28803,
+     "j": 37721,
+     "estimate": 0.2109375,
+     "J": 0.19589837771655955,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2022-21",
+      "CC-MAIN-2022-21"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://watchreviewed.com/best-laptops-for-construction-management/",
+      "https://watchreviewed.com/best-husky-grooming-tools/"
+     ],
+     "chars": [
+      12584,
+      13721
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 28915,
+     "j": 48019,
+     "estimate": 0.2265625,
+     "J": 0.17681728880157171,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.thebody.com/Forums/AIDS/Hepatitis/Q187125.html",
+      "http://www.thebody.com/Forums/AIDS/Hepatitis/Q185587.html"
+     ],
+     "chars": [
+      1876,
+      1579
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 28915,
+     "j": 49335,
+     "estimate": 0.2734375,
+     "J": 0.22142857142857142,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.thebody.com/Forums/AIDS/Hepatitis/Q187125.html",
+      "http://www.thebody.com/Forums/AIDS/Mental/Q189517.html"
+     ],
+     "chars": [
+      1876,
+      1188
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 29333,
+     "j": 51882,
+     "estimate": 0.3828125,
+     "J": 0.32857142857142857,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.gigmasters.com/search/saxophone-owen-county-ky",
+      "https://www.gigmasters.com/search/saxophone-boulder-city-nv"
+     ],
+     "chars": [
+      672,
+      612
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 29447,
+     "j": 33897,
+     "estimate": 0.3203125,
+     "J": 0.312,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://guadeloupemotoclub.com/rebuilt-yamaha-outboards.html",
+      "http://edmradiostation.com/hands-free-dog-leash-nz.html"
+     ],
+     "chars": [
+      519,
+      553
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 29499,
+     "j": 30912,
+     "estimate": 0.5234375,
+     "J": 0.5185185185185185,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.telegraph.co.uk/gardening/how-to-grow/the-10-garden-flowers-that-can-sell-your-property/sunflowers0/",
+      "http://www.telegraph.co.uk/travel/destinations/oceania/australia/victoria/exciting-road-trips/top-things-to-do-in-victoria-australia/koala-in-gumtree/"
+     ],
+     "chars": [
+      387,
+      341
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 30443,
+     "j": 60610,
+     "estimate": 0.453125,
+     "J": 0.41237113402061853,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2022-21"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.aboutmyarea.co.uk/Selkirkshire/Galashiels/TD1/Businesses/Marquee-Hire",
+      "https://www.aboutmyarea.co.uk/West-Midlands/Oldbury/B69/Businesses/Skin-Clinic"
+     ],
+     "chars": [
+      432,
+      397
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 31898,
+     "j": 60697,
+     "estimate": 0.34375,
+     "J": 0.46875,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.inc.com/profile/mycustomerdatacom",
+      "http://www.inc.com/profile/american-marine"
+     ],
+     "chars": [
+      1304,
+      1211
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 32189,
+     "j": 46523,
+     "estimate": 0.3671875,
+     "J": 0.3168141592920354,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.tigergps.com/gerber31000699.html",
+      "http://www.tigergps.com/magmaa10801.html"
+     ],
+     "chars": [
+      1841,
+      2949
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 32217,
+     "j": 46309,
+     "estimate": 0.3671875,
+     "J": 0.3381294964028777,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.picturehistory.com/product/id/8230",
+      "http://www.picturehistory.com/product/id/184"
+     ],
+     "chars": [
+      672,
+      559
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 32341,
+     "j": 53781,
+     "estimate": 0.1796875,
+     "J": 0.12566844919786097,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.newgrounds.com/portal/view/452318/review_page/9",
+      "http://www.newgrounds.com/portal/view/619317/review_page/4"
+     ],
+     "chars": [
+      1193,
+      1103
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 33449,
+     "j": 45264,
+     "estimate": 0.3828125,
+     "J": 0.3497164461247637,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.medhelp.org/posts/Ovarian-Cancer/woried-about-this-ovary/show/279747",
+      "http://www.medhelp.org/posts/Heart-Disease/Sore-breasts/show/523863"
+     ],
+     "chars": [
+      2121,
+      2111
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 33899,
+     "j": 41889,
+     "estimate": 0.5546875,
+     "J": 0.460431654676259,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.waterstones.com/book/sonas-na-casca/gloria-a-truitt/len-ebert/9781907277207",
+      "https://www.waterstones.com/book/architectural-design-and-composition/henk-mihl/clemens-steenbergen/9789068683219"
+     ],
+     "chars": [
+      474,
+      698
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 34684,
+     "j": 37875,
+     "estimate": 0.5078125,
+     "J": 0.5034883720930232,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://ludumdare.com/compo/ludum-dare-25/?action=preview&uid=18847",
+      "http://www.ludumdare.com/compo/ludum-dare-25/?action=preview&uid=14225"
+     ],
+     "chars": [
+      3321,
+      3840
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 35746,
+     "j": 36944,
+     "estimate": 0.3125,
+     "J": 0.29069767441860467,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.urbandictionary.com/define.php?term=soulcanoes&defid=3648524",
+      "http://www.urbandictionary.com/products.php?term=Pittsburg%20Parachute&defid=2636920"
+     ],
+     "chars": [
+      334,
+      345
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 35746,
+     "j": 53579,
+     "estimate": 0.3515625,
+     "J": 0.30864197530864196,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.urbandictionary.com/define.php?term=soulcanoes&defid=3648524",
+      "http://www.urbandictionary.com/define.php?term=Twitterea&defid=3254346"
+     ],
+     "chars": [
+      334,
+      311
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 35746,
+     "j": 57922,
+     "estimate": 0.3203125,
+     "J": 0.33783783783783783,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.urbandictionary.com/define.php?term=soulcanoes&defid=3648524",
+      "http://www.urbandictionary.com/products.php?term=Hyke&defid=4233343"
+     ],
+     "chars": [
+      334,
+      266
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 35897,
+     "j": 36822,
+     "estimate": 0.328125,
+     "J": 0.31140350877192985,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.localtom.com/nd/dickinson/paw-claw-pet-palace-11203861.html",
+      "http://www.localtom.com/ga/duluth/hilton-garden-inn-14376788.html"
+     ],
+     "chars": [
+      703,
+      1164
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 35897,
+     "j": 42148,
+     "estimate": 0.5390625,
+     "J": 0.4276729559748428,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.localtom.com/nd/dickinson/paw-claw-pet-palace-11203861.html",
+      "http://www.localtom.com/mi/canton/plymouth-canton-gym-express-20375721.html"
+     ],
+     "chars": [
+      703,
+      748
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 36796,
+     "j": 41494,
+     "estimate": 0.3125,
+     "J": 0.330188679245283,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://710keel.com/category/human-interest/page/11/",
+      "http://wgna.com/tags/sports-announcers/"
+     ],
+     "chars": [
+      1462,
+      1046
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 36822,
+     "j": 42148,
+     "estimate": 0.3203125,
+     "J": 0.288135593220339,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.localtom.com/ga/duluth/hilton-garden-inn-14376788.html",
+      "http://www.localtom.com/mi/canton/plymouth-canton-gym-express-20375721.html"
+     ],
+     "chars": [
+      1164,
+      748
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 36944,
+     "j": 53579,
+     "estimate": 0.265625,
+     "J": 0.2840909090909091,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.urbandictionary.com/products.php?term=Pittsburg%20Parachute&defid=2636920",
+      "http://www.urbandictionary.com/define.php?term=Twitterea&defid=3254346"
+     ],
+     "chars": [
+      345,
+      311
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 36944,
+     "j": 57922,
+     "estimate": 0.3828125,
+     "J": 0.37662337662337664,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.urbandictionary.com/products.php?term=Pittsburg%20Parachute&defid=2636920",
+      "http://www.urbandictionary.com/products.php?term=Hyke&defid=4233343"
+     ],
+     "chars": [
+      345,
+      266
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 37100,
+     "j": 60675,
+     "estimate": 0.375,
+     "J": 0.28308823529411764,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.iwm.org.uk/collections/item/object/205205993",
+      "http://www.iwm.org.uk/collections/item/object/205199571"
+     ],
+     "chars": [
+      765,
+      1381
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 37506,
+     "j": 63727,
+     "estimate": 0.40625,
+     "J": 0.4203703703703704,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://baynews.royalwedding.club/erp-programs/",
+      "https://americannews.theweddings.club/wood-floors-by-design/"
+     ],
+     "chars": [
+      2290,
+      2371
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 37697,
+     "j": 57383,
+     "estimate": 0.21875,
+     "J": 0.1935483870967742,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2022-21",
+      "CC-MAIN-2019-35"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://folksy.com/shops/helkatdesign",
+      "https://folksy.com/items/7276496-Ticket-Sleeve-Oyster-card-cover-Made-from-Liberty-Lawn-"
+     ],
+     "chars": [
+      692,
+      1217
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 38202,
+     "j": 43700,
+     "estimate": 0.265625,
+     "J": 0.2457627118644068,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2019-35",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://splitboard.com/shop/avalanche-transceivers/backcountry-access-tracker2-avalanche-transceiver/",
+      "https://www.fatfrankscampingshop.com/product/festival-plastic-bowl/"
+     ],
+     "chars": [
+      403,
+      461
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 38202,
+     "j": 52016,
+     "estimate": 0.3828125,
+     "J": 0.3493975903614458,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2019-35",
+      "CC-MAIN-2019-35"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://splitboard.com/shop/avalanche-transceivers/backcountry-access-tracker2-avalanche-transceiver/",
+      "http://www.kaamranhafeez.com/product/baskets-n-booze-barrons-cartoon-2/"
+     ],
+     "chars": [
+      403,
+      309
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 38202,
+     "j": 55894,
+     "estimate": 0.28125,
+     "J": 0.2283464566929134,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2019-35",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://splitboard.com/shop/avalanche-transceivers/backcountry-access-tracker2-avalanche-transceiver/",
+      "https://www.edgarshermandesign.com/product/rhodesian-brushstroke-esd-stickers/"
+     ],
+     "chars": [
+      403,
+      539
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 39762,
+     "j": 44802,
+     "estimate": 0.4609375,
+     "J": 0.4418604651162791,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://vimeo.com/zacharyfgerberick/videos/appears/sort:likes/format:thumbnail",
+      "https://vimeo.com/user9699983/videos/sort:plays/format:thumbnail"
+     ],
+     "chars": [
+      376,
+      409
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 40382,
+     "j": 47662,
+     "estimate": 0.2109375,
+     "J": 0.17551020408163265,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2022-21",
+      "CC-MAIN-2022-21"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.waterstones.com/book/writers-toolbox/jamie-cat-callan/9780811854290",
+      "https://www.waterstones.com/book/saint-francis-of-assisi/g-k-chesterton/9781619706033"
+     ],
+     "chars": [
+      1320,
+      474
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 40973,
+     "j": 49601,
+     "estimate": 0.328125,
+     "J": 0.3349282296650718,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.expatistan.com/cost-of-living/comparison/allahabad/shaoxing",
+      "https://www.expatistan.com/cost-of-living/comparison/alicante/lubeck"
+     ],
+     "chars": [
+      810,
+      785
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 41494,
+     "j": 46689,
+     "estimate": 0.3515625,
+     "J": 0.37545126353790614,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://wgna.com/tags/sports-announcers/",
+      "http://92moose.fm/tags/obamacare/"
+     ],
+     "chars": [
+      1046,
+      1200
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 42707,
+     "j": 58907,
+     "estimate": 0.34375,
+     "J": 0.3418803418803419,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://firststreetplayhouse.com/cafe-in-mahopac-ny.html",
+      "http://abitofluckfarm.com/mexican-food-in-lake-elsinore.html"
+     ],
+     "chars": [
+      489,
+      517
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 43700,
+     "j": 55894,
+     "estimate": 0.21875,
+     "J": 0.19594594594594594,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2020-45"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.fatfrankscampingshop.com/product/festival-plastic-bowl/",
+      "https://www.edgarshermandesign.com/product/rhodesian-brushstroke-esd-stickers/"
+     ],
+     "chars": [
+      461,
+      539
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 44779,
+     "j": 45264,
+     "estimate": 0.359375,
+     "J": 0.2908805031446541,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.medhelp.org/posts/Heart-Rhythm/QTc-interval/show/1571390",
+      "http://www.medhelp.org/posts/Heart-Disease/Sore-breasts/show/523863"
+     ],
+     "chars": [
+      2505,
+      2111
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 44873,
+     "j": 51743,
+     "estimate": 0.5390625,
+     "J": 0.5403726708074534,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.beatport.com/artist/white-rabbit-learns-to-fly/152119",
+      "https://www.beatport.com/label/mojear-records/22471"
+     ],
+     "chars": [
+      701,
+      850
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 46358,
+     "j": 55154,
+     "estimate": 0.390625,
+     "J": 0.3673469387755102,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.bundle.com/merchant/detail/joes-american-bar-and-grill-paramus-nj-4467519/",
+      "http://www.bundle.com/merchant/detail/roger-gross-ltd-music-autograp-new-york-ny-1487446/"
+     ],
+     "chars": [
+      812,
+      887
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 46411,
+     "j": 51751,
+     "estimate": 0.4140625,
+     "J": 0.41403508771929826,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.anagrammer.com/scrabble/biogeny",
+      "http://www.anagrammer.com/scrabble/hearsay"
+     ],
+     "chars": [
+      1128,
+      1349
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 46411,
+     "j": 55143,
+     "estimate": 0.2734375,
+     "J": 0.3323529411764706,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.anagrammer.com/scrabble/biogeny",
+      "http://www.anagrammer.com/scrabble/croaks"
+     ],
+     "chars": [
+      1128,
+      1628
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 46689,
+     "j": 61572,
+     "estimate": 0.296875,
+     "J": 0.33633633633633636,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://92moose.fm/tags/obamacare/",
+      "http://973thedawg.com/tags/grand-ole-opry/"
+     ],
+     "chars": [
+      1200,
+      1447
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 48019,
+     "j": 49335,
+     "estimate": 0.234375,
+     "J": 0.23482849604221637,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.thebody.com/Forums/AIDS/Hepatitis/Q185587.html",
+      "http://www.thebody.com/Forums/AIDS/Mental/Q189517.html"
+     ],
+     "chars": [
+      1579,
+      1188
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 49597,
+     "j": 51948,
+     "estimate": 0.2734375,
+     "J": 0.3015075376884422,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://thedcnation.wikia.com/wiki/File:Nightwing.png",
+      "http://piratesonline.wikia.com/wiki/File:Screenshot_2010-10-27_07-44-54.jpg"
+     ],
+     "chars": [
+      913,
+      683
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 49648,
+     "j": 60119,
+     "estimate": 0.3984375,
+     "J": 0.3471882640586797,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://local.thefix.com/therapist/massachusetts/taunton/james-r-lee/",
+      "https://local.thefix.com/therapist/washington/vancouver/jennifer-alexis-maxa/"
+     ],
+     "chars": [
+      1838,
+      1517
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 50816,
+     "j": 64116,
+     "estimate": 0.3046875,
+     "J": 0.26634382566585957,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2017-34",
+      "CC-MAIN-2022-21"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://petrinreeves.com/mylistings.html/details-52758549",
+      "https://lissagreenwood.com/blog.html/new-property-listed-in-sunnyside-park-surrey-south-surrey-white-rock-4851123"
+     ],
+     "chars": [
+      1595,
+      1532
+     ],
+     "kind": "different sites (shared boilerplate?)"
+    },
+    {
+     "i": 51751,
+     "j": 55143,
+     "estimate": 0.2578125,
+     "J": 0.30294906166219837,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2013-20"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.anagrammer.com/scrabble/hearsay",
+      "http://www.anagrammer.com/scrabble/croaks"
+     ],
+     "chars": [
+      1349,
+      1628
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 53579,
+     "j": 57922,
+     "estimate": 0.296875,
+     "J": 0.32894736842105265,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.urbandictionary.com/define.php?term=Twitterea&defid=3254346",
+      "http://www.urbandictionary.com/products.php?term=Hyke&defid=4233343"
+     ],
+     "chars": [
+      311,
+      266
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 55152,
+     "j": 62645,
+     "estimate": 0.3046875,
+     "J": 0.2513812154696133,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2013-20",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://kuklaskorner.com/hockey/comments/is_the_monster_a_1_goalie",
+      "http://kuklaskorner.com/hockey/comments/notes_from_clarke"
+     ],
+     "chars": [
+      1263,
+      1166
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 57184,
+     "j": 59602,
+     "estimate": 0.5234375,
+     "J": 0.5625,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.drugs.com/dict/acoustic-pressure.html",
+      "https://www.drugs.com/dict/embolic-pneumonia.html"
+     ],
+     "chars": [
+      406,
+      365
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 57383,
+     "j": 61818,
+     "estimate": 0.484375,
+     "J": 0.43873517786561267,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2019-35",
+      "CC-MAIN-2019-35"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://folksy.com/items/7276496-Ticket-Sleeve-Oyster-card-cover-Made-from-Liberty-Lawn-",
+      "https://folksy.com/items/7249326-Hand-Crocheted-Forest-Hat-"
+     ],
+     "chars": [
+      1217,
+      1126
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 57920,
+     "j": 58542,
+     "estimate": 0.2421875,
+     "J": 0.29028571428571426,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.zillow.com/homedetails/1839-J-Julian-Ln-APT-E-Charlotte-NC-28208/6175036_zpid/",
+      "http://www.zillow.com/homedetails/1330-Wildwing-Ln-Vallejo-CA-94591/15742688_zpid/"
+     ],
+     "chars": [
+      2877,
+      3852
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 57974,
+     "j": 58532,
+     "estimate": 0.5625,
+     "J": 0.4666666666666667,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.calorieking.com/foods/calories-in-pizzas-creation-napoli-pizza-xl_f-ZmlkPTIwNTUzMw.html",
+      "http://www.calorieking.com/foods/calories-in-sandwiches-burgers-famous-favorite-tuna-melt-sandwich_f-ZmlkPTE3MjgzNQ.html"
+     ],
+     "chars": [
+      316,
+      377
+     ],
+     "kind": "same site, different path (template?)"
+    }
+   ],
+   "b": 32,
+   "r": 4,
+   "k_used": 128,
+   "threshold": 0.42044820762685725,
+   "lsh_seconds": 1.128251314163208
+  },
+  {
+   "candidates": 1,
+   "cross_dump": 1,
+   "same_dump": 0,
+   "same_url": 0,
+   "est_ge_0_9": 1,
+   "J_ge_0_9": 1,
+   "J_lt_0_75": 0,
+   "exact_1": 1,
+   "hist": {
+    "[0.5, 0.6)": 0,
+    "[0.6, 0.7)": 0,
+    "[0.7, 0.8)": 0,
+    "[0.8, 0.9)": 0,
+    "[0.9, 1.0)": 0,
+    "= 1.0": 1,
+    "< 0.5": 0
+   },
+   "pairs": [
+    {
+     "i": 24026,
+     "j": 43351,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.foodandthoughts.blogspot.com/2012/08/i-baked.html",
+      "http://foodandthoughts.blogspot.com/2012/08/"
+     ],
+     "chars": [
+      584,
+      584
+     ],
+     "kind": "same site, different path (moved page?)"
+    }
+   ],
+   "b": 8,
+   "r": 16,
+   "k_used": 128,
+   "threshold": 0.8781260801866497,
+   "lsh_seconds": 0.48408985137939453
+  },
+  {
+   "candidates": 5,
+   "cross_dump": 3,
+   "same_dump": 2,
+   "same_url": 0,
+   "est_ge_0_9": 1,
+   "J_ge_0_9": 1,
+   "J_lt_0_75": 3,
+   "exact_1": 1,
+   "hist": {
+    "[0.5, 0.6)": 0,
+    "[0.6, 0.7)": 1,
+    "[0.7, 0.8)": 0,
+    "[0.8, 0.9)": 2,
+    "[0.9, 1.0)": 0,
+    "= 1.0": 1,
+    "< 0.5": 1
+   },
+   "pairs": [
+    {
+     "i": 1675,
+     "j": 24190,
+     "estimate": 0.8035714285714286,
+     "J": 0.8216123499142367,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2016-30",
+      "CC-MAIN-2017-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://publichealth.uic.edu/departments/communityhealthsciences/",
+      "http://publichealth.uic.edu/areas-study"
+     ],
+     "chars": [
+      4010,
+      3813
+     ],
+     "kind": "same site, different path (moved page?)"
+    },
+    {
+     "i": 6126,
+     "j": 33899,
+     "estimate": 0.8125,
+     "J": 0.7346938775510204,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2018-34",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.waterstones.com/book/the-brain-pack/ron-van-der-meer/ad-dudink/9781902413013",
+      "https://www.waterstones.com/book/sonas-na-casca/gloria-a-truitt/len-ebert/9781907277207"
+     ],
+     "chars": [
+      484,
+      474
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 11229,
+     "j": 14038,
+     "estimate": 0.625,
+     "J": 0.5851063829787234,
+     "same_dump": true,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2015-14"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://scitation.aip.org/content/aip/journal/rsi/83/8/10.1063/1.4745385",
+      "http://scitation.aip.org/content/aip/journal/jap/103/3/10.1063/1.2837027"
+     ],
+     "chars": [
+      491,
+      481
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 14930,
+     "j": 45264,
+     "estimate": 0.49107142857142855,
+     "J": 0.42857142857142855,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2020-45",
+      "CC-MAIN-2016-30"
+     ],
+     "same_url": false,
+     "urls": [
+      "https://www.medhelp.org/user_journals/show/182497/Hope-to-sleep",
+      "http://www.medhelp.org/posts/Heart-Disease/Sore-breasts/show/523863"
+     ],
+     "chars": [
+      1320,
+      2111
+     ],
+     "kind": "same site, different path (template?)"
+    },
+    {
+     "i": 24026,
+     "j": 43351,
+     "estimate": 1.0,
+     "J": 1.0,
+     "same_dump": false,
+     "dumps": [
+      "CC-MAIN-2015-14",
+      "CC-MAIN-2018-34"
+     ],
+     "same_url": false,
+     "urls": [
+      "http://www.foodandthoughts.blogspot.com/2012/08/i-baked.html",
+      "http://foodandthoughts.blogspot.com/2012/08/"
+     ],
+     "chars": [
+      584,
+      584
+     ],
+     "kind": "same site, different path (moved page?)"
+    }
+   ],
+   "b": 14,
+   "r": 8,
+   "k_used": 112,
+   "threshold": 0.7190084519372291,
+   "lsh_seconds": 0.6770691871643066
+  }
+ ]
+}
