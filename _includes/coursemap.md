@@ -16,7 +16,7 @@
 </div>
 <div class="cm-col">
 <div class="cm-part">Part II — Training</div>
-<div class="cm-wk cm-soon"><span class="cm-n">W7</span><span class="cm-t">Scaling laws &amp; data</span></div>
+<a class="cm-wk" href="weeks/w07.html"><span class="cm-n">W7</span><span class="cm-t">Scaling laws &amp; data</span></a>
 <div class="cm-wk cm-soon"><span class="cm-n">W8</span><span class="cm-t">SFT, PEFT, forgetting</span></div>
 <div class="cm-wk cm-soon"><span class="cm-n">W9</span><span class="cm-t">Alignment &amp; RL</span></div>
 <div class="cm-wk cm-soon"><span class="cm-n">W10</span><span class="cm-t">Reasoning &amp; test-time</span></div>

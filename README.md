@@ -30,14 +30,14 @@ Three threads run through all fourteen weeks and are asked of every layer: **Rep
 
 ## What is published so far
 
-Weeks are opened on the site as they are taught. As of October 2026, **W1–W6** are open: week pages, slides, and the demo code for every week. The remaining weeks appear on the course map as greyed-out placeholders; their pages are generated but not rendered, so there are no dead links.
+Weeks are opened on the site as they are taught. As of October 2026, **W1–W7** are open: week pages, slides, and the demo code for every week. The remaining weeks appear on the course map as greyed-out placeholders; their pages are generated but not rendered, so there are no dead links.
 
-| | W1 | W2 | W3 | W4 | W5 | W6 | W7–W14 |
-|---|---|---|---|---|---|---|---|
-| Week page (positioning, learning objectives, references, demos) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | generated, not yet published |
-| Slides (`slides/wNN.qmd`, reveal.js) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
-| Demo code (`demos/wNN_dK_*/`) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
-| Handout | [Mathematical prerequisites (PDF)](handouts/w01-math-prerequisites.pdf) | | | | | | |
+| | W1 | W2 | W3 | W4 | W5 | W6 | W7 | W8–W14 |
+|---|---|---|---|---|---|---|---|---|
+| Week page (positioning, learning objectives, references, demos) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | generated, not yet published |
+| Slides (`slides/wNN.qmd`, reveal.js) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
+| Demo code (`demos/wNN_dK_*/`) | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |
+| Handout | [Mathematical prerequisites (PDF)](handouts/w01-math-prerequisites.pdf) | | | | | | | |
 
 The **Syllabus** page carries the compute ledger (the shared coordinate system of the course), the four questions to ask of any paper, and a **half-life map** that says which weeks are stable for years and which need to be re-scanned against arXiv `cs.CL` / `cs.LG` and the latest ACL / EMNLP / NeurIPS / ICLR / ICML / COLM programmes before each offering. The **Resources** page lists the core textbooks, one paper per week, the derivations and hand-built components, and the toolchain the demos run on. **Supplements** holds four guides (in Chinese) for the midterm proof-of-concept report, the final paper, paper writing, and a set of problem cards for choosing a research question, sized for a single 16 GB GPU.
 

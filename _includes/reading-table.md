@@ -10,7 +10,7 @@
 | [W4](weeks/w04.qmd) | The full block | Wortsman et al., *Small-scale proxies for large-scale Transformer training instabilities*, arXiv:2309.14322 |
 | [W5](weeks/w05.qmd) | Position and long context | Liu et al., *Lost in the Middle*, TACL 2023 |
 | [W6](weeks/w06.qmd) | Architecture routes | Du et al., *Kimi Linear*, arXiv:2510.26692 — with Dao & Gu, *Mamba-2* |
-| W7 | Pre-training and scaling | Hoffmann et al., *Chinchilla*, arXiv:2203.15556 — with Besiroglu et al.'s replication |
+| [W7](weeks/w07.qmd) | Pre-training and scaling | Hoffmann et al., *Chinchilla*, arXiv:2203.15556 — with Besiroglu et al.'s replication |
 | W8 | SFT and PEFT | Shuttleworth et al., *LoRA vs Full Fine-tuning: An Illusion of Equivalence*, arXiv:2410.21228 |
 | W9 | Alignment and RL | Rafailov et al., *DPO*, NeurIPS 2023 — with the GRPO section of Shao et al., *DeepSeekMath* |
 | W10 | Reasoning and test-time compute | Yue et al., *Does RL Really Incentivize Reasoning Capacity Beyond the Base Model?*, arXiv:2504.13837 |

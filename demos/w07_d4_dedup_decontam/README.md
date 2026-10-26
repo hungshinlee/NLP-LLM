@@ -26,8 +26,8 @@ Two halves, both standard-library Python on the CPU. **(a) Live.** The instructo
 | Packages | none beyond the standard library for `test`, `live`, `run`, `decontam`, `rehearse`, `replay`. `fetch` needs `pyarrow` and `huggingface_hub` (already in the shared `.venv` for demo 2's fetch). |
 | Other folders | `../w07_corpus/fineweb_edu.jsonl` and `fineweb.jsonl` — demo 2's corpora; run `../w07_d2_scaling_fit/present.sh fetch --corpus both` once. |
 | Network | `fetch` once: MMLU's test split (`cais/mmlu`, `all/test-*.parquet`, 7.5 MB as JSONL, MIT) and MMLU-Redux 2.0's Virology subset (`edinburgh-dawg/mmlu-redux-2.0`, 100 questions, CC BY 4.0), both saved under `data/` with the dataset revision in a `.meta.json`. Everything else is offline. |
-| Time | signatures for 41,829 documents: about 130 s on 3 processes of a small Linux VM; a laptop with more cores is proportionally faster (the Mac figure will be in `runs/rehearsal/summary.json`). Signatures are cached in `runs/cache/`, so changing $(b, r)$ is instant. The 13-gram scan takes a few seconds per corpus. |
-| Portability | nothing platform-specific. Built and run end to end on Linux/aarch64 with Python 3.10; the course machine is an Apple M5 Max with Python 3.12. The counts below do not depend on the machine — only `blake2b`, `random.Random(0)` and set arithmetic are involved. |
+| Time | signatures for the 41,829 FineWeb-Edu documents: 30 s on an Apple M5 Max (17 processes), 34 s for the 64,823 FineWeb documents; about 130 s on 3 processes of a small Linux VM. `run` caches the signatures in `runs/cache/`, so changing $(b, r)$ is instant (`rehearse` always recomputes, to record the time). The 13-gram scan takes 2–5 s per corpus. |
+| Portability | nothing platform-specific. Built and run end to end on Linux/aarch64 with Python 3.10, then rehearsed on the course machine (Apple M5 Max, macOS 27, Python 3.12.14): every count below is identical on both — only `blake2b`, `random.Random(0)` and set arithmetic are involved. |
 
 ## Run it
 
@@ -49,7 +49,7 @@ Without `present.sh`: `python demo.py run`, `python tests.py dedup_live`, and so
 
 ## What you should see
 
-From `runs/rehearsal/` (built 2026-10-26; the counts are exact and machine-independent).
+From `runs/rehearsal/` (rehearsed 2026-10-26 on the M5 Max; the counts are exact and machine-independent).
 
 **(a) FineWeb-Edu, 41,829 documents, 10 dumps, $k_h = 128$.** At $(b, r) = (16, 8)$ — threshold $J \approx 0.71$ — there are **13 candidate pairs**: 12 across two dumps, 1 within a dump, 5 with the identical URL. Eight have exact $J \geq 0.9$ (six are $J = 1$). What they are: five pages re-crawled under the same URL in a later dump (a brain-teaser page, an H-Net review, a physics lecture note, a swissinfo article, a theology page); two pages whose URLs differ only in http/https, `www` or letter case (Wikipedia's `Black_skimmer` / `Black_Skimmer`, $J = 0.985$); two pairs on different sites — a company renaming (ihs.com → ihsmarkit.com, $J = 1$) and **a Mayo Clinic article reposted in full by a Nigerian news site** ($J = 0.713$); three same-site template pages (ancestry.com family-tree stubs, a leapfrog.com activity moved to a new path, two Merriam-Webster entries); one page that moved within a site. The single within-dump pair has $J = 0.525$: FineWeb's own per-dump MinHash (threshold 0.75) left nothing above 0.75 inside a dump, and our slightly lower threshold picks up a template page under it. Across dumps the picture is the opposite — eight of the twelve pairs are $J \geq 0.9$, the same page crawled in two different years, which per-dump deduplication does not see.
 

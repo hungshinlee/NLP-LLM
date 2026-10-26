@@ -12,7 +12,7 @@ One board derivation and one component per week. Everything is demonstrated in c
 | [W4](weeks/w04.qmd) | Parameter accounting → $N \approx 12 n_{\text{layer}}d^2$; $C \approx 6ND$ | **A full GPT block, and a tiny model trained** | MPS or CPU. **SDPA on MPS refuses attention dropout** |
 | [W5](weeks/w05.qmd) | **RoPE's relative property** in complex form; the phase argument for extrapolation | RoPE and its extrapolation variants | MPS; the long-context demo uses a quantized mid-size model |
 | [W6](weeks/w06.qmd) | **The linear-attention associativity identity** → recurrent form; the SSD skeleton | Both algorithms for linear attention | MPS. SSM and hybrid models run on MLX's own Metal kernels |
-| W7 | **Chinchilla's first-order condition** (one of the course's three peaks) | A scaling law fitted at small scale | MPS — four or five tiny transformers |
+| [W7](weeks/w07.qmd) | **Chinchilla's first-order condition** (one of the course's three peaks) | A scaling law fitted at small scale | MPS — four or five tiny transformers |
 | W8 | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT with `mlx_lm.lora`** | MLX. Pointing it at a quantized model *is* QLoRA |
 | W9 | **DPO in four steps** (one of the three peaks); GRPO's advantage normalization | **The DPO loss, with four tests** | CPU |
 | W10 | The two crossing pass@k curves; the binomial bound behind self-consistency | Budget forcing | MLX, a mid-size model with a thinking mode |
