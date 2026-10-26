@@ -30,6 +30,7 @@ opencc-python-reimplemented==0.1.7
 packaging==26.3
 pillow==13.0.0
 protobuf==7.36.1
+pyarrow==26.0.0
 pygments==2.21.0
 pyparsing==3.3.3
 python-dateutil==2.9.0.post0

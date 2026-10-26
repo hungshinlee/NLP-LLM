@@ -470,29 +470,29 @@ Gadre 2025 · Schaeffer 2023 · Wei 2022 · Misconception 6: "lower loss is more
 | | |
 |:---|:-----------------|
 | **Why** | Methodology reasons 1 and 2, on purpose: five byte-level GPTs (W4's `GPT`, $V = 256$) on the same FineWeb-Edu sample, each trained to $D = 20N$ — one ray, few points. Fit $\mathcal{L}(N) = E + AN^{-\alpha}$ to the three smallest; extrapolate to the two largest; report the error. |
-| **What runs** | Recorded before class, replayed here. Five sizes from about 0.2M to 10M parameters ($d = 64$ to $320$, 4 to 8 layers; the largest may be trimmed at rehearsal to the time budget, about 3 hours in total); same corpus, same seed; learning rate scaled by width as muP prescribes (W4); held-out loss in bits/byte every 50 steps. Then the five-point fit for comparison. |
+| **What runs** | Recorded before class, replayed here. Five sizes, 0.22M to 9.88M parameters ($d = 64$ to $320$, 4 to 8 layers; 78 minutes in all at rehearsal, 65 of them the largest run); same corpus, same seed; learning rate scaled by width as muP prescribes (W4); held-out loss in bits/byte every 50 steps. Then the five-point fit for comparison. |
 | **Watch for** | Three points, three parameters: expect the fit to be perfect and the extrapolation not to be — how far off, and in which direction? If the error is small, that is a result too: within two decades a power law does hold. Each run also keeps its whole loss-vs-tokens curve, so the replay can cut Approach 1's envelope. |
 :::
 
 ::: {.footer}
-Demo 2 · `demos/w07_d2_scaling_fit` · torch on MPS · built 2026-10-26, not yet rehearsed
+Demo 2 · `demos/w07_d2_scaling_fit` · torch on MPS · rehearsed 2026-10-26
 :::
 
 ## Replay: demo 2 — five points, one ray, the extrapolation error
 
-![](assets/w07/scaling-axes.svg){width="100%"}
+![](assets/w07/scaling-fit.svg){width="100%"}
 
 ::: {.fragment fragment-index=1}
 | fit | $E$ | $A$ | $\alpha$ | predicted at $N_{4}$ / measured | predicted at $N_{5}$ / measured |
 |:---|:---|:---|:---|:---|:---|
-| three smallest points | | | | | |
-| all five points | | | | — | — |
+| three smallest points | $-0.57$ | $104$ | $0.262$ | $1.51$ / $1.76$ ($-14\,\%$) | $0.97$ / $1.48$ ($-34\,\%$) |
+| all five points | $1.14$ | $1565$ | $0.525$ | — | — |
 
 : {tbl-colwidths="[26,10,10,10,22,22]"}
 :::
 
 ::: {.footer}
-Demo 2 · replay · `w07_d2_scaling_fit/` · built 2026-10-26, not yet rehearsed · Misconception 5
+Demo 2 · replay · `w07_d2_scaling_fit/` · rehearsed 2026-10-26 · bits/byte · Misconception 5
 :::
 
 ## The other half of the recipe: a run that spikes cannot be fitted

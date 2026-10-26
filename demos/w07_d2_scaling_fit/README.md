@@ -25,7 +25,7 @@ Nothing is run live in class; the rehearsal records in `runs/rehearsal/` are rep
 | Network | only `fetch`, once (about 200 MB per corpus). Everything else runs offline. |
 | Device | training uses `mps` on Apple silicon and falls back to the CPU (far slower); `cuda` is accepted by the code but has never been run. |
 | Memory / time | the models are small (the largest 9.9 M parameters); the corpus is held in memory as one byte tensor (200 MB). Time is dominated by the largest run — see `estimate`, and the smoke test, which times each size. Weights (up to about 40 MB each) go to `runs/weights/` (not committed). |
-| Portability | nothing platform-specific; tested only on an Apple M5 Max (64 GB), macOS 27, Python 3.12, torch 2.14.0 (the pipeline was also exercised once on Linux/CPU with 12 steps per size). |
+| Portability | nothing platform-specific; tested only on an Apple M5 Max (64 GB), macOS 27.0.1, Python 3.12, torch 2.14.0 — the five runs took 9 s, 37 s, 113 s, 10 min and 65 min (78 min in all; 50k tokens/s for the largest). The pipeline was also exercised once on Linux/CPU with 12 steps per size. |
 
 ## Run it
 
@@ -44,7 +44,19 @@ Without `present.sh`: `python demo.py replay`, `python demo.py rehearse`, and so
 
 ## What you should see
 
-The rehearsal has not been run yet (2026-10-26); the slide's table is blank until it has. When it has, `runs/rehearsal/summary.json` holds the table and `fit.json` the full fit: the five measured points, the three-point fit's $E, A, \alpha$ and its predictions at the two largest sizes against their measured loss, the five-point fit, and the envelope.
+From `runs/rehearsal/fit.json` (2026-10-26, Apple M5 Max, `mps`, one seed; corpus 41,829 documents, 200 MB, 10 Common Crawl dumps; held-out 1.05 MB):
+
+| | s1 | s2 | s3 | s4 | s5 |
+|---|---|---|---|---|---|
+| $N$ | 0.22M | 0.58M | 1.20M | 3.15M | 9.88M |
+| held-out, bits/byte | 3.602 | 2.661 | 2.100 | 1.758 | 1.479 |
+
+| fit | $E$ (bits/byte) | $\alpha$ | predicted / measured at s4 | predicted / measured at s5 |
+|---|---|---|---|---|
+| three smallest points | $-0.57$ | 0.262 | 1.51 / 1.76 ($-14\,\%$) | 0.97 / 1.48 ($-34\,\%$) |
+| all five points | 1.14 | 0.525 | residual $-0.01$ | residual $-0.005$ |
+
+Things to notice, all specific to this setup: the three-point fit is exact (three parameters, three points — the residual is floating-point zero) and gives a **negative** $E$, an irreducible loss below zero, which cannot exist; with no degree of freedom left, $E$ is whatever the curvature of three points says it is. The extrapolated curve passes *below* both larger models — too optimistic by 14 % and 34 %. Adding the two points moves $E$ by 1.7 bits/byte and doubles $\alpha$. In the iso-FLOPs envelope the best size climbs monotonically with the budget (the smallest model wins below about $4 \times 10^{12}$ FLOPs, the largest above about $4 \times 10^{15}$), the shape of Hoffmann et al.'s Approach 1; its log-log slope here is 0.29 against their 0.50, but with five discrete sizes and mid-run losses taken on each run's own cosine schedule, that number is an order of magnitude at best.
 
 A caveat the program prints every time: these are models of a few million parameters on 200 MB of bytes, one seed, five points, one ray. What you see is the shape of a mechanism — few points, collinear design, extrapolation — not the numbers of any real scaling law. If the extrapolation error is small, the right conclusion is "within two decades a power law holds here", not "extrapolation is safe".
 
