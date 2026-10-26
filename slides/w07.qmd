@@ -218,11 +218,15 @@ Outline W7, key math 2 · on the board (with $\log N$ as the variable; same resu
 {{< include assets/w07/isoflop.inline.qmd >}}
 
 ::: {.fragment fragment-index=3}
-$$N^{*} \propto C^{\frac{\beta}{\alpha+\beta}} = C^{a}, \qquad D^{*} = \frac{C}{6N^{*}} \propto C^{\frac{\alpha}{\alpha+\beta}} = C^{b}, \qquad \frac{D^{*}}{N^{*}} \propto C^{\frac{\alpha-\beta}{\alpha+\beta}}$$
+$$N^{*} = G\Big(\tfrac{C}{6}\Big)^{a}, \qquad D^{*} = \tfrac{C}{6N^{*}} = G^{-1}\Big(\tfrac{C}{6}\Big)^{b}, \qquad a = \tfrac{\beta}{\alpha+\beta},\; b = \tfrac{\alpha}{\alpha+\beta},\; G = \Big(\tfrac{\alpha A}{\beta B}\Big)^{\frac{1}{\alpha+\beta}}$$
+:::
+
+::: {.fragment fragment-index=4}
+$$\frac{D^{*}}{N^{*}} = G^{-2}\Big(\tfrac{C}{6}\Big)^{\frac{\alpha-\beta}{\alpha+\beta}} \qquad\text{a constant only if } \alpha = \beta \text{ — and then it is } G^{-2}\text{, set by } A, B, \alpha, \beta$$
 :::
 
 ::: {.footer}
-Hoffmann Eq. (4), computed from Eq. (10) · $D/N$ constant **only if** $\alpha = \beta$ · Misconception 1
+Hoffmann Eq. (4), computed from Eq. (10): $a = 0.452$, $G = 1.345$, $G^{-2} = 0.55$ · Misconception 1
 :::
 
 ## Three approaches, three things held fixed — and what each gave
@@ -284,7 +288,7 @@ Porian 2024 · Pearce & Song 2024 · W4 p20 · Misconception 2: "one of them bot
 | charge (abstract) | what it means | already seen today |
 |:---|:---|:---|
 | **1** · **inconsistent with the other two methods** | Eq. (10)'s constants imply a different optimum than Table 3 | Chinchilla's own 70B / 1.4T is off Eq. (10)'s valley floor (p9, p16) |
-| **2** · it **fails to fit the extracted data** | re-digitised, the points miss the published curve; the re-fit gives $a \approx 0.5$ | — |
+| **2** · it **fails to fit the extracted data** | the points re-digitised from the paper's figure miss the published curve; their own re-fit is **compatible with methods 1–2** | — |
 | **3** · **implausibly narrow confidence intervals** | 0.454–0.455 would need about 600,000 runs; the paper had under 500 | Table 2's interval (p16); the mechanism is p29 |
 
 : {tbl-colwidths="[36,36,28]"}
@@ -727,7 +731,7 @@ Brown et al. 2020 §4 · Oren 2024 · Gema 2025 · Misconception 9: "high MMLU =
 | audit | what went out with the bad | the lesson |
 |:---|:---|:---|
 | **Dodge et al. 2021**, the first audit of C4 | the blocklist **disproportionately removed text from and about minority individuals** — while patents, military sites, machine translation and benchmark items stayed | a "bad words" list is a policy with a measurable victim |
-| **FineWeb §3.4**, deduplication | **global** MinHash across snapshots kept ~4T tokens and trained *worse* than no deduplication; per-snapshot kept ~20T and trained better | more duplicates removed, more good long tail removed; the granularity is a hyperparameter |
+| **FineWeb §3.4**, deduplication | **global** MinHash over 96 snapshots kept ~4T tokens — **little improvement over no deduplication**; what stayed was *worse* than the 90% removed. Per-snapshot kept ~20T | the long tail leaves with the duplicates; granularity is a hyperparameter |
 | **Nemotron-CC**, heuristic filters | relying less on rules recovered **4$\times$ the unique real tokens** at DCLM's MMLU | the strictest filter is not the best |
 
 : {tbl-colwidths="[22,50,28]"}
