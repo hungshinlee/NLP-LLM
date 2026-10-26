@@ -470,12 +470,12 @@ Gadre 2025 · Schaeffer 2023 · Wei 2022 · Misconception 6: "lower loss is more
 | | |
 |:---|:-----------------|
 | **Why** | Methodology reasons 1 and 2, on purpose: five byte-level GPTs (W4's `GPT`, $V = 256$) on the same FineWeb-Edu sample, each trained to $D = 20N$ — one ray, few points. Fit $\mathcal{L}(N) = E + AN^{-\alpha}$ to the three smallest; extrapolate to the two largest; report the error. |
-| **What runs** | Recorded before class, replayed here. Sizes from about 0.3M to 10M parameters (fixed at rehearsal by the time budget, about 3 hours in total); same corpus, same seed; learning rate scaled by width as muP prescribes (W4); held-out loss in bits/byte every 50 steps. Then the five-point fit for comparison. |
+| **What runs** | Recorded before class, replayed here. Five sizes from about 0.2M to 10M parameters ($d = 64$ to $320$, 4 to 8 layers; the largest may be trimmed at rehearsal to the time budget, about 3 hours in total); same corpus, same seed; learning rate scaled by width as muP prescribes (W4); held-out loss in bits/byte every 50 steps. Then the five-point fit for comparison. |
 | **Watch for** | Three points, three parameters: expect the fit to be perfect and the extrapolation not to be — how far off, and in which direction? If the error is small, that is a result too: within two decades a power law does hold. Each run also keeps its whole loss-vs-tokens curve, so the replay can cut Approach 1's envelope. |
 :::
 
 ::: {.footer}
-Demo 2 · `demos/w07_d2_scaling_fit` · torch on MPS · not yet built (2026-10-26)
+Demo 2 · `demos/w07_d2_scaling_fit` · torch on MPS · built 2026-10-26, not yet rehearsed
 :::
 
 ## Replay: demo 2 — five points, one ray, the extrapolation error
@@ -492,7 +492,7 @@ Demo 2 · `demos/w07_d2_scaling_fit` · torch on MPS · not yet built (2026-10-2
 :::
 
 ::: {.footer}
-Demo 2 · replay · `w07_d2_scaling_fit/` · not yet built (2026-10-26) · Misconception 5
+Demo 2 · replay · `w07_d2_scaling_fit/` · built 2026-10-26, not yet rehearsed · Misconception 5
 :::
 
 ## The other half of the recipe: a run that spikes cannot be fitted
