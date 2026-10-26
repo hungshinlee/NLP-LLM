@@ -1,0 +1,124 @@
+{
+ "date": "2026-10-26T16:46:19",
+ "classifier": {
+  "repo": "HuggingFaceFW/fineweb-edu-classifier",
+  "revision": "284663cbb2dabf9bda30d8f8cc49601251ee1631",
+  "device": "mps",
+  "params": 109483009,
+  "max_length": 512,
+  "load_s": 0.1883249282836914,
+  "torch": "2.14.0",
+  "transformers": "5.17.0"
+ },
+ "pages": [
+  {
+   "id": "<urn:uuid:0b1c66e5-25e8-4834-a6c7-d04fea56e21f>",
+   "source": "web",
+   "dump": "CC-MAIN-2015-14",
+   "url": "http://www.molecularstation.com/forum/physics-forum/34884-clock-speed-dead-moores-law-challenged.html",
+   "language_score": 0.9006710648536682,
+   "dataset_score": null,
+   "chars": 832,
+   "page": 1,
+   "score": 3.6580967903137207,
+   "int_score": 4,
+   "tokens": 174,
+   "truncated": false,
+   "seconds": 0.06784486770629883
+  },
+  {
+   "id": "<urn:uuid:5841b32b-d244-496e-b7a5-2d8c10490bb9>",
+   "source": "edu",
+   "dump": "CC-MAIN-2017-30",
+   "url": "http://preventiveoncology.alliedacademies.com/events-list/http-preventiveoncology-alliedacademies-com",
+   "language_score": 0.911769688129425,
+   "dataset_score": 3.15625,
+   "chars": 838,
+   "page": 2,
+   "score": 3.1479578018188477,
+   "int_score": 3,
+   "tokens": 149,
+   "truncated": false,
+   "seconds": 0.008569717407226562
+  },
+  {
+   "id": "<urn:uuid:8ca61ccb-8218-44fa-82de-4ae4b8bb41b9>",
+   "source": "web",
+   "dump": "CC-MAIN-2013-20",
+   "url": "http://www.bsfatsns.blogspot.com/2007/11/jumping-on-lilos.html",
+   "language_score": 0.9681496620178223,
+   "dataset_score": null,
+   "chars": 967,
+   "page": 3,
+   "score": 0.8093358874320984,
+   "int_score": 1,
+   "tokens": 221,
+   "truncated": false,
+   "seconds": 0.009782791137695312
+  },
+  {
+   "id": "<urn:uuid:0d99c572-dd68-4180-bcc4-52aba598486c>",
+   "source": "web",
+   "dump": "CC-MAIN-2019-35",
+   "url": "http://www.newsandsentinel.com/opinion/letters-to-the-editor/2013/12/drop-doonesbury-from-paper/",
+   "language_score": 0.9420039653778076,
+   "dataset_score": null,
+   "chars": 710,
+   "page": 4,
+   "score": 0.39863893389701843,
+   "int_score": 0,
+   "tokens": 158,
+   "truncated": false,
+   "seconds": 0.007821798324584961
+  },
+  {
+   "id": "<urn:uuid:11b520ab-e051-44d7-abc1-c38fde00647e>",
+   "source": "edu",
+   "dump": "CC-MAIN-2017-30",
+   "url": "https://www.nwacademy.org/middle-school/fundamental-year/",
+   "language_score": 0.9457424879074097,
+   "dataset_score": 3.0625,
+   "chars": 1279,
+   "page": 5,
+   "score": 3.066343307495117,
+   "int_score": 3,
+   "tokens": 223,
+   "truncated": false,
+   "seconds": 0.00910496711730957
+  },
+  {
+   "id": "<urn:uuid:996cd47b-66e1-421a-a55b-f22d1b6dabe2>",
+   "source": "edu",
+   "dump": "CC-MAIN-2017-26",
+   "url": "https://museumvictoria.com.au/melbournemuseum/discoverycentre/wild/biogeographic-regions/indomalay/",
+   "language_score": 0.9735953211784363,
+   "dataset_score": 3.640625,
+   "chars": 951,
+   "page": 6,
+   "score": 3.630258083343506,
+   "int_score": 4,
+   "tokens": 202,
+   "truncated": false,
+   "seconds": 0.008500814437866211
+  }
+ ],
+ "heldouts": {
+  "en_paragraph": {
+   "label": "W1's paragraph (English)",
+   "score": 0.996496856212616,
+   "int_score": 1,
+   "tokens": 165,
+   "truncated": false,
+   "seconds": 0.008520841598510742,
+   "n": 1
+  },
+  "wikipedia": {
+   "label": "Wikipedia (en, 2023-11-01 dump)",
+   "score": 1.601138061285019,
+   "int_score": null,
+   "min": 0.6347249746322632,
+   "max": 3.0175681114196777,
+   "n": 20
+  }
+ }
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W7 demo 3（投影片 p41「Live + replay: demo 3 — guess the source, score it, two curves」；p40 前導頁）課前與課堂的入口。
+# W7 demo 3（投影片 p42「Live + replay: demo 3 — guess the source, score it, two curves」；p41 前導頁）課前與課堂的入口。
 # torch + transformers（分類器）；訓練走 MPS（沒有就退 CPU）。模型與語料來自 ../w07_d2_scaling_fit（先做完 demo 2 的 fetch --corpus both）。
 #
 #   ./present.sh fetch               一次、要網路：FineWeb-Edu 分類器（約 440 MB，revision → ../versions.lock）＋ Wikipedia held-out（約 1 MB → ../w07_corpus/）
@@ -10,7 +10,7 @@
 #   ./present.sh rehearse [--steps N]  課前彩排：sample（若還沒有）→ score → 分數分布 → 兩個 run → runs/rehearsal/、runs/weights/；--steps 30 是煙霧測試 → runs/smoke/
 #   ./present.sh train edu|web       只訓一邊；之後 ./present.sh summarize
 #   ./present.sh summarize           只從兩個 json 重做 summary.json 與 curves.svg
-#   ./present.sh replay              課堂：Enter 一步——設定 → 每個 held-out 一格的曲線 → p41 的表
+#   ./present.sh replay              課堂：Enter 一步——設定 → 每個 held-out 一格的曲線 → p42 的表
 #   ./present.sh show                同 replay，不等 Enter
 #
 # macOS 內建的是 bash 3.2：不要用 ${var,,} 這類 4.x 語法；$變數 後面不要緊接中文或全形標點，一律 ${var}。

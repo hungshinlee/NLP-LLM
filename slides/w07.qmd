@@ -592,18 +592,18 @@ W2 p67 said "Traditional Chinese has too little data" is the wrong diagnosis. He
 FineWeb §3.3–3.5, §4 · DCLM §4.4 · Nemotron-CC · RegMix (abstracts) · Misconception 8
 :::
 
-## Before Demo 3: equal bytes, two corpora, two held-outs
+## Before Demo 3: equal bytes, two corpora, four held-outs
 
 ::: {.prose}
 | | |
 |:---|:-----------------|
 | **Why** | p40 said "educational" is one judge's taste and that quality is relative to a target. See both: first with your own eyes and the classifier's score, then in bits/byte. |
-| **What runs** | **Live**: three pages sampled from FineWeb and three from FineWeb-Edu (fixed seed), shuffled — you guess which is which; then the FineWeb-Edu classifier (`HuggingFaceFW/fineweb-edu-classifier`, a regression head on a 110M embedding model) scores the same six pages 0–5. **Recorded**: one of demo 2's sizes trained twice on **equal bytes** of each corpus (same steps, same seed), evaluated on **two** held-outs: W1 demo 2's English paragraph, and a Wikipedia sample — reported separately. |
-| **Watch for** | Which pages fool you, and which the classifier scores low that you would keep. In the curves: does the FineWeb-Edu model win on both held-outs, or only on the one that looks like its training data? "Quality" is defined relative to the held-out — splitting the report is how you see that. |
+| **What runs** | **Live**: three pages sampled from FineWeb and three from FineWeb-Edu (fixed seed), shuffled — you guess which is which; then the FineWeb-Edu classifier (`HuggingFaceFW/fineweb-edu-classifier`, a regression head on a 110M embedding model) scores the same six pages 0–5. **Recorded**: demo 2's s4 (3.15M) trained twice on **equal bytes** of each corpus (same 7,687 steps, same seed), evaluated on **four** held-outs, reported separately: W1 demo 2's English paragraph, a Wikipedia sample, and each corpus's own tail. |
+| **Watch for** | Which pages fool you, and which the classifier scores low that you would keep. In the table: does the FineWeb-Edu model win on every held-out, or only on the one that looks like its training data? "Quality" is defined relative to the held-out — splitting the report is how you see that. |
 :::
 
 ::: {.footer}
-Demo 3 · `demos/w07_d3_quality_filter` · torch + transformers on MPS · built, not yet rehearsed (2026-10-26)
+Demo 3 · `demos/w07_d3_quality_filter` · torch + transformers on MPS · rehearsed 2026-10-26, 21 min for the two runs
 :::
 
 ## Live + replay: demo 3 — guess the source, score it, two curves
@@ -619,11 +619,11 @@ Demo 3 · `demos/w07_d3_quality_filter` · torch + transformers on MPS · built,
 :::
 
 ::: {.fragment fragment-index=2}
-![](assets/w07/quality-axes.svg){width="100%"}
+![](assets/w07/quality-fit.svg){width="100%"}
 :::
 
 ::: {.footer}
-Demo 3 · live + replay · `w07_d3_quality_filter/` · built, not yet rehearsed (2026-10-26) · blank on purpose
+Demo 3 · live + replay · `w07_d3_quality_filter/` · rehearsed 2026-10-26 · table blank on purpose, filled in class
 :::
 
 ## Deduplication: why — one sentence, 60,000 times

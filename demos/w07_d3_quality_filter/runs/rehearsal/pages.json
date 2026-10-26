@@ -1,0 +1,80 @@
+{
+ "date": "2026-10-26T16:45:58",
+ "seed": 7,
+ "exclude": [],
+ "rule": {
+  "per_corpus": 3,
+  "min_chars": 500,
+  "max_chars": 1600,
+  "min_language_score": 0.9,
+  "pool": 2000
+ },
+ "pages": [
+  {
+   "id": "<urn:uuid:0b1c66e5-25e8-4834-a6c7-d04fea56e21f>",
+   "source": "web",
+   "dump": "CC-MAIN-2015-14",
+   "url": "http://www.molecularstation.com/forum/physics-forum/34884-clock-speed-dead-moores-law-challenged.html",
+   "language_score": 0.9006710648536682,
+   "dataset_score": null,
+   "chars": 832,
+   "text": "[Only registered users see links. ]\nChip makers have since followed the cherished rule by shrinking and adding\ntransistors. The practice yields a higher clock speed, which measures the\nnumber of instructions a microprocessor can execute each second.\nBut the focus on dual- and multi-core means the traditional method of\nboosting computer performance is no longer worthwhile. Putting more of\nthese smaller transistors on a chip has led to excessive power use and\ncurrent leakage problems in recent years. Running an overheated\nmicroprocessor can cause a computer system meltdown. Yet no cooling method\nis cheap enough to justify keeping up with Moore’s Law.\n“The engineers got to the point where they couldn’t put more transistors and\nmake them run faster,” says Dean McCarron, principal analyst at chip\nconsultancy Mercury Research.",
+   "page": 1
+  },
+  {
+   "id": "<urn:uuid:5841b32b-d244-496e-b7a5-2d8c10490bb9>",
+   "source": "edu",
+   "dump": "CC-MAIN-2017-30",
+   "url": "http://preventiveoncology.alliedacademies.com/events-list/http-preventiveoncology-alliedacademies-com",
+   "language_score": 0.911769688129425,
+   "dataset_score": 3.15625,
+   "chars": 838,
+   "text": "Preventive oncology is\nany measure that is taken to prevent development or progression of malignant\nprocess. Around one third of cancer deaths are due to the five leading\nbehavioral and dietary risks: high body mass index, low fruit and vegetable\nintake, lack of physical activity, tobacco use, alcohol use, and one half of\nall cancer cases either arise from modifiable risk factors or can be detected\nas precursor lesions before the development of disease with metastatic\nPrevention of cancer can take place on several different levels: primary prevention addresses the cause of cancer so disease does not occur, secondary prevention identifies disease before the onset of symptoms and keeps it from becoming more extensive, and tertiary prevention reduces complications and progression of disease once it has become clinically apparent.",
+   "page": 2
+  },
+  {
+   "id": "<urn:uuid:8ca61ccb-8218-44fa-82de-4ae4b8bb41b9>",
+   "source": "web",
+   "dump": "CC-MAIN-2013-20",
+   "url": "http://www.bsfatsns.blogspot.com/2007/11/jumping-on-lilos.html",
+   "language_score": 0.9681496620178223,
+   "dataset_score": null,
+   "chars": 967,
+   "text": "- Decant and Phasing\n- Legal agreements\n- Room Data Sheets\n- The \"Semi-Frozen Scheme\" versus the \"Governors Scheme\"\n- FM - the Variant Bid\n- FM - phasing of interim service\n- Student consultation\n- The ICT bid (as far as possible - although Governors have yet to agreed the offer)\nThere are other areas that aren't yet resolved, such as parental consultation, but where we at least know where we're heading.\nWe're supposed to have all the above resolved in time for the Governors' Meeting on December 12th. Will we manage it? I can hardly bear the tension! It seems there's loads of lilo jumping to do.\nOn a completely separate note I was doing my regular bout of volunteering at a local community bookshop on Saturday, and was introduced to a customer who just happens to be a Learning Trust lawyer dealing with BSF. We spent an entertaining couple of minutes chatting about it, but there is no escape. BSF is everywhere.\nMeeting Count 2/11/07 - 23/11/07 - Seventeen",
+   "page": 3
+  },
+  {
+   "id": "<urn:uuid:0d99c572-dd68-4180-bcc4-52aba598486c>",
+   "source": "web",
+   "dump": "CC-MAIN-2019-35",
+   "url": "http://www.newsandsentinel.com/opinion/letters-to-the-editor/2013/12/drop-doonesbury-from-paper/",
+   "language_score": 0.9420039653778076,
+   "dataset_score": null,
+   "chars": 710,
+   "text": "Drop Doonesbury from paper\nI totally agree with Kenneth Cooper’s letter to you entitled “Doonesbury is too offensive” in your Dec. 15 edition. You should not print a “cartoon” that makes fun of rape in the military. This subject belongs on your editorial pages.\nThe “cartoon” is off-base and you should consider dropping your contract with the syndicate you purchase it from. This action on your part may keep many of your remaining subscribers from dropping their subscription with your newspaper.\nAgain – Doonesbury is an “Editorial Comment Piece” and not a cartoon. As Mr. Cooper stated: “Why not one of the comics featured in the daily paper?” You should consider Mr. Cooper’s advice. I did.\nJohn C. Cleary",
+   "page": 4
+  },
+  {
+   "id": "<urn:uuid:11b520ab-e051-44d7-abc1-c38fde00647e>",
+   "source": "edu",
+   "dump": "CC-MAIN-2017-30",
+   "url": "https://www.nwacademy.org/middle-school/fundamental-year/",
+   "language_score": 0.9457424879074097,
+   "dataset_score": 3.0625,
+   "chars": 1279,
+   "text": "Northwest Academy’s youngest students focus on building a strong academic and social foundation for middle school success. Classes are kept intentionally small so as to provide students with greater individual attention and opportunity.\nIn English, the emphasis is on building solid writing skills to prepare students for more rigorous work at subsequent grade levels. Works of literature and critical thinking are key areas of concentration. In both Visual Art and Ancient Civilizations, students learn about ancient cultures and civilizations. In Life Science, students develop basic skills and knowledge to ensure their success at higher levels of science. In Outdoor School, students spend a week exploring hands-on science at an overnight camp near Portland.\nIn Music and Tap Dance, students learn focus, concentration, rhythm, and performance skills. In math, students are evaluated and placed according to their skill level, typically in Math Foundations, Pre-Algebra, or Algebra 1. Learning Lab teaches essential executive function skills, such as time management, personal organization, learning strategies, and effective work habits. Students may take an optional world language course, including Mandarin, Spanish or French, at the Introductory through Fluency levels.",
+   "page": 5
+  },
+  {
+   "id": "<urn:uuid:996cd47b-66e1-421a-a55b-f22d1b6dabe2>",
+   "source": "edu",
+   "dump": "CC-MAIN-2017-26",
+   "url": "https://museumvictoria.com.au/melbournemuseum/discoverycentre/wild/biogeographic-regions/indomalay/",
+   "language_score": 0.9735953211784363,
+   "dataset_score": 3.640625,
+   "chars": 951,
+   "text": "This region includes the Indian subcontinent and South-east Asia. Islands are a feature of this region, and the Malay Archipelago has more than 20,000 islands. At various times when sea levels were lower than they are today, some of these islands were connected and animals were able to move freely between them.\nAs sea levels rose again, populations became isolated and followed their own evolutionary path. This fragmenting and rejoining of groups of animals over time has helped create the exceptional biological diversity of the region that we see today.\nIndomalay is home to birds such as Indian Peafowls (or ‘peacocks’), pigeons, pittas and flowerpeckers. Forest-dwelling mammals include tree shrews, tigers, orang-utans and Sloth Bears.\nIn the Wild exhibition we have many animals from Indomalay on display. The Regional Animals box at right contains a selection, with information about why they are special and how they are faring in the wild.",
+   "page": 6
+  }
+ ]
+}

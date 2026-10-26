@@ -1,0 +1,311 @@
+{
+ "date": "2026-10-26T17:07:58",
+ "machine": "arm64",
+ "macos": "27.0.1",
+ "python": "3.12.14",
+ "torch": "2.14.0",
+ "device": "mps",
+ "size": {
+  "key": "s4",
+  "d": 192,
+  "n_layer": 7,
+  "d_ff": 512,
+  "n_head": 6,
+  "V": 256,
+  "L": 256
+ },
+ "params": {
+  "total": 3148608,
+  "emb": 49152,
+  "nonemb": 3099456
+ },
+ "N": 3148608,
+ "steps": 7687,
+ "steps_for_ray": 7687,
+ "tokens": 62971904,
+ "lr": 0.0013333333333333333,
+ "smoke": false,
+ "runs": {
+  "edu": {
+   "trained_on": "edu",
+   "corpus": {
+    "path": "/Users/winston/Course-Hub/nlp_llm/demos/w07_corpus/fineweb_edu.jsonl",
+    "which": "edu",
+    "repo": "HuggingFaceFW/fineweb-edu",
+    "license": "ODC-By 1.0",
+    "fetched": "2026-10-26T10:31:56",
+    "docs": 41829,
+    "train_docs": 41615,
+    "held_docs": 214,
+    "dumps": 10,
+    "train_bytes": 199034558,
+    "held_bytes": 1053404
+   },
+   "epochs": 0.3163870874802888,
+   "seconds": 597.4302432537079,
+   "tokens_per_s": 105404.61369522268,
+   "date": "2026-10-26T16:56:50"
+  },
+  "web": {
+   "trained_on": "web",
+   "corpus": {
+    "path": "/Users/winston/Course-Hub/nlp_llm/demos/w07_corpus/fineweb.jsonl",
+    "which": "web",
+    "repo": "HuggingFaceFW/fineweb",
+    "license": "ODC-By 1.0",
+    "fetched": "2026-10-26T10:33:15",
+    "docs": 64823,
+    "train_docs": 64437,
+    "held_docs": 386,
+    "dumps": 8,
+    "train_bytes": 199083183,
+    "held_bytes": 1051891
+   },
+   "epochs": 0.3163097877243245,
+   "seconds": 640.5689809322357,
+   "tokens_per_s": 98306.20257065125,
+   "date": "2026-10-26T17:07:58"
+  }
+ },
+ "heldouts": {
+  "en_paragraph": {
+   "key": "en_paragraph",
+   "label": "W1's paragraph (English)",
+   "source": "file",
+   "n_bytes": 754,
+   "path": "w02_d1_fertility/texts/zh_city_en.txt"
+  },
+  "wikipedia": {
+   "key": "wikipedia",
+   "label": "Wikipedia (en, 2023-11-01 dump)",
+   "source": "wikipedia",
+   "n_bytes": 1056160,
+   "repo": "wikimedia/wikipedia",
+   "path": "20231101.en/train-00000-of-00041.parquet",
+   "license": "CC BY-SA 4.0",
+   "row_group": 100,
+   "seed": 7,
+   "articles": 290,
+   "date": "2026-10-26T16:45:56"
+  },
+  "edu_tail": {
+   "key": "edu_tail",
+   "label": "FineWeb-Edu held-out (its own tail)",
+   "source": "corpus_tail",
+   "n_bytes": 1053404,
+   "corpus": "edu",
+   "repo": "HuggingFaceFW/fineweb-edu",
+   "license": "ODC-By 1.0",
+   "held_docs": 214
+  },
+  "web_tail": {
+   "key": "web_tail",
+   "label": "FineWeb held-out (its own tail)",
+   "source": "corpus_tail",
+   "n_bytes": 1051891,
+   "corpus": "web",
+   "repo": "HuggingFaceFW/fineweb",
+   "license": "ODC-By 1.0",
+   "held_docs": 386
+  }
+ },
+ "table": {
+  "en_paragraph": {
+   "label": "W1's paragraph (English)",
+   "bytes": 754,
+   "edu_bpb": 1.9211405324579214,
+   "web_bpb": 1.8855580208880474,
+   "diff_bpb": 0.03558251156987402,
+   "winner": "web"
+  },
+  "wikipedia": {
+   "label": "Wikipedia (en, 2023-11-01 dump)",
+   "bytes": 1056160,
+   "edu_bpb": 2.111737063685601,
+   "web_bpb": 2.078523745064229,
+   "diff_bpb": 0.03321331862137189,
+   "winner": "web"
+  },
+  "edu_tail": {
+   "label": "FineWeb-Edu held-out (its own tail)",
+   "bytes": 1053404,
+   "edu_bpb": 1.7488165420027701,
+   "web_bpb": 1.7947417886760948,
+   "diff_bpb": -0.04592524667332465,
+   "winner": "edu"
+  },
+  "web_tail": {
+   "label": "FineWeb held-out (its own tail)",
+   "bytes": 1051891,
+   "edu_bpb": 1.9459200265088437,
+   "web_bpb": 1.8744715613434442,
+   "diff_bpb": 0.07144846516539949,
+   "winner": "web"
+  }
+ },
+ "demo2_reference": {
+  "bpb": 1.7583554542587017,
+  "date": "2026-10-26T10:46:45",
+  "diff_vs_edu_run": -0.009538912255931509
+ },
+ "pages": [
+  {
+   "id": "<urn:uuid:0b1c66e5-25e8-4834-a6c7-d04fea56e21f>",
+   "source": "web",
+   "dump": "CC-MAIN-2015-14",
+   "url": "http://www.molecularstation.com/forum/physics-forum/34884-clock-speed-dead-moores-law-challenged.html",
+   "language_score": 0.9006710648536682,
+   "dataset_score": null,
+   "chars": 832,
+   "page": 1,
+   "score": 3.6580967903137207,
+   "int_score": 4,
+   "tokens": 174,
+   "truncated": false,
+   "seconds": 0.06784486770629883
+  },
+  {
+   "id": "<urn:uuid:5841b32b-d244-496e-b7a5-2d8c10490bb9>",
+   "source": "edu",
+   "dump": "CC-MAIN-2017-30",
+   "url": "http://preventiveoncology.alliedacademies.com/events-list/http-preventiveoncology-alliedacademies-com",
+   "language_score": 0.911769688129425,
+   "dataset_score": 3.15625,
+   "chars": 838,
+   "page": 2,
+   "score": 3.1479578018188477,
+   "int_score": 3,
+   "tokens": 149,
+   "truncated": false,
+   "seconds": 0.008569717407226562
+  },
+  {
+   "id": "<urn:uuid:8ca61ccb-8218-44fa-82de-4ae4b8bb41b9>",
+   "source": "web",
+   "dump": "CC-MAIN-2013-20",
+   "url": "http://www.bsfatsns.blogspot.com/2007/11/jumping-on-lilos.html",
+   "language_score": 0.9681496620178223,
+   "dataset_score": null,
+   "chars": 967,
+   "page": 3,
+   "score": 0.8093358874320984,
+   "int_score": 1,
+   "tokens": 221,
+   "truncated": false,
+   "seconds": 0.009782791137695312
+  },
+  {
+   "id": "<urn:uuid:0d99c572-dd68-4180-bcc4-52aba598486c>",
+   "source": "web",
+   "dump": "CC-MAIN-2019-35",
+   "url": "http://www.newsandsentinel.com/opinion/letters-to-the-editor/2013/12/drop-doonesbury-from-paper/",
+   "language_score": 0.9420039653778076,
+   "dataset_score": null,
+   "chars": 710,
+   "page": 4,
+   "score": 0.39863893389701843,
+   "int_score": 0,
+   "tokens": 158,
+   "truncated": false,
+   "seconds": 0.007821798324584961
+  },
+  {
+   "id": "<urn:uuid:11b520ab-e051-44d7-abc1-c38fde00647e>",
+   "source": "edu",
+   "dump": "CC-MAIN-2017-30",
+   "url": "https://www.nwacademy.org/middle-school/fundamental-year/",
+   "language_score": 0.9457424879074097,
+   "dataset_score": 3.0625,
+   "chars": 1279,
+   "page": 5,
+   "score": 3.066343307495117,
+   "int_score": 3,
+   "tokens": 223,
+   "truncated": false,
+   "seconds": 0.00910496711730957
+  },
+  {
+   "id": "<urn:uuid:996cd47b-66e1-421a-a55b-f22d1b6dabe2>",
+   "source": "edu",
+   "dump": "CC-MAIN-2017-26",
+   "url": "https://museumvictoria.com.au/melbournemuseum/discoverycentre/wild/biogeographic-regions/indomalay/",
+   "language_score": 0.9735953211784363,
+   "dataset_score": 3.640625,
+   "chars": 951,
+   "page": 6,
+   "score": 3.630258083343506,
+   "int_score": 4,
+   "tokens": 202,
+   "truncated": false,
+   "seconds": 0.008500814437866211
+  }
+ ],
+ "classifier": {
+  "repo": "HuggingFaceFW/fineweb-edu-classifier",
+  "revision": "284663cbb2dabf9bda30d8f8cc49601251ee1631",
+  "device": "mps",
+  "params": 109483009,
+  "max_length": 512,
+  "load_s": 0.1883249282836914,
+  "torch": "2.14.0",
+  "transformers": "5.17.0"
+ },
+ "heldout_scores": {
+  "en_paragraph": {
+   "label": "W1's paragraph (English)",
+   "score": 0.996496856212616,
+   "int_score": 1,
+   "tokens": 165,
+   "truncated": false,
+   "seconds": 0.008520841598510742,
+   "n": 1
+  },
+  "wikipedia": {
+   "label": "Wikipedia (en, 2023-11-01 dump)",
+   "score": 1.601138061285019,
+   "int_score": null,
+   "min": 0.6347249746322632,
+   "max": 3.0175681114196777,
+   "n": 20
+  }
+ },
+ "distribution": {
+  "date": "2026-10-26T16:46:24",
+  "n": 200,
+  "web": {
+   "n": 200,
+   "mean": 1.2735076425597072,
+   "hist": [
+    17,
+    130,
+    38,
+    11,
+    4,
+    0
+   ],
+   "frac_ge3": 0.075,
+   "truncated": 79,
+   "seconds": 2.162108898162842,
+   "dataset_score_mean": null,
+   "max_abs_diff_vs_dataset": null
+  },
+  "edu": {
+   "n": 200,
+   "mean": 3.0017918157577514,
+   "hist": [
+    0,
+    0,
+    1,
+    174,
+    25,
+    0
+   ],
+   "frac_ge3": 0.995,
+   "truncated": 104,
+   "seconds": 2.3399219512939453,
+   "dataset_score_mean": 3.0065625,
+   "max_abs_diff_vs_dataset": 0.0227813720703125
+  }
+ },
+ "limit": "這是一個三百萬參數的 byte-level 模型、兩份各約 200 MB 的語料、一個 seed；六頁是六頁，分數是那六頁的分數。看到的是「品質是相對 held-out 定義的」這個機制的形狀，不是 FineWeb 論文的數字。"
+}

@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W7 demo 3（投影片 p41「Live + replay: demo 3 — guess the source, score it, two curves」；p40 前導頁）的設定。
+# W7 demo 3（投影片 p42「Live + replay: demo 3 — guess the source, score it, two curves」；p41 前導頁）的設定。
 #
 # 兩半：(a) **現場**——FineWeb 與 FineWeb-Edu 的抽樣各隨機抽三頁、打亂、學生猜來源，再用 FineWeb-Edu 的分類器打 0–5 分；
 #        (b) **預錄、課堂 replay**——demo 2 的某一個尺寸在兩份等 byte 的語料上各訓一次（同步數、同 seed），在幾個 held-out 上分開報 bits/byte。

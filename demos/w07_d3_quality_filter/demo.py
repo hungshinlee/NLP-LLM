@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W7 demo 3：品質過濾的效果對照（現場猜來源與打分 ＋ 預錄的兩個 run）。投影片 p41（p40 前導頁）。
+"""W7 demo 3：品質過濾的效果對照（現場猜來源與打分 ＋ 預錄的兩個 run）。投影片 p42（p41 前導頁）。
 
 (a) 現場：FineWeb 與 FineWeb-Edu 的抽樣各隨機三頁（固定 seed）、打亂；學生猜哪頁來自哪份；再用 FineWeb-Edu 的分類器
     （HuggingFaceFW/fineweb-edu-classifier，FineWeb §4 的那一個）給同六頁打 0–5 分，然後揭曉來源。
@@ -15,7 +15,7 @@
   ./present.sh rehearse [--steps N]  課前彩排：sample（若還沒有）→ score → 分數分布 → 兩個 run → runs/rehearsal/{edu,web}.json、summary.json、curves.svg；權重 → runs/weights/
   ./present.sh train edu|web       只訓一邊 → runs/rehearsal/<which>.json（之後 ./present.sh summarize）
   ./present.sh summarize           只從兩個 json 重做 summary.json 與 curves.svg
-  ./present.sh replay              課堂：Enter 一步——兩個 run 的設定 → 每個 held-out 一格的曲線 → p41 的表
+  ./present.sh replay              課堂：Enter 一步——兩個 run 的設定 → 每個 held-out 一格的曲線 → p42 的表
   ./present.sh show                同 replay，不等 Enter（加 --smoke 讀 runs/smoke/）
 
 誠實的限定（每次 replay 都印）：三百萬參數的 byte-level 模型、兩份各 200 MB 的語料、一個 seed、六頁；
@@ -249,13 +249,13 @@ def replay(cfg: dict, pause: bool, smoke: bool = False) -> None:
         if pause and k != keys[-1]:
             input(f"  {DIM}Enter → next held-out{RESET}")
     if pause:
-        input(f"\n  {DIM}Enter → p41's table{RESET}")
+        input(f"\n  {DIM}Enter → p42's table{RESET}")
     print_table(cfg, sm)
     print(f"\n  {DIM}curves.svg: open {outd / 'curves.svg'}{RESET}")
 
 
 def print_table(cfg: dict, sm: dict) -> None:
-    print(f"\n  {BOLD}p41's table{RESET}  (bits/byte on each held-out; Δ = FineWeb-Edu-trained − FineWeb-trained, negative = the Edu model is better)")
+    print(f"\n  {BOLD}p42's table{RESET}  (bits/byte on each held-out; Δ = FineWeb-Edu-trained − FineWeb-trained, negative = the Edu model is better)")
     print(f"    {'held-out':<42}{'bytes':>10}{'trained on Edu':>16}{'trained on Web':>16}{'Δ':>9}{'  winner'}")
     for k, t in sm["table"].items():
         col = GREEN if t["diff_bpb"] < 0 else AMBER

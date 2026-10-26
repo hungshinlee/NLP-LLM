@@ -1,0 +1,38 @@
+{
+ "date": "2026-10-26T16:46:24",
+ "n": 200,
+ "web": {
+  "n": 200,
+  "mean": 1.2735076425597072,
+  "hist": [
+   17,
+   130,
+   38,
+   11,
+   4,
+   0
+  ],
+  "frac_ge3": 0.075,
+  "truncated": 79,
+  "seconds": 2.162108898162842,
+  "dataset_score_mean": null,
+  "max_abs_diff_vs_dataset": null
+ },
+ "edu": {
+  "n": 200,
+  "mean": 3.0017918157577514,
+  "hist": [
+   0,
+   0,
+   1,
+   174,
+   25,
+   0
+  ],
+  "frac_ge3": 0.995,
+  "truncated": 104,
+  "seconds": 2.3399219512939453,
+  "dataset_score_mean": 3.0065625,
+  "max_abs_diff_vs_dataset": 0.0227813720703125
+ }
+}
