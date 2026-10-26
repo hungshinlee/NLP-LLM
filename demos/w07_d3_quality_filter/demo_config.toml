@@ -1,0 +1,80 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W7 demo 3（投影片 p41「Live + replay: demo 3 — guess the source, score it, two curves」；p40 前導頁）的設定。
+#
+# 兩半：(a) **現場**——FineWeb 與 FineWeb-Edu 的抽樣各隨機抽三頁、打亂、學生猜來源，再用 FineWeb-Edu 的分類器打 0–5 分；
+#        (b) **預錄、課堂 replay**——demo 2 的某一個尺寸在兩份等 byte 的語料上各訓一次（同步數、同 seed），在幾個 held-out 上分開報 bits/byte。
+# 語料是 demo 2 fetch 的那兩份（../w07_corpus/，各約 200 MB，fetch 時以 UTF-8 bytes 對齊——「等 byte」在那裡保證）；
+# 模型、訓練超參數、射線全部**讀 demo 2 的 demo_config.toml**，這裡只選尺寸。算法在 train.py（兩個 run）、sample.py（抽頁與分類器）、demo.py（流程）。
+
+[shared]
+demo2 = "../w07_d2_scaling_fit"        # train.py（Demo1、load_corpus、build_model、count_split、lr_for、warmup_for、generate）與 demo_config.toml（尺寸、訓練、射線、語料路徑）
+demo1 = "../w04_d1_block_scratch"      # 經 demo 2 的 Demo1 載入：block_final.GPT、train 的 pick_device／param_groups／lr_at／evaluate
+
+[corpora]
+# 鍵對應 demo 2 [corpus] 底下的名字；label 是終端機上的字
+edu = "FineWeb-Edu"
+web = "FineWeb"
+
+# ── (a) 抽頁與分類器 ────────────────────────────────────────────
+[sample]
+per_corpus = 3                         # 每份抽幾頁（投影片的表是 3 + 3 = 6 欄）
+seed = 7                               # 固定 seed：同一個 seed 抽到同六頁；彩排踩雷就換 seed，或把那篇的 id 加進 exclude
+min_chars = 500                        # 太短的頁面看不出東西
+max_chars = 1600                       # 太長的印不完（終端機一頁約 40 行）
+min_language_score = 0.90              # 兩份語料都有 language_score（fastText 的英文信心）；低於這個的頁面常是表格、程式或多語混排
+exclude = []                           # 彩排時決定不用的頁面 id（"<urn:uuid:…>"），加進來之後同 seed 會抽到下一篇
+show_chars = 1100                      # 課堂上每頁最多印幾個字元（之後印「…」）
+pool = 2000                            # 從每份語料前面幾篇裡挑（讀整個 200 MB 太慢；pool 篇裡符合條件的再用 seed 抽）
+
+[classifier]
+repo = "HuggingFaceFW/fineweb-edu-classifier"   # Snowflake/snowflake-arctic-embed-m（BERT，12 層、768、約 110 M）+ 迴歸頭，FineWeb §4 的分類器本尊
+revision = ""                          # 空：用 ../versions.lock 的 MODEL_REVISION__…（fetch 寫入）；填了就用這個
+device = "mps"                         # 沒有就退 CPU（BERT-base 在 CPU 上一頁約 0.1 s，退路無痛）
+max_length = 512                       # 模型的上限（absolute position embedding）；更長的頁面只看前 512 個 token——FineWeb-Edu 訓它時也是這樣截的
+distribution_n = 200                   # rehearse 時另對每份語料隨機 N 篇打分，畫分數分布（0–5 的直方圖）；課堂不做
+
+# ── (b) 兩個 run ────────────────────────────────────────────────
+[train]
+size = "s4"                            # demo 2 [[sizes]] 的鍵：s4 = d 192、7 層、3.15 M 參數，D = 20N = 63 M token = 7,687 步（demo 2 彩排 9.9 分鐘一個 run）
+                                       # 大綱寫「約 2–4 M」；兩個 run 約 20 分鐘。要快就 s3（1.2 M、2 分鐘一個）
+steps = 0                              # 0：步數照射線（兩個 run 一樣多步，等 token、等 byte）；填了就覆蓋（煙霧測試用 --steps）
+record_every = 50                      # 每 50 步在每個 held-out 的固定子集上量一次（曲線）
+subset_windows = 64                    # 每個 held-out 子集最多 64 個不重疊視窗（16,384 bytes）；短的 held-out 有幾個算幾個
+
+# ── held-out：分開報 ────────────────────────────────────────────
+# 每一個都是整段跑 W4 的 evaluate（視窗 L、stride 128）；bits/byte = nats ÷ ln 2。
+# 前兩個是大綱〈課堂 demo 建議〉3 寫的「第三份 held-out」；後兩個是兩份語料自己的尾端（demo 2 的 load_corpus 本來就切出來），順手一起報——
+# 「品質是相對 held-out 定義的」最直接的看法就是：各自在自己的尾端贏。
+[[heldouts]]
+key = "en_paragraph"
+label = "W1's paragraph (English)"
+source = "file"
+path = "../w02_d1_fertility/texts/zh_city_en.txt"        # W1 demo 2 那段城市清晨的英文版（W2 demo 1 的九個 tokenizer 用過）；754 bytes——只有兩三個視窗，數字會跳，當一個「點」看
+[[heldouts]]
+key = "wikipedia"
+label = "Wikipedia (en, 2023-11-01 dump)"
+source = "wikipedia"                                      # fetch 抓：wikimedia/wikipedia 的 20231101.en，一個 row group 裡用 seed 挑整篇文章到 target_mb
+[[heldouts]]
+key = "edu_tail"
+label = "FineWeb-Edu held-out (its own tail)"
+source = "corpus_tail"
+corpus = "edu"
+[[heldouts]]
+key = "web_tail"
+label = "FineWeb held-out (its own tail)"
+source = "corpus_tail"
+corpus = "web"
+
+[wikipedia]
+repo = "wikimedia/wikipedia"           # CC BY-SA 4.0（dataset card）；只讀一個 row group（約 23 MB、1,000 篇）
+path = "20231101.en/train-00000-of-00041.parquet"
+row_group = 100                        # 第 100 個 row group（157 個裡的中段；第 0 個是 Anarchism、Albedo… 那些最長的條目）
+seed = 7
+target_mb = 1.0                        # 挑整篇文章累到這個數（MiB）；跟兩份語料的 held-out 一樣大
+max_article_chars = 20000              # 太長的條目跳過（一篇就吃掉半個 held-out）
+file = "wikipedia_heldout.jsonl"       # 存到 demo 2 的 [corpus].dir（../w07_corpus/，.gitignore）；meta 另存 .meta.json
+license = "CC BY-SA 4.0"
+
+[rehearse]
+out = "runs/rehearsal"
+weights = "runs/weights"               # 兩個 state_dict（edu.pt、web.pt）；不進版控

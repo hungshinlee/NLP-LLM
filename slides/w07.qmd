@@ -603,7 +603,7 @@ FineWeb §3.3–3.5, §4 · DCLM §4.4 · Nemotron-CC · RegMix (abstracts) · M
 :::
 
 ::: {.footer}
-Demo 3 · `demos/w07_d3_quality_filter` · torch on MPS · not yet built (2026-10-26)
+Demo 3 · `demos/w07_d3_quality_filter` · torch + transformers on MPS · built, not yet rehearsed (2026-10-26)
 :::
 
 ## Live + replay: demo 3 — guess the source, score it, two curves
@@ -623,7 +623,7 @@ Demo 3 · `demos/w07_d3_quality_filter` · torch on MPS · not yet built (2026-1
 :::
 
 ::: {.footer}
-Demo 3 · live + replay · `w07_d3_quality_filter/` · not yet built (2026-10-26) · blank on purpose
+Demo 3 · live + replay · `w07_d3_quality_filter/` · built, not yet rehearsed (2026-10-26) · blank on purpose
 :::
 
 ## Deduplication: why — one sentence, 60,000 times
