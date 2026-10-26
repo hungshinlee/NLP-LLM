@@ -1,5 +1,5 @@
 {
- "date": "2026-10-26T19:13:59",
+ "date": "2026-10-26T19:44:27",
  "impl": "dedup_final",
  "python": "3.12.14",
  "machine": "Darwin arm64",
@@ -28,7 +28,7 @@
   "k_h": 128,
   "seed": 0
  },
- "signature_seconds": null,
+ "signature_seconds": 30.258480072021484,
  "no_signature": 0,
  "settings": [
   {
@@ -328,7 +328,7 @@
    "r": 8,
    "k_used": 128,
    "threshold": 0.7071067811865476,
-   "lsh_seconds": 0.4546189308166504
+   "lsh_seconds": 0.4684872627258301
   },
   {
    "candidates": 74,
@@ -1908,7 +1908,7 @@
    "r": 4,
    "k_used": 128,
    "threshold": 0.42044820762685725,
-   "lsh_seconds": 0.7004971504211426
+   "lsh_seconds": 0.8096010684967041
   },
   {
    "candidates": 8,
@@ -2102,7 +2102,7 @@
    "r": 16,
    "k_used": 128,
    "threshold": 0.8781260801866497,
-   "lsh_seconds": 0.26356029510498047
+   "lsh_seconds": 0.23552727699279785
   },
   {
    "candidates": 13,
@@ -2401,7 +2401,7 @@
    "r": 8,
    "k_used": 112,
    "threshold": 0.7190084519372291,
-   "lsh_seconds": 0.34261608123779297
+   "lsh_seconds": 0.4249289035797119
   }
  ]
 }

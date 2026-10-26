@@ -8,7 +8,7 @@
                                      (a)：簽章 → LSH 候選對 → Ĵ 分布、精確 J、同 dump／跨 dump、同 URL → 兩對並排；Enter 換 (b, r)
   ./present.sh decontam [--corpus edu|web|both] [--n 13]
                                      (b)：MMLU 14,042 題對語料掃 13-gram 重疊 → 命中的題 → MMLU-Redux 標錯的兩題
-  ./present.sh rehearse              課前：tests --save → run（參考實作，edu 與 web，四組 (b, r)）→ decontam both → runs/rehearsal/
+  ./present.sh rehearse              課前：tests --save → run（參考實作，edu 與 web，四組 (b, r)；不讀快取，量簽章秒數）→ decontam both → runs/rehearsal/
   ./present.sh replay | show         現場失敗時：讀 runs/rehearsal/ 的 json（replay 一步一個 Enter；show 不停）
 
 (a) 的三個函數由 --impl 指定的模組提供（預設 final；課堂寫 live）。簽章用 multiprocessing 算、存 runs/cache/（.gitignore），
@@ -104,12 +104,12 @@ def _sig_worker(text: str):
         return _IMPL.minhash(sh, k_h)
 
 
-def signatures(docs: list[dict], impl_name: str, cfg_m: dict, info: dict, quiet: bool = False) -> tuple[list, float]:
-    """所有文件的簽章。快取在 runs/cache/，鍵是（impl 檔案的 md5、語料、dump、n、k_h、seed）。"""
+def signatures(docs: list[dict], impl_name: str, cfg_m: dict, info: dict, quiet: bool = False, fresh: bool = False) -> tuple[list, float]:
+    """所有文件的簽章。快取在 runs/cache/，鍵是（impl 檔案的 md5、語料、dump、n、k_h、seed）；fresh=True 不讀快取（rehearse 要量秒數）。"""
     impl_src = (HERE / f"{impl_name}.py").read_bytes()
     key = hashlib.md5(impl_src + json.dumps([info["file"], info["dumps_requested"], cfg_m["n"], cfg_m["k_h"], cfg_m["seed"]]).encode()).hexdigest()[:12]
     cp = CACHE / f"sigs-{impl_name}-{info['corpus']}-{key}.pkl"
-    if cp.exists():
+    if cp.exists() and not fresh:
         sigs = pickle.loads(cp.read_bytes())
         if len(sigs) == len(docs):
             if not quiet:
@@ -240,7 +240,7 @@ def cmd_run(a, cfg, record: dict | None = None, interactive: bool = True) -> dic
     banner(f"W7 demo 4 (a) · near-duplicates in {info['file']} · {impl_name}.py")
     print(f"  {info['docs']:,} documents, {info['text_bytes'] / 1e6:.0f} MB, {len(info['dumps'])} dumps: " + ", ".join(f"{k[8:]} {v:,}" for k, v in info["dumps"].items()))
     print(f"  word {cfg_m['n']}-gram shingles · k_h = {cfg_m['k_h']} · seed {cfg_m['seed']}")
-    sigs, dt = signatures(docs, impl_name, cfg_m, info)
+    sigs, dt = signatures(docs, impl_name, cfg_m, info, fresh=getattr(a, "fresh", False))
     n_none = sum(s is None for s in sigs)
     if n_none:
         note(f"  {n_none} documents shorter than {cfg_m['n']} words have no signature and are skipped")
@@ -474,7 +474,7 @@ def cmd_rehearse(a, cfg) -> None:
         raise SystemExit(f"{RED}tests 沒全過，先修 dedup_final.py{RESET}")
     summary = {"date": now(), "python": platform.python_version(), "machine": f"{platform.system()} {platform.machine()}", "cpu_count": os.cpu_count(), "dedup": {}, "decontam": {}}
     for which in ("edu", "web"):
-        ns = argparse.Namespace(impl="final", corpus=which, dumps=cfg["corpus"]["dumps"], bands=cfg["minhash"]["bands"], rows=cfg["minhash"]["rows"], also=",".join(cfg["minhash"]["also"]))
+        ns = argparse.Namespace(impl="final", corpus=which, dumps=cfg["corpus"]["dumps"], bands=cfg["minhash"]["bands"], rows=cfg["minhash"]["rows"], also=",".join(cfg["minhash"]["also"]), fresh=True)
         rec = {}
         cmd_run(ns, cfg, record=rec, interactive=False)
         (REHEARSAL / f"dedup_{which}.json").write_text(json.dumps(rec, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
@@ -572,6 +572,7 @@ def main() -> None:
     p.add_argument("--rows", type=int, default=cfg["minhash"]["rows"])
     p.add_argument("--also", default=",".join(cfg["minhash"]["also"]), help="之後再跑的 (b, r)，如 32x4,8x16；空字串就只跑一組")
     p.add_argument("--no-pause", action="store_true")
+    p.add_argument("--fresh", action="store_true", help="不讀 runs/cache/，重算簽章（量秒數用；rehearse 一律如此）")
     p = sub.add_parser("decontam")
     p.add_argument("--corpus", choices=["edu", "web", "both"], default=cfg["corpus"]["default"])
     p.add_argument("--n", type=int, default=None)

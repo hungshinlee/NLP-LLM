@@ -1,5 +1,5 @@
 {
- "date": "2026-10-26T19:13:58",
+ "date": "2026-10-26T19:43:56",
  "python": "3.12.14",
  "machine": "Darwin arm64",
  "cpu_count": 18,
@@ -8,7 +8,7 @@
    "docs": 41829,
    "dumps": 10,
    "text_bytes": 200004308,
-   "signature_seconds": null,
+   "signature_seconds": 30.258480072021484,
    "settings": [
     {
      "b": 16,
@@ -21,7 +21,7 @@
      "J_ge_0_9": 8,
      "exact_1": 6,
      "J_lt_0_75": 3,
-     "lsh_seconds": 0.4546189308166504
+     "lsh_seconds": 0.4684872627258301
     },
     {
      "b": 32,
@@ -34,7 +34,7 @@
      "J_ge_0_9": 8,
      "exact_1": 6,
      "J_lt_0_75": 64,
-     "lsh_seconds": 0.7004971504211426
+     "lsh_seconds": 0.8096010684967041
     },
     {
      "b": 8,
@@ -47,7 +47,7 @@
      "J_ge_0_9": 8,
      "exact_1": 6,
      "J_lt_0_75": 0,
-     "lsh_seconds": 0.26356029510498047
+     "lsh_seconds": 0.23552727699279785
     },
     {
      "b": 14,
@@ -60,7 +60,7 @@
      "J_ge_0_9": 8,
      "exact_1": 6,
      "J_lt_0_75": 3,
-     "lsh_seconds": 0.34261608123779297
+     "lsh_seconds": 0.4249289035797119
     }
    ],
    "kinds": {
@@ -75,7 +75,7 @@
    "docs": 64823,
    "dumps": 8,
    "text_bytes": 200005432,
-   "signature_seconds": null,
+   "signature_seconds": 34.00164079666138,
    "settings": [
     {
      "b": 16,
@@ -88,7 +88,7 @@
      "J_ge_0_9": 1,
      "exact_1": 1,
      "J_lt_0_75": 4,
-     "lsh_seconds": 0.7586722373962402
+     "lsh_seconds": 0.8803939819335938
     },
     {
      "b": 32,
@@ -101,7 +101,7 @@
      "J_ge_0_9": 1,
      "exact_1": 1,
      "J_lt_0_75": 192,
-     "lsh_seconds": 1.128251314163208
+     "lsh_seconds": 1.3352010250091553
     },
     {
      "b": 8,
@@ -114,7 +114,7 @@
      "J_ge_0_9": 1,
      "exact_1": 1,
      "J_lt_0_75": 0,
-     "lsh_seconds": 0.48408985137939453
+     "lsh_seconds": 0.30829811096191406
     },
     {
      "b": 14,
@@ -127,7 +127,7 @@
      "J_ge_0_9": 1,
      "exact_1": 1,
      "J_lt_0_75": 3,
-     "lsh_seconds": 0.6770691871643066
+     "lsh_seconds": 0.6971840858459473
     }
    ],
    "kinds": {
@@ -145,7 +145,7 @@
     "corpus": "edu",
     "docs": 41829,
     "text_bytes": 200004308,
-    "seconds": 2.324445962905884,
+    "seconds": 2.409687042236328,
     "hits": 1406,
     "questions_hit": 37,
     "documents_hit": 35,
@@ -168,7 +168,7 @@
     "corpus": "web",
     "docs": 64823,
     "text_bytes": 200005432,
-    "seconds": 2.4892032146453857,
+    "seconds": 2.4114928245544434,
     "hits": 404,
     "questions_hit": 11,
     "documents_hit": 7,

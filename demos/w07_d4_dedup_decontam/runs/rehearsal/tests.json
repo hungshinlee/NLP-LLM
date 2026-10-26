@@ -1,12 +1,12 @@
 {
- "date": "2026-10-26T19:13:58",
+ "date": "2026-10-26T19:43:56",
  "python": "3.12.14",
  "machine": "Darwin arm64",
  "impl": "dedup_final",
  "tests": {
   "i": {
    "status": "ok",
-   "seconds": 0.0012479170691221952,
+   "seconds": 0.0014137080870568752,
    "words": 50,
    "shingles": 46,
    "exact_J": 1.0,
@@ -15,7 +15,7 @@
   },
   "ii": {
    "status": "ok",
-   "seconds": 0.04285629210062325,
+   "seconds": 0.04729412496089935,
    "k_h": 128,
    "size": 1000,
    "pairs": [
@@ -39,7 +39,7 @@
   },
   "iii": {
    "status": "ok",
-   "seconds": 1.2973269161302596,
+   "seconds": 1.3520757909864187,
    "k_h": 128,
    "b": 16,
    "r": 8,

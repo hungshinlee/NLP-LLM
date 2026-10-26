@@ -11,7 +11,7 @@
 #                                    (a)：對語料算簽章（第一次約一分鐘、之後讀快取）→ 候選對、Ĵ 分布、兩對並排 → Enter 換 (b, r)
 #   ./present.sh decontam [--corpus edu|web|both]
 #                                    (b)：MMLU 的 14,042 題對語料掃 13-gram → 命中的題 → Enter → MMLU-Redux 標錯的兩題
-#   ./present.sh rehearse            課前彩排：tests → run（edu、web，四組 (b, r)）→ decontam both → runs/rehearsal/*.json（講稿裡的實測值從這裡抄）
+#   ./present.sh rehearse            課前彩排：tests → run（edu、web，四組 (b, r)，簽章重算不讀快取）→ decontam both → runs/rehearsal/*.json（講稿裡的實測值從這裡抄）
 #   ./present.sh replay              現場失敗時：讀彩排紀錄，一步一個 Enter（畫面標明非現場）；show 同樣內容不停
 #   ./present.sh reset               上課前把 dedup_live.py 清空到只剩開頭的註解、import 與 P = 2**61 - 1
 #
