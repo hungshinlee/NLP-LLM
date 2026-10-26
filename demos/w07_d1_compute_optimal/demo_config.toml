@@ -1,0 +1,63 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W7 demo 1（投影片 p8 前導頁、p9「Live: demo 1 (a)」、p22「Live: demo 1 (b)」）的設定。
+# 純標準函式庫；不載模型、不需要網路。換數字只改這裡，算法在 optimal.py。
+
+[chinchilla]
+# Hoffmann et al. 2022, arXiv:2203.15556, Appendix D.2 Eq. (10):
+#   L(N, D) = E + A / N^alpha + B / D^beta
+# 五個常數照論文原句（read from the arXiv PDF 2026-10-26）。
+E = 1.69
+A = 406.4
+B = 410.7
+alpha = 0.34
+beta = 0.28
+source = "Hoffmann et al. 2022 (Chinchilla), Appendix D.2 Eq. (10); closed form is Eq. (4)"
+
+[table]
+# (a) 第一張表：C 從 10^18 到 10^26 每一個數量級；投影片 p9 只填 slide_rows 那五列（印出時加 ★）。
+log10_C = [18, 19, 20, 21, 22, 23, 24, 25, 26]
+slide_rows = [18, 20, 22, 24, 26]
+
+# (a) 第二張表：三個真實的 (N, D)。C = 6ND 是算術。順序＝投影片 p9 下表的順序。
+[[points]]
+key = "w1"
+label = "W1 p18: 7B / 140B"
+N = 7e9
+D = 1.4e11
+note = "the model from W1's exercise, at D = 20N"
+
+[[points]]
+key = "chinchilla"
+label = "Chinchilla 70B / 1.4T"
+N = 7e10
+D = 1.4e12
+note = "Hoffmann et al. 2022 abstract: 70B parameters, 1.4T tokens"
+
+[[points]]
+key = "llama3_8b"
+label = "Llama 3 8B / 15T"
+N = 8e9
+D = 15e12
+note = "Llama 3 pre-training corpus of about 15T tokens (Grattafiori et al. 2024); D/N = 1875"
+
+[inference]
+# (b) 固定 loss：reference_point 那個 (N, D) 在 Eq. (10) 下的 loss。
+# 對每個 D_inf 最小化 C_total = 6 N D + 2 N D_inf（Sardana et al. 2024 的成本函數），對 log N 一維黃金分割。
+reference_point = "w1"
+D_inf = [0, 1e12, 1e13, 1e14]
+guess_first = 1e13          # 課堂上請學生先猜這一列
+golden_iters = 300
+search_decades = 6          # 搜尋區間：從 N 的下界往上 10^6 倍
+
+[tiny]
+# (c) W4 demo 1 的 tiny GPT：N 從 tests.json 的 (a) count_params，D 從 train.json 的 tokens_seen。
+train_json = "../w04_d1_block_scratch/runs/rehearsal/train.json"
+tests_json = "../w04_d1_block_scratch/runs/rehearsal/tests.json"
+
+[check]
+# rehearse／check 對投影片的數字來源核對（有那個檔才核；相對誤差門檻）。
+slides_json = "../../slides/assets/w07/w07-data.json"
+rel_tol = 1e-6
+
+[rehearse]
+out = "runs/rehearsal"

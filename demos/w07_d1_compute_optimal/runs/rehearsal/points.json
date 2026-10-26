@@ -1,0 +1,58 @@
+{
+ "meta": {
+  "date": "2026-10-26T09:44:01",
+  "python": "3.12.14",
+  "machine": "arm64",
+  "system": "Darwin",
+  "release": "27.0.0",
+  "cwd_demo": "w07_d1_compute_optimal"
+ },
+ "label": "rehearsal — demo 1 points",
+ "points": [
+  {
+   "key": "w1",
+   "label": "W1 p18: 7B / 140B",
+   "note": "the model from W1's exercise, at D = 20N",
+   "N": 7000000000.0,
+   "D": 140000000000.0,
+   "ratio": 20.0,
+   "C": 5.88e+21,
+   "loss": 2.1835417931054084,
+   "N_opt": 4060106189.7166805,
+   "D_opt": 241372997209.31265,
+   "ratio_opt": 59.44992222633368,
+   "loss_opt": 2.1767261097548554,
+   "loss_gap": 0.006815683350553048
+  },
+  {
+   "key": "chinchilla",
+   "label": "Chinchilla 70B / 1.4T",
+   "note": "Hoffmann et al. 2022 abstract: 70B parameters, 1.4T tokens",
+   "N": 70000000000.0,
+   "D": 1400000000000.0,
+   "ratio": 20.0,
+   "C": 5.88e+23,
+   "loss": 1.9366454705587173,
+   "N_opt": 32491009032.78351,
+   "D_opt": 3016219037738.0234,
+   "ratio_opt": 92.83242126136037,
+   "loss_opt": 1.9299870845556897,
+   "loss_gap": 0.006658386003027594
+  },
+  {
+   "key": "llama3_8b",
+   "label": "Llama 3 8B / 15T",
+   "note": "Llama 3 pre-training corpus of about 15T tokens (Grattafiori et al. 2024); D/N = 1875",
+   "N": 8000000000.0,
+   "D": 15000000000000.0,
+   "ratio": 1875.0,
+   "C": 7.2e+23,
+   "loss": 1.9485316377745965,
+   "N_opt": 35602860181.45029,
+   "D_opt": 3370515722288.002,
+   "ratio_opt": 94.6698019515887,
+   "loss_opt": 1.9226389854813246,
+   "loss_gap": 0.025892652293271867
+  }
+ ]
+}

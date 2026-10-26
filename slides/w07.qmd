@@ -110,7 +110,7 @@ W1 p16, p18 · Llama 3's 15T: the paper's body · Misconception 1: "Chinchilla s
 :::
 
 ::: {.footer}
-Demo 1 · `demos/w07_d1_compute_optimal` · standard library only · not yet built (2026-10-26)
+Demo 1 · `demos/w07_d1_compute_optimal` · standard library only · built 2026-10-26
 :::
 
 ## Live: demo 1 (a) — $N^{*}$, $D^{*}$ against $C$; three real models
@@ -134,7 +134,7 @@ Demo 1 · `demos/w07_d1_compute_optimal` · standard library only · not yet bui
 : {tbl-colwidths="[14,8,8,8,16,26,20]"}
 
 ::: {.footer}
-Demo 1 (a) · live · `w07_d1_compute_optimal/` · Hoffmann Eq. (10) · not yet built (2026-10-26)
+Demo 1 (a) · live · `w07_d1_compute_optimal/` · Hoffmann Eq. (10) · built 2026-10-26
 :::
 
 # One fitted equation, one constraint: where does 20 come from? {.section-title}
@@ -338,7 +338,7 @@ Sardana et al., ICML 2024 ("smaller and longer") · $2N$ per token: the decode r
 {{< include assets/w07/axis-shift.inline.qmd >}}
 
 ::: {.footer}
-Demo 1 (b) · live · at the loss of W1's 7B / 140B · not yet built (2026-10-26) · then (c)
+Demo 1 (b) · live · at the loss of W1's 7B / 140B · built 2026-10-26 · then (c)
 :::
 
 ## At a glance: the $T^{2}$ scaling law (Roberts et al. 2026)

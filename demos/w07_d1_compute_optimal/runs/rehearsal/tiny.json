@@ -1,0 +1,28 @@
+{
+ "meta": {
+  "date": "2026-10-26T09:44:01",
+  "python": "3.12.14",
+  "machine": "arm64",
+  "system": "Darwin",
+  "release": "27.0.0",
+  "cwd_demo": "w07_d1_compute_optimal"
+ },
+ "label": "rehearsal — demo 1 tiny",
+ "N": 4763136.0,
+ "D": 49152000.0,
+ "ratio": 10.319251854240568,
+ "C": 1404705964032000.0,
+ "steps": 3000,
+ "batch": 64,
+ "L": 256,
+ "V": 65,
+ "seconds": 557.3825500011444,
+ "N_opt_eq10": 4150025.144375719,
+ "D_opt_eq10": 56413552.33456483,
+ "ratio_opt_eq10": 13.593544706835992,
+ "source": {
+  "train_json": "../w04_d1_block_scratch/runs/rehearsal/train.json",
+  "tests_json": "../w04_d1_block_scratch/runs/rehearsal/tests.json",
+  "rehearsed": "2026-10-06T22:01:10"
+ }
+}
