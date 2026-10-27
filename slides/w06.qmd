@@ -79,7 +79,7 @@ Outline W6 · on the board: p14, p23–24, p27, p31, p38 · live: p12, p26 · re
 
 1. From an MoE `config.json`, **compute $N_{\text{total}}$ and $N_{\text{active}}$** with W4's accounting, define $\rho = N_{\text{active}}/N_{\text{total}}$, say where MoE moves the cost, and state the 2024–2026 trend of $\rho$ and the design direction behind it
 2. Write **top-$k$ routing** and $\mathcal{L}_{\text{aux}} = \alpha\,n_E\sum_i f_i P_i$; explain why it conflicts with the main loss, why experts collapse without it, and what the **auxiliary-loss-free bias** solves
-3. **Derive associativity** on the board: $O(L^2 d_{\text{head}})$ vs $O(L\,d_{\text{head}}^2)$, the causal recurrence, the fixed $d_{\text{head}} \times d_{\text{head}}$ state — and **compute its capacity**: at most $d_{\text{head}}$ pairs stored cleanly
+3. **Derive associativity** on the board: $O(L^2 d_{\text{head}})$ vs $O(L\,d_{\text{head}}^2)$, the causal recurrence and the state it carries — and **compute that state's size and how much it can hold cleanly**
 4. Write the recurrence family as $\mathbf{S}_t = \mathbf{G}_t\mathbf{S}_{t-1} + \mathbf{k}_t\mathbf{v}_t^\top$ and fill the table (RetNet, Mamba-2, GLA, DeltaNet, Gated DeltaNet, KDA); state what Mamba's selection changes vs. S4; give the skeleton of **SSD**: matmul for training, recurrence for inference
 5. Say what each of the **three 2026 routes** attacks and pays — hybrid-linear, sparse, full attention — and that they have not converged
 6. **Diagnose a comparison**: iso-FLOPs, iso-params, iso-latency, iso-tokens; say how a conclusion flips, and what Kimi Linear's "fair comparison" fixed
@@ -135,7 +135,7 @@ Shazeer et al. 2017 · Fedus et al., JMLR 2022 · mechanism: p13–p16 · number
 |:---|:-----------------|
 | **Why** | The ledger's MoE row has said "memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$" since W1 without a number. The numbers live in a `config.json` — and reading one is the ticket to reading any 2026 open-weight model. W4's `count_params.py` gets an MoE branch. |
 | **What runs** | An editor and a terminal; pure standard library, no model loaded. The script prints every key whose name contains `expert`, we decide what each means, then it computes $N_{\text{total}}$, $N_{\text{active}}$, $\rho$ for the MoE on this machine (Gemma 4 26B-A4B, W1 demo 1) and for three configs fetched without weights: Qwen3-30B-A3B, Qwen3-Next-80B-A3B, Kimi Linear 48B-A3B (the suffix A3B: 3 B *active* parameters). |
-| **Watch for** | The key names are **not standardised** — Qwen, DeepSeek, Kimi and Google each name the shared expert, the top-$k$ and the expert width differently; that is part of the lesson. Then: how far is each $\rho$ above the ratio of experts chosen to experts present, $k/n_E$? |
+| **Watch for** | The key names are **not standardised** — Qwen, DeepSeek, Kimi and Google each name the shared expert, the top-$k$ and the expert width differently; that is part of the lesson. Then: is each $\rho$ above or below the ratio of experts chosen to experts present, $k/n_E$? |
 :::
 
 ::: {.footer}
