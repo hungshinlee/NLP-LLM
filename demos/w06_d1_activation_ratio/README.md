@@ -28,7 +28,7 @@ Where the two columns disagree is the point of the exercise: the config did not 
 |---|---|
 | Packages | **none** — standard library only (`tomllib` needs Python ≥ 3.11). `huggingface_hub`, if installed, is used only to locate the local cache. |
 | Network | `./present.sh fetch` once, before class: three `config.json` files, three indices and a few dozen shard headers — tens of MB of transfer at most (Qwen3-Next lists some 70,000 tensors), stored compressed under `configs/` (under 1 MB). Everything else runs offline. |
-| Local model | the Gemma 4 row needs `mlx-community/gemma-4-26B-A4B-it-4bit` in your Hugging Face cache (see `../w01_d1_live_model/`); without it the other three rows still run. |
+| Local model | the Gemma 4 row needs `mlx-community/gemma-4-26b-a4b-it-4bit` in your Hugging Face cache (see `../w01_d1_live_model/`); without it the other three rows still run. |
 | Memory / time | negligible — JSON parsing. |
 | Portability | nothing platform-specific; the instructor runs it on an Apple M5 Max (macOS 27, Python 3.12). |
 

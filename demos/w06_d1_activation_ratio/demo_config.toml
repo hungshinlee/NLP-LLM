@@ -5,7 +5,7 @@
 # 換模型只改這裡；鍵名的解讀規則在 count_moe.py 的 moe_spec()，加新家族時在那裡加鍵名。
 
 [models.gemma]
-repo = "mlx-community/gemma-4-26B-A4B-it-4bit"
+repo = "mlx-community/gemma-4-26b-a4b-it-4bit"
 label = "Gemma 4 26B-A4B (this machine; MLX 4-bit, W1 demo 1)"
 local = true            # 讀本機 HF cache：config.json 加 *.safetensors 的 header（只讀 header，不載權重）。不抓任何東西
 note = "MoE 鍵在 text_config 底下、top-k 叫 top_k_experts；dense 的 intermediate_size 同時存在——每層是 dense FFN + MoE 還是二選一，config 看不出來，看 safetensors 的 shape"
