@@ -485,7 +485,7 @@ Demo 2 · live, on a prepared skeleton · reference implementation handed out af
 | | BPE | WordPiece | Unigram LM |
 |:---|:---|:---|:---|
 | direction | bottom-up: merge | bottom-up: merge | **top-down: prune** a large candidate set |
-| what it maximizes | **frequency** of the merged pair | **likelihood gain**: $\dfrac{\mathrm{count}(ab)}{\mathrm{count}(a)\,\mathrm{count}(b)}$ | corpus likelihood under $P(\mathbf{x}) = \prod_i p(x_i)$, via expectation–maximization (EM) |
+| what it maximizes | **frequency** of the merged pair | **likelihood gain**: $\dfrac{\mathrm{count}(ab)}{\mathrm{count}(a)\,\mathrm{count}(b)}$ | corpus likelihood under $P(\mathbf{t}) = \prod_i p(t_i)$, via expectation–maximization (EM) |
 | encoding | merges in rank order | greedy longest-match-first | Viterbi: most probable segmentation |
 | OOV | none if byte-level | **`[UNK]`** (character vocabulary) | none with byte fallback |
 | can it sample? | only with BPE-dropout | no | **yes**: it is a probability model |
@@ -1099,7 +1099,7 @@ Two weeks in, two things the model never chose: the unit, and — next week — 
 
 | | |
 |:----|:----------------|
-| EM | expectation–maximization: how the Unigram LM fits its $p(x_i)$ (p34) |
+| EM | expectation–maximization: how the Unigram LM fits its $p(t_i)$ (p34) |
 | FLOPs | floating-point operations (W1) |
 | FP16 | 16-bit floating point, 2 bytes per element: next week's cache number (p73; W3) |
 | KV | key–value: the attention cache whose ledger row W3 fills (p73; W3) |

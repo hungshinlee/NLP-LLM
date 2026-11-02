@@ -384,7 +384,7 @@ Use **bits-per-byte**: the same total log-likelihood in bits, divided by the num
 :::
 
 ::: {.small}
-The conversion is one line. The total code length is $\sum_{t} -\log_2 P(w_t \mid w_{<t}) = T \log_2 \mathrm{PPL}$; divide by $T$ tokens and you have $\log_2 \mathrm{PPL}$, divide by $B$ bytes and you have $\mathrm{BPB} = \frac{T}{B}\log_2 \mathrm{PPL}$. Same numerator, different denominator.
+$w_t$ is the $t$-th **token**, not a word: a word in today's word-level $n$-grams, a subword from W2 on. The conversion is one line. The total code length is $\sum_{t} -\log_2 P(w_t \mid w_{<t}) = T \log_2 \mathrm{PPL}$; divide by $T$ tokens and you have $\log_2 \mathrm{PPL}$, divide by $B$ bytes and you have $\mathrm{BPB} = \frac{T}{B}\log_2 \mathrm{PPL}$. Same numerator, different denominator.
 :::
 
 ::: {.footer}
