@@ -6,7 +6,7 @@
 #   ./setup.sh --no-fetch       只建環境，不下載模型
 #   ./setup.sh --only w01_d2_bpb  只替某一個 demo 下載模型
 #
-# 版本政策（nlp_llm/course-outline.md 附錄 C）：
+# 版本政策（本課的工具鏈限制；只在 M5 Max 上實測過的版本才寫死）：
 #   - mlx、transformers、torch 釘版本號；
 #   - mlx-lm **釘 git commit，不用 PyPI wheel**（PyPI 版落後 repo 數月，gemma4 / qwen3_5 的支援在 main）。
 #     第一次跑時取 main 的 HEAD 並寫進 versions.lock；之後都用鎖定的那個 commit。

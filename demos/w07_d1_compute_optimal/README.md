@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W7 · Demo 1 — Compute-optimal training, numerically (slides p8–p9 and p22)
+# W7 · Demo 1 — Compute-optimal training, numerically (slides p9–p10 and p22)
 
 Every number in the first half of the week comes from one fitted equation — Hoffmann et al. 2022 ("Chinchilla"), Appendix D.2, Eq. (10):
 
@@ -11,8 +11,8 @@ This demo does nothing but arithmetic on it, so that three questions get numbers
 
 | Sub-command | What | Slide |
 |---|---|---|
-| `table` | The closed form (the paper's Eq. 4): $N^{*} = G\,(C/6)^{a}$, $D^{*} = G^{-1}(C/6)^{b}$ with $a = \beta/(\alpha+\beta)$, $b = \alpha/(\alpha+\beta)$, $G = (\alpha A/\beta B)^{1/(\alpha+\beta)}$. Prints $a$, $b$, $G$, $G^{-2}$ and the exponent of $D^{*}/N^{*} = G^{-2}(C/6)^{(\alpha-\beta)/(\alpha+\beta)}$, then one row per decade of $C$ from $10^{18}$ to $10^{26}$: $N^{*}$, $D^{*}$, $D^{*}/N^{*}$, $\mathcal{L}^{*}$. The five starred rows are the ones filled in on the slide | p9, p15 |
-| `points` | Three real $(N, D)$ pairs — W1's exercise (7B / 140B), Chinchilla itself (70B / 1.4T), Llama 3 8B (8B / 15T): $C = 6ND$, the optimum at that $C$, and $\mathcal{L} - \mathcal{L}^{*}$ under the fit | p9, p17 |
+| `table` | The closed form (the paper's Eq. 4): $N^{*} = G\,(C/6)^{a}$, $D^{*} = G^{-1}(C/6)^{b}$ with $a = \beta/(\alpha+\beta)$, $b = \alpha/(\alpha+\beta)$, $G = (\alpha A/\beta B)^{1/(\alpha+\beta)}$. Prints $a$, $b$, $G$, $G^{-2}$ and the exponent of $D^{*}/N^{*} = G^{-2}(C/6)^{(\alpha-\beta)/(\alpha+\beta)}$, then one row per decade of $C$ from $10^{18}$ to $10^{26}$: $N^{*}$, $D^{*}$, $D^{*}/N^{*}$, $\mathcal{L}^{*}$. The five starred rows are the ones filled in on the slide | p10, p15 |
+| `points` | Three real $(N, D)$ pairs — W1's exercise (7B / 140B), Chinchilla itself (70B / 1.4T), Llama 3 8B (8B / 15T): $C = 6ND$, the optimum at that $C$, and $\mathcal{L} - \mathcal{L}^{*}$ under the fit | p10, p17 |
 | `inference` | Hold the loss fixed at $\ell = \mathcal{L}(7\text{B}, 140\text{B})$ and, for $D_{\text{inf}} \in \{0, 10^{12}, 10^{13}, 10^{14}\}$ inference tokens, minimise $6ND + 2N D_{\text{inf}}$ over the level set $\mathcal{L} = \ell$ (golden-section search on $\log N$; $D$ is solved from $\ell$). One row per Enter; `--all` prints them at once. "Saving" compares with keeping the $D_{\text{inf}} = 0$ shape and paying for inference anyway. Ends with the threshold $2ND_{\text{inf}} > 6ND \Leftrightarrow D_{\text{inf}} > 3D$ | p22 |
 | `tiny` | W4 demo 1's character-level tiny GPT as a point on the same table: $N$ from its parameter count, $D$ from the tokens it saw, and the fit's optimum at that $C$ | p22 |
 | `check` | Compares every number above with the slides' data file `slides/assets/w07/w07-data.json`, if it is present (it is in the course repository, not in this one) | — |

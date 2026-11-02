@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W7 demo 1 — compute-optimal training, numerically (slides p8–p9 and p22).
+"""W7 demo 1 — compute-optimal training, numerically (slides p9–p10 and p22).
 
 Everything here is arithmetic on one fitted equation, Hoffmann et al. 2022 Eq. (10):
 
     L(N, D) = E + A / N^alpha + B / D^beta,     with  C = 6 N D.
 
-Sub-commands (the slide's 【操作】 block says when each one runs):
+Sub-commands (the README says when each one runs):
 
   table      (a) N*, D*, D*/N*, L* for C = 10^18 … 10^26 — the closed form, Eq. (4)
   points     (a) three real (N, D) pairs: their C, the optimum at that C, and the loss gap
@@ -206,7 +206,7 @@ def cmd_table(cfg: dict, res: dict | None = None, title: str = "demo 1 (a) · N*
         star = "★ " if r["on_slide"] else "  "
         row([f"{star}10^{r['log10_C']}", f"{sci(r['N'])}  ({human(r['N'])})", f"{sci(r['D'])}  ({human(r['D'])})",
              f"{r['ratio']:.1f}", f"{r['loss']:.3f}"], W, BOLD if r["on_slide"] else "")
-    note("  ★ = the five rows on slide p9.  N in parameters, D in tokens; L* in nats per token under this fit.")
+    note("  ★ = the five rows on slide p10.  N in parameters, D in tokens; L* in nats per token under this fit.")
     return res
 
 

@@ -60,7 +60,7 @@ format:
 :::
 
 ::: {.footer}
-Token counts: W2 demo 1 rehearsal · pipeline W2 p19 · ledger W2 p45 · schematic
+Token counts: W2 demo 1 rehearsal · pipeline W2 p19 · ledger W2 p46 · schematic
 :::
 
 ## Last week ended with a number. Derive it before you trust it
@@ -80,7 +80,7 @@ Multiply it out yourself — first **per token**, then for the whole context. Yo
 :::
 
 ::: {.footer}
-Configuration: W1 p16 · the answer was announced on W2 p72
+Configuration: W1 p16 · the answer was announced on W2 p73
 :::
 
 ## Now guess three variants — before computing them
@@ -399,7 +399,7 @@ MHA multi-head · MQA multi-query, Shazeer 2019 · GQA grouped-query, Ainslie et
 | **Name** | **MLA** — *Multi-head Latent Attention*, DeepSeek-AI, *DeepSeek-V2* (arXiv:2405.04434, 2024), §2.1. A technical report with a team byline; no venue. |
 | **The question** | The cache is the state (p25); MQA and GQA shrink it by making heads **share** keys and values, paying in expressiveness (p31). Can the cache shrink without sharing heads at all? |
 | **The idea** | Cache neither $\mathbf{k}_t$ nor $\mathbf{v}_t$ but one low-rank latent $\mathbf{c}_t = \mathbf{W}^{DKV}\mathbf{x}_t \in \mathbb{R}^{d_c}$, re-expanded on the way out; at inference fold the up-projection into the query, so $\mathbf{K}$ is never built. |
-| **What it added** | "significantly compressing the Key-Value (KV) cache into a latent vector" — the abstract's words; its number: against DeepSeek 67B (MHA) it "reduces the KV cache by 93.3%". For this course, the first low-rank factorization (LoRA, W8). |
+| **What it added** | "significantly compressing the Key-Value (KV) cache into a latent vector" — the abstract's words; its number: against DeepSeek 67B (MHA) it "reduces the KV cache by 93.3%". For this course, the first low-rank factorization used *as a design* — W1's SGNS was one that training produced; LoRA (W8) is the next. |
 | **What it leaves open** | Rotation and low rank do not commute: RoPE forces a separate position key (p34; W5). $d_c$ and that key's width: its Table 1, not quoted here. What the latent costs in quality: the report's own benchmarks, not re-measured. |
 :::
 

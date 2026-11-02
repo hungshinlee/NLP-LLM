@@ -310,7 +310,7 @@ NFKC = Normalization Form KC (compatibility composition) · Python `unicodedata.
 | Qwen (2023–) | `\p{N}` — one digit per token | `1` `2` `3` `4` `5` `6` `7` | no grouping to get wrong; sequences $3\times$ longer on numbers |
 
 ::: {.claim}
-Inconsistent splitting was fixed by a regex. **Direction** was not — and that is what demo 3 (p55) will measure.
+Inconsistent splitting was fixed by a regex. **Direction** was not — and that is what demo 3 (p56) will measure.
 :::
 
 ::: {.footer}
@@ -354,7 +354,7 @@ Hooks: W8 (supervised fine-tuning, SFT — its data format is this template), W1
 :::
 
 ::: {.footer}
-merge list: p30–p31 · $2Vd$: p45 · never-updated rows: p57 · decode: p27 · boundary: p40
+merge list: p30–p31 · $2Vd$: p46 · never-updated rows: p58 · decode: p27 · boundary: p41
 :::
 
 # What is the tokenizer the first stage of? Two stages of compression, and how the second pays {.section-title}
@@ -406,15 +406,15 @@ Toy vocabulary {a, b, c} · same four chosen probabilities as p26 · 5 bits, bou
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Name** | **Byte Pair Encoding (BPE)** — Gage 1994, *A New Algorithm for Data Compression*, C Users Journal (a magazine article, known here via Sennrich et al.); into NLP by Sennrich, Haddow & Birch, ACL 2016 (arXiv:1508.07909; the full title is on p73). |
+| **Name** | **Byte Pair Encoding (BPE)** — Gage 1994, *A New Algorithm for Data Compression*, C Users Journal (a magazine article, known here via Sennrich et al.); into NLP by Sennrich, Haddow & Birch, ACL 2016 (arXiv:1508.07909; the full title is on p74). |
 | **The question** | A neural model has a fixed vocabulary, but translation is "an open-vocabulary problem". The 2016 default: a back-off dictionary for unknown words — a patch outside the model. |
 | **The idea** | "encoding rare and unknown words as sequences of subword units": merge the most frequent adjacent pair into one new symbol, repeat, keep the **ordered merge list**. Frequent words become one token; rare ones, pieces that were seen. |
-| **What it added** | A fixed vocabulary that still covers unseen words (gains over the back-off dictionary on WMT 15 En–De and En–Ru, per the abstract). GPT-2 (2019) moved the alphabet to the 256 bytes: every byte string became encodable (p34). |
-| **What it leaves open** | What the merges optimize — frequency, not likelihood or grammar (p33); whether its one segmentation is the only legal one (p36–p40); whether $V$ is free at all (p41–p50). |
+| **What it added** | A fixed vocabulary that still covers unseen words (gains over the back-off dictionary on WMT 15 En–De and En–Ru, per the abstract). GPT-2 (2019) moved the alphabet to the 256 bytes: every byte string became encodable (p35). |
+| **What it leaves open** | What the merges optimize — frequency, not likelihood or grammar (p34); whether its one segmentation is the only legal one (p37–p41); whether $V$ is free at all (p42–p51). |
 :::
 
 ::: {.footer}
-Sennrich et al. 2016 · training: p30 · encoding: p31 · live: p32 · the alphabet: p34
+Sennrich et al. 2016 · training: p30 · encoding: p31 · live: p33 · the alphabet: p35
 :::
 
 ## Training: merge the most frequent adjacent pair, repeat
@@ -439,6 +439,20 @@ A word never seen in training still encodes — into pieces that **were** seen. 
 
 ::: {.footer}
 Rank = position in the merge list · lowest rank first, leftmost occurrence first on ties
+:::
+
+## Before Demo 2: the loop you just did on paper, as a program
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Why** | p30 trained BPE by hand. If the algorithm is really that loop, a program must reproduce your merge table exactly — and one change to the alphabet should remove `[UNK]` without touching anything else. |
+| **What runs** | `bpe_live.py`, standard library only: a skeleton with everything written except `get_pairs`. Live: write it (two loops), run; swap one line in `to_symbols` from characters to UTF-8 bytes, run again; then the same character into `bert-base-chinese`. |
+| **Expect** | Merges 1–3 are $n{+}e\ 13$, $t{+}\_\ 12$, $s{+}t\_\ 9$ — your paper answer; all eight match the reference. Round-trip holds both times. 𠊎: not in the vocabulary under characters; `F0 A0 8A 8E`, no `[UNK]`, under bytes; `[UNK]` from `bert-base-chinese`. |
+:::
+
+::: {.footer}
+Demo 2 · code: `demos/w02_d2_bpe` · standard library only · rehearsed 2026-10-07
 :::
 
 ## Live: one loop by hand, one line changed — and OOV is gone
@@ -609,11 +623,11 @@ Misconception 2 of 10 · search: *token healing*, *prompt boundary problem* — 
 | **The question** | Scaling laws fit $N$ and $D$ (W1's $6ND$; W7) and leave $V$ to habit — 32K for Llama 2. "We investigate how vocabulary size impacts LLM scaling laws": is there a compute-optimal $V$, and does it move with $N$? |
 | **The idea** | Split $N$ into $N_{\text{nv}}$ and $N_{\text{v}} = Vd$; count data in **characters**, so the same text is $D(V)$ tokens; at fixed compute, find the $V$ where shorter sequences stop paying for more embedding rows — "three complementary approaches" to one optimum. |
 | **What it added** | $V^*$ exists and grows with the model — "with larger models requiring larger vocabularies" — but more slowly than $N$. The abstract's one number: Llama2-70B's optimal $V$ "should have been at least 216K", seven times its 32K. |
-| **What it leaves open** | The exponent and the fitted form stay in the paper (p44); whether compression moves the *whole* compute-optimal curve is a 2026 claim with one source (p49); whether fewer tokens is even the right target (p50). |
+| **What it leaves open** | The exponent and the fitted form stay in the paper (p45); whether compression moves the *whole* compute-optimal curve is a 2026 claim with one source (p50); whether fewer tokens is even the right target (p51). |
 :::
 
 ::: {.footer}
-Tao et al. 2024 · the U-curve: p43 · the derivation: p44 · the ledger: p45–p48
+Tao et al. 2024 · the U-curve: p44 · the derivation: p45 · the ledger: p46–p49
 :::
 
 ## Vocabulary size is a scaling-law variable, not a preprocessing detail
@@ -728,14 +742,14 @@ Misconception 4 of 10: "the tokenizer is preprocessing" — half refuted, half o
 
 - Measured tokenizers' compression and downstream performance across many settings
 - Finding: they **correlate** — better compression, better models
-- Question 3 of the four: *what is the evidence?* → a correlation across tokenizers
+- Question 4 of the four: *mechanistic, or correlational?* → a correlation across tokenizers
 :::
 ::: {.column width="50%"}
 **Schmidt et al.**, EMNLP 2024, *Tokenization Is More Than Compression*
 
 - Built **PathPiece**: a tokenizer that minimizes the token count outright
 - Finding: downstream performance did **not** improve
-- Question 4: *does the intervention work?* → no; pre-tokenization and vocabulary construction matter more than compression itself
+- Question 4, the other answer: *an intervention* → it does not help; pre-tokenization and vocabulary construction matter more than compression itself
 :::
 :::
 
@@ -744,7 +758,7 @@ Fertility is a **cost** metric, not a **quality** metric. Misconception 5: "fewe
 :::
 
 ::: {.footer}
-Misconception 5 of 10 · arXiv:2403.06265 and 2402.18376 · reading-question 3 vs. 4
+Misconception 5 of 10 · arXiv:2403.06265 and 2402.18376 · reading-question 4, both answers
 :::
 
 # What does the model fail to see? A tour of the failures {.section-title}
@@ -758,11 +772,11 @@ Misconception 5 of 10 · arXiv:2403.06265 and 2402.18376 · reading-question 3 v
 | **The question** | When a frontier model gets a multi-digit sum wrong, is that weak reasoning — or the pre-tokenizer? "we study the effect this choice has on numerical reasoning through the use of arithmetic tasks". |
 | **The idea** | Change nothing but the grouping: the tokenizer's left-to-right `\p{N}{1,3}` against "right-to-left tokenization (enforced by comma separating numbers at inference time)", on GPT-3.5 and GPT-4. |
 | **What it added** | Right-to-left grouping "leads to largely improved performance". The left-to-right errors are stereotyped — computations "systematic rather than approximate": a representational cause, not noise. |
-| **What it leaves open** | The gap shrinks with scale — larger models "override this tokenization-dependent inductive bias" — so how much is tokenizer, how much training? This room's measurement on an 8B model, with a per-digit control (p54–p55); W10. |
+| **What it leaves open** | The gap shrinks with scale — larger models "override this tokenization-dependent inductive bias" — so how much is tokenizer, how much training? This room's measurement on an 8B model, with a per-digit control (p55–p56); W10. |
 :::
 
 ::: {.footer}
-Singh & Strouse 2024 · mechanism: p53 · measured here: p54–p55 · control: Qwen3 8B
+Singh & Strouse 2024 · mechanism: p54 · measured here: p55–p56 · control: Qwen3 8B
 :::
 
 ## Digits: the grouping runs one way, the carry runs the other
@@ -782,7 +796,7 @@ Misconception 6 of 10 · arXiv:2402.14903 (rules: its §3) · measured on the ne
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p53: the digit grouping runs left to right while the carry runs right to left, and commas flip the grouping (Singh & Strouse). Measure it: the same model, the same sums, only the writing changes. |
+| **Why** | p54: the digit grouping runs left to right while the carry runs right to left, and commas flip the grouping (Singh & Strouse). Measure it: the same model, the same sums, only the writing changes. |
 | **What runs** | Llama 3.1 8B (4-bit MLX), whose pre-tokenizer cuts `1234567` into `123` `456` `7` — not Qwen, which splits per digit; Qwen3 8B is the control. Random 4-, 7- and 10-digit additions written three ways: (A) as written, (B) with commas, (C) a space between digits. 20 problems per cell live; the rehearsal used 50. Thinking off — with it on, the model rewrites the digits itself (W10). |
 | **Watch for** | How the gap between (A) and (B) changes with the number of digits — and whether the control shows it. And what (C), one digit per token, does. |
 :::
@@ -898,7 +912,7 @@ Same root cause each time: token boundaries are frequency boundaries, and freque
 :::
 
 ::: {.footer}
-Reading-question 3, applied five times — the answer differs, and that is the point
+Reading-question 4, applied five times — the answer differs, and that is the point
 :::
 
 # Bigger tokens, or no tokens? After BPE {.section-title}
@@ -1068,33 +1082,33 @@ Two weeks in, two things the model never chose: the unit, and — next week — 
 
 | | |
 |:----|:----------------|
-| API | application programming interface: the per-token bill of a hosted model (p58) |
-| BLT | Byte Latent Transformer, Pagnoni et al. 2024: byte patches sized by entropy (p63) |
+| API | application programming interface: the per-token bill of a hosted model (p59) |
+| BLT | Byte Latent Transformer, Pagnoni et al. 2024: byte patches sized by entropy (p64) |
 | BMP | Basic Multilingual Plane, U+0000–U+FFFF: three UTF-8 bytes per character inside it, four outside (p6) |
 | BOS, EOS | beginning / end of sequence: control tokens the post-processor inserts (p19); `<eos>` is also the decoder's stop (p27) |
 | BPB | bits per byte: stage 2's bits divided by stage 1's bytes (W1; p25) |
 | BPE | Byte Pair Encoding, Gage 1994 / Sennrich et al. 2016 (p29) |
 | ChatML | Chat Markup Language: the `im_start` / `im_end` template family shown (p22) |
 | CJK | Chinese, Japanese, Korean — the ideograph blocks of Unicode (p7) |
-| CPT | continued pre-training: the compute that fills new embedding rows (p66) |
+| CPT | continued pre-training: the compute that fills new embedding rows (p67) |
 | CPU | central processing unit: demos 1 and 2 need nothing else (p12) |
-| CUTE | Edman, Schmid & Fraser 2024: a benchmark that separates knowing a spelling from operating on it; the title does not expand the name (p56) |
-| DP | dynamic programming: the exact count of segmentations (p37) |
+| CUTE | Edman, Schmid & Fraser 2024: a benchmark that separates knowing a spelling from operating on it; the title does not expand the name (p57) |
+| DP | dynamic programming: the exact count of segmentations (p38) |
 
 ## Acronyms in this deck, E–O
 
 | | |
 |:----|:----------------|
-| EM | expectation–maximization: how the Unigram LM fits its $p(x_i)$ (p33) |
+| EM | expectation–maximization: how the Unigram LM fits its $p(x_i)$ (p34) |
 | FLOPs | floating-point operations (W1) |
-| FP16 | 16-bit floating point, 2 bytes per element: next week's cache number (p72; W3) |
-| KV | key–value: the attention cache whose ledger row W3 fills (p72; W3) |
+| FP16 | 16-bit floating point, 2 bytes per element: next week's cache number (p73; W3) |
+| KV | key–value: the attention cache whose ledger row W3 fills (p73; W3) |
 | LLM, LM | (large) language model (W1) |
-| MLX | Apple's array framework for Apple silicon; its authors do not expand the name (p54) |
+| MLX | Apple's array framework for Apple silicon; its authors do not expand the name (p55) |
 | NFC, NFD | Unicode Normalization Form C (canonical composition) and Form D (canonical decomposition): `â` as one code point, or as `a` plus a combining mark (p15) |
 | NFKC | Normalization Form KC, compatibility composition: full-width to half-width, ① to 1 (p20) |
-| OCR | optical character recognition: one source of noisy input (p64) |
-| OOV | out-of-vocabulary: a character the alphabet has no id for (p32) |
+| OCR | optical character recognition: one source of noisy input (p65) |
+| OOV | out-of-vocabulary: a character the alphabet has no id for (p33) |
 
 ## Acronyms in this deck, P–Z
 
@@ -1102,9 +1116,9 @@ Two weeks in, two things the model never chose: the unit, and — next week — 
 |:----|:----------------|
 | PPL | perplexity, $2^{\text{bits}/T}$: stage 2's score (W1; p25) |
 | SFT | supervised fine-tuning, W8: the chat template is its data format (p22) |
-| SSM | state-space model, W6: the "hide the length" half of tokenizer-free (p64) |
-| TMLU | *Measuring Taiwanese Mandarin Language Understanding*, Chen et al. 2024 — an evaluation suite, not a tokenizer study (p68) |
-| TMMLU+ | Tam et al. 2024, *An Improved Traditional Chinese Evaluation Suite for Foundation Model*; the title does not expand the name (p68) |
+| SSM | state-space model, W6: the "hide the length" half of tokenizer-free (p65) |
+| TMLU | *Measuring Taiwanese Mandarin Language Understanding*, Chen et al. 2024 — an evaluation suite, not a tokenizer study (p69) |
+| TMMLU+ | Tam et al. 2024, *An Improved Traditional Chinese Evaluation Suite for Foundation Model*; the title does not expand the name (p69) |
 | `[UNK]` | the unknown-word token of a character vocabulary: one id, and the bytes are gone (p16) |
 | UTF-8 | Unicode Transformation Format, 8-bit: 1 byte for a Latin letter, 3 for a BMP ideograph, 4 beyond it (p9) |
-| ZeTT | Zero-Shot Tokenizer Transfer, Minixhofer, Ponti & Vulić 2024 (p66) |
+| ZeTT | Zero-Shot Tokenizer Transfer, Minixhofer, Ponti & Vulić 2024 (p67) |

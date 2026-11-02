@@ -68,7 +68,7 @@ W6 p47, p57 · W1 p16, p18 · w07-data.json lastweek — no new numbers
 {{< include assets/w07/problem-map.inline.qmd >}}
 
 ::: {.footer}
-Outline W7 · board: p14–p15, p21, p44–p45 · live: p9, p22, p42, p47 · replay: p33, p42
+Outline W7 · board: p14–p15, p21, p44–p45 · live: p10, p22, p42, p47 · replay: p33, p42
 :::
 
 ## What you should be able to do by the end of today
@@ -97,6 +97,22 @@ Outline W7 · board: p14–p15, p21, p44–p45 · live: p9, p22, p42, p47 · rep
 
 ::: {.footer}
 W1 p16, p18 · Llama 3's 15T: the paper's body · Misconception 1: "Chinchilla says 20"
+:::
+
+## At a glance: Chinchilla (Hoffmann et al. 2022)
+
+::: {.prose}
+| | |
+|:---|:-----------------|
+| **Name** | *Training Compute-Optimal Large Language Models*, Hoffmann et al., NeurIPS 2022 (arXiv:2203.15556; published as *An empirical analysis of compute-optimal large language model training*). The 70B model trained in it is **Chinchilla**, and the paper is called by its name. |
+| **The question** | Given a fixed FLOPs budget, how should model size $N$ and the number of training tokens $D$ be traded off? |
+| **The idea** | Train 400+ models, 70M–16B, on 5B–500B tokens; find the optimum three ways — fix $N$, sweep $D$; fix $C$, sweep $N$; fit $\mathcal{L}(N, D) = E + AN^{-\alpha} + BD^{-\beta}$ and solve. |
+| **What it added** | **$N$ and $D$ should be scaled equally**: double the model, double the tokens. The 70B Chinchilla on 4$\times$ the data beats the 280B Gopher at the same compute — the abstract's claim, and the origin of "20 tokens per parameter". |
+| **What it leaves open** | What the three methods disagree about (p16–p17); why Kaplan said $C^{0.73}$ (p18); whether the Approach 3 fit holds (p19); what the budget did not count (p20 on). |
+:::
+
+::: {.footer}
+Hoffmann et al. 2022, abstract and §3 · assigned reading: §3 · mechanism: p13–p16
 :::
 
 ## Before Demo 1: compute-optimal, from five constants
@@ -151,22 +167,6 @@ Demo 1 (a) · live · `w07_d1_compute_optimal/` · Hoffmann Eq. (10) · built 20
 
 ::: {.footer}
 Outline W7 · the metaphor is this course's, not a paper's · it carries to W10 and W11
-:::
-
-## At a glance: Chinchilla (Hoffmann et al. 2022)
-
-::: {.prose}
-| | |
-|:---|:-----------------|
-| **Name** | *Training Compute-Optimal Large Language Models*, Hoffmann et al., NeurIPS 2022 (arXiv:2203.15556; published as *An empirical analysis of compute-optimal large language model training*). The 70B model trained in it is **Chinchilla**, and the paper is called by its name. |
-| **The question** | Given a fixed FLOPs budget, how should model size $N$ and the number of training tokens $D$ be traded off? |
-| **The idea** | Train 400+ models, 70M–16B, on 5B–500B tokens; find the optimum three ways — fix $N$, sweep $D$; fix $C$, sweep $N$; fit $\mathcal{L}(N, D) = E + AN^{-\alpha} + BD^{-\beta}$ and solve. |
-| **What it added** | **$N$ and $D$ should be scaled equally**: double the model, double the tokens. The 70B Chinchilla on 4$\times$ the data beats the 280B Gopher at the same compute — the abstract's claim, and the origin of "20 tokens per parameter". |
-| **What it leaves open** | What the three methods disagree about (p16–p17); why Kaplan said $C^{0.73}$ (p18); whether the Approach 3 fit holds (p19); what the budget did not count (p20 on). |
-:::
-
-::: {.footer}
-Hoffmann et al. 2022, abstract and §3 · assigned reading: §3 · mechanism: p13–p16
 :::
 
 ## Three terms: what $E$, $AN^{-\alpha}$ and $BD^{-\beta}$ each pay for
@@ -287,7 +287,7 @@ Porian 2024 · Pearce & Song 2024 · W4 p20 · Misconception 2: "one of them bot
 ::: {.prose}
 | charge (abstract) | what it means | already seen today |
 |:---|:---|:---|
-| **1** · **inconsistent with the other two methods** | Eq. (10)'s constants imply a different optimum than Table 3 | Chinchilla's own 70B / 1.4T is off Eq. (10)'s valley floor (p9, p16) |
+| **1** · **inconsistent with the other two methods** | Eq. (10)'s constants imply a different optimum than Table 3 | Chinchilla's own 70B / 1.4T is off Eq. (10)'s valley floor (p10, p16) |
 | **2** · it **fails to fit the extracted data** | the points re-digitised from the paper's figure miss the published curve; their own re-fit is **compatible with methods 1–2** | — |
 | **3** · **implausibly narrow confidence intervals** | 0.454–0.455 would need about 600,000 runs; the paper had under 500 | Table 2's interval (p16); the mechanism is p29 |
 
@@ -390,13 +390,13 @@ Muennighoff et al. 2023 · Eq. (5)–(6) §3.1 · $R^{*}_{D} \approx 15$ §6 · 
 | debt | the facts | what the law should read |
 |:---|:---|:---|
 | **W6 p57: a scaling law is written in $N$ — for an MoE, which?** | $C \approx 6N_{\text{active}}D$; memory and capacity follow $N_{\text{total}}$; W4's $12\,n_{\text{layer}}d^{2}$ is the dense case; W6's $\rho$ has a floor | **Neither.** Clark et al.: loss as a function of parameters *and* expert count, collapsed into an **effective parameter count**. Abnar et al.: under a fixed parameter or compute budget there **is** an optimal sparsity — two axes |
-| **W2 p42–p44: vocabulary is in the budget** | $N = N_{\text{nv}} + N_{\text{v}}$; $D$ in tokens depends on $V$ (W2 p47) | Tao et al.: the first-order condition W2 derived — a fourth variable. Limisiewicz 2026: scale $N$ with data in **bytes** — one preprint, unreplicated |
+| **W2 p43–p45: vocabulary is in the budget** | $N = N_{\text{nv}} + N_{\text{v}}$; $D$ in tokens depends on $V$ (W2 p48) | Tao et al.: the first-order condition W2 derived — a fourth variable. Limisiewicz 2026: scale $N$ with data in **bytes** — one preprint, unreplicated |
 
 : {tbl-colwidths="[26,30,44]"}
 :::
 
 ::: {.footer}
-Clark 2022 · Abnar 2025 · Tao 2024 · W6 p57 · W2 p44 · Misconception 4: "MoE's $N$ is the total"
+Clark 2022 · Abnar 2025 · Tao 2024 · W6 p57 · W2 p45 · Misconception 4: "MoE's $N$ is the total"
 :::
 
 # Every axis is a small-scale fit, extrapolated. Can the fit be trusted? {.section-title}
@@ -570,11 +570,11 @@ commoncrawl.org (a website, not a paper) · FineWeb §3.1, §3.3 · FineWeb2 (ar
 : {tbl-colwidths="[40,60]"}
 
 ::: {.claim}
-W2 p67 said "Traditional Chinese has too little data" is the wrong diagnosis. Here is the right one: **it has no subset of its own** — not a quality decision, a decision made at the sieve. Hakka and Taiwanese are the other case: the sieve has a slot, and the raw water is nearly empty.
+W2 p68 said "Traditional Chinese has too little data" is the wrong diagnosis. Here is the right one: **it has no subset of its own** — not a quality decision, a decision made at the sieve. Hakka and Taiwanese are the other case: the sieve has a slot, and the raw water is nearly empty.
 :::
 
 ::: {.footer}
-`fineweb-2` dataset card (not a paper) · W2 p67 · Misconception 8 begins: "more data is better"
+`fineweb-2` dataset card (not a paper) · W2 p68 · Misconception 8 begins: "more data is better"
 :::
 
 ## Quality: rules, then a classifier — and what "quality" means
@@ -909,7 +909,7 @@ Part II has begun: this week decided **how much** and **which**; the next three 
 
 **Synthetic data, collapse, MMLU** · Maini et al., *Rephrasing the Web*, ACL 2024 (arXiv:2401.16380) · DatologyAI, *BeyondWeb*, arXiv:2508.10975 — **a company lab's preprint** · Qin et al., COLM 2025 (arXiv:2503.19551) · Niklaus et al., COLM 2026 (arXiv:2604.13977) · Gunasekar et al., *Textbooks Are All You Need*, arXiv:2306.11644 — a preprint · Shumailov et al., Nature 631, 755–759 (2024) · Gerstgrasser et al., COLM 2024 (arXiv:2404.01413) · Dohmatob, Feng & Kempe, NeurIPS 2024 (arXiv:2402.07712) · Gema et al., *Are We Done with MMLU?*, NAACL 2025 (arXiv:2406.04127) · Oren et al., ICLR 2024 Oral (arXiv:2310.17623)
 
-**Data and figures** · Every number on these slides is one of: arithmetic on Hoffmann et al.'s Eq. (10) constants and Eq. (4) (`make_demo_w07.py`, p9, p15–p17, p22), arithmetic on W4's parameter accounting (p18), a curve drawn from a paper's stated equation and constant (p25, p45), a toy formula labelled as such (p31), this week's rehearsal records (demo 2's five runs and fits, p32–p33; demo 3's two runs, p41–p42; demo 4's pairs and MMLU hits, p47), a number from an earlier week's rehearsal (W4 demo 1's tiny GPT), or a number copied from an abstract or a cited section (all others). The plant, the ray, the two schedules, the shingles and the two collapse loops are schematics. **All four demos were built and rehearsed on the M5 Max (2026-10-26)**; their records are checked in under `demos/w07_d*/runs/rehearsal/`, and the table and curves on p33, the figure on p42 and the table on p47 are those records. The tables on p9, p22 and p42 are blank on purpose: they are filled in class.
+**Data and figures** · Every number on these slides is one of: arithmetic on Hoffmann et al.'s Eq. (10) constants and Eq. (4) (`make_demo_w07.py`, p10, p15–p17, p22), arithmetic on W4's parameter accounting (p18), a curve drawn from a paper's stated equation and constant (p25, p45), a toy formula labelled as such (p31), this week's rehearsal records (demo 2's five runs and fits, p32–p33; demo 3's two runs, p41–p42; demo 4's pairs and MMLU hits, p47), a number from an earlier week's rehearsal (W4 demo 1's tiny GPT), or a number copied from an abstract or a cited section (all others). The plant, the ray, the two schedules, the shingles and the two collapse loops are schematics. **All four demos were built and rehearsed on the M5 Max (2026-10-26)**; their records are checked in under `demos/w07_d*/runs/rehearsal/`, and the table and curves on p33, the figure on p42 and the table on p47 are those records. The tables on p10, p22 and p42 are blank on purpose: they are filled in class.
 :::
 
 ## Acronyms in this deck, A–F

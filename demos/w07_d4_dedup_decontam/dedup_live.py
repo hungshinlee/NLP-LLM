@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W7 demo 4：課堂上從零寫的那一份。上課前 ./present.sh reset 清空到只剩這段註解與 import；寫的順序見投影片 p47 講稿的【操作】。
+# W7 demo 4：課堂上從零寫的那一份。上課前 ./present.sh reset 清空到只剩這段註解與 import；寫的順序照 dedup_final.py 的段落。
 # 每寫完一段就 ./present.sh live（= python3 tests.py dedup_live）；還沒寫的函數會標 skip。寫完三段：./present.sh run --impl live
 # tests.py 與 demo.py 依名稱與簽名呼叫這些（純標準函式庫）：
 #   shingles(text, n=5) -> set[str]                 小寫、re.findall(r"\w+") 切詞、連續 n 個詞用空白接成一個字串

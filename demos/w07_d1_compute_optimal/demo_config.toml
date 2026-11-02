@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W7 demo 1（投影片 p8 前導頁、p9「Live: demo 1 (a)」、p22「Live: demo 1 (b)」）的設定。
+# W7 demo 1（投影片 p9 前導頁、p10「Live: demo 1 (a)」、p22「Live: demo 1 (b)」）的設定。
 # 純標準函式庫；不載模型、不需要網路。換數字只改這裡，算法在 optimal.py。
 
 [chinchilla]
@@ -14,11 +14,11 @@ beta = 0.28
 source = "Hoffmann et al. 2022 (Chinchilla), Appendix D.2 Eq. (10); closed form is Eq. (4)"
 
 [table]
-# (a) 第一張表：C 從 10^18 到 10^26 每一個數量級；投影片 p9 只填 slide_rows 那五列（印出時加 ★）。
+# (a) 第一張表：C 從 10^18 到 10^26 每一個數量級；投影片 p10 只填 slide_rows 那五列（印出時加 ★）。
 log10_C = [18, 19, 20, 21, 22, 23, 24, 25, 26]
 slide_rows = [18, 20, 22, 24, 26]
 
-# (a) 第二張表：三個真實的 (N, D)。C = 6ND 是算術。順序＝投影片 p9 下表的順序。
+# (a) 第二張表：三個真實的 (N, D)。C = 6ND 是算術。順序＝投影片 p10 下表的順序。
 [[points]]
 key = "w1"
 label = "W1 p18: 7B / 140B"

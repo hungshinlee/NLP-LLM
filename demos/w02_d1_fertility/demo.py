@@ -14,7 +14,7 @@
               並用 OpenCC 把繁中那段轉成簡體寫進 texts/zh_city_hans.txt
     inspect   課前確認：每個 tokenizer 的模型類型、normalizer、pre-tokenizer 的數字規則、byte fallback、
               「𠊎」是不是 [UNK]、NFD 會不會被改成 NFC、" A" 與 "A" 是不是不同 token、
-              使用者文字裡的 <|im_start|> 會不會變成控制 token——HANDOVER C7.4 那八件事
+              使用者文字裡的 <|im_start|> 會不會變成控制 token——README 列的那八件事
     rehearse  課前彩排：整張表算一次，存成 runs/rehearsal/table.json（現場失敗時的退路）
     show      課堂用：按 Enter 逐列填表；c = 帳本；l = 最長的含漢字 token；q = 離開
     replay    現場失敗時：把彩排的表格重新顯示（畫面標明「非現場」）
@@ -504,7 +504,7 @@ def print_ledger(cfg, key, args):
         print(f"  N ≈ {N:,}  ({N/1e9:.2f} B)" + (f"   名稱上是 {spec['params_nominal']/1e9:.0f}B" if spec.get("params_nominal") else ""))
     if N:
         print(f"\n  {BOLD}{'Vd' if e['tie'] else '2Vd'} / N = {e['emb_params']/N:.3f}  →  {100*e['emb_params']/N:.1f}% 的參數是詞表{RESET}")
-        note("  對照投影片 p46 那張圖：125M 的模型配 128K 詞表是 70%，175B 是 1.8%；這個模型落在中間。")
+        note("  對照投影片 p47 那張圖：125M 的模型配 128K 詞表是 70%，175B 是 1.8%；這個模型落在中間。")
     tc = text_config(c)
     return {"config": {k: tc.get(k) for k in ("vocab_size", "hidden_size", "num_hidden_layers", "intermediate_size",
                                                "num_attention_heads", "num_key_value_heads", "head_dim", "tie_word_embeddings", "_from")},
@@ -584,7 +584,7 @@ def cmd_inspect(args, cfg):
         if a in facts and b in facts:
             ta, tb = facts[a]["zh_city"]["tokens"], facts[b]["zh_city"]["tokens"]
             print(f"  {cfg['tokenizers'][a]['label']} {ta} → {cfg['tokenizers'][b]['label']} {tb} tokens  ({ta/tb:.2f}×)   {why}")
-    note("判讀（對應 HANDOVER C7.4）：Qwen 的 normalizer 是否 NFC 看「decode(NFD)」；Gemma／Llama 3 的數字規則看 1234567 那行；"
+    note("判讀（README 的八件事）：Qwen 的 normalizer 是否 NFC 看「decode(NFD)」；Gemma／Llama 3 的數字規則看 1234567 那行；"
          "bert-zh 對 𠊎 看 [UNK]；Breeze 對 Mistral 看倍數；<|im_start|> 那行是 p22 講稿要不要說「Qwen3.8 守住了」的依據。"
          "確認之後把講稿裡的「待確認」句改掉。")
     REHEARSAL.mkdir(parents=True, exist_ok=True)

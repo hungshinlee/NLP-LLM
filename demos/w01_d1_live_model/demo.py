@@ -13,7 +13,7 @@
     replay    現場失敗時：把彩排錄下的輸出重播出來（畫面會標明「非現場」）
 
 所有執行紀錄（含 prompt、參數、套件版本、tok/s、峰值記憶體）都寫進 runs/，
-這也是 M5 Max 上的第一批實測數字（見 nlp_llm/HANDOVER.md 6b）。
+這也是 M5 Max 上的第一批實測數字（紀錄在 runs/rehearsal/）。
 
 相依：mlx、mlx-lm（git commit 釘在 demos/versions.lock）、transformers。Python 3.11+（用 tomllib）。
 """

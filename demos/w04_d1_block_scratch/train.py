@@ -11,7 +11,7 @@
                                     → runs/rehearsal/probe.json（附錄 C 那一條「待實測」在這裡變成實測）
     ./present.sh replay train       現場：印彩排的曲線（終端機）與最後的 BPB 對 W1 四個 n-gram 的 BPB；loss.svg 用 open 開
 
-同一把尺要說清楚（README 與 p23 的【提示】也寫了）：
+同一把尺要說清楚（README 也寫了）：
   語料與 held-out 文字和 W1 相同（W1 把 regex token 的前 90% 當 train，這裡取同一個切點的字元起點），
   但 W1 的 n-gram 只預測詞與標點（regex 切出來的 token，空白、換行、連字號、引號不在裡面），分母是 ' '.join(tokens) 的 bytes；
   這裡的字元模型預測原文的每一個字元，分母是原文的 UTF-8 bytes。兩個分母都印出來（bpb_raw、bpb_w1_denominator），

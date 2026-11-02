@@ -390,7 +390,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t124-text_1">
-   <!-- $\mathbf{E},\ \mathbf{W}_U:\ 2Vd\ \text{parameters, updated every step — only the rows these ids hit (p45, p57)}$ -->
+   <!-- $\mathbf{E},\ \mathbf{W}_U:\ 2Vd\ \text{parameters, updated every step — only the rows these ids hit (p46, p58)}$ -->
    <g style="fill: #1f2328" transform="translate(0 14.25) scale(0.19 -0.19)">
     <defs>
      <path id="t124-Cmb10-45" d="M 219 0 
@@ -1699,7 +1699,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t127-text_1">
-   <!-- $\text{swap the tokenizer: every row of }\mathbf{E}\text{ and }\mathbf{W}_U\text{, and every weight between them, now points at the wrong ids (p66)}$ -->
+   <!-- $\text{swap the tokenizer: every row of }\mathbf{E}\text{ and }\mathbf{W}_U\text{, and every weight between them, now points at the wrong ids (p67)}$ -->
    <g style="fill: #dc2626" transform="translate(0 14.25) scale(0.19 -0.19)">
     <defs>
      <path id="t127-Cmr10-73" d="M 213 -19 

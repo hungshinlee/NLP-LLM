@@ -452,6 +452,6 @@
     "flop_per_byte_weights_only": 0.16924671857730839
    }
   ],
-  "note": "time per decode step ≥ (N·b + M_KV) / BW；BW 是記憶體頻寬，demo 機的數字待實測（HANDOVER C6b），不寫。FLOPs = 2N + 4 n_layer L d（2026-10-07 起含 attention 項；舊版只有 2N，見 flop_per_byte_weights_only）"
+  "note": "time per decode step ≥ (N·b + M_KV) / BW；BW 是記憶體頻寬，demo 機的數字未實測，不寫。FLOPs = 2N + 4 n_layer L d（2026-10-07 起含 attention 項；舊版只有 2N，見 flop_per_byte_weights_only）"
  }
 }
