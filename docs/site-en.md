@@ -22,10 +22,12 @@ You get this in week 1, and each week adds the layer it is responsible for. It i
 | **KV cache** — state carried, not FLOPs | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ bytes | **Capacity first, then bandwidth.** The leading $2$ is key $+$ value; the whole thing is re-read at every decode step |
 | **Long context** — as $L$ grows | KV $\propto L$ · decode's attention side $\propto L$ · prefill's attention side $\propto L^2$ | **All three, in that order.** Past $L \approx 12d$ the $L^2$ term is prefill's main term; the KV cache and the decode step grow linearly with every token kept (W5) |
 | **MoE** — the two columns come apart | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | Both, but separately — which is the entire point of the architecture (W6) |
+| **Fixed state** — a memory that does not grow | per layer $n_{\text{head}}\,d_{\text{head}}^2\,b$ bytes, with no $L$ in it | **State capacity.** Linear attention and SSMs replace the KV cache with a fixed-size state: smaller than the cache past $L^{\star} = n_{\text{head}}d_{\text{head}}/2n_{\text{kv}}$, but able to hold at most about $d_{\text{head}}$ key–value pairs per head (W6) |
+| **Training budget** — how $C$ is split | $N^{*} \propto C^{\beta/(\alpha+\beta)}$, $D^{*} \propto C^{\alpha/(\alpha+\beta)}$ — a fit, not a law | **The loss surface, then the bill.** Compute-optimal is where the two marginal returns are equal; counting inference ($+\,2ND_{\text{inf}}$) moves the optimum to a smaller $N$ and a larger $D$ (W7) |
 
 :::
 
-$N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ context length so far · $b$ bytes per element ($2$ at FP16) · $n_{\text{kv}}$ key/value heads ($=n_{\text{head}}$ for MHA, $1$ for MQA).
+$N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ context length so far · $b$ bytes per element ($2$ at FP16) · $n_{\text{kv}}$ key/value heads ($=n_{\text{head}}$ for MHA, $1$ for MQA) · $\alpha, \beta$ the fitted exponents of a loss-vs-$N$, loss-vs-$D$ law (W7).
 
 **The line worth memorising.** The first two rows are arithmetic problems; the last two are traffic problems. Decode is not short of FLOPs — it is short of bandwidth, and the KV cache is what fills the road. Most of Part III is an attempt to make those two rows cheaper.
 
@@ -109,7 +111,7 @@ Goldberg, *Neural Network Methods for NLP* (2017) and Paaß & Giesselbach, *Foun
 <!-- file: derivations.md -->
 ## Derivations and Hand-Built Components
 
-One board derivation and one component per week. Everything is demonstrated in class. The last column says **what each component needs to run on**, not how long it takes: the demo machine has no CUDA, and nothing here has been timed on it yet. Timings will be added once they are measured rather than estimated.
+One board derivation and one component per week. Everything is demonstrated in class. The last column says **what each component needs to run on**, not how long it takes: the demo machine has no CUDA. Measured run times for the W1–W7 demos (one Apple M5 Max, 64 GB) are in each demo's README under `demos/`, next to the rehearsal records; nothing here is an estimate.
 
 | Week | At the board | Built by hand | Runs on |
 |:--|:--------------------------------|:----------------------------|:------|

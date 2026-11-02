@@ -2,7 +2,7 @@
 
 ## Derivations and Hand-Built Components
 
-One board derivation and one component per week. Everything is demonstrated in class. The last column says **what each component needs to run on**, not how long it takes: the demo machine has no CUDA, and nothing here has been timed on it yet. Timings will be added once they are measured rather than estimated.
+One board derivation and one component per week. Everything is demonstrated in class. The last column says **what each component needs to run on**, not how long it takes: the demo machine has no CUDA. Measured run times for the W1–W7 demos (one Apple M5 Max, 64 GB) are in each demo's README under `demos/`, next to the rehearsal records; nothing here is an estimate.
 
 | Week | At the board | Built by hand | Runs on |
 |:--|:--------------------------------|:----------------------------|:------|

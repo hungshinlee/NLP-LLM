@@ -677,13 +677,13 @@ $N$: W4 demo 1 · config, timings: W3 demo 2 · Misconception 7: "the bottleneck
 
 | Where the cost falls | Formula | What binds it | Filled in |
 |:---|:---|:---|:---|
-| **Training**, one run | $C_{\text{train}} \approx 6ND$ FLOPs | compute | W1 · W4 · W7 |
+| **Training**, one run | $C_{\text{train}} \approx 6ND$ FLOPs; how $C$ splits between $N$ and $D$ | compute | W1 · W4 · W7 |
 | **Optimizer state** (Adam) | $\approx 2N$ values: 8 bytes/param (fp32); 16 with weights, grads, master → 8B: 128 GB | memory | W4 · W8 |
 | **Prefill**, once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | compute | W3 · **today** · W11 |
 | **Decode**, per generated token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$ FLOPs; $t_{\text{step}} \geq (Nb_{\text{elem}} + M_{\text{KV}})/\text{BW}$ | memory bandwidth | W3 · **today** · W11 |
 | **KV cache**, state carried | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b_{\text{elem}}$ = 128 KiB / token (GQA-8) | capacity, then bandwidth | W3 · **today** · W11 |
 | **Long context**, as $L$ grows | **KV $\propto L$ · decode's attention side $\propto L$ · prefill's $\propto L^2$, the main term past $L \approx 12d$ (8B at 128k: $2.1\times$ the weight side)** | all three, in that order | **today** · W6 · W11 |
-| **MoE** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | both, separately | W6 |
+| **MoE** · **Fixed state** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ · a per-layer state with no $L$ in it | both, separately · state capacity | W6 · W11 |
 
 : {tbl-colwidths="[20,52,15,13]"}
 

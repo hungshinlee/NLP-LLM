@@ -232,13 +232,13 @@ Item 4 is the one that carries furthest. It comes back in W7, W11 and W12.
 
 | Where the cost falls | Formula | What binds it | Filled in |
 |:---|:---|:---|:---|
-| **Training**, one run | $C_{\text{train}} \approx 6ND$ FLOPs | compute | today · W7 |
+| **Training**, one run | $C_{\text{train}} \approx 6ND$ FLOPs; how $C$ splits between $N$ and $D$ | compute | today · W7 |
 | **Optimizer state** (Adam) | $\approx 2N$ extra values | memory | W4 |
 | **Prefill**, once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | compute | W3 · W11 |
 | **Decode**, per generated token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$ FLOPs | memory bandwidth | W3 · W11 |
 | **KV cache**, state carried | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ bytes | capacity, then bandwidth | W3 · W5 |
 | **Long context**, as $L$ grows | KV and decode's attention side $\propto L$; prefill's $\propto L^2$ | all three | W5 |
-| **MoE** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | both, separately | W6 |
+| **MoE** · **Fixed state** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ · a per-layer state with no $L$ in it | both, separately · state capacity | W6 · W11 |
 
 : {tbl-colwidths="[21,48,16,15]"}
 

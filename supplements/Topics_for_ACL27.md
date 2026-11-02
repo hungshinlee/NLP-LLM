@@ -372,6 +372,7 @@
   - Li et al., “SnapKV: LLM Knows What You are Looking for Before Generation,” *NeurIPS 2024*, pp. 22947–22970. [OpenReview](https://openreview.net/forum?id=poE54GOq2l)
   - Yuan et al., “KV Cache Compression, But What Must We Give in Return? A Comprehensive Benchmark of Long Context Capable Approaches,” *Findings of EMNLP 2024*, pp. 4623–4648. [ACL Anthology](https://aclanthology.org/2024.findings-emnlp.266/)
   - 若要拿 perplexity 當指標，先讀 Fang et al., “What is Wrong with Perplexity for Long-context Language Modeling?,” *ICLR 2025*：它主張 perplexity 不適合評估長文本能力。
+  - Simbalista, “A Multilingual Audit of Numeric Retrieval Failures Under KV-Cache Eviction,” *Third Workshop on Long-Context Foundation Models at NeurIPS 2026*（poster；[OpenReview](https://openreview.net/forum?id=H1DYM00nBn)；workshop 論文，不是主會）。在兩個 7–8B 模型、七種語言上測三種淘汰法（KNorm、SnapKV、StreamingLLM）對「從長文裡撈數字」的影響，並把「有沒有給出一個數字」與「給的數字對不對」分開報，發現準確率相近的方法會以不同方式失敗。摘要只點名韓語、沒有提到中文，測的是數字檢索不是指令遵循——**這是我們找到離「多語言 KV 壓縮」最近的一篇**，它沒有做掉你的問題，但你的相關研究要從它開始；我們只讀了摘要，動手前讀全文。
 - **開放方向**：
   - 中文指令被忽略的速度與英文相同嗎？跟 token 數的差異有關嗎？
   - 指令放在 prompt 的開頭、中間或結尾，被壓縮掉的機率一樣嗎（接 C1）？

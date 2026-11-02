@@ -588,13 +588,13 @@ Rajbhandari 2019 (ZeRO, Zero Redundancy Optimizer) §3 · bf16 = bfloat16, fp32 
 
 | Where the cost falls | Formula | What binds it | Filled in |
 |:---|:---|:---|:---|
-| **Training**, one run | $C_{\text{train}} \approx 6ND$ FLOPs | compute | W1 · **today: which $N$** · W7 |
+| **Training**, one run | $C_{\text{train}} \approx 6ND$ FLOPs; how $C$ splits between $N$ and $D$ | compute | W1 · **today: which $N$** · W7 |
 | **Optimizer state** (Adam) | $\approx 2N$ values: **8 bytes/param (fp32); 16 with weights, grads, master → 8B: 128 GB** | memory | **today** · W8 |
 | **Prefill**, once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | compute | W3 · W11 |
 | **Decode**, per generated token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$ FLOPs; $t_{\text{step}} \geq (Nb + M_{\text{KV}})/\text{BW}$ | memory bandwidth | W3 · W11 |
 | **KV cache**, state carried | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ = 512 KiB / token (MHA), 128 KiB (GQA-8) | capacity, then bandwidth | W3 · W5 · W11 |
 | **Long context**, as $L$ grows | KV $\propto L$ · decode's attention side $\propto L$ · prefill's attention side $\propto L^2$, the main term past $L \approx 12d$ | all three, in that order | W5 · W11 |
-| **MoE** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | both, separately | W6 |
+| **MoE** · **Fixed state** | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ · a per-layer state with no $L$ in it | both, separately · state capacity | W6 · W11 |
 
 : {tbl-colwidths="[20,52,15,13]"}
 
