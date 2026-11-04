@@ -60,7 +60,7 @@ format:
 :::
 
 ::: {.footer}
-W6 p49, p59 · W1 p16, p18 · w07-data.json lastweek — no new numbers
+W6 p51, p61 · W1 p16, p18 · w07-data.json lastweek — no new numbers
 :::
 
 ## The problem this week handles, in one picture
@@ -389,14 +389,14 @@ Muennighoff et al. 2023 · Eq. (5)–(6) §3.1 · $R^{*}_{D} \approx 15$ §6 · 
 ::: {.prose}
 | debt | the facts | what the law should read |
 |:---|:---|:---|
-| **W6 p59: a scaling law is written in $N$ — for an MoE, which?** | $C \approx 6N_{\text{active}}D$; memory and capacity follow $N_{\text{total}}$; W4's $12\,n_{\text{layer}}d^{2}$ is the dense case; W6's $\rho$ has a floor | **Neither.** Clark et al.: loss as a function of parameters *and* expert count, collapsed into an **effective parameter count**. Abnar et al.: under a fixed parameter or compute budget there **is** an optimal sparsity — two axes |
+| **W6 p61: a scaling law is written in $N$ — for an MoE, which?** | $C \approx 6N_{\text{active}}D$; memory and capacity follow $N_{\text{total}}$; W4's $12\,n_{\text{layer}}d^{2}$ is the dense case; W6's $\rho$ has a floor | **Neither.** Clark et al.: loss as a function of parameters *and* expert count, collapsed into an **effective parameter count**. Abnar et al.: under a fixed parameter or compute budget there **is** an optimal sparsity — two axes |
 | **W2 p43–p45: vocabulary is in the budget** | $N = N_{\text{nv}} + N_{\text{v}}$; $D$ in tokens depends on $V$ (W2 p48) | Tao et al.: the first-order condition W2 derived — a fourth variable. Limisiewicz 2026: scale $N$ with data in **bytes** — one preprint, unreplicated |
 
 : {tbl-colwidths="[26,30,44]"}
 :::
 
 ::: {.footer}
-Clark 2022 · Abnar 2025 · Tao 2024 · W6 p59 · W2 p45 · Misconception 4: "MoE's $N$ is the total"
+Clark 2022 · Abnar 2025 · Tao 2024 · W6 p61 · W2 p45 · Misconception 4: "MoE's $N$ is the total"
 :::
 
 # Every axis is a small-scale fit, extrapolated. Can the fit be trusted? {.section-title}
@@ -843,7 +843,7 @@ compare with your two lines from p7 · W8: the compressor becomes an assistant
 : {tbl-colwidths="[17,53,13,17]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p58, W4 p46, W5 p45, W6 p49 · one row added · bytes: $b$
+Same master as W1 p16, W3 p58, W4 p46, W5 p45, W6 p51 · one row added · bytes: $b$
 :::
 
 ## Twelve things this week said no to (1 of 2)
