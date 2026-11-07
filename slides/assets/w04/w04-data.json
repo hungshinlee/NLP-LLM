@@ -346,7 +346,7 @@
   "GB_8B_weights_bf16_only": 16.0,
   "max_N_in_64GB_B": 4.0,
   "max_N_in_16GB_B": 1.0,
-  "lora_saves_of_16": 12,
+  "lora_saves_of_16": 14,
   "muon_state_bytes_per_param": 4,
   "note": "ZeRO's accounting (Rajbhandari et al. 2019, section 3): 2+2+4+4+4 = 16 bytes per parameter, activations not included. N = 8e9 is the nominal size of an 8B model, not a config.json reading."
  },

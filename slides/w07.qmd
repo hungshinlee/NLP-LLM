@@ -878,7 +878,7 @@ Same master as W1 p16, W3 p58, W4 p46, W5 p45, W6 p51 · one row added · bytes:
 
 ## Next week: from a compressor to an assistant
 
-- Seven weeks in, the supervision axis (W1 p19) still has **one entry**: the pre-training distribution. Everything today — the fit, the plant, the cooldown — decides what that distribution is. Next week opens the second entry: **supervised fine-tuning**, instruction data, and what happens to a 15T-token compressor when you show it 100k conversations
+- Seven weeks in, the supervision axis (W1 p19) still has **one entry**: the pre-training distribution. Everything today — the fit, the plant, the cooldown — decides what that distribution is. Next week opens the second entry: **supervised fine-tuning**, and what happens to a 15T-token compressor shown 1,000 (LIMA) to 940,000 (Tülu 3) demonstrations
 - **W8**: SFT and PEFT; LoRA as a bypass on W4's residual stream (not compression); catastrophic forgetting as the price of the second entry; the optimizer row of the ledger in bytes, again
 - the training-budget row returns in W10 (test-time compute is the next axis — Roberts already counted it) and W11 (precision and deployment); MMLU returns in W14 with its contamination history
 

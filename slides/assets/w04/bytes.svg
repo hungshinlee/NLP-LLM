@@ -2374,7 +2374,7 @@ z
    </g>
   </g>
  </g>
-</svg></g><g class="fragment" data-fragment-index="4"><line x1="40" y1="204" x2="1157" y2="204" stroke="#1f2328" stroke-width="1.6"/><svg x="40" y="216.74" width="682.71" height="22.26" viewBox="0 0 682.71 22.26"><defs>
+</svg></g><g class="fragment" data-fragment-index="4"><line x1="40" y1="204" x2="1157" y2="204" stroke="#1f2328" stroke-width="1.6"/><svg x="40" y="211.49" width="682.71" height="27.51" viewBox="0 -5.25 682.71 27.51"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t127-figure_1">
@@ -3620,7 +3620,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t128-text_1">
-   <!-- $\text{freeze the weights and } 12 \text{ of the } 16 \text{ disappear (no gradient, no master copy, no } \mathbf{m}, \mathbf{v}\text{): W8, PEFT (parameter-efficient fine-tuning)}$ -->
+   <!-- $\text{freeze the weights and } 14 \text{ of the } 16 \text{ disappear (no gradient, no master copy, no } \mathbf{m}, \mathbf{v}\text{): W8, PEFT (parameter-efficient fine-tuning)}$ -->
    <g style="fill: #6b7280" transform="translate(0 14.25) scale(0.19 -0.19)">
     <defs>
      <path id="t128-Cmr10-66" d="M 206 0 
@@ -4139,45 +4139,31 @@ L 2694 0
 L 594 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t128-Cmr10-32" d="M 319 0 
-L 319 172 
-Q 319 188 331 206 
-L 1325 1306 
-Q 1550 1550 1690 1715 
-Q 1831 1881 1968 2097 
-Q 2106 2313 2186 2536 
-Q 2266 2759 2266 3009 
-Q 2266 3272 2169 3511 
-Q 2072 3750 1880 3894 
-Q 1688 4038 1416 4038 
-Q 1138 4038 916 3870 
-Q 694 3703 603 3438 
-Q 628 3444 672 3444 
-Q 816 3444 917 3347 
-Q 1019 3250 1019 3097 
-Q 1019 2950 917 2848 
-Q 816 2747 672 2747 
-Q 522 2747 420 2851 
-Q 319 2956 319 3097 
-Q 319 3338 409 3548 
-Q 500 3759 670 3923 
-Q 841 4088 1055 4175 
-Q 1269 4263 1509 4263 
-Q 1875 4263 2190 4108 
-Q 2506 3953 2690 3670 
-Q 2875 3388 2875 3009 
-Q 2875 2731 2753 2481 
-Q 2631 2231 2440 2026 
-Q 2250 1822 1953 1562 
-Q 1656 1303 1563 1216 
-L 838 519 
-L 1453 519 
-Q 1906 519 2211 526 
-Q 2516 534 2534 550 
-Q 2609 631 2688 1141 
-L 2875 1141 
-L 2694 0 
-L 319 0 
+     <path id="t128-Cmr10-34" d="M 178 1056 
+L 178 1281 
+L 2156 4231 
+Q 2178 4263 2222 4263 
+L 2316 4263 
+Q 2388 4263 2388 4191 
+L 2388 1281 
+L 3016 1281 
+L 3016 1056 
+L 2388 1056 
+L 2388 428 
+Q 2388 297 2575 261 
+Q 2763 225 3009 225 
+L 3009 0 
+L 1247 0 
+L 1247 225 
+Q 1494 225 1681 261 
+Q 1869 297 1869 428 
+L 1869 1056 
+L 178 1056 
+z
+M 391 1281 
+L 1906 1281 
+L 1906 3547 
+L 391 1281 
 z
 " transform="scale(0.015625)"/>
      <path id="t128-Cmr10-6f" d="M 1600 -72 
@@ -4883,7 +4869,7 @@ z
     <use xlink:href="#t128-Cmr10-64" transform="translate(919.335938 0)"/>
     <use xlink:href="#t128-Cmr10-20" transform="translate(974.853516 0)"/>
     <use xlink:href="#t128-Cmr10-31" transform="translate(1008.154297 0)"/>
-    <use xlink:href="#t128-Cmr10-32" transform="translate(1058.154297 0)"/>
+    <use xlink:href="#t128-Cmr10-34" transform="translate(1058.154297 0)"/>
     <use xlink:href="#t128-Cmr10-20" transform="translate(1108.154297 0)"/>
     <use xlink:href="#t128-Cmr10-6f" transform="translate(1141.455078 0)"/>
     <use xlink:href="#t128-Cmr10-66" transform="translate(1191.455078 0)"/>

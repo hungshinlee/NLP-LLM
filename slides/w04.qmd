@@ -520,7 +520,7 @@ w04-data.json (flops) · W3 p39 ($L = 12d$) · W3 p35 (decode: $4Ld$) · W1 p17 
 {{< include assets/w04/trainstep.inline.qmd >}}
 
 ::: {.claim}
-Training walks the same stream **three times** — forward, backward, update. Inference keeps the first walk and $2$ of the $16$ bytes; W8 removes the other two walks, W11 serves the one that is left.
+Training walks the same stream **three times** — forward, backward, update. Inference keeps the first walk and $2$ of the $16$ bytes; W8 drops half the second walk and most of the third; W11 serves the first.
 :::
 
 ::: {.footer}
