@@ -1,0 +1,84 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W8 demo 3（投影片 p48 前導頁、p49「Replay: demo 3」）的設定：LoRA 與 full fine-tuning 各掃一組 learning rate。
+#
+# 改這個檔就能換 LR 網格、步數、batch、模型；程式不必動。資料與模型沿用 demo 1（同一個 Qwen3-1.7B-Base、同一份 Dolly 抽樣）。
+
+[demo]
+title = "W8 · Demo 3 — two learning-rate sweeps: LoRA and full fine-tuning"
+# 所有 run 同一個 seed（mlx_lm.lora --seed；資料順序、LoRA 的 A 初始化都吃它）。與 demo 1 相同。
+seed = 20261108
+
+# ── 模型（與 demo 1 同一個；revision 鎖在 ../versions.lock 的 MODEL_REVISION__QWEN_QWEN3_1_7B_BASE）────
+[model]
+repo = "Qwen/Qwen3-1.7B-Base"
+label = "Qwen3-1.7B-Base (bf16, base: pre-trained only)"
+short = "Qwen3-1.7B-Base"
+revision = ""
+
+# ── 資料：demo 1 prepare 出來的三個切分（相對於這個資料夾）────────────────────────────────
+[data]
+dir = "../w08_d1_sft_base_to_assistant/data"
+# train.jsonl 1,000 筆訓練；valid.jsonl 100 筆是每 steps_per_eval 步量一次的曲線；test.jsonl 200 筆只在訓完量一次，是 p49 表格用的數字。
+
+# ── 兩組共用的訓練設定 ───────────────────────────────────────────
+[train]
+# 500 步 × batch 4 = 2,000 筆 = 2 個 epoch（與 demo 1 相同，所以 demo 1 的 2e-5 那個 run 就是 LoRA 網格裡的一個點）。
+iters = 500
+batch_size = 4
+max_seq_length = 1024
+# 每 25 步在 valid.jsonl 上量 response loss（mlx-lm 自己的 val：mask_prompt 下只算回答），這就是 replay 第二張圖的曲線。
+steps_per_eval = 25
+steps_per_report = 25
+# 兩組都 --mask-prompt（loss 只算回答），與 demo 1 的 adapter A 相同。
+mask_prompt = true
+# mlx-lm 的 adam（常數 LR）。mlx 的 Adam 狀態 dtype 跟參數、lr 會被轉成梯度的 dtype——full FT 在 bf16 下 LR 只有 8 bit 尾數，
+# 程式會把每個 LR 轉成 bf16 之後的值一起記下來（inspect 與 run 都印）。
+optimizer = "adam"
+
+# LoRA：與 demo 1 的 adapter A 相同——rank 16、mlx 的 scale 20（= Hu 寫法的 α/r，所以 α = 320；p27 三種寫法）、dropout 0、
+# 所有 block 的七個 Linear；**不接 embedding**（2026-11-08 使用者決定：mlx-lm 的 full FT 也只 unfreeze model.layers，
+# embedding／tied LM head／final norm 兩邊都凍住，這樣兩條曲線比的才是同一組矩陣）。
+[lora]
+rank = 16
+scale = 20.0
+dropout = 0.0
+num_layers = -1
+keys = ["self_attn.q_proj", "self_attn.k_proj", "self_attn.v_proj", "self_attn.o_proj", "mlp.gate_proj", "mlp.up_proj", "mlp.down_proj"]
+
+# full fine-tuning：mlx-lm `--fine-tune-type full --num-layers -1`，28 個 block 全部 unfreeze（embedding 與 final norm 不在 model.layers 裡，凍住）。
+[full]
+num_layers = -1
+
+# ── 掃描 ─────────────────────────────────────────────────────────
+[sweep]
+# 五個 LR、跨 1.5 個數量級（相鄰 ×2.4）。**這兩組是建置時的初稿，彩排前先跑 `./present.sh probe` 看發散點再定**（大綱〈課堂 demo 建議〉3）。
+# 單位是 mlx 的 lr。LoRA 那組在 mlx 單位下只比 full 高約 3 倍，不是 blog 的 10 倍——因為 mlx 的 scale 20 已經比 PEFT 常見的 α/r = 2 大 10 倍，
+# Adam 下每步 ΔW ∝ scale · lr，所以「PEFT 單位的 LoRA 最佳 LR」= 這裡的 lr × 10。程式報比例時兩種單位都印。
+full_lrs = [2e-6, 5e-6, 1.2e-5, 3e-5, 7e-5]
+lora_lrs = [6e-6, 1.4e-5, 3.5e-5, 8e-5, 2e-4]
+# 「固定 LR 的比較」：both = LoRA 跑在 full 的最佳 LR、full 也跑在 LoRA 的最佳 LR（網格裡已有的點直接用，沒有就各多一個 run）；
+# lora = 只做前者（p49 表格只要這一列）；none = 不做。
+cross = "both"
+# 曲線上取哪個數當「這個 LR 的 loss」：final = 訓完在 test.jsonl 上量的 response loss（p49 的數字）；min = valid 曲線的最低點（只當對照印）。
+metric = "final"
+
+# ── probe：每個 LR 只跑幾十步，看會不會發散、一步幾秒 ───────────────
+[probe]
+steps = 30
+steps_per_report = 10
+# 比正式網格各多兩個更大的點，為了找到發散點。
+full_lrs = [2e-6, 5e-6, 1.2e-5, 3e-5, 7e-5, 1.7e-4, 4e-4]
+lora_lrs = [6e-6, 1.4e-5, 3.5e-5, 8e-5, 2e-4, 5e-4, 1.2e-3]
+# 「發散」的操作型定義（沿 W4 demo 2）：最後一次報的 train loss 比第一次高 0.5 nat 以上，或是 NaN。
+diverge_nats = 0.5
+
+# ── 權重 ─────────────────────────────────────────────────────────
+[weights]
+# full FT 一個 run 存下來約 2.8 GB（28 個 block 的 bf16 參數）；LoRA 一個約 80 MB。
+# best = 掃完只留每組最佳 LR 的那個 run（demo 4 要讀的；runs/rehearsal/best.json 指向它們），其餘 full 的刪掉；all = 全留。
+keep = "best"
+
+# ── 對投影片數字的檢查 ────────────────────────────────────────────
+[check]
+data_json = "../../slides/assets/w08/w08-data.json"
+ledger_key = "qwen3_1p7b_base_r16_all"

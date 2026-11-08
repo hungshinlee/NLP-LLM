@@ -641,17 +641,17 @@ Biderman et al. §4.7, App. B · the blog cites Biderman's Fig. S1 · W1 p21
 | | |
 |:---|:-----------------|
 | **Why** | p44's two curves were drawn by hand. Make them: one model, one dataset, LoRA and full fine-tuning, each swept over its own learning rates. |
-| **What runs** | Rehearsed in advance and replayed: `Qwen/Qwen3-1.7B-Base`, demo 1's data. LoRA with $r = 16$ on every gate of every block, and full fine-tuning; five learning rates each over about 1.5 decades, the two grids offset by about $10\times$; same seed, steps and batch; held-out response loss every 25 steps. |
-| **Watch for** | Where is each curve's minimum, and what is their ratio — against the blog's $10\times$? Then run both at full fine-tuning's best: how much worse does LoRA *look*? |
+| **What runs** | Rehearsed in advance and replayed: `Qwen/Qwen3-1.7B-Base`, demo 1's data. LoRA with $r = 16$ on every gate of every block, and full fine-tuning; five learning rates each over about 1.5 decades, LoRA's grid sitting higher; same seed, steps, batch and mask; validation loss every 25 steps, held-out loss at the end. |
+| **Watch for** | Where is each curve's minimum, and what is their ratio — in the blog's units ($\alpha = 2r$), against its $10\times$? Then run both at full fine-tuning's best: how much worse does LoRA *look*? |
 :::
 
 ::: {.footer}
-Demo 3 · `demos/w08_d3_lr_sweep` · rehearsed, replayed · not yet built (2026-11-08)
+Demo 3 · `demos/w08_d3_lr_sweep` · rehearsed, replayed · built 2026-11-08, not yet rehearsed
 :::
 
 ## Replay: demo 3 — two U-shaped curves, and the fixed-learning-rate comparison
 
-![](assets/w08/lr-axes.svg){width="100%"}
+{{< include assets/w08/lr-sweep.inline.qmd >}}
 
 | | full fine-tuning | LoRA, $r = 16$ | ratio |
 |:---|:---|:---|:---|
@@ -662,7 +662,7 @@ Demo 3 · `demos/w08_d3_lr_sweep` · rehearsed, replayed · not yet built (2026-
 : {tbl-colwidths="[40,22,22,16]"}
 
 ::: {.footer}
-Demo 3 · replay · one model, one dataset, one seed: **not a replication** · not yet built
+Demo 3 · replay · one model, one dataset, one seed: **not a replication** · built 2026-11-08, not yet rehearsed
 :::
 
 ## Where LoRA still goes wrong: which gates, how wide, how big a batch
@@ -1008,7 +1008,7 @@ Two entries ticked. Next week the model is told not what to write, but **which o
 
 **Merging** · Wortsman et al., ICML 2022 (arXiv:2203.05482) · Ilharco et al., ICLR 2023 (arXiv:2212.04089) · Yadav et al., *TIES*, NeurIPS 2023 (arXiv:2306.01708) · Yu et al., *DARE*, ICML 2024 (arXiv:2311.03099) — §4.6 · He et al., *MergeBench*, NeurIPS 2025 D&B (arXiv:2505.10833) · Wang et al., ICML 2026 (arXiv:2509.24244) · Li et al., NeurIPS 2025 (arXiv:2505.12082) · Yang et al., ACM Computing Surveys 58(8), 2026 (arXiv:2408.07666) — a survey
 
-**Software, data and figures** · mlx-lm at commit 872ae88 and bitsandbytes `functional.py` (main), both read 2026-11-08 — **software, not papers** · the `config.json` of Qwen/Qwen3-8B and Qwen/Qwen3-1.7B-Base (2026-11-08). Every number on these slides is arithmetic on those two configs (p25–p26, p33, p39, p41), W4's ledger (p4, p25), the NF4 table and a labelled toy (p36), a paper's stated formula (p37, p64), or copied from an abstract or a cited section (all others). The curves on p44, the matrices on p52 and the eight values on p64 are sketches. **Demo 1 was rehearsed on 2026-11-08** (`demos/w08_d1_sft_base_to_assistant/runs/rehearsal/`: the outputs on p9, the losses and probes on p15, the twelve steps on p42); demos 2–4 have not been built yet (2026-11-08).
+**Software, data and figures** · mlx-lm at commit 872ae88 and bitsandbytes `functional.py` (main), both read 2026-11-08 — **software, not papers** · the `config.json` of Qwen/Qwen3-8B and Qwen/Qwen3-1.7B-Base (2026-11-08). Every number on these slides is arithmetic on those two configs (p25–p26, p33, p39, p41), W4's ledger (p4, p25), the NF4 table and a labelled toy (p36), a paper's stated formula (p37, p64), or copied from an abstract or a cited section (all others). The curves on p44, the matrices on p52 and the eight values on p64 are sketches. **Demo 1 was rehearsed on 2026-11-08** (`demos/w08_d1_sft_base_to_assistant/runs/rehearsal/`: the outputs on p9, the losses and probes on p15, the twelve steps on p42); demo 3 was built on 2026-11-08 but not yet rehearsed (p49's figure and table are empty until it is); demos 2 and 4 have not been built yet.
 :::
 
 ## Acronyms in this deck, A–K
