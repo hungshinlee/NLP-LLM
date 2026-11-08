@@ -1,0 +1,19 @@
+{
+ "date": "2026-11-08T19:41:02",
+ "fake": false,
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "seed": 20261108,
+ "note": "demo 4 reads weights_dir; LoRA needs mlx_lm.fuse before SVD. Paths relative to demos/w08_d3_lr_sweep/.",
+ "full": {
+  "lr": 5e-06,
+  "loss": 1.9339,
+  "name": "full_lr5.0e-06",
+  "weights_dir": "runs/weights/full_lr5.0e-06"
+ },
+ "lora": {
+  "lr": 2.4e-06,
+  "loss": 1.9242,
+  "name": "lora_lr2.4e-06",
+  "weights_dir": "runs/weights/lora_lr2.4e-06"
+ }
+}

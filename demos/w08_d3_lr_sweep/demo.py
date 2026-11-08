@@ -260,7 +260,7 @@ def cmd_run(args, cfg):
     rec["seconds_per_step"] = round(rec["train_seconds"] / iters, 2)
     if args.probe:
         first, last = r.train[0]["train_loss"], r.train[-1]["train_loss"]
-        rec["diverged"] = bool(math.isnan(last) or last > first + float(cfg["probe"]["diverge_nats"]))
+        rec["diverged"] = probe_diverged(cfg, first, last)
         rec["weights_dir"] = None
         if out_dir.exists():
             shutil.rmtree(out_dir)   # probe 不留權重（full 的一份 2.8 GB）
@@ -271,6 +271,13 @@ def cmd_run(args, cfg):
               f"test response loss {BOLD}{rec['test']['loss']:.3f}{RESET}")
     write_json(out_json, rec)
     note(f"→ {out_json.relative_to(HERE)}")
+
+
+def probe_diverged(cfg: dict, first: float, last: float) -> bool:
+    """發散：NaN、最後比第一次高 diverge_nats 以上，或根本沒下來（最後仍高於 blowup_nats——第一次 report 已在 10 步之後，
+    LR 太大時 loss 在那之前就炸了，first ≈ last 反而看起來「沒變」；2026-11-08 probe 的 full 1.7e-4 就是 8.1 → 7.9）。"""
+    pb = cfg["probe"]
+    return bool(math.isnan(last) or last > first + float(pb["diverge_nats"]) or last > float(pb.get("blowup_nats", 4.0)))
 
 
 def fake_run(cfg: dict, group: str, lr, iters: int, probe: bool) -> dict:
@@ -343,7 +350,7 @@ def cmd_probe(args, cfg):
 
 
 def summarize_probe(cfg, fake, groups):
-    out = {"date": now(), "steps": None, "groups": {}}
+    out = {"date": now(), "steps": None, "rule": f"diverged = NaN, or last > first + {cfg['probe']['diverge_nats']}, or last > {cfg['probe'].get('blowup_nats', 4.0)} nats", "groups": {}}
     print(f"\n  {'group':<6}{'lr':>10}{'bf16':>12}{'first':>9}{'last':>9}{'Δ':>8}{'s/step':>8}{'peak GB':>9}   verdict")
     est = {}
     for g in groups:
@@ -355,9 +362,10 @@ def summarize_probe(cfg, fake, groups):
             r = json.loads(p.read_text(encoding="utf-8"))
             out["steps"] = r["iters"]
             first, last = r["train_log"][0]["train_loss"], r["train_log"][-1]["train_loss"]
-            verdict = f"{RED}diverged{RESET}" if r.get("diverged") else (f"{GREEN}ok{RESET}" if last < first - 0.05 else f"{AMBER}flat{RESET}")
+            div = probe_diverged(cfg, first, last)   # 用現在的規則重判，不信 json 裡存的
+            verdict = f"{RED}diverged{RESET}" if div else (f"{GREEN}ok{RESET}" if last < first - 0.05 else f"{AMBER}flat{RESET}")
             print(f"  {g:<6}{fmt_lr(lr):>10}{(r.get('lr_bf16') or lr):>12.4g}{first:>9.3f}{last:>9.3f}{last - first:>+8.3f}{r.get('seconds_per_step', 0):>8.2f}{(r.get('peak_memory_gb') or 0):>9.2f}   {verdict}")
-            rows.append({"lr": lr, "lr_bf16": r.get("lr_bf16"), "first": first, "last": last, "diverged": r.get("diverged"),
+            rows.append({"lr": lr, "lr_bf16": r.get("lr_bf16"), "first": first, "last": last, "diverged": div,
                          "seconds_per_step": r.get("seconds_per_step"), "peak_memory_gb": r.get("peak_memory_gb")})
         out["groups"][g] = rows
         if rows:
@@ -400,8 +408,18 @@ def cmd_rehearse(args, cfg):
                 continue
             banner(f"cross run: {g} at the other group's best lr {fmt_lr(lr)}", AMBER)
             spawn_run(args, g, lr)
+        if sw.get("peft_copy"):
+            lr = peft_copy_lr(cfg, best["full"]["lr"])
+            if not run_json("lora", lr, args.fake).exists() or args.redo:
+                banner(f"peft-copy run: LoRA at full's best lr copied in α = 2r units → mlx lr {fmt_lr(lr)}", AMBER)
+                spawn_run(args, "lora", lr)
     aggregate(cfg, args.fake)
     print(f"\n  {GREEN}rehearse done{RESET} in {(time.time() - t0) / 60:.0f} min")
+
+
+def peft_copy_lr(cfg: dict, lr_full_best: float) -> float:
+    """「照抄」：一篇用 α = 2r 的論文把 full 的最佳 LR 直接給 LoRA，換成 mlx 的 lr 就是 × 2 / scale（scale 20 → ÷ 10）。"""
+    return float(lr_full_best) * 2.0 / float(cfg["lora"]["scale"])
 
 
 def all_runs(cfg, fake) -> dict:
@@ -477,6 +495,12 @@ def aggregate(cfg, fake: bool) -> dict:
                            "lora_at_lora_best": bl["loss"],
                            "gap_each_at_own_best": round(bl["loss"] - bf["loss"], 4),
                            "gap_both_at_full_best": round(lora_at_full["test_loss"] - bf["loss"], 4) if lora_at_full else None}
+        lr_pc = peft_copy_lr(cfg, bf["lr"])
+        lora_pc = next((p for p in curves["groups"]["lora"] if lr_in(p["lr"], [lr_pc])), None)
+        curves["cross"].update({"lr_full_best_peft_copy_mlx": lr_pc,
+                                "lora_at_full_best_peft_copy": lora_pc["test_loss"] if lora_pc else None,
+                                "gap_peft_copy": round(lora_pc["test_loss"] - bf["loss"], 4) if lora_pc else None})
+        curves["edge"] = {g: (curves["best"][g]["lr"] in (min(sw[f"{g}_lrs"]), max(sw[f"{g}_lrs"]))) for g in GROUPS}   # 最佳在網格邊緣 = 網格該移
     write_json(REHEARSAL / f"curves{'.fake' if fake else ''}.json", curves)
     note(f"→ runs/rehearsal/curves{'.fake' if fake else ''}.json")
     # best.json：demo 4 讀這個找「各自最佳 LR」的權重
@@ -566,6 +590,9 @@ def cmd_replay(args, cfg):
         print(f"\n  best lr: full {BOLD}{fmt_lr(bf['lr'])}{RESET} (loss {bf['loss']:.3f}),  LoRA {BOLD}{fmt_lr(bl['lr'])}{RESET} (loss {bl['loss']:.3f})")
         print(f"  ratio LoRA/full: {BOLD}{rt['lr_lora_over_full_mlx_units']:.2g}×{RESET} in mlx units (scale {cv['lora']['scale']:g}); "
               f"{BOLD}{rt['lr_lora_over_full_peft_units_alpha_2r']:.2g}×{RESET} in PEFT units (α = 2r) — the blog's claim is about 10×")
+        for g, e in (cv.get("edge") or {}).items():
+            if e:
+                print(f"  {AMBER}{g}: the best point is at the edge of its grid — the minimum may lie outside; extend [sweep] {g}_lrs and re-run{RESET}")
     # 第二張圖：固定 LR 的比較
     pause("\n⏎ figure 2: both at full fine-tuning's best lr, vs. each at its own best ")
     cr = cv.get("cross", {})
@@ -574,7 +601,8 @@ def cmd_replay(args, cfg):
         return next((q for q in cv["groups"][g] if lr_in(q["lr"], [lr])), None)
     if cr:
         for label, g, lr in (("full @ own best", "full", cr["lr_full_best"]), ("LoRA @ own best", "lora", cr["lr_lora_best"]),
-                             ("LoRA @ full's best", "lora", cr["lr_full_best"]), ("full @ LoRA's best", "full", cr["lr_lora_best"])):
+                             ("LoRA @ full's best", "lora", cr["lr_full_best"]), ("full @ LoRA's best", "full", cr["lr_lora_best"]),
+                             ("LoRA @ full's best ÷10", "lora", cr.get("lr_full_best_peft_copy_mlx") or -1)):
             q = find(g, lr)
             if q and q.get("val_curve"):
                 curves[label] = q
@@ -597,6 +625,9 @@ def cmd_replay(args, cfg):
         fa = cr.get("full_at_lora_best")
         if fa is not None:
             print(f"  {'(and full at LoRA’s best)':<40}{fa:>18.3f}{cr['lora_at_lora_best']:>16.3f}{fa - cr['lora_at_lora_best']:>+14.3f}")
+        pc = cr.get("lora_at_full_best_peft_copy")
+        if pc is not None:
+            print(f"  {'LoRA at full’s best, copied in α = 2r':<40}{'(mlx lr ' + fmt_lr(cr['lr_full_best_peft_copy_mlx']) + ')':>18}{pc:>16.3f}{cr['gap_peft_copy']:>+14.3f}")
         print(f"\n  {DIM}one model, one dataset, one seed — not a replication. base = {cv['base_test_loss']}. "
               f"PEFT-unit ratio (α = 2r): {cv['ratio']['lr_lora_over_full_peft_units_alpha_2r']:.2g}×.{RESET}")
 

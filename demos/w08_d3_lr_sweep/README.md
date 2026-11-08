@@ -18,13 +18,29 @@ Everything is rehearsed in advance (ten training runs plus two cross runs do not
 | LoRA | `rank 16`, `scale 20`, `dropout 0`, on every `Linear` of every block (q, k, v, o, gate, up, down; 17,432,576 trainable parameters). Not on the embedding. mlx-lm computes $y = \mathbf{W}x + \text{scale} \cdot \mathbf{B}\mathbf{A}x$, so `scale` is $\alpha / r$ in the original LoRA notation: $\alpha = 320$ here. |
 | Full fine-tuning | mlx-lm `--fine-tune-type full --num-layers -1`: all 28 blocks are trainable. The embedding matrix (and with it the tied LM head) and the final norm are outside `model.layers` and stay frozen — so both methods move the same set of matrices; the program prints the trainable-parameter count. |
 | Training | Adam with a constant learning rate, batch 4, 500 steps = 2 epochs, `--mask-prompt` (loss on the assistant's turn only), `max_seq_length 1024`, seed 20261108 — identical across all runs; only the learning rate changes. mlx's Adam keeps its state in the parameters' dtype (bf16 for full fine-tuning, fp32 for the LoRA factors) and casts the learning rate to the gradient's dtype; each run's JSON records the learning rate as bf16 sees it. |
-| The grids | Five learning rates per method, about 1.5 decades apart end to end (neighbours ×2.4), set in `demo_config.toml` `[sweep]` after a `probe` that runs each candidate for 30 steps to find where training diverges. The two grids are offset because the two methods have different best learning rates; the values in the file are the ones used in the rehearsal. |
+| The grids | Five learning rates per method, about 1.5 decades end to end (neighbours ×2.4): $\{2, 5, 12, 30, 70\} \times 10^{-6}$ for full fine-tuning and $\{1, 2.4, 6, 14, 35\} \times 10^{-6}$ for LoRA, in mlx units. A `probe` (30 steps per candidate) first finds where training diverges; a first sweep with LoRA's grid at $6 \times 10^{-6}$–$2 \times 10^{-4}$ put LoRA's minimum at the grid's lower edge, so the grid was moved down and three runs added — a sweep whose best point sits at an edge has not found the minimum. Both grids' off-grid points (the first round, the cross runs) are kept in `curves.json`. |
 | Loss | **Curves**: mlx-lm's validation loss on the 100 held-out examples every 25 steps (measured before step $k$, i.e. after $k - 1$ updates). **Final**: mlx-lm's `evaluate()` on the 200 test examples after training, response tokens only, nats per token — the same measure as demo 1 (c), so the base model's value from demo 1 is the reference line. |
 | The ratio | Adam's update to $\mathbf{B}\mathbf{A}$ scales with `scale` × learning rate. With `scale 20` the same effective step is reached at a learning rate 10× smaller than in a setup with $\alpha / r = 2$ (the common PEFT default, $\alpha = 2r$). So the ratio "best LoRA learning rate / best full fine-tuning learning rate" measured here in mlx units is multiplied by 10 to compare with claims stated in PEFT units; the program prints both. |
-| The cross runs | LoRA at full fine-tuning's best learning rate (and full fine-tuning at LoRA's best). If the value is already in the other grid, that run is reused; otherwise one more run is trained. |
+| The cross runs | LoRA at full fine-tuning's best learning rate, full fine-tuning at LoRA's best, and LoRA at full fine-tuning's best *copied in $\alpha = 2r$ units* — i.e. the same number handed to a LoRA with `scale 2`, which in this implementation is $\eta / 10$ (`[sweep] peft_copy`). If a value is already in the other grid, that run is reused; otherwise one more run is trained. |
 | Peak memory | `mx.get_peak_memory()` as reported to mlx-lm's training callback, per run, in its own process. |
 
 Every replay prints the caveat: one model, one dataset of a thousand examples, one seed. This is not a replication of any published number; a ratio of 3× or 30× is possible, and a curve too flat to show a minimum means the run was too short or the data too small.
+
+## What came out (rehearsal of 2026-11-08, `runs/rehearsal/curves.json`)
+
+Test response loss after 500 steps (nats/token; the base model: 2.717):
+
+| learning rate (mlx units) | $10^{-6}$ | $2 \times 10^{-6}$ | $2.4 \times 10^{-6}$ | $5 \times 10^{-6}$ | $6 \times 10^{-6}$ | $1.2 \times 10^{-5}$ | $1.4 \times 10^{-5}$ | $3 \times 10^{-5}$ | $3.5 \times 10^{-5}$ | $7 \times 10^{-5}$ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| full fine-tuning | | 1.992 | *1.975* | **1.934** | *1.933* | 1.984 | | 2.257 | | 2.929 |
+| LoRA, $r = 16$ | 1.941 | | **1.924** | *1.928* | 1.931 | | 1.970 | | 2.081 | |
+
+Bold: each method's best within its grid; italics: cross runs outside the grid. LoRA at $5 \times 10^{-7}$ (full fine-tuning's best copied in $\alpha = 2r$ units): 1.980.
+
+- Full fine-tuning's curve is a clear U; LoRA's is much flatter over the same range. The second is an observation from this one run, not a claim from the literature.
+- Ratio of best learning rates: $0.48\times$ in mlx units, i.e. $4.8\times$ in $\alpha = 2r$ units — the blog post's figure is about $10\times$.
+- Each at its own best: LoRA 1.924 vs. full fine-tuning 1.934. Both at full fine-tuning's best: LoRA 1.928 — no penalty, because in mlx units the two minima nearly coincide. The penalty appears when the number is copied across conventions ($5 \times 10^{-7}$: 1.980, still falling at step 500) or the other way round (full fine-tuning at LoRA's best: 1.975).
+- Most runs reach their lowest validation loss around step 250–350 and drift up slightly afterwards (two epochs); the table uses the loss at step 500 for every run.
 
 ## Requirements
 
@@ -34,8 +50,8 @@ Every replay prints the caveat: one model, one dataset of a thousand examples, o
 | Models and data | demo 1's `fetch` and `prepare` must have been run (`../w08_d1_sft_base_to_assistant`): the model (about 3.4 GB) and `data/`. Everything here runs offline. |
 | Device | **Apple silicon only** (MLX). Full fine-tuning of a 1.7B bf16 model with mlx's Adam needs about 8 bytes per trainable parameter (≈ 11 GB) plus the frozen embedding and activations; the program prints the measured peak per run. |
 | Disk | a full fine-tuning run saves about 2.8 GB of weights, a LoRA run about 80 MB. By default only the best run of each method is kept after the sweep (`[weights] keep`); weights are never committed. |
-| Time | not yet measured on this machine. `probe` prints seconds per step and an estimate for the whole sweep; expect the LoRA runs to take about 6.5 min each (demo 1) and full fine-tuning longer. |
-| Portability | nothing platform-specific apart from MLX; the flow was also run in `--fake` mode on Linux. |
+| Time | on an M5 Max: about 8 min per 500-step run for both methods (full fine-tuning 0.94 s/step, peak 21.6 GB; LoRA 0.89 s/step, peak 17.8 GB — LoRA's backward pass still runs through the whole network); 14 runs, about 1.6 h in all. `probe` prints seconds per step and an estimate before you commit to the sweep. |
+| Portability | nothing platform-specific apart from MLX; rehearsed on an Apple M5 Max (64 GB), macOS 27.2, Python 3.12, mlx 0.32.2; the flow also in `--fake` mode on Linux. |
 
 ## Run it
 

@@ -54,11 +54,16 @@ num_layers = -1
 # 五個 LR、跨 1.5 個數量級（相鄰 ×2.4）。**這兩組是建置時的初稿，彩排前先跑 `./present.sh probe` 看發散點再定**（大綱〈課堂 demo 建議〉3）。
 # 單位是 mlx 的 lr。LoRA 那組在 mlx 單位下只比 full 高約 3 倍，不是 blog 的 10 倍——因為 mlx 的 scale 20 已經比 PEFT 常見的 α/r = 2 大 10 倍，
 # Adam 下每步 ΔW ∝ scale · lr，所以「PEFT 單位的 LoRA 最佳 LR」= 這裡的 lr × 10。程式報比例時兩種單位都印。
+# 2026-11-08 第一輪彩排（初稿網格 LoRA 6e-6…2e-4）：full 的谷底在 5e-6（兩邊都高，U 形成立）；LoRA 的最低點落在網格**最下緣** 6e-6、
+# 交叉 run 的 5e-6 還更低——谷底在網格外。所以 LoRA 那組往下移兩格（1e-6、2.4e-6 新跑；6e-6、1.4e-5、3.5e-5 沿用；8e-5、2e-4 的 json 留著當網格外的點）。
 full_lrs = [2e-6, 5e-6, 1.2e-5, 3e-5, 7e-5]
-lora_lrs = [6e-6, 1.4e-5, 3.5e-5, 8e-5, 2e-4]
+lora_lrs = [1e-6, 2.4e-6, 6e-6, 1.4e-5, 3.5e-5]
 # 「固定 LR 的比較」：both = LoRA 跑在 full 的最佳 LR、full 也跑在 LoRA 的最佳 LR（網格裡已有的點直接用，沒有就各多一個 run）；
 # lora = 只做前者（p49 表格只要這一列）；none = 不做。
 cross = "both"
+# 「照抄」：一篇用 α = 2r 的論文把 full 的最佳 LR 直接給 LoRA——換成 mlx 的 lr 是 × 2 / scale（÷ 10）。多一個 LoRA run，p49 表格多一列。
+# 第一輪彩排兩組的谷底在 mlx 單位下幾乎重合（5e-6 對 ≤ 6e-6），「同一個 lr 給兩邊」在這個單位下不吃虧；吃虧的是在另一種單位下照抄。
+peft_copy = true
 # 曲線上取哪個數當「這個 LR 的 loss」：final = 訓完在 test.jsonl 上量的 response loss（p49 的數字）；min = valid 曲線的最低點（只當對照印）。
 metric = "final"
 
@@ -71,6 +76,9 @@ full_lrs = [2e-6, 5e-6, 1.2e-5, 3e-5, 7e-5, 1.7e-4, 4e-4]
 lora_lrs = [6e-6, 1.4e-5, 3.5e-5, 8e-5, 2e-4, 5e-4, 1.2e-3]
 # 「發散」的操作型定義（沿 W4 demo 2）：最後一次報的 train loss 比第一次高 0.5 nat 以上，或是 NaN。
 diverge_nats = 0.5
+# 第一次 report 已在 10 步之後，LR 太大時 loss 在那之前就炸了、first ≈ last 看起來「沒變」（第一輪的 full 1.7e-4：8.1 → 7.9）——
+# 所以最後仍高於這個值也算發散。
+blowup_nats = 4.0
 
 # ── 權重 ─────────────────────────────────────────────────────────
 [weights]

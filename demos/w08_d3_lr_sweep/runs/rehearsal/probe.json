@@ -1,6 +1,7 @@
 {
- "date": "2026-11-08T14:43:04",
+ "date": "2026-11-08T19:23:07",
  "steps": 30,
+ "rule": "diverged = NaN, or last > first + 0.5, or last > 4.0 nats",
  "groups": {
   "full": [
    {
@@ -53,7 +54,7 @@
     "lr_bf16": 0.0001697540283203125,
     "first": 8.10552,
     "last": 7.86089,
-    "diverged": false,
+    "diverged": true,
     "seconds_per_step": 0.87,
     "peak_memory_gb": 21.580755584
    },
@@ -62,7 +63,7 @@
     "lr_bf16": 0.000400543212890625,
     "first": 13.195,
     "last": 9.64667,
-    "diverged": false,
+    "diverged": true,
     "seconds_per_step": 0.88,
     "peak_memory_gb": 21.580755964
    }
@@ -118,7 +119,7 @@
     "lr_bf16": 0.000499725341796875,
     "first": 19.1158,
     "last": 13.1611,
-    "diverged": false,
+    "diverged": true,
     "seconds_per_step": 0.72,
     "peak_memory_gb": 17.773824714
    },
@@ -127,7 +128,7 @@
     "lr_bf16": 0.00119781494140625,
     "first": 43.0871,
     "last": 12.7117,
-    "diverged": false,
+    "diverged": true,
     "seconds_per_step": 0.71,
     "peak_memory_gb": 18.072392244
    }
