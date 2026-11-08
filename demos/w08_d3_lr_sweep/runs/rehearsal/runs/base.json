@@ -1,0 +1,37 @@
+{
+ "name": "base",
+ "group": "base",
+ "lr": null,
+ "iters": 0,
+ "probe": false,
+ "date": "2026-11-08T14:43:04",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "seed": 20261108,
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "model_snapshot": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+ "load_seconds": 0.4,
+ "test": {
+  "loss": 2.7166,
+  "n": 200,
+  "mask_prompt": true,
+  "seconds": 9.7
+ },
+ "peak_memory_gb": 5.602417744
+}

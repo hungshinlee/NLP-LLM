@@ -1,0 +1,93 @@
+{
+ "date": "2026-11-08T14:36:55",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "data": {
+  "dir": "../w08_d1_sft_base_to_assistant/data",
+  "train": 1000,
+  "valid": 100,
+  "test": 200
+ },
+ "grids": {
+  "full": [
+   {
+    "lr": 2e-06,
+    "lr_bf16": 1.996755599975586e-06,
+    "lr_peft_units": null
+   },
+   {
+    "lr": 5e-06,
+    "lr_bf16": 5.0067901611328125e-06,
+    "lr_peft_units": null
+   },
+   {
+    "lr": 1.2e-05,
+    "lr_bf16": 1.1980533599853516e-05,
+    "lr_peft_units": null
+   },
+   {
+    "lr": 3e-05,
+    "lr_bf16": 3.0040740966796875e-05,
+    "lr_peft_units": null
+   },
+   {
+    "lr": 7e-05,
+    "lr_bf16": 7.009506225585938e-05,
+    "lr_peft_units": null
+   }
+  ],
+  "lora": [
+   {
+    "lr": 6e-06,
+    "lr_bf16": 5.990266799926758e-06,
+    "lr_peft_units": 6e-05
+   },
+   {
+    "lr": 1.4e-05,
+    "lr_bf16": 1.4007091522216797e-05,
+    "lr_peft_units": 0.00014
+   },
+   {
+    "lr": 3.5e-05,
+    "lr_bf16": 3.504753112792969e-05,
+    "lr_peft_units": 0.00034999999999999994
+   },
+   {
+    "lr": 8e-05,
+    "lr_bf16": 8.0108642578125e-05,
+    "lr_peft_units": 0.0008
+   },
+   {
+    "lr": 0.0002,
+    "lr_bf16": 0.0002002716064453125,
+    "lr_peft_units": 0.002
+   }
+  ]
+ },
+ "model": {
+  "snapshot": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+  "N_LoRA_formula": 17432576,
+  "layers": 28,
+  "tie_word_embeddings": true
+ },
+ "check": {
+  "N_LoRA_json": 17432576,
+  "ok": true
+ }
+}

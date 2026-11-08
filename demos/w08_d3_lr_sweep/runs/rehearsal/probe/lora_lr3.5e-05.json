@@ -1,0 +1,123 @@
+{
+ "name": "lora_lr3.5e-05",
+ "group": "lora",
+ "lr": 3.5e-05,
+ "iters": 30,
+ "probe": true,
+ "date": "2026-11-08T14:41:03",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "seed": 20261108,
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "model_snapshot": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+ "lr_bf16": 3.504753112792969e-05,
+ "load_seconds": 0.4,
+ "train_seconds": 21.7,
+ "n_trainable": 17432576,
+ "n_train": 1000,
+ "n_valid": 0,
+ "train_log": [
+  {
+   "iteration": 10,
+   "train_loss": 2.25604,
+   "learning_rate": 3.5e-05,
+   "iterations_per_second": 1.91878,
+   "tokens_per_second": 430.382,
+   "trained_tokens": 2243,
+   "peak_memory": 10.6181,
+   "elapsed_s": 5.3
+  },
+  {
+   "iteration": 20,
+   "train_loss": 1.98428,
+   "learning_rate": 3.5e-05,
+   "iterations_per_second": 1.35808,
+   "tokens_per_second": 366.547,
+   "trained_tokens": 4942,
+   "peak_memory": 13.5843,
+   "elapsed_s": 12.7
+  },
+  {
+   "iteration": 30,
+   "train_loss": 1.90403,
+   "learning_rate": 3.5e-05,
+   "iterations_per_second": 1.12163,
+   "tokens_per_second": 368.119,
+   "trained_tokens": 8224,
+   "peak_memory": 18.0724,
+   "elapsed_s": 21.6
+  }
+ ],
+ "val_log": [],
+ "peak_memory_gb": 18.072408624,
+ "args": {
+  "train": true,
+  "fine_tune_type": "lora",
+  "optimizer": "adam",
+  "optimizer_config": {
+   "adam": {},
+   "adamw": {},
+   "muon": {},
+   "sgd": {},
+   "adafactor": {}
+  },
+  "data": "../w08_d1_sft_base_to_assistant/data",
+  "seed": 20261108,
+  "num_layers": -1,
+  "batch_size": 4,
+  "iters": 30,
+  "val_batches": -1,
+  "learning_rate": 3.5e-05,
+  "steps_per_report": 10,
+  "steps_per_eval": 1000000000,
+  "resume_adapter_file": null,
+  "adapter_path": "runs/weights/probe_lora_lr3.5e-05",
+  "save_every": 1000000000,
+  "test": false,
+  "test_batches": 500,
+  "max_seq_length": 1024,
+  "config": null,
+  "grad_checkpoint": false,
+  "grad_accumulation_steps": 1,
+  "clear_cache_threshold": 0,
+  "lr_schedule": null,
+  "lora_parameters": {
+   "rank": 16,
+   "dropout": 0.0,
+   "scale": 20.0,
+   "keys": [
+    "self_attn.q_proj",
+    "self_attn.k_proj",
+    "self_attn.v_proj",
+    "self_attn.o_proj",
+    "mlp.gate_proj",
+    "mlp.up_proj",
+    "mlp.down_proj"
+   ]
+  },
+  "mask_prompt": true,
+  "report_to": null,
+  "project_name": null,
+  "trust_remote_code": false
+ },
+ "cli": "mlx_lm.lora \\\n    -c lora.yaml \\\n    --model Qwen/Qwen3-1.7B-Base \\\n    --train \\\n    --data ../w08_d1_sft_base_to_assistant/data/ \\\n    --fine-tune-type lora \\\n    --num-layers -1 \\\n    --mask-prompt \\\n    --iters 30 \\\n    --batch-size 4 \\\n    --learning-rate 3.5e-5 \\\n    --steps-per-report 10 \\\n    --steps-per-eval 1000000000 \\\n    --val-batches -1 \\\n    --max-seq-length 1024 \\\n    --seed 20261108 \\\n    --adapter-path runs/weights/probe_lora_lr3.5e-05 \\\n    --save-every 1000000000",
+ "seconds_per_step": 0.72,
+ "diverged": false,
+ "weights_dir": null
+}
