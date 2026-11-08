@@ -1,0 +1,126 @@
+{
+ "date": "2026-11-08T20:51:10",
+ "fake": false,
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8",
+  "numpy": "2.5.3"
+ },
+ "weights": {
+  "full": {
+   "dir": "w08_d3_lr_sweep/runs/weights/full_lr5.0e-06",
+   "exists": true,
+   "bytes": 2818851280,
+   "lr": 5e-06,
+   "test_loss": 1.9339,
+   "from": "w08_d3_lr_sweep/runs/rehearsal/best.json",
+   "fine_tune_type": "full",
+   "num_layers": -1,
+   "lora_parameters": null
+  },
+  "lora": {
+   "dir": "w08_d3_lr_sweep/runs/weights/lora_lr2.4e-06",
+   "exists": true,
+   "bytes": 69772950,
+   "lr": 2.4e-06,
+   "test_loss": 1.9242,
+   "from": "w08_d3_lr_sweep/runs/rehearsal/best.json",
+   "fine_tune_type": "lora",
+   "num_layers": -1,
+   "lora_parameters": {
+    "rank": 16,
+    "dropout": 0.0,
+    "scale": 20.0,
+    "keys": [
+     "self_attn.q_proj",
+     "self_attn.k_proj",
+     "self_attn.v_proj",
+     "self_attn.o_proj",
+     "mlp.gate_proj",
+     "mlp.up_proj",
+     "mlp.down_proj"
+    ]
+   }
+  }
+ },
+ "check": {
+  "full_keys": {
+   "n": 308,
+   "mismatch": []
+  },
+  "lora_keys": {
+   "n": 196,
+   "rank": 16,
+   "dtype": "F32",
+   "mismatch": []
+  }
+ },
+ "matrices": [
+  {
+   "layer": 14,
+   "name": "self_attn.q_proj",
+   "shape": [
+    2048,
+    2048
+   ],
+   "in_full": true,
+   "in_lora": true
+  },
+  {
+   "layer": 14,
+   "name": "mlp.down_proj",
+   "shape": [
+    2048,
+    6144
+   ],
+   "in_full": true,
+   "in_lora": true
+  }
+ ],
+ "base_test_loss": 2.7166,
+ "texts": [
+  {
+   "key": "en_paragraph",
+   "label": "W1's paragraph (English)",
+   "source": "file",
+   "n_bytes": 753,
+   "path": "w02_d1_fertility/texts/zh_city_en.txt"
+  },
+  {
+   "key": "zh_paragraph",
+   "label": "W1's paragraph (Traditional Chinese)",
+   "source": "file",
+   "n_bytes": 627,
+   "path": "w01_d2_bpb/texts/zh_city.txt"
+  },
+  {
+   "key": "wikipedia",
+   "label": "Wikipedia sample (W7 demo 3)",
+   "source": "wikipedia",
+   "n_bytes": 1056160,
+   "path": "w07_corpus/wikipedia_heldout.jsonl",
+   "articles": 290,
+   "repo": "wikimedia/wikipedia",
+   "license": "CC BY-SA 4.0",
+   "row_group": 100,
+   "seed": 7
+  },
+  {
+   "key": "edu_tail",
+   "label": "FineWeb-Edu held-out tail (W7 demo 3)",
+   "source": "corpus_tail",
+   "n_bytes": 1053404,
+   "corpus": "edu",
+   "repo": "HuggingFaceFW/fineweb-edu",
+   "license": "ODC-By 1.0",
+   "held_docs": 214,
+   "via": "w07_d2_scaling_fit/train.py"
+  }
+ ]
+}

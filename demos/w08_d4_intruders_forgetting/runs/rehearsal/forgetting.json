@@ -1,0 +1,210 @@
+{
+ "date": "2026-11-08T20:51:28",
+ "fake": false,
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "window_tokens": 2048,
+ "prefix": "<|endoftext|> (BOS if the tokenizer has one)",
+ "ruler": "bits per byte = sum of token NLL (nats) / ln 2 / UTF-8 bytes; non-overlapping windows, each preceded by the prefix token",
+ "models_order": [
+  "base",
+  "lora",
+  "full"
+ ],
+ "models_labels": {
+  "base": "base",
+  "lora": "after LoRA (demo 3 best)",
+  "full": "after full fine-tuning (demo 3 best)"
+ },
+ "weights": {
+  "full": {
+   "dir": "w08_d3_lr_sweep/runs/weights/full_lr5.0e-06",
+   "lr": 5e-06,
+   "test_loss": 1.9339
+  },
+  "lora": {
+   "dir": "w08_d3_lr_sweep/runs/weights/lora_lr2.4e-06",
+   "lr": 2.4e-06,
+   "test_loss": 1.9242
+  }
+ },
+ "base_test_loss": 2.7166,
+ "texts": [
+  {
+   "key": "en_paragraph",
+   "label": "W1's paragraph (English)",
+   "source": "file",
+   "n_bytes": 753,
+   "path": "w02_d1_fertility/texts/zh_city_en.txt"
+  },
+  {
+   "key": "zh_paragraph",
+   "label": "W1's paragraph (Traditional Chinese)",
+   "source": "file",
+   "n_bytes": 627,
+   "path": "w01_d2_bpb/texts/zh_city.txt"
+  },
+  {
+   "key": "wikipedia",
+   "label": "Wikipedia sample (W7 demo 3)",
+   "source": "wikipedia",
+   "n_bytes": 1056160,
+   "path": "w07_corpus/wikipedia_heldout.jsonl",
+   "articles": 290,
+   "repo": "wikimedia/wikipedia",
+   "license": "CC BY-SA 4.0",
+   "row_group": 100,
+   "seed": 7
+  },
+  {
+   "key": "edu_tail",
+   "label": "FineWeb-Edu held-out tail (W7 demo 3)",
+   "source": "corpus_tail",
+   "n_bytes": 1053404,
+   "corpus": "edu",
+   "repo": "HuggingFaceFW/fineweb-edu",
+   "license": "ODC-By 1.0",
+   "held_docs": 214,
+   "via": "w07_d2_scaling_fit/train.py"
+  }
+ ],
+ "results": {
+  "base": {
+   "en_paragraph": {
+    "bytes": 753,
+    "tokens": 165,
+    "windows": 1,
+    "nll_nats": 442.56,
+    "bpb": 0.8479,
+    "nats_per_token": 2.6822,
+    "seconds": 0.1
+   },
+   "zh_paragraph": {
+    "bytes": 627,
+    "tokens": 166,
+    "windows": 1,
+    "nll_nats": 456.35,
+    "bpb": 1.05,
+    "nats_per_token": 2.7491,
+    "seconds": 0.0
+   },
+   "wikipedia": {
+    "bytes": 1056160,
+    "tokens": 253091,
+    "windows": 124,
+    "nll_nats": 589378.15,
+    "bpb": 0.8051,
+    "nats_per_token": 2.3287,
+    "seconds": 22.3
+   },
+   "edu_tail": {
+    "bytes": 1053404,
+    "tokens": 220179,
+    "windows": 108,
+    "nll_nats": 522388.31,
+    "bpb": 0.7154,
+    "nats_per_token": 2.3726,
+    "seconds": 22.1
+   },
+   "_peak_memory_gb": 5.871364136,
+   "_load_seconds": 0.3
+  },
+  "lora": {
+   "en_paragraph": {
+    "bytes": 753,
+    "tokens": 165,
+    "windows": 1,
+    "nll_nats": 440.56,
+    "bpb": 0.8441,
+    "nats_per_token": 2.67,
+    "seconds": 0.1
+   },
+   "zh_paragraph": {
+    "bytes": 627,
+    "tokens": 166,
+    "windows": 1,
+    "nll_nats": 456.96,
+    "bpb": 1.0514,
+    "nats_per_token": 2.7528,
+    "seconds": 0.0
+   },
+   "wikipedia": {
+    "bytes": 1056160,
+    "tokens": 253091,
+    "windows": 124,
+    "nll_nats": 594333.41,
+    "bpb": 0.8118,
+    "nats_per_token": 2.3483,
+    "seconds": 33.2
+   },
+   "edu_tail": {
+    "bytes": 1053404,
+    "tokens": 220179,
+    "windows": 108,
+    "nll_nats": 526282.5,
+    "bpb": 0.7208,
+    "nats_per_token": 2.3902,
+    "seconds": 29.4
+   },
+   "_peak_memory_gb": 6.147715504,
+   "_load_seconds": 0.3
+  },
+  "full": {
+   "en_paragraph": {
+    "bytes": 753,
+    "tokens": 165,
+    "windows": 1,
+    "nll_nats": 440.87,
+    "bpb": 0.8447,
+    "nats_per_token": 2.672,
+    "seconds": 0.2
+   },
+   "zh_paragraph": {
+    "bytes": 627,
+    "tokens": 166,
+    "windows": 1,
+    "nll_nats": 457.32,
+    "bpb": 1.0523,
+    "nats_per_token": 2.7549,
+    "seconds": 0.0
+   },
+   "wikipedia": {
+    "bytes": 1056160,
+    "tokens": 253091,
+    "windows": 124,
+    "nll_nats": 594544.76,
+    "bpb": 0.8121,
+    "nats_per_token": 2.3491,
+    "seconds": 27.0
+   },
+   "edu_tail": {
+    "bytes": 1053404,
+    "tokens": 220179,
+    "windows": 108,
+    "nll_nats": 525952.15,
+    "bpb": 0.7203,
+    "nats_per_token": 2.3887,
+    "seconds": 26.0
+   },
+   "_peak_memory_gb": 5.871364136,
+   "_load_seconds": 0.3
+  }
+ },
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ }
+}

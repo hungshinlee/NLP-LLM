@@ -727,21 +727,21 @@ Misconception 9: "LoRA and full fine-tuning are equivalent" · Biderman et al. �
 | | |
 |:---|:-----------------|
 | **Why** | Definition 3.1 is a few lines of linear algebra. Count intruders on our own runs: the base model and demo 3's two runs, each at its own best learning rate. |
-| **What runs** | CPU, `numpy`, float64. For a few matrices — one block's $\mathbf{W}^Q$ and down, chosen when built — fold the LoRA run into $\mathbf{W}_0$; SVD of $\mathbf{W}_0$ and of each fine-tuned $\mathbf{W}'$; for the top $k = 10$ left singular vectors of $\mathbf{W}'$, the largest $|\cos|$ against every left singular vector of $\mathbf{W}_0$; count those under $\epsilon$. About ten lines, written in front of you. |
+| **What runs** | CPU, `numpy`, float64, straight from demo 3's weight files. For block 14's $\mathbf{W}^Q$ and down (every block was scanned; none differs), fold the LoRA run into $\mathbf{W}_0$; SVD of $\mathbf{W}_0$ and of each fine-tuned $\mathbf{W}'$; for the top $k = 10$ left singular vectors of $\mathbf{W}'$, the largest $|\cos|$ against every left singular vector of $\mathbf{W}_0$; count those under $\epsilon$. Five lines, written in front of you. |
 | **Watch for** | Does LoRA have intruders and full fine-tuning not? Our scale — 1.7B, a thousand or two examples, a few hundred steps — is far below the paper's: what would *none at all* mean? |
 :::
 
 ::: {.footer}
-Demo 4 · `demos/w08_d4_intruders_forgetting` · (a) live, (b) replay (p58) · not yet built
+Demo 4 · `demos/w08_d4_intruders_forgetting` · (a) live, (b) replay (p58) · rehearsed 2026-11-08
 :::
 
 ## Live: demo 4 (a) — count the intruders
 
 | matrix | run | intruders, $\epsilon = 0.3$ | $\epsilon = 0.5$ | $\epsilon = 0.7$ |
 |:---|:---|:---|:---|:---|
-| one block's $\mathbf{W}^Q$ | full fine-tuning | | | |
+| block 14's $\mathbf{W}^Q$ | full fine-tuning | | | |
 | | LoRA, $r = 16$ | | | |
-| one block's down | full fine-tuning | | | |
+| block 14's down | full fine-tuning | | | |
 | | LoRA, $r = 16$ | | | |
 
 : {tbl-colwidths="[24,24,18,17,17]"}
@@ -755,7 +755,7 @@ n_intruders = (best < eps).sum()
 ```
 
 ::: {.footer}
-Demo 4 (a) · live · $k = 10$; the three $\epsilon$: set when built · not yet built (2026-11-08)
+Demo 4 (a) · live · $k = 10$ · rehearsed 2026-11-08: every cell was 0 — the table below says why
 :::
 
 # It forgets less. Forgets what — and measured how? {.section-title}
@@ -779,14 +779,14 @@ McCloskey & Cohen 1989 · Kirkpatrick et al. 2017 · Luo et al. 2025 · W2 p67
 
 | held-out text | base | after LoRA | after full fine-tuning |
 |:---|:---|:---|:---|
-| W1's English paragraph | | | |
-| W1's **Traditional Chinese** paragraph | | | |
-| a Wikipedia sample (W7 demo 3) | | | |
-| FineWeb-Edu's own tail (W7 demo 3) | | | |
+| W1's English paragraph (753 B, one window) | 0.848 | 0.844 (−0.004) | 0.845 (−0.003) |
+| W1's **Traditional Chinese** paragraph (627 B, one window) | 1.050 | 1.051 (+0.001) | 1.052 (+0.002) |
+| a Wikipedia sample (W7 demo 3; 1.06 MB) | 0.805 | 0.812 (+0.007) | 0.812 (+0.007) |
+| FineWeb-Edu's own tail (W7 demo 3; 1.05 MB) | 0.715 | 0.721 (+0.005) | 0.720 (+0.005) |
 
 : {tbl-colwidths="[40,20,20,20]"}
 
-- bits per byte, lower is better; the fine-tuning data were **English** instructions and answers
+- bits per byte, lower is better; the fine-tuning data were **English** instructions and answers; the SFT target itself (demo 3, nats per response token): 2.717 → 1.924 → 1.934
 - the same ruler as W1 demo 2 and W7 demo 3: it does not care about the tokenizer
 
 ::: {.ask}
@@ -794,7 +794,7 @@ Predict: which row rises most after fine-tuning — and which of the two runs ri
 :::
 
 ::: {.footer}
-Demo 4 (b) · replay · W1 demo 2 · W7 demo 3 · not yet built (2026-11-08)
+Demo 4 (b) · replay · W1 demo 2 · W7 demo 3 · rehearsed 2026-11-08 (`runs/rehearsal/forgetting.json`)
 :::
 
 ## A new language needs new rows: W2's debt, paid here
@@ -1009,7 +1009,7 @@ Two entries ticked. Next week the model is told not what to write, but **which o
 
 **Merging** · Wortsman et al., ICML 2022 (arXiv:2203.05482) · Ilharco et al., ICLR 2023 (arXiv:2212.04089) · Yadav et al., *TIES*, NeurIPS 2023 (arXiv:2306.01708) · Yu et al., *DARE*, ICML 2024 (arXiv:2311.03099) — §4.6 · He et al., *MergeBench*, NeurIPS 2025 D&B (arXiv:2505.10833) · Wang et al., ICML 2026 (arXiv:2509.24244) · Li et al., NeurIPS 2025 (arXiv:2505.12082) · Yang et al., ACM Computing Surveys 58(8), 2026 (arXiv:2408.07666) — a survey
 
-**Software, data and figures** · mlx-lm at commit 872ae88 and bitsandbytes `functional.py` (main), both read 2026-11-08 — **software, not papers** · the `config.json` of Qwen/Qwen3-8B and Qwen/Qwen3-1.7B-Base (2026-11-08). Every number on these slides is arithmetic on those two configs (p25–p26, p33, p39, p41), W4's ledger (p4, p25), the NF4 table and a labelled toy (p36), a paper's stated formula (p37, p64), or copied from an abstract or a cited section (all others). The curves on p44, the matrices on p52 and the eight values on p64 are sketches. **Demo 1 was rehearsed on 2026-11-08** (`demos/w08_d1_sft_base_to_assistant/runs/rehearsal/`: the outputs on p9, the losses and probes on p15, the twelve steps on p42); **Demo 3 was rehearsed on 2026-11-08** (`demos/w08_d3_lr_sweep/runs/rehearsal/curves.json`: the curves and the table on p49); demos 2 and 4 have not been built yet.
+**Software, data and figures** · mlx-lm at commit 872ae88 and bitsandbytes `functional.py` (main), both read 2026-11-08 — **software, not papers** · the `config.json` of Qwen/Qwen3-8B and Qwen/Qwen3-1.7B-Base (2026-11-08). Every number on these slides is arithmetic on those two configs (p25–p26, p33, p39, p41), W4's ledger (p4, p25), the NF4 table and a labelled toy (p36), a paper's stated formula (p37, p64), or copied from an abstract or a cited section (all others). The curves on p44, the matrices on p52 and the eight values on p64 are sketches. **Demo 1 was rehearsed on 2026-11-08** (`demos/w08_d1_sft_base_to_assistant/runs/rehearsal/`: the outputs on p9, the losses and probes on p15, the twelve steps on p42); **Demo 3 was rehearsed on 2026-11-08** (`demos/w08_d3_lr_sweep/runs/rehearsal/curves.json`: the curves and the table on p49); **Demo 4 was rehearsed on 2026-11-08** (`demos/w08_d4_intruders_forgetting/runs/rehearsal/`: `scan.json` and `intruders.json` behind p55 — the table there is empty on purpose, it is filled live — and `forgetting.json` for the twelve values on p58); demo 2 has not been built yet.
 :::
 
 ## Acronyms in this deck, A–K
