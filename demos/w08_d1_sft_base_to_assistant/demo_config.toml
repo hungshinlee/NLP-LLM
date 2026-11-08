@@ -1,0 +1,108 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W8 demo 1（投影片 p8 前導頁、p9「Live: demo 1 (a)」、p15「Live + replay: demo 1 (b) and (c)」、p42「Live: demo 1 (d)」）的設定
+#
+# 改這個檔就能換模型、換資料、換問題、換超參數，不必動程式。
+
+[demo]
+title = "W8 · Demo 1 — SFT turns a base model into an assistant"
+# 隨機種子：抽資料（prepare）、訓練（mlx_lm.lora --seed）都用它。
+seed = 20261108
+
+# ── 模型 ───────────────────────────────────────────────────────
+[model]
+# base：只做過預訓練。Apache-2.0。revision 由 fetch 寫進 ../versions.lock（鍵 MODEL_REVISION__QWEN_QWEN3_1_7B_BASE）。
+repo = "Qwen/Qwen3-1.7B-Base"
+label = "Qwen3-1.7B-Base (bf16, base: pre-trained only)"
+short = "Qwen3-1.7B-Base"
+# 讀自 HF 的 tokenizer_config.json（2026-11-08）：base 的 tokenizer **帶 Qwen3 的 chat template**，eos 是 <|endoftext|>（151643），
+# <|im_start|>／<|im_end|> 是 151644／151645。generation_config.json 的 eos_token_id 只有 151643——所以 SFT 後生成要另外
+# 把 <|im_end|> 當停止記號（下面 extra_eos）；不加的話模型說完 <|im_end|> 之後會繼續寫下一輪。程式對 base 與 SFT 用同一組停止記號。
+extra_eos = ["<|im_end|>"]
+revision = ""
+
+# ── SFT 資料 ───────────────────────────────────────────────────
+[data]
+# databricks-dolly-15k：15,011 筆、Databricks 員工人寫、英文、CC BY-SA 3.0（dataset card，2026-11-08 讀）。
+# 八個類別：open_qa、general_qa、classification、closed_qa、brainstorming、information_extraction、summarization、creative_writing；
+# 其中 4,467 筆帶 context（多半抄自 Wikipedia，card 建議拿掉 [42] 這種引註）。revision 由 fetch 寫進 ../versions.lock。
+repo = "databricks/databricks-dolly-15k"
+file = "databricks-dolly-15k.jsonl"
+license = "CC BY-SA 3.0"
+# prepare 的過濾（純字元數，不依賴 tokenizer，所以任何機器上重跑都是同一份）：
+min_response_chars = 40
+max_response_chars = 1200
+min_instruction_chars = 10
+max_instruction_chars = 500
+max_context_chars = 1500
+# 三個切分互斥，先過濾、再以 seed 打亂、依序切。train 1,000 = 投影片 p8「about a thousand」；test 是 (c) 的 held-out response loss。
+n_train = 1000
+n_valid = 100
+n_test = 200
+# 帶 context 的筆數：instruction + 空一行 + context 合成 user 那一輪（Dolly 自己的訓練程式也是把 context 接在指令後面）。
+# 寫進 data/train.jsonl 的格式是 mlx-lm 的 chat 格式：{"messages": [{"role": "user", ...}, {"role": "assistant", ...}]}。
+
+# ── 訓練（(c) 的兩個 adapter；(a) 用 A）────────────────────────
+[train]
+# LoRA：mlx-lm 的 lora_parameters。scale 是 mlx 的寫法：y = Wx + scale · B A x，等於 Hu 寫法的 α/r = scale，
+# 所以 rank 16、scale 20 就是 α = 320（p27 三種寫法）。dropout 0。寫 alpha 會 KeyError（mlx-lm 872ae88 原始碼）。
+rank = 16
+scale = 20.0
+dropout = 0.0
+# 所有層、每個 block 裡所有的 Linear（q、k、v、o、gate、up、down；embedding 在 block 外不包）：--num-layers -1。
+num_layers = -1
+# 1,000 筆、batch 4、500 步 = 2 個 epoch。mlx-lm 不 pack，照長度排序後 pad。
+iters = 500
+batch_size = 4
+max_seq_length = 1024
+# Adam（mlx-lm 預設 optimizer），常數 LR。mlx-lm 的預設是 1e-5；這裡 2e-5——**沒有調過**，demo 3 的 LR 掃描才回答「哪個 LR 最好」。
+# 換算：mlx 的 scale 20 比 PEFT 常見的 α/r = 2 大 10 倍，Adam 下每步 ΔW ∝ scale · lr，所以這裡的 2e-5 大約相當於 PEFT α = 2r 時的 2e-4。
+learning_rate = 2e-5
+steps_per_report = 10
+steps_per_eval = 50
+# (a) 課堂 show 掛哪一個 adapter；(d) 的那一行就是訓它的指令。
+show_adapter = "C"
+# mlx-lm 裡 block 內會被 LoRA 包住的七個 Linear 的相對名（models/qwen3.py）；embedding = true 的 adapter 連同 embedding_key 一起列進 lora_parameters.keys。
+lora_keys = ["self_attn.q_proj", "self_attn.k_proj", "self_attn.v_proj", "self_attn.o_proj", "mlp.gate_proj", "mlp.up_proj", "mlp.down_proj"]
+embedding_key = "model.embed_tokens"
+# 三個 adapter。A、B 只差 --mask-prompt；C = A 再把 LoRA 接到 embedding——Qwen3 的 LM head 與 embedding 綁在一起（tie_word_embeddings），
+# mlx-lm 的 LoRAEmbedding 連 as_linear 一起接，所以 <think>／<|im_end|> 這些預訓練沒訓過的詞表列才學得起來。
+# （2026-11-08 彩排：A、B 在這些位置全吐出未訓過的怪 token、三題都不停，所以加 C 驗證「要給新列」。）
+[train.adapters]
+A = { mask_prompt = true,  embedding = false, label = "A · --mask-prompt (loss on the response only)" }
+B = { mask_prompt = false, embedding = false, label = "B · default (loss on prompt and response)" }
+C = { mask_prompt = true,  embedding = true,  label = "C · --mask-prompt + LoRA on the embedding rows (tied LM head)" }
+
+# (d) 現場：同一行指令只跑幾步，看 loss 與 peak memory 印出來。
+[live_train]
+iters = 12
+steps_per_report = 4
+
+# ── (a) 三個問題 ───────────────────────────────────────────────
+[generate]
+max_tokens = 200
+temperature = 0.0
+# base 的輸入是**原文**（沒有 template）：一個 base 模型看到的就是一段文字。SFT 後的模型走 chat template。
+# rehearse 另外記 base 套 template 的輸出（第三欄，課堂預設不印；--base-templated 才印）。
+[[generate.questions]]
+label = "a fact"
+text = "Who wrote the novel Pride and Prejudice, and in what year was it first published?"
+
+[[generate.questions]]
+label = "an instruction"
+text = "List three differences between a list and a tuple in Python. Use bullet points."
+
+[[generate.questions]]
+label = "in Traditional Chinese"
+text = "請用繁體中文簡短介紹台北 101，包括它的高度與樓層數。"
+
+# ── (b) 印 mask 用的那一筆訓練資料 ────────────────────────────
+[mask]
+# prepare 把 train 裡最短的一筆（沒有 context 的）另存成 data/example.jsonl；要換就改 index（train.jsonl 的列號，-1 = 用 example.jsonl）。
+example_index = -1
+# 探針：base 模型在 template 的三個位置給「template 說接下來該是誰」的那個 token 多少機率、第幾名。
+top_k = 5
+
+# ── 對投影片數字的檢查 ────────────────────────────────────────
+[check]
+data_json = "../../slides/assets/w08/w08-data.json"
+ledger_key = "qwen3_1p7b_base_r16_all"

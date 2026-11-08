@@ -1,0 +1,144 @@
+{
+ "date": "2026-11-08T13:56:46",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "model": "Qwen/Qwen3-1.7B-Base",
+ "config": {
+  "architectures": [
+   "Qwen3ForCausalLM"
+  ],
+  "attention_bias": false,
+  "attention_dropout": 0.0,
+  "bos_token_id": 151643,
+  "eos_token_id": 151643,
+  "head_dim": 128,
+  "hidden_act": "silu",
+  "hidden_size": 2048,
+  "initializer_range": 0.02,
+  "intermediate_size": 6144,
+  "max_position_embeddings": 32768,
+  "max_window_layers": 28,
+  "model_type": "qwen3",
+  "num_attention_heads": 16,
+  "num_hidden_layers": 28,
+  "num_key_value_heads": 8,
+  "rms_norm_eps": 1e-06,
+  "rope_scaling": null,
+  "rope_theta": 1000000,
+  "sliding_window": null,
+  "tie_word_embeddings": true,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.51.0",
+  "use_cache": true,
+  "use_sliding_window": false,
+  "vocab_size": 151936
+ },
+ "chat_template_present": true,
+ "eos_token": "<|endoftext|>",
+ "generation_eos_token_id": 151643,
+ "N": 1720574976,
+ "N_LoRA_formula": {
+  "per_layer": {
+   "q": 65536,
+   "k": 49152,
+   "v": 49152,
+   "o": 65536,
+   "gate": 131072,
+   "up": 131072,
+   "down": 131072
+  },
+  "per_layer_total": 622592,
+  "layers": 28,
+  "N_LoRA": 17432576,
+  "N_LoRA_embedding_extra": 2463744
+ },
+ "check": {
+  "N_LoRA_ok": true,
+  "M_full_ok": true,
+  "ledger": {
+   "r": 16,
+   "modules": [
+    "q",
+    "k",
+    "v",
+    "o",
+    "gate",
+    "up",
+    "down"
+   ],
+   "layers": 28,
+   "N_LoRA": 17432576,
+   "N_LoRA_pct": 1.0131831651142182,
+   "M_full_GB": 27.529199616,
+   "M_lora_weights_GB": 3.441149952,
+   "M_lora_adapter_state_GB": 0.278921216,
+   "M_lora_GB": 3.720071168,
+   "M_qlora_nf4_frozen_GB": 1.349584896,
+   "M_qlora_nf4_GB": 1.6285061120000002,
+   "M_qlora_mlx_frozen_GB": 0.968001536,
+   "M_qlora_mlx_GB": 1.2469227520000001,
+   "fits_64": {
+    "full": true,
+    "lora": true,
+    "qlora": true
+   },
+   "fits_16": {
+    "full": false,
+    "lora": true,
+    "qlora": true
+   }
+  }
+ },
+ "mlx_trainable": 17432576,
+ "mlx_eos_token_ids": [
+  151643
+ ],
+ "data": {
+  "train": {
+   "n": 1000,
+   "tokens_mean": 140.8,
+   "tokens_median": 111,
+   "tokens_p90": 291,
+   "tokens_max": 626,
+   "response_tokens_mean": 73.0,
+   "response_share": 0.518,
+   "over_max_seq_length": 0
+  },
+  "valid": {
+   "n": 100,
+   "tokens_mean": 137.4,
+   "tokens_median": 114,
+   "tokens_p90": 269,
+   "tokens_max": 435,
+   "response_tokens_mean": 80.1,
+   "response_share": 0.583,
+   "over_max_seq_length": 0
+  },
+  "test": {
+   "n": 200,
+   "tokens_mean": 143.1,
+   "tokens_median": 107,
+   "tokens_p90": 297,
+   "tokens_max": 681,
+   "response_tokens_mean": 75.3,
+   "response_share": 0.526,
+   "over_max_seq_length": 0
+  }
+ }
+}

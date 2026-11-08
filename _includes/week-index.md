@@ -9,7 +9,7 @@
 | **W5** | [Positional Encoding, Long Context, and the Limits of Context](weeks/w05.qmd)<br>[位置編碼、長文本與 context 的極限]{.wk-zh} | Architecture | [▶ Open](slides/w05.qmd) |
 | **W6** | [Architecture Routes: MoE, SSMs, and Linear Attention](weeks/w06.qmd)<br>[架構路線：MoE、SSM 與 linear attention]{.wk-zh} | Architecture | [▶ Open](slides/w06.qmd) |
 | **W7** | [Pre-training: Scaling Laws and Data Curation](weeks/w07.qmd)<br>[Pre-training：scaling laws 與資料策展]{.wk-zh} | Training | [▶ Open](slides/w07.qmd) |
-| **W8** | Post-training I: SFT, PEFT, and Forgetting<br>[Post-training I：SFT、PEFT 與遺忘]{.wk-zh} | Training | — |
+| **W8** | Post-training I: SFT, PEFT, and Forgetting<br>[Post-training I：SFT、PEFT 與遺忘]{.wk-zh} | Training | [▶ Open](slides/w08.qmd) |
 | **W9** | Post-training II: Preference Alignment and Reinforcement Learning<br>[Post-training II：偏好對齊與強化學習]{.wk-zh} | Training | — |
 | **W10** | Reasoning and Test-Time Compute<br>[Reasoning 與 test-time compute]{.wk-zh} | Training | — |
 | **W11** | Inference Efficiency: From FLOPs to Memory Bandwidth<br>[推論效率：從 FLOPs 到 memory bandwidth]{.wk-zh} | Systems & Scrutiny | — |

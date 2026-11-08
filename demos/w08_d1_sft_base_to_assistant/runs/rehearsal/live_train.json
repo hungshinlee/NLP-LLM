@@ -1,0 +1,100 @@
+{
+ "label": "live",
+ "mask_prompt": true,
+ "embedding": true,
+ "n_trainable": 19896320,
+ "iters": 12,
+ "args": {
+  "train": true,
+  "fine_tune_type": "lora",
+  "optimizer": "adam",
+  "optimizer_config": {
+   "adam": {},
+   "adamw": {},
+   "muon": {},
+   "sgd": {},
+   "adafactor": {}
+  },
+  "data": "data",
+  "seed": 20261108,
+  "num_layers": -1,
+  "batch_size": 4,
+  "iters": 12,
+  "val_batches": -1,
+  "learning_rate": 2e-05,
+  "steps_per_report": 4,
+  "steps_per_eval": 1000000000,
+  "resume_adapter_file": null,
+  "adapter_path": "runs/weights/adapters_live",
+  "save_every": 1000000000,
+  "test": false,
+  "test_batches": 500,
+  "max_seq_length": 1024,
+  "config": null,
+  "grad_checkpoint": false,
+  "grad_accumulation_steps": 1,
+  "clear_cache_threshold": 0,
+  "lr_schedule": null,
+  "lora_parameters": {
+   "rank": 16,
+   "dropout": 0.0,
+   "scale": 20.0,
+   "keys": [
+    "self_attn.q_proj",
+    "self_attn.k_proj",
+    "self_attn.v_proj",
+    "self_attn.o_proj",
+    "mlp.gate_proj",
+    "mlp.up_proj",
+    "mlp.down_proj",
+    "model.embed_tokens"
+   ]
+  },
+  "mask_prompt": true,
+  "report_to": null,
+  "project_name": null,
+  "trust_remote_code": false
+ },
+ "model": "Qwen/Qwen3-1.7B-Base", "model_snapshot": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+ "cli": "mlx_lm.lora \\\n    -c lora_embed.yaml \\\n    --model Qwen/Qwen3-1.7B-Base \\\n    --train \\\n    --data data/ \\\n    --fine-tune-type lora \\\n    --num-layers -1 \\\n    --mask-prompt \\\n    --iters 12 \\\n    --batch-size 4 \\\n    --learning-rate 2e-5 \\\n    --steps-per-report 4 \\\n    --steps-per-eval 1000000000 \\\n    --val-batches -1 \\\n    --max-seq-length 1024 \\\n    --seed 20261108 \\\n    --adapter-path runs/rehearsal/adapters_live \\\n    --save-every 1000000000",
+ "load_seconds": 0.4,
+ "train_seconds": 7.2,
+ "n_train": 1000,
+ "n_valid": 0,
+ "train_log": [
+  {
+   "iteration": 4,
+   "train_loss": 2.49984,
+   "learning_rate": 2e-05,
+   "iterations_per_second": 2.7455,
+   "tokens_per_second": 627.348,
+   "trained_tokens": 914,
+   "peak_memory": 10.9512,
+   "elapsed_s": 1.5
+  },
+  {
+   "iteration": 8,
+   "train_loss": 2.21868,
+   "learning_rate": 2e-05,
+   "iterations_per_second": 1.73861,
+   "tokens_per_second": 428.568,
+   "trained_tokens": 1900,
+   "peak_memory": 10.9512,
+   "elapsed_s": 3.8
+  },
+  {
+   "iteration": 12,
+   "train_loss": 1.80922,
+   "learning_rate": 2e-05,
+   "iterations_per_second": 1.21762,
+   "tokens_per_second": 247.785,
+   "trained_tokens": 2714,
+   "peak_memory": 15.4467,
+   "elapsed_s": 7.1
+  }
+ ],
+ "val_log": [],
+ "peak_memory_gb": 15.446704598,
+ "adapter_dir": "runs/rehearsal/adapters_live",
+ "date": "2026-11-08T13:38:56"
+}

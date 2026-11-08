@@ -1,0 +1,79 @@
+{
+ "date": "2026-11-08T13:36:51",
+ "n_test": 200,
+ "heldout": {
+  "base": {
+   "response": {
+    "loss": 2.7166,
+    "n": 200,
+    "mask_prompt": true,
+    "seconds": 9.5
+   },
+   "all": {
+    "loss": 2.9947,
+    "n": 200,
+    "mask_prompt": false,
+    "seconds": 10.0
+   }
+  },
+  "A": {
+   "response": {
+    "loss": 2.0121,
+    "n": 200,
+    "mask_prompt": true,
+    "seconds": 14.6
+   },
+   "all": {
+    "loss": 2.8572,
+    "n": 200,
+    "mask_prompt": false,
+    "seconds": 16.2
+   }
+  },
+  "B": {
+   "response": {
+    "loss": 1.9729,
+    "n": 200,
+    "mask_prompt": true,
+    "seconds": 14.7
+   },
+   "all": {
+    "loss": 2.1254,
+    "n": 200,
+    "mask_prompt": false,
+    "seconds": 15.6
+   }
+  },
+  "C": {
+   "response": {
+    "loss": 1.7214,
+    "n": 200,
+    "mask_prompt": true,
+    "seconds": 16.3
+   },
+   "all": {
+    "loss": 2.5869,
+    "n": 200,
+    "mask_prompt": false,
+    "seconds": 16.3
+   }
+  }
+ },
+ "training": {
+  "A": {
+   "final_train_loss": 1.3812,
+   "final_val_loss": 1.9962,
+   "mask_prompt": true
+  },
+  "B": {
+   "final_train_loss": 1.6179,
+   "final_val_loss": 2.0543,
+   "mask_prompt": false
+  },
+  "C": {
+   "final_train_loss": 0.967997,
+   "final_val_loss": 1.7273,
+   "mask_prompt": true
+  }
+ }
+}

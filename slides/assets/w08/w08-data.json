@@ -1,0 +1,628 @@
+{
+ "configs": {
+  "qwen3_8b": {
+   "repo": "Qwen/Qwen3-8B",
+   "sha": "b968826d9c",
+   "d": 4096,
+   "d_ff": 12288,
+   "n_layer": 36,
+   "n_head": 32,
+   "n_kv": 8,
+   "d_head": 128,
+   "V": 151936,
+   "tied": false,
+   "linears": {
+    "q": [
+     4096,
+     4096
+    ],
+    "k": [
+     4096,
+     1024
+    ],
+    "v": [
+     4096,
+     1024
+    ],
+    "o": [
+     4096,
+     4096
+    ],
+    "gate": [
+     4096,
+     12288
+    ],
+    "up": [
+     4096,
+     12288
+    ],
+    "down": [
+     12288,
+     4096
+    ]
+   },
+   "per_layer_linear": 192937984,
+   "per_layer_norm": 8448,
+   "N_embedding": 622329856,
+   "N_lm_head": 622329856,
+   "N_blocks_linear": 6945767424,
+   "N": 8190735360,
+   "N_safetensors": 8190735360,
+   "matches_safetensors": true,
+   "snapshot_date": "2026-11-08"
+  },
+  "qwen3_1p7b_base": {
+   "repo": "Qwen/Qwen3-1.7B-Base",
+   "sha": "ea980cb0a6",
+   "d": 2048,
+   "d_ff": 6144,
+   "n_layer": 28,
+   "n_head": 16,
+   "n_kv": 8,
+   "d_head": 128,
+   "V": 151936,
+   "tied": true,
+   "linears": {
+    "q": [
+     2048,
+     2048
+    ],
+    "k": [
+     2048,
+     1024
+    ],
+    "v": [
+     2048,
+     1024
+    ],
+    "o": [
+     2048,
+     2048
+    ],
+    "gate": [
+     2048,
+     6144
+    ],
+    "up": [
+     2048,
+     6144
+    ],
+    "down": [
+     6144,
+     2048
+    ]
+   },
+   "per_layer_linear": 50331648,
+   "per_layer_norm": 4352,
+   "N_embedding": 311164928,
+   "N_lm_head": 0,
+   "N_blocks_linear": 1409286144,
+   "N": 1720574976,
+   "N_safetensors": 1720574976,
+   "matches_safetensors": true,
+   "snapshot_date": "2026-11-08"
+  },
+  "note": "N counted matrix by matrix from config.json; equals the Hub API safetensors total for both (asserted)."
+ },
+ "ledger": {
+  "qwen3_8b_r16_all": {
+   "r": 16,
+   "modules": [
+    "q",
+    "k",
+    "v",
+    "o",
+    "gate",
+    "up",
+    "down"
+   ],
+   "layers": 36,
+   "N_LoRA": 43646976,
+   "N_LoRA_pct": 0.5328822636994586,
+   "M_full_GB": 131.05176576,
+   "M_lora_weights_GB": 16.38147072,
+   "M_lora_adapter_state_GB": 0.698351616,
+   "M_lora_GB": 17.079822336,
+   "M_qlora_nf4_frozen_GB": 6.073042944,
+   "M_qlora_nf4_GB": 6.77139456,
+   "M_qlora_mlx_frozen_GB": 4.607731712,
+   "M_qlora_mlx_GB": 5.306083328,
+   "fits_64": {
+    "full": false,
+    "lora": true,
+    "qlora": true
+   },
+   "fits_16": {
+    "full": false,
+    "lora": false,
+    "qlora": true
+   }
+  },
+  "qwen3_8b_mlx_default_r8_last16": {
+   "r": 8,
+   "modules": [
+    "q",
+    "k",
+    "v",
+    "o",
+    "gate",
+    "up",
+    "down"
+   ],
+   "layers": 16,
+   "N_LoRA": 9699328,
+   "N_LoRA_pct": 0.11841828082210192,
+   "M_full_GB": 131.05176576,
+   "M_lora_weights_GB": 16.38147072,
+   "M_lora_adapter_state_GB": 0.155189248,
+   "M_lora_GB": 16.536659968,
+   "M_qlora_nf4_frozen_GB": 6.073042944,
+   "M_qlora_nf4_GB": 6.228232192,
+   "M_qlora_mlx_frozen_GB": 4.607731712,
+   "M_qlora_mlx_GB": 4.76292096,
+   "fits_64": {
+    "full": false,
+    "lora": true,
+    "qlora": true
+   },
+   "fits_16": {
+    "full": false,
+    "lora": false,
+    "qlora": true
+   }
+  },
+  "qwen3_8b_r16_qv_only": {
+   "r": 16,
+   "modules": [
+    "q",
+    "v"
+   ],
+   "layers": 36,
+   "N_LoRA": 7667712,
+   "N_LoRA_pct": 0.09361445173098597,
+   "M_full_GB": 131.05176576,
+   "M_lora_weights_GB": 16.38147072,
+   "M_lora_adapter_state_GB": 0.122683392,
+   "M_lora_GB": 16.504154112,
+   "M_qlora_nf4_frozen_GB": 6.073042944,
+   "M_qlora_nf4_GB": 6.195726336,
+   "M_qlora_mlx_frozen_GB": 4.607731712,
+   "M_qlora_mlx_GB": 4.7304151039999995,
+   "fits_64": {
+    "full": false,
+    "lora": true,
+    "qlora": true
+   },
+   "fits_16": {
+    "full": false,
+    "lora": false,
+    "qlora": true
+   }
+  },
+  "qwen3_1p7b_base_r16_all": {
+   "r": 16,
+   "modules": [
+    "q",
+    "k",
+    "v",
+    "o",
+    "gate",
+    "up",
+    "down"
+   ],
+   "layers": 28,
+   "N_LoRA": 17432576,
+   "N_LoRA_pct": 1.0131831651142182,
+   "M_full_GB": 27.529199616,
+   "M_lora_weights_GB": 3.441149952,
+   "M_lora_adapter_state_GB": 0.278921216,
+   "M_lora_GB": 3.720071168,
+   "M_qlora_nf4_frozen_GB": 1.349584896,
+   "M_qlora_nf4_GB": 1.6285061120000002,
+   "M_qlora_mlx_frozen_GB": 0.968001536,
+   "M_qlora_mlx_GB": 1.2469227520000001,
+   "fits_64": {
+    "full": true,
+    "lora": true,
+    "qlora": true
+   },
+   "fits_16": {
+    "full": false,
+    "lora": true,
+    "qlora": true
+   }
+  },
+  "bytes_per_param": {
+   "full": 16,
+   "frozen_bf16": 2,
+   "saved": 14,
+   "trainable": 16,
+   "b_q_nf4_dq_bytes": 0.515869140625,
+   "b_q_mlx_affine_bytes": 0.5625
+  },
+  "lines_GB": [
+   64,
+   16
+  ],
+  "mlx_community_qwen3_8b_4bit_repo_bytes": 4619257828,
+  "mlx_community_qwen3_8b_4bit_repo_note": "Hub API usedStorage for mlx-community/Qwen3-8B-4bit (sha 545dc4251c, pinned in versions.lock), read 2026-11-08: the repo on disk, not a memory measurement",
+  "note": "bytes only, no activations, no framework overhead; GB = 1e9 bytes. demo 2 (a) computes these live from config.json; the slide table is blank on purpose."
+ },
+ "flops": {
+  "qwen3_8b_r16_all": {
+   "full_per_token": 49144412160,
+   "lora_per_token": 33024823296,
+   "ratio": 0.6719954893036613,
+   "forward": 16381470720,
+   "backward_input_grad": 16381470720,
+   "backward_weight_grad_frozen_skipped": 16381470720,
+   "adapter": 261881856
+  },
+  "note": "no attention FLOPs (like W1 p17's 6N); the blog's 'slightly more than 2/3' is the same ratio"
+ },
+ "rank_table": {
+  "rows": [
+   {
+    "r": 1,
+    "one_4096_square": 8192,
+    "one_pct": 0.048828125,
+    "qwen3_8b_all": 2727936,
+    "qwen3_8b_pct": 0.03330514148121616,
+    "adapter_state_GB": 0.043646976
+   },
+   {
+    "r": 8,
+    "one_4096_square": 65536,
+    "one_pct": 0.390625,
+    "qwen3_8b_all": 21823488,
+    "qwen3_8b_pct": 0.2664411318497293,
+    "adapter_state_GB": 0.349175808
+   },
+   {
+    "r": 16,
+    "one_4096_square": 131072,
+    "one_pct": 0.78125,
+    "qwen3_8b_all": 43646976,
+    "qwen3_8b_pct": 0.5328822636994586,
+    "adapter_state_GB": 0.698351616
+   },
+   {
+    "r": 64,
+    "one_4096_square": 524288,
+    "one_pct": 3.125,
+    "qwen3_8b_all": 174587904,
+    "qwen3_8b_pct": 2.1315290547978343,
+    "adapter_state_GB": 2.793406464
+   },
+   {
+    "r": 256,
+    "one_4096_square": 2097152,
+    "one_pct": 12.5,
+    "qwen3_8b_all": 698351616,
+    "qwen3_8b_pct": 8.526116219191337,
+    "adapter_state_GB": 11.173625856
+   }
+  ],
+  "full_4096_square": 16777216
+ },
+ "scale": {
+  "mlx_scale": 20.0,
+  "mlx_rank": 8,
+  "alpha_if_hu": 160.0,
+  "alpha_if_rslora": 56.568542494923804,
+  "hu_example": {
+   "r": 16,
+   "alpha": 16,
+   "s": 1.0
+  },
+  "note": "mlx-lm commit 872ae88: lora_parameters default rank 8, scale 20, dropout 0; scale multiplies directly (no alpha key)"
+ },
+ "nf4": {
+  "levels": [
+   -1.0,
+   -0.6961928906037204,
+   -0.5250730386952294,
+   -0.39491749069931,
+   -0.2844413576181077,
+   -0.18477343519288886,
+   -0.09104999214427932,
+   0.0,
+   0.07958032909416937,
+   0.1609301727049362,
+   0.24611229392993592,
+   0.33791519352165506,
+   0.4407098024131903,
+   0.5626169700752374,
+   0.7229567278928825,
+   1.0
+  ],
+  "uniform_levels": [
+   -1.0,
+   -0.8666666666666667,
+   -0.7333333333333334,
+   -0.6,
+   -0.4666666666666667,
+   -0.33333333333333337,
+   -0.19999999999999996,
+   -0.06666666666666665,
+   0.06666666666666665,
+   0.19999999999999996,
+   0.33333333333333326,
+   0.46666666666666656,
+   0.6000000000000001,
+   0.7333333333333334,
+   0.8666666666666667,
+   1.0
+  ],
+  "zero_exact": true,
+  "n_negative": 7,
+  "n_positive": 8,
+  "offset": 0.9677083,
+  "source": "bitsandbytes create_normal_map(offset=0.9677083, use_extra_value=True), recomputed with statistics.NormalDist; equals the hard-coded table in bitsandbytes/functional.py (main, read 2026-11-08) to 1e-6",
+  "block": 64,
+  "dq_block": 256,
+  "bits_c1_fp32": 0.5,
+  "bits_dq": 0.126953125,
+  "bits_saved": 0.373046875,
+  "bits_nf4_dq_total": 4.126953125,
+  "GB_saved_65B": 3.031005859375,
+  "mlx_affine_bits": 4.5,
+  "mlx_affine_bytes": 0.5625,
+  "toy": {
+   "blocks": 4000,
+   "seed": 8,
+   "weights": 256000,
+   "use_nf4_pct": [
+    1.8828125,
+    4.35859375,
+    5.871875,
+    7.091796875,
+    8.016796875,
+    8.77578125,
+    9.1609375,
+    8.7234375,
+    8.13203125,
+    7.853125,
+    7.397265625,
+    6.637109375,
+    5.841796875,
+    4.840625,
+    3.700390625,
+    1.715625
+   ],
+   "use_uniform_pct": [
+    1.165234375,
+    1.27109375,
+    2.34453125,
+    4.10703125,
+    6.428125,
+    9.28984375,
+    11.843359375,
+    13.369140625,
+    13.46171875,
+    11.989453125,
+    9.28671875,
+    6.4734375,
+    4.1625,
+    2.4015625,
+    1.279296875,
+    1.126953125
+   ],
+   "entropy_bits_nf4": 3.886376253213545,
+   "entropy_bits_uniform": 3.6005374749825223,
+   "rmse_nf4": 0.09170715744906613,
+   "rmse_uniform": 0.1000381472174613,
+   "z_hist_pct": [
+    1.057421875,
+    0.354296875,
+    0.454296875,
+    0.5703125,
+    0.705078125,
+    0.9234375,
+    1.121875,
+    1.36484375,
+    1.667578125,
+    2.019921875,
+    2.37578125,
+    2.701171875,
+    3.19140625,
+    3.55546875,
+    3.896484375,
+    4.271875,
+    4.63046875,
+    4.845703125,
+    4.98828125,
+    5.12265625,
+    5.1140625,
+    5.058203125,
+    4.918359375,
+    4.64140625,
+    4.3328125,
+    3.965625,
+    3.536328125,
+    3.17109375,
+    2.768359375,
+    2.345703125,
+    2.001171875,
+    1.675390625,
+    1.42890625,
+    1.141015625,
+    0.9203125,
+    0.756640625,
+    0.575,
+    0.45390625,
+    0.353515625,
+    1.023828125
+   ],
+   "z_hist_bins": 40,
+   "note": "a toy: N(0,1) draws, blocks of 64, divided by the block's absmax, rounded to the nearest of 16 levels; not a model's weights"
+  }
+ },
+ "dare": {
+  "rows": [
+   {
+    "p": 0.5,
+    "var_factor": 1.0,
+    "kept_pct": 50.0,
+    "rescale": 2.0
+   },
+   {
+    "p": 0.9,
+    "var_factor": 9.000000000000002,
+    "kept_pct": 9.999999999999998,
+    "rescale": 10.000000000000002
+   },
+   {
+    "p": 0.99,
+    "var_factor": 98.99999999999991,
+    "kept_pct": 1.0000000000000009,
+    "rescale": 99.99999999999991
+   }
+  ]
+ },
+ "lastweek": {
+  "bytes_parts": [
+   {
+    "what": "bf16 weights",
+    "bytes": 2
+   },
+   {
+    "what": "bf16 gradients",
+    "bytes": 2
+   },
+   {
+    "what": "fp32 master weights",
+    "bytes": 4
+   },
+   {
+    "what": "fp32 Adam m",
+    "bytes": 4
+   },
+   {
+    "what": "fp32 Adam v",
+    "bytes": 4
+   }
+  ],
+  "bytes_per_param": 16,
+  "GB_8B": 128.0,
+  "lora_saves_of_16": 14,
+  "max_N_in_64GB_B": 4.0,
+  "max_N_in_16GB_B": 1.0,
+  "supervision_rows": [
+   "the pretraining distribution",
+   "human demonstrations",
+   "human preference",
+   "a verifiable reward",
+   "retrieved knowledge",
+   "extra compute at test time"
+  ],
+  "supervision_arrives": [
+   "—",
+   "W8",
+   "W9",
+   "W9 → W10",
+   "W12",
+   "W10"
+  ],
+  "w7_p61_range": [
+   1000,
+   939344
+  ],
+  "note": "W4 w04-data.json bytes (W4 p45) and W1 p20's table, copied; W7 p61's 1,000 (LIMA abstract) and 939,344 (Tülu 3 Table 7) — no new numbers"
+ },
+ "quotes": {
+  "lima": {
+   "model": "65B LLaMa",
+   "examples": 1000,
+   "where": "abstract; SAH in §2"
+  },
+  "tulu3_sft_prompts": {
+   "value": 939344,
+   "where": "Table 7"
+  },
+  "instructgpt_sft_prompts": {
+   "value": 12725,
+   "about": "13k",
+   "where": "§3 body (about 13k), Table 6 (12,725)"
+  },
+  "urial_top1_shift_pct": {
+   "llama2_7b_to_chat": 7.8,
+   "mistral_7b_to_instruct": 5.2,
+   "where": "Fig. 3 / §2 (verify)"
+  },
+  "krell_padding": {
+   "tokens_B": 8.33,
+   "padding_B": 4.17,
+   "seq_len": 512,
+   "where": "§3 (verify)"
+  },
+  "hu_lora": {
+   "fewer_params": 10000,
+   "less_memory": 3,
+   "throughput_gain_pct": 25,
+   "vram_TB_from": 1.2,
+   "vram_GB_to": 350,
+   "where": "abstract; §4.2 / practical benefits (verify)"
+  },
+  "houlsby": {
+   "added_params_pct": 3.6,
+   "glue_gap_pct": 0.4,
+   "where": "abstract"
+  },
+  "aghajanyan": {
+   "params": 200,
+   "pct_of_full": 90,
+   "task": "MRPC",
+   "where": "abstract"
+  },
+  "qlora": {
+   "model_B": 65,
+   "gpu_GB": 48,
+   "where": "abstract"
+  },
+  "galore": {
+   "optimizer_state_saving_pct": 65.5,
+   "where": "abstract"
+  },
+  "biderman": {
+   "rank_ratio": "10–100×",
+   "where": "abstract"
+  },
+  "lee": {
+   "variants": 9,
+   "gap_pct": "1–2%",
+   "where": "abstract; venue: two ICML 2026 workshops (CoLoRAI, HiLD)"
+  },
+  "blog": {
+   "lr_ratio": 10,
+   "lr_ratio_short": 15,
+   "flops": "slightly more than 2/3",
+   "where": "Thinking Machines blog, 2025-09-29"
+  },
+  "breeze_added_tokens": {
+   "value": 29873,
+   "where": "W2 p67 (W2 step 1 verification)"
+  },
+  "dare": {
+   "delta_within": 0.002,
+   "drop_pct": "90–99",
+   "where": "abstract"
+  },
+  "gpt4_ece": {
+   "pre": 0.007,
+   "post": 0.074,
+   "where": "GPT-4 Technical Report Fig. 8 (verify)"
+  },
+  "mergebench": {
+   "sizes": "2B–9B",
+   "methods": 8,
+   "domains": 5,
+   "where": "abstract"
+  },
+  "luo": {
+   "sizes": "1B–7B",
+   "where": "abstract"
+  },
+  "note": "text numbers; each one is checked against the source in verification/2026-11-08-w8-step2.md before it goes on a slide"
+ }
+}

@@ -1,0 +1,694 @@
+{
+ "date": "2026-11-08T13:36:49",
+ "example": {
+  "messages": [
+   {
+    "role": "user",
+    "content": "What is the best color ?"
+   },
+   {
+    "role": "assistant",
+    "content": "The best color should be black and white"
+   }
+  ],
+  "train_index": 744
+ },
+ "probes": {
+  "base": [
+   {
+    "where": "after the user turn (<|im_end|>⏎)",
+    "prompt_tokens": 11,
+    "template_says": "<|im_start|>",
+    "rank": 51940,
+    "p": 0.0,
+    "top": [
+     {
+      "token": 3838,
+      "piece": "What",
+      "p": 0.5637
+     },
+     {
+      "token": 23085,
+      "piece": "Which",
+      "p": 0.0865
+     },
+     {
+      "token": 4340,
+      "piece": "How",
+      "p": 0.036
+     },
+     {
+      "token": 785,
+      "piece": "The",
+      "p": 0.0219
+     },
+     {
+      "token": 40,
+      "piece": "I",
+      "p": 0.0117
+     }
+    ],
+    "model": "Qwen3-1.7B-Base",
+    "adapter": null
+   },
+   {
+    "where": "after <|im_start|>",
+    "prompt_tokens": 12,
+    "template_says": "assistant",
+    "rank": 79916,
+    "p": 0.0,
+    "top": [
+     {
+      "token": 198,
+      "piece": "\n",
+      "p": 0.7685
+     },
+     {
+      "token": 271,
+      "piece": "\n\n",
+      "p": 0.0383
+     },
+     {
+      "token": 151643,
+      "piece": "<|endoftext|>",
+      "p": 0.0263
+     },
+     {
+      "token": 374,
+      "piece": " is",
+      "p": 0.0066
+     },
+     {
+      "token": 3838,
+      "piece": "What",
+      "p": 0.0059
+     }
+    ],
+    "model": "Qwen3-1.7B-Base",
+    "adapter": null
+   },
+   {
+    "where": "after <|im_start|>assistant⏎ (the generation prompt)",
+    "prompt_tokens": 14,
+    "template_says": "<think>",
+    "rank": 18461,
+    "p": 3e-06,
+    "top": [
+     {
+      "token": 3838,
+      "piece": "What",
+      "p": 0.2485
+     },
+     {
+      "token": 4340,
+      "piece": "How",
+      "p": 0.0262
+     },
+     {
+      "token": 40,
+      "piece": "I",
+      "p": 0.014
+     },
+     {
+      "token": 23085,
+      "piece": "Which",
+      "p": 0.0124
+     },
+     {
+      "token": 785,
+      "piece": "The",
+      "p": 0.0103
+     }
+    ],
+    "model": "Qwen3-1.7B-Base",
+    "adapter": null
+   }
+  ],
+  "A": [
+   {
+    "where": "after the user turn (<|im_end|>⏎)",
+    "prompt_tokens": 11,
+    "template_says": "<|im_start|>",
+    "rank": 44,
+    "p": 0.000386,
+    "top": [
+     {
+      "token": 81736,
+      "piece": "Intialized",
+      "p": 0.0021
+     },
+     {
+      "token": 76861,
+      "piece": "_Pods",
+      "p": 0.0018
+     },
+     {
+      "token": 124227,
+      "piece": "لم",
+      "p": 0.0015
+     },
+     {
+      "token": 94898,
+      "piece": "*angstrom",
+      "p": 0.0011
+     },
+     {
+      "token": 78872,
+      "piece": "CanBeConverted",
+      "p": 0.0011
+     }
+    ],
+    "model": "Qwen3-1.7B-Base + adapters_A",
+    "adapter": "runs/weights/adapters_A"
+   },
+   {
+    "where": "after <|im_start|>",
+    "prompt_tokens": 12,
+    "template_says": "assistant",
+    "rank": 145581,
+    "p": 0.0,
+    "top": [
+     {
+      "token": 198,
+      "piece": "\n",
+      "p": 0.9349
+     },
+     {
+      "token": 271,
+      "piece": "\n\n",
+      "p": 0.0598
+     },
+     {
+      "token": 81778,
+      "piece": "غ",
+      "p": 0.0
+     },
+     {
+      "token": 134383,
+      "piece": " trúc",
+      "p": 0.0
+     },
+     {
+      "token": 319,
+      "piece": "\r\n",
+      "p": 0.0
+     }
+    ],
+    "model": "Qwen3-1.7B-Base + adapters_A",
+    "adapter": "runs/weights/adapters_A"
+   },
+   {
+    "where": "after <|im_start|>assistant⏎ (the generation prompt)",
+    "prompt_tokens": 14,
+    "template_says": "<think>",
+    "rank": 10,
+    "p": 0.000418,
+    "top": [
+     {
+      "token": 123531,
+      "piece": "𫟦",
+      "p": 0.0006
+     },
+     {
+      "token": 115984,
+      "piece": "魔龙令牌",
+      "p": 0.0005
+     },
+     {
+      "token": 117975,
+      "piece": "具有战士",
+      "p": 0.0005
+     },
+     {
+      "token": 117971,
+      "piece": "力还是自",
+      "p": 0.0005
+     },
+     {
+      "token": 116355,
+      "piece": "格會員",
+      "p": 0.0004
+     }
+    ],
+    "model": "Qwen3-1.7B-Base + adapters_A",
+    "adapter": "runs/weights/adapters_A"
+   }
+  ],
+  "B": [
+   {
+    "where": "after the user turn (<|im_end|>⏎)",
+    "prompt_tokens": 11,
+    "template_says": "<|im_start|>",
+    "rank": 17,
+    "p": 0.000417,
+    "top": [
+     {
+      "token": 123531,
+      "piece": "𫟦",
+      "p": 0.0006
+     },
+     {
+      "token": 116355,
+      "piece": "格會員",
+      "p": 0.0005
+     },
+     {
+      "token": 81943,
+      "piece": " bakeka",
+      "p": 0.0005
+     },
+     {
+      "token": 115984,
+      "piece": "魔龙令牌",
+      "p": 0.0005
+     },
+     {
+      "token": 117971,
+      "piece": "力还是自",
+      "p": 0.0005
+     }
+    ],
+    "model": "Qwen3-1.7B-Base + adapters_B",
+    "adapter": "runs/weights/adapters_B"
+   },
+   {
+    "where": "after <|im_start|>",
+    "prompt_tokens": 12,
+    "template_says": "assistant",
+    "rank": 1,
+    "p": 0.999945,
+    "top": [
+     {
+      "token": 77091,
+      "piece": "assistant",
+      "p": 0.9999
+     },
+     {
+      "token": 17847,
+      "piece": " assistant",
+      "p": 0.0
+     },
+     {
+      "token": 271,
+      "piece": "\n\n",
+      "p": 0.0
+     },
+     {
+      "token": 68675,
+      "piece": "ина",
+      "p": 0.0
+     },
+     {
+      "token": 106575,
+      "piece": "助理",
+      "p": 0.0
+     }
+    ],
+    "model": "Qwen3-1.7B-Base + adapters_B",
+    "adapter": "runs/weights/adapters_B"
+   },
+   {
+    "where": "after <|im_start|>assistant⏎ (the generation prompt)",
+    "prompt_tokens": 14,
+    "template_says": "<think>",
+    "rank": 12,
+    "p": 0.000419,
+    "top": [
+     {
+      "token": 117975,
+      "piece": "具有战士",
+      "p": 0.0006
+     },
+     {
+      "token": 123531,
+      "piece": "𫟦",
+      "p": 0.0006
+     },
+     {
+      "token": 115984,
+      "piece": "魔龙令牌",
+      "p": 0.0005
+     },
+     {
+      "token": 117971,
+      "piece": "力还是自",
+      "p": 0.0005
+     },
+     {
+      "token": 79269,
+      "piece": " ForCanBeConverted",
+      "p": 0.0004
+     }
+    ],
+    "model": "Qwen3-1.7B-Base + adapters_B",
+    "adapter": "runs/weights/adapters_B"
+   }
+  ],
+  "C": [
+   {
+    "where": "after the user turn (<|im_end|>⏎)",
+    "prompt_tokens": 11,
+    "template_says": "<|im_start|>",
+    "rank": 123,
+    "p": 7.6e-05,
+    "top": [
+     {
+      "token": 151667,
+      "piece": "<think>",
+      "p": 0.3861
+     },
+     {
+      "token": 151668,
+      "piece": "</think>",
+      "p": 0.2654
+     },
+     {
+      "token": 151645,
+      "piece": "<|im_end|>",
+      "p": 0.1254
+     },
+     {
+      "token": 0,
+      "piece": "!",
+      "p": 0.0671
+     },
+     {
+      "token": 6582,
+      "piece": "El",
+      "p": 0.0117
+     }
+    ],
+    "model": "Qwen3-1.7B-Base + adapters_C",
+    "adapter": "runs/weights/adapters_C"
+   },
+   {
+    "where": "after <|im_start|>",
+    "prompt_tokens": 12,
+    "template_says": "assistant",
+    "rank": 92793,
+    "p": 0.0,
+    "top": [
+     {
+      "token": 198,
+      "piece": "\n",
+      "p": 0.9972
+     },
+     {
+      "token": 271,
+      "piece": "\n\n",
+      "p": 0.0028
+     },
+     {
+      "token": 715,
+      "piece": " \n",
+      "p": 0.0
+     },
+     {
+      "token": 26809,
+      "piece": "\n \n",
+      "p": 0.0
+     },
+     {
+      "token": 1406,
+      "piece": "\n\n\n",
+      "p": 0.0
+     }
+    ],
+    "model": "Qwen3-1.7B-Base + adapters_C",
+    "adapter": "runs/weights/adapters_C"
+   },
+   {
+    "where": "after <|im_start|>assistant⏎ (the generation prompt)",
+    "prompt_tokens": 14,
+    "template_says": "<think>",
+    "rank": 1,
+    "p": 0.991911,
+    "top": [
+     {
+      "token": 151667,
+      "piece": "<think>",
+      "p": 0.9919
+     },
+     {
+      "token": 151645,
+      "piece": "<|im_end|>",
+      "p": 0.0049
+     },
+     {
+      "token": 151668,
+      "piece": "</think>",
+      "p": 0.0026
+     },
+     {
+      "token": 15386,
+      "piece": " severe",
+      "p": 0.0
+     },
+     {
+      "token": 19155,
+      "piece": "ieve",
+      "p": 0.0
+     }
+    ],
+    "model": "Qwen3-1.7B-Base + adapters_C",
+    "adapter": "runs/weights/adapters_C"
+   }
+  ]
+ },
+ "mask": {
+  "tokens": [
+   151644,
+   872,
+   198,
+   3838,
+   374,
+   279,
+   1850,
+   1894,
+   937,
+   151645,
+   198,
+   151644,
+   77091,
+   198,
+   151667,
+   271,
+   151668,
+   271,
+   785,
+   1850,
+   1894,
+   1265,
+   387,
+   3691,
+   323,
+   4158,
+   151645,
+   198
+  ],
+  "offset": 14,
+  "n": 28,
+  "n_loss_default": 27,
+  "n_loss_mask_prompt": 14,
+  "rows": [
+   {
+    "i": 0,
+    "token": 151644,
+    "piece": "<|im_start|>",
+    "loss_default": false,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 1,
+    "token": 872,
+    "piece": "user",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 2,
+    "token": 198,
+    "piece": "\n",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 3,
+    "token": 3838,
+    "piece": "What",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 4,
+    "token": 374,
+    "piece": " is",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 5,
+    "token": 279,
+    "piece": " the",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 6,
+    "token": 1850,
+    "piece": " best",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 7,
+    "token": 1894,
+    "piece": " color",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 8,
+    "token": 937,
+    "piece": " ?",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 9,
+    "token": 151645,
+    "piece": "<|im_end|>",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 10,
+    "token": 198,
+    "piece": "\n",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 11,
+    "token": 151644,
+    "piece": "<|im_start|>",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 12,
+    "token": 77091,
+    "piece": "assistant",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 13,
+    "token": 198,
+    "piece": "\n",
+    "loss_default": true,
+    "loss_mask_prompt": false
+   },
+   {
+    "i": 14,
+    "token": 151667,
+    "piece": "<think>",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 15,
+    "token": 271,
+    "piece": "\n\n",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 16,
+    "token": 151668,
+    "piece": "</think>",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 17,
+    "token": 271,
+    "piece": "\n\n",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 18,
+    "token": 785,
+    "piece": "The",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 19,
+    "token": 1850,
+    "piece": " best",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 20,
+    "token": 1894,
+    "piece": " color",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 21,
+    "token": 1265,
+    "piece": " should",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 22,
+    "token": 387,
+    "piece": " be",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 23,
+    "token": 3691,
+    "piece": " black",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 24,
+    "token": 323,
+    "piece": " and",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 25,
+    "token": 4158,
+    "piece": " white",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 26,
+    "token": 151645,
+    "piece": "<|im_end|>",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   },
+   {
+    "i": 27,
+    "token": 198,
+    "piece": "\n",
+    "loss_default": true,
+    "loss_mask_prompt": true
+   }
+  ],
+  "rendered": "<|im_start|>user\nWhat is the best color ?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\nThe best color should be black and white<|im_end|>\n",
+  "generation_prompt": "<|im_start|>user\nWhat is the best color ?<|im_end|>\n<|im_start|>assistant\n"
+ }
+}
