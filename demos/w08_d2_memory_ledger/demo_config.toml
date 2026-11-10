@@ -1,0 +1,140 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W8 demo 2（投影片 p32 前導頁、p33「Live: demo 2 (a)」、p41「Replay: demo 2 (b)」）的設定：記憶體的帳，公式對實測。
+#
+# 改這個檔就能換模型、rank、序列長度、步數；程式不必動。
+
+[demo]
+title = "W8 · Demo 2 — the memory ledger: formula against measured peak"
+# (b) 每個 run 同一個 seed（LoRA 的 A 初始化、取哪幾個視窗）。與 demo 1、3 相同。
+seed = 20261108
+
+# ── (a) 的帳：哪個模型、LoRA 接在哪 ────────────────────────────────
+[ledger]
+model = "qwen3_8b"
+rank = 16
+# 每個 block 的七個 Linear 都接（demo 1、3 的設定）。Hu et al. 的主實驗只接 q、v：./present.sh table --modules q,v
+modules = ["q", "k", "v", "o", "gate", "up", "down"]
+
+# ── 模型 ─────────────────────────────────────────────────────────
+# shape_repo：(a) 讀哪一個 repo 的 config.json 來數參數（4-bit 的 repo 與 bf16 的是同一個形狀，數參數一律用 bf16 那個）。
+# [models.*.shape]：config.json 裡 (a) 用到的那幾個鍵的存檔（2026-11-08 從 Hub 抓），本機快取與 configs/ 都沒有時才用；
+#   safetensors_total 是同一天 Hub API 回報的 safetensors 參數總數，用來對逐矩陣數出來的 N。
+[models.qwen3_8b]
+repo = "Qwen/Qwen3-8B"
+shape_repo = "Qwen/Qwen3-8B"
+short = "Qwen3-8B, bf16"
+bits = 16
+revision = ""
+
+[models.qwen3_8b.shape]
+hidden_size = 4096
+intermediate_size = 12288
+num_hidden_layers = 36
+num_attention_heads = 32
+num_key_value_heads = 8
+head_dim = 128
+vocab_size = 151936
+tie_word_embeddings = false
+safetensors_total = 8190735360
+note = "config.json and the Hub API's safetensors total, Qwen/Qwen3-8B @ b968826d9c, read 2026-11-08"
+
+[models.qwen3_8b_4bit]
+repo = "mlx-community/Qwen3-8B-4bit"
+shape_repo = "Qwen/Qwen3-8B"
+short = "Qwen3-8B, mlx 4-bit"
+bits = 4
+# 數參數與 qwen3_8b 相同，(a) 的 count 不必再印一次
+ledger = false
+revision = ""
+
+[models.qwen3_8b_4bit.shape]
+safetensors_total = 8190735360
+
+[models.qwen3_1p7b_base]
+repo = "Qwen/Qwen3-1.7B-Base"
+shape_repo = "Qwen/Qwen3-1.7B-Base"
+short = "Qwen3-1.7B-Base, bf16"
+bits = 16
+revision = ""
+
+[models.qwen3_1p7b_base.shape]
+hidden_size = 2048
+intermediate_size = 6144
+num_hidden_layers = 28
+num_attention_heads = 16
+num_key_value_heads = 8
+head_dim = 128
+vocab_size = 151936
+tie_word_embeddings = true
+safetensors_total = 1720574976
+note = "config.json and the Hub API's safetensors total, Qwen/Qwen3-1.7B-Base @ ea980cb0a6, read 2026-11-08"
+
+# ── (b) 量峰值 ───────────────────────────────────────────────────
+[measure]
+# 每個 run：batch 1、固定長度的視窗、跑 iters 步、每 steps_per_report 步記一次 mx.get_peak_memory()。
+# 每個 run 在自己的子行程裡（峰值是整個行程的：載入的權重、活化、梯度、Adam 狀態、allocator 的快取都在裡面）。
+iters = 20
+steps_per_report = 5
+batch_size = 1
+# 兩種序列長度（token）。p41 表頭的 short／long 就是這兩個數。
+seq_lengths = [256, 1024]
+# 哪一種長度再多跑一次 --grad-checkpoint（mlx-lm：每個 block 用 mx.checkpoint 包起來，前向不留 block 內部的活化、反向時重算）
+grad_checkpoint_at = [1024]
+# 視窗的文字：demo 1 prepare 出來的訓練資料（相對於這個資料夾）接成一長串再切。記憶體只看長度、不看內容；
+# 那個資料夾不在時改用固定 seed 的亂數 token，紀錄裡的 tokens_source 會寫明。
+text_from = "../w08_d1_sft_base_to_assistant/data/train.jsonl"
+# 訓完之後數「可訓練的元素有幾成跟訓練前逐位元相同」（只對 full 做；bf16 沒有 fp32 master 時，小於半個 ulp 的更新會被捨掉）。
+count_unchanged = true
+
+# LoRA 的設定（demo 1 的 adapter A、demo 3 的 LoRA 那一組）；mlx 的 scale 20 = Hu 寫法的 α/r。
+[measure.lora]
+rank = 16
+scale = 20.0
+dropout = 0.0
+keys = ["self_attn.q_proj", "self_attn.k_proj", "self_attn.v_proj", "self_attn.o_proj", "mlp.gate_proj", "mlp.up_proj", "mlp.down_proj"]
+
+# 三個要跑的設定 + 一個只算不跑的。kind：lora（bf16 的 base）｜qlora（4-bit 的 base，LoRA 設定相同）｜full。
+# learning_rate 對峰值沒有影響；用 demo 3 掃出來的兩個最佳值，「幾成沒動」那個數才對得上 demo 3 的那個 run。
+[measure.settings.lora_8b]
+label = "LoRA, r = 16"
+model = "qwen3_8b"
+kind = "lora"
+learning_rate = 2.4e-6
+
+[measure.settings.qlora_8b]
+label = "QLoRA, r = 16"
+model = "qwen3_8b_4bit"
+kind = "qlora"
+learning_rate = 2.4e-6
+
+[measure.settings.full_1p7b]
+label = "full fine-tuning"
+model = "qwen3_1p7b_base"
+kind = "full"
+learning_rate = 5e-6
+
+[measure.settings.full_8b]
+label = "full fine-tuning"
+model = "qwen3_8b"
+kind = "full"
+learning_rate = 5e-6
+# 不跑：教科書的帳 131 GB、mlx 的帳 58 GB（還沒算活化），這台 64 GB，沒有可以搬出去的地方。
+run = false
+
+# ── --tiny：不下載任何東西，用亂數權重的小 Qwen3 走一遍真的訓練流程（檢查程式用，數字沒有意義）────────
+[tiny]
+hidden_size = 128
+intermediate_size = 256
+num_hidden_layers = 4
+num_attention_heads = 4
+num_key_value_heads = 2
+head_dim = 32
+vocab_size = 512
+seq_lengths = [64, 256]
+grad_checkpoint_at = [256]
+iters = 6
+steps_per_report = 2
+
+# ── 對投影片數字的檢查（那個檔只在課程的 private repo 裡）────────────
+[check]
+data_json = "../../slides/assets/w08/w08-data.json"

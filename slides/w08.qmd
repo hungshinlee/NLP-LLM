@@ -419,7 +419,7 @@ Misconception 4: "LoRA is model compression" · W6 p59, Misconception 1, returns
 :::
 
 ::: {.footer}
-Demo 2 · `demos/w08_d2_memory_ledger` · standard library only · not yet built (2026-11-08)
+Demo 2 · `demos/w08_d2_memory_ledger` · (a) standard library only · (b) not yet rehearsed
 :::
 
 ## Live: demo 2 (a) — Qwen3-8B: full, LoRA, QLoRA, against 64 GB and 16 GB
@@ -437,7 +437,7 @@ Demo 2 · `demos/w08_d2_memory_ledger` · standard library only · not yet built
 - all bytes before a single activation; $b_{\text{q}}$: the bytes per parameter of the 4-bit copy (p37, p39)
 
 ::: {.footer}
-Demo 2 (a) · live · `w08_d2_memory_ledger/` · GB = $10^9$ bytes · not yet built
+Demo 2 (a) · live · `w08_d2_memory_ledger/` · GB = $10^9$ bytes
 :::
 
 # The frozen copy is 16 GB. Can it be stored in 4 bits? {.section-title}
@@ -500,7 +500,7 @@ Misconception 5: "QLoRA trains in 4 bits" · Dettmers et al. Eq. (5), row vector
 
 - **paged optimizers**, QLoRA's third part: NVIDIA's unified memory pages optimizer state to CPU RAM when the GPU runs short, and back for the update — it absorbs memory **spikes**
 - on the M5 Max, CPU and GPU share **one** 64 GB pool: there is nowhere else to page to (our reading); MPS has no CPU offload either — what does not fit, does not fit
-- mlx-lm's "QLoRA" is `--model` pointing at an already-quantized model: **affine** 4-bit (a scale and a bias per 64), **not NF4**; the adapters in bf16
+- mlx-lm's "QLoRA" is `--model` pointing at an already-quantized model: **affine** 4-bit (a scale and a bias per 64), **not NF4**; the adapters in float32
 - hence demo 2's two rows: NF4 + DQ with the embedding and LM head kept in bf16, **6.8 GB**; mlx's 4-bit, everything quantized, **5.3 GB**
 
 ::: {.claim}
@@ -524,23 +524,25 @@ $$\mathbf{W}' = \mathbf{m}\;\frac{\mathbf{W}_0 + \mathbf{B}\mathbf{A}}{\Vert \ma
 Liu et al., *DoRA: Weight-Decomposed Low-Rank Adaptation*, ICML 2024 Oral, Eq. (5)
 :::
 
-## Replay: demo 2 (b) — the measured peak, against the formula
+## Replay: demo 2 (b) — the measured peak, against two ledgers
 
-| run | model | formula, no activations | peak, short seq. | peak, long seq. | long, `--grad-checkpoint` |
+| run | ledger, 16 bytes | as mlx stores it | peak, 256 tokens | peak, 1,024 tokens | 1,024, checkpointed |
 |:---|:---|:---|:---|:---|:---|
-| LoRA, $r = 16$ | Qwen3-8B, bf16 | 17.1 GB | | | |
-| QLoRA, $r = 16$ | Qwen3-8B, mlx 4-bit | 5.3 GB | | | |
-| full fine-tuning | Qwen3-1.7B-Base | 27.5 GB | | | |
-| full fine-tuning | Qwen3-8B | 131 GB | not run: 64 GB, no offload | | |
+| LoRA, $r = 16$ · Qwen3-8B, bf16 | 17.1 GB | 17.1 GB | | | |
+| QLoRA, $r = 16$ · Qwen3-8B, mlx 4-bit | 5.3 GB | 5.3 GB | | | |
+| full fine-tuning · Qwen3-1.7B-Base | 27.5 GB | 11.9 GB | | | |
+| full fine-tuning · Qwen3-8B | 131 GB | 58.1 GB | not run | | |
 
-: {tbl-colwidths="[17,20,19,15,15,14]"}
+: {tbl-colwidths="[34,13,14,13,13,13]"}
+
+- both ledgers: bytes before a single activation · mlx keeps Adam's two moments in the weight's dtype and **no fp32 master copy**: a trainable bf16 weight is $2 + 2 + 2 + 2 = 8$ bytes; a LoRA factor is float32, $4 \times 4 = 16$
 
 ::: {.ask}
-Predict: by how much does each peak exceed its formula — and which column grows with the sequence length?
+Predict: by how much does each peak exceed what mlx stores — and which column grows with the sequence length?
 :::
 
 ::: {.footer}
-Demo 2 (b) · replay · `w08_d2_memory_ledger/` · mlx-lm `peak_memory` · not yet built
+Demo 2 (b) · replay · `w08_d2_memory_ledger/` · mlx 0.32.2, mlx-lm 872ae88 (software, read 2026-11-10) · not yet rehearsed
 :::
 
 ## Live: demo 1 (d) — twenty slides in one line, a dozen steps
@@ -1009,7 +1011,7 @@ Two entries ticked. Next week the model is told not what to write, but **which o
 
 **Merging** · Wortsman et al., ICML 2022 (arXiv:2203.05482) · Ilharco et al., ICLR 2023 (arXiv:2212.04089) · Yadav et al., *TIES*, NeurIPS 2023 (arXiv:2306.01708) · Yu et al., *DARE*, ICML 2024 (arXiv:2311.03099) — §4.6 · He et al., *MergeBench*, NeurIPS 2025 D&B (arXiv:2505.10833) · Wang et al., ICML 2026 (arXiv:2509.24244) · Li et al., NeurIPS 2025 (arXiv:2505.12082) · Yang et al., ACM Computing Surveys 58(8), 2026 (arXiv:2408.07666) — a survey
 
-**Software, data and figures** · mlx-lm at commit 872ae88 and bitsandbytes `functional.py` (main), both read 2026-11-08 — **software, not papers** · the `config.json` of Qwen/Qwen3-8B and Qwen/Qwen3-1.7B-Base (2026-11-08). Every number on these slides is arithmetic on those two configs (p25–p26, p33, p39, p41), W4's ledger (p4, p25), the NF4 table and a labelled toy (p36), a paper's stated formula (p37, p64), or copied from an abstract or a cited section (all others). The curves on p44, the matrices on p52 and the eight values on p64 are sketches. **Demo 1 was rehearsed on 2026-11-08** (`demos/w08_d1_sft_base_to_assistant/runs/rehearsal/`: the outputs on p9, the losses and probes on p15, the twelve steps on p42); **Demo 3 was rehearsed on 2026-11-08** (`demos/w08_d3_lr_sweep/runs/rehearsal/curves.json`: the curves and the table on p49); **Demo 4 was rehearsed on 2026-11-08** (`demos/w08_d4_intruders_forgetting/runs/rehearsal/`: `scan.json` and `intruders.json` behind p55 — the table there is empty on purpose, it is filled live — and `forgetting.json` for the twelve values on p58); demo 2 has not been built yet.
+**Software, data and figures** · mlx-lm at commit 872ae88 and bitsandbytes `functional.py` (main), both read 2026-11-08, and mlx 0.32.2 `optimizers.py`, read 2026-11-10 — **software, not papers** · the `config.json` of Qwen/Qwen3-8B and Qwen/Qwen3-1.7B-Base (2026-11-08). Every number on these slides is arithmetic on those two configs (p25–p26, p33, p39, p41), W4's ledger (p4, p25), the NF4 table and a labelled toy (p36), a paper's stated formula (p37, p64), or copied from an abstract or a cited section (all others). The curves on p44, the matrices on p52 and the eight values on p64 are sketches. **Demo 1 was rehearsed on 2026-11-08** (`demos/w08_d1_sft_base_to_assistant/runs/rehearsal/`: the outputs on p9, the losses and probes on p15, the twelve steps on p42); **Demo 3 was rehearsed on 2026-11-08** (`demos/w08_d3_lr_sweep/runs/rehearsal/curves.json`: the curves and the table on p49); **Demo 4 was rehearsed on 2026-11-08** (`demos/w08_d4_intruders_forgetting/runs/rehearsal/`: `scan.json` and `intruders.json` behind p55 — the table there is empty on purpose, it is filled live — and `forgetting.json` for the twelve values on p58); **demo 2 was built on 2026-11-10**: part (a) is the arithmetic of p33; part (b), the measured peaks of p41, has not been rehearsed — those cells are empty.
 :::
 
 ## Acronyms in this deck, A–K

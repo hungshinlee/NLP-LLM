@@ -105,6 +105,42 @@
   "note": "N counted matrix by matrix from config.json; equals the Hub API safetensors total for both (asserted)."
  },
  "ledger": {
+  "as_mlx_stores_it": {
+   "lora_8b": {
+    "kind": "lora",
+    "n_trainable": 43646976,
+    "frozen_GB": 16.38147072,
+    "trained_GB": 0.698351616,
+    "GB": 17.079822336
+   },
+   "qlora_8b": {
+    "kind": "qlora",
+    "n_trainable": 43646976,
+    "frozen_GB": 4.607731712,
+    "trained_GB": 0.698351616,
+    "GB": 5.306083328
+   },
+   "full_1p7b": {
+    "kind": "full",
+    "n_trainable": 1409408000,
+    "frozen_GB": 0.622333952,
+    "trained_GB": 11.275264,
+    "GB": 11.897597952
+   },
+   "full_8b": {
+    "kind": "full",
+    "n_trainable": 6946071552,
+    "frozen_GB": 2.489327616,
+    "trained_GB": 55.568572416,
+    "GB": 58.057900032
+   },
+   "bytes_per_param": {
+    "trainable_bf16": 8,
+    "trainable_lora_fp32": 16,
+    "frozen_bf16": 2
+   },
+   "note": "bytes before any activation, the way mlx 0.32.2 / mlx-lm 872ae88 store them: Adam's m and v in the parameter's dtype, no fp32 master copy; full fine-tuning unfreezes the blocks only. Software read 2026-11-10, not a paper."
+  },
   "qwen3_8b_r16_all": {
    "r": 16,
    "modules": [
