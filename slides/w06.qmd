@@ -505,7 +505,9 @@ ZOH: zero-order hold · matrix form: Gu & Dao 2023 §2 Eq. (4), p37 · curves fr
 
 ## An SSM: the same two lines, with a vector state and matrices
 
-$$\mathbf{h}'(\tau) = \mathbf{A}\,\mathbf{h}(\tau) + \mathbf{B}\,x(\tau), \qquad y(\tau) = \mathbf{C}^\top\mathbf{h}(\tau), \qquad \mathbf{h} \in \mathbb{R}^{d_{\text{state}}}$$
+$$\mathbf{h}'(\tau) = \mathbf{A}\,\mathbf{h}(\tau) + \mathbf{B}\,x(\tau), \qquad y(\tau) = \mathbf{C}^\top\mathbf{h}(\tau)$$
+
+$$\mathbf{h}, \mathbf{B}, \mathbf{C} \in \mathbb{R}^{d_{\text{state}}}, \qquad \mathbf{A} \in \mathbb{R}^{d_{\text{state}} \times d_{\text{state}}}, \qquad x, y \in \mathbb{R} \ \text{(one channel)}$$
 
 ::: {.fragment fragment-index=1}
 $$\mathbf{h}_t = \bar{\mathbf{A}}\,\mathbf{h}_{t-1} + \bar{\mathbf{B}}\,x_t, \quad y_t = \mathbf{C}^\top\mathbf{h}_t, \qquad \bar{\mathbf{A}} = \exp(\Delta\mathbf{A}), \quad \bar{\mathbf{B}} = (\Delta\mathbf{A})^{-1}\big(\exp(\Delta\mathbf{A}) - \mathbf{I}\big)\,\Delta\mathbf{B}$$
