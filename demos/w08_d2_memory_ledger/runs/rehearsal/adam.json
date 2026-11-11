@@ -1,0 +1,70 @@
+{
+ "date": "2026-11-10T23:14:51",
+ "lr": 5e-06,
+ "rows": [
+  {
+   "dtype": "bfloat16",
+   "weight": 0.02001953125,
+   "state_dtype": "bfloat16, bfloat16",
+   "after": 0.02001953125,
+   "moved": false,
+   "step_taken": 0.0,
+   "half_ulp": 6.103515625e-05
+  },
+  {
+   "dtype": "bfloat16",
+   "weight": 0.0019989013671875,
+   "state_dtype": "bfloat16, bfloat16",
+   "after": 0.001983642578125,
+   "moved": true,
+   "step_taken": 1.52587890625e-05,
+   "half_ulp": 7.62939453125e-06
+  },
+  {
+   "dtype": "bfloat16",
+   "weight": 0.0002002716064453125,
+   "state_dtype": "bfloat16, bfloat16",
+   "after": 0.00018405914306640625,
+   "moved": true,
+   "step_taken": 1.621246337890625e-05,
+   "half_ulp": 4.76837158203125e-07
+  },
+  {
+   "dtype": "float32",
+   "weight": 0.019999999552965164,
+   "state_dtype": "float32, float32",
+   "after": 0.019984187558293343,
+   "moved": true,
+   "step_taken": 1.5811994671821594e-05,
+   "half_ulp": null
+  },
+  {
+   "dtype": "float32",
+   "weight": 0.0020000000949949026,
+   "state_dtype": "float32, float32",
+   "after": 0.001984188798815012,
+   "moved": true,
+   "step_taken": 1.5811296179890633e-05,
+   "half_ulp": null
+  },
+  {
+   "dtype": "float32",
+   "weight": 0.00019999999494757503,
+   "state_dtype": "float32, float32",
+   "after": 0.00018418861145619303,
+   "moved": true,
+   "step_taken": 1.5811383491382003e-05,
+   "half_ulp": null
+  }
+ ],
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ }
+}

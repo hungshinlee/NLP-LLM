@@ -1,0 +1,134 @@
+{
+ "name": "lora_8b_L256",
+ "setting": "lora_8b",
+ "label": "LoRA, r = 16",
+ "kind": "lora",
+ "model": "Qwen/Qwen3-8B",
+ "seq_length": 256,
+ "grad_checkpoint": false,
+ "iters": 20,
+ "batch_size": 1,
+ "learning_rate": 2.4e-06,
+ "seed": 20261108,
+ "date": "2026-11-10T23:14:51",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "formula": {
+  "kind": "lora",
+  "frozen_GB": 16.38147072,
+  "train_GB": 0.698351616,
+  "GB": 17.079822336,
+  "n_trainable": 43646976,
+  "how": "2 bytes x N (bf16, frozen) + 16 x N_LoRA (float32 weight + gradient + m + v)",
+  "textbook_GB": 17.079822336
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "model_snapshot": "b968826d9c46dd6066d109eabc6255188de91218",
+ "load_seconds": 2.1,
+ "after_load": {
+  "active_gb": 16.381470728,
+  "cache_gb": 4.66e-06,
+  "peak_gb": 16.381470728
+ },
+ "parameters": {
+  "by_dtype": {
+   "bfloat16": {
+    "bytes": 16381470720,
+    "elements": 8190735360,
+    "tensors": 399
+   }
+  },
+  "total_bytes": 16381470720,
+  "total_gb": 16.38147072
+ },
+ "trainable": {
+  "by_dtype": {
+   "float32": {
+    "bytes": 174587904,
+    "elements": 43646976,
+    "tensors": 504
+   }
+  },
+  "total_bytes": 174587904,
+  "total_gb": 0.174587904,
+  "n": 43646976
+ },
+ "tokens_source": "../w08_d1_sft_base_to_assistant/data/train.jsonl",
+ "train_seconds": 11.1,
+ "seconds_per_step": 0.555,
+ "peak_gb": 20.100524367,
+ "after_train": {
+  "active_gb": 17.079825336,
+  "cache_gb": 0.016254044,
+  "peak_gb": 20.100524367
+ },
+ "train_log": [
+  {
+   "iteration": 5,
+   "train_loss": 2.31798,
+   "learning_rate": 2.4e-06,
+   "iterations_per_second": 0.770594,
+   "tokens_per_second": 196.501,
+   "trained_tokens": 1275,
+   "peak_memory": 20.1005,
+   "elapsed_s": 7.1
+  },
+  {
+   "iteration": 10,
+   "train_loss": 2.63409,
+   "learning_rate": 2.4e-06,
+   "iterations_per_second": 3.86516,
+   "tokens_per_second": 985.616,
+   "trained_tokens": 2550,
+   "peak_memory": 20.1005,
+   "elapsed_s": 8.4
+  },
+  {
+   "iteration": 15,
+   "train_loss": 1.98837,
+   "learning_rate": 2.4e-06,
+   "iterations_per_second": 3.85256,
+   "tokens_per_second": 982.402,
+   "trained_tokens": 3825,
+   "peak_memory": 20.1005,
+   "elapsed_s": 9.7
+  },
+  {
+   "iteration": 20,
+   "train_loss": 1.9149,
+   "learning_rate": 2.4e-06,
+   "iterations_per_second": 3.85581,
+   "tokens_per_second": 983.231,
+   "trained_tokens": 5100,
+   "peak_memory": 20.1005,
+   "elapsed_s": 11.0
+  }
+ ],
+ "optimizer_state": {
+  "by_dtype": {
+   "float32": {
+    "bytes": 349175808,
+    "elements": 87293952,
+    "tensors": 1008
+   }
+  },
+  "total_bytes": 349175808,
+  "total_gb": 0.349175808
+ },
+ "over_formula_gb": 3.020702030999999
+}

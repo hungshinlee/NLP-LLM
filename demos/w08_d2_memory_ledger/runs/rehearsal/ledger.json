@@ -1,0 +1,330 @@
+{
+ "date": "2026-11-10T23:14:51",
+ "python": "3.12.14",
+ "count": {
+  "qwen3_8b": {
+   "model": "qwen3_8b",
+   "shape": {
+    "repo": "Qwen/Qwen3-8B",
+    "source": "Hugging Face cache · snapshot b968826d9c",
+    "d": 4096,
+    "d_ff": 12288,
+    "n_layer": 36,
+    "n_head": 32,
+    "n_kv": 8,
+    "d_head": 128,
+    "V": 151936,
+    "tied": false,
+    "safetensors_total": 8190735360,
+    "safetensors_note": "config.json and the Hub API's safetensors total, Qwen/Qwen3-8B @ b968826d9c, read 2026-11-08"
+   },
+   "count": {
+    "linears": {
+     "q": [
+      4096,
+      4096
+     ],
+     "k": [
+      4096,
+      1024
+     ],
+     "v": [
+      4096,
+      1024
+     ],
+     "o": [
+      4096,
+      4096
+     ],
+     "gate": [
+      4096,
+      12288
+     ],
+     "up": [
+      4096,
+      12288
+     ],
+     "down": [
+      12288,
+      4096
+     ]
+    },
+    "per_block_linear": 192937984,
+    "per_block_norm": 8448,
+    "N_blocks": 6946071552,
+    "N_blocks_linear": 6945767424,
+    "N_embedding": 622329856,
+    "N_lm_head": 622329856,
+    "N_final_norm": 4096,
+    "N_norms": 308224,
+    "N": 8190735360,
+    "matches_safetensors": true
+   }
+  },
+  "qwen3_1p7b_base": {
+   "model": "qwen3_1p7b_base",
+   "shape": {
+    "repo": "Qwen/Qwen3-1.7B-Base",
+    "source": "Hugging Face cache · snapshot ea980cb0a6",
+    "d": 2048,
+    "d_ff": 6144,
+    "n_layer": 28,
+    "n_head": 16,
+    "n_kv": 8,
+    "d_head": 128,
+    "V": 151936,
+    "tied": true,
+    "safetensors_total": 1720574976,
+    "safetensors_note": "config.json and the Hub API's safetensors total, Qwen/Qwen3-1.7B-Base @ ea980cb0a6, read 2026-11-08"
+   },
+   "count": {
+    "linears": {
+     "q": [
+      2048,
+      2048
+     ],
+     "k": [
+      2048,
+      1024
+     ],
+     "v": [
+      2048,
+      1024
+     ],
+     "o": [
+      2048,
+      2048
+     ],
+     "gate": [
+      2048,
+      6144
+     ],
+     "up": [
+      2048,
+      6144
+     ],
+     "down": [
+      6144,
+      2048
+     ]
+    },
+    "per_block_linear": 50331648,
+    "per_block_norm": 4352,
+    "N_blocks": 1409408000,
+    "N_blocks_linear": 1409286144,
+    "N_embedding": 311164928,
+    "N_lm_head": 0,
+    "N_final_norm": 2048,
+    "N_norms": 123904,
+    "N": 1720574976,
+    "matches_safetensors": true
+   }
+  }
+ },
+ "table": {
+  "model": "qwen3_8b",
+  "shape": {
+   "repo": "Qwen/Qwen3-8B",
+   "source": "Hugging Face cache · snapshot b968826d9c",
+   "d": 4096,
+   "d_ff": 12288,
+   "n_layer": 36,
+   "n_head": 32,
+   "n_kv": 8,
+   "d_head": 128,
+   "V": 151936,
+   "tied": false,
+   "safetensors_total": 8190735360,
+   "safetensors_note": "config.json and the Hub API's safetensors total, Qwen/Qwen3-8B @ b968826d9c, read 2026-11-08"
+  },
+  "ledger": {
+   "r": 16,
+   "modules": [
+    "q",
+    "k",
+    "v",
+    "o",
+    "gate",
+    "up",
+    "down"
+   ],
+   "layers": 36,
+   "N": 8190735360,
+   "N_LoRA": 43646976,
+   "N_LoRA_pct": 0.5328822636994586,
+   "rows": {
+    "full": {
+     "label": "full fine-tuning",
+     "bpp": "16",
+     "frozen_GB": 0.0,
+     "train_GB": 131.05176576,
+     "GB": 131.05176576,
+     "fits_64": false,
+     "fits_16": false
+    },
+    "lora": {
+     "label": "LoRA, r = 16, bf16 base",
+     "bpp": "2 + 16·N_LoRA/N",
+     "frozen_GB": 16.38147072,
+     "train_GB": 0.698351616,
+     "GB": 17.079822336,
+     "fits_64": true,
+     "fits_16": false
+    },
+    "qlora_nf4": {
+     "label": "QLoRA, NF4 + double quantization",
+     "bpp": "b_q + 16·N_LoRA/N",
+     "train_GB": 0.698351616,
+     "frozen_GB": 6.073042944,
+     "b_q": 0.515869140625,
+     "note": "block Linears at 4.127 bits; embedding, LM head, norms stay bf16",
+     "GB": 6.77139456,
+     "fits_64": true,
+     "fits_16": true
+    },
+    "qlora_mlx": {
+     "label": "QLoRA, mlx's 4-bit",
+     "bpp": "b_q + 16·N_LoRA/N",
+     "train_GB": 0.698351616,
+     "frozen_GB": 4.607731712,
+     "b_q": 0.5625,
+     "note": "everything but the norms at 4.5 bits, embedding and LM head included",
+     "GB": 5.306083328,
+     "fits_64": true,
+     "fits_16": true
+    }
+   }
+  }
+ },
+ "flops": {
+  "model": "qwen3_8b",
+  "flops": {
+   "full_per_token": 49144412160,
+   "lora_per_token": 33024823296,
+   "ratio": 0.6719954893036613,
+   "forward": 16381470720,
+   "backward_input_grad": 16381470720,
+   "backward_weight_grad_skipped": 16381470720,
+   "adapter": 261881856
+  }
+ },
+ "mlx": {
+  "lora_8b": {
+   "kind": "lora",
+   "frozen_GB": 16.38147072,
+   "train_GB": 0.698351616,
+   "GB": 17.079822336,
+   "n_trainable": 43646976,
+   "how": "2 bytes x N (bf16, frozen) + 16 x N_LoRA (float32 weight + gradient + m + v)",
+   "textbook_GB": 17.079822336,
+   "model": "qwen3_8b",
+   "repo": "Qwen/Qwen3-8B",
+   "run": true
+  },
+  "qlora_8b": {
+   "kind": "qlora",
+   "frozen_GB": 4.607731712,
+   "train_GB": 0.698351616,
+   "GB": 5.306083328,
+   "n_trainable": 43646976,
+   "how": "4.5 bits x N (mlx affine 4-bit, frozen) + 16 x N_LoRA (float32 weight + gradient + m + v)",
+   "textbook_GB": 5.306083328,
+   "model": "qwen3_8b_4bit",
+   "repo": "mlx-community/Qwen3-8B-4bit",
+   "run": true
+  },
+  "full_1p7b": {
+   "kind": "full",
+   "frozen_GB": 0.622333952,
+   "train_GB": 11.275264,
+   "GB": 11.897597952,
+   "n_trainable": 1409408000,
+   "how": "8 bytes x the blocks (bf16 weight + gradient + m + v) + 2 x the frozen embedding, LM head, final norm",
+   "textbook_GB": 27.529199616,
+   "model": "qwen3_1p7b_base",
+   "repo": "Qwen/Qwen3-1.7B-Base",
+   "run": true
+  },
+  "full_8b": {
+   "kind": "full",
+   "frozen_GB": 2.489327616,
+   "train_GB": 55.568572416,
+   "GB": 58.057900032,
+   "n_trainable": 6946071552,
+   "how": "8 bytes x the blocks (bf16 weight + gradient + m + v) + 2 x the frozen embedding, LM head, final norm",
+   "textbook_GB": 131.05176576,
+   "model": "qwen3_8b",
+   "repo": "Qwen/Qwen3-8B",
+   "run": false
+  }
+ },
+ "files": {
+  "qwen3_8b": {
+   "files": 5,
+   "tensors": 399,
+   "bytes": 16381470720,
+   "GB": 16.38147072,
+   "by_dtype": {
+    "BF16 weights": {
+     "bytes": 16381470720,
+     "elements": 8190735360,
+     "tensors": 399
+    }
+   },
+   "repo": "Qwen/Qwen3-8B",
+   "snapshot": "b968826d9c46dd6066d109eabc6255188de91218",
+   "ledger_frozen_GB": 16.38147072
+  },
+  "qwen3_8b_4bit": {
+   "files": 1,
+   "tensors": 907,
+   "bytes": 4607731712,
+   "GB": 4.607731712,
+   "by_dtype": {
+    "BF16 biases": {
+     "bytes": 255950848,
+     "elements": 127975424,
+     "tensors": 254
+    },
+    "BF16 scales": {
+     "bytes": 255950848,
+     "elements": 127975424,
+     "tensors": 254
+    },
+    "U32 weights": {
+     "bytes": 4095213568,
+     "elements": 1023803392,
+     "tensors": 254
+    },
+    "BF16 weights": {
+     "bytes": 616448,
+     "elements": 308224,
+     "tensors": 145
+    }
+   },
+   "repo": "mlx-community/Qwen3-8B-4bit",
+   "snapshot": "545dc4251c05440727734bcd94334791f6ab0192",
+   "ledger_frozen_GB": 4.607731712
+  },
+  "qwen3_1p7b_base": {
+   "files": 1,
+   "tensors": 310,
+   "bytes": 3441149952,
+   "GB": 3.441149952,
+   "by_dtype": {
+    "BF16 weights": {
+     "bytes": 3441149952,
+     "elements": 1720574976,
+     "tensors": 310
+    }
+   },
+   "repo": "Qwen/Qwen3-1.7B-Base",
+   "snapshot": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+   "ledger_frozen_GB": 3.441149952
+  }
+ },
+ "check": {
+  "n": 25,
+  "bad": 0
+ }
+}

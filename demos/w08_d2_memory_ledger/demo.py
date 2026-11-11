@@ -464,7 +464,7 @@ def cmd_rehearse(args, cfg) -> None:
 def aggregate(args, cfg, echo: bool = False) -> dict:
     out = out_dir(args)
     m = measure_cfg(cfg, args)
-    rows, missing = [], []
+    rows, missing, dates = [], [], []
     for name, spec in cfg["measure"]["settings"].items():
         f = formula(cfg, name)
         row = {"setting": name, "label": spec["label"], "kind": spec["kind"], "model": cfg["models"][spec["model"]]["repo"],
@@ -481,6 +481,8 @@ def aggregate(args, cfg, echo: bool = False) -> dict:
                     r = read_json(p)
                     k = f"{L}{'_gc' if gc else ''}"
                     row["peaks"][k] = r["peak_gb"]
+                    dates.append(r["date"])
+                    row.setdefault("after_train_active_gb", {})[k] = r["after_train"]["active_gb"]
                     row["seconds_per_step"][k] = r["seconds_per_step"]
                     if not gc and "parameters_gb" not in row:      # 與長度無關的量，取第一個 run 的
                         row.update(parameters_gb=r["parameters"]["total_gb"], after_load_active_gb=r["after_load"]["active_gb"],
@@ -503,7 +505,7 @@ def aggregate(args, cfg, echo: bool = False) -> dict:
                 a, b = row["seconds_per_step"].get(hi), row["seconds_per_step"].get(f"{hi}_gc")
                 row["grad_checkpoint_time_ratio"] = (b / a) if a and b else None
         rows.append(row)
-    rec = {"date": now(), "seq_lengths": [int(x) for x in m["seq_lengths"]], "grad_checkpoint_at": [int(x) for x in m["grad_checkpoint_at"]],
+    rec = {"date": max(dates) if dates else now(), "seq_lengths": [int(x) for x in m["seq_lengths"]], "grad_checkpoint_at": [int(x) for x in m["grad_checkpoint_at"]],
            "iters": int(m["iters"]), "batch_size": int(m["batch_size"]), "rows": rows, "missing": missing,
            "note": "GB = 1e9 bytes. peaks: mx.get_peak_memory() of the whole process, one process per run. textbook_gb: 16 bytes per trainable "
                    "parameter and 2 per frozen one. mlx_gb: what mlx stores before any activation (Adam state in the parameter's dtype, no fp32 master)."}
@@ -561,6 +563,9 @@ def cmd_replay(args, cfg) -> None:
             print(f"    loaded parameters {row['parameters_gb']:.2f} GB (ledger's frozen copy: {row['mlx_frozen_gb'] if row['kind'] != 'full' else row['mlx_frozen_gb'] + row['n_trainable_formula'] * 2 / GB:.2f})"
                   f" · trainable {row['n_trainable']:,} ({', '.join(row['trainable_dtypes'])})"
                   f" · Adam state {row['adam_state_gb']:.2f} GB ({', '.join(row['adam_state_dtypes'])})")
+        at = row.get("after_train_active_gb") or {}
+        if at:
+            print(f"    still held after the last step: {', '.join(f'{v:.2f} GB' for v in at.values())}   (as mlx stores it: {row['mlx_gb']:.2f})")
         if "over_formula_short_gb" in row and "over_formula_long_gb" in row:
             print(f"    peak − formula: {row['over_formula_short_gb']:+.1f} GB at {lo} tokens, {row['over_formula_long_gb']:+.1f} GB at {hi}"
                   + (f"   → grows by {row['gb_per_1k_tokens']:.1f} GB per 1,000 tokens" if "gb_per_1k_tokens" in row else ""))
@@ -573,10 +578,12 @@ def cmd_replay(args, cfg) -> None:
                       f" (matrices {100 * (u.get('matrix_fraction') or 0):.1f} %, norm vectors {100 * (u.get('vector_fraction') or 0):.1f} %)")
     for row in d["rows"]:
         if not row["run"]:
-            ms = (d.get("device") or {}).get("memory_size")
-            mem_s = f"{ms / GB:.0f} GB" if isinstance(ms, (int, float)) else "64 GB"
+            dev = d.get("device") or {}
+            ms, ws = dev.get("memory_size"), dev.get("max_recommended_working_set_size")
+            mem_s = f"{ms / 2 ** 30:.0f} GiB = {ms / GB:.1f} GB" if isinstance(ms, (int, float)) else "64 GiB"
+            ws_s = f"; recommended working set (mlx-lm's wired limit) {ws / GB:.1f} GB" if isinstance(ws, (int, float)) else ""
             print(f"\n  {AMBER}not run{RESET} — {row['label']} · {row['short']}: {row['textbook_gb']:.0f} GB by the 16-byte ledger, {row['mlx_gb']:.1f} GB the way mlx stores it,"
-                  f"\n  both before a single activation; this machine has {mem_s} and nowhere to offload to.")
+                  f"\n  both before a single activation. This machine: {mem_s}{ws_s}; nowhere to offload to.")
     if d.get("missing"):
         print(f"\n  {AMBER}missing runs: {', '.join(d['missing'])}{RESET}")
 

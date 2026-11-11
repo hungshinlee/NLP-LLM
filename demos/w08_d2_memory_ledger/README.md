@@ -94,7 +94,24 @@ The LoRA row is the one to read twice: the adapter and all of its optimizer stat
 
 **`adam`** — at a learning rate of $5 \times 10^{-6}$ a bf16 weight of 0.02 does not move (half a bf16 step there is $6.1 \times 10^{-5}$); weights of 0.002 and 0.0002 do; in float32 all three move. Adam's `m` and `v` have the weight's dtype in both cases.
 
-**(b)** — not rehearsed yet (2026-11-10). After the rehearsal the table and the breakdown are in `runs/rehearsal/peaks.json`, one record per run in `runs/rehearsal/runs/`, and this section will carry the numbers. What to look for: how far each peak is above its formula at 256 tokens, how much that gap grows from 256 to 1,024 tokens (that part is the activations), and what `--grad-checkpoint` gives back and at what cost in time per step.
+**(b)** — from `runs/rehearsal/` (2026-11-10, Apple M5 Max with 64 GiB, macOS 27.2, Python 3.12, mlx 0.32.2, mlx-lm 0.32.0 at the pinned commit; batch 1, 20 steps; the nine runs took about four minutes including loading).
+
+| run | 16-byte ledger | as mlx stores it | peak, 256 tokens | peak, 1,024 tokens | 1,024, `--grad-checkpoint` |
+|---|---|---|---|---|---|
+| LoRA, $r = 16$ · Qwen3-8B, bf16 | 17.1 | 17.1 | 20.1 | 30.3 | 19.8 |
+| QLoRA, $r = 16$ · Qwen3-8B, mlx 4-bit | 5.3 | 5.3 | 8.3 | 17.9 | 7.4 |
+| full fine-tuning · Qwen3-1.7B-Base | 27.5 | 11.9 | 13.4 | 17.4 | 13.9 |
+| full fine-tuning · Qwen3-8B | 131.1 | 58.1 | not run | | |
+
+(GB = $10^9$ bytes.) What the breakdown shows:
+
+- **The mlx column is measured, not only read.** After the last step each process still holds 17.08, 5.31 and 11.90 GB — the mlx column to two decimals. Adam's state is float32 for the two LoRA runs (0.349 GB = 8 bytes × 43,646,976) and bfloat16 for full fine-tuning (5.638 GB = 4 bytes × 1,409,408,000). All three full-fine-tuning peaks are *below* the 16-byte ledger's 27.5 GB.
+- **The rest is activations and overhead, and it grows with the length.** Peak minus the mlx column: +3.0 and +13.2 GB for LoRA, +3.0 and +12.6 for QLoRA, +1.5 and +5.5 for the 1.7B model — about 13 GB per 1,000 tokens on the 8B model. The two 8B rows are nearly identical: storing the weights in 4 bits does not shrink the activations. At 1,024 tokens more than two thirds of the QLoRA peak is not weights.
+- **`--grad-checkpoint`** gives back 10.5, 10.5 and 3.5 GB at 1.19–1.25× the time per step; at 1,024 tokens the checkpointed LoRA run peaks lower than the un-checkpointed one at 256.
+- **QLoRA is slower here**: about 440–470 tokens/s against 970–1,000 for the bf16 LoRA, at both lengths. (We did not isolate the cause.)
+- **Without a master copy, most weights do not move.** After 20 steps at $5 \times 10^{-6}$, 81.3 % of the trainable elements of the full-fine-tuning run are bit-for-bit what they were (matrices 81.3 %, norm vectors 99.7 %). That is 20 steps; what remains unchanged after a full run was not measured.
+- **The row that was not run.** `mx.device_info()` reports a recommended working set of 55.7 GB on this machine (64 GiB = 68.7 GB). 58.1 GB is over it before any activation.
+- The 4-bit weight files, from their headers: 4.095 GB of packed `uint32` weights plus 0.256 GB each of bf16 scales and biases = 4.608 GB, in 254 quantized tensors ($36 \times 7 + 2$: the embedding and the LM head are quantized too).
 
 ## Files
 

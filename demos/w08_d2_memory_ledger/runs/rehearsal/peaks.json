@@ -1,0 +1,200 @@
+{
+ "date": "2026-11-10T23:18:16",
+ "seq_lengths": [
+  256,
+  1024
+ ],
+ "grad_checkpoint_at": [
+  1024
+ ],
+ "iters": 20,
+ "batch_size": 1,
+ "rows": [
+  {
+   "setting": "lora_8b",
+   "label": "LoRA, r = 16",
+   "kind": "lora",
+   "model": "Qwen/Qwen3-8B",
+   "short": "Qwen3-8B, bf16",
+   "run": true,
+   "textbook_gb": 17.079822336,
+   "mlx_gb": 17.079822336,
+   "mlx_frozen_gb": 16.38147072,
+   "mlx_trained_gb": 0.698351616,
+   "n_trainable_formula": 43646976,
+   "peaks": {
+    "256": 20.100524367,
+    "1024": 30.31915834,
+    "1024_gc": 19.79453018
+   },
+   "seconds_per_step": {
+    "256": 0.555,
+    "1024": 1.09,
+    "1024_gc": 1.365
+   },
+   "after_train_active_gb": {
+    "256": 17.079825336,
+    "1024": 17.0798254,
+    "1024_gc": 17.07982828
+   },
+   "parameters_gb": 16.38147072,
+   "after_load_active_gb": 16.381470728,
+   "n_trainable": 43646976,
+   "trainable_dtypes": [
+    "float32"
+   ],
+   "adam_state_gb": 0.349175808,
+   "adam_state_dtypes": [
+    "float32"
+   ],
+   "iters": 20,
+   "batch_size": 1,
+   "learning_rate": 2.4e-06,
+   "tokens_source": "../w08_d1_sft_base_to_assistant/data/train.jsonl",
+   "gb_per_1k_tokens": 13.305512985677087,
+   "over_formula_long_gb": 13.239336004000002,
+   "over_formula_short_gb": 3.020702030999999,
+   "grad_checkpoint_saves_gb": 10.524628160000002,
+   "grad_checkpoint_time_ratio": 1.2522935779816513
+  },
+  {
+   "setting": "qlora_8b",
+   "label": "QLoRA, r = 16",
+   "kind": "qlora",
+   "model": "mlx-community/Qwen3-8B-4bit",
+   "short": "Qwen3-8B, mlx 4-bit",
+   "run": true,
+   "textbook_gb": 5.306083328,
+   "mlx_gb": 5.306083328,
+   "mlx_frozen_gb": 4.607731712,
+   "mlx_trained_gb": 0.698351616,
+   "n_trainable_formula": 43646976,
+   "peaks": {
+    "256": 8.327726476,
+    "1024": 17.908506218,
+    "1024_gc": 7.434156176
+   },
+   "seconds_per_step": {
+    "256": 0.585,
+    "1024": 2.245,
+    "1024_gc": 2.665
+   },
+   "after_train_active_gb": {
+    "256": 5.306086392,
+    "1024": 5.306084874,
+    "1024_gc": 5.306083356
+   },
+   "parameters_gb": 4.607731712,
+   "after_load_active_gb": 4.60773172,
+   "n_trainable": 43646976,
+   "trainable_dtypes": [
+    "float32"
+   ],
+   "adam_state_gb": 0.349175808,
+   "adam_state_dtypes": [
+    "float32"
+   ],
+   "iters": 20,
+   "batch_size": 1,
+   "learning_rate": 2.4e-06,
+   "tokens_source": "../w08_d1_sft_base_to_assistant/data/train.jsonl",
+   "gb_per_1k_tokens": 12.474973622395831,
+   "over_formula_long_gb": 12.60242289,
+   "over_formula_short_gb": 3.021643148000001,
+   "grad_checkpoint_saves_gb": 10.474350042,
+   "grad_checkpoint_time_ratio": 1.1870824053452116
+  },
+  {
+   "setting": "full_1p7b",
+   "label": "full fine-tuning",
+   "kind": "full",
+   "model": "Qwen/Qwen3-1.7B-Base",
+   "short": "Qwen3-1.7B-Base, bf16",
+   "run": true,
+   "textbook_gb": 27.529199616,
+   "mlx_gb": 11.897597952,
+   "mlx_frozen_gb": 0.622333952,
+   "mlx_trained_gb": 11.275264,
+   "n_trainable_formula": 1409408000,
+   "peaks": {
+    "256": 13.427146948,
+    "1024": 17.359328614,
+    "1024_gc": 13.895109946
+   },
+   "seconds_per_step": {
+    "256": 0.19,
+    "1024": 0.375,
+    "1024_gc": 0.46
+   },
+   "after_train_active_gb": {
+    "256": 11.897619206,
+    "1024": 11.897598776,
+    "1024_gc": 11.897598714
+   },
+   "parameters_gb": 3.441149952,
+   "after_load_active_gb": 3.44114996,
+   "n_trainable": 1409408000,
+   "trainable_dtypes": [
+    "bfloat16"
+   ],
+   "adam_state_gb": 5.637632,
+   "adam_state_dtypes": [
+    "bfloat16"
+   ],
+   "unchanged": {
+    "256": {
+     "same": 1145193536,
+     "total": 1409408000,
+     "fraction": 0.8125351466715103,
+     "matrix_fraction": 0.8125191657316118,
+     "vector_fraction": 0.9973575367647058,
+     "matrix_elements": 1409286144,
+     "vector_elements": 121856
+    },
+    "1024": {
+     "same": 1146542590,
+     "total": 1409408000,
+     "fraction": 0.8134923244369268,
+     "matrix_fraction": 0.813476426260812,
+     "vector_fraction": 0.9973575367647058,
+     "matrix_elements": 1409286144,
+     "vector_elements": 121856
+    }
+   },
+   "iters": 20,
+   "batch_size": 1,
+   "learning_rate": 5e-06,
+   "tokens_source": "../w08_d1_sft_base_to_assistant/data/train.jsonl",
+   "gb_per_1k_tokens": 5.120028210937498,
+   "over_formula_long_gb": 5.461730661999999,
+   "over_formula_short_gb": 1.5295489960000008,
+   "grad_checkpoint_saves_gb": 3.464218667999999,
+   "grad_checkpoint_time_ratio": 1.2266666666666668
+  },
+  {
+   "setting": "full_8b",
+   "label": "full fine-tuning",
+   "kind": "full",
+   "model": "Qwen/Qwen3-8B",
+   "short": "Qwen3-8B, bf16",
+   "run": false,
+   "textbook_gb": 131.05176576,
+   "mlx_gb": 58.057900032,
+   "mlx_frozen_gb": 2.489327616,
+   "mlx_trained_gb": 55.568572416,
+   "n_trainable_formula": 6946071552,
+   "peaks": {},
+   "seconds_per_step": {}
+  }
+ ],
+ "missing": [],
+ "note": "GB = 1e9 bytes. peaks: mx.get_peak_memory() of the whole process, one process per run. textbook_gb: 16 bytes per trainable parameter and 2 per frozen one. mlx_gb: what mlx stores before any activation (Adam state in the parameter's dtype, no fp32 master).",
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ }
+}
