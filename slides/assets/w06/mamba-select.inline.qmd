@@ -8602,7 +8602,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t454-text_1">
-   <!-- $\mathbf{A} \text{ stays input-free: it acts only through } \exp(\Delta_t\mathbf{A})\text{, so selectivity in } \Delta_t \text{ is enough (Sec. 3.5.2) — Mamba-2 makes } \mathbf{A} \text{ a scalar per head (p43)}$ -->
+   <!-- $\mathbf{A} \text{ stays input-free: it acts only through } \exp(\Delta_t\mathbf{A})\text{, so selectivity in } \Delta_t \text{ is enough (Sec. 3.5.2) — Mamba-2 makes } \mathbf{A} \text{ a scalar per head (p44)}$ -->
    <g style="fill: #1f2328" transform="translate(0 14.25) scale(0.19 -0.19)">
     <defs>
      <path id="t454-Cmb10-41" d="M 225 0 
@@ -10024,7 +10024,7 @@ z
     <use xlink:href="#t454-Cmr10-28" transform="translate(5837.386078 0)"/>
     <use xlink:href="#t454-Cmr10-70" transform="translate(5876.204438 0)"/>
     <use xlink:href="#t454-Cmr10-34" transform="translate(5931.722016 0)"/>
-    <use xlink:href="#t454-Cmr10-33" transform="translate(5981.722016 0)"/>
+    <use xlink:href="#t454-Cmr10-34" transform="translate(5981.722016 0)"/>
     <use xlink:href="#t454-Cmr10-29" transform="translate(6031.722016 0)"/>
    </g>
   </g>
@@ -11621,7 +11621,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t456-text_1">
-   <!-- $\text{(by convolution in S4, by a scan here, by matmuls in Mamba-2: p44–p47); W1's RNN had neither — its death was the loop, not the quality}$ -->
+   <!-- $\text{(by convolution in S4, by a scan here, by matmuls in Mamba-2: p45–p48); W1's RNN had neither — its death was the loop, not the quality}$ -->
    <g style="fill: #b45309" transform="translate(0 14.25) scale(0.19 -0.19)">
     <defs>
      <path id="t456-Cmr10-28" d="M 1984 -1588 
@@ -12450,6 +12450,59 @@ Q 1259 2378 1131 2150
 L 1131 622 
 z
 " transform="scale(0.015625)"/>
+     <path id="t456-Cmr10-35" d="M 556 728 
+Q 622 541 758 387 
+Q 894 234 1080 148 
+Q 1266 63 1466 63 
+Q 1928 63 2103 422 
+Q 2278 781 2278 1294 
+Q 2278 1516 2270 1667 
+Q 2263 1819 2228 1959 
+Q 2169 2184 2020 2353 
+Q 1872 2522 1656 2522 
+Q 1441 2522 1286 2456 
+Q 1131 2391 1034 2303 
+Q 938 2216 863 2119 
+Q 788 2022 769 2016 
+L 697 2016 
+Q 681 2016 657 2036 
+Q 634 2056 634 2075 
+L 634 4213 
+Q 634 4228 654 4245 
+Q 675 4263 697 4263 
+L 716 4263 
+Q 1147 4056 1631 4056 
+Q 2106 4056 2547 4263 
+L 2566 4263 
+Q 2588 4263 2606 4247 
+Q 2625 4231 2625 4213 
+L 2625 4153 
+Q 2625 4122 2613 4122 
+Q 2394 3831 2064 3668 
+Q 1734 3506 1381 3506 
+Q 1125 3506 856 3578 
+L 856 2369 
+Q 1069 2541 1236 2614 
+Q 1403 2688 1663 2688 
+Q 2016 2688 2295 2484 
+Q 2575 2281 2725 1954 
+Q 2875 1628 2875 1288 
+Q 2875 903 2686 575 
+Q 2497 247 2172 53 
+Q 1847 -141 1466 -141 
+Q 1150 -141 886 21 
+Q 622 184 470 459 
+Q 319 734 319 1044 
+Q 319 1188 412 1278 
+Q 506 1369 647 1369 
+Q 788 1369 883 1276 
+Q 978 1184 978 1044 
+Q 978 906 883 811 
+Q 788 716 647 716 
+Q 625 716 597 720 
+Q 569 725 556 728 
+z
+" transform="scale(0.015625)"/>
      <path id="t456-STIXGeneral-Regular-2013" d="M 3200 1286 
 L 0 1286 
 L 0 1600 
@@ -12457,32 +12510,56 @@ L 3200 1600
 L 3200 1286 
 z
 " transform="scale(0.015625)"/>
-     <path id="t456-Cmr10-37" d="M 1113 166 
-Q 1113 522 1175 862 
-Q 1238 1203 1358 1536 
-Q 1478 1869 1648 2189 
-Q 1819 2509 2022 2791 
-L 2606 3603 
-L 1875 3603 
-Q 738 3603 703 3572 
-Q 619 3469 544 2981 
-L 359 2981 
-L 569 4325 
-L 756 4325 
-L 756 4306 
-Q 756 4191 1147 4156 
-Q 1538 4122 1913 4122 
-L 3103 4122 
-L 3103 3956 
-Q 3103 3950 3101 3947 
-Q 3100 3944 3097 3938 
-L 2216 2700 
-Q 1891 2219 1809 1631 
-Q 1728 1044 1728 166 
-Q 1728 41 1637 -50 
-Q 1547 -141 1422 -141 
-Q 1294 -141 1203 -50 
-Q 1113 41 1113 166 
+     <path id="t456-Cmr10-38" d="M 269 972 
+Q 269 1356 522 1651 
+Q 775 1947 1172 2144 
+L 934 2297 
+Q 716 2441 578 2680 
+Q 441 2919 441 3181 
+Q 441 3488 602 3734 
+Q 763 3981 1030 4122 
+Q 1297 4263 1600 4263 
+Q 1884 4263 2148 4147 
+Q 2413 4031 2583 3815 
+Q 2753 3600 2753 3303 
+Q 2753 3088 2651 2903 
+Q 2550 2719 2373 2572 
+Q 2197 2425 1997 2322 
+L 2363 2088 
+Q 2616 1922 2770 1653 
+Q 2925 1384 2925 1088 
+Q 2925 741 2739 456 
+Q 2553 172 2247 15 
+Q 1941 -141 1600 -141 
+Q 1269 -141 961 -6 
+Q 653 128 461 383 
+Q 269 638 269 972 
+z
+M 616 972 
+Q 616 719 755 509 
+Q 894 300 1122 181 
+Q 1350 63 1600 63 
+Q 1972 63 2275 280 
+Q 2578 497 2578 856 
+Q 2578 978 2529 1098 
+Q 2481 1219 2395 1317 
+Q 2309 1416 2203 1478 
+L 1344 2034 
+Q 1144 1928 976 1765 
+Q 809 1603 712 1400 
+Q 616 1197 616 972 
+z
+M 1056 2925 
+L 1831 2425 
+Q 2100 2581 2272 2803 
+Q 2444 3025 2444 3303 
+Q 2444 3519 2323 3698 
+Q 2203 3878 2009 3978 
+Q 1816 4078 1594 4078 
+Q 1400 4078 1203 4003 
+Q 1006 3928 878 3779 
+Q 750 3631 750 3431 
+Q 750 3131 1056 2925 
 z
 " transform="scale(0.015625)"/>
      <path id="t456-Cmr10-29" d="M 416 -1600 
@@ -12884,11 +12961,11 @@ z
     <use xlink:href="#t456-Cmr10-20" transform="translate(2806.982422 0)"/>
     <use xlink:href="#t456-Cmr10-70" transform="translate(2840.283203 0)"/>
     <use xlink:href="#t456-Cmr10-34" transform="translate(2895.800781 0)"/>
-    <use xlink:href="#t456-Cmr10-34" transform="translate(2945.800781 0)"/>
+    <use xlink:href="#t456-Cmr10-35" transform="translate(2945.800781 0)"/>
     <use xlink:href="#t456-STIXGeneral-Regular-2013" transform="translate(2995.800781 0)"/>
     <use xlink:href="#t456-Cmr10-70" transform="translate(3045.800766 0)"/>
     <use xlink:href="#t456-Cmr10-34" transform="translate(3101.318344 0)"/>
-    <use xlink:href="#t456-Cmr10-37" transform="translate(3151.318344 0)"/>
+    <use xlink:href="#t456-Cmr10-38" transform="translate(3151.318344 0)"/>
     <use xlink:href="#t456-Cmr10-29" transform="translate(3201.318344 0)"/>
     <use xlink:href="#t456-Cmr10-3b" transform="translate(3240.136703 0)"/>
     <use xlink:href="#t456-Cmr10-20" transform="translate(3267.82225 0)"/>

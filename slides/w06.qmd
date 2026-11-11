@@ -72,7 +72,7 @@ Two replacements, two bills — and in 2026 **no route has won**: hybrid-linear,
 :::
 
 ::: {.footer}
-Outline W6 · on the board: p14, p23–26, p29, p33, p46 · live: p12, p28 · replayed: p18, p54
+Outline W6 · on the board: p14, p23–26, p29, p33, p47 · live: p12, p28 · replayed: p18, p55
 :::
 
 ## What you should be able to do by the end of today
@@ -94,7 +94,7 @@ Outline W6 · on the board: p14, p23–26, p29, p33, p46 · live: p12, p28 · re
 **(b)** W5 said the KV cache is $\propto L$. Can a model carry its context in something that does **not** grow with $L$ at all — and if so, what would it have to give up?
 :::
 
-- Write one line for each. Keep them: p62 comes back to both.
+- Write one line for each. Keep them: p63 comes back to both.
 - (a) is the ledger's MoE row: **W1 p16 wrote "MoE: memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$"** and left the numbers blank — today fills them
 - (b) is the ledger's KV row: W3 p27 said "W6 the mechanism"
 
@@ -292,7 +292,7 @@ the week's second metaphor · W2 p6 · W1 p67 · fails at "summary" and at "whic
 | **The question** | Self-attention costs $O(L^2)$ in time and memory and is "prohibitively slow for very long sequences" (the abstract). Where exactly does the square come from, and is it necessary? |
 | **The idea** | Write the similarity as a kernel, $\exp(\mathbf{q}^\top\mathbf{k}) \to \phi(\mathbf{q})^\top\phi(\mathbf{k})$ with a finite-dimensional $\phi$; then matrix products are associative and the $L \times L$ matrix is never formed. |
 | **What it added** | $O(L)$ instead of $O(L^2)$; and the causal version is a recurrence with a fixed state — "Transformers are RNNs" — "up to 4000x faster on autoregressive prediction of very long sequences" (abstract). |
-| **What it leaves open** | A fixed state holds a bounded amount (p29–p30); later variants drop the normaliser (p26); nothing fades — the next five years are about $\mathbf{G}_t$ (p31–p48). |
+| **What it leaves open** | A fixed state holds a bounded amount (p29–p30); later variants drop the normaliser (p26); nothing fades — the next five years are about $\mathbf{G}_t$ (p31–p49). |
 :::
 
 ::: {.footer}
@@ -467,12 +467,12 @@ outline W6 §Key math 4 · Yang et al., NeurIPS 2024 §2.2 · GDN, ICLR 2025 · 
 | **Name** | **Mamba-2**, and the framework behind it, **state space duality** (SSD): Dao & Gu, *Transformers are SSMs*, ICML 2024. An **SSM** (state-space model) is a linear dynamical system on a hidden state — the line S4 (2022) → Mamba (2024) → Mamba-2. |
 | **The question** | Mamba-class SSMs had matched Transformers "at small to medium scale". Are the two families really different — and can an SSM borrow the Transformer's hardware-friendly training? |
 | **The idea** | Restrict $\mathbf{A}$ to a scalar times the identity; the recurrence then unrolls into a matmul with a *structured semiseparable* mask — one computation, a recurrent form and a matrix form. |
-| **What it added** | SSM ↔ linear attention, one row of p32; a chunked algorithm — matmuls within a chunk, one state across chunks — "2-8X faster" than Mamba's scan; the design inside Falcon-H1's SSM half (p54). |
-| **What it leaves open** | The state is still a notebook — p29's bound applies, so what ships is a hybrid (p51–p52); and the duality holds for *linear* recurrences with a scalar gate — the gates of p33 need their own algorithms. |
+| **What it added** | SSM ↔ linear attention, one row of p32; a chunked algorithm — matmuls within a chunk, one state across chunks — "2-8X faster" than Mamba's scan; the design inside Falcon-H1's SSM half (p55). |
+| **What it leaves open** | The state is still a notebook — p29's bound applies, so what ships is a hybrid (p52–p53); and the duality holds for *linear* recurrences with a scalar gate — the gates of p33 need their own algorithms. |
 :::
 
 ::: {.footer}
-Dao & Gu, ICML 2024 · SSM p35–p37 · S4 p38 · Mamba p39–p40 · Mamba-2 p43 · SSD p44–p47
+Dao & Gu, ICML 2024 · SSM p35–p37 · S4 p38 · Mamba p39–p41 · Mamba-2 p44 · SSD p45–p48
 :::
 
 ## An SSM in one number: a cup of coffee cooling
@@ -539,6 +539,30 @@ $$\mathbf{B}_t,\ \mathbf{C}_t = \mathrm{Linear}(\mathbf{x}_t), \qquad \Delta_t =
 Gu & Dao 2023 §3.2, §3.3, §3.5 · Misconception 6: "Mamba is the RNN revived"
 :::
 
+## How a scan keeps Mamba's training parallel
+
+$$h_t = a_t\,h_{t-1} + b_t \qquad \Longrightarrow \qquad \text{step } t \text{ is the pair } (a_t,\ b_t)$$
+
+::: {.fragment fragment-index=1}
+$$\text{two steps make one step of the same shape:} \qquad (a_2, b_2) \circ (a_1, b_1) = (a_2 a_1,\ a_2 b_1 + b_2)$$
+:::
+
+::: {.fragment fragment-index=2}
+$$\text{round 1, at once: } (a_2, b_2)\circ(a_1, b_1),\ (a_4, b_4)\circ(a_3, b_3); \quad \text{round 2: combine the two} \Rightarrow h_4$$
+:::
+
+::: {.fragment fragment-index=3}
+$$L \text{ tokens: about } \log_2 L \text{ rounds of combines, each round all at once — not } L \text{ steps in a row}$$
+:::
+
+::: {.claim}
+It works because each step is linear in $h$: Mamba's knobs look at the token, not at $h$. W1's LSTM reads $h_{t-1}$ inside a nonlinearity, so two of its steps are not one step of the same shape.
+:::
+
+::: {.footer}
+Gu & Dao 2023 §3.3: parallel scan · $a_t$, $b_t$: one entry of $\bar{\mathbf{A}}_t^{(c)}$ and of $\bar{\mathbf{B}}_t^{(c)}x_t^{(c)}$
+:::
+
 ## The Mamba block: where the selective SSM sits in a layer
 
 {{< include assets/w06/mamba-block.inline.qmd >}}
@@ -592,7 +616,7 @@ Nothing new is computed: each column is still one channel's SSM. One decay for t
 :::
 
 ::: {.footer}
-numbers chosen for the arithmetic · one $\bar{\mathbf{B}}_t$ per head (p41, p36)
+numbers chosen for the arithmetic · one $\bar{\mathbf{B}}_t$ per head (p42, p36)
 :::
 
 ## Mamba-2: a scalar $\mathbf{A}$ per head, and the two lines meet
@@ -606,7 +630,7 @@ Two literatures, one recurrence: Mamba-2 is linear attention with a scalar, inpu
 :::
 
 ::: {.footer}
-Dao & Gu 2024 §2.4, §5.1: $\mathbf{A} = a\mathbf{I}$ · p32 row 3 · outline W6 §Key math 5 · SSD: p44–p46
+Dao & Gu 2024 §2.4, §5.1: $\mathbf{A} = a\mathbf{I}$ · p32 row 3 · outline W6 §Key math 5 · SSD: p45–p47
 :::
 
 ## SSD by hand: three tokens, and every write fades
@@ -630,7 +654,7 @@ Entry $(t, s)$ of $\boldsymbol{\Lambda}$: how much of write $s$ is still in the 
 :::
 
 ::: {.footer}
-p43: $\mathbf{S}_t = \gamma_t\mathbf{S}_{t-1} + \mathbf{k}_t\mathbf{v}_t^\top$, $\mathbf{S}_0 = \mathbf{0}$ · numbers chosen for the arithmetic · p46: any length
+p44: $\mathbf{S}_t = \gamma_t\mathbf{S}_{t-1} + \mathbf{k}_t\mathbf{v}_t^\top$, $\mathbf{S}_0 = \mathbf{0}$ · numbers chosen for the arithmetic · p47: any length
 :::
 
 ## Why chunks work: the cross-chunk block has rank 1
@@ -650,7 +674,7 @@ Everything chunk 1 tells chunk 2 passes through one state at the boundary, $\mat
 :::
 
 ::: {.footer}
-numbers continue p44 · Dao & Gu 2024 Def. 3.1 (1-semiseparable) · p46: any length, any chunking
+numbers continue p45 · Dao & Gu 2024 Def. 3.1 (1-semiseparable) · p47: any length, any chunking
 :::
 
 ## SSD: unrolled, the recurrence is a semiseparable mask
@@ -670,7 +694,7 @@ outline W6 §Key math 5 · Dao & Gu 2024: Def. 3.1, §5.1, §6 (**assigned**) ·
 {{< include assets/w06/two-algorithms.inline.qmd >}}
 
 ::: {.claim}
-Same parameters, same $\mathbf{O}$: a sequence goes in as chunks and comes out of matmuls; one token goes in and comes out of one recurrence step. Training never runs the recurrence; decoding never forms a matrix.
+Same parameters, same $\mathbf{O}$ — the two faces of SSD's *duality*: chunks through matmuls to train, one recurrence step to decode. Training never runs the recurrence; decoding never forms a matrix.
 :::
 
 ::: {.footer}
@@ -680,7 +704,7 @@ outline W6 §Key math 5 · Dao & Gu §6 · mlx-lm `ssm.py` 2026-10-18 · Katharo
 ## Why this recurrence trains in parallel, and where position went
 
 - **W1 p67**: the RNN lost on *parallelism along the sequence*, not on quality; its fixed state was always an asset at inference. In 2024 the training half got solved — minimal LSTMs and GRUs that train in parallel (Feng et al. 2024, a preprint), and SSD: one operation, two algorithms
-- the mechanism is p46–p47: the recurrence unrolls into a matmul with a **semiseparable** mask, so a chunk of tokens is one matrix product. What made the LSTM sequential was a *nonlinearity inside the recurrence*; the family of p32 keeps the state update **linear in $\mathbf{S}$**, and that is the whole trick
+- the mechanism is p47–p48: the recurrence unrolls into a matmul with a **semiseparable** mask, so a chunk of tokens is one matrix product. What made the LSTM sequential was a *nonlinearity inside the recurrence*; the family of p32 keeps the state update **linear in $\mathbf{S}$**, and that is the whole trick
 - **position**: no $\theta_i$, no $\mathbf{R}_m$, no stamp (W5). Order lives in the recurrence — *what was written first has faded most* — plus a short causal convolution (`short_conv_kernel_size: 4` in Kimi Linear's and Qwen3-Next's configs) for local order
 - so there is nothing to extrapolate and nothing to repair: no PI, no NTK-aware, no YaRN. Length generalisation rides on decay and locality — **a different inductive bias, not an absence of one**
 
@@ -727,8 +751,8 @@ W4 p9 · Misconception 8: "MoE or hybrid"
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p50 computed where the flat line and the KV line cross; p51 said a parallel hybrid still pays KV, with a smaller constant plus a fixed state. Measure both on real models of comparable size: Falcon-H1-7B-Instruct (parallel hybrid) against Qwen3-8B (full attention), both 4-bit MLX. |
-| **What runs** | Recorded before class; two or three questions live. (a) W3 demo 2's method: prompts from 1k to 32k tokens, the cache's bytes and the prefill time, one line per model, the formula lines of p51 underneath. (b) W5 demo 3's key–value retrieval, the same questions and the same $K$ ($81$ and $326$ pairs), five positions, twenty questions each, per model. |
+| **Why** | p51 computed where the flat line and the KV line cross; p52 said a parallel hybrid still pays KV, with a smaller constant plus a fixed state. Measure both on real models of comparable size: Falcon-H1-7B-Instruct (parallel hybrid) against Qwen3-8B (full attention), both 4-bit MLX. |
+| **What runs** | Recorded before class; two or three questions live. (a) W3 demo 2's method: prompts from 1k to 32k tokens, the cache's bytes and the prefill time, one line per model, the formula lines of p52 underneath. (b) W5 demo 3's key–value retrieval, the same questions and the same $K$ ($81$ and $326$ pairs), five positions, twenty questions each, per model. |
 | **Watch for** | (a) **The hybrid's line will not be flat** — it has attention in every layer. Predict its slope relative to Qwen3-8B's, and whether it starts above zero. (b) Falcon-H1 has attention heads too: does it lose recall, and if so, where? Either answer is a lesson. |
 :::
 
@@ -830,7 +854,7 @@ Clark 2022 · Abnar 2025 · W2 p68 · W4 p55 · Misconception 10: "results compa
 - fixed (§5.4): **same architecture, parameter count, training setup** — 48B/3B, 1.4T tokens, a 4k pre-training window; iso-*active* and iso-*total* at once
 - varied: the attention layer type (KDA hybrid · all-MLA · GDN hybrid)
 - throughput at *which* $L$? the abstract's 6× decode is at 1M; training saw 4k
-- the ratio (§5.2): 0:1 … 15:1 judged by **perplexity**; 0:1 "performed poorly" — on perplexity, which hides recall (p59)
+- the ratio (§5.2): 0:1 … 15:1 judged by **perplexity**; 0:1 "performed poorly" — on perplexity, which hides recall (p60)
 :::
 ::: {.column width="50%"}
 **DeepSeek-V3 (arXiv:2412.19437) §2.1.2, aux-loss-free vs. auxiliary loss**
@@ -859,9 +883,9 @@ p7 asked: (a) 671B/37B — how much memory? (b) Can the state stop growing with 
 :::
 
 - **(a) The 671B's worth.** MoE adds parameters and removes FLOPs: memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$, and the bill moves to capacity, all-to-all and the router (p14, p19). $\rho$ fell from 8.9% to 3.1% in two years and has a floor (p15)
-- **(b) Yes — a $d_{\text{head}} \times d_{\text{head}}$ state, once softmax is gone** (p23–p26). It gives up **exact recall beyond $d_{\text{head}}$ pairs** (p29) — so 2026 keeps a few attention layers, or chooses which keys to read, or keeps all of them (p57)
-- the same recurrence, six gates (p32); one operation, two algorithms (p46–p47) — which is why this recurrence trains in parallel and W1's did not (p48)
-- **and a method**: before "who won", ask what the row held fixed (p59)
+- **(b) Yes — a $d_{\text{head}} \times d_{\text{head}}$ state, once softmax is gone** (p23–p26). It gives up **exact recall beyond $d_{\text{head}}$ pairs** (p29) — so 2026 keeps a few attention layers, or chooses which keys to read, or keeps all of them (p58)
+- the same recurrence, six gates (p32); one operation, two algorithms (p47–p48) — which is why this recurrence trains in parallel and W1's did not (p49)
+- **and a method**: before "who won", ask what the row held fixed (p60)
 
 ::: {.footer}
 compare with your two lines from p7 · W7: which $N$ does a scaling law mean for an MoE?
@@ -902,7 +926,7 @@ compare with your two lines from p7 · W7: which $N$ does a scaling law mean for
 - the fixed state returns in W11 (the roofline, where a state that never grows is a bandwidth story) and the recall bound in W12 (why retrieval still has a job)
 
 ::: {.ask}
-Before then: **Kimi Linear** (the whole paper — read §4 and §5.2 with p59 in hand), **Dao & Gu §6** (the SSD algorithm, the pictures of p46–p47), and **DeepSeek-V3 §2** (self-study; the MoE section we took apart).
+Before then: **Kimi Linear** (the whole paper — read §4 and §5.2 with p60 in hand), **Dao & Gu §6** (the SSD algorithm, the pictures of p47–p48), and **DeepSeek-V3 §2** (self-study; the MoE section we took apart).
 :::
 
 ::: {.claim}
@@ -926,7 +950,7 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 
 **Hybrids and the three routes** · Lieber et al., *Jamba*, arXiv:2403.19887 (2024) · Waleffe et al., *An Empirical Study of Mamba-based Language Models*, arXiv:2406.07887 (2024) · NVIDIA, *Nemotron-H*, arXiv:2504.03624 (2025) · Zuo et al., *Falcon-H1*, arXiv:2507.22448 (2025) · Du et al., *Kimi Linear: An Expressive, Efficient Attention Architecture*, arXiv:2510.26692 (2025; v2 Nov. 2025) — **assigned reading** · Kimi Team, *Kimi K3: Open Frontier Intelligence*, arXiv:2607.24653 (2026) — CC BY-NC-ND 4.0 · Qwen Team, *Qwen3-Next-80B-A3B* model card and blog post, September 2025 — **a model card and a blog post, not a paper; no technical report exists** · Wu et al., *MiniMax-01*, arXiv:2501.08313 (2025) · Chen et al., *The MiniMax-M2 Series*, arXiv:2605.26494 (2026) — the abstract says nothing about the form of attention · MiniMax, *Why Did M2 End Up as a Full Attention Model?*, team post, 2025-10-29 — **a company post, not a paper** · DeepSeek-AI, *DeepSeek-V2* arXiv:2405.04434 · *DeepSeek-V3.2* arXiv:2512.02556 · *DeepSeek-V4* arXiv:2606.19348 · He et al., *Defeating Nondeterminism in LLM Inference*, Thinking Machines Lab blog, September 2025 — **a company blog post, not a paper** · Meta AI, *The Llama 4 herd*, April 2025 — **a blog post, not a paper**
 
-**Data and figures** · Every number on these slides is one of: arithmetic on a `config.json` (snapshots of 2026-10-18 under `assets/w06/configs/`, read by `make_demo_w06.py`), a total/active count copied from an abstract (five flagships), pure-Python arithmetic on the definitions (FLOP counts), a number from an earlier week's rehearsal (W3 demo 2's `curve.json`, W5's `w05-data.json`), or this week's rehearsal records (demo 2's load curves, demo 3's recall curves, demo 4's cache sizes). The triage desk, the notebook, the MoE layer, the collapse loop, the SSM boxes, the two-algorithms picture, the block with two slots and the $\boldsymbol{\Lambda}$ matrix are schematics. **All four demos were built and rehearsed on the M5 Max (2026-10-18/19)**; their records are checked in under `demos/w06_d*/runs/rehearsal/` and the tables on p18, p28 and p54 and the curves on p18 and p54 are those records. The table on p12 is blank on purpose: it is filled in class.
+**Data and figures** · Every number on these slides is one of: arithmetic on a `config.json` (snapshots of 2026-10-18 under `assets/w06/configs/`, read by `make_demo_w06.py`), a total/active count copied from an abstract (five flagships), pure-Python arithmetic on the definitions (FLOP counts), a number from an earlier week's rehearsal (W3 demo 2's `curve.json`, W5's `w05-data.json`), or this week's rehearsal records (demo 2's load curves, demo 3's recall curves, demo 4's cache sizes). The triage desk, the notebook, the MoE layer, the collapse loop, the SSM boxes, the two-algorithms picture, the block with two slots and the $\boldsymbol{\Lambda}$ matrix are schematics. **All four demos were built and rehearsed on the M5 Max (2026-10-18/19)**; their records are checked in under `demos/w06_d*/runs/rehearsal/` and the tables on p18, p28 and p55 and the curves on p18 and p55 are those records. The table on p12 is blank on purpose: it is filled in class.
 :::
 
 ## Acronyms in this deck, A–H
@@ -934,9 +958,9 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 | | |
 |:----|:----------------|
 | A3B, A4B | a model-name suffix: 3 B (4 B) *active* parameters per token (p11) |
-| CSA | Compressed Sparse Attention, DeepSeek-V4 (p57) |
+| CSA | Compressed Sparse Attention, DeepSeek-V4 (p58) |
 | DPLR | diagonal-plus-low-rank: the structure of KDA's transition matrix (p32) |
-| DSA | DeepSeek Sparse Attention, DeepSeek-V3.2 (p57) |
+| DSA | DeepSeek Sparse Attention, DeepSeek-V3.2 (p58) |
 | FFN | feed-forward network: the block's weight-side sublayer (W4) |
 | FFT | fast Fourier transform: how S4's convolution is computed (p38) |
 | FLOPs | floating-point operations (W1) |
@@ -944,13 +968,13 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 | GLA | gated linear attention (p32) |
 | GQA | grouped-query attention (W3) |
 | GRU | gated recurrent unit (W1) |
-| H3 | Hungry Hungry Hippos, Fu et al. 2023: an earlier SSM layer (p40) |
+| H3 | Hungry Hungry Hippos, Fu et al. 2023: an earlier SSM layer (p41) |
 
 ## Acronyms in this deck, H–N
 
 | | |
 |:----|:----------------|
-| HCA | Heavily Compressed Attention, DeepSeek-V4 (p57) |
+| HCA | Heavily Compressed Attention, DeepSeek-V4 (p58) |
 | KDA | Kimi Delta Attention: Kimi Linear's linear layer (p32) |
 | KV | key–value (cache) (W3) |
 | LLM, LM | large language model (W1); language model |
@@ -959,7 +983,7 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 | LTI | linear time invariance: the SSM's parameters are the same at every step, so it is a convolution (p38) |
 | MHA | multi-head attention (W3) |
 | MLA | multi-head latent attention (W3) |
-| MLP | multilayer perceptron: the Mamba paper's name for W4's FFN sublayer (p40) |
+| MLP | multilayer perceptron: the Mamba paper's name for W4's FFN sublayer (p41) |
 | MoE | mixture of experts (p10) |
 | MPS | Metal Performance Shaders: PyTorch's backend for the Apple GPU (W4 demos) |
 | NTK | neural tangent kernel, as in NTK-aware scaling (W5) |
@@ -971,7 +995,7 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 | PI | position interpolation (W5) |
 | RNN | recurrent neural network (W1) |
 | S4 | Structured State Space sequence model, Gu, Goel & Ré 2022 (p38) |
-| SiLU | sigmoid linear unit, also called Swish: the activation in the Mamba block (p40) |
+| SiLU | sigmoid linear unit, also called Swish: the activation in the Mamba block (p41) |
 | SSD | state space duality, Dao & Gu 2024 (p34) |
 | SSM | state-space model (p34; what it is: p35–p37) |
 | TTT | test-time training (p33) |
