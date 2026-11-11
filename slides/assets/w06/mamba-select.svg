@@ -8600,7 +8600,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t454-text_1">
-   <!-- $\mathbf{A} \text{ stays input-free: it acts only through } \exp(\Delta_t\mathbf{A})\text{, so selectivity in } \Delta_t \text{ is enough (Sec. 3.5.2) — Mamba-2 makes } \mathbf{A} \text{ a scalar per head (p41)}$ -->
+   <!-- $\mathbf{A} \text{ stays input-free: it acts only through } \exp(\Delta_t\mathbf{A})\text{, so selectivity in } \Delta_t \text{ is enough (Sec. 3.5.2) — Mamba-2 makes } \mathbf{A} \text{ a scalar per head (p43)}$ -->
    <g style="fill: #1f2328" transform="translate(0 14.25) scale(0.19 -0.19)">
     <defs>
      <path id="t454-Cmb10-41" d="M 225 0 
@@ -9887,22 +9887,6 @@ L 1906 3547
 L 391 1281 
 z
 " transform="scale(0.015625)"/>
-     <path id="t454-Cmr10-31" d="M 594 0 
-L 594 225 
-Q 1394 225 1394 428 
-L 1394 3788 
-Q 1063 3628 556 3628 
-L 556 3853 
-Q 1341 3853 1741 4263 
-L 1831 4263 
-Q 1853 4263 1873 4245 
-Q 1894 4228 1894 4206 
-L 1894 428 
-Q 1894 225 2694 225 
-L 2694 0 
-L 594 0 
-z
-" transform="scale(0.015625)"/>
     </defs>
     <use xlink:href="#t454-Cmb10-41"/>
     <use xlink:href="#t454-Cmr10-20" transform="translate(75.488281 0)"/>
@@ -10038,7 +10022,7 @@ z
     <use xlink:href="#t454-Cmr10-28" transform="translate(5837.386078 0)"/>
     <use xlink:href="#t454-Cmr10-70" transform="translate(5876.204438 0)"/>
     <use xlink:href="#t454-Cmr10-34" transform="translate(5931.722016 0)"/>
-    <use xlink:href="#t454-Cmr10-31" transform="translate(5981.722016 0)"/>
+    <use xlink:href="#t454-Cmr10-33" transform="translate(5981.722016 0)"/>
     <use xlink:href="#t454-Cmr10-29" transform="translate(6031.722016 0)"/>
    </g>
   </g>
@@ -11635,7 +11619,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t456-text_1">
-   <!-- $\text{(by convolution in S4, by a scan here, by matmuls in Mamba-2: p42–p43); W1's RNN had neither — its death was the loop, not the quality}$ -->
+   <!-- $\text{(by convolution in S4, by a scan here, by matmuls in Mamba-2: p44–p45); W1's RNN had neither — its death was the loop, not the quality}$ -->
    <g style="fill: #b45309" transform="translate(0 14.25) scale(0.19 -0.19)">
     <defs>
      <path id="t456-Cmr10-28" d="M 1984 -1588 
@@ -12471,62 +12455,57 @@ L 3200 1600
 L 3200 1286 
 z
 " transform="scale(0.015625)"/>
-     <path id="t456-Cmr10-33" d="M 609 494 
-Q 759 275 1012 169 
-Q 1266 63 1556 63 
-Q 1928 63 2084 380 
-Q 2241 697 2241 1100 
-Q 2241 1281 2208 1462 
-Q 2175 1644 2097 1800 
-Q 2019 1956 1883 2050 
-Q 1747 2144 1550 2144 
-L 1125 2144 
-Q 1069 2144 1069 2203 
-L 1069 2259 
-Q 1069 2309 1125 2309 
-L 1478 2338 
-Q 1703 2338 1851 2506 
-Q 2000 2675 2069 2917 
-Q 2138 3159 2138 3378 
-Q 2138 3684 1994 3881 
-Q 1850 4078 1556 4078 
-Q 1313 4078 1091 3986 
-Q 869 3894 738 3706 
-Q 750 3709 759 3711 
-Q 769 3713 781 3713 
-Q 925 3713 1022 3613 
-Q 1119 3513 1119 3372 
-Q 1119 3234 1022 3134 
-Q 925 3034 781 3034 
-Q 641 3034 541 3134 
-Q 441 3234 441 3372 
-Q 441 3647 606 3850 
-Q 772 4053 1033 4158 
-Q 1294 4263 1556 4263 
-Q 1750 4263 1965 4205 
-Q 2181 4147 2356 4039 
-Q 2531 3931 2642 3762 
-Q 2753 3594 2753 3378 
-Q 2753 3109 2633 2881 
-Q 2513 2653 2303 2487 
-Q 2094 2322 1844 2241 
-Q 2122 2188 2372 2031 
-Q 2622 1875 2773 1631 
-Q 2925 1388 2925 1106 
-Q 2925 753 2731 467 
-Q 2538 181 2222 20 
-Q 1906 -141 1556 -141 
-Q 1256 -141 954 -26 
-Q 653 88 461 316 
-Q 269 544 269 863 
-Q 269 1022 375 1128 
-Q 481 1234 641 1234 
-Q 744 1234 830 1186 
-Q 916 1138 964 1050 
-Q 1013 963 1013 863 
-Q 1013 706 903 600 
-Q 794 494 641 494 
-L 609 494 
+     <path id="t456-Cmr10-35" d="M 556 728 
+Q 622 541 758 387 
+Q 894 234 1080 148 
+Q 1266 63 1466 63 
+Q 1928 63 2103 422 
+Q 2278 781 2278 1294 
+Q 2278 1516 2270 1667 
+Q 2263 1819 2228 1959 
+Q 2169 2184 2020 2353 
+Q 1872 2522 1656 2522 
+Q 1441 2522 1286 2456 
+Q 1131 2391 1034 2303 
+Q 938 2216 863 2119 
+Q 788 2022 769 2016 
+L 697 2016 
+Q 681 2016 657 2036 
+Q 634 2056 634 2075 
+L 634 4213 
+Q 634 4228 654 4245 
+Q 675 4263 697 4263 
+L 716 4263 
+Q 1147 4056 1631 4056 
+Q 2106 4056 2547 4263 
+L 2566 4263 
+Q 2588 4263 2606 4247 
+Q 2625 4231 2625 4213 
+L 2625 4153 
+Q 2625 4122 2613 4122 
+Q 2394 3831 2064 3668 
+Q 1734 3506 1381 3506 
+Q 1125 3506 856 3578 
+L 856 2369 
+Q 1069 2541 1236 2614 
+Q 1403 2688 1663 2688 
+Q 2016 2688 2295 2484 
+Q 2575 2281 2725 1954 
+Q 2875 1628 2875 1288 
+Q 2875 903 2686 575 
+Q 2497 247 2172 53 
+Q 1847 -141 1466 -141 
+Q 1150 -141 886 21 
+Q 622 184 470 459 
+Q 319 734 319 1044 
+Q 319 1188 412 1278 
+Q 506 1369 647 1369 
+Q 788 1369 883 1276 
+Q 978 1184 978 1044 
+Q 978 906 883 811 
+Q 788 716 647 716 
+Q 625 716 597 720 
+Q 569 725 556 728 
 z
 " transform="scale(0.015625)"/>
      <path id="t456-Cmr10-29" d="M 416 -1600 
@@ -12928,11 +12907,11 @@ z
     <use xlink:href="#t456-Cmr10-20" transform="translate(2806.982422 0)"/>
     <use xlink:href="#t456-Cmr10-70" transform="translate(2840.283203 0)"/>
     <use xlink:href="#t456-Cmr10-34" transform="translate(2895.800781 0)"/>
-    <use xlink:href="#t456-Cmr10-32" transform="translate(2945.800781 0)"/>
+    <use xlink:href="#t456-Cmr10-34" transform="translate(2945.800781 0)"/>
     <use xlink:href="#t456-STIXGeneral-Regular-2013" transform="translate(2995.800781 0)"/>
     <use xlink:href="#t456-Cmr10-70" transform="translate(3045.800766 0)"/>
     <use xlink:href="#t456-Cmr10-34" transform="translate(3101.318344 0)"/>
-    <use xlink:href="#t456-Cmr10-33" transform="translate(3151.318344 0)"/>
+    <use xlink:href="#t456-Cmr10-35" transform="translate(3151.318344 0)"/>
     <use xlink:href="#t456-Cmr10-29" transform="translate(3201.318344 0)"/>
     <use xlink:href="#t456-Cmr10-3b" transform="translate(3240.136703 0)"/>
     <use xlink:href="#t456-Cmr10-20" transform="translate(3267.82225 0)"/>

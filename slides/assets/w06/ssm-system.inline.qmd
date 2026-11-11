@@ -9992,7 +9992,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t384-text_1">
-   <!-- $\text{S4 (p38): none — one kernel for every position} \quad\cdot\quad \text{Mamba (p39): } \mathbf{B}_t, \mathbf{C}_t, \Delta_t \quad\cdot\quad \text{Mamba-2 (p41): the same three, } \mathbf{A} \text{ a scalar per head}$ -->
+   <!-- $\text{S4 (p38): none — one kernel for every position} \quad\cdot\quad \text{Mamba (p39): } \mathbf{B}_t, \mathbf{C}_t, \Delta_t \quad\cdot\quad \text{Mamba-2 (p43): the same three, } \mathbf{A} \text{ a scalar per head}$ -->
    <g style="fill: #1f2328" transform="translate(0 14.25) scale(0.19 -0.19)">
     <defs>
      <path id="t384-Cmr10-53" d="M 359 -91 
@@ -11132,22 +11132,6 @@ L 2694 0
 L 319 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t384-Cmr10-31" d="M 594 0 
-L 594 225 
-Q 1394 225 1394 428 
-L 1394 3788 
-Q 1063 3628 556 3628 
-L 556 3853 
-Q 1341 3853 1741 4263 
-L 1831 4263 
-Q 1853 4263 1873 4245 
-Q 1894 4228 1894 4206 
-L 1894 428 
-Q 1894 225 2694 225 
-L 2694 0 
-L 594 0 
-z
-" transform="scale(0.015625)"/>
      <path id="t384-Cmr10-68" d="M 191 0 
 L 191 225 
 Q 409 225 550 259 
@@ -11365,7 +11349,7 @@ z
     <use xlink:href="#t384-Cmr10-28" transform="translate(4056.425805 0)"/>
     <use xlink:href="#t384-Cmr10-70" transform="translate(4095.244164 0)"/>
     <use xlink:href="#t384-Cmr10-34" transform="translate(4150.761743 0)"/>
-    <use xlink:href="#t384-Cmr10-31" transform="translate(4200.761743 0)"/>
+    <use xlink:href="#t384-Cmr10-33" transform="translate(4200.761743 0)"/>
     <use xlink:href="#t384-Cmr10-29" transform="translate(4250.761743 0)"/>
     <use xlink:href="#t384-Cmr10-3a" transform="translate(4289.580102 0)"/>
     <use xlink:href="#t384-Cmr10-20" transform="translate(4317.265649 0)"/>
