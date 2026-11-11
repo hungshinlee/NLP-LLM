@@ -7,7 +7,7 @@ project:
     - resources.qmd
     - slides.qmd
     - supplements.qmd
-    # 目前開放 W1–W7。build_weeks.py 仍會產生 weeks/w08–w14.qmd（內容照樣過濾、
+    # 目前開放 W1–W8。build_weeks.py 仍會產生 weeks/w09–w14.qmd（內容照樣過濾、
     # 跟著大綱更新），但不 render，站上就沒有那些頁面。
     # **要開放某一週：這裡加一行，並同步改 build_weeks.py 的 PUBLISHED_WEEKS
     # 與下面 sidebar 的註解區塊。**
@@ -18,6 +18,7 @@ project:
     - weeks/w05.qmd
     - weeks/w06.qmd
     - weeks/w07.qmd
+    - weeks/w08.qmd
     - slides/*.qmd
     - supplements/*.qmd
   resources:
@@ -99,7 +100,7 @@ website:
       - section: "Part II — Training"
         contents:
           - href: weeks/w07.qmd
-      #     - href: weeks/w08.qmd
+          - href: weeks/w08.qmd
       #     - href: weeks/w09.qmd
       #     - href: weeks/w10.qmd
       # - section: "Part III — Systems & Scrutiny"

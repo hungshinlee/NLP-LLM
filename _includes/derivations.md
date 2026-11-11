@@ -2,7 +2,7 @@
 
 ## Derivations and Hand-Built Components
 
-One board derivation and one component per week. Everything is demonstrated in class. The last column says **what each component needs to run on**, not how long it takes: the demo machine has no CUDA. Measured run times for the W1–W7 demos (one Apple M5 Max, 64 GB) are in each demo's README under `demos/`, next to the rehearsal records; nothing here is an estimate.
+One board derivation and one component per week. Everything is demonstrated in class. The last column says **what each component needs to run on**, not how long it takes: the demo machine has no CUDA. Measured run times for the W1–W8 demos (one Apple M5 Max, 64 GB) are in each demo's README under `demos/`, next to the rehearsal records; nothing here is an estimate.
 
 | Week | At the board | Built by hand | Runs on |
 |:--|:--------------------------------|:----------------------------|:------|
@@ -13,7 +13,7 @@ One board derivation and one component per week. Everything is demonstrated in c
 | [W5](weeks/w05.qmd) | **RoPE's relative property** in complex form; the phase argument for extrapolation | RoPE and its extrapolation variants | MPS; the long-context demo uses a quantized mid-size model |
 | [W6](weeks/w06.qmd) | **The linear-attention associativity identity** → recurrent form; the SSD skeleton | Both algorithms for linear attention | MPS. SSM and hybrid models run on MLX's own Metal kernels |
 | [W7](weeks/w07.qmd) | **Chinchilla's first-order condition** (one of the course's three peaks) | A scaling law fitted at small scale | MPS — four or five tiny transformers |
-| W8 | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT with `mlx_lm.lora`** | MLX. Pointing it at a quantized model *is* QLoRA |
+| [W8](weeks/w08.qmd) | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT with `mlx_lm.lora`** | MLX. Pointing it at a quantized model *is* QLoRA |
 | W9 | **DPO in four steps** (one of the three peaks); GRPO's advantage normalization | **The DPO loss, with four tests** | CPU |
 | W10 | The two crossing pass@k curves; the binomial bound behind self-consistency | Budget forcing | MLX, a mid-size model with a thinking mode |
 | W11 | **Roofline and the batch threshold for decode**; the three-line losslessness proof for speculative decoding | A roofline measured | MLX (`mlx_lm.benchmark`, `--draft-model`) |
