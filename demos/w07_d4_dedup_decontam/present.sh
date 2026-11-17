@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W7 demo 4（投影片 p48「Live: demo 4 — near-duplicates across dumps; MMLU vs. the corpus」；p47 前導頁）課前與課堂的入口。
+# W7 demo 4（投影片 p52「Live: demo 4 — near-duplicates across dumps; MMLU vs. the corpus」；p51 前導頁）課前與課堂的入口。
 # 純標準函式庫、CPU，不載模型；只有 fetch 要網路（MMLU 的 test split 與 MMLU-Redux 的 Virology 子集，幾 MB）。
 # 語料共用 demo 2 的 ../w07_corpus/（先做完 ../w07_d2_scaling_fit/present.sh fetch --corpus both）。
 #

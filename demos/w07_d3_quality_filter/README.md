@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W7 · Demo 3 — Quality filtering: guess the source, score it, then train on each (slides p42–p43)
+# W7 · Demo 3 — Quality filtering: guess the source, score it, then train on each (slides p46–p47)
 
 Two halves. **(a) Live.** Three pages sampled from FineWeb and three from FineWeb-Edu (fixed seed), shuffled: you guess which corpus each came from. Then the classifier that *built* FineWeb-Edu — `HuggingFaceFW/fineweb-edu-classifier`, a regression head on a 110M BERT, trained on 460k pages that Llama-3-70B-Instruct had scored 0–5 for "educational value" — scores the same six pages, and the sources are revealed. **(b) Recorded, replayed in class.** One of demo 2's byte-level GPTs (`s4`: $d = 192$, 7 layers, 3.15M parameters) is trained twice with the same seed and the same number of steps, once on the FineWeb sample and once on the FineWeb-Edu sample (equal bytes), and evaluated on **four held-outs, reported separately**: W1's English paragraph, a Wikipedia sample, and each corpus's own tail.
 
