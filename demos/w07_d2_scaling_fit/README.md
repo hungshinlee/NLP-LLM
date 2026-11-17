@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W7 · Demo 2 — A small scaling law: five sizes on one ray, fit three, test two (slides p32–p33)
+# W7 · Demo 2 — A small scaling law: five sizes on one ray, fit three, test two (slides p33–p34)
 
 Five byte-level GPTs — W4 demo 1's block, with a vocabulary of the 256 byte values instead of characters — are trained on the same sample of FineWeb-Edu, with the same seed, each to **$D = 20N$ tokens** (the "Chinchilla ray"). The learning rate is scaled with width as muP prescribes ($\eta \propto 1/d$, from W4's $10^{-3}$ at $d = 256$). Then $\mathcal{L}(N) = E + A N^{-\alpha}$ is fitted to the **three smallest** models and extrapolated to the two largest; the error is reported. A fit to all five follows for comparison, and finally the five training curves are cut into an iso-FLOPs envelope (Hoffmann et al.'s Approach 1): at each compute budget $C = 6ND$, which size is lowest?
 

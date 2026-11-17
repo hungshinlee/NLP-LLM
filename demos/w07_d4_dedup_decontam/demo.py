@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W7 demo 4：去重與 decontamination（投影片 p46 前導頁、p47「Live: demo 4 — near-duplicates across dumps; MMLU vs. the corpus」）。
+"""W7 demo 4：去重與 decontamination（投影片 p47 前導頁、p48「Live: demo 4 — near-duplicates across dumps; MMLU vs. the corpus」）。
 
   ./present.sh fetch                 一次、要網路：MMLU test split 與 MMLU-Redux 2.0 Virology → data/（幾 MB）
   ./present.sh test | live           三個測試對 dedup_final.py | dedup_live.py（tests.py）

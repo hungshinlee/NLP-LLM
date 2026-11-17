@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W7 demo 4 的三個測試（投影片 p46 前導頁 What runs 那列的 (i)–(iii)）。dedup_final.py 與 dedup_live.py 共用。
+"""W7 demo 4 的三個測試（投影片 p47 前導頁 What runs 那列的 (i)–(iii)）。dedup_final.py 與 dedup_live.py 共用。
 
     python3 tests.py dedup_live           # 課堂：對 live 版跑（等同 ./present.sh live）；還沒寫的函數會標 skip
     python3 tests.py dedup_final          # 等同 ./present.sh test

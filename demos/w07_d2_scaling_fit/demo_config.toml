@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W7 demo 2（投影片 p33「Replay: demo 2 — five points, one ray, the extrapolation error」；p32 前導頁）的設定。
+# W7 demo 2（投影片 p34「Replay: demo 2 — five points, one ray, the extrapolation error」；p33 前導頁）的設定。
 #
 # 全部**課前彩排、課堂只 replay**。模型是 W4 demo 1 的 tiny GPT（block_final.GPT，從檔案路徑載入），改成 byte-level（V = 256）；
 # 語料是 FineWeb-Edu sample-10BT 第一個 parquet shard 上等距抽出的約 200 MB（fetch 一次，demo 3、4 共用，見 [corpus]）。

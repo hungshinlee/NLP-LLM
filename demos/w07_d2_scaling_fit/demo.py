@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W7 demo 2：小規模 scaling law 的擬合與外插（彩排預錄、課堂 replay）。投影片 p33（p32 前導頁）。
+"""W7 demo 2：小規模 scaling law 的擬合與外插（彩排預錄、課堂 replay）。投影片 p34（p33 前導頁）。
 
 W4 demo 1 的 tiny GPT 改成 byte-level（V = 256），五個尺寸（demo_config.toml [[sizes]]），同一份 FineWeb-Edu 的抽樣、同一個 seed，
 每一個都訓到 D = 20N（Chinchilla 的射線），learning rate 照 muP 的寬度規則縮；每 50 步在固定的 held-out 子集上記 loss。
@@ -14,7 +14,7 @@ W4 demo 1 的 tiny GPT 改成 byte-level（V = 256），五個尺寸（demo_conf
   ./present.sh rehearse            課前彩排：五個尺寸各訓到 D = 20N → runs/rehearsal/{s1..s5}.json + fit.json + summary.json + curves.svg；權重 → runs/weights/
   ./present.sh train s3            只訓一個尺寸 → runs/rehearsal/s3.json（之後 ./present.sh fit）
   ./present.sh fit                 只從五個 json 重做擬合、envelope、summary.json 與 curves.svg
-  ./present.sh replay              課堂（p33）：Enter 一步——五個點 → 三點擬合與外插誤差 → 五點擬合 → envelope → p33 的表
+  ./present.sh replay              課堂（p34）：Enter 一步——五個點 → 三點擬合與外插誤差 → 五點擬合 → envelope → p34 的表
   ./present.sh show                同 replay，不等 Enter（加 --smoke 讀 runs/smoke/）
 
 誠實的限定（每次 replay 都印）：幾百萬參數的 byte-level 模型、兩百 MB 的語料、一個 seed、五個點、一條射線；
@@ -145,7 +145,7 @@ def summarize(cfg: dict, outd: Path, runs: list[dict] | None = None) -> dict:
 
 
 def table_rows(fit: dict) -> dict:
-    """p33 表格的兩列：fit | E | A | α | predicted at N4 / measured | predicted at N5 / measured。bits/byte。"""
+    """p34 表格的兩列：fit | E | A | α | predicted at N4 / measured | predicted at N5 / measured。bits/byte。"""
     rows = {}
     if "fit3" in fit:
         f = fit["fit3"]
@@ -225,7 +225,7 @@ def replay(cfg: dict, pause: bool, smoke: bool = False) -> None:
             print(f"    best N grows with C: slope of log N_best against log C ≈ {env['slope_logN_logC']:.2f} (five discrete N, so an order of magnitude only; Hoffmann Approach 1: a = 0.50)")
         print(f"    {DIM}· = that run never reached this C (too small) or started past it (too large): the envelope is only where runs overlap{RESET}")
     if pause:
-        input(f"\n  {DIM}Enter → p33's table{RESET}")
+        input(f"\n  {DIM}Enter → p34's table{RESET}")
     print_table(summary)
     print(f"\n  {DIM}curves.svg: open {outd / 'curves.svg'}{RESET}")
 
@@ -234,7 +234,7 @@ def print_table(summary: dict) -> None:
     tb = summary["table"]
     ray = summary["ray"]
     keys = list(summary["runs"])
-    print(f"\n  {BOLD}p33's table{RESET}  (bits/byte; E in bits/byte, A and α as fitted in nats)")
+    print(f"\n  {BOLD}p34's table{RESET}  (bits/byte; E in bits/byte, A and α as fitted in nats)")
     print(f"    {'fit':<22}{'E':>9}{'A':>12}{'α':>9}" + "".join(f"{'pred / meas at ' + k:>24}" for k in keys[3:]))
     if "three" in tb:
         t = tb["three"]

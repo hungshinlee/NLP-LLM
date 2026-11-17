@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W7 demo 4：去重與 decontamination（投影片 p46 前導頁、p47「Live: demo 4」）。
+# W7 demo 4：去重與 decontamination（投影片 p47 前導頁、p48「Live: demo 4」）。
 # 換語料、換參數只改這裡；三個函數的簽名在 dedup_final.py 開頭。
 
 [corpus]
