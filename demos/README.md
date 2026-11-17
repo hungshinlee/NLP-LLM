@@ -38,6 +38,8 @@ Cross-folder dependencies to know about: W4 demos 1 and 2 import W3 demo 1's `at
 
 Nothing has been tested on Linux, Windows, or a CUDA GPU. Where a README says "should also work on …", read that as a statement of what the code *does not* depend on, not as something that was verified.
 
+**One exception, as of 2026-11-17: the three W9 demos are published before their rehearsal.** `w09_d1_dpo_scratch`, `w09_d2_grpo_scratch` and `w09_d3_leaky_reward` have not yet been run with the real model on the machine above, so they have no `runs/rehearsal/` yet and the W9 slides leave their result tables empty. What has been run is the part that loads no model: their tests, and `./present.sh tiny` (the whole flow on a small random model), on Linux with the CPU build of MLX. Each of the three READMEs says *not rehearsed yet* where a result would be. This paragraph will be removed once they have been rehearsed.
+
 ## Setting up
 
 ### Apple-silicon Mac (same path as the instructor)

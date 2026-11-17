@@ -1,0 +1,41 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W9 demo 3（投影片 p56 前導頁、p57「Replay: demo 3」）的設定
+#
+# 模型、adapter、旁路、題目的級別、prompt、取樣、eval 的題目都讀 demo 2 的 demo_config.toml
+#（../w09_d2_grpo_scratch/）——同一個任務、同一個迴圈，這裡只決定「用哪個 verifier 訓練」與每批更新幾步。
+
+[demo]
+title = "W9 · Demo 3 — a verifier with a hole in it: proxy and gold against √KL"
+source = "../w09_d2_grpo_scratch"
+
+# ── 訓練：沒寫的鍵（rollouts_per_step、steps、learning_rate、scale_rewards、token_agg、eval_every）沿用 demo 2 的 [train] ──
+[train]
+G = 8
+# 每一批 rollout 更新幾步。1 = demo 2 的迴圈（ratio 是 1、clip 不作用）。
+updates_per_batch = 1
+# 每批更新數步時 clip 的半寬（PPO 論文的預設值）。
+clip_eps = 0.2
+
+# reward：訓練時模型拿到的分數。gold（strict）每個 run 都另外記，從不進更新。
+[runs]
+leaky  = { reward = "leaky" }
+strict = { reward = "strict" }
+coin_1 = { reward = "coin" }
+coin_k = { reward = "coin", updates_per_batch = 4 }
+# 更大的漏洞（分數 = 回答裡數字的個數 / 8，上限 1）。leaky 沒被找到時：./present.sh rehearse --only count
+count  = { reward = "count" }
+
+[rehearse]
+runs = ["leaky", "strict", "coin_1", "coin_k"]
+
+# p57 的表各自用哪個 run。
+[tables]
+main = "leaky"
+control = "strict"
+random = ["coin_1", "coin_k"]
+fallback = "count"
+
+[examples]
+# 訓練前後各留幾題的回答（eval 的前幾題，每題兩段；同一個取樣種子）。
+n_problems = 6
+max_chars = 300

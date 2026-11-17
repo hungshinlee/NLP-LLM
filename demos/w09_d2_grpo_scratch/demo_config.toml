@@ -1,0 +1,139 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W9 demo 2（投影片 p48 前導頁、p49「Live: demo 2 (a)」、p50「Replay: demo 2 (b)」）的設定
+#
+# 改這個檔就能換模型、換題目難度、換 G 的網格與開關，不必動程式。
+
+[demo]
+title = "W9 · Demo 2 — GRPO by hand: the advantage, the identity, and how large G should be"
+# 隨機種子：題目（每一步 seed 與步數算出一個新的種子）、取樣、旁路的初始化都用它。
+seed = 20261114
+
+# ── 模型：上週 demo 1 的模型加 adapter C，它就是 π_ref ─────────
+[model]
+repo = "Qwen/Qwen3-1.7B-Base"
+short = "Qwen3-1.7B-Base + adapter C"
+revision = ""
+# 上週 demo 1 訓出來的 adapter（--mask-prompt + embedding 上的 LoRA；會自己停在 <|im_end|> 的那一個）。
+adapter = "../w08_d1_sft_base_to_assistant/runs/weights/adapters_C"
+# base 的 generation_config 只把 <|endoftext|> 當停止記號；SFT 後的回答停在 <|im_end|>（上週 demo 1）。
+extra_eos = ["<|im_end|>"]
+
+# ── 旁路：疊在 π_ref 上面的新 LoRA（B 從零開始，所以第 0 步的 policy 就是 π_ref）──
+[bypass]
+rank = 16
+# mlx 的寫法：y = Wx + scale · B A x（Hu 的 α/r = scale）。與上週相同。
+scale = 20.0
+keys = ["self_attn.q_proj", "self_attn.k_proj", "self_attn.v_proj", "self_attn.o_proj", "mlp.gate_proj", "mlp.up_proj", "mlp.down_proj"]
+
+# ── 題目 ───────────────────────────────────────────────────────
+[task]
+# user 那一輪的文字；{expr} 換成算式。走 tokenizer 自己的 chat template。
+prompt = "Compute {expr}. End your answer with the final number."
+# probe 會把 [task.levels] 的每一級都量一次 π_ref 的正確率；level 填正確率落在三到五成的那一級。
+# **初稿，沒量過**：probe 之後改這一行。
+level = "L3"
+max_new_tokens = 48
+temperature = 1.0
+
+# terms：運算元個數；lo／hi：加減的運算元範圍；乘號右邊那個數另外取 mul_lo–mul_hi。
+[task.levels]
+L1 = { terms = 2, lo = 10,  hi = 99,  ops = ["+", "-"] }
+L2 = { terms = 3, lo = 10,  hi = 99,  ops = ["+", "-"] }
+L3 = { terms = 3, lo = 10,  hi = 99,  ops = ["+", "-", "*"], mul_lo = 2, mul_hi = 9 }
+L4 = { terms = 3, lo = 100, hi = 999, ops = ["+", "-"] }
+L5 = { terms = 3, lo = 100, hi = 999, ops = ["+", "-", "*"], mul_lo = 2, mul_hi = 9 }
+L6 = { terms = 4, lo = 100, hi = 999, ops = ["+", "-", "*"], mul_lo = 11, mul_hi = 99 }
+
+# ── (a) 現場：一題、G 段回答 ───────────────────────────────────
+[identity]
+G = 8
+# 從這個種子開始找第一個 0 < k < G 的題目（沉默的組沒有東西可以驗）；彩排印出實際用的種子。
+seed = 20261114
+max_tries = 30
+
+# ── (b) 訓練迴圈 ───────────────────────────────────────────────
+[train]
+# 每一步的 rollout 總數固定；題數 = rollouts_per_step / G。
+rollouts_per_step = 64
+steps = 200
+# Adam、常數 LR、不做 gradient clipping。**初稿，沒量過**：probe 的 LR 小掃描之後改。
+learning_rate = 5e-6
+# 預設值 = GRPO 原式：除以 s_r、每段除以自己的長度、沉默的組留著（它們的更新是零）。
+scale_rewards = true
+token_agg = "own_length"        # own_length／constant／group_tokens／sequence
+silent = "keep"                 # keep／resample
+# resample：把沉默的組丟掉、再抽新的題目補，最多補幾輪（每輪 = 一批題目）。
+resample_rounds = 4
+# 每隔幾步在固定的一批新題目上量一次正確率（第 0 步與最後一步一定量）。
+eval_every = 25
+
+[eval]
+# 與訓練的題目不重複（訓練抽到這裡面的算式就重抽）；每題取樣幾段。
+n_problems = 128
+samples_per_problem = 2
+seed = 990001
+
+# 一個 run = [train] 加上這裡的覆寫。G 的掃描四個；開關各一個（「開」的那一邊就是 G8）。
+[runs]
+G2        = { G = 2 }
+G4        = { G = 4 }
+G8        = { G = 8 }
+G16       = { G = 16 }
+no_std    = { G = 8, scale_rewards = false }
+const_len = { G = 8, token_agg = "constant" }
+resample  = { G = 8, silent = "resample" }
+rank1     = { G = 8, rank = 1 }
+
+# p50 的兩張表各自用哪些 run。
+[tables]
+sweep = ["G2", "G4", "G8", "G16"]
+base = "G8"
+[[tables.switches]]
+label = "divide by s_r"
+look = "accuracy on fresh problems, end"
+off = "no_std"
+on = "G8"
+metric = "acc_end"
+[[tables.switches]]
+label = "÷ own length vs. ÷ a constant"
+look = "mean length of wrong answers on the fresh problems, end (tokens)"
+off = "const_len"
+on = "G8"
+metric = "wrong_len_end"
+off_name = "÷ constant"
+on_name = "÷ own length"
+[[tables.switches]]
+label = "drop silent groups (resample)"
+look = "accuracy gained per 1,000 rollouts sampled"
+off = "G8"
+on = "resample"
+metric = "gain_per_k_rollouts"
+[[tables.switches]]
+label = "LoRA rank 1 vs. 16"
+look = "accuracy on fresh problems, end"
+off = "rank1"
+on = "G8"
+metric = "acc_end"
+off_name = "rank 1"
+on_name = "rank 16"
+
+# ── probe ──────────────────────────────────────────────────────
+[probe]
+# 每一級：幾題 × 每題幾段（用 π_ref，不更新）。
+n_problems = 32
+G = 16
+# 計時：照 [train] 的設定跑幾步（真的更新，跑完丟掉）。
+timing_steps = 3
+# LR 小掃描：每個 LR 跑幾步，比訓練中前、後各三分之一的正確率。
+lrs = [2e-6, 5e-6, 1.2e-5, 3e-5]
+lr_steps = 45
+lr_G = 8
+
+# ── tiny：亂數權重的小模型，不下載任何東西，只為了走一遍真的流程 ──
+[tiny]
+level = { terms = 1, lo = 0, hi = 9, ops = ["+"] }
+prompt = "{expr}="
+max_new_tokens = 3
+learning_rate = 3e-3
+steps = 40
+rollouts_per_step = 64
