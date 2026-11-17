@@ -14,7 +14,7 @@ One board derivation and one component per week. Everything is demonstrated in c
 | [W6](weeks/w06.qmd) | **The linear-attention associativity identity** → recurrent form; the SSD skeleton | Both algorithms for linear attention | MPS. SSM and hybrid models run on MLX's own Metal kernels |
 | [W7](weeks/w07.qmd) | **Chinchilla's first-order condition** (one of the course's three peaks) | A scaling law fitted at small scale | MPS — four or five tiny transformers |
 | [W8](weeks/w08.qmd) | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT with `mlx_lm.lora`** | MLX. Pointing it at a quantized model *is* QLoRA |
-| W9 | **DPO in four steps** (one of the three peaks); GRPO's advantage normalization | **The DPO loss, with four tests** | CPU |
+| [W9](weeks/w09.qmd) | **DPO in four steps** (one of the three peaks); GRPO's advantage normalization | **The DPO loss, with four tests** | CPU |
 | W10 | The two crossing pass@k curves; the binomial bound behind self-consistency | Budget forcing | MLX, a mid-size model with a thinking mode |
 | W11 | **Roofline and the batch threshold for decode**; the three-line losslessness proof for speculative decoding | A roofline measured | MLX (`mlx_lm.benchmark`, `--draft-model`) |
 | W12 | InfoNCE, and how the negatives define "similar"; RAG's three-term decomposition | **A minimal RAG, and three deliberate failures** | CPU |

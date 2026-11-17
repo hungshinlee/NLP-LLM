@@ -6,6 +6,10 @@ toc-depth: 2
 
 <!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
+::: {.callout-note appearance="minimal"}
+[**▶ Slides for this week**](../slides/w09.qmd)
+:::
+
 ## Where This Fits
 The third week of Part II, one of the three mathematical peaks of the course, and one of the three weeks whose literature ages fastest (W9, W10, W13). At the end of W8 the supervision axis had two entries ticked: the pre-training distribution and human demonstrations. A demonstration says "answer like this"; it does not say "this answer is better than that one", and it was written by someone else, not by the model. This week opens the third and fourth entries — **human preferences** and **verifiable rewards**. The signal shrinks from a written answer to a single comparison or a single score, and what gets scored is **the model's own output**. The model trained last week is this week's $\pi_{\text{ref}}$.
 

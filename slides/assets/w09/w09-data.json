@@ -1,0 +1,278 @@
+{
+ "identity": {
+  "G": 16,
+  "rows": [
+   {
+    "k": 0,
+    "mean": 0.0,
+    "s_r": 0.0,
+    "s_r2": 0.0
+   },
+   {
+    "k": 1,
+    "mean": 0.0625,
+    "s_r": 0.24206145913796356,
+    "s_r2": 0.05859375000000001
+   },
+   {
+    "k": 2,
+    "mean": 0.125,
+    "s_r": 0.33071891388307384,
+    "s_r2": 0.10937500000000001
+   },
+   {
+    "k": 3,
+    "mean": 0.1875,
+    "s_r": 0.3903123748998999,
+    "s_r2": 0.15234375
+   },
+   {
+    "k": 4,
+    "mean": 0.25,
+    "s_r": 0.4330127018922193,
+    "s_r2": 0.18749999999999997
+   },
+   {
+    "k": 5,
+    "mean": 0.3125,
+    "s_r": 0.46351240544347894,
+    "s_r2": 0.21484375
+   },
+   {
+    "k": 6,
+    "mean": 0.375,
+    "s_r": 0.4841229182759271,
+    "s_r2": 0.23437500000000003
+   },
+   {
+    "k": 7,
+    "mean": 0.4375,
+    "s_r": 0.49607837082461076,
+    "s_r2": 0.24609375000000003
+   },
+   {
+    "k": 8,
+    "mean": 0.5,
+    "s_r": 0.5,
+    "s_r2": 0.25
+   },
+   {
+    "k": 9,
+    "mean": 0.5625,
+    "s_r": 0.49607837082461076,
+    "s_r2": 0.24609375000000003
+   },
+   {
+    "k": 10,
+    "mean": 0.625,
+    "s_r": 0.4841229182759271,
+    "s_r2": 0.23437500000000003
+   },
+   {
+    "k": 11,
+    "mean": 0.6875,
+    "s_r": 0.46351240544347894,
+    "s_r2": 0.21484375
+   },
+   {
+    "k": 12,
+    "mean": 0.75,
+    "s_r": 0.4330127018922193,
+    "s_r2": 0.18749999999999997
+   },
+   {
+    "k": 13,
+    "mean": 0.8125,
+    "s_r": 0.3903123748998999,
+    "s_r2": 0.15234375
+   },
+   {
+    "k": 14,
+    "mean": 0.875,
+    "s_r": 0.33071891388307384,
+    "s_r2": 0.10937500000000001
+   },
+   {
+    "k": 15,
+    "mean": 0.9375,
+    "s_r": 0.24206145913796356,
+    "s_r2": 0.05859375000000001
+   },
+   {
+    "k": 16,
+    "mean": 1.0,
+    "s_r": 0.0,
+    "s_r2": 0.0
+   }
+  ],
+  "k8": {
+   "s_r": 0.5,
+   "s_r2": 0.25
+  },
+  "k1": {
+   "s_r": 0.24206145913796356,
+   "s_r2": 0.05859375000000001
+  },
+  "ratio_divided": 2.065591117977289,
+  "ratio_undivided": 4.266666666666666,
+  "std_ddof1_over_ddof0": 1.0327955589886444,
+  "note": "pure algebra; s_r is the population standard deviation (divide by G); torch.std divides by G-1 by default"
+ },
+ "silent": {
+  "prob": {
+   "p=0.3": {
+    "2": 0.58,
+    "4": 0.24819999999999995,
+    "8": 0.05771361999999997,
+    "16": 0.0033232973616321966
+   },
+   "p=0.5": {
+    "2": 0.5,
+    "4": 0.125,
+    "8": 0.0078125,
+    "16": 3.0517578125e-05
+   }
+  },
+  "note": "P(all G rollouts agree) = p^G + (1-p)^G for a prompt answered correctly with probability p; rollouts independent"
+ },
+ "compute": {
+  "assumed": {
+   "L_in": 100,
+   "L_out": 200,
+   "G": 16
+  },
+  "sample_N": 6600,
+  "update_full_N": 28800,
+  "update_lora_N": 19200,
+  "kl_ref_extra_N": 9600,
+  "sample_share_full": 0.1864406779661017,
+  "sample_share_lora": 0.2558139534883721,
+  "sft_same_tokens_N": 1800,
+  "rl_over_sft_full": 19.666666666666668,
+  "note": "FLOPs per prompt in units of N (W1's 2N forward, 6N forward+backward; W8's about 4N for LoRA). L_in, L_out, G are assumptions for a worked example, not measurements. FLOPs only: decoding is memory-bound (W3), so wall-clock shares differ — demo 2 measures them on this machine."
+ },
+ "networks": {
+  "ppo_rlhf": [
+   "policy",
+   "value function (critic)",
+   "reward model",
+   "reference (SFT) model"
+  ],
+  "dpo": [
+   "policy",
+   "reference model"
+  ],
+  "grpo": [
+   "policy"
+  ],
+  "grpo_with_kl": [
+   "policy",
+   "reference model"
+  ],
+  "note": "InstructGPT §3.5 for PPO (value function initialised from the reward model; per-token KL from the SFT model); DPO needs pi_ref's two log-probabilities per pair, which can be precomputed; TRL 1.13.0 GRPOConfig beta defaults to 0."
+ },
+ "lastweek": {
+  "supervision_rows": [
+   "the pretraining distribution",
+   "human demonstrations",
+   "human preference",
+   "a verifiable reward",
+   "retrieved knowledge",
+   "extra compute at test time"
+  ],
+  "ticked": [
+   0,
+   1
+  ],
+  "today": [
+   2,
+   3
+  ],
+  "arrives": [
+   "✓",
+   "✓",
+   "today",
+   "today",
+   "W12",
+   "W10"
+  ],
+  "note": "W1 p20's six entries, copied from w08-data.json; W8 p68 ticked the second — no new numbers"
+ },
+ "quotes": {
+  "instructgpt": {
+   "sft_prompts": "13k",
+   "rm_prompts": "33k",
+   "ppo_prompts": "31k",
+   "src": "Ouyang et al. 2022, §3.2; §3.5: value function initialised from the RM; per-token KL penalty from the SFT model"
+  },
+  "gao": {
+   "gold_rm": "6B",
+   "forms": "unnumbered displays in §1: R_bon(d) = d(α_bon − β_bon d); R_RL(d) = d(α_RL − β_RL log d)",
+   "kl": "§3.6: the KL penalty's effect on the gold score is akin to early stopping",
+   "goodhart": "§4.2: α term ↔ regressional, β term ↔ extremal",
+   "src": "Gao, Schulman & Hilton, ICML 2023"
+  },
+  "dpo": {
+   "beta_default": 0.1,
+   "src": "Rafailov et al. 2023, appendix"
+  },
+  "razin": {
+   "refusal_before": 74.4,
+   "refusal_after": 33.4,
+   "model": "Llama-3-8B-Instruct",
+   "src": "Razin et al., ICLR 2025, abstract"
+  },
+  "deepseekmath": {
+   "objective_eq": 3,
+   "kl_estimator_eq": 4,
+   "src": "Shao et al. 2024, §4.1; G and β values not read — not on slides"
+  },
+  "dapo": {
+   "eps_low": 0.2,
+   "eps_high": 0.28,
+   "G": 16,
+   "src": "Yu et al., NeurIPS 2025, §3.1, §4.1; KL removed §2.3; dynamic sampling §3.2"
+  },
+  "drgrpo": {
+   "terms": [
+    "response-level length bias",
+    "question-level difficulty bias"
+   ],
+   "kl": "β = 0 assumed throughout",
+   "src": "Liu et al., COLM 2025, §3.1–3.2"
+  },
+  "gspo": {
+   "ratio_eq": 7,
+   "kl": "omitted from the equations for brevity",
+   "src": "Zheng et al. 2025 (preprint), Eq. (5)–(7)"
+  },
+  "sapo": {
+   "advantage": "group-normalised, as GRPO",
+   "aggregation": "1/|y_i| per response",
+   "ratio": "token-level",
+   "gate": "σ(τ(ρ − 1))·4/τ, τ_neg > τ_pos",
+   "kl": "none",
+   "src": "Gao et al. 2025 (preprint), Eq. (2), (5), (6)"
+  },
+  "shao_spurious": {
+   "random_gain": 21.4,
+   "true_gain": 29.1,
+   "model": "Qwen2.5-Math-7B",
+   "bench": "MATH-500",
+   "code_reasoning": "65% → over 90%",
+   "src": "Shao et al., ICML 2026, abstract"
+  },
+  "countdown": {
+   "share": "1%",
+   "src": "Khalifa et al., EMNLP 2026, abstract"
+  },
+  "mukherjee": {
+   "updated": "5%–30%",
+   "src": "Mukherjee et al., NeurIPS 2025, abstract"
+  },
+  "scalerl": {
+   "gpu_hours": "more than 400,000",
+   "src": "Khatri et al., ICLR 2026 Oral, abstract"
+  }
+ }
+}
