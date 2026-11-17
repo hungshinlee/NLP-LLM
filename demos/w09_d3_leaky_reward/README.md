@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W9 · Demo 3 — a verifier with a hole in it: proxy and gold against $\sqrt{\mathrm{KL}}$ (slides p56–p57)
+# W9 · Demo 3 — a verifier with a hole in it: proxy and gold against $\sqrt{\mathrm{KL}}$ (slides p59–p60)
 
 A program that checks answers cannot be flattered. It can still be fooled, because it checks only what it checks. This demo builds the smallest case we could: demo 2's task and training loop, unchanged, with a verifier that has a hole in it on purpose.
 

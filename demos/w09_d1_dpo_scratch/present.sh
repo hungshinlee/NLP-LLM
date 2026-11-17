@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W9 demo 1（投影片 p31 前導頁、p32「Live: demo 1 (a)」、p33「Replay: demo 1 (b)」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
+# W9 demo 1（投影片 p33 前導頁、p34「Live: demo 1 (a)」、p35「Replay: demo 1 (b)」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
 #
 #   ./present.sh live                 課堂 (a)：dpo_live.py 的函數本體寫好之後跑——五個測試，Enter 一個（不載模型）
 #   ./present.sh live --ref           寫錯了：用參考實作 dpo_final.py

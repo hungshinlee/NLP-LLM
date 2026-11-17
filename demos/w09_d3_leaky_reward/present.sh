@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W9 demo 3（投影片 p56 前導頁、p57「Replay: demo 3」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
+# W9 demo 3（投影片 p59 前導頁、p60「Replay: demo 3」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
 #
 #   ./present.sh replay               課堂：讀 runs/rehearsal/summary.json，Enter 逐段印——漏洞版的起點與終點、兩個分數對 √KL、
 #                                     同一題訓練前後的回答、嚴格版的對照、硬幣獎勵的兩列（不載模型）

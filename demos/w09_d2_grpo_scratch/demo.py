@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W9 demo 2：手寫的 GRPO——advantage、恆等式、G 該設多少（投影片 p48 前導頁、p49 (a)、p50 (b)）。
+"""W9 demo 2：手寫的 GRPO——advantage、恆等式、G 該設多少（投影片 p51 前導頁、p52 (a)、p53 (b)）。
 
     ./present.sh test         不載模型：advantage 的性質、恆等式（亂數向量）、verifier、題目產生器
     ./present.sh inspect      課前：版本、模型與 adapter、chat template、停止記號、旁路的參數量、「B = 0 時輸出不變」
@@ -10,7 +10,7 @@
     ./present.sh rehearse     課前彩排（全套）：(a) 用參考實作跑一次 → (b) 八個 run（各一個子行程，做過的跳過）→ 彙整
                               --only G8 只跑一個；--force 重跑
     ./present.sh live         課堂 (a)：advantage_live.py 的五行寫好之後跑；一題 G 段回答，六列逐列印（--ref 用參考實作）
-    ./present.sh replay       課堂 (b)：讀 runs/rehearsal/summary.json，Enter 印 p50 的兩張表（不載模型）
+    ./present.sh replay       課堂 (b)：讀 runs/rehearsal/summary.json，Enter 印 p53 的兩張表（不載模型）
     ./present.sh replay-a     現場 (a) 失敗：印彩排的 identity.json（不載模型）
     ./present.sh tiny         亂數權重的小模型走一遍真的流程（不下載任何東西；寫到 runs/smoke/）
 

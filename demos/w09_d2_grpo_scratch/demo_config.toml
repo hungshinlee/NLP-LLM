@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W9 demo 2（投影片 p48 前導頁、p49「Live: demo 2 (a)」、p50「Replay: demo 2 (b)」）的設定
+# W9 demo 2（投影片 p51 前導頁、p52「Live: demo 2 (a)」、p53「Replay: demo 2 (b)」）的設定
 #
 # 改這個檔就能換模型、換題目難度、換 G 的網格與開關，不必動程式。
 
@@ -84,7 +84,7 @@ const_len = { G = 8, token_agg = "constant" }
 resample  = { G = 8, silent = "resample" }
 rank1     = { G = 8, rank = 1 }
 
-# p50 的兩張表各自用哪些 run。
+# p53 的兩張表各自用哪些 run。
 [tables]
 sweep = ["G2", "G4", "G8", "G16"]
 base = "G8"

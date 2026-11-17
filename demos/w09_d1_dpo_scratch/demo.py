@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W9 demo 1：DPO——幾行 loss、五個測試、一次真的訓練（投影片 p31 前導頁、p32 (a)、p33 (b)）。
+"""W9 demo 1：DPO——幾行 loss、五個測試、一次真的訓練（投影片 p33 前導頁、p34 (a)、p35 (b)）。
 
     ./present.sh live         課堂 (a)：dpo_live.py 的函數本體寫好之後跑；五個測試，Enter 一個（--ref 用參考實作；不載模型）
     ./present.sh replay-a     現場 (a) 失敗：印彩排的 tests.json

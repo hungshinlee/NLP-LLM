@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W9 demo 2 (a) 的參考實作（投影片 p49 的五行）。`./present.sh live --ref` 與彩排用這一份。"""
+"""W9 demo 2 (a) 的參考實作（投影片 p52 的五行）。`./present.sh live --ref` 與彩排用這一份。"""
 from __future__ import annotations
 
 import mlx.core as mx

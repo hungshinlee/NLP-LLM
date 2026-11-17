@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W9 demo 2（投影片 p48 前導頁、p49「Live: demo 2 (a)」、p50「Replay: demo 2 (b)」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
+# W9 demo 2（投影片 p51 前導頁、p52「Live: demo 2 (a)」、p53「Replay: demo 2 (b)」）課前與課堂的入口。一律離線（HF_HUB_OFFLINE=1）。
 #
 #   ./present.sh live                 課堂 (a)：advantage_live.py 的五行寫好之後跑——一題 G 段回答，六列逐列印，最後一列前停下來等 Enter
 #   ./present.sh live --ref           寫錯了：用參考實作 advantage_final.py

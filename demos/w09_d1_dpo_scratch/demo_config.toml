@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W9 demo 1（投影片 p31 前導頁、p32「Live: demo 1 (a)」、p33「Replay: demo 1 (b)」）的設定
+# W9 demo 1（投影片 p33 前導頁、p34「Live: demo 1 (a)」、p35「Replay: demo 1 (b)」）的設定
 #
 # 改這個檔就能換 β 的網格、規則的門檻、取樣幾段、訓練幾步，不必動程式。
 # 模型、adapter、旁路（rank、scale、接在哪些層）讀 demo 2 的 demo_config.toml（../w09_d2_grpo_scratch/）——三個 demo 同一個 π_ref。
@@ -74,7 +74,7 @@ runs = ["beta005", "beta01", "beta05"]
 rows = ["beta005", "beta01", "beta05"]
 # replay 逐步印曲線的那一個 run。
 curve = "beta01"
-# p33 最後一欄用哪一段文字的 bits per byte。
+# p35 最後一欄用哪一段文字的 bits per byte。
 ruler_key = "wikipedia"
 
 [eval]
