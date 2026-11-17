@@ -1,6 +1,6 @@
 <!-- 由 scripts/make_figs_w02.py 產生，勿手改；投影片用 {{< include assets/w02/moments.inline.qmd >}} 貼入 -->
 ```{=html}
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 428" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-moments" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="44" font-size="20" fill="#b45309" text-anchor="start" font-weight="700">1 · fit (once)</text><text x="20" y="68" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">before the model</text><rect x="210" y="20" width="120" height="60" rx="8" fill="#f8fafc" stroke="#1f2328" stroke-width="1.8"/><text x="270" y="46" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="700">corpus A</text><line x1="330" y1="50" x2="347" y2="50" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="350" y="20" width="200" height="60" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><text x="450" y="46" font-size="20" fill="#0b5cad" text-anchor="middle" font-weight="700">normalize · pre-tok</text><line x1="550" y1="50" x2="567" y2="50" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="570" y="20" width="230" height="60" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><text x="685" y="46" font-size="20" fill="#0b5cad" text-anchor="middle" font-weight="700">count pairs · merge</text><text x="685" y="69" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">repeat to size V (p30)</text><line x1="800" y1="50" x2="817" y2="50" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="820" y="20" width="250" height="60" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/><text x="945" y="46" font-size="20" fill="#b45309" text-anchor="middle" font-weight="700">merge list + vocabulary</text><text x="945" y="69" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">frozen from here on</text><text x="1090" y="58" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">no model yet</text><g class="fragment" data-fragment-index="1"><text x="20" y="158" font-size="20" fill="#0b5cad" text-anchor="start" font-weight="700">2 · train</text><text x="20" y="182" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">every step</text><rect x="210" y="134" width="120" height="60" rx="8" fill="#f8fafc" stroke="#1f2328" stroke-width="1.8"/><text x="270" y="160" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="700">corpus B</text><line x1="330" y1="164" x2="347" y2="164" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="350" y="134" width="150" height="60" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/><text x="425" y="160" font-size="20" fill="#b45309" text-anchor="middle" font-weight="700">encode</text><line x1="500" y1="164" x2="517" y2="164" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="520" y="134" width="70" height="60" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.8"/><text x="555" y="160" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="700">ids</text><line x1="590" y1="164" x2="607" y2="164" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="610" y="134" width="130" height="60" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><svg x="640.2" y="142.644" width="69.6" height="19.3562" viewBox="0 0 69.6 19.35625"><defs>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 428" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-moments" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="44" font-size="20" fill="#b45309" text-anchor="start" font-weight="700">1 · fit (once)</text><text x="20" y="68" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">before the model</text><rect x="210" y="20" width="120" height="60" rx="8" fill="#f8fafc" stroke="#1f2328" stroke-width="1.8"/><text x="270" y="46" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="700">corpus A</text><line x1="330" y1="50" x2="347" y2="50" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="350" y="20" width="200" height="60" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><text x="450" y="46" font-size="20" fill="#0b5cad" text-anchor="middle" font-weight="700">normalize · pre-tok</text><line x1="550" y1="50" x2="567" y2="50" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="570" y="20" width="230" height="60" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><text x="685" y="46" font-size="20" fill="#0b5cad" text-anchor="middle" font-weight="700">count pairs · merge</text><text x="685" y="69" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">repeat to size V (p31)</text><line x1="800" y1="50" x2="817" y2="50" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="820" y="20" width="250" height="60" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/><text x="945" y="46" font-size="20" fill="#b45309" text-anchor="middle" font-weight="700">merge list + vocabulary</text><text x="945" y="69" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">frozen from here on</text><text x="1090" y="58" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">no model yet</text><g class="fragment" data-fragment-index="1"><text x="20" y="158" font-size="20" fill="#0b5cad" text-anchor="start" font-weight="700">2 · train</text><text x="20" y="182" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">every step</text><rect x="210" y="134" width="120" height="60" rx="8" fill="#f8fafc" stroke="#1f2328" stroke-width="1.8"/><text x="270" y="160" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="700">corpus B</text><line x1="330" y1="164" x2="347" y2="164" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="350" y="134" width="150" height="60" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/><text x="425" y="160" font-size="20" fill="#b45309" text-anchor="middle" font-weight="700">encode</text><line x1="500" y1="164" x2="517" y2="164" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="520" y="134" width="70" height="60" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.8"/><text x="555" y="160" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="700">ids</text><line x1="590" y1="164" x2="607" y2="164" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="610" y="134" width="130" height="60" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><svg x="640.2" y="142.644" width="69.6" height="19.3562" viewBox="0 0 69.6 19.35625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t122-figure_1">
@@ -392,7 +392,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t124-text_1">
-   <!-- $\mathbf{E},\ \mathbf{W}_U:\ 2Vd\ \text{parameters, updated every step — only the rows these ids hit (p46, p58)}$ -->
+   <!-- $\mathbf{E},\ \mathbf{W}_U:\ 2Vd\ \text{parameters, updated every step — only the rows these ids hit (p47, p59)}$ -->
    <g style="fill: #1f2328" transform="translate(0 14.25) scale(0.19 -0.19)">
     <defs>
      <path id="t124-Cmb10-45" d="M 219 0 
@@ -1340,6 +1340,34 @@ L 1906 3547
 L 391 1281 
 z
 " transform="scale(0.015625)"/>
+     <path id="t124-Cmr10-37" d="M 1113 166 
+Q 1113 522 1175 862 
+Q 1238 1203 1358 1536 
+Q 1478 1869 1648 2189 
+Q 1819 2509 2022 2791 
+L 2606 3603 
+L 1875 3603 
+Q 738 3603 703 3572 
+Q 619 3469 544 2981 
+L 359 2981 
+L 569 4325 
+L 756 4325 
+L 756 4306 
+Q 756 4191 1147 4156 
+Q 1538 4122 1913 4122 
+L 3103 4122 
+L 3103 3956 
+Q 3103 3950 3101 3947 
+Q 3100 3944 3097 3938 
+L 2216 2700 
+Q 1891 2219 1809 1631 
+Q 1728 1044 1728 166 
+Q 1728 41 1637 -50 
+Q 1547 -141 1422 -141 
+Q 1294 -141 1203 -50 
+Q 1113 41 1113 166 
+z
+" transform="scale(0.015625)"/>
      <path id="t124-Cmr10-35" d="M 556 728 
 Q 622 541 758 387 
 Q 894 234 1080 148 
@@ -1393,32 +1421,52 @@ Q 625 716 597 720
 Q 569 725 556 728 
 z
 " transform="scale(0.015625)"/>
-     <path id="t124-Cmr10-37" d="M 1113 166 
-Q 1113 522 1175 862 
-Q 1238 1203 1358 1536 
-Q 1478 1869 1648 2189 
-Q 1819 2509 2022 2791 
-L 2606 3603 
-L 1875 3603 
-Q 738 3603 703 3572 
-Q 619 3469 544 2981 
-L 359 2981 
-L 569 4325 
-L 756 4325 
-L 756 4306 
-Q 756 4191 1147 4156 
-Q 1538 4122 1913 4122 
-L 3103 4122 
-L 3103 3956 
-Q 3103 3950 3101 3947 
-Q 3100 3944 3097 3938 
-L 2216 2700 
-Q 1891 2219 1809 1631 
-Q 1728 1044 1728 166 
-Q 1728 41 1637 -50 
-Q 1547 -141 1422 -141 
-Q 1294 -141 1203 -50 
-Q 1113 41 1113 166 
+     <path id="t124-Cmr10-39" d="M 722 269 
+Q 897 63 1331 63 
+Q 1575 63 1786 228 
+Q 1997 394 2113 634 
+Q 2247 906 2284 1214 
+Q 2322 1522 2322 1978 
+Q 2213 1719 2008 1553 
+Q 1803 1388 1538 1388 
+Q 1166 1388 873 1589 
+Q 581 1791 425 2120 
+Q 269 2450 269 2822 
+Q 269 3206 444 3539 
+Q 619 3872 928 4067 
+Q 1238 4263 1631 4263 
+Q 2019 4263 2280 4052 
+Q 2541 3841 2678 3508 
+Q 2816 3175 2870 2803 
+Q 2925 2431 2925 2069 
+Q 2925 1575 2744 1061 
+Q 2563 547 2202 203 
+Q 1841 -141 1331 -141 
+Q 953 -141 690 37 
+Q 428 216 428 575 
+Q 428 706 517 795 
+Q 606 884 738 884 
+Q 866 884 955 795 
+Q 1044 706 1044 575 
+Q 1044 450 953 359 
+Q 863 269 738 269 
+L 722 269 
+z
+M 1563 1556 
+Q 1825 1556 1992 1732 
+Q 2159 1909 2234 2171 
+Q 2309 2434 2309 2694 
+L 2309 2816 
+L 2309 2841 
+Q 2309 3322 2168 3700 
+Q 2028 4078 1631 4078 
+Q 1378 4078 1220 3967 
+Q 1063 3856 988 3672 
+Q 913 3488 892 3278 
+Q 872 3069 872 2822 
+Q 872 2459 906 2203 
+Q 941 1947 1094 1751 
+Q 1247 1556 1563 1556 
 z
 " transform="scale(0.015625)"/>
      <path id="t124-Cmr10-29" d="M 416 -1600 
@@ -1515,17 +1563,17 @@ z
     <use xlink:href="#t124-Cmr10-28" transform="translate(3320.689224 0)"/>
     <use xlink:href="#t124-Cmr10-70" transform="translate(3359.507583 0)"/>
     <use xlink:href="#t124-Cmr10-34" transform="translate(3415.025161 0)"/>
-    <use xlink:href="#t124-Cmr10-35" transform="translate(3465.025161 0)"/>
+    <use xlink:href="#t124-Cmr10-37" transform="translate(3465.025161 0)"/>
     <use xlink:href="#t124-Cmmi10-3b" transform="translate(3515.025161 0)"/>
     <use xlink:href="#t124-Cmr10-20" transform="translate(3542.710708 0)"/>
     <use xlink:href="#t124-Cmr10-70" transform="translate(3576.01149 0)"/>
     <use xlink:href="#t124-Cmr10-35" transform="translate(3631.529068 0)"/>
-    <use xlink:href="#t124-Cmr10-37" transform="translate(3681.529068 0)"/>
+    <use xlink:href="#t124-Cmr10-39" transform="translate(3681.529068 0)"/>
     <use xlink:href="#t124-Cmr10-29" transform="translate(3731.529068 0)"/>
    </g>
   </g>
  </g>
-</svg><text x="350" y="252" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">no decode in this moment</text></g><g class="fragment" data-fragment-index="2"><text x="20" y="286" font-size="20" fill="#15803d" text-anchor="start" font-weight="700">3 · infer</text><text x="20" y="310" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">every request</text><rect x="210" y="262" width="120" height="60" rx="8" fill="#f8fafc" stroke="#1f2328" stroke-width="1.8"/><text x="270" y="288" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="700">prompt</text><line x1="330" y1="292" x2="347" y2="292" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="350" y="262" width="150" height="60" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/><text x="425" y="288" font-size="20" fill="#b45309" text-anchor="middle" font-weight="700">encode</text><text x="425" y="311" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">+ template (p22)</text><line x1="500" y1="292" x2="517" y2="292" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="520" y="262" width="70" height="60" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.8"/><text x="555" y="288" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="700">ids</text><line x1="590" y1="292" x2="607" y2="292" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="610" y="262" width="130" height="60" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><svg x="668.4" y="269.644" width="13.2" height="19.3562" viewBox="0 0 13.2 19.35625"><defs>
+</svg><text x="350" y="252" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">no decode in this moment</text></g><g class="fragment" data-fragment-index="2"><text x="20" y="286" font-size="20" fill="#15803d" text-anchor="start" font-weight="700">3 · infer</text><text x="20" y="310" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">every request</text><rect x="210" y="262" width="120" height="60" rx="8" fill="#f8fafc" stroke="#1f2328" stroke-width="1.8"/><text x="270" y="288" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="700">prompt</text><line x1="330" y1="292" x2="347" y2="292" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="350" y="262" width="150" height="60" rx="8" fill="#fef3c7" stroke="#b45309" stroke-width="1.8"/><text x="425" y="288" font-size="20" fill="#b45309" text-anchor="middle" font-weight="700">encode</text><text x="425" y="311" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">+ template (p23)</text><line x1="500" y1="292" x2="517" y2="292" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="520" y="262" width="70" height="60" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.8"/><text x="555" y="288" font-size="20" fill="#1f2328" text-anchor="middle" font-weight="700">ids</text><line x1="590" y1="292" x2="607" y2="292" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="610" y="262" width="130" height="60" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><svg x="668.4" y="269.644" width="13.2" height="19.3562" viewBox="0 0 13.2 19.35625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t125-figure_1">
@@ -1687,7 +1735,7 @@ z
    </g>
   </g>
  </g>
-</svg><line x1="1040" y1="292" x2="1057" y2="292" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="1060" y="262" width="170" height="60" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/><text x="1145" y="288" font-size="20" fill="#15803d" text-anchor="middle" font-weight="700">pick id → decode</text><text x="1145" y="311" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">its only use (p27)</text><rect x="20" y="348" width="1200" height="74" rx="9" fill="#fff5f5" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="7 5"/><text x="40" y="378" font-size="20" fill="#dc2626" text-anchor="start" font-weight="700">frozen after moment 1; fitted against at every step of moment 2.</text><svg x="40" y="392" width="934.99" height="19" viewBox="0 0 934.99 19"><defs>
+</svg><line x1="1040" y1="292" x2="1057" y2="292" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-moments)"/><rect x="1060" y="262" width="170" height="60" rx="8" fill="#dcfce7" stroke="#15803d" stroke-width="1.8"/><text x="1145" y="288" font-size="20" fill="#15803d" text-anchor="middle" font-weight="700">pick id → decode</text><text x="1145" y="311" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">its only use (p28)</text><rect x="20" y="348" width="1200" height="74" rx="9" fill="#fff5f5" stroke="#dc2626" stroke-width="1.6" stroke-dasharray="7 5"/><text x="40" y="378" font-size="20" fill="#dc2626" text-anchor="start" font-weight="700">frozen after moment 1; fitted against at every step of moment 2.</text><svg x="40" y="392" width="934.99" height="19" viewBox="0 0 934.99 19"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t127-figure_1">
@@ -1701,7 +1749,7 @@ z
 " style="fill: none"/>
   </g>
   <g id="t127-text_1">
-   <!-- $\text{swap the tokenizer: every row of }\mathbf{E}\text{ and }\mathbf{W}_U\text{, and every weight between them, now points at the wrong ids (p67)}$ -->
+   <!-- $\text{swap the tokenizer: every row of }\mathbf{E}\text{ and }\mathbf{W}_U\text{, and every weight between them, now points at the wrong ids (p68)}$ -->
    <g style="fill: #dc2626" transform="translate(0 14.25) scale(0.19 -0.19)">
     <defs>
      <path id="t127-Cmr10-73" d="M 213 -19 
@@ -2707,6 +2755,58 @@ Q 997 450 1156 256
 Q 1316 63 1600 63 
 z
 " transform="scale(0.015625)"/>
+     <path id="t127-Cmr10-38" d="M 269 972 
+Q 269 1356 522 1651 
+Q 775 1947 1172 2144 
+L 934 2297 
+Q 716 2441 578 2680 
+Q 441 2919 441 3181 
+Q 441 3488 602 3734 
+Q 763 3981 1030 4122 
+Q 1297 4263 1600 4263 
+Q 1884 4263 2148 4147 
+Q 2413 4031 2583 3815 
+Q 2753 3600 2753 3303 
+Q 2753 3088 2651 2903 
+Q 2550 2719 2373 2572 
+Q 2197 2425 1997 2322 
+L 2363 2088 
+Q 2616 1922 2770 1653 
+Q 2925 1384 2925 1088 
+Q 2925 741 2739 456 
+Q 2553 172 2247 15 
+Q 1941 -141 1600 -141 
+Q 1269 -141 961 -6 
+Q 653 128 461 383 
+Q 269 638 269 972 
+z
+M 616 972 
+Q 616 719 755 509 
+Q 894 300 1122 181 
+Q 1350 63 1600 63 
+Q 1972 63 2275 280 
+Q 2578 497 2578 856 
+Q 2578 978 2529 1098 
+Q 2481 1219 2395 1317 
+Q 2309 1416 2203 1478 
+L 1344 2034 
+Q 1144 1928 976 1765 
+Q 809 1603 712 1400 
+Q 616 1197 616 972 
+z
+M 1056 2925 
+L 1831 2425 
+Q 2100 2581 2272 2803 
+Q 2444 3025 2444 3303 
+Q 2444 3519 2323 3698 
+Q 2203 3878 2009 3978 
+Q 1816 4078 1594 4078 
+Q 1400 4078 1203 4003 
+Q 1006 3928 878 3779 
+Q 750 3631 750 3431 
+Q 750 3131 1056 2925 
+z
+" transform="scale(0.015625)"/>
      <path id="t127-Cmr10-29" d="M 416 -1600 
 Q 359 -1600 359 -1544 
 Q 359 -1516 372 -1503 
@@ -2834,7 +2934,7 @@ z
     <use xlink:href="#t127-Cmr10-28" transform="translate(4687.252617 0)"/>
     <use xlink:href="#t127-Cmr10-70" transform="translate(4726.070977 0)"/>
     <use xlink:href="#t127-Cmr10-36" transform="translate(4781.588555 0)"/>
-    <use xlink:href="#t127-Cmr10-36" transform="translate(4831.588555 0)"/>
+    <use xlink:href="#t127-Cmr10-38" transform="translate(4831.588555 0)"/>
     <use xlink:href="#t127-Cmr10-29" transform="translate(4881.588555 0)"/>
    </g>
   </g>

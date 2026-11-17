@@ -2769,7 +2769,7 @@ z
    </g>
   </g>
  </g>
-</svg><text x="785" y="314" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">AdamW (p43), O(N) per step</text><path d="M650,282 C520,232 400,154 372,98" stroke="#b45309" stroke-width="1.6" fill="none" stroke-dasharray="5 4" marker-end="url(#ah-trainstep)"/><text x="120" y="248" font-size="19" fill="#b45309" text-anchor="start" font-weight="400">dashed: re-cast to bf16</text><rect x="1092" y="158" width="140" height="50" rx="7" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.4"/><svg x="1103.38" y="162.612" width="117.23" height="18.3884" viewBox="0 0 117.23 18.388437"><defs>
+</svg><text x="785" y="314" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">AdamW (p44), O(N) per step</text><path d="M650,282 C520,232 400,154 372,98" stroke="#b45309" stroke-width="1.6" fill="none" stroke-dasharray="5 4" marker-end="url(#ah-trainstep)"/><text x="120" y="248" font-size="19" fill="#b45309" text-anchor="start" font-weight="400">dashed: re-cast to bf16</text><rect x="1092" y="158" width="140" height="50" rx="7" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.4"/><svg x="1103.38" y="162.612" width="117.23" height="18.3884" viewBox="0 0 117.23 18.388437"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t216-figure_1">

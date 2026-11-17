@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W8 demo 3（投影片 p48 前導頁、p49「Replay: demo 3」）的設定：LoRA 與 full fine-tuning 各掃一組 learning rate。
+# W8 demo 3（投影片 p49 前導頁、p50「Replay: demo 3」）的設定：LoRA 與 full fine-tuning 各掃一組 learning rate。
 #
 # 改這個檔就能換 LR 網格、步數、batch、模型；程式不必動。資料與模型沿用 demo 1（同一個 Qwen3-1.7B-Base、同一份 Dolly 抽樣）。
 
@@ -18,7 +18,7 @@ revision = ""
 # ── 資料：demo 1 prepare 出來的三個切分（相對於這個資料夾）────────────────────────────────
 [data]
 dir = "../w08_d1_sft_base_to_assistant/data"
-# train.jsonl 1,000 筆訓練；valid.jsonl 100 筆是每 steps_per_eval 步量一次的曲線；test.jsonl 200 筆只在訓完量一次，是 p49 表格用的數字。
+# train.jsonl 1,000 筆訓練；valid.jsonl 100 筆是每 steps_per_eval 步量一次的曲線；test.jsonl 200 筆只在訓完量一次，是 p50 表格用的數字。
 
 # ── 兩組共用的訓練設定 ───────────────────────────────────────────
 [train]
@@ -35,7 +35,7 @@ mask_prompt = true
 # 程式會把每個 LR 轉成 bf16 之後的值一起記下來（inspect 與 run 都印）。
 optimizer = "adam"
 
-# LoRA：與 demo 1 的 adapter A 相同——rank 16、mlx 的 scale 20（= Hu 寫法的 α/r，所以 α = 320；p27 三種寫法）、dropout 0、
+# LoRA：與 demo 1 的 adapter A 相同——rank 16、mlx 的 scale 20（= Hu 寫法的 α/r，所以 α = 320；p28 三種寫法）、dropout 0、
 # 所有 block 的七個 Linear；**不接 embedding**（2026-11-08 使用者決定：mlx-lm 的 full FT 也只 unfreeze model.layers，
 # embedding／tied LM head／final norm 兩邊都凍住，這樣兩條曲線比的才是同一組矩陣）。
 [lora]
@@ -59,12 +59,12 @@ num_layers = -1
 full_lrs = [2e-6, 5e-6, 1.2e-5, 3e-5, 7e-5]
 lora_lrs = [1e-6, 2.4e-6, 6e-6, 1.4e-5, 3.5e-5]
 # 「固定 LR 的比較」：both = LoRA 跑在 full 的最佳 LR、full 也跑在 LoRA 的最佳 LR（網格裡已有的點直接用，沒有就各多一個 run）；
-# lora = 只做前者（p49 表格只要這一列）；none = 不做。
+# lora = 只做前者（p50 表格只要這一列）；none = 不做。
 cross = "both"
-# 「照抄」：一篇用 α = 2r 的論文把 full 的最佳 LR 直接給 LoRA——換成 mlx 的 lr 是 × 2 / scale（÷ 10）。多一個 LoRA run，p49 表格多一列。
+# 「照抄」：一篇用 α = 2r 的論文把 full 的最佳 LR 直接給 LoRA——換成 mlx 的 lr 是 × 2 / scale（÷ 10）。多一個 LoRA run，p50 表格多一列。
 # 第一輪彩排兩組的谷底在 mlx 單位下幾乎重合（5e-6 對 ≤ 6e-6），「同一個 lr 給兩邊」在這個單位下不吃虧；吃虧的是在另一種單位下照抄。
 peft_copy = true
-# 曲線上取哪個數當「這個 LR 的 loss」：final = 訓完在 test.jsonl 上量的 response loss（p49 的數字）；min = valid 曲線的最低點（只當對照印）。
+# 曲線上取哪個數當「這個 LR 的 loss」：final = 訓完在 test.jsonl 上量的 response loss（p50 的數字）；min = valid 曲線的最低點（只當對照印）。
 metric = "final"
 
 # ── probe：每個 LR 只跑幾十步，看會不會發散、一步幾秒 ───────────────

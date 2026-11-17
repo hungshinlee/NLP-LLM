@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W6 · Demo 1 — $N_{\text{total}}$, $N_{\text{active}}$ and $\rho$ from a `config.json` (slides p11–p12; the general formula is slide p14)
+# W6 · Demo 1 — $N_{\text{total}}$, $N_{\text{active}}$ and $\rho$ from a `config.json` (slides p12–p13; the general formula is slide p15)
 
 The compute ledger has said "memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$" since week 1 without a number. The numbers live in each model's `config.json` — and reading an MoE config is the ticket to reading any 2026 open-weight model. This demo extends W4's `count_params.py` with an MoE branch and runs it on four models: Gemma 4 26B-A4B (the model on the instructor's machine, W1 demo 1), Qwen3-30B-A3B, Qwen3-Next-80B-A3B and Kimi Linear 48B-A3B.
 
@@ -11,7 +11,7 @@ Two columns, in the spirit of W4's "exact vs. actual":
 
 | Column | Source | What it adds up |
 |---|---|---|
-| **config (formula)** | `config.json` only | attention: the four projections of W4 p19 (GQA/MHA; a low-rank formula for MLA); linear/SSM layers where a formula is known (Qwen3-Next's Gated DeltaNet); the expert side $n_{\text{moe}}\,(n_E\,3\,d\,d_E + 3\,d\,d_S + n_E d)$; dense FFN layers $3\,d\,d_{\text{ff}}$; norms; embeddings |
+| **config (formula)** | `config.json` only | attention: the four projections of W4 p20 (GQA/MHA; a low-rank formula for MLA); linear/SSM layers where a formula is known (Qwen3-Next's Gated DeltaNet); the expert side $n_{\text{moe}}\,(n_E\,3\,d\,d_E + 3\,d\,d_S + n_E d)$; dense FFN layers $3\,d\,d_{\text{ff}}$; norms; embeddings |
 | **file (safetensors)** | every shard's header | each tensor is classified by name and layer type (experts / shared expert / router / attention / linear / dense FFN / norms / embedding / head) and its shape multiplied out. Quantized MLX tensors are unpacked ($32/\text{bits}$ weights per `uint32`); scales and biases are listed but not counted. A multi-token-prediction module or a vision tower stored in the checkpoint is listed and **excluded** from $N$ |
 
 Then, with $E$ = the routed-expert total (the only block that depends on $k$):
@@ -50,7 +50,7 @@ Without `present.sh`: `python3 fetch_configs.py`, `python3 count_moe.py count`, 
 
 ## What you should see
 
-For Qwen3-30B-A3B the two columns agree to the parameter: $N_{\text{total}} = 30{,}532{,}122{,}624$, which is exactly the index's `total_size` of 61,064,245,248 bytes divided by 2 (bf16). With $n_E = 128$, $k = 8$: $N_{\text{active}} \approx 3.35$ B and $\rho \approx 11.0\%$ — well above $k/n_E = 6.25\%$, because the attention projections and the two embedding matrices (about 1.53 B, 46 % of $N_{\text{active}}$) are paid whatever $k$ is. That gap is the floor on slide p14.
+For Qwen3-30B-A3B the two columns agree to the parameter: $N_{\text{total}} = 30{,}532{,}122{,}624$, which is exactly the index's `total_size` of 61,064,245,248 bytes divided by 2 (bf16). With $n_E = 128$, $k = 8$: $N_{\text{active}} \approx 3.35$ B and $\rho \approx 11.0\%$ — well above $k/n_E = 6.25\%$, because the attention projections and the two embedding matrices (about 1.53 B, 46 % of $N_{\text{active}}$) are paid whatever $k$ is. That gap is the floor on slide p15.
 
 From the rehearsal record `runs/rehearsal/ratios.json` (2026-10-18, Apple M5 Max, macOS 27.0.1, Python 3.12.14; every number from the safetensors headers, and for each fetched model the shapes × dtype bytes equal the index's `total_size`):
 

@@ -560,8 +560,8 @@
     4,
     3
    ],
-   "p50": 0.639,
-   "p99": 2.534,
+   "p51": 0.639,
+   "p100": 2.534,
    "max": 3.516,
    "ratio_max_to_bound": 0.3108,
    "note": "gamma = 1 (initialization); |s| = |RMSNorm(q)·RMSNorm(k)|/sqrt(d_head) for Gaussian q, k; the bound sqrt(d_head) is a hard ceiling, the typical value is ~1"

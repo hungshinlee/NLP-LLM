@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W8 demo 4（投影片 p54 前導頁、p55「Live: demo 4 (a)」、p58「Replay: demo 4 (b)」）的設定：旁路留下了什麼——intruder dimensions 與遺忘。
+# W8 demo 4（投影片 p55 前導頁、p56「Live: demo 4 (a)」、p59「Replay: demo 4 (b)」）的設定：旁路留下了什麼——intruder dimensions 與遺忘。
 #
 # (a) 現場：對幾個矩陣做 SVD，數 demo 3 兩個「各自最佳 LR」的 run（LoRA、full fine-tuning）相對 base 各有幾個 intruder dimension（Shuttleworth et al. Def. 3.1）。
 # (b) 彩排預錄、課堂 replay：base／LoRA／full 三個模型在四段 held-out 原文上的 bits-per-byte（W1 demo 2 的那把尺）。
@@ -24,17 +24,17 @@ lora_dir = ""
 
 # ── (a) intruder dimensions ──────────────────────────────────────
 [intruders]
-# 課堂那張表（p55）要看的矩陣：某一層的 W^Q 與 down。**層是初稿**（28 層取中段），`./present.sh scan` 看完所有層再定；定了改這裡與 p55 的表頭。
+# 課堂那張表（p56）要看的矩陣：某一層的 W^Q 與 down。**層是初稿**（28 層取中段），`./present.sh scan` 看完所有層再定；定了改這裡與 p56 的表頭。
 # name 用 safetensors 的鍵名（self_attn.q_proj、self_attn.k_proj、self_attn.v_proj、self_attn.o_proj、mlp.gate_proj、mlp.up_proj、mlp.down_proj）。
 matrices = [
   { layer = 14, name = "self_attn.q_proj" },
   { layer = 14, name = "mlp.down_proj" },
 ]
 k = 10                                   # 微調後矩陣取奇異值最大的前 k 個方向（論文 Fig. 4 取 10）
-eps_table = [0.3, 0.5, 0.7]              # p55 表格的三欄；彩排後若全零或全滿就改
+eps_table = [0.3, 0.5, 0.7]              # p56 表格的三欄；彩排後若全零或全滿就改
 eps_sweep = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]   # 進 json 的完整掃描（論文 Fig. 4 的橫軸）
 dtype = "float64"                        # SVD 用的精度（numpy、CPU）；float32 快約 2 倍，scan 可以用 --float32
-# full fine-tuning 的 Δ = W' − W0 的「有效秩」：奇異值 ≥ 最大奇異值 × 這個比例的個數（對照 p53／Biderman 的「full FT 的擾動秩高 10–100 倍」；本課的操作型定義）。
+# full fine-tuning 的 Δ = W' − W0 的「有效秩」：奇異值 ≥ 最大奇異值 × 這個比例的個數（對照 p54／Biderman 的「full FT 的擾動秩高 10–100 倍」；本課的操作型定義）。
 delta_rank_ratio = 0.01
 
 [scan]
@@ -49,7 +49,7 @@ layers = []                              # 空 = 全部 28 層；可填 [0, 7, 1
 window_tokens = 2048
 max_bytes = 0                            # 每段最多取幾個 byte（0 = 整段；1 MiB 的 held-out 在 1.7B 上約一分鐘一個模型）
 batch_size = 1
-# 四段 held-out，照 p58 的四列。前兩段是 W1 demo 2 的城市清晨（英文版是 W2 demo 1 的），後兩段是 W7 demo 3 的 Wikipedia 抽樣與 FineWeb-Edu 自己的尾端。
+# 四段 held-out，照 p59 的四列。前兩段是 W1 demo 2 的城市清晨（英文版是 W2 demo 1 的），後兩段是 W7 demo 3 的 Wikipedia 抽樣與 FineWeb-Edu 自己的尾端。
 [[forgetting.texts]]
 key = "en_paragraph"
 label = "W1's paragraph (English)"
@@ -73,7 +73,7 @@ demo2 = "../w07_d2_scaling_fit"
 corpus = "edu"
 
 [forgetting.models]
-# 三欄的順序與 p58 相同。
+# 三欄的順序與 p59 相同。
 order = ["base", "lora", "full"]
 labels = { base = "base", lora = "after LoRA (demo 3 best)", full = "after full fine-tuning (demo 3 best)" }
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W8 demo 1：SFT 把 base 變成助理（投影片 p8 前導頁、p9 (a)、p15 (b)(c)、p42 (d)）。
+"""W8 demo 1：SFT 把 base 變成助理（投影片 p9 前導頁、p10 (a)、p16 (b)(c)、p43 (d)）。
 
     ./present.sh fetch        第一次：下載 Qwen3-1.7B-Base 與 databricks-dolly-15k，revision 寫進 ../versions.lock（要網路）
     ./present.sh prepare      從鎖定的 Dolly 檔抽 train／valid／test（純字元過濾 + seed，任何機器重跑都相同）→ data/、lora.yaml
@@ -15,7 +15,7 @@
     ./present.sh replay       現場失敗：印 (a) 的彩排紀錄（不載模型）
     ./present.sh fake ...     沒有 mlx 也能演練流程（輸出是假的，畫面會標明）
 
-訓練走 mlx-lm 自己的 `mlx_lm.lora`（tuner 的 train_model），不另寫訓練迴圈：投影片 p42 那一行指令與這裡跑的是同一組參數，
+訓練走 mlx-lm 自己的 `mlx_lm.lora`（tuner 的 train_model），不另寫訓練迴圈：投影片 p43 那一行指令與這裡跑的是同一組參數，
 程式會把等價的命令列印出來。差別只有一處：這個 commit（872ae88）的 CLI 畫面不印 peak memory（它只進 callback），
 所以這裡掛一個 callback 把 `peak_memory` 印成一欄並記進 json。
 
@@ -137,7 +137,7 @@ def cmd_prepare(args, cfg):
     cands = [(len(r["messages"][0]["content"]) + len(r["messages"][1]["content"]), i) for i, r in enumerate(train_recs) if not r["has_context"]]
     _, idx = min(cands)
     (DATA / "example.jsonl").write_text(json.dumps({"messages": train_recs[idx]["messages"], "train_index": idx}, ensure_ascii=False) + "\n", encoding="utf-8")
-    # mlx_lm.lora 的 lora_parameters 只能從 YAML 設定檔給（CLI 沒有 --rank）；p42 那一行的 -c lora_embed.yaml 就是這個檔
+    # mlx_lm.lora 的 lora_parameters 只能從 YAML 設定檔給（CLI 沒有 --rank）；p43 那一行的 -c lora_embed.yaml 就是這個檔
     write_yamls(cfg)
     meta = {"source": {"repo": d["repo"], "file": d["file"], "license": d["license"],   # 不寫日期：重跑要零 diff
                                       "revision": read_lock().get(dataset_lock_key(d["repo"])), "rows": len(rows)},
@@ -215,7 +215,7 @@ def lora_args(cfg: dict, path: str, mask_prompt: bool, iters: int, steps_per_rep
 
 
 def cli_line(cfg: dict, a: SimpleNamespace) -> str:
-    """等價的命令列（投影片 p42 那一行；lora_parameters 走 -c lora.yaml 或 lora_embed.yaml）。"""
+    """等價的命令列（投影片 p43 那一行；lora_parameters 走 -c lora.yaml 或 lora_embed.yaml）。"""
     emb = "keys" in (a.lora_parameters or {})
     parts = ["mlx_lm.lora", f"-c {yaml_for(emb).name}", f"--model {cfg['model']['repo']}", "--train", "--data data/",
              f"--fine-tune-type {a.fine_tune_type}", f"--num-layers {a.num_layers}"]
@@ -725,7 +725,7 @@ def cmd_inspect(args, cfg):
         has_tpl = bool(tc.get("chat_template")) or (mp / "chat_template.jinja").exists()
         print(f"  tokenizer_config.json: chat_template {'present' if has_tpl else 'ABSENT'}; eos_token {tc.get('eos_token')!r}; pad_token {tc.get('pad_token')!r}; bos_token {tc.get('bos_token')!r}")
         print(f"  generation_config.json: eos_token_id {gc.get('eos_token_id')}  → mlx-lm stops on these plus the tokenizer's eos; "
-              f"this demo adds {cfg['model'].get('extra_eos')} (p9: 'stopped by itself' is judged against that set)")
+              f"this demo adds {cfg['model'].get('extra_eos')} (p10: 'stopped by itself' is judged against that set)")
         N = safetensors_param_count(mp)
         if N:
             print(f"  safetensors: N = {N:,} parameters → 2N = {2 * N / 1e9:.2f} GB frozen bf16, 16N = {16 * N / 1e9:.2f} GB full fine-tuning")
@@ -786,7 +786,7 @@ def cmd_inspect(args, cfg):
                               "tokens_max": full_s[-1], "response_tokens_mean": round(sum(resp) / len(resp), 1), "response_share": round(sum(resp) / sum(full), 3),
                               "over_max_seq_length": sum(1 for x in full if x > int(cfg["train"]["max_seq_length"]))}
                 s = lens[name]
-                print(f"  {name:<6} tokens/example mean {s['tokens_mean']:>6}  median {s['tokens_median']:>4}  p90 {s['tokens_p90']:>4}  max {s['tokens_max']:>4}   "
+                print(f"  {name:<6} tokens/example mean {s['tokens_mean']:>6}  median {s['tokens_median']:>4}  p91 {s['tokens_p90']:>4}  max {s['tokens_max']:>4}   "
                       f"response share {100 * s['response_share']:.0f}%   over {cfg['train']['max_seq_length']}: {s['over_max_seq_length']}")
             t = cfg["train"]
             steps_per_epoch = lens["train"]["n"] / int(t["batch_size"])
@@ -800,7 +800,7 @@ def cmd_inspect(args, cfg):
     else:
         print(f"\n  {AMBER}data/ 還沒建：先跑 ./present.sh prepare{RESET}")
     t = cfg["train"]
-    print(f"\n  LoRA scale {t['scale']} with rank {t['rank']}: mlx writes y = Wx + scale·BAx, so scale = α/r → α = {float(t['scale']) * int(t['rank']):g} in Hu et al.'s notation (p27)")
+    print(f"\n  LoRA scale {t['scale']} with rank {t['rank']}: mlx writes y = Wx + scale·BAx, so scale = α/r → α = {float(t['scale']) * int(t['rank']):g} in Hu et al.'s notation (p28)")
     REHEARSAL.mkdir(parents=True, exist_ok=True)
     p = REHEARSAL / ("inspect.fake.json" if args.fake else "inspect.json")
     p.write_text(json.dumps(rec, ensure_ascii=False, indent=1, default=str) + "\n", encoding="utf-8")
