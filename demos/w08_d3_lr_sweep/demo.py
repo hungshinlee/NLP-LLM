@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W8 demo 3：LR 掃描——LoRA 與 full fine-tuning 各掃一組 learning rate（投影片 p49 前導頁、p50 replay）。
+"""W8 demo 3：LR 掃描——LoRA 與 full fine-tuning 各掃一組 learning rate（投影片 p51 前導頁、p52 replay）。
 
     ./present.sh inspect      課前：版本、模型與資料在不在、兩組 LR 網格（含轉成 bf16 之後的值、PEFT 單位的換算）、N 與 N_LoRA 對 w08-data.json
     ./present.sh probe        彩排前：每個候選 LR 只跑 30 步，看會不會發散、一步幾秒；印出整個掃描要多久 → runs/rehearsal/probe.json
     ./present.sh rehearse     彩排：base 的 held-out loss → 兩組各五個 run（每個 run 另開子行程）→ 固定 LR 的交叉 run → curves.json、best.json；
                               已完成的 run 會跳過（--redo 重跑）；--group lora|full 只做一組；--no-cross 不做交叉
-    ./present.sh replay       課堂：Enter 第一張圖（最終 loss 對 LR 的兩條曲線）→ Enter 第二張圖（固定 LR 對各自最佳的訓練曲線）→ p50 的表
+    ./present.sh replay       課堂：Enter 第一張圖（最終 loss 對 LR 的兩條曲線）→ Enter 第二張圖（固定 LR 對各自最佳的訓練曲線）→ p52 的表
     ./present.sh run ...      一個 run（rehearse 在子行程裡呼叫的就是它）：--group lora|full|base --lr 1.2e-5 [--iters 30 --probe]
     ./present.sh aggregate    只重算 curves.json／best.json（例如手動補跑了一個 run 之後）
     ./present.sh fake ...     沒有 mlx 也能演練流程（輸出是假的，畫面會標明）
@@ -398,7 +398,7 @@ def cmd_rehearse(args, cfg):
                 note(f"  skip {p.name}（已有；--redo 重跑）")
                 continue
             spawn_run(args, g, lr)
-    # 交叉：LoRA 跑在 full 的最佳 LR（p50 最後一列）；both 時 full 也跑在 LoRA 的最佳 LR
+    # 交叉：LoRA 跑在 full 的最佳 LR（p52 最後一列）；both 時 full 也跑在 LoRA 的最佳 LR
     if sw["cross"] != "none" and not args.no_cross and set(groups) == set(GROUPS):
         best = {g: best_of(cfg, g, args.fake) for g in GROUPS}
         pairs = [("lora", best["full"]["lr"])] + ([("full", best["lora"]["lr"])] if sw["cross"] == "both" else [])
@@ -613,7 +613,7 @@ def cmd_replay(args, cfg):
             print(f"  {s:>6}" + "".join(f"{dict((a, b) for a, b in q['val_curve']).get(s, float('nan')):>22.3f}" for q in curves.values()))
         finals = ["test %.3f" % q["test_loss"] for q in curves.values()]
         print(f"\n  {'':<6}" + "".join(f"{s:>22}" for s in finals) + f"   ← after {cv['iters']} steps, on test.jsonl")
-    pause("\n⏎ the table on p50 ")
+    pause("\n⏎ the table on p52 ")
     if cr:
         print(f"\n  {'':<40}{'full fine-tuning':>18}{'LoRA, r = 16':>16}{'ratio / gap':>14}")
         print(f"  {'best learning rate':<40}{fmt_lr(cr['lr_full_best']):>18}{fmt_lr(cr['lr_lora_best']):>16}{cv['ratio']['lr_lora_over_full_mlx_units']:>13.2g}×")

@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W8 · Demo 4 — what the side road left behind: intruder dimensions and forgetting (slides p55–p56, p59)
+# W8 · Demo 4 — what the side road left behind: intruder dimensions and forgetting (slides p58–p59, p62)
 
 Demo 3 compared two fine-tuning methods by their scores. This demo looks at the weights they produced, and at what they cost.
 
@@ -43,7 +43,7 @@ Expectations stated before running: (a) LoRA should show intruders and full fine
 | Wikipedia sample (124 windows, 253k tokens) | 1,056,160 | 0.8051 | 0.8118 (+0.0067) | 0.8121 (+0.0070) |
 | FineWeb-Edu tail (108 windows, 220k tokens) | 1,053,404 | 0.7154 | 0.7208 (+0.0054) | 0.7203 (+0.0049) |
 
-The fine-tuning target itself (demo 3, test response loss, nats per token): 2.717 → 1.924 → 1.934. Of the three expectations stated above, the first holds on the two megabyte-sized texts (+0.005–0.007 bits per byte, under 1 %) while the two short paragraphs move within noise; the second — full fine-tuning forgetting more — does not show (differences ≤ 0.0005: both runs moved the weights very little, see (a)); the Chinese paragraph barely moves, and the row that rises most is the English Wikipedia sample. On this ruler, this SFT cost almost nothing; it is also only the first of three ways to measure forgetting (slide p61). Timing on an M5 Max: 45 / 63 / 53 s per model, 0.3 s to load, peak 5.9–6.2 GB.
+The fine-tuning target itself (demo 3, test response loss, nats per token): 2.717 → 1.924 → 1.934. Of the three expectations stated above, the first holds on the two megabyte-sized texts (+0.005–0.007 bits per byte, under 1 %) while the two short paragraphs move within noise; the second — full fine-tuning forgetting more — does not show (differences ≤ 0.0005: both runs moved the weights very little, see (a)); the Chinese paragraph barely moves, and the row that rises most is the English Wikipedia sample. On this ruler, this SFT cost almost nothing; it is also only the first of three ways to measure forgetting (slide p64). Timing on an M5 Max: 45 / 63 / 53 s per model, 0.3 s to load, peak 5.9–6.2 GB.
 
 ## Requirements
 

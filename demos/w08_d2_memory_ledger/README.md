@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W8 · Demo 2 — the memory ledger: formula against measured peak (slides p33–p34, p42)
+# W8 · Demo 2 — the memory ledger: formula against measured peak (slides p34–p35, p43)
 
 How much memory does it take to fine-tune an 8B model — all of it, with LoRA, with QLoRA? Part (a) answers with arithmetic from one `config.json`. Part (b) runs the three settings on an Apple M5 Max (64 GB) and puts the measured peak next to the formula.
 
@@ -9,7 +9,7 @@ How much memory does it take to fine-tune an 8B model — all of it, with LoRA, 
 
 ## Two ledgers
 
-The slides' ledger (W4, and p26 this week) is the usual mixed-precision one: a trainable parameter costs 16 bytes — the bf16 weight 2, its gradient 2, an fp32 master copy 4, and Adam's two moments 4 + 4 — and a frozen one costs 2.
+The slides' ledger (W4, and p27 this week) is the usual mixed-precision one: a trainable parameter costs 16 bytes — the bf16 weight 2, its gradient 2, an fp32 master copy 4, and Adam's two moments 4 + 4 — and a frozen one costs 2.
 
 mlx does not store it that way (read from `mlx/optimizers/optimizers.py` and `mlx_lm/tuner/lora.py` at the pinned versions, and measured by the program after every run):
 

@@ -56,7 +56,7 @@ format:
 {{< include assets/w09/last-week.inline.qmd >}}
 
 ::: {.footer}
-W1 p20 · W8 p14, p17, p69, p73 · w09-data.json lastweek — no new numbers
+W1 p20 · W8 p15, p18, p72, p76 · w09-data.json lastweek — no new numbers
 :::
 
 ## The problem this week handles, in one picture
@@ -97,7 +97,7 @@ Outline W9 · Learning objectives 1–8
 - **(b)** is parts 4–5: a program as the examiner, and what a program does not check
 
 ::: {.footer}
-W8 p73 · parts 1–3 answer (a) · parts 4–5 answer (b)
+W8 p76 · parts 1–3 answer (a) · parts 4–5 answer (b)
 :::
 
 ## Notation for today: one model, four names
@@ -135,7 +135,7 @@ most papers write $\sigma$ for the group's deviation and $r_{i,t}$ for the ratio
 - where the metaphor stops: it suggests **one correct answer** exists — for writing and conversation it does not, and people disagree; and at inference **the examiner is not in the room**
 
 ::: {.footer}
-W8 p12: the library and one shelf · the metaphor returns at p20, p34, p39, p53 · W10, W13, W14
+W8 p13: the library and one shelf · the metaphor returns at p20, p34, p39, p53 · W10, W13, W14
 :::
 
 ## Preference data: one prompt, two answers, one choice
@@ -213,7 +213,7 @@ Ouyang et al. 2022, §3 · Christiano et al. 2017 · Stiennon et al. 2020 · JM3
 {{< include assets/w09/rlhf.inline.qmd >}}
 
 ::: {.footer}
-Ouyang et al. 2022, §3.2, §3.5 · W8 p31: training and use differ (also W5, W6)
+Ouyang et al. 2022, §3.2, §3.5 · W8 p32: training and use differ (also W5, W6)
 :::
 
 # A score cannot be differentiated. How does the model follow it? {.section-title}
@@ -287,7 +287,7 @@ $$\max_{\pi}\;\; \mathbb{E}_{y \sim \pi(\cdot \mid x)}\big[r(x, y)\big] \;-\; \b
 - with a **program** as the examiner this reason disappears, and so, often, does the term (p46) — but the rope does a second job: last week, forgetting grew with the KL from the base model
 
 ::: {.footer}
-Misconception 2: "the KL term is just a regulariser — optional" · W8 p63: Shenfeld et al.
+Misconception 2: "the KL term is just a regulariser — optional" · W8 p66: Shenfeld et al.
 :::
 
 ## The closed form, in one line: $\pi^{*} \propto \pi_{\text{ref}}\,e^{r/\beta}$
@@ -307,7 +307,7 @@ The best policy is $\pi_{\text{ref}}$ **re-weighted**. An answer $\pi_{\text{ref
 :::
 
 ::: {.footer}
-Misconception 3: "preference training teaches new knowledge" · W8 p18 · Kirk et al., ICLR 2024
+Misconception 3: "preference training teaches new knowledge" · W8 p19 · Kirk et al., ICLR 2024
 :::
 
 ## PPO for a language model: a ratio, a clip, a critic
@@ -919,7 +919,7 @@ and $2N\,G\,(L_{\text{in}} + L_{\text{out}})$ more if a KL to $\pi_{\text{ref}}$
 {{< include assets/w09/compute.inline.qmd >}}
 
 ::: {.footer}
-this course's bookkeeping, not a paper's claim · W8 p27: LoRA $\approx 4N$ · W3 p36 · W11
+this course's bookkeeping, not a paper's claim · W8 p28: LoRA $\approx 4N$ · W3 p36 · W11
 :::
 
 ## One score per episode: three hooks from W8, closed
@@ -937,7 +937,7 @@ A signal this thin cannot carry much — which is why it changes little, and for
 :::
 
 ::: {.footer}
-W8 Misconceptions 8 and 11 return here · W8 p63 · ISO (Zhu et al. 2026, a preprint)
+W8 Misconceptions 8 and 11 return here · W8 p66 · ISO (Zhu et al. 2026, a preprint)
 :::
 
 ## How many networks at once — and how large should $G$ be?
@@ -1010,7 +1010,7 @@ Four entries ticked. The fifth and sixth — retrieved knowledge, compute at tes
 :::
 
 ::: {.footer}
-W1 p19–p20 · W8 p69 · the ledger, next slide
+W1 p19–p20 · W8 p72 · the ledger, next slide
 :::
 
 ## The ledger, week 9: one new row
@@ -1029,7 +1029,7 @@ W1 p19–p20 · W8 p69 · the ledger, next slide
 : {tbl-colwidths="[17,50,16,17]"}
 
 ::: {.footer}
-Same master as W8 p70 · one row added, two merged · $\alpha$, $\beta$ (W7), $\rho$ (W6) are not today's
+Same master as W8 p73 · one row added, two merged · $\alpha$, $\beta$ (W7), $\rho$ (W6) are not today's
 :::
 
 ## Thirteen things this week said no to (1 of 2)

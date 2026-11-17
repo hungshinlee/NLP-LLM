@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W8 demo 2（投影片 p33 前導頁、p34「Live: demo 2 (a)」、p42「Replay: demo 2 (b)」）的設定：記憶體的帳，公式對實測。
+# W8 demo 2（投影片 p34 前導頁、p35「Live: demo 2 (a)」、p43「Replay: demo 2 (b)」）的設定：記憶體的帳，公式對實測。
 #
 # 改這個檔就能換模型、rank、序列長度、步數；程式不必動。
 
@@ -76,7 +76,7 @@ note = "config.json and the Hub API's safetensors total, Qwen/Qwen3-1.7B-Base @ 
 iters = 20
 steps_per_report = 5
 batch_size = 1
-# 兩種序列長度（token）。p42 表頭的 short／long 就是這兩個數。
+# 兩種序列長度（token）。p43 表頭的 short／long 就是這兩個數。
 seq_lengths = [256, 1024]
 # 哪一種長度再多跑一次 --grad-checkpoint（mlx-lm：每個 block 用 mx.checkpoint 包起來，前向不留 block 內部的活化、反向時重算）
 grad_checkpoint_at = [1024]

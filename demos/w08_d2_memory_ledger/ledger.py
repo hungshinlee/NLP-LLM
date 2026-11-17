@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W8 demo 2 (a)：三個數字——full fine-tuning、LoRA、QLoRA 的記憶體帳，從一份 config.json 算出來（投影片 p33 前導頁、p34）。
+"""W8 demo 2 (a)：三個數字——full fine-tuning、LoRA、QLoRA 的記憶體帳，從一份 config.json 算出來（投影片 p34 前導頁、p35）。
 
     ./present.sh count      課前：config.json 從哪裡讀到的、逐矩陣數 N、對 safetensors 的參數總數
     ./present.sh table      課堂：先印 N 與 N_LoRA，Enter 之後印四列（bytes/參數、GB、進不進得了 64 GB 與 16 GB）
@@ -14,7 +14,7 @@
 GB 一律是 10^9 bytes。所有數字都**不含活化**與框架開銷——那是 (b) 量的東西。
 
 兩本帳：
-  教科書的混合精度帳（p26）：一個可訓練參數 16 bytes = bf16 權重 2 + 梯度 2 + fp32 master 4 + 兩個動量各 4；凍住的只剩權重的 2。
+  教科書的混合精度帳（p27）：一個可訓練參數 16 bytes = bf16 權重 2 + 梯度 2 + fp32 master 4 + 兩個動量各 4；凍住的只剩權重的 2。
   mlx 實際存的（讀 mlx/optimizers 的 Adam 與 mlx-lm 的 LoRALinear）：Adam 的 m、v 用 zeros_like(parameter)，dtype 跟參數；沒有 fp32 master。
       bf16 的可訓練參數 = 2 + 2 + 2 + 2 = 8 bytes；LoRA 的 A、B 是 float32 → 4 + 4 + 4 + 4 = 16 bytes（剛好也是 16，但拆法不同）。
       mlx-lm 的 --fine-tune-type full 只 unfreeze model.layers：embedding、LM head、最後的 norm 維持凍住（2 bytes）。
@@ -135,7 +135,7 @@ def n_lora(s: dict, r: int, modules=GATES, layers: int | None = None) -> int:
 
 
 def ledger(s: dict, r: int = 16, modules=GATES, layers: int | None = None) -> dict:
-    """教科書的混合精度帳（p26）：可訓練 16、凍住 2。"""
+    """教科書的混合精度帳（p27）：可訓練 16、凍住 2。"""
     c = count(s)
     N, NL = c["N"], n_lora(s, r, modules, layers)
     ad = 16 * NL / GB

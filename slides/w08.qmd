@@ -53,7 +53,13 @@ format:
 
 ## Last week, in one picture
 
-{{< include assets/w08/last-week.inline.qmd >}}
+![](assets/w08/last-week.svg){width="100%"}
+
+::: {.fragment}
+::: {.claim}
+**Today opens the second entry**: 1,000 (LIMA) to 939,344 (Tülu 3) written answers — and the 128 GB has to fit into 64, or into 16.
+:::
+:::
 
 ::: {.footer}
 W1 p20 · W4 p46 · W7 p63, p66 · w08-data.json lastweek — no new numbers
@@ -63,8 +69,14 @@ W1 p20 · W4 p46 · W7 p63, p66 · w08-data.json lastweek — no new numbers
 
 {{< include assets/w08/problem-map.inline.qmd >}}
 
+::: {.fragment fragment-index=3}
+::: {.claim}
+SFT teaches **the format** of an answer more than the facts in it; LoRA saves **the optimizer's bytes**, not the weights' — and two methods compared **at one learning rate** were not compared.
+:::
+:::
+
 ::: {.footer}
-board: p14, p25–p28, p38, p45 · live: p10, p34, p43, p56 · replay: p16, p42, p50, p59
+board: p15, p26–p29, p39, p47 · live: p10, p35, p44, p59 · replay: p17, p43, p52, p62
 :::
 
 ## What you should be able to do by the end of today
@@ -92,12 +104,12 @@ Outline W8 · Learning objectives 1–8
 **(b)** Show the base model a question, with no instructions. **What does it write?**
 :::
 
-- Keep your two lines: p68 comes back to both
+- Keep your two lines: p71 comes back to both
 - **(a)** is the ledger's optimizer row (W4 p46): $16 \times 8 \times 10^9$ bytes, before a single activation
 - **(b)** is demo 1, two slides from now
 
 ::: {.footer}
-W4 p46 · W1 p20 · Misconception 2 (p18): "SFT teaches the model new knowledge"
+W4 p46 · W1 p20 · Misconception 2 (p19): "SFT teaches the model new knowledge"
 :::
 
 ## Notation for today: one frozen matrix, one small one
@@ -154,14 +166,22 @@ Demo 1 (a) · live, adapter C rehearsed 2026-11-08 · `w08_d1_sft_base_to_assist
 
 ## The library and one shelf: a metaphor for the first half
 
-- Pre-training: the model has read **the whole library** — forum threads, textbooks, exam papers, chat logs — and learned the distribution of every kind of document in it (W1: a compressor; W7: it compresses what it is fed)
-- Supervised fine-tuning (SFT) adds no books. It **fixes where sampling starts** — on the shelf "an assistant answering a user" — and teaches that shelf's **layout**: who speaks, when to stop
-- It explains three things today: why a thousand examples are enough (p17); why teaching new facts this way backfires (p18); why other shelves get worse (p59)
-- **Where it breaks**: the weights *do* change, and some of what SFT teaches was never on any shelf (a new control token); "superficial" is a hypothesis, not a law (p17); and the person pointing stands outside the library — the answers were written by someone else (W9)
+{{< include assets/w08/shelf.inline.qmd >}}
 
 ::: {.claim}
 SFT does not add books. It **points at a shelf the library already has** and teaches that shelf's layout.
 :::
+
+::: {.footer}
+W1 (the compressor) · W7 (what it is fed) · the bars are a sketch, not a measurement
+:::
+
+## The library and one shelf: what it explains, where it breaks
+
+- Pre-training: the model has read **the whole library** — forum threads, textbooks, exam papers, chat logs — and learned the distribution of every kind of document in it (W1: a compressor; W7: it compresses what it is fed)
+- Supervised fine-tuning (SFT) adds no books. It **fixes where sampling starts** — on the shelf "an assistant answering a user" — and teaches that shelf's **layout**: who speaks, when to stop
+- It explains three things today: why a thousand examples are enough (p18); why teaching new facts this way backfires (p19); why other shelves get worse (p62)
+- **Where it breaks**: the weights *do* change, and some of what SFT teaches was never on any shelf (a new control token); "superficial" is a hypothesis, not a law (p18); and the person pointing stands outside the library — the answers were written by someone else (W9)
 
 ::: {.footer}
 W1 (the compressor) · W7 (what it is fed) · Zhou et al. 2023 §2
@@ -195,6 +215,12 @@ Misconception 1: "only the assistant's tokens should carry the loss" · mlx-lm 8
 ## Packing: three examples in one row — then keep them apart
 
 {{< include assets/w08/packing.inline.qmd >}}
+
+::: {.fragment fragment-index=2}
+::: {.claim}
+**mlx-lm does not pack**: it sorts by length and pads each batch — demo 1 pays for padding and never risks contamination. Packing is a speed choice, not a correctness one.
+:::
+:::
 
 ::: {.footer}
 Krell et al. (a preprint) · Kundu et al. (a preprint) · mlx-lm 872ae88 `iterate_batches`
@@ -257,8 +283,8 @@ Misconception 2: "SFT teaches the model new knowledge" · W7 · W9 · W12
 
 - W4's **residual stream** is a bus: every block reads from it and adds back to it. Each read ($\mathbf{W}^Q, \mathbf{W}^K, \mathbf{W}^V$, gate, up) and each write ($\mathbf{W}^O$, down) passes a matrix — **a gate**
 - LoRA: beside each gate, a **narrow side road** — squeeze to $r$ dimensions, widen back — whose output is added to the gate's. The gates themselves are **frozen**
-- it explains: the trunk does not get smaller (p32); the road exists in training and can vanish in use (p31); one trunk, many roads (p31, p65); the roads join a **shared** bus, so corrections from different tasks live in one coordinate system (p66)
-- **Where it breaks**: roads do interfere (p53, p65); "narrow" is rank, not size — the update can be large; and a road is a weight, shared by every token that passes
+- it explains: the trunk does not get smaller (p33); the road exists in training and can vanish in use (p32); one trunk, many roads (p32, p68); the roads join a **shared** bus, so corrections from different tasks live in one coordinate system (p69)
+- **Where it breaks**: roads do interfere (p56, p68); "narrow" is rank, not size — the update can be large; and a road is a weight, shared by every token that passes
 
 ::: {.claim}
 Freeze the trunk. Learn only **a narrow road beside each gate**.
@@ -277,11 +303,11 @@ W4 (the residual stream, as a bus) · Appendix E 3: "W8: a low-rank bypass" · H
 | **The question** | How do you adapt a very large pre-trained model to a task without training — and storing — a full copy of its weights for every task? |
 | **The idea** | Freeze $\mathbf{W}_0$. Learn a correction $\Delta\mathbf{W} = s\,\mathbf{B}\mathbf{A}$ of rank $r$ beside it, starting from $\mathbf{B} = \mathbf{0}$. After training, fold it into $\mathbf{W}_0$. |
 | **What it added** | On GPT-3 175B: **$10{,}000\times$** fewer trainable parameters, **$3\times$** less GPU memory, **no additional inference latency** (the abstract). Its main experiments adapted only $\mathbf{W}_q$ and $\mathbf{W}_v$. |
-| **What it leaves open** | Where the roads go (p23–p24); what is saved and what is not (p26–p27); what "the same learning rate" means (p28); whether the result is the same model (p45 on). |
+| **What it leaves open** | Where the roads go (p24–p25); what is saved and what is not (p27–p28); what "the same learning rate" means (p29); whether the result is the same model (p47 on). |
 :::
 
 ::: {.footer}
-Hu et al. 2022, abstract, §4.1, §5.1 · mechanism: p22–p28 · JM3 §8.2
+Hu et al. 2022, abstract, §4.1, §5.1 · mechanism: p23–p29 · JM3 §8.2
 :::
 
 ## LoRA, with the edges labelled
@@ -380,7 +406,7 @@ Kalajdzievski 2023 (no venue found) · mlx-lm 872ae88 `lora_parameters` · LoRA+
 - theory, in one setting: LoRA training converges to a low-rank, small-norm global minimum — or **fails loudly** at a high-rank, large-norm one; zero initialisation and weight decay favour the first (Kim et al., ICML 2025 Oral)
 
 ::: {.claim}
-The update a task needs usually lives in a small subspace. **When it does not** — new code, new mathematics, a new language — the road is too narrow (p54, p60).
+The update a task needs usually lives in a small subspace. **When it does not** — new code, new mathematics, a new language — the road is too narrow (p57, p63).
 :::
 
 ::: {.footer}
@@ -396,12 +422,18 @@ SGNS: low rank **training produced**. MLA: low rank to shrink **a state**. LoRA:
 :::
 
 ::: {.footer}
-W1 p48 · W3 p33 (*used as a design*), p35 · GaLore, ICML 2024 Oral — named only
+W1 p48 · W3 p33 (*used as a design*), p36 · GaLore, ICML 2024 Oral — named only
 :::
 
 ## Training and using are two different pictures
 
 {{< include assets/w08/train-use.inline.qmd >}}
+
+::: {.fragment fragment-index=3}
+::: {.claim}
+**In neither picture did the model get smaller.** LoRA shrank the memory of *training*; serving it cheaply is W11's business.
+:::
+:::
 
 ::: {.footer}
 Hu et al. abstract: "no additional inference latency" · `mlx_lm.fuse`
@@ -431,8 +463,8 @@ Misconception 4: "LoRA is model compression" · W6 p65, Misconception 1, returns
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | The ledger's 128 GB was a nominal 8B at 16 bytes. Put a real model's shape into p26's formulas: full fine-tuning, LoRA and QLoRA (LoRA over a 4-bit copy, p36), against this machine's 64 GB and the project's 16 GB. |
-| **What runs** | A terminal; pure standard library. It reads `Qwen/Qwen3-8B`'s `config.json`, counts $N$ matrix by matrix, counts $N_{\text{LoRA}}$ for $r = 16$ on all seven gates of every block, and prints $M_{\text{full}}$, $M_{\text{LoRA}}$, $M_{\text{QLoRA}}$ (two ways of storing 4 bits) and the FLOPs per token, $6N$ against $\approx 4N$. Part (b), after the next section, is the measured peak (p42). |
+| **Why** | The ledger's 128 GB was a nominal 8B at 16 bytes. Put a real model's shape into p27's formulas: full fine-tuning, LoRA and QLoRA (LoRA over a 4-bit copy, p37), against this machine's 64 GB and the project's 16 GB. |
+| **What runs** | A terminal; pure standard library. It reads `Qwen/Qwen3-8B`'s `config.json`, counts $N$ matrix by matrix, counts $N_{\text{LoRA}}$ for $r = 16$ on all seven gates of every block, and prints $M_{\text{full}}$, $M_{\text{LoRA}}$, $M_{\text{QLoRA}}$ (two ways of storing 4 bits) and the FLOPs per token, $6N$ against $\approx 4N$. Part (b), after the next section, is the measured peak (p43). |
 | **Watch for** | Before the Enter key: does a bf16 LoRA of an 8B model fit in 16 GB? Which term of $M_{\text{LoRA}}$ is the big one — the frozen weights or the adapter? |
 :::
 
@@ -452,7 +484,7 @@ Demo 2 · `demos/w08_d2_memory_ledger` · (a) standard library only · rehearsed
 : {tbl-colwidths="[32,26,14,14,14]"}
 
 - $N =$ __________ $\quad N_{\text{LoRA}} =$ __________ $\quad$ FLOPs per token: $6N$ against __________
-- all bytes before a single activation; $b_{\text{q}}$: the bytes per parameter of the 4-bit copy (p38, p40)
+- all bytes before a single activation; $b_{\text{q}}$: the bytes per parameter of the 4-bit copy (p39, p41)
 
 ::: {.footer}
 Demo 2 (a) · live · `w08_d2_memory_ledger/` · GB = $10^9$ bytes
@@ -469,7 +501,7 @@ Demo 2 (a) · live · `w08_d2_memory_ledger/` · GB = $10^9$ bytes
 | **The question** | The frozen weights are only ever read, never updated. Can they be stored in 4 bits, with the adapters trained on top? |
 | **The idea** | Three parts: a 4-bit type built for normally distributed weights (4-bit NormalFloat, **NF4**); quantizing the quantization constants too (**double quantization**); and **paged optimizers** for memory spikes. Every matmul dequantizes to bf16 first; only the adapters get gradients. |
 | **What it added** | A **65B** model fine-tuned on **a single 48 GB GPU** (the abstract) — the reason fine-tuning moved onto one card. |
-| **What it leaves open** | What 4 bits per weight look like (p37–p38); what precision the arithmetic is in (p39); what "QLoRA" means on a Mac (p40). |
+| **What it leaves open** | What 4 bits per weight look like (p38–p39); what precision the arithmetic is in (p40); what "QLoRA" means on a Mac (p41). |
 :::
 
 ::: {.footer}
@@ -536,7 +568,7 @@ $$\mathbf{W}' = \mathbf{m}\;\frac{\mathbf{W}_0 + \mathbf{B}\mathbf{A}}{\Vert \ma
 - $\Vert\cdot\Vert_c$: the norm of each **column**; $\mathbf{m} \in \mathbb{R}^{1 \times d_{\text{in}}}$: one trainable magnitude per column, starting at $\Vert\mathbf{W}_0\Vert_c$
 - the **direction** is updated by LoRA; the **magnitude** by $\mathbf{m}$ — two things full fine-tuning changes together
 - in mlx-lm: `--fine-tune-type dora`
-- one of the nine variants in Lee et al.: once each has its own tuned learning rate, within 1–2% of plain LoRA (p46)
+- one of the nine variants in Lee et al.: once each has its own tuned learning rate, within 1–2% of plain LoRA (p48)
 
 ::: {.footer}
 Liu et al., *DoRA: Weight-Decomposed Low-Rank Adaptation*, ICML 2024 Oral, Eq. (5)
@@ -588,6 +620,18 @@ mlx_lm.lora -c lora_embed.yaml --model Qwen/Qwen3-1.7B-Base \
 Demo 1 (d) · live · mlx-lm 872ae88 · rehearsed 2026-11-08 · peak memory from the training callback
 :::
 
+## Half-time: it can be trained — what did the cheap run buy?
+
+![](assets/w08/half-time.svg){width="100%"}
+
+::: {.claim}
+So far: **what is learned, and how to afford it.** From here: is the cheap model the same model — and what did it cost?
+:::
+
+::: {.footer}
+p5's route · first half: p11–p44 · second half: p46–p69
+:::
+
 # A tenth of the memory: is it the same model? {.section-title}
 
 ## Comparing two methods: was the learning rate tuned for each?
@@ -625,7 +669,7 @@ Misconception 6: "LoRA variants improve year on year" · arXiv:2602.04998 v2 · 
 - apply it to **every layer, the MLP above all**: on Llama-3.1-8B, attention-only at rank 256 does worse than MLP-only at rank 128, at about the same parameter count
 - **less tolerant of large batches** than full fine-tuning — and more rank does not fix it
 - in reinforcement learning (**RL**), **even rank 1** matches full fine-tuning (W9)
-- a forward plus backward pass: slightly more than ⅔ of full fine-tuning's FLOPs (p27)
+- a forward plus backward pass: slightly more than ⅔ of full fine-tuning's FLOPs (p28)
 
 ::: {.claim}
 Influential and specific — and a blog. Its weight here comes from **agreeing with sources that are not**.
@@ -660,7 +704,7 @@ Biderman et al. §4.7, App. B · the blog cites Biderman's Fig. S1 · W1 p21
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p45's two curves were drawn by hand. Make them: one model, one dataset, LoRA and full fine-tuning, each swept over its own learning rates. |
+| **Why** | p47's two curves were drawn by hand. Make them: one model, one dataset, LoRA and full fine-tuning, each swept over its own learning rates. |
 | **What runs** | Rehearsed in advance and replayed: `Qwen/Qwen3-1.7B-Base`, demo 1's data. LoRA with $r = 16$ on every gate of every block, and full fine-tuning; five learning rates each, $2 \times 10^{-6}$–$7 \times 10^{-5}$ for full and $10^{-6}$–$3.5 \times 10^{-5}$ for LoRA (mlx units); same seed, steps, batch and mask; validation loss every 25 steps, held-out loss at the end. |
 | **Watch for** | Where is each curve's minimum, and what is their ratio — in the blog's units ($\alpha = 2r$), against its $10\times$? Then run both at full fine-tuning's best: how much worse does LoRA *look*? |
 :::
@@ -669,26 +713,36 @@ Biderman et al. §4.7, App. B · the blog cites Biderman's Fig. S1 · W1 p21
 Demo 3 · `demos/w08_d3_lr_sweep` · rehearsed 2026-11-08 (two rounds), replayed
 :::
 
-## Replay: demo 3 — two U-shaped curves, and the fixed-learning-rate comparison
+## Replay: demo 3 — two U-shaped curves
 
 {{< include assets/w08/lr-sweep.inline.qmd >}}
 
-| | full fine-tuning | LoRA, $r = 16$ | ratio |
-|:---|:---|:---|:---|
-| best learning rate (mlx units) | $5 \times 10^{-6}$ | $2.4 \times 10^{-6}$ | $0.48\times$ ($\alpha = 2r$: $4.8\times$) |
+::: {.footer}
+Demo 3 · replay · one model, one dataset, one seed: **not a replication** · rehearsed 2026-11-08
+:::
+
+## Demo 3, in numbers: the verdict depends on the learning rate — and its units
+
+| | full fine-tuning | LoRA, $r = 16$ | ratio or gap |
+|:--------------------|:--------|:--------|:--------------|
+| best learning rate, mlx units (in $\alpha = 2r$ units the ratio is $4.8\times$) | $5 \times 10^{-6}$ | $2.4 \times 10^{-6}$ | $0.48\times$ |
 | loss, each at its own best | 1.934 | 1.924 | $-0.010$ |
 | loss, both at full fine-tuning's best | 1.934 | 1.928 | $-0.006$ |
 | loss, LoRA at full's $\eta$ *copied in $\alpha = 2r$ units* | 1.934 | 1.980 | $+0.046$ |
 
 : {tbl-colwidths="[40,20,20,20]"}
 
+::: {.claim}
+Each at its own best: a gap of **0.010**, LoRA ahead. One learning rate copied across in the wrong units: **0.046**, LoRA behind. The sweep is the comparison.
+:::
+
 ::: {.footer}
-Demo 3 · replay · one model, one dataset, one seed: **not a replication** · base 2.717 · rehearsed 2026-11-08
+Demo 3 · `curves.json` (cross, ratio) · base 2.717 · one seed · p47's formula
 :::
 
 ## Where LoRA still goes wrong: which gates, how wide, how big a batch
 
-- **attention only**: worse even at matched parameter count (the blog); at larger budgets the FFN uses capacity better (He et al.) — yet the original LoRA adapted only $\mathbf{W}_q$, $\mathbf{W}_v$ (p21)
+- **attention only**: worse even at matched parameter count (the blog); at larger budgets the FFN uses capacity better (He et al.) — yet the original LoRA adapted only $\mathbf{W}_q$, $\mathbf{W}_v$ (p22)
 - **rank**: it saturates, depending on the task; a large rank with $s = \alpha/r$ collapses the gradient (rsLoRA, a preprint)
 - **batch**: in some settings LoRA tolerates large batches worse than full fine-tuning, and more rank does not help (the blog)
 - the counter-intuitive one: in **RL, rank 1** is enough — an episode brings back one scalar reward (W9)
@@ -710,7 +764,7 @@ Misconception 7: "attention-only is enough" · Misconception 8: "the larger the 
 | **The question** | When LoRA and full fine-tuning reach the same score, are the resulting **weights** the same? |
 | **The idea** | Compare the singular vectors of each fine-tuned matrix with those of the pre-trained one. Full fine-tuning's top directions stay close to old ones; LoRA's include **new, high-ranking directions** — *intruder dimensions*. |
 | **What it added** | (v3 abstract) LoRA has them, full fine-tuning does not; **forgetting is concentrated on them** — scale them down and the pre-training distribution comes back while the task barely drops; in continual learning they **accumulate**. |
-| **What it leaves open** | How to count them (p53, demo 4); why LoRA forgets less (p54); what "forgetting" means at all (p58 on). |
+| **What it leaves open** | How to count them (p56, demo 4); why LoRA forgets less (p57); what "forgetting" means at all (p61 on). |
 :::
 
 ::: {.footer}
@@ -752,7 +806,7 @@ Misconception 9: "LoRA and full fine-tuning are equivalent" · Biderman et al. �
 :::
 
 ::: {.footer}
-Demo 4 · `demos/w08_d4_intruders_forgetting` · (a) live, (b) replay (p59) · rehearsed 2026-11-08
+Demo 4 · `demos/w08_d4_intruders_forgetting` · (a) live, (b) replay (p62) · rehearsed 2026-11-08
 :::
 
 ## Live: demo 4 (a) — count the intruders
@@ -821,7 +875,7 @@ Demo 4 (b) · replay · W1 demo 2 · W7 demo 3 · rehearsed 2026-11-08 (`runs/re
 
 - W2 p68's route back for a short-changed language: **extend the vocabulary, then keep pre-training** — Breeze-7B added 29,873 tokens to Mistral's vocabulary
 - every new token brings a **new embedding row that starts from nothing**; continued pre-training has to fill it — and the old abilities pay
-- **the side roads do not reach it**: mlx-lm's LoRA wraps the Linears inside the blocks; the embedding and the LM head sit outside (p23)
+- **the side roads do not reach it**: mlx-lm's LoRA wraps the Linears inside the blocks; the embedding and the LM head sit outside (p24)
 - the baseline remedy (Ibrahim et al., TMLR 2024): **re-warm** the learning rate, **re-decay** it, and **replay** some old data — enough to match re-training from scratch, at 405M and 10B
 - Taiwan LLM (Lin & Chen, a technical report): from Llama 2, continued pre-training → SFT → feedback SFT, for Traditional Chinese (Taiwan)
 
@@ -838,7 +892,7 @@ W2 p73, Misconception 9, returns here · Breeze-7B §2.1 · Ibrahim et al. 2024
 ::: {.prose}
 | reading | what happened | measured by |
 |:---|:---|:---|
-| **overwritten** | the knowledge is gone (McCloskey & Cohen) | old-distribution text, in bits per byte (p59) |
+| **overwritten** | the knowledge is gone (McCloskey & Cohen) | old-distribution text, in bits per byte (p62) |
 | **pushed aside** | still there; the model no longer infers the task — Kotha et al.'s *conjugate prompting*, Zheng et al.'s *spurious forgetting* | ask differently: does it come back? |
 | **drift** | behaviour degrades systematically (CapTrack, up to 80B) | a battery of behaviours, not one score |
 
@@ -881,7 +935,7 @@ Both explanations say the same thing about SFT: **the demonstrations were not th
 :::
 
 ::: {.footer}
-Misconception 11: "SFT forgets, RL does not" · W9 · the library's third limit (p12)
+Misconception 11: "SFT forgets, RL does not" · W9 · the library's third limit (p13)
 :::
 
 # One side road per task: can the roads be added up? {.section-title}
@@ -921,9 +975,9 @@ Misconception 12: "merging is weight averaging" · W4 p62, Misconception 1, retu
 p7 asked: (a) an 8B base model, a thousand answers, one 16 GB GPU — what do you do? (b) Shown a question, what does a base model write?
 :::
 
-- **(a) Not full fine-tuning**: 131 GB for Qwen3-8B (p34). Not a bf16 LoRA either: the frozen weights alone pass 16 GB (p26). **QLoRA**: 5–7 GB before activations (p40) — and then tune the learning rate *for LoRA*; do not borrow full fine-tuning's (p45–p50)
-- **(b) Demo 1 answered it** (p10): compare your line with that table. What SFT changes is mostly the format and which shelf to sample from (p17); new facts are what it does badly (p18)
-- and the cheap model is **not the same model**: different weights (p53), less learned and less forgotten (p54) — and "forgotten" means three things, measured with W1's ruler (p59, p61)
+- **(a) Not full fine-tuning**: 131 GB for Qwen3-8B (p35). Not a bf16 LoRA either: the frozen weights alone pass 16 GB (p27). **QLoRA**: 5–7 GB before activations (p41) — and then tune the learning rate *for LoRA*; do not borrow full fine-tuning's (p47–p52)
+- **(b) Demo 1 answered it** (p10): compare your line with that table. What SFT changes is mostly the format and which shelf to sample from (p18); new facts are what it does badly (p19)
+- and the cheap model is **not the same model**: different weights (p56), less learned and less forgotten (p57) — and "forgotten" means three things, measured with W1's ruler (p62, p64)
 
 ::: {.footer}
 compare with your two lines from p7 · W9: from demonstrations to preferences
@@ -999,11 +1053,11 @@ Same master as W7 p63 (W1 p16, W3–W6) · one row rewritten · bytes: $b$, $b_{
 ## Next week: from demonstrations to preferences
 
 - the supervision axis now has **two entries**. A demonstration says *answer like this*; it never says *this answer is better than that one*. W9 opens the third: **human preference** — and the model trained this week is its $\pi_{\text{ref}}$
-- three things to have ready: a response's log-probability is a **sum over its tokens** (today's $\mathcal{L}_{\text{SFT}}$); the **sigmoid** and logistic regression (W1's SGNS); the **KL divergence**, W1's cross-entropy minus the entropy (p63)
+- three things to have ready: a response's log-probability is a **sum over its tokens** (today's $\mathcal{L}_{\text{SFT}}$); the **sigmoid** and logistic regression (W1's SGNS); the **KL divergence**, W1's cross-entropy minus the entropy (p66)
 - the optimizer row returns in W9 (two models in memory); quantization and calibration in W11; retrieval as the channel for new facts in W12
 
 ::: {.ask}
-Before then: **Lee et al.**, in full — read it as a methods review, with p45 and p48 in hand; and **Shuttleworth et al.**: Definition 3.1, Algorithm 1, Figure 4 and the section that scales intruders down.
+Before then: **Lee et al.**, in full — read it as a methods review, with p47 and p50 in hand; and **Shuttleworth et al.**: Definition 3.1, Algorithm 1, Figure 4 and the section that scales intruders down.
 :::
 
 ::: {.claim}
@@ -1029,7 +1083,7 @@ Two entries ticked. Next week the model is told not what to write, but **which o
 
 **Merging** · Wortsman et al., ICML 2022 (arXiv:2203.05482) · Ilharco et al., ICLR 2023 (arXiv:2212.04089) · Yadav et al., *TIES*, NeurIPS 2023 (arXiv:2306.01708) · Yu et al., *DARE*, ICML 2024 (arXiv:2311.03099) — §4.6 · He et al., *MergeBench*, NeurIPS 2025 D&B (arXiv:2505.10833) · Wang et al., ICML 2026 (arXiv:2509.24244) · Li et al., NeurIPS 2025 (arXiv:2505.12082) · Yang et al., ACM Computing Surveys 58(8), 2026 (arXiv:2408.07666) — a survey
 
-**Software, data and figures** · mlx-lm at commit 872ae88 and bitsandbytes `functional.py` (main), both read 2026-11-08, and mlx 0.32.2 `optimizers.py`, read 2026-11-10 — **software, not papers** · the `config.json` of Qwen/Qwen3-8B and Qwen/Qwen3-1.7B-Base (2026-11-08). Every number on these slides is arithmetic on those two configs (p26–p27, p34, p40, p42), W4's ledger (p4, p26), the NF4 table and a labelled toy (p37), a paper's stated formula (p38, p65), or copied from an abstract or a cited section (all others). The curves on p45, the matrices on p53 and the eight values on p65 are sketches. **Demo 1 was rehearsed on 2026-11-08** (`demos/w08_d1_sft_base_to_assistant/runs/rehearsal/`: the outputs on p10, the losses and probes on p16, the twelve steps on p43); **Demo 3 was rehearsed on 2026-11-08** (`demos/w08_d3_lr_sweep/runs/rehearsal/curves.json`: the curves and the table on p50); **Demo 4 was rehearsed on 2026-11-08** (`demos/w08_d4_intruders_forgetting/runs/rehearsal/`: `scan.json` and `intruders.json` behind p56 — the table there is empty on purpose, it is filled live — and `forgetting.json` for the twelve values on p59); **Demo 2 was rehearsed on 2026-11-10** (`demos/w08_d2_memory_ledger/runs/rehearsal/`: `ledger.json` behind p34 — the table there is empty on purpose, it is filled live — and `peaks.json` for the nine measured peaks on p42).
+**Software, data and figures** · mlx-lm at commit 872ae88 and bitsandbytes `functional.py` (main), both read 2026-11-08, and mlx 0.32.2 `optimizers.py`, read 2026-11-10 — **software, not papers** · the `config.json` of Qwen/Qwen3-8B and Qwen/Qwen3-1.7B-Base (2026-11-08). Every number on these slides is arithmetic on those two configs (p27–p28, p35, p41, p43), W4's ledger (p4, p27), the NF4 table and a labelled toy (p38), a paper's stated formula (p39, p68), or copied from an abstract or a cited section (all others). The curves on p47, the matrices on p56 and the eight values on p68 are sketches. **Demo 1 was rehearsed on 2026-11-08** (`demos/w08_d1_sft_base_to_assistant/runs/rehearsal/`: the outputs on p10, the losses and probes on p17, the twelve steps on p44); **Demo 3 was rehearsed on 2026-11-08** (`demos/w08_d3_lr_sweep/runs/rehearsal/curves.json`: the curves and the table on p52); **Demo 4 was rehearsed on 2026-11-08** (`demos/w08_d4_intruders_forgetting/runs/rehearsal/`: `scan.json` and `intruders.json` behind p59 — the table there is empty on purpose, it is filled live — and `forgetting.json` for the twelve values on p62); **Demo 2 was rehearsed on 2026-11-10** (`demos/w08_d2_memory_ledger/runs/rehearsal/`: `ledger.json` behind p35 — the table there is empty on purpose, it is filled live — and `peaks.json` for the nine measured peaks on p43).
 :::
 
 ## Acronyms in this deck, A–K
@@ -1039,22 +1093,22 @@ Two entries ticked. Next week the model is told not what to write, but **which o
 | bf16, fp32 | bfloat16; IEEE single precision (W4) |
 | CPU, GPU | central / graphics processing unit (W1) |
 | D&B | the Datasets & Benchmarks track of NeurIPS (W7) |
-| DARE | Drop And REscale, Yu et al. 2024 (p65) |
-| DoRA | Weight-Decomposed Low-Rank Adaptation, Liu et al. 2024 (p41) |
-| ECE | expected calibration error (p62) |
-| EWC | elastic weight consolidation, Kirkpatrick et al. 2017 (p58) |
+| DARE | Drop And REscale, Yu et al. 2024 (p68) |
+| DoRA | Weight-Decomposed Low-Rank Adaptation, Liu et al. 2024 (p42) |
+| ECE | expected calibration error (p65) |
+| EWC | elastic weight consolidation, Kirkpatrick et al. 2017 (p61) |
 | FFN | feed-forward network: the MLP sub-layer (W4) |
 | FLOPs | floating-point operations (W1) |
-| GaLore | Gradient Low-Rank Projection, Zhao et al. 2024 (p30) |
+| GaLore | Gradient Low-Rank Projection, Zhao et al. 2024 (p31) |
 | GPT | generative pre-trained Transformer (W4) |
-| KL | Kullback–Leibler (divergence) (p63) |
+| KL | Kullback–Leibler (divergence) (p66) |
 | KV | key–value (cache) (W3) |
 
 ## Acronyms in this deck, L–P
 
 | | |
 |:----|:----------------|
-| LIMA | *Less Is More for Alignment*, Zhou et al. 2023 (p17) |
+| LIMA | *Less Is More for Alignment*, Zhou et al. 2023 (p18) |
 | LLM, LM | large language model (W1); language model — *LM head*: the output layer (W4) |
 | LoRA | low-rank adaptation, Hu et al. 2022 (p9) |
 | MLA | multi-head latent attention (W3) |
@@ -1062,26 +1116,26 @@ Two entries ticked. Next week the model is told not what to write, but **which o
 | MLX, mlx-lm | Apple's array framework and its language-model package (W3) |
 | MoE | mixture of experts (W6) |
 | MPS | Metal Performance Shaders: PyTorch's backend for the Apple GPU (W4 demos) |
-| MRPC | Microsoft Research Paraphrase Corpus (p29) |
-| NF4 | 4-bit NormalFloat, Dettmers et al. 2023 (p36) |
+| MRPC | Microsoft Research Paraphrase Corpus (p30) |
+| NF4 | 4-bit NormalFloat, Dettmers et al. 2023 (p37) |
 | PEFT | parameter-efficient fine-tuning (W4 p46; the title) |
-| PiSSA | Principal Singular values and Singular vectors Adaptation (named p46; full name p74) |
+| PiSSA | Principal Singular values and Singular vectors Adaptation (named p48; full name p77) |
 | PMI | pointwise mutual information (W1) |
 
 ## Acronyms in this deck, Q–Z
 
 | | |
 |:----|:----------------|
-| QLoRA | LoRA over a quantized (4-bit) base, Dettmers et al. 2023 (p33) |
-| RL | reinforcement learning (p47) |
+| QLoRA | LoRA over a quantized (4-bit) base, Dettmers et al. 2023 (p34) |
+| RL | reinforcement learning (p49) |
 | RMSNorm | root-mean-square normalization (W4) |
-| rsLoRA | rank-stabilized LoRA, Kalajdzievski 2023 (p28) |
-| SDFT | Self-Distillation Fine-Tuning, Shenfeld et al. 2026 (p63) |
+| rsLoRA | rank-stabilized LoRA, Kalajdzievski 2023 (p29) |
+| SDFT | Self-Distillation Fine-Tuning, Shenfeld et al. 2026 (p66) |
 | SFT | supervised fine-tuning (p9) |
 | SGNS | skip-gram with negative sampling (W1) |
 | SiLU | sigmoid linear unit (W4) |
-| SVD | singular value decomposition (p53) |
-| TIES | TrIm, Elect Sign & Merge, Yadav et al. 2023 (p65) |
-| URIAL | Untuned LLMs with Restyled In-context ALignment, Lin et al. 2024 (p17) |
+| SVD | singular value decomposition (p56) |
+| TIES | TrIm, Elect Sign & Merge, Yadav et al. 2023 (p68) |
+| URIAL | Untuned LLMs with Restyled In-context ALignment, Lin et al. 2024 (p18) |
 | WSD | warmup–stable–decay (W7) |
 | ZeRO | Zero Redundancy Optimizer (W4) |

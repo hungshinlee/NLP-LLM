@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W8 demo 1（投影片 p9 前導頁、p10「Live: demo 1 (a)」、p16「Live + replay: demo 1 (b) and (c)」、p43「Live: demo 1 (d)」）的設定
+# W8 demo 1（投影片 p9 前導頁、p10「Live: demo 1 (a)」、p17「Live + replay: demo 1 (b) and (c)」、p44「Live: demo 1 (d)」）的設定
 #
 # 改這個檔就能換模型、換資料、換問題、換超參數，不必動程式。
 
@@ -44,7 +44,7 @@ n_test = 200
 # ── 訓練（(c) 的兩個 adapter；(a) 用 A）────────────────────────
 [train]
 # LoRA：mlx-lm 的 lora_parameters。scale 是 mlx 的寫法：y = Wx + scale · B A x，等於 Hu 寫法的 α/r = scale，
-# 所以 rank 16、scale 20 就是 α = 320（p28 三種寫法）。dropout 0。寫 alpha 會 KeyError（mlx-lm 872ae88 原始碼）。
+# 所以 rank 16、scale 20 就是 α = 320（p29 三種寫法）。dropout 0。寫 alpha 會 KeyError（mlx-lm 872ae88 原始碼）。
 rank = 16
 scale = 20.0
 dropout = 0.0
