@@ -62,7 +62,7 @@ format:
 :::
 
 ::: {.footer}
-W1 p20 · W4 p46 · W7 p63, p66 · w08-data.json lastweek — no new numbers
+W1 p20 · W4 p48 · W7 p63, p66 · w08-data.json lastweek — no new numbers
 :::
 
 ## The problem this week handles, in one picture
@@ -105,11 +105,11 @@ Outline W8 · Learning objectives 1–8
 :::
 
 - Keep your two lines: p71 comes back to both
-- **(a)** is the ledger's optimizer row (W4 p46): $16 \times 8 \times 10^9$ bytes, before a single activation
+- **(a)** is the ledger's optimizer row (W4 p48): $16 \times 8 \times 10^9$ bytes, before a single activation
 - **(b)** is demo 1, two slides from now
 
 ::: {.footer}
-W4 p46 · W1 p20 · Misconception 2 (p19): "SFT teaches the model new knowledge"
+W4 p48 · W1 p20 · Misconception 2 (p19): "SFT teaches the model new knowledge"
 :::
 
 ## Notation for today: one frozen matrix, one small one
@@ -368,7 +368,7 @@ Hu et al. §4.1 · mlx-lm: `lora_a` uniform $\pm 1/\sqrt{d_{\text{in}}}$, `lora_
 {{< include assets/w08/bytes-lora.inline.qmd >}}
 
 ::: {.footer}
-Misconception 3: "LoRA saves the weights' memory" · W4 p46 (its "12" corrected to 14)
+Misconception 3: "LoRA saves the weights' memory" · W4 p48 (its "12" corrected to 14)
 :::
 
 ## The three walks, re-counted: about $4N$ per token, not $2N$
@@ -376,7 +376,7 @@ Misconception 3: "LoRA saves the weights' memory" · W4 p46 (its "12" corrected 
 {{< include assets/w08/three-walks.inline.qmd >}}
 
 ::: {.footer}
-W4 p42 (corrected) · W1 p17 · the blog: "slightly more than ⅔" · Hu §4.2: "a 25% speedup"
+W4 p44 (corrected) · W1 p17 · the blog: "slightly more than ⅔" · Hu §4.2: "a 25% speedup"
 :::
 
 ## $s$ and $\eta$ are tangled: three ways to write the scale
@@ -422,7 +422,7 @@ SGNS: low rank **training produced**. MLA: low rank to shrink **a state**. LoRA:
 :::
 
 ::: {.footer}
-W1 p50 · W3 p33 (*used as a design*), p36 · GaLore, ICML 2024 Oral — named only
+W1 p50 · W3 p34 (*used as a design*), p36 · GaLore, ICML 2024 Oral — named only
 :::
 
 ## Training and using are two different pictures
@@ -964,7 +964,7 @@ Merging works because fine-tuning moves **little**, from a **shared** start. Tak
 :::
 
 ::: {.footer}
-Misconception 12: "merging is weight averaging" · W4 p62, Misconception 1, returns here
+Misconception 12: "merging is weight averaging" · W4 p64, Misconception 1, returns here
 :::
 
 # Where this goes {.section-title}
@@ -1118,7 +1118,7 @@ Two entries ticked. Next week the model is told not what to write, but **which o
 | MPS | Metal Performance Shaders: PyTorch's backend for the Apple GPU (W4 demos) |
 | MRPC | Microsoft Research Paraphrase Corpus (p30) |
 | NF4 | 4-bit NormalFloat, Dettmers et al. 2023 (p37) |
-| PEFT | parameter-efficient fine-tuning (W4 p46; the title) |
+| PEFT | parameter-efficient fine-tuning (W4 p48; the title) |
 | PiSSA | Principal Singular values and Singular vectors Adaptation (named p48; full name p77) |
 | PMI | pointwise mutual information (W1) |
 

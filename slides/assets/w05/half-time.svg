@@ -1,0 +1,477 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 392" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-half-time" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="40" font-size="27" fill="#0b5cad" text-anchor="start" font-weight="700">First half — writing the position down</text><text x="523.651" y="40" font-size="23" fill="#6b7280" text-anchor="start" font-weight="400">answered</text><rect x="20" y="58" width="386.667" height="122" rx="7" fill="#f0fdf4" stroke="#15803d" stroke-width="1.8"/><circle cx="52" cy="93" r="18" fill="#15803d"/><text x="52" y="101" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">✓</text><text x="80" y="102" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">Five ways</text><text x="38" y="138" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">added, as a bias, as a rotation</text><text x="38" y="167" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">— or not written at all</text><line x1="408.667" y1="119" x2="423.667" y2="119" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-half-time)"/><rect x="426.667" y="58" width="386.667" height="122" rx="7" fill="#f0fdf4" stroke="#15803d" stroke-width="1.8"/><circle cx="458.667" cy="93" r="18" fill="#15803d"/><text x="458.667" y="101" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">✓</text><text x="486.667" y="102" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">RoPE, derived</text><svg x="444.667" y="107.088" width="181.884" height="38.364" viewBox="0 -6.9 181.884 38.364"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t310-figure_1">
+  <g id="t310-patch_1">
+   <path d="M 0 31.464 
+L 181.884 31.464 
+L 181.884 0 
+L 0 0 
+L 0 31.464 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t310-text_1">
+   <!-- $\mathbf{R}_m^{\mathsf{T}}\mathbf{R}_n = \mathbf{R}_{n-m}$ -->
+   <g style="fill: #15803d" transform="translate(0 24.012) scale(0.276 -0.276)">
+    <defs>
+     <path id="t310-Cmb10-52" d="M 219 0 
+L 219 325 
+L 819 325 
+L 819 4063 
+L 219 4063 
+L 219 4391 
+L 2303 4391 
+Q 2616 4391 2912 4330 
+Q 3209 4269 3470 4131 
+Q 3731 3994 3893 3758 
+Q 4056 3522 4056 3194 
+Q 4056 2931 3925 2725 
+Q 3794 2519 3581 2378 
+Q 3369 2238 3109 2163 
+Q 3363 2053 3541 1847 
+Q 3719 1641 3750 1375 
+L 3822 819 
+Q 3859 531 3934 357 
+Q 4009 184 4213 184 
+Q 4319 184 4386 257 
+Q 4453 331 4483 439 
+Q 4513 547 4513 647 
+Q 4531 731 4616 750 
+L 4738 750 
+Q 4838 731 4838 622 
+Q 4838 450 4758 289 
+Q 4678 128 4536 28 
+Q 4394 -72 4219 -72 
+Q 3641 -72 3228 112 
+Q 2816 297 2816 794 
+L 2816 1350 
+Q 2816 1625 2683 1847 
+Q 2550 2069 2291 2069 
+L 1716 2069 
+L 1716 325 
+L 2316 325 
+L 2316 0 
+L 219 0 
+z
+M 1716 2322 
+L 2181 2322 
+Q 2534 2322 2720 2400 
+Q 2906 2478 2979 2662 
+Q 3053 2847 3053 3194 
+Q 3053 3544 2984 3728 
+Q 2916 3913 2727 3988 
+Q 2538 4063 2181 4063 
+L 1716 4063 
+L 1716 2322 
+z
+" transform="scale(0.015625)"/>
+     <path id="t310-Cmss10-54" d="M 1881 0 
+L 1881 4006 
+L 231 4000 
+L 231 4441 
+L 4122 4441 
+L 4122 4000 
+L 2478 4006 
+L 2478 0 
+L 1881 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t310-Cmmi10-6d" d="M 494 109 
+Q 494 147 500 166 
+L 978 2075 
+Q 1025 2253 1025 2388 
+Q 1025 2663 838 2663 
+Q 638 2663 541 2423 
+Q 444 2184 353 1819 
+Q 353 1800 334 1789 
+Q 316 1778 300 1778 
+L 225 1778 
+Q 203 1778 187 1801 
+Q 172 1825 172 1844 
+Q 241 2122 305 2315 
+Q 369 2509 505 2668 
+Q 641 2828 844 2828 
+Q 1084 2828 1268 2676 
+Q 1453 2525 1453 2291 
+Q 1644 2541 1900 2684 
+Q 2156 2828 2444 2828 
+Q 2747 2828 2967 2673 
+Q 3188 2519 3188 2234 
+Q 3384 2513 3648 2670 
+Q 3913 2828 4225 2828 
+Q 4556 2828 4757 2648 
+Q 4959 2469 4959 2138 
+Q 4959 1875 4842 1503 
+Q 4725 1131 4550 672 
+Q 4459 450 4459 288 
+Q 4459 97 4609 97 
+Q 4859 97 5025 365 
+Q 5191 634 5259 941 
+Q 5278 978 5313 978 
+L 5388 978 
+Q 5413 978 5430 961 
+Q 5447 944 5447 922 
+Q 5447 916 5441 903 
+Q 5353 541 5136 234 
+Q 4919 -72 4594 -72 
+Q 4369 -72 4209 83 
+Q 4050 238 4050 459 
+Q 4050 572 4103 709 
+Q 4284 1191 4404 1569 
+Q 4525 1947 4525 2234 
+Q 4525 2413 4453 2538 
+Q 4381 2663 4213 2663 
+Q 3863 2663 3606 2448 
+Q 3350 2234 3163 1881 
+Q 3150 1819 3144 1784 
+L 2731 141 
+Q 2709 53 2632 -9 
+Q 2556 -72 2463 -72 
+Q 2388 -72 2330 -22 
+Q 2272 28 2272 109 
+Q 2272 147 2278 166 
+L 2688 1797 
+Q 2753 2059 2753 2234 
+Q 2753 2413 2679 2538 
+Q 2606 2663 2431 2663 
+Q 2197 2663 2000 2559 
+Q 1803 2456 1656 2286 
+Q 1509 2116 1388 1881 
+L 953 141 
+Q 931 53 854 -9 
+Q 778 -72 684 -72 
+Q 606 -72 550 -22 
+Q 494 28 494 109 
+z
+" transform="scale(0.015625)"/>
+     <path id="t310-Cmmi10-6e" d="M 494 109 
+Q 494 147 500 166 
+L 978 2075 
+Q 1025 2253 1025 2388 
+Q 1025 2663 838 2663 
+Q 638 2663 541 2423 
+Q 444 2184 353 1819 
+Q 353 1800 334 1789 
+Q 316 1778 300 1778 
+L 225 1778 
+Q 203 1778 187 1801 
+Q 172 1825 172 1844 
+Q 241 2122 305 2315 
+Q 369 2509 505 2668 
+Q 641 2828 844 2828 
+Q 1084 2828 1268 2676 
+Q 1453 2525 1453 2291 
+Q 1644 2541 1900 2684 
+Q 2156 2828 2444 2828 
+Q 2672 2828 2837 2750 
+Q 3003 2672 3095 2514 
+Q 3188 2356 3188 2138 
+Q 3188 1875 3070 1503 
+Q 2953 1131 2778 672 
+Q 2688 463 2688 288 
+Q 2688 97 2834 97 
+Q 3084 97 3251 365 
+Q 3419 634 3488 941 
+Q 3500 978 3541 978 
+L 3616 978 
+Q 3641 978 3658 962 
+Q 3675 947 3675 922 
+Q 3675 916 3669 903 
+Q 3581 541 3364 234 
+Q 3147 -72 2822 -72 
+Q 2597 -72 2437 83 
+Q 2278 238 2278 459 
+Q 2278 578 2328 709 
+Q 2409 919 2514 1209 
+Q 2619 1500 2686 1765 
+Q 2753 2031 2753 2234 
+Q 2753 2413 2679 2538 
+Q 2606 2663 2431 2663 
+Q 2197 2663 2000 2559 
+Q 1803 2456 1656 2286 
+Q 1509 2116 1388 1881 
+L 953 141 
+Q 931 53 854 -9 
+Q 778 -72 684 -72 
+Q 606 -72 550 -22 
+Q 494 28 494 109 
+z
+" transform="scale(0.015625)"/>
+     <path id="t310-Cmr10-3d" d="M 481 850 
+Q 428 850 393 890 
+Q 359 931 359 978 
+Q 359 1031 393 1068 
+Q 428 1106 481 1106 
+L 4500 1106 
+Q 4547 1106 4581 1068 
+Q 4616 1031 4616 978 
+Q 4616 931 4581 890 
+Q 4547 850 4500 850 
+L 481 850 
+z
+M 481 2094 
+Q 428 2094 393 2131 
+Q 359 2169 359 2222 
+Q 359 2269 393 2309 
+Q 428 2350 481 2350 
+L 4500 2350 
+Q 4547 2350 4581 2309 
+Q 4616 2269 4616 2222 
+Q 4616 2169 4581 2131 
+Q 4547 2094 4500 2094 
+L 481 2094 
+z
+" transform="scale(0.015625)"/>
+     <path id="t310-Cmsy10-a1" d="M 653 1472 
+Q 600 1472 565 1512 
+Q 531 1553 531 1600 
+Q 531 1647 565 1687 
+Q 600 1728 653 1728 
+L 4325 1728 
+Q 4375 1728 4408 1687 
+Q 4441 1647 4441 1600 
+Q 4441 1553 4408 1512 
+Q 4375 1472 4325 1472 
+L 653 1472 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t310-Cmb10-52" transform="translate(0 0.1625)"/>
+    <use xlink:href="#t310-Cmss10-54" transform="translate(80.343047 38.426563) scale(0.7)"/>
+    <use xlink:href="#t310-Cmmi10-6d" transform="translate(80.343047 -25.346875) scale(0.7)"/>
+    <use xlink:href="#t310-Cmb10-52" transform="translate(148.175469 0.1625)"/>
+    <use xlink:href="#t310-Cmmi10-6e" transform="translate(228.518516 -16.84375) scale(0.7)"/>
+    <use xlink:href="#t310-Cmr10-3d" transform="translate(294.461289 0.1625)"/>
+    <use xlink:href="#t310-Cmb10-52" transform="translate(389.70543 0.1625)"/>
+    <use xlink:href="#t310-Cmmi10-6e" transform="translate(470.048477 -16.84375) scale(0.7)"/>
+    <use xlink:href="#t310-Cmsy10-a1" transform="translate(524.346328 -16.84375) scale(0.7)"/>
+    <use xlink:href="#t310-Cmmi10-6d" transform="translate(591.017227 -16.84375) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="626.551" y="138" font-size="23" fill="#15803d" text-anchor="start" font-weight="400" textLength="6.8" lengthAdjust="spacing">:</text><text x="444.667" y="167" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">only the offset survives</text><line x1="815.333" y1="119" x2="830.333" y2="119" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-half-time)"/><rect x="833.333" y="58" width="386.667" height="122" rx="7" fill="#f0fdf4" stroke="#15803d" stroke-width="1.8"/><circle cx="865.333" cy="93" r="18" fill="#15803d"/><text x="865.333" y="101" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">✓</text><text x="893.333" y="102" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">Longer than seen</text><text x="851.333" y="138" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">slow pairs meet unseen phases;</text><text x="851.333" y="167" font-size="23" fill="#15803d" text-anchor="start" font-weight="400" textLength="226.2" lengthAdjust="spacing">every repair rescales</text><svg x="1083.79" y="146.028" width="21.528" height="26.7116" viewBox="0 0 21.528 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t311-figure_1">
+  <g id="t311-patch_1">
+   <path d="M 0 26.711625 
+L 21.528 26.711625 
+L 21.528 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t311-text_1">
+   <!-- $\theta_i$ -->
+   <g style="fill: #15803d" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t311-Cmmi10-b5" d="M 1031 -72 
+Q 741 -72 566 140 
+Q 391 353 323 653 
+Q 256 953 256 1247 
+L 256 1253 
+Q 256 1572 317 1915 
+Q 378 2259 493 2601 
+Q 609 2944 744 3213 
+Q 838 3400 986 3631 
+Q 1134 3863 1317 4064 
+Q 1500 4266 1711 4389 
+Q 1922 4513 2138 4513 
+L 2144 4513 
+Q 2375 4513 2529 4384 
+Q 2684 4256 2770 4056 
+Q 2856 3856 2890 3628 
+Q 2925 3400 2925 3194 
+Q 2925 2709 2794 2204 
+Q 2663 1700 2431 1228 
+Q 2344 1050 2189 809 
+Q 2034 569 1861 378 
+Q 1688 188 1472 58 
+Q 1256 -72 1038 -72 
+L 1031 -72 
+z
+M 1044 97 
+Q 1256 97 1451 323 
+Q 1647 550 1794 873 
+Q 1941 1197 2052 1536 
+Q 2163 1875 2216 2113 
+L 909 2113 
+Q 809 1709 753 1417 
+Q 697 1125 697 844 
+Q 697 97 1044 97 
+z
+M 959 2338 
+L 2272 2338 
+Q 2341 2619 2381 2808 
+Q 2422 2997 2450 3206 
+Q 2478 3416 2478 3597 
+Q 2478 4347 2138 4347 
+Q 1731 4347 1436 3692 
+Q 1141 3038 959 2338 
+z
+" transform="scale(0.015625)"/>
+     <path id="t311-Cmmi10-69" d="M 500 459 
+Q 500 578 550 709 
+L 1069 2088 
+Q 1153 2322 1153 2472 
+Q 1153 2663 1013 2663 
+Q 759 2663 595 2402 
+Q 431 2141 353 1819 
+Q 341 1778 300 1778 
+L 225 1778 
+Q 172 1778 172 1838 
+L 172 1856 
+Q 275 2238 487 2533 
+Q 700 2828 1025 2828 
+Q 1253 2828 1411 2678 
+Q 1569 2528 1569 2297 
+Q 1569 2178 1516 2047 
+L 997 672 
+Q 909 459 909 288 
+Q 909 97 1056 97 
+Q 1306 97 1473 364 
+Q 1641 631 1709 941 
+Q 1722 978 1759 978 
+L 1838 978 
+Q 1863 978 1878 961 
+Q 1894 944 1894 922 
+Q 1894 916 1888 903 
+Q 1800 541 1583 234 
+Q 1366 -72 1044 -72 
+Q 819 -72 659 83 
+Q 500 238 500 459 
+z
+M 1222 3878 
+Q 1222 4013 1334 4122 
+Q 1447 4231 1581 4231 
+Q 1691 4231 1761 4164 
+Q 1831 4097 1831 3994 
+Q 1831 3850 1717 3742 
+Q 1603 3634 1466 3634 
+Q 1363 3634 1292 3704 
+Q 1222 3775 1222 3878 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t311-Cmmi10-b5" transform="translate(0 0.484375)"/>
+    <use xlink:href="#t311-Cmmi10-69" transform="translate(46.923828 -16.521875) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="20" y="232" font-size="27" fill="#b45309" text-anchor="start" font-weight="700">Second half — using the length, and paying for it</text><rect x="20" y="250" width="386.667" height="122" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><circle cx="52" cy="285" r="18" fill="#b45309"/><text x="52" y="293" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">4</text><text x="80" y="294" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">Effective length</text><text x="38" y="330" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">can it use what it can take:</text><text x="38" y="359" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">nominal vs. effective?</text><line x1="408.667" y1="311" x2="423.667" y2="311" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-half-time)"/><rect x="426.667" y="250" width="386.667" height="122" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><circle cx="458.667" cy="285" r="18" fill="#b45309"/><text x="458.667" y="293" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">5</text><text x="486.667" y="294" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">The bill</text><text x="444.667" y="330" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="182.9" lengthAdjust="spacing">what does taking</text><svg x="633.824" y="309.028" width="19.044" height="26.7116" viewBox="0 0 19.044 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t312-figure_1">
+  <g id="t312-patch_1">
+   <path d="M 0 26.711625 
+L 19.044 26.711625 
+L 19.044 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t312-text_1">
+   <!-- $L$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t312-Cmmi10-4c" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 709 225 863 269 
+Q 947 297 984 441 
+L 1863 3956 
+Q 1875 4019 1875 4044 
+Q 1875 4113 1797 4122 
+Q 1678 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1297 4313 1309 4342 
+Q 1322 4372 1381 4372 
+L 3272 4372 
+Q 3328 4372 3328 4288 
+Q 3319 4222 3306 4184 
+Q 3294 4147 3244 4147 
+Q 2772 4147 2613 4116 
+Q 2456 4088 2419 3928 
+L 1544 416 
+Q 1516 338 1516 275 
+Q 1516 225 1734 225 
+L 2328 225 
+Q 2831 225 3143 425 
+Q 3456 625 3606 876 
+Q 3756 1128 3857 1398 
+Q 3959 1669 4006 1678 
+L 4063 1678 
+Q 4128 1678 4128 1594 
+L 3559 44 
+Q 3550 0 3500 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t312-Cmmi10-4c" transform="translate(0 0.6875)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="659.078" y="330" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="77.2" lengthAdjust="spacing">in cost:</text><text x="444.667" y="359" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="168.0" lengthAdjust="spacing">three powers of</text><svg x="618.904" y="338.028" width="19.044" height="26.7116" viewBox="0 0 19.044 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t313-figure_1">
+  <g id="t313-patch_1">
+   <path d="M 0 26.711625 
+L 19.044 26.711625 
+L 19.044 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t313-text_1">
+   <!-- $L$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t313-Cmmi10-4c" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 709 225 863 269 
+Q 947 297 984 441 
+L 1863 3956 
+Q 1875 4019 1875 4044 
+Q 1875 4113 1797 4122 
+Q 1678 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1297 4313 1309 4342 
+Q 1322 4372 1381 4372 
+L 3272 4372 
+Q 3328 4372 3328 4288 
+Q 3319 4222 3306 4184 
+Q 3294 4147 3244 4147 
+Q 2772 4147 2613 4116 
+Q 2456 4088 2419 3928 
+L 1544 416 
+Q 1516 338 1516 275 
+Q 1516 225 1734 225 
+L 2328 225 
+Q 2831 225 3143 425 
+Q 3456 625 3606 876 
+Q 3756 1128 3857 1398 
+Q 3959 1669 4006 1678 
+L 4063 1678 
+Q 4128 1678 4128 1594 
+L 3559 44 
+Q 3550 0 3500 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t313-Cmmi10-4c" transform="translate(0 0.6875)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="637.948" y="359" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="13.6" lengthAdjust="spacing">?</text><line x1="815.333" y1="311" x2="830.333" y2="311" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-half-time)"/><rect x="833.333" y="250" width="386.667" height="122" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><circle cx="865.333" cy="285" r="18" fill="#b45309"/><text x="865.333" y="293" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">6</text><text x="893.333" y="294" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">The sink, used</text><text x="851.333" y="330" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">what softmax forces, put to</text><text x="851.333" y="359" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">use: stable — but informed?</text></svg>

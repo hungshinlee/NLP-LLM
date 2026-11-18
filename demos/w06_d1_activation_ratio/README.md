@@ -11,7 +11,7 @@ Two columns, in the spirit of W4's "exact vs. actual":
 
 | Column | Source | What it adds up |
 |---|---|---|
-| **config (formula)** | `config.json` only | attention: the four projections of W4 p20 (GQA/MHA; a low-rank formula for MLA); linear/SSM layers where a formula is known (Qwen3-Next's Gated DeltaNet); the expert side $n_{\text{moe}}\,(n_E\,3\,d\,d_E + 3\,d\,d_S + n_E d)$; dense FFN layers $3\,d\,d_{\text{ff}}$; norms; embeddings |
+| **config (formula)** | `config.json` only | attention: the four projections of W4 p21 (GQA/MHA; a low-rank formula for MLA); linear/SSM layers where a formula is known (Qwen3-Next's Gated DeltaNet); the expert side $n_{\text{moe}}\,(n_E\,3\,d\,d_E + 3\,d\,d_S + n_E d)$; dense FFN layers $3\,d\,d_{\text{ff}}$; norms; embeddings |
 | **file (safetensors)** | every shard's header | each tensor is classified by name and layer type (experts / shared expert / router / attention / linear / dense FFN / norms / embedding / head) and its shape multiplied out. Quantized MLX tensors are unpacked ($32/\text{bits}$ weights per `uint32`); scales and biases are listed but not counted. A multi-token-prediction module or a vision tower stored in the checkpoint is listed and **excluded** from $N$ |
 
 Then, with $E$ = the routed-expert total (the only block that depends on $k$):

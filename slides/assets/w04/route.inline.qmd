@@ -1,0 +1,172 @@
+<!-- 由 scripts/make_figs_w04.py 產生，勿手改；投影片用 {{< include assets/w04/route.inline.qmd >}} 貼入 -->
+```{=html}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 392" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-route" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="40" font-size="27" fill="#0b5cad" text-anchor="start" font-weight="700">First half — the object: one block, and what it holds</text><g class="fragment" data-fragment-index="1"><rect x="20" y="58" width="285" height="122" rx="7" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><circle cx="52" cy="93" r="18" fill="#0b5cad"/><text x="52" y="101" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">1</text><text x="80" y="102" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">The stream</text><text x="38" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">what did W3 add its</text><text x="38" y="167" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">result into?</text><line x1="307" y1="119" x2="322" y2="119" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-route)"/><rect x="325" y="58" width="285" height="122" rx="7" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><circle cx="357" cy="93" r="18" fill="#0b5cad"/><text x="357" y="101" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">2</text><text x="385" y="102" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">The count</text><text x="343" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">how much does one</text><text x="343" y="167" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">layer add to it?</text><line x1="612" y1="119" x2="627" y2="119" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-route)"/><rect x="630" y="58" width="285" height="122" rx="7" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><circle cx="662" cy="93" r="18" fill="#0b5cad"/><text x="662" y="101" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">3</text><text x="690" y="102" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">The Norm</text><text x="648" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">where does it sit; does</text><text x="648" y="167" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">a gradient get home?</text><line x1="917" y1="119" x2="932" y2="119" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-route)"/><rect x="935" y="58" width="285" height="122" rx="7" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><circle cx="967" cy="93" r="18" fill="#0b5cad"/><text x="967" y="101" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">4</text><text x="995" y="102" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">One layer</text><text x="953" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">what is one layer</text><text x="953" y="167" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">worth, if skipped?</text></g><text x="20" y="232" font-size="27" fill="#b45309" text-anchor="start" font-weight="700">Second half — training it: the cost, the failures, the knobs</text><g class="fragment" data-fragment-index="2"><rect x="20" y="250" width="386.667" height="122" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><circle cx="52" cy="285" r="18" fill="#b45309"/><text x="52" y="293" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">5</text><text x="80" y="294" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">The cost</text><text x="38" y="330" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="256.1" lengthAdjust="spacing">what does training cost:</text><svg x="300.322" y="309.028" width="59.064" height="26.7116" viewBox="0 0 59.064 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t209-figure_1">
+  <g id="t209-patch_1">
+   <path d="M 0 26.711625 
+L 59.064 26.711625 
+L 59.064 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t209-text_1">
+   <!-- $6ND$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t209-Cmr10-36" d="M 1600 -141 
+Q 1203 -141 937 70 
+Q 672 281 526 617 
+Q 381 953 325 1322 
+Q 269 1691 269 2069 
+Q 269 2575 466 3084 
+Q 663 3594 1045 3928 
+Q 1428 4263 1953 4263 
+Q 2172 4263 2361 4180 
+Q 2550 4097 2658 3936 
+Q 2766 3775 2766 3547 
+Q 2766 3416 2677 3327 
+Q 2588 3238 2456 3238 
+Q 2331 3238 2240 3328 
+Q 2150 3419 2150 3547 
+Q 2150 3672 2240 3762 
+Q 2331 3853 2456 3853 
+L 2491 3853 
+Q 2409 3969 2261 4023 
+Q 2113 4078 1953 4078 
+Q 1759 4078 1595 3993 
+Q 1431 3909 1300 3765 
+Q 1169 3622 1081 3448 
+Q 994 3275 945 3053 
+Q 897 2831 884 2637 
+Q 872 2444 872 2150 
+Q 984 2413 1190 2580 
+Q 1397 2747 1656 2747 
+Q 1941 2747 2175 2631 
+Q 2409 2516 2578 2311 
+Q 2747 2106 2836 1843 
+Q 2925 1581 2925 1313 
+Q 2925 938 2758 598 
+Q 2591 259 2287 59 
+Q 1984 -141 1600 -141 
+z
+M 1600 63 
+Q 1847 63 1997 175 
+Q 2147 288 2217 473 
+Q 2288 659 2305 848 
+Q 2322 1038 2322 1313 
+Q 2322 1675 2287 1931 
+Q 2253 2188 2100 2383 
+Q 1947 2578 1631 2578 
+Q 1372 2578 1205 2403 
+Q 1038 2228 961 1961 
+Q 884 1694 884 1447 
+Q 884 1363 891 1319 
+Q 891 1309 889 1303 
+Q 888 1297 884 1288 
+Q 884 1013 940 731 
+Q 997 450 1156 256 
+Q 1316 63 1600 63 
+z
+" transform="scale(0.015625)"/>
+     <path id="t209-Cmmi10-4e" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 931 225 1031 616 
+L 1900 4116 
+Q 1722 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1278 4247 1287 4286 
+Q 1297 4325 1314 4348 
+Q 1331 4372 1356 4372 
+L 2463 4372 
+Q 2509 4372 2522 4331 
+L 3944 947 
+L 4653 3781 
+Q 4666 3850 4666 3878 
+Q 4666 4147 4172 4147 
+Q 4109 4147 4109 4231 
+Q 4131 4313 4143 4342 
+Q 4156 4372 4219 4372 
+L 5588 4372 
+Q 5650 4372 5650 4288 
+Q 5647 4272 5637 4233 
+Q 5628 4194 5611 4170 
+Q 5594 4147 5569 4147 
+Q 4956 4147 4856 3756 
+L 3938 56 
+Q 3916 0 3872 0 
+L 3794 0 
+Q 3750 0 3738 44 
+L 2106 3916 
+L 2094 3956 
+Q 2081 3969 2081 3975 
+L 1234 588 
+Q 1228 572 1225 548 
+Q 1222 525 1216 494 
+Q 1216 328 1359 276 
+Q 1503 225 1716 225 
+Q 1778 225 1778 141 
+Q 1756 53 1740 26 
+Q 1725 0 1672 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t209-Cmmi10-44" d="M 313 0 
+Q 250 0 250 84 
+Q 253 100 262 139 
+Q 272 178 289 201 
+Q 306 225 331 225 
+Q 722 225 878 269 
+Q 959 297 997 441 
+L 1875 3956 
+Q 1888 4019 1888 4044 
+Q 1888 4113 1813 4122 
+Q 1691 4147 1350 4147 
+Q 1288 4147 1288 4231 
+Q 1291 4247 1300 4286 
+Q 1309 4325 1326 4348 
+Q 1344 4372 1369 4372 
+L 3669 4372 
+Q 4116 4372 4450 4155 
+Q 4784 3938 4962 3570 
+Q 5141 3203 5141 2759 
+Q 5141 2269 4937 1778 
+Q 4734 1288 4368 881 
+Q 4003 475 3534 237 
+Q 3066 0 2572 0 
+L 313 0 
+z
+M 1509 275 
+Q 1509 225 1728 225 
+L 2472 225 
+Q 2828 225 3159 372 
+Q 3491 519 3750 775 
+Q 3991 1016 4175 1406 
+Q 4359 1797 4461 2222 
+Q 4563 2647 4563 3003 
+Q 4563 3263 4486 3472 
+Q 4409 3681 4270 3831 
+Q 4131 3981 3922 4064 
+Q 3713 4147 3450 4147 
+L 2747 4147 
+Q 2572 4147 2515 4117 
+Q 2459 4088 2413 3928 
+L 1538 416 
+Q 1509 338 1509 275 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t209-Cmr10-36" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t209-Cmmi10-4e" transform="translate(50 0.6875)"/>
+    <use xlink:href="#t209-Cmmi10-44" transform="translate(130.322266 0.6875)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="359.386" y="330" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="6.8" lengthAdjust="spacing">,</text><text x="38" y="359" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">and the optimizer row in bytes?</text><line x1="408.667" y1="311" x2="423.667" y2="311" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-route)"/><rect x="426.667" y="250" width="386.667" height="122" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><circle cx="458.667" cy="285" r="18" fill="#b45309"/><text x="458.667" y="293" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">6</text><text x="486.667" y="294" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">The failures</text><text x="444.667" y="330" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">how does training break, and</text><text x="444.667" y="359" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">which number do you read first?</text><line x1="815.333" y1="311" x2="830.333" y2="311" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-route)"/><rect x="833.333" y="250" width="386.667" height="122" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><circle cx="865.333" cy="285" r="18" fill="#b45309"/><text x="865.333" y="293" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">7</text><text x="893.333" y="294" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">The knobs</text><text x="851.333" y="330" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">is there a principle behind</text><text x="851.333" y="359" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">them? muP and Muon</text></g></svg>
+```

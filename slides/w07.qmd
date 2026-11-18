@@ -62,7 +62,7 @@ format:
 :::
 
 ::: {.footer}
-W1 p16–p18 · W4 p21 · W6 p57, p67 · w07-data.json lastweek — no new numbers
+W1 p16–p18 · W4 p22 · W6 p57, p67 · w07-data.json lastweek — no new numbers
 :::
 
 ## The problem this week handles, in one picture
@@ -325,14 +325,14 @@ w07-data.json chinchilla.points · arithmetic on Eq. (10), not a measurement · 
 
 | cause (Porian et al.; Pearce & Song) | what Kaplan did | why it tilts the slope |
 |:---|:---|:---|
-| **which $N$** | counted $N_{\text{nv}}$, non-embedding only (§2.1) | small models lose a third of $N$, large ones a few %: the log-log line steepens (W4 p21) |
+| **which $N$** | counted $N_{\text{nv}}$, non-embedding only (§2.1) | small models lose a third of $N$, large ones a few %: the log-log line steepens (W4 p22) |
 | **the last layer's compute** | dropped $2Vd$ per token from $C$ | same shape: a cost that matters most at small scale |
-| **warmup; no per-size re-tuning** | one schedule for all sizes | small runs under-tuned, their loss too high — muP (W4 p56) is one answer |
+| **warmup; no per-size re-tuning** | one schedule for all sizes | small runs under-tuned, their loss too high — muP (W4 p58) is one answer |
 
 : {tbl-colwidths="[28,30,42]"}
 
 ::: {.footer}
-Porian 2024 · Pearce & Song 2024 · W4 p21 · Misconception 2: "one of them botched it"
+Porian 2024 · Pearce & Song 2024 · W4 p22 · Misconception 2: "one of them botched it"
 :::
 
 ## Besiroglu's three charges — why "overturned" is wrong
@@ -474,7 +474,7 @@ Clark 2022 · Abnar 2025 · Tao 2024 · W6 p67 · W2 p47 · Misconception 4: "Mo
 |:---|:---|:---|:---|
 | **1** | too few points, too close, extrapolated too far | (Mis)Fitting, ICLR 2025: 45 of 50+ papers fit a power law; most under-report | how many runs, over how many decades of $C$? raw points released? |
 | **2** | a **collinear design**: every run on one ray $D = kN$ | Kricheli et al. 2026 (p33) | is $D/N$ varied at a fixed $N$? |
-| **3** | hyperparameters **not re-tuned** per size | Porian et al. 2024 (p21); muP (W4 p56) | swept per size, or transferred? |
+| **3** | hyperparameters **not re-tuned** per size | Porian et al. 2024 (p21); muP (W4 p58) | swept per size, or transferred? |
 | **4** | the schedule **ties the run to one length** | Hägele et al. 2024; MiniCPM (p34) | cosine to a fixed $T$, or constant + cooldown? |
 | **5** | loss and ability are **not one curve** | Gadre et al. 2025 vs. Schaeffer et al. 2023 (p35) | is the $y$-axis a loss, an average, or a thresholded metric? |
 
@@ -506,13 +506,13 @@ Kricheli et al., NeurIPS 2026 (abstract) · TPP = tokens per parameter · explai
 
 | reason | the fix | why it matters for a fit |
 |:---|:---|:---|
-| **3** · one learning rate for all sizes | sweep per size, or **muP** (W4 p56): tune small, transfer wide | an under-tuned small run puts its point too high and tilts the line (p21) |
+| **3** · one learning rate for all sizes | sweep per size, or **muP** (W4 p58): tune small, transfer wide | an under-tuned small run puts its point too high and tilts the line (p21) |
 | **4** · cosine to a fixed $T$ | **constant + cooldown** (Hägele; MiniCPM's **WSD**: warmup–stable–decay): one trunk, branch off at any length | one run gives every $D$ on the axis — and the cooldown is where today's second half puts its best data (p57) |
 
 : {tbl-colwidths="[30,38,32]"}
 
 ::: {.footer}
-Hägele et al. 2024 · Hu et al., MiniCPM 2024 (abstracts) · W4 p56
+Hägele et al. 2024 · Hu et al., MiniCPM 2024 (abstracts) · W4 p58
 :::
 
 ## Loss is the $y$-axis, not the goal: Gadre and Schaeffer
@@ -567,8 +567,8 @@ Demo 2 · replay · `w07_d2_scaling_fit/` · rehearsed 2026-10-26 · bits/byte �
 ::: {.prose}
 | what W4 left here | what this week adds | the shipped example |
 |:---|:---|:---|
-| **a spike is not dirty data** (W4 p54): the same batch at another step does not spike; the logit statistics move first (W4 p49–p51) | "stability" is **the precondition of a scaling law**: every size in the suite must train to the end at its tuned learning rate, or there is no point to fit | OLMo 2 §3: reordered norm, QK-norm, z-loss (W4 p52); repeated-$n$-gram removal, initialization, AdamW's $\epsilon$, no weight decay on embeddings |
-| **muP** (W4 p56): tune small, transfer wide | how reason 3 (p34) is met without re-sweeping | Kimi K2: MuonClip on Muon (W4 p57) — **15.5T tokens, zero loss spikes** |
+| **a spike is not dirty data** (W4 p56): the same batch at another step does not spike; the logit statistics move first (W4 p51–p53) | "stability" is **the precondition of a scaling law**: every size in the suite must train to the end at its tuned learning rate, or there is no point to fit | OLMo 2 §3: reordered norm, QK-norm, z-loss (W4 p54); repeated-$n$-gram removal, initialization, AdamW's $\epsilon$, no weight decay on embeddings |
+| **muP** (W4 p58): tune small, transfer wide | how reason 3 (p34) is met without re-sweeping | Kimi K2: MuonClip on Muon (W4 p59) — **15.5T tokens, zero loss spikes** |
 
 : {tbl-colwidths="[30,34,36]"}
 :::
@@ -928,7 +928,7 @@ compare with your two lines from p7 · W8: the compressor becomes an assistant
 : {tbl-colwidths="[17,53,13,17]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p59, W4 p47, W5 p46, W6 p57 · one row added · bytes: $b$
+Same master as W1 p16, W3 p61, W4 p49, W5 p48, W6 p57 · one row added · bytes: $b$
 :::
 
 ## Twelve things this week said no to (1 of 2)

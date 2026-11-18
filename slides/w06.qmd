@@ -60,7 +60,7 @@ format:
 :::
 
 ::: {.footer}
-W5 p46 · W5 p52 · W3 demo 2 rehearsal 2026-09-29 (16 GiB at 128k) · w05-data.json
+W5 p48 · W5 p54 · W3 demo 2 rehearsal 2026-09-29 (16 GiB at 128k) · w05-data.json
 :::
 
 ## The problem this week handles, in one picture
@@ -96,10 +96,10 @@ Outline W6 · on the board: p15, p24–27, p30, p34, p48 · live: p13, p29 · re
 
 - Write one line for each. Keep them: p64 comes back to both.
 - (a) is the ledger's MoE row: **W1 p16 wrote "MoE: memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$"** and left the numbers blank — today fills them
-- (b) is the ledger's KV row: W3 p28 said "W6 the mechanism"
+- (b) is the ledger's KV row: W3 p29 said "W6 the mechanism"
 
 ::: {.footer}
-W1 p16 · W3 p28 · W5 p46 · Misconception 1: "MoE is model compression"
+W1 p16 · W3 p29 · W5 p48 · Misconception 1: "MoE is model compression"
 :::
 
 ## Notation for today: two routes, two sets of letters
@@ -195,7 +195,7 @@ $$\mathbf{y}_t = \sum_{i \in \mathcal{T}_t} g_i(\mathbf{x}_t)\,E_i(\mathbf{x}_t)
 :::
 
 ::: {.footer}
-outline W6 §Key math 1 · Shazeer et al. 2017 · Fedus et al. 2022 · DeepSeek-V3 §2.1.2 · W4 p10, p20
+outline W6 §Key math 1 · Shazeer et al. 2017 · Fedus et al. 2022 · DeepSeek-V3 §2.1.2 · W4 p11, p21
 :::
 
 ## The accounting: $N_{\text{total}}$, $N_{\text{active}}$, and why $\rho$ has a floor
@@ -215,7 +215,7 @@ $$\rho = \frac{N_{\text{active}}}{N_{\text{total}}} \;>\; \frac{n_{\text{layer}}
 :::
 
 ::: {.footer}
-outline W6 §Key math 2 · W4 p20–p21 · Dai et al., ACL 2024 (DeepSeekMoE)
+outline W6 §Key math 2 · W4 p21–p22 · Dai et al., ACL 2024 (DeepSeekMoE)
 :::
 
 ## The trend: five abstracts, one direction
@@ -335,7 +335,7 @@ $$\underbrace{\big(\phi(\mathbf{Q})\,\phi(\mathbf{K})^\top\big)\,\mathbf{V}}_{O(
 {{< include assets/w06/assoc-right.inline.qmd >}}
 
 ::: {.footer}
-outline W6 §Key math 3 · Katharopoulos et al., ICML 2020 §3.2 Eq. (7): $\phi = \mathrm{elu} + 1$ · W3 p25
+outline W6 §Key math 3 · Katharopoulos et al., ICML 2020 §3.2 Eq. (7): $\phi = \mathrm{elu} + 1$ · W3 p26
 :::
 
 ## Causal: the sum becomes a recurrence, and the notebook
@@ -591,7 +591,7 @@ One sublayer where W4 had two: project up, a short convolution, the selective SS
 :::
 
 ::: {.footer}
-Gu & Dao 2023 §3.4, Fig. 3 · H3: Hungry Hungry Hippos, Fu et al. 2023 · W4 p10: the block
+Gu & Dao 2023 §3.4, Fig. 3 · H3: Hungry Hungry Hippos, Fu et al. 2023 · W4 p11: the block
 :::
 
 ## Channels and heads: who runs its own SSM, and who shares
@@ -728,7 +728,7 @@ outline W6 §Key math 5 · Dao & Gu §6 · mlx-lm `ssm.py` 2026-10-18 · Katharo
 - so there is nothing to extrapolate and nothing to repair: no PI, no NTK-aware, no YaRN. Length generalisation rides on decay and locality — **a different inductive bias, not an absence of one**
 
 ::: {.footer}
-W1 p71 · W5 p58 · Misconception 7: "a fixed state has no position information"
+W1 p71 · W5 p60 · Misconception 7: "a fixed state has no position information"
 :::
 
 # The bill: when the notebook is smaller, and what it cannot pay {.section-title}
@@ -762,7 +762,7 @@ The two routes never touch the same slot, so a model picks one of each: **"MoE a
 :::
 
 ::: {.footer}
-W4 p10 · Misconception 8: "MoE or hybrid"
+W4 p11 · Misconception 8: "MoE or hybrid"
 :::
 
 ## Before Demo 4: a parallel hybrid against full attention
@@ -812,7 +812,7 @@ Demo 4 · replay + live · `w06_d4_hybrid_vs_full/` · rehearsed 2026-10-19 · W
 : {tbl-colwidths="[17,53,12,18]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p59, W4 p47, W5 p46 · one row filled, one row added · bytes: $b$
+Same master as W1 p16, W3 p61, W4 p49, W5 p48 · one row filled, one row added · bytes: $b$
 :::
 
 # 2026: three routes, none has won — and why the table decides {.section-title}
@@ -833,7 +833,7 @@ outline W6 §LO 5 · Du et al. 2510.26692 · Waleffe et al. 2406.07887 · DeepSe
 
 ## Open weights are not open methods; why one team went back
 
-- **Two absences to say out loud**: Qwen3-Next has **no technical report** — a blog post and a model card, yet it is a baseline in 2026 papers; **Llama 4 has none either** (W5 p18). Their designs can only be cited from model cards, and these slides say so every time
+- **Two absences to say out loud**: Qwen3-Next has **no technical report** — a blog post and a model card, yet it is a baseline in 2026 papers; **Llama 4 has none either** (W5 p19). Their designs can only be cited from model cards, and these slides say so every time
 - **MiniMax-M2's team post, 2025-10-29** (on behalf of the pre-training lead), three reasons for returning to full attention — a **company post, not peer-reviewed**:
   1. evaluation cannot see the gap: hybrids matched full attention on early benchmarks; the deficits showed in multi-hop reasoning later — "the real bottleneck is the limitations of evaluation"
   2. linear attention is "far more sensitive to numerical precision" — the state is a long running sum (p26)
@@ -857,11 +857,11 @@ MiniMax team post 2025-10-29 · Misconception 9: "SSMs replace Transformers / hy
 : {tbl-colwidths="[26,24,50]"}
 
 ::: {.claim}
-First question for any table: **what did this row hold fixed?** Second: was the baseline tuned (W4 p56)? Only then: who won.
+First question for any table: **what did this row hold fixed?** Second: was the baseline tuned (W4 p58)? Only then: who won.
 :::
 
 ::: {.footer}
-Clark 2022 · Abnar 2025 · W2 p70 · W4 p56 · Misconception 10: "results compare directly"
+Clark 2022 · Abnar 2025 · W2 p70 · W4 p58 · Misconception 10: "results compare directly"
 :::
 
 ## Two tables taken apart: Kimi Linear, DeepSeek-V3 §2

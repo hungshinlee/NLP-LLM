@@ -237,7 +237,7 @@ def moe_layers(spec: dict, nl: int) -> list[bool]:
 # 3. config 那一欄：逐項記帳（只看 config）
 # ══════════════════════════════════════════════════════════════
 def attn_formula(flat: dict, base: dict) -> tuple[int | None, str]:
-    """一層 attention 的投影。GQA／MHA：W^Q、W^O 各 d·n_head·d_head，W^K、W^V 各 d·n_kv·d_head（W4 p20 的式子）；
+    """一層 attention 的投影。GQA／MHA：W^Q、W^O 各 d·n_head·d_head，W^K、W^V 各 d·n_kv·d_head（W4 p21 的式子）；
     MLA（DeepSeek-V3、Kimi 的 full attention 層）：低秩 q／kv 加 W^O。Gemma 4 的 sliding／global 兩種 head 形狀與 attention_k_eq_v 不試算——由檔案說。"""
     mt, d = base["model_type"], base["d"]
     if mt in ("deepseek_v3", "kimi_linear"):
