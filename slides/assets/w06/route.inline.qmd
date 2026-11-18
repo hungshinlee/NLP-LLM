@@ -1,0 +1,128 @@
+<!-- 由 scripts/make_figs_w06.py 產生，勿手改；投影片用 {{< include assets/w06/route.inline.qmd >}} 貼入 -->
+```{=html}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 392" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-route" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="40" font-size="27" fill="#0b5cad" text-anchor="start" font-weight="700">First half — two rows of the ledger, two replacements</text><g class="fragment" data-fragment-index="1"><rect x="20" y="58" width="590" height="122" rx="7" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><circle cx="52" cy="93" r="18" fill="#0b5cad"/><text x="52" y="101" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">1</text><text x="80" y="102" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">MoE</text><text x="38" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="276.4" lengthAdjust="spacing">can FLOPs stop following</text><svg x="320.63" y="117.028" width="22.356" height="26.7116" viewBox="0 0 22.356 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t505-figure_1">
+  <g id="t505-patch_1">
+   <path d="M 0 26.711625 
+L 22.356 26.711625 
+L 22.356 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t505-text_1">
+   <!-- $N$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t505-Cmmi10-4e" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 931 225 1031 616 
+L 1900 4116 
+Q 1722 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1278 4247 1287 4286 
+Q 1297 4325 1314 4348 
+Q 1331 4372 1356 4372 
+L 2463 4372 
+Q 2509 4372 2522 4331 
+L 3944 947 
+L 4653 3781 
+Q 4666 3850 4666 3878 
+Q 4666 4147 4172 4147 
+Q 4109 4147 4109 4231 
+Q 4131 4313 4143 4342 
+Q 4156 4372 4219 4372 
+L 5588 4372 
+Q 5650 4372 5650 4288 
+Q 5647 4272 5637 4233 
+Q 5628 4194 5611 4170 
+Q 5594 4147 5569 4147 
+Q 4956 4147 4856 3756 
+L 3938 56 
+Q 3916 0 3872 0 
+L 3794 0 
+Q 3750 0 3738 44 
+L 2106 3916 
+L 2094 3956 
+Q 2081 3969 2081 3975 
+L 1234 588 
+Q 1228 572 1225 548 
+Q 1222 525 1216 494 
+Q 1216 328 1359 276 
+Q 1503 225 1716 225 
+Q 1778 225 1778 141 
+Q 1756 53 1740 26 
+Q 1725 0 1672 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t505-Cmmi10-4e" transform="translate(0 0.6875)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="342.986" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="6.8" lengthAdjust="spacing">:</text><text x="38" y="167" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">what moves, and where to?</text><line x1="612" y1="119" x2="627" y2="119" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-route)"/><rect x="630" y="58" width="590" height="122" rx="7" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><circle cx="662" cy="93" r="18" fill="#0b5cad"/><text x="662" y="101" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">2</text><text x="690" y="102" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">A fixed state</text><text x="648" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="294.1" lengthAdjust="spacing">can the state stop following</text><svg x="948.282" y="117.028" width="19.044" height="26.7116" viewBox="0 0 19.044 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t506-figure_1">
+  <g id="t506-patch_1">
+   <path d="M 0 26.711625 
+L 19.044 26.711625 
+L 19.044 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t506-text_1">
+   <!-- $L$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t506-Cmmi10-4c" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 709 225 863 269 
+Q 947 297 984 441 
+L 1863 3956 
+Q 1875 4019 1875 4044 
+Q 1875 4113 1797 4122 
+Q 1678 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1297 4313 1309 4342 
+Q 1322 4372 1381 4372 
+L 3272 4372 
+Q 3328 4372 3328 4288 
+Q 3319 4222 3306 4184 
+Q 3294 4147 3244 4147 
+Q 2772 4147 2613 4116 
+Q 2456 4088 2419 3928 
+L 1544 416 
+Q 1516 338 1516 275 
+Q 1516 225 1734 225 
+L 2328 225 
+Q 2831 225 3143 425 
+Q 3456 625 3606 876 
+Q 3756 1128 3857 1398 
+Q 3959 1669 4006 1678 
+L 4063 1678 
+Q 4128 1678 4128 1594 
+L 3559 44 
+Q 3550 0 3500 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t506-Cmmi10-4c" transform="translate(0 0.6875)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="967.326" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="6.8" lengthAdjust="spacing">:</text><text x="648" y="167" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">what does the notebook hold?</text></g><text x="20" y="232" font-size="27" fill="#b45309" text-anchor="start" font-weight="700">Second half — how it forgets, what it costs, who ships it</text><g class="fragment" data-fragment-index="2"><rect x="20" y="250" width="386.667" height="122" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><circle cx="52" cy="285" r="18" fill="#b45309"/><text x="52" y="293" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">3</text><text x="80" y="294" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">Forgetting</text><text x="38" y="330" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">2023–2025: how does the</text><text x="38" y="359" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">notebook forget? SSMs, SSD</text><line x1="408.667" y1="311" x2="423.667" y2="311" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-route)"/><rect x="426.667" y="250" width="386.667" height="122" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><circle cx="458.667" cy="285" r="18" fill="#b45309"/><text x="458.667" y="293" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">4</text><text x="486.667" y="294" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">The bill</text><text x="444.667" y="330" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">when is the notebook smaller,</text><text x="444.667" y="359" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">and what can it not pay?</text><line x1="815.333" y1="311" x2="830.333" y2="311" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-route)"/><rect x="833.333" y="250" width="386.667" height="122" rx="7" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><circle cx="865.333" cy="285" r="18" fill="#b45309"/><text x="865.333" y="293" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">5</text><text x="893.333" y="294" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">2026</text><text x="851.333" y="330" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">three routes, none has won:</text><text x="851.333" y="359" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">why does the table decide?</text></g></svg>
+```
