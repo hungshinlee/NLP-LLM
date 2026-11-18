@@ -59,7 +59,7 @@ From `runs/rehearsal/` (2026-10-06):
 - **probe**: MPS available; the built-in `F.scaled_dot_product_attention` accepts `dropout_p = 0.1` on MPS with finite gradients on torch 2.14.0; 0.135 s per training step.
 - **train**: 3000 steps in 557 s (88k tokens/s); held-out **1.514 nats/char = 2.184 bits/char**; `bpb_raw` 2.184, `bpb_w1_denominator` 2.103, against W1's bigram at 1.861. The loss curve flattens at 2.18–2.19 bits after about 2000 steps. The record also holds a 300-character sample from the trained model.
 
-On the BPB comparison: the held-out *text* is the same as W1's, but the prediction *target* is not — W1's n-grams predict only the regex-tokenized words and punctuation, the character model predicts every character including spacing and case. The two BPB values use two denominators (raw UTF-8 bytes; W1's `' '.join(tokens)` bytes), but no denominator removes that difference. This is the W1 p28 point in practice: bits-per-byte is comparable only over the same byte stream.
+On the BPB comparison: the held-out *text* is the same as W1's, but the prediction *target* is not — W1's n-grams predict only the regex-tokenized words and punctuation, the character model predicts every character including spacing and case. The two BPB values use two denominators (raw UTF-8 bytes; W1's `' '.join(tokens)` bytes), but no denominator removes that difference. This is the W1 p29 point in practice: bits-per-byte is comparable only over the same byte stream.
 
 ## Files
 

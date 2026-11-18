@@ -15,7 +15,7 @@
   語料與 held-out 文字和 W1 相同（W1 把 regex token 的前 90% 當 train，這裡取同一個切點的字元起點），
   但 W1 的 n-gram 只預測詞與標點（regex 切出來的 token，空白、換行、連字號、引號不在裡面），分母是 ' '.join(tokens) 的 bytes；
   這裡的字元模型預測原文的每一個字元，分母是原文的 UTF-8 bytes。兩個分母都印出來（bpb_raw、bpb_w1_denominator），
-  但「預測目標不同」這件事分母換不掉——這正是 W1 p28 講的：BPB 可比的前提是同一條位元組流。
+  但「預測目標不同」這件事分母換不掉——這正是 W1 p29 講的：BPB 可比的前提是同一條位元組流。
 """
 from __future__ import annotations
 
@@ -235,7 +235,7 @@ def print_bpb_table(rec: dict) -> None:
     print(f"    {'this tiny GPT, char-level':<40} {'every character':<28} {'raw UTF-8':>22} {f['bpb_raw']:>8.3f}")
     print(f"    {'  same bits, W1 denominator':<40} {'':<28} {w1d:>22} {f['bpb_w1_denominator']:>8.3f}")
     print(f"    {GREY}held-out: {rec['corpus']['held_chars']:,} chars = {rec['corpus']['held_bytes_raw']:,} raw bytes; W1 denominator {rec['corpus']['held_bytes_w1']:,} bytes. "
-          f"Not the same ruler: the n-gram never pays for whitespace, line breaks or the characters its regex drops (W1 p28).{RESET}")
+          f"Not the same ruler: the n-gram never pays for whitespace, line breaks or the characters its regex drops (W1 p29).{RESET}")
 
 
 # ── MPS 探針 ─────────────────────────────────────────────────────

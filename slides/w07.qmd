@@ -214,7 +214,7 @@ $$\mathcal{L}(N, D) \;=\; \underbrace{E}_{\text{the data's own entropy}} \;+\; \
 
 | term | survives when | what it is | W1's name for it |
 |:---|:---|:---|:---|
-| $E$ | $N \to \infty$ **and** $D \to \infty$ | the irreducible loss: natural text is random | $H(p)$, the entropy rate (W1 p24) |
+| $E$ | $N \to \infty$ **and** $D \to \infty$ | the irreducible loss: natural text is random | $H(p)$, the entropy rate (W1 p25) |
 | $AN^{-\alpha}$ | $D \to \infty$ | the cost of a model with only $N$ parameters | approximation error |
 | $BD^{-\beta}$ | $N \to \infty$ | the cost of having seen only $D$ tokens | estimation error |
 
@@ -457,13 +457,13 @@ Muennighoff et al. 2023 · Eq. (5)–(6) §3.1 · $R^{*}_{D} \approx 15$ §6 · 
 | debt | the facts | what the law should read |
 |:---|:---|:---|
 | **W6 p67: a scaling law is written in $N$ — for an MoE, which?** | $C \approx 6N_{\text{active}}D$; memory and capacity follow $N_{\text{total}}$; W4's $12\,n_{\text{layer}}d^{2}$ is the dense case; W6's $\rho$ has a floor | **Neither.** Clark et al.: loss as a function of parameters *and* expert count, collapsed into an **effective parameter count**. Abnar et al.: under a fixed parameter or compute budget there **is** an optimal sparsity — two axes |
-| **W2 p44–p46: vocabulary is in the budget** | $N = N_{\text{nv}} + N_{\text{v}}$; $D$ in tokens depends on $V$ (W2 p49) | Tao et al.: the first-order condition W2 derived — a fourth variable. Limisiewicz 2026: scale $N$ with data in **bytes** — one preprint, unreplicated |
+| **W2 p45–p47: vocabulary is in the budget** | $N = N_{\text{nv}} + N_{\text{v}}$; $D$ in tokens depends on $V$ (W2 p50) | Tao et al.: the first-order condition W2 derived — a fourth variable. Limisiewicz 2026: scale $N$ with data in **bytes** — one preprint, unreplicated |
 
 : {tbl-colwidths="[26,30,44]"}
 :::
 
 ::: {.footer}
-Clark 2022 · Abnar 2025 · Tao 2024 · W6 p67 · W2 p46 · Misconception 4: "MoE's $N$ is the total"
+Clark 2022 · Abnar 2025 · Tao 2024 · W6 p67 · W2 p47 · Misconception 4: "MoE's $N$ is the total"
 :::
 
 # Every axis is a small-scale fit, extrapolated. Can the fit be trusted? {.section-title}
@@ -655,11 +655,11 @@ commoncrawl.org (a website, not a paper) · FineWeb §3.1, §3.3 · FineWeb2 (ar
 : {tbl-colwidths="[40,60]"}
 
 ::: {.claim}
-W2 p69 said "Traditional Chinese has too little data" is the wrong diagnosis. Here is the right one: **it has no subset of its own** — not a quality decision, a decision made at the sieve. Hakka and Taiwanese are the other case: the sieve has a slot, and the raw water is nearly empty.
+W2 p70 said "Traditional Chinese has too little data" is the wrong diagnosis. Here is the right one: **it has no subset of its own** — not a quality decision, a decision made at the sieve. Hakka and Taiwanese are the other case: the sieve has a slot, and the raw water is nearly empty.
 :::
 
 ::: {.footer}
-`fineweb-2` dataset card (not a paper) · W2 p69 · Misconception 8 begins: "more data is better"
+`fineweb-2` dataset card (not a paper) · W2 p70 · Misconception 8 begins: "more data is better"
 :::
 
 ## Quality: rules, then a classifier — and what "quality" means
@@ -727,7 +727,7 @@ W1's $n = 8$ closes here — and near-duplicates also lie to the scaling law: $D
 :::
 
 ::: {.footer}
-Lee et al. 2022 · Carlini et al. 2023 (abstracts) · W1 p7, p42 · W1's $n = 8$ closes here
+Lee et al. 2022 · Carlini et al. 2023 (abstracts) · W1 p7, p44 · W1's $n = 8$ closes here
 :::
 
 ## MinHash: one hash's collision probability is the Jaccard

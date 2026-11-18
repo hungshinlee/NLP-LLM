@@ -422,7 +422,7 @@ SGNS: low rank **training produced**. MLA: low rank to shrink **a state**. LoRA:
 :::
 
 ::: {.footer}
-W1 p48 · W3 p33 (*used as a design*), p36 · GaLore, ICML 2024 Oral — named only
+W1 p50 · W3 p33 (*used as a design*), p36 · GaLore, ICML 2024 Oral — named only
 :::
 
 ## Training and using are two different pictures
@@ -846,7 +846,7 @@ Forgetting is the price of the second entry. Before arguing about it, **measure 
 :::
 
 ::: {.footer}
-McCloskey & Cohen 1989 · Kirkpatrick et al. 2017 · Luo et al. 2025 · W2 p68
+McCloskey & Cohen 1989 · Kirkpatrick et al. 2017 · Luo et al. 2025 · W2 p69
 :::
 
 ## Replay: demo 4 (b) — W1's ruler, a third time
@@ -873,7 +873,7 @@ Demo 4 (b) · replay · W1 demo 2 · W7 demo 3 · rehearsed 2026-11-08 (`runs/re
 
 ## A new language needs new rows: W2's debt, paid here
 
-- W2 p68's route back for a short-changed language: **extend the vocabulary, then keep pre-training** — Breeze-7B added 29,873 tokens to Mistral's vocabulary
+- W2 p69's route back for a short-changed language: **extend the vocabulary, then keep pre-training** — Breeze-7B added 29,873 tokens to Mistral's vocabulary
 - every new token brings a **new embedding row that starts from nothing**; continued pre-training has to fill it — and the old abilities pay
 - **the side roads do not reach it**: mlx-lm's LoRA wraps the Linears inside the blocks; the embedding and the LM head sit outside (p24)
 - the baseline remedy (Ibrahim et al., TMLR 2024): **re-warm** the learning rate, **re-decay** it, and **replay** some old data — enough to match re-training from scratch, at 405M and 10B
@@ -884,7 +884,7 @@ A new language needs new rows in the embedding table — and **LoRA's side roads
 :::
 
 ::: {.footer}
-W2 p73, Misconception 9, returns here · Breeze-7B §2.1 · Ibrahim et al. 2024
+W2 p74, Misconception 9, returns here · Breeze-7B §2.1 · Ibrahim et al. 2024
 :::
 
 ## "Forgot" has three readings — measure them separately

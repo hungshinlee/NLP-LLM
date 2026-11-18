@@ -60,7 +60,7 @@ format:
 :::
 
 ::: {.footer}
-Token counts: W2 demo 1 rehearsal · pipeline W2 p20 · ledger W2 p47 · schematic
+Token counts: W2 demo 1 rehearsal · pipeline W2 p20 · ledger W2 p48 · schematic
 :::
 
 ## Last week ended with a number. Derive it before you trust it
@@ -80,7 +80,7 @@ Multiply it out yourself — first **per token**, then for the whole context. Yo
 :::
 
 ::: {.footer}
-Configuration: W1 p16 · the answer was announced on W2 p74
+Configuration: W1 p16 · the answer was announced on W2 p75
 :::
 
 ## Now guess three variants — before computing them
@@ -111,7 +111,7 @@ Recurrence lost on **parallelism** and **path length** — not on quality. This 
 :::
 
 ::: {.footer}
-W1 p56–p64: BPTT, backpropagation through time · Jacobian chain · seq2seq · Bahdanau
+W1 p59–p67: BPTT, backpropagation through time · Jacobian chain · seq2seq · Bahdanau
 :::
 
 ## What you should be able to do by the end of today

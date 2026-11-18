@@ -11,7 +11,7 @@ demo 3 從檔案路徑載入這個模組（照 W5 demo 2／W6 demo 2 載 W4 的�
   count_split(model)           {"total", "emb", "nonemb"}
   train_size(d1, cfg, corpus, size, steps=None, tag="")   訓一個尺寸到 D = tokens_per_param · N（或 --steps），回紀錄 dict
 
-tokenizer：byte-level，V = 256（一個 byte 一個 token），所以 held-out 的 nats/token ÷ ln 2 **就是** bits/byte——W1 p30 那把尺，這裡不需要換分母。
+tokenizer：byte-level，V = 256（一個 byte 一個 token），所以 held-out 的 nats/token ÷ ln 2 **就是** bits/byte——W1 p31 那把尺，這裡不需要換分母。
 """
 from __future__ import annotations
 

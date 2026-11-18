@@ -1,21 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 380" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-wire" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><rect x="20" y="14" width="385" height="352" rx="10" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.6"/><text x="212.5" y="46" font-size="20" fill="#0b5cad" text-anchor="middle" font-weight="700">LSTM, 1997</text><text x="212.5" y="70" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400" font-style="italic">across time · constant error carousel</text><rect x="38" y="176" width="104" height="48" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="67.575" y="191.74" width="44.85" height="22.2597" viewBox="0 0 44.85 22.259688"><defs>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 416" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-wire" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><rect x="20" y="14" width="386" height="388" rx="10" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.6"/><text x="213" y="48" font-size="23" fill="#0b5cad" text-anchor="middle" font-weight="700">LSTM, 1997</text><text x="213" y="78" font-size="23" fill="#6b7280" text-anchor="middle" font-weight="400" font-style="italic">across time · the error carousel</text><rect x="40" y="201" width="104" height="50" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="65.09" y="214.028" width="53.82" height="26.7116" viewBox="0 0 53.82 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t88-figure_1">
-  <g id="t88-patch_1">
-   <path d="M 0 22.259688 
-L 44.85 22.259688 
-L 44.85 0 
+ <g id="t97-figure_1">
+  <g id="t97-patch_1">
+   <path d="M 0 26.711625 
+L 53.82 26.711625 
+L 53.82 0 
 L 0 0 
-L 0 22.259688 
+L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
-  <g id="t88-text_1">
+  <g id="t97-text_1">
    <!-- $\mathbf{c}_{t-1}$ -->
-   <g style="fill: #1f2328" transform="translate(0 17.476406) scale(0.23 -0.23)">
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t88-Cmb10-63" d="M 1594 -38 
+     <path id="t97-Cmb10-63" d="M 1594 -38 
 Q 1172 -38 858 150 
 Q 544 338 378 667 
 Q 213 997 213 1422 
@@ -48,7 +48,7 @@ Q 2553 363 2261 162
 Q 1969 -38 1594 -38 
 z
 " transform="scale(0.015625)"/>
-     <path id="t88-Cmmi10-74" d="M 397 519 
+     <path id="t97-Cmmi10-74" d="M 397 519 
 Q 397 613 416 697 
 L 878 2534 
 L 206 2534 
@@ -85,7 +85,7 @@ Q 744 -72 570 93
 Q 397 259 397 519 
 z
 " transform="scale(0.015625)"/>
-     <path id="t88-Cmsy10-a1" d="M 653 1472 
+     <path id="t97-Cmsy10-a1" d="M 653 1472 
 Q 600 1472 565 1512 
 Q 531 1553 531 1600 
 Q 531 1647 565 1687 
@@ -98,7 +98,7 @@ Q 4375 1472 4325 1472
 L 653 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t88-Cmr10-31" d="M 594 0 
+     <path id="t97-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -115,31 +115,31 @@ L 594 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t88-Cmb10-63" transform="translate(0 0.6875)"/>
-    <use xlink:href="#t88-Cmmi10-74" transform="translate(48.848906 -16.31875) scale(0.7)"/>
-    <use xlink:href="#t88-Cmsy10-a1" transform="translate(86.398711 -16.31875) scale(0.7)"/>
-    <use xlink:href="#t88-Cmr10-31" transform="translate(153.069609 -16.31875) scale(0.7)"/>
+    <use xlink:href="#t97-Cmb10-63" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t97-Cmmi10-74" transform="translate(48.848906 -16.31875) scale(0.7)"/>
+    <use xlink:href="#t97-Cmsy10-a1" transform="translate(86.398711 -16.31875) scale(0.7)"/>
+    <use xlink:href="#t97-Cmr10-31" transform="translate(153.069609 -16.31875) scale(0.7)"/>
    </g>
   </g>
  </g>
-</svg><line x1="142" y1="200" x2="190" y2="200" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><circle cx="212" cy="200" r="20" fill="#fff" stroke="#0b5cad" stroke-width="2.2"/><text x="212" y="209" font-size="24" fill="#0b5cad" text-anchor="middle" font-weight="700">+</text><line x1="232" y1="200" x2="282" y2="200" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><rect x="282" y="176" width="104" height="48" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="324.685" y="191.74" width="18.63" height="22.2597" viewBox="0 0 18.63 22.259688"><defs>
+</svg><line x1="144" y1="226" x2="190" y2="226" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><circle cx="213" cy="226" r="20" fill="#fff" stroke="#0b5cad" stroke-width="2.2"/><text x="213" y="235" font-size="24" fill="#0b5cad" text-anchor="middle" font-weight="700">+</text><line x1="234" y1="226" x2="280" y2="226" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><rect x="282" y="201" width="104" height="50" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="322.822" y="214.028" width="22.356" height="26.7116" viewBox="0 0 22.356 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t89-figure_1">
-  <g id="t89-patch_1">
-   <path d="M 0 22.259688 
-L 18.63 22.259688 
-L 18.63 0 
+ <g id="t98-figure_1">
+  <g id="t98-patch_1">
+   <path d="M 0 26.711625 
+L 22.356 26.711625 
+L 22.356 0 
 L 0 0 
-L 0 22.259688 
+L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
-  <g id="t89-text_1">
+  <g id="t98-text_1">
    <!-- $\mathbf{c}_t$ -->
-   <g style="fill: #1f2328" transform="translate(0 17.476406) scale(0.23 -0.23)">
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t89-Cmb10-63" d="M 1594 -38 
+     <path id="t98-Cmb10-63" d="M 1594 -38 
 Q 1172 -38 858 150 
 Q 544 338 378 667 
 Q 213 997 213 1422 
@@ -172,7 +172,7 @@ Q 2553 363 2261 162
 Q 1969 -38 1594 -38 
 z
 " transform="scale(0.015625)"/>
-     <path id="t89-Cmmi10-74" d="M 397 519 
+     <path id="t98-Cmmi10-74" d="M 397 519 
 Q 397 613 416 697 
 L 878 2534 
 L 206 2534 
@@ -210,29 +210,29 @@ Q 397 259 397 519
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t89-Cmb10-63" transform="translate(0 0.6875)"/>
-    <use xlink:href="#t89-Cmmi10-74" transform="translate(48.848906 -16.31875) scale(0.7)"/>
+    <use xlink:href="#t98-Cmb10-63" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t98-Cmmi10-74" transform="translate(48.848906 -16.31875) scale(0.7)"/>
    </g>
   </g>
  </g>
-</svg><line x1="212" y1="288" x2="212" y2="222" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-wire)"/><svg x="184.385" y="296.676" width="55.23" height="20.3241" viewBox="0 0 55.23 20.324062"><defs>
+</svg><line x1="213" y1="310" x2="213" y2="248" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-wire)"/><svg x="176.706" y="317.084" width="72.588" height="26.7116" viewBox="0 0 72.588 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t90-figure_1">
-  <g id="t90-patch_1">
-   <path d="M 0 20.324062 
-L 55.23 20.324062 
-L 55.23 0 
+ <g id="t99-figure_1">
+  <g id="t99-patch_1">
+   <path d="M 0 26.711625 
+L 72.588 26.711625 
+L 72.588 0 
 L 0 0 
-L 0 20.324062 
+L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
-  <g id="t90-text_1">
+  <g id="t99-text_1">
    <!-- $\mathbf{i}_t \odot \mathbf{g}_t$ -->
-   <g style="fill: #6b7280" transform="translate(0 15.914062) scale(0.21 -0.21)">
+   <g style="fill: #6b7280" transform="translate(0 20.915625) scale(0.276 -0.276)">
     <defs>
-     <path id="t90-Cmb10-69" d="M 153 0 
+     <path id="t99-Cmb10-69" d="M 153 0 
 L 153 325 
 L 594 325 
 L 594 2322 
@@ -256,7 +256,7 @@ Q 647 3425 500 3575
 Q 353 3725 353 3938 
 z
 " transform="scale(0.015625)"/>
-     <path id="t90-Cmmi10-74" d="M 397 519 
+     <path id="t99-Cmmi10-74" d="M 397 519 
 Q 397 613 416 697 
 L 878 2534 
 L 206 2534 
@@ -293,7 +293,7 @@ Q 744 -72 570 93
 Q 397 259 397 519 
 z
 " transform="scale(0.015625)"/>
-     <path id="t90-Cmsy10-af" d="M 2491 -531 
+     <path id="t99-Cmsy10-af" d="M 2491 -531 
 Q 2053 -531 1668 -365 
 Q 1284 -200 986 95 
 Q 688 391 523 780 
@@ -342,7 +342,7 @@ Q 2944 1413 2808 1277
 Q 2672 1141 2491 1141 
 z
 " transform="scale(0.015625)"/>
-     <path id="t90-Cmb10-67" d="M 153 -469 
+     <path id="t99-Cmb10-67" d="M 153 -469 
 Q 153 -284 281 -139 
 Q 409 6 594 72 
 Q 347 284 347 666 
@@ -414,32 +414,32 @@ Q 1225 1234 1422 1234
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t90-Cmb10-69" transform="translate(0 0.515625)"/>
-    <use xlink:href="#t90-Cmmi10-74" transform="translate(32.149687 -16.490625) scale(0.7)"/>
-    <use xlink:href="#t90-Cmsy10-af" transform="translate(81.344414 0.515625)"/>
-    <use xlink:href="#t90-Cmb10-67" transform="translate(176.588555 0.515625)"/>
-    <use xlink:href="#t90-Cmmi10-74" transform="translate(231.052695 -16.490625) scale(0.7)"/>
+    <use xlink:href="#t99-Cmb10-69" transform="translate(0 0.515625)"/>
+    <use xlink:href="#t99-Cmmi10-74" transform="translate(32.149687 -16.490625) scale(0.7)"/>
+    <use xlink:href="#t99-Cmsy10-af" transform="translate(81.344414 0.515625)"/>
+    <use xlink:href="#t99-Cmb10-67" transform="translate(176.588555 0.515625)"/>
+    <use xlink:href="#t99-Cmmi10-74" transform="translate(231.052695 -16.490625) scale(0.7)"/>
    </g>
   </g>
  </g>
-</svg><svg x="149.08" y="96" width="125.84" height="22" viewBox="0 0 125.84 22"><defs>
+</svg><svg x="134.064" y="109.3" width="157.872" height="27.6" viewBox="0 0 157.872 27.6"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t91-figure_1">
-  <g id="t91-patch_1">
-   <path d="M 0 22 
-L 125.84 22 
-L 125.84 0 
+ <g id="t100-figure_1">
+  <g id="t100-patch_1">
+   <path d="M 0 27.6 
+L 157.872 27.6 
+L 157.872 0 
 L 0 0 
-L 0 22 
+L 0 27.6 
 z
 " style="fill: none"/>
   </g>
-  <g id="t91-text_1">
+  <g id="t100-text_1">
    <!-- $\partial\mathbf{c}_t/\partial\mathbf{c}_{t-1} = \mathbf{I}$ -->
-   <g style="fill: #0b5cad" transform="translate(0 16.5) scale(0.22 -0.22)">
+   <g style="fill: #0b5cad" transform="translate(0 20.7) scale(0.276 -0.276)">
     <defs>
-     <path id="t91-STIXGeneral-Regular-2202" d="M 1248 4000 
+     <path id="t100-STIXGeneral-Regular-2202" d="M 1248 4000 
 L 1184 4128 
 Q 1427 4275 1811 4275 
 Q 3014 4275 3014 2611 
@@ -469,7 +469,7 @@ Q 2106 877 2253 1414
 Q 2349 1766 2349 2042 
 z
 " transform="scale(0.015625)"/>
-     <path id="t91-Cmb10-63" d="M 1594 -38 
+     <path id="t100-Cmb10-63" d="M 1594 -38 
 Q 1172 -38 858 150 
 Q 544 338 378 667 
 Q 213 997 213 1422 
@@ -502,7 +502,7 @@ Q 2553 363 2261 162
 Q 1969 -38 1594 -38 
 z
 " transform="scale(0.015625)"/>
-     <path id="t91-Cmmi10-74" d="M 397 519 
+     <path id="t100-Cmmi10-74" d="M 397 519 
 Q 397 613 416 697 
 L 878 2534 
 L 206 2534 
@@ -539,7 +539,7 @@ Q 744 -72 570 93
 Q 397 259 397 519 
 z
 " transform="scale(0.015625)"/>
-     <path id="t91-Cmmi10-3d" d="M 359 -1472 
+     <path id="t100-Cmmi10-3d" d="M 359 -1472 
 Q 359 -1453 366 -1447 
 L 2591 4722 
 Q 2603 4759 2634 4779 
@@ -553,7 +553,7 @@ Q 434 -1600 396 -1562
 Q 359 -1525 359 -1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t91-Cmsy10-a1" d="M 653 1472 
+     <path id="t100-Cmsy10-a1" d="M 653 1472 
 Q 600 1472 565 1512 
 Q 531 1553 531 1600 
 Q 531 1647 565 1687 
@@ -566,7 +566,7 @@ Q 4375 1472 4325 1472
 L 653 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t91-Cmr10-31" d="M 594 0 
+     <path id="t100-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -582,7 +582,7 @@ L 2694 0
 L 594 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t91-Cmr10-3d" d="M 481 850 
+     <path id="t100-Cmr10-3d" d="M 481 850 
 Q 428 850 393 890 
 Q 359 931 359 978 
 Q 359 1031 393 1068 
@@ -607,7 +607,7 @@ Q 4547 2094 4500 2094
 L 481 2094 
 z
 " transform="scale(0.015625)"/>
-     <path id="t91-Cmb10-49" d="M 166 0 
+     <path id="t100-Cmb10-49" d="M 166 0 
 L 166 325 
 L 800 325 
 L 800 4063 
@@ -623,38 +623,38 @@ L 166 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t91-STIXGeneral-Regular-2202"/>
-    <use xlink:href="#t91-Cmb10-63" transform="translate(47.099991 0)"/>
-    <use xlink:href="#t91-Cmmi10-74" transform="translate(95.948897 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t91-Cmmi10-3d" transform="translate(127.58503 0)"/>
-    <use xlink:href="#t91-STIXGeneral-Regular-2202" transform="translate(177.58503 0)"/>
-    <use xlink:href="#t91-Cmb10-63" transform="translate(224.685021 0)"/>
-    <use xlink:href="#t91-Cmmi10-74" transform="translate(273.533927 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t91-Cmsy10-a1" transform="translate(311.083732 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t91-Cmr10-31" transform="translate(377.75463 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t91-Cmr10-3d" transform="translate(436.690568 0)"/>
-    <use xlink:href="#t91-Cmb10-49" transform="translate(531.934708 0)"/>
+    <use xlink:href="#t100-STIXGeneral-Regular-2202"/>
+    <use xlink:href="#t100-Cmb10-63" transform="translate(47.099991 0)"/>
+    <use xlink:href="#t100-Cmmi10-74" transform="translate(95.948897 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t100-Cmmi10-3d" transform="translate(127.58503 0)"/>
+    <use xlink:href="#t100-STIXGeneral-Regular-2202" transform="translate(177.58503 0)"/>
+    <use xlink:href="#t100-Cmb10-63" transform="translate(224.685021 0)"/>
+    <use xlink:href="#t100-Cmmi10-74" transform="translate(273.533927 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t100-Cmsy10-a1" transform="translate(311.083732 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t100-Cmr10-31" transform="translate(377.75463 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t100-Cmr10-3d" transform="translate(436.690568 0)"/>
+    <use xlink:href="#t100-Cmb10-49" transform="translate(531.934708 0)"/>
    </g>
   </g>
  </g>
-</svg><text x="212" y="356" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">nothing multiplies the carried state</text><rect x="428" y="14" width="385" height="352" rx="10" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.6"/><text x="620.5" y="46" font-size="20" fill="#b45309" text-anchor="middle" font-weight="700">LSTM + forget gate, 2000 (today's)</text><text x="620.5" y="70" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400" font-style="italic">across time · a learned multiplier</text><rect x="434" y="176" width="104" height="48" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="463.575" y="191.74" width="44.85" height="22.2597" viewBox="0 0 44.85 22.259688"><defs>
+</svg><text x="213" y="390" font-size="23" fill="#6b7280" text-anchor="middle" font-weight="400">nothing multiplies the state</text><rect x="427" y="14" width="386" height="388" rx="10" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.6"/><text x="620" y="48" font-size="23" fill="#b45309" text-anchor="middle" font-weight="700">LSTM + forget gate, 2000</text><text x="620" y="78" font-size="23" fill="#6b7280" text-anchor="middle" font-weight="400" font-style="italic">across time · a learned multiplier</text><rect x="439" y="201" width="104" height="50" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="464.09" y="214.028" width="53.82" height="26.7116" viewBox="0 0 53.82 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t92-figure_1">
-  <g id="t92-patch_1">
-   <path d="M 0 22.259688 
-L 44.85 22.259688 
-L 44.85 0 
+ <g id="t101-figure_1">
+  <g id="t101-patch_1">
+   <path d="M 0 26.711625 
+L 53.82 26.711625 
+L 53.82 0 
 L 0 0 
-L 0 22.259688 
+L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
-  <g id="t92-text_1">
+  <g id="t101-text_1">
    <!-- $\mathbf{c}_{t-1}$ -->
-   <g style="fill: #1f2328" transform="translate(0 17.476406) scale(0.23 -0.23)">
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t92-Cmb10-63" d="M 1594 -38 
+     <path id="t101-Cmb10-63" d="M 1594 -38 
 Q 1172 -38 858 150 
 Q 544 338 378 667 
 Q 213 997 213 1422 
@@ -687,7 +687,7 @@ Q 2553 363 2261 162
 Q 1969 -38 1594 -38 
 z
 " transform="scale(0.015625)"/>
-     <path id="t92-Cmmi10-74" d="M 397 519 
+     <path id="t101-Cmmi10-74" d="M 397 519 
 Q 397 613 416 697 
 L 878 2534 
 L 206 2534 
@@ -724,7 +724,7 @@ Q 744 -72 570 93
 Q 397 259 397 519 
 z
 " transform="scale(0.015625)"/>
-     <path id="t92-Cmsy10-a1" d="M 653 1472 
+     <path id="t101-Cmsy10-a1" d="M 653 1472 
 Q 600 1472 565 1512 
 Q 531 1553 531 1600 
 Q 531 1647 565 1687 
@@ -737,7 +737,7 @@ Q 4375 1472 4325 1472
 L 653 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t92-Cmr10-31" d="M 594 0 
+     <path id="t101-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -754,31 +754,31 @@ L 594 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t92-Cmb10-63" transform="translate(0 0.6875)"/>
-    <use xlink:href="#t92-Cmmi10-74" transform="translate(48.848906 -16.31875) scale(0.7)"/>
-    <use xlink:href="#t92-Cmsy10-a1" transform="translate(86.398711 -16.31875) scale(0.7)"/>
-    <use xlink:href="#t92-Cmr10-31" transform="translate(153.069609 -16.31875) scale(0.7)"/>
+    <use xlink:href="#t101-Cmb10-63" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t101-Cmmi10-74" transform="translate(48.848906 -16.31875) scale(0.7)"/>
+    <use xlink:href="#t101-Cmsy10-a1" transform="translate(86.398711 -16.31875) scale(0.7)"/>
+    <use xlink:href="#t101-Cmr10-31" transform="translate(153.069609 -16.31875) scale(0.7)"/>
    </g>
   </g>
  </g>
-</svg><line x1="538" y1="200" x2="574" y2="200" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><circle cx="596" cy="200" r="20" fill="#fff" stroke="#b45309" stroke-width="2.2"/><text x="596" y="209" font-size="24" fill="#b45309" text-anchor="middle" font-weight="700">×</text><line x1="616" y1="200" x2="652" y2="200" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><circle cx="674" cy="200" r="20" fill="#fff" stroke="#b45309" stroke-width="2.2"/><text x="674" y="209" font-size="24" fill="#b45309" text-anchor="middle" font-weight="700">+</text><line x1="694" y1="200" x2="730" y2="200" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><rect x="730" y="176" width="104" height="48" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="772.685" y="191.74" width="18.63" height="22.2597" viewBox="0 0 18.63 22.259688"><defs>
+</svg><line x1="543" y1="226" x2="573" y2="226" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><circle cx="595" cy="226" r="20" fill="#fff" stroke="#b45309" stroke-width="2.2"/><text x="595" y="235" font-size="24" fill="#b45309" text-anchor="middle" font-weight="700">×</text><line x1="615" y1="226" x2="645" y2="226" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><circle cx="667" cy="226" r="20" fill="#fff" stroke="#b45309" stroke-width="2.2"/><text x="667" y="235" font-size="24" fill="#b45309" text-anchor="middle" font-weight="700">+</text><line x1="687" y1="226" x2="695" y2="226" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><rect x="697" y="201" width="104" height="50" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="737.822" y="214.028" width="22.356" height="26.7116" viewBox="0 0 22.356 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t93-figure_1">
-  <g id="t93-patch_1">
-   <path d="M 0 22.259688 
-L 18.63 22.259688 
-L 18.63 0 
+ <g id="t102-figure_1">
+  <g id="t102-patch_1">
+   <path d="M 0 26.711625 
+L 22.356 26.711625 
+L 22.356 0 
 L 0 0 
-L 0 22.259688 
+L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
-  <g id="t93-text_1">
+  <g id="t102-text_1">
    <!-- $\mathbf{c}_t$ -->
-   <g style="fill: #1f2328" transform="translate(0 17.476406) scale(0.23 -0.23)">
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t93-Cmb10-63" d="M 1594 -38 
+     <path id="t102-Cmb10-63" d="M 1594 -38 
 Q 1172 -38 858 150 
 Q 544 338 378 667 
 Q 213 997 213 1422 
@@ -811,7 +811,7 @@ Q 2553 363 2261 162
 Q 1969 -38 1594 -38 
 z
 " transform="scale(0.015625)"/>
-     <path id="t93-Cmmi10-74" d="M 397 519 
+     <path id="t102-Cmmi10-74" d="M 397 519 
 Q 397 613 416 697 
 L 878 2534 
 L 206 2534 
@@ -849,29 +849,29 @@ Q 397 259 397 519
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t93-Cmb10-63" transform="translate(0 0.6875)"/>
-    <use xlink:href="#t93-Cmmi10-74" transform="translate(48.848906 -16.31875) scale(0.7)"/>
+    <use xlink:href="#t102-Cmb10-63" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t102-Cmmi10-74" transform="translate(48.848906 -16.31875) scale(0.7)"/>
    </g>
   </g>
  </g>
-</svg><line x1="596" y1="134" x2="596" y2="178" stroke="#b45309" stroke-width="2" marker-end="url(#ah-wire)"/><svg x="503.6" y="135" width="78.4" height="20" viewBox="0 0 78.4 20"><defs>
+</svg><line x1="595" y1="164" x2="595" y2="204" stroke="#b45309" stroke-width="2" marker-end="url(#ah-wire)"/><svg x="474.808" y="165.3" width="108.192" height="27.6" viewBox="0 0 108.192 27.6"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t94-figure_1">
-  <g id="t94-patch_1">
-   <path d="M 0 20 
-L 78.4 20 
-L 78.4 0 
+ <g id="t103-figure_1">
+  <g id="t103-patch_1">
+   <path d="M 0 27.6 
+L 108.192 27.6 
+L 108.192 0 
 L 0 0 
-L 0 20 
+L 0 27.6 
 z
 " style="fill: none"/>
   </g>
-  <g id="t94-text_1">
+  <g id="t103-text_1">
    <!-- $\mathbf{f}_t \in (0,1)$ -->
-   <g style="fill: #b45309" transform="translate(0 15) scale(0.2 -0.2)">
+   <g style="fill: #b45309" transform="translate(0 20.7) scale(0.276 -0.276)">
     <defs>
-     <path id="t94-Cmb10-66" d="M 159 0 
+     <path id="t103-Cmb10-66" d="M 159 0 
 L 159 325 
 L 603 325 
 L 603 2516 
@@ -902,7 +902,7 @@ L 1875 0
 L 159 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t94-Cmmi10-74" d="M 397 519 
+     <path id="t103-Cmmi10-74" d="M 397 519 
 Q 397 613 416 697 
 L 878 2534 
 L 206 2534 
@@ -939,7 +939,7 @@ Q 744 -72 570 93
 Q 397 259 397 519 
 z
 " transform="scale(0.015625)"/>
-     <path id="t94-Cmsy10-32" d="M 1356 403 
+     <path id="t103-Cmsy10-32" d="M 1356 403 
 Q 1838 0 2497 0 
 L 3616 0 
 Q 3666 0 3698 -37 
@@ -973,7 +973,7 @@ Q 794 1194 958 897
 Q 1122 600 1356 403 
 z
 " transform="scale(0.015625)"/>
-     <path id="t94-Cmr10-28" d="M 1984 -1588 
+     <path id="t103-Cmr10-28" d="M 1984 -1588 
 Q 1628 -1306 1370 -942 
 Q 1113 -578 948 -165 
 Q 784 247 703 697 
@@ -999,7 +999,7 @@ L 2016 -1600
 Q 1984 -1600 1984 -1588 
 z
 " transform="scale(0.015625)"/>
-     <path id="t94-Cmr10-30" d="M 1600 -141 
+     <path id="t103-Cmr10-30" d="M 1600 -141 
 Q 816 -141 533 504 
 Q 250 1150 250 2041 
 Q 250 2597 351 3087 
@@ -1029,7 +1029,7 @@ Q 991 484 1158 254
 Q 1325 25 1600 25 
 z
 " transform="scale(0.015625)"/>
-     <path id="t94-Cmmi10-3b" d="M 634 -1153 
+     <path id="t103-Cmmi10-3b" d="M 634 -1153 
 Q 634 -1125 659 -1100 
 Q 891 -878 1019 -587 
 Q 1147 -297 1147 25 
@@ -1048,7 +1048,7 @@ Q 697 -1241 665 -1212
 Q 634 -1184 634 -1153 
 z
 " transform="scale(0.015625)"/>
-     <path id="t94-Cmr10-31" d="M 594 0 
+     <path id="t103-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -1064,7 +1064,7 @@ L 2694 0
 L 594 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t94-Cmr10-29" d="M 416 -1600 
+     <path id="t103-Cmr10-29" d="M 416 -1600 
 Q 359 -1600 359 -1544 
 Q 359 -1516 372 -1503 
 Q 1466 -434 1466 1600 
@@ -1086,35 +1086,35 @@ L 416 -1600
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t94-Cmb10-66"/>
-    <use xlink:href="#t94-Cmmi10-74" transform="translate(34.981719 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t94-Cmsy10-32" transform="translate(84.176445 0)"/>
-    <use xlink:href="#t94-Cmr10-28" transform="translate(168.336602 0)"/>
-    <use xlink:href="#t94-Cmr10-30" transform="translate(207.154961 0)"/>
-    <use xlink:href="#t94-Cmmi10-3b" transform="translate(257.154961 0)"/>
-    <use xlink:href="#t94-Cmr10-31" transform="translate(302.399102 0)"/>
-    <use xlink:href="#t94-Cmr10-29" transform="translate(352.399102 0)"/>
+    <use xlink:href="#t103-Cmb10-66"/>
+    <use xlink:href="#t103-Cmmi10-74" transform="translate(34.981719 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t103-Cmsy10-32" transform="translate(84.176445 0)"/>
+    <use xlink:href="#t103-Cmr10-28" transform="translate(168.336602 0)"/>
+    <use xlink:href="#t103-Cmr10-30" transform="translate(207.154961 0)"/>
+    <use xlink:href="#t103-Cmmi10-3b" transform="translate(257.154961 0)"/>
+    <use xlink:href="#t103-Cmr10-31" transform="translate(302.399102 0)"/>
+    <use xlink:href="#t103-Cmr10-29" transform="translate(352.399102 0)"/>
    </g>
   </g>
  </g>
-</svg><line x1="674" y1="288" x2="674" y2="222" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-wire)"/><svg x="646.385" y="296.676" width="55.23" height="20.3241" viewBox="0 0 55.23 20.324062"><defs>
+</svg><line x1="667" y1="310" x2="667" y2="248" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-wire)"/><svg x="630.706" y="317.084" width="72.588" height="26.7116" viewBox="0 0 72.588 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t95-figure_1">
-  <g id="t95-patch_1">
-   <path d="M 0 20.324062 
-L 55.23 20.324062 
-L 55.23 0 
+ <g id="t104-figure_1">
+  <g id="t104-patch_1">
+   <path d="M 0 26.711625 
+L 72.588 26.711625 
+L 72.588 0 
 L 0 0 
-L 0 20.324062 
+L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
-  <g id="t95-text_1">
+  <g id="t104-text_1">
    <!-- $\mathbf{i}_t \odot \mathbf{g}_t$ -->
-   <g style="fill: #6b7280" transform="translate(0 15.914062) scale(0.21 -0.21)">
+   <g style="fill: #6b7280" transform="translate(0 20.915625) scale(0.276 -0.276)">
     <defs>
-     <path id="t95-Cmb10-69" d="M 153 0 
+     <path id="t104-Cmb10-69" d="M 153 0 
 L 153 325 
 L 594 325 
 L 594 2322 
@@ -1138,7 +1138,7 @@ Q 647 3425 500 3575
 Q 353 3725 353 3938 
 z
 " transform="scale(0.015625)"/>
-     <path id="t95-Cmmi10-74" d="M 397 519 
+     <path id="t104-Cmmi10-74" d="M 397 519 
 Q 397 613 416 697 
 L 878 2534 
 L 206 2534 
@@ -1175,7 +1175,7 @@ Q 744 -72 570 93
 Q 397 259 397 519 
 z
 " transform="scale(0.015625)"/>
-     <path id="t95-Cmsy10-af" d="M 2491 -531 
+     <path id="t104-Cmsy10-af" d="M 2491 -531 
 Q 2053 -531 1668 -365 
 Q 1284 -200 986 95 
 Q 688 391 523 780 
@@ -1224,7 +1224,7 @@ Q 2944 1413 2808 1277
 Q 2672 1141 2491 1141 
 z
 " transform="scale(0.015625)"/>
-     <path id="t95-Cmb10-67" d="M 153 -469 
+     <path id="t104-Cmb10-67" d="M 153 -469 
 Q 153 -284 281 -139 
 Q 409 6 594 72 
 Q 347 284 347 666 
@@ -1296,32 +1296,32 @@ Q 1225 1234 1422 1234
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t95-Cmb10-69" transform="translate(0 0.515625)"/>
-    <use xlink:href="#t95-Cmmi10-74" transform="translate(32.149687 -16.490625) scale(0.7)"/>
-    <use xlink:href="#t95-Cmsy10-af" transform="translate(81.344414 0.515625)"/>
-    <use xlink:href="#t95-Cmb10-67" transform="translate(176.588555 0.515625)"/>
-    <use xlink:href="#t95-Cmmi10-74" transform="translate(231.052695 -16.490625) scale(0.7)"/>
+    <use xlink:href="#t104-Cmb10-69" transform="translate(0 0.515625)"/>
+    <use xlink:href="#t104-Cmmi10-74" transform="translate(32.149687 -16.490625) scale(0.7)"/>
+    <use xlink:href="#t104-Cmsy10-af" transform="translate(81.344414 0.515625)"/>
+    <use xlink:href="#t104-Cmb10-67" transform="translate(176.588555 0.515625)"/>
+    <use xlink:href="#t104-Cmmi10-74" transform="translate(231.052695 -16.490625) scale(0.7)"/>
    </g>
   </g>
  </g>
-</svg><svg x="539.4" y="96" width="189.2" height="22" viewBox="0 0 189.2 22"><defs>
+</svg><svg x="501.32" y="109.3" width="237.36" height="27.6" viewBox="0 0 237.36 27.6"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t96-figure_1">
-  <g id="t96-patch_1">
-   <path d="M 0 22 
-L 189.2 22 
-L 189.2 0 
+ <g id="t105-figure_1">
+  <g id="t105-patch_1">
+   <path d="M 0 27.6 
+L 237.36 27.6 
+L 237.36 0 
 L 0 0 
-L 0 22 
+L 0 27.6 
 z
 " style="fill: none"/>
   </g>
-  <g id="t96-text_1">
+  <g id="t105-text_1">
    <!-- $\partial\mathbf{c}_t/\partial\mathbf{c}_{t-1} = \mathrm{diag}(\mathbf{f}_t)$ -->
-   <g style="fill: #b45309" transform="translate(0 16.5) scale(0.22 -0.22)">
+   <g style="fill: #b45309" transform="translate(0 20.7) scale(0.276 -0.276)">
     <defs>
-     <path id="t96-STIXGeneral-Regular-2202" d="M 1248 4000 
+     <path id="t105-STIXGeneral-Regular-2202" d="M 1248 4000 
 L 1184 4128 
 Q 1427 4275 1811 4275 
 Q 3014 4275 3014 2611 
@@ -1351,7 +1351,7 @@ Q 2106 877 2253 1414
 Q 2349 1766 2349 2042 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmb10-63" d="M 1594 -38 
+     <path id="t105-Cmb10-63" d="M 1594 -38 
 Q 1172 -38 858 150 
 Q 544 338 378 667 
 Q 213 997 213 1422 
@@ -1384,7 +1384,7 @@ Q 2553 363 2261 162
 Q 1969 -38 1594 -38 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmmi10-74" d="M 397 519 
+     <path id="t105-Cmmi10-74" d="M 397 519 
 Q 397 613 416 697 
 L 878 2534 
 L 206 2534 
@@ -1421,7 +1421,7 @@ Q 744 -72 570 93
 Q 397 259 397 519 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmmi10-3d" d="M 359 -1472 
+     <path id="t105-Cmmi10-3d" d="M 359 -1472 
 Q 359 -1453 366 -1447 
 L 2591 4722 
 Q 2603 4759 2634 4779 
@@ -1435,7 +1435,7 @@ Q 434 -1600 396 -1562
 Q 359 -1525 359 -1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmsy10-a1" d="M 653 1472 
+     <path id="t105-Cmsy10-a1" d="M 653 1472 
 Q 600 1472 565 1512 
 Q 531 1553 531 1600 
 Q 531 1647 565 1687 
@@ -1448,7 +1448,7 @@ Q 4375 1472 4325 1472
 L 653 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmr10-31" d="M 594 0 
+     <path id="t105-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -1464,7 +1464,7 @@ L 2694 0
 L 594 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmr10-3d" d="M 481 850 
+     <path id="t105-Cmr10-3d" d="M 481 850 
 Q 428 850 393 890 
 Q 359 931 359 978 
 Q 359 1031 393 1068 
@@ -1489,7 +1489,7 @@ Q 4547 2094 4500 2094
 L 481 2094 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmr10-64" d="M 1563 -72 
+     <path id="t105-Cmr10-64" d="M 1563 -72 
 Q 1184 -72 871 133 
 Q 559 338 386 672 
 Q 213 1006 213 1381 
@@ -1530,7 +1530,7 @@ Q 769 1119 795 928
 Q 822 738 909 556 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmr10-69" d="M 197 0 
+     <path id="t105-Cmr10-69" d="M 197 0 
 L 197 225 
 Q 416 225 556 259 
 Q 697 294 697 428 
@@ -1557,7 +1557,7 @@ Q 681 3578 575 3684
 Q 469 3791 469 3928 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmr10-61" d="M 256 628 
+     <path id="t105-Cmr10-61" d="M 256 628 
 Q 256 1009 556 1248 
 Q 856 1488 1276 1586 
 Q 1697 1684 2075 1684 
@@ -1608,7 +1608,7 @@ Q 1175 1331 975 1128
 Q 775 925 775 628 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmr10-67" d="M 178 -500 
+     <path id="t105-Cmr10-67" d="M 178 -500 
 Q 178 -272 343 -101 
 Q 509 69 738 141 
 Q 609 238 542 384 
@@ -1675,7 +1675,7 @@ Q 966 1331 1084 1222
 Q 1203 1113 1422 1113 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmr10-28" d="M 1984 -1588 
+     <path id="t105-Cmr10-28" d="M 1984 -1588 
 Q 1628 -1306 1370 -942 
 Q 1113 -578 948 -165 
 Q 784 247 703 697 
@@ -1701,7 +1701,7 @@ L 2016 -1600
 Q 1984 -1600 1984 -1588 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmb10-66" d="M 159 0 
+     <path id="t105-Cmb10-66" d="M 159 0 
 L 159 325 
 L 603 325 
 L 603 2516 
@@ -1732,7 +1732,7 @@ L 1875 0
 L 159 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t96-Cmr10-29" d="M 416 -1600 
+     <path id="t105-Cmr10-29" d="M 416 -1600 
 Q 359 -1600 359 -1544 
 Q 359 -1516 372 -1503 
 Q 1466 -434 1466 1600 
@@ -1754,45 +1754,45 @@ L 416 -1600
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t96-STIXGeneral-Regular-2202"/>
-    <use xlink:href="#t96-Cmb10-63" transform="translate(47.099991 0)"/>
-    <use xlink:href="#t96-Cmmi10-74" transform="translate(95.948897 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t96-Cmmi10-3d" transform="translate(127.58503 0)"/>
-    <use xlink:href="#t96-STIXGeneral-Regular-2202" transform="translate(177.58503 0)"/>
-    <use xlink:href="#t96-Cmb10-63" transform="translate(224.685021 0)"/>
-    <use xlink:href="#t96-Cmmi10-74" transform="translate(273.533927 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t96-Cmsy10-a1" transform="translate(311.083732 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t96-Cmr10-31" transform="translate(377.75463 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t96-Cmr10-3d" transform="translate(436.690568 0)"/>
-    <use xlink:href="#t96-Cmr10-64" transform="translate(531.934708 0)"/>
-    <use xlink:href="#t96-Cmr10-69" transform="translate(587.452286 0)"/>
-    <use xlink:href="#t96-Cmr10-61" transform="translate(615.137833 0)"/>
-    <use xlink:href="#t96-Cmr10-67" transform="translate(665.137833 0)"/>
-    <use xlink:href="#t96-Cmr10-28" transform="translate(715.137833 0)"/>
-    <use xlink:href="#t96-Cmb10-66" transform="translate(753.956193 0)"/>
-    <use xlink:href="#t96-Cmmi10-74" transform="translate(788.937911 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t96-Cmr10-29" transform="translate(820.574044 0)"/>
+    <use xlink:href="#t105-STIXGeneral-Regular-2202"/>
+    <use xlink:href="#t105-Cmb10-63" transform="translate(47.099991 0)"/>
+    <use xlink:href="#t105-Cmmi10-74" transform="translate(95.948897 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t105-Cmmi10-3d" transform="translate(127.58503 0)"/>
+    <use xlink:href="#t105-STIXGeneral-Regular-2202" transform="translate(177.58503 0)"/>
+    <use xlink:href="#t105-Cmb10-63" transform="translate(224.685021 0)"/>
+    <use xlink:href="#t105-Cmmi10-74" transform="translate(273.533927 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t105-Cmsy10-a1" transform="translate(311.083732 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t105-Cmr10-31" transform="translate(377.75463 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t105-Cmr10-3d" transform="translate(436.690568 0)"/>
+    <use xlink:href="#t105-Cmr10-64" transform="translate(531.934708 0)"/>
+    <use xlink:href="#t105-Cmr10-69" transform="translate(587.452286 0)"/>
+    <use xlink:href="#t105-Cmr10-61" transform="translate(615.137833 0)"/>
+    <use xlink:href="#t105-Cmr10-67" transform="translate(665.137833 0)"/>
+    <use xlink:href="#t105-Cmr10-28" transform="translate(715.137833 0)"/>
+    <use xlink:href="#t105-Cmb10-66" transform="translate(753.956193 0)"/>
+    <use xlink:href="#t105-Cmmi10-74" transform="translate(788.937911 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t105-Cmr10-29" transform="translate(820.574044 0)"/>
    </g>
   </g>
  </g>
-</svg><text x="620" y="356" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">a product again — learned, held near 1</text><rect x="836" y="14" width="385" height="352" rx="10" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.6"/><text x="1028.5" y="46" font-size="20" fill="#15803d" text-anchor="middle" font-weight="700">ResNet, 2015 → residual stream (W4)</text><text x="1028.5" y="70" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400" font-style="italic">across depth · Highway keeps the gate</text><rect x="848" y="176" width="104" height="48" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="890.225" y="191.74" width="19.55" height="22.2597" viewBox="0 0 19.55 22.259688"><defs>
+</svg><text x="620" y="390" font-size="23" fill="#6b7280" text-anchor="middle" font-weight="400">a product again, learned: near 1</text><rect x="834" y="14" width="386" height="388" rx="10" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.6"/><text x="1027" y="48" font-size="23" fill="#15803d" text-anchor="middle" font-weight="700">ResNet, 2015 → W4's stream</text><text x="1027" y="78" font-size="23" fill="#6b7280" text-anchor="middle" font-weight="400" font-style="italic">across depth · Highway: gated</text><rect x="850" y="201" width="104" height="50" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="890.27" y="214.028" width="23.46" height="26.7116" viewBox="0 0 23.46 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t97-figure_1">
-  <g id="t97-patch_1">
-   <path d="M 0 22.259688 
-L 19.55 22.259688 
-L 19.55 0 
+ <g id="t106-figure_1">
+  <g id="t106-patch_1">
+   <path d="M 0 26.711625 
+L 23.46 26.711625 
+L 23.46 0 
 L 0 0 
-L 0 22.259688 
+L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
-  <g id="t97-text_1">
+  <g id="t106-text_1">
    <!-- $\mathbf{x}_l$ -->
-   <g style="fill: #1f2328" transform="translate(0 17.476406) scale(0.23 -0.23)">
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t97-Cmb10-78" d="M 109 0 
+     <path id="t106-Cmb10-78" d="M 109 0 
 L 109 325 
 Q 628 325 678 384 
 L 1381 1350 
@@ -1825,7 +1825,7 @@ L 1381 0
 L 109 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t97-Cmmi10-6c" d="M 281 519 
+     <path id="t106-Cmmi10-6c" d="M 281 519 
 Q 281 538 286 575 
 Q 291 613 295 648 
 Q 300 684 300 703 
@@ -1855,29 +1855,29 @@ Q 281 259 281 519
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t97-Cmb10-78" transform="translate(0 0.609375)"/>
-    <use xlink:href="#t97-Cmmi10-6c" transform="translate(57.149687 -16.396875) scale(0.7)"/>
+    <use xlink:href="#t106-Cmb10-78" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t106-Cmmi10-6c" transform="translate(57.149687 -16.396875) scale(0.7)"/>
    </g>
   </g>
  </g>
-</svg><line x1="952" y1="200" x2="1054" y2="200" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><circle cx="1076" cy="200" r="20" fill="#fff" stroke="#15803d" stroke-width="2.2"/><text x="1076" y="209" font-size="24" fill="#15803d" text-anchor="middle" font-weight="700">+</text><line x1="1096" y1="200" x2="1130" y2="200" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><rect x="1130" y="176" width="104" height="48" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="1159.12" y="192.74" width="45.77" height="22.2597" viewBox="0 0 45.77 22.259688"><defs>
+</svg><line x1="954" y1="226" x2="1056" y2="226" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><circle cx="1078" cy="226" r="20" fill="#fff" stroke="#15803d" stroke-width="2.2"/><text x="1078" y="235" font-size="24" fill="#15803d" text-anchor="middle" font-weight="700">+</text><line x1="1098" y1="226" x2="1106" y2="226" stroke="#1f2328" stroke-width="2.4" marker-end="url(#ah-wire)"/><rect x="1108" y="201" width="104" height="50" rx="8" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="1132.54" y="214.636" width="54.924" height="26.7116" viewBox="0 0 54.924 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t98-figure_1">
-  <g id="t98-patch_1">
-   <path d="M 0 22.259688 
-L 45.77 22.259688 
-L 45.77 0 
+ <g id="t107-figure_1">
+  <g id="t107-patch_1">
+   <path d="M 0 26.711625 
+L 54.924 26.711625 
+L 54.924 0 
 L 0 0 
-L 0 22.259688 
+L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
-  <g id="t98-text_1">
+  <g id="t107-text_1">
    <!-- $\mathbf{x}_{l+1}$ -->
-   <g style="fill: #1f2328" transform="translate(0 16.969688) scale(0.23 -0.23)">
+   <g style="fill: #1f2328" transform="translate(0 20.363625) scale(0.276 -0.276)">
     <defs>
-     <path id="t98-Cmb10-78" d="M 109 0 
+     <path id="t107-Cmb10-78" d="M 109 0 
 L 109 325 
 Q 628 325 678 384 
 L 1381 1350 
@@ -1910,7 +1910,7 @@ L 1381 0
 L 109 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t98-Cmmi10-6c" d="M 281 519 
+     <path id="t107-Cmmi10-6c" d="M 281 519 
 Q 281 538 286 575 
 Q 291 613 295 648 
 Q 300 684 300 703 
@@ -1939,7 +1939,7 @@ Q 628 -72 454 93
 Q 281 259 281 519 
 z
 " transform="scale(0.015625)"/>
-     <path id="t98-Cmr10-2b" d="M 481 1472 
+     <path id="t107-Cmr10-2b" d="M 481 1472 
 Q 428 1472 393 1512 
 Q 359 1553 359 1600 
 Q 359 1647 393 1687 
@@ -1966,7 +1966,7 @@ L 2363 1472
 L 481 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t98-Cmr10-31" d="M 594 0 
+     <path id="t107-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -1983,31 +1983,31 @@ L 594 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t98-Cmb10-78" transform="translate(0 0.609375)"/>
-    <use xlink:href="#t98-Cmmi10-6c" transform="translate(57.149687 -16.396875) scale(0.7)"/>
-    <use xlink:href="#t98-Cmr10-2b" transform="translate(90.290312 -16.396875) scale(0.7)"/>
-    <use xlink:href="#t98-Cmr10-31" transform="translate(156.961211 -16.396875) scale(0.7)"/>
+    <use xlink:href="#t107-Cmb10-78" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t107-Cmmi10-6c" transform="translate(57.149687 -16.396875) scale(0.7)"/>
+    <use xlink:href="#t107-Cmr10-2b" transform="translate(90.290312 -16.396875) scale(0.7)"/>
+    <use xlink:href="#t107-Cmr10-31" transform="translate(156.961211 -16.396875) scale(0.7)"/>
    </g>
   </g>
  </g>
-</svg><line x1="900" y1="224" x2="900" y2="296" stroke="#6b7280" stroke-width="2"/><line x1="900" y1="296" x2="1000" y2="296" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-wire)"/><rect x="1004" y="274" width="72" height="44" rx="8" fill="#fff" stroke="#15803d" stroke-width="1.6"/><svg x="1032.53" y="281.74" width="14.95" height="22.2597" viewBox="0 0 14.95 22.259688"><defs>
+</svg><line x1="902" y1="251" x2="902" y2="318" stroke="#6b7280" stroke-width="2"/><line x1="902" y1="318" x2="984" y2="318" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-wire)"/><rect x="988" y="294" width="72" height="48" rx="8" fill="#fff" stroke="#15803d" stroke-width="1.6"/><svg x="1015.03" y="306.028" width="17.94" height="26.7116" viewBox="0 0 17.94 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t99-figure_1">
-  <g id="t99-patch_1">
-   <path d="M 0 22.259688 
-L 14.95 22.259688 
-L 14.95 0 
+ <g id="t108-figure_1">
+  <g id="t108-patch_1">
+   <path d="M 0 26.711625 
+L 17.94 26.711625 
+L 17.94 0 
 L 0 0 
-L 0 22.259688 
+L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
-  <g id="t99-text_1">
+  <g id="t108-text_1">
    <!-- $F$ -->
-   <g style="fill: #15803d" transform="translate(0 17.476406) scale(0.23 -0.23)">
+   <g style="fill: #15803d" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t99-Cmmi10-46" d="M 300 0 
+     <path id="t108-Cmmi10-46" d="M 300 0 
 Q 238 0 238 84 
 Q 241 100 250 139 
 Q 259 178 276 201 
@@ -2066,28 +2066,28 @@ L 300 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t99-Cmmi10-46" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t108-Cmmi10-46" transform="translate(0 0.6875)"/>
    </g>
   </g>
  </g>
-</svg><line x1="1076" y1="274" x2="1076" y2="222" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-wire)"/><svg x="931.54" y="96" width="216.92" height="22" viewBox="0 0 216.92 22"><defs>
+</svg><path d="M 1060 318 L 1078 318 L 1078 250" stroke="#6b7280" stroke-width="2" fill="none" marker-end="url(#ah-wire)"/><svg x="890.932" y="109.3" width="272.136" height="27.6" viewBox="0 0 272.136 27.6"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t100-figure_1">
-  <g id="t100-patch_1">
-   <path d="M 0 22 
-L 216.92 22 
-L 216.92 0 
+ <g id="t109-figure_1">
+  <g id="t109-patch_1">
+   <path d="M 0 27.6 
+L 272.136 27.6 
+L 272.136 0 
 L 0 0 
-L 0 22 
+L 0 27.6 
 z
 " style="fill: none"/>
   </g>
-  <g id="t100-text_1">
+  <g id="t109-text_1">
    <!-- $\partial\mathbf{x}_{l+1}/\partial\mathbf{x}_l = \mathbf{I} + \partial F/\partial\mathbf{x}_l$ -->
-   <g style="fill: #15803d" transform="translate(0 16.5) scale(0.22 -0.22)">
+   <g style="fill: #15803d" transform="translate(0 20.7) scale(0.276 -0.276)">
     <defs>
-     <path id="t100-STIXGeneral-Regular-2202" d="M 1248 4000 
+     <path id="t109-STIXGeneral-Regular-2202" d="M 1248 4000 
 L 1184 4128 
 Q 1427 4275 1811 4275 
 Q 3014 4275 3014 2611 
@@ -2117,7 +2117,7 @@ Q 2106 877 2253 1414
 Q 2349 1766 2349 2042 
 z
 " transform="scale(0.015625)"/>
-     <path id="t100-Cmb10-78" d="M 109 0 
+     <path id="t109-Cmb10-78" d="M 109 0 
 L 109 325 
 Q 628 325 678 384 
 L 1381 1350 
@@ -2150,7 +2150,7 @@ L 1381 0
 L 109 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t100-Cmmi10-6c" d="M 281 519 
+     <path id="t109-Cmmi10-6c" d="M 281 519 
 Q 281 538 286 575 
 Q 291 613 295 648 
 Q 300 684 300 703 
@@ -2179,7 +2179,7 @@ Q 628 -72 454 93
 Q 281 259 281 519 
 z
 " transform="scale(0.015625)"/>
-     <path id="t100-Cmr10-2b" d="M 481 1472 
+     <path id="t109-Cmr10-2b" d="M 481 1472 
 Q 428 1472 393 1512 
 Q 359 1553 359 1600 
 Q 359 1647 393 1687 
@@ -2206,7 +2206,7 @@ L 2363 1472
 L 481 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t100-Cmr10-31" d="M 594 0 
+     <path id="t109-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -2222,7 +2222,7 @@ L 2694 0
 L 594 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t100-Cmmi10-3d" d="M 359 -1472 
+     <path id="t109-Cmmi10-3d" d="M 359 -1472 
 Q 359 -1453 366 -1447 
 L 2591 4722 
 Q 2603 4759 2634 4779 
@@ -2236,7 +2236,7 @@ Q 434 -1600 396 -1562
 Q 359 -1525 359 -1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t100-Cmr10-3d" d="M 481 850 
+     <path id="t109-Cmr10-3d" d="M 481 850 
 Q 428 850 393 890 
 Q 359 931 359 978 
 Q 359 1031 393 1068 
@@ -2261,7 +2261,7 @@ Q 4547 2094 4500 2094
 L 481 2094 
 z
 " transform="scale(0.015625)"/>
-     <path id="t100-Cmb10-49" d="M 166 0 
+     <path id="t109-Cmb10-49" d="M 166 0 
 L 166 325 
 L 800 325 
 L 800 4063 
@@ -2276,7 +2276,7 @@ L 2369 0
 L 166 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t100-Cmmi10-46" d="M 300 0 
+     <path id="t109-Cmmi10-46" d="M 300 0 
 Q 238 0 238 84 
 Q 241 100 250 139 
 Q 259 178 276 201 
@@ -2335,25 +2335,25 @@ L 300 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t100-STIXGeneral-Regular-2202"/>
-    <use xlink:href="#t100-Cmb10-78" transform="translate(47.099991 0)"/>
-    <use xlink:href="#t100-Cmmi10-6c" transform="translate(104.249678 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t100-Cmr10-2b" transform="translate(137.390303 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t100-Cmr10-31" transform="translate(204.061202 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t100-Cmmi10-3d" transform="translate(245.438546 0)"/>
-    <use xlink:href="#t100-STIXGeneral-Regular-2202" transform="translate(295.438546 0)"/>
-    <use xlink:href="#t100-Cmb10-78" transform="translate(342.538536 0)"/>
-    <use xlink:href="#t100-Cmmi10-6c" transform="translate(399.688224 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t100-Cmr10-3d" transform="translate(444.473771 0)"/>
-    <use xlink:href="#t100-Cmb10-49" transform="translate(539.717911 0)"/>
-    <use xlink:href="#t100-Cmr10-2b" transform="translate(596.973771 0)"/>
-    <use xlink:href="#t100-STIXGeneral-Regular-2202" transform="translate(692.217911 0)"/>
-    <use xlink:href="#t100-Cmmi10-46" transform="translate(739.317902 0)"/>
-    <use xlink:href="#t100-Cmmi10-3d" transform="translate(803.624543 0)"/>
-    <use xlink:href="#t100-STIXGeneral-Regular-2202" transform="translate(853.624543 0)"/>
-    <use xlink:href="#t100-Cmb10-78" transform="translate(900.724534 0)"/>
-    <use xlink:href="#t100-Cmmi10-6c" transform="translate(957.874221 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t109-STIXGeneral-Regular-2202"/>
+    <use xlink:href="#t109-Cmb10-78" transform="translate(47.099991 0)"/>
+    <use xlink:href="#t109-Cmmi10-6c" transform="translate(104.249678 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t109-Cmr10-2b" transform="translate(137.390303 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t109-Cmr10-31" transform="translate(204.061202 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t109-Cmmi10-3d" transform="translate(245.438546 0)"/>
+    <use xlink:href="#t109-STIXGeneral-Regular-2202" transform="translate(295.438546 0)"/>
+    <use xlink:href="#t109-Cmb10-78" transform="translate(342.538536 0)"/>
+    <use xlink:href="#t109-Cmmi10-6c" transform="translate(399.688224 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t109-Cmr10-3d" transform="translate(444.473771 0)"/>
+    <use xlink:href="#t109-Cmb10-49" transform="translate(539.717911 0)"/>
+    <use xlink:href="#t109-Cmr10-2b" transform="translate(596.973771 0)"/>
+    <use xlink:href="#t109-STIXGeneral-Regular-2202" transform="translate(692.217911 0)"/>
+    <use xlink:href="#t109-Cmmi10-46" transform="translate(739.317902 0)"/>
+    <use xlink:href="#t109-Cmmi10-3d" transform="translate(803.624543 0)"/>
+    <use xlink:href="#t109-STIXGeneral-Regular-2202" transform="translate(853.624543 0)"/>
+    <use xlink:href="#t109-Cmb10-78" transform="translate(900.724534 0)"/>
+    <use xlink:href="#t109-Cmmi10-6c" transform="translate(957.874221 -17.00625) scale(0.7)"/>
    </g>
   </g>
  </g>
-</svg><text x="1028" y="356" font-size="19" fill="#6b7280" text-anchor="middle" font-weight="400">the gate removed: a plain identity path</text></svg>
+</svg><text x="1027" y="390" font-size="23" fill="#6b7280" text-anchor="middle" font-weight="400">the gate removed: plain identity</text></svg>

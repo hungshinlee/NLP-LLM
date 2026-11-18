@@ -469,7 +469,7 @@
    }
   ],
   "note": "Kaplan 的 N 不含 embedding（§2.1）；Porian 的第一個原因是最後一層 2Vd 的計算成本從 C 裡被扣掉。兩欄都是 W4 的記帳，純算術",
-  "source": "12·n_layer·d² + V·d（W4 p20–p21；W2 p47 的 2Vd 佔比）"
+  "source": "12·n_layer·d² + V·d（W4 p20–p21；W2 p48 的 2Vd 佔比）"
  },
  "lsh": {
   "k_h": 128,
