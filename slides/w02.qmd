@@ -74,7 +74,7 @@ The model never sees your text. It sees what one trained object sends up — and
 :::
 
 ::: {.footer}
-Pipeline: p20 · the four token counts: p11 · the three questions are the week's three parts
+Pipeline: p20 · the four token counts: p11 · three questions, three parts · half-time: p43
 :::
 
 ## The tokenizer is the model's retina
@@ -642,7 +642,7 @@ So far: **what a token is, and who decided.** From here: what that decision cost
 :::
 
 ::: {.footer}
-p5's picture · part 1: p9–p42 · part 2: p44–p53, p68–p71 · part 3: p54–p63
+p5's picture · part 1: p9–p42 · part 2: p44–p53, p68–p71 · part 3: p54–p67
 :::
 
 # If $D$ is counted in tokens, is $V$ inside the budget? Vocabulary enters the scaling law {.section-title}
