@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 330" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-latent" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="28" font-size="27" fill="#0b5cad" text-anchor="start" font-weight="700">chain of thought: through a token</text><rect x="20" y="42" width="250" height="100" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><text x="38" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">the stack</text><text x="38" y="110" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">last layer's state</text><line x1="273" y1="92" x2="316" y2="92" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-latent)"/><rect x="320" y="42" width="400" height="100" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="338" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">pick one token, embed it</text><text x="338" y="110" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="192.4" lengthAdjust="spacing">one symbol out of</text><svg x="536.641" y="89.0283" width="16.284" height="26.7116" viewBox="0 0 16.284 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t66-figure_1">
-  <g id="t66-patch_1">
+ <g id="t69-figure_1">
+  <g id="t69-patch_1">
    <path d="M 0 26.711625 
 L 16.284 26.711625 
 L 16.284 0 
@@ -11,11 +11,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t66-text_1">
+  <g id="t69-text_1">
    <!-- $V$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t66-Cmmi10-56" d="M 1409 -72 
+     <path id="t69-Cmmi10-56" d="M 1409 -72 
 L 897 4006 
 Q 850 4147 416 4147 
 Q 353 4147 353 4231 
@@ -47,15 +47,15 @@ Q 1419 -141 1409 -72
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t66-Cmmi10-56" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t69-Cmmi10-56" transform="translate(0 0.6875)"/>
    </g>
   </g>
  </g>
 </svg><line x1="723" y1="92" x2="766" y2="92" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-latent)"/><rect x="770" y="42" width="250" height="100" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><text x="788" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">the stack again</text><text x="788" y="110" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the next step</text><text x="1040" y="80" font-size="23" fill="#0b5cad" text-anchor="start" font-weight="700">readable:</text><text x="1040" y="112" font-size="23" fill="#0b5cad" text-anchor="start" font-weight="700">it is text</text><g class="fragment" data-fragment-index="1"><text x="20" y="198" font-size="27" fill="#b45309" text-anchor="start" font-weight="700">Coconut: through the hidden state itself</text><rect x="20" y="212" width="250" height="100" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.6"/><text x="38" y="248" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">the stack</text><text x="38" y="280" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">last layer's state</text><line x1="273" y1="262" x2="316" y2="262" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-latent)"/><rect x="320" y="212" width="400" height="100" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="338" y="248" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">no token: feed the vector back</text><svg x="338" y="259.028" width="14.628" height="26.7116" viewBox="0 0 14.628 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t67-figure_1">
-  <g id="t67-patch_1">
+ <g id="t70-figure_1">
+  <g id="t70-patch_1">
    <path d="M 0 26.711625 
 L 14.628 26.711625 
 L 14.628 0 
@@ -64,11 +64,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t67-text_1">
+  <g id="t70-text_1">
    <!-- $d$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t67-Cmmi10-64" d="M 1113 -72 
+     <path id="t70-Cmmi10-64" d="M 1113 -72 
 Q 709 -72 476 233 
 Q 244 538 244 953 
 Q 244 1363 456 1803 
@@ -116,7 +116,7 @@ Q 913 97 1119 97
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t67-Cmmi10-64" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t70-Cmmi10-64" transform="translate(0 0.609375)"/>
    </g>
   </g>
  </g>

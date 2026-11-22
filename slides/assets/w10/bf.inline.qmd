@@ -1,4 +1,95 @@
 <!-- 由 scripts/make_figs_w10.py 產生，勿手改；投影片用 {{< include assets/w10/bf.inline.qmd >}} 貼入 -->
 ```{=html}
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 318" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-bf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="26" font-size="27" fill="#0b5cad" text-anchor="start" font-weight="700">make it stop: at the limit, append the closing token</text><rect x="20" y="42" width="122.922" height="50" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><text x="81.461" y="75" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">&lt;think&gt;</text><rect x="150.922" y="42" width="67.538" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="184.691" y="75" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">...</text><rect x="226.46" y="42" width="81.384" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="267.152" y="75" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">step</text><rect x="315.844" y="42" width="64" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="347.844" y="75" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">17</text><rect x="387.844" y="42" width="136.768" height="50" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><text x="456.228" y="75" font-size="23" fill="#b45309" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">&lt;/think&gt;</text><rect x="532.612" y="42" width="205.998" height="50" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><text x="635.611" y="75" font-size="23" fill="#b45309" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">Final Answer:</text><rect x="746.61" y="42" width="67.538" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="780.379" y="75" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">...</text><text x="20" y="124" font-size="23" fill="#b45309" text-anchor="start" font-weight="400">amber = appended from outside, not sampled</text><g class="fragment" data-fragment-index="1"><text x="20" y="186" font-size="27" fill="#b45309" text-anchor="start" font-weight="700">forbid stopping: the closing token's logit is set to −∞</text><rect x="20" y="202" width="122.922" height="50" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><text x="81.461" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">&lt;think&gt;</text><rect x="150.922" y="202" width="67.538" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="184.691" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">...</text><rect x="226.46" y="202" width="95.23" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="274.075" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">so 42</text><rect x="329.69" y="202" width="136.768" height="50" rx="6" fill="#fff5f5" stroke="#dc2626" stroke-width="1.8"/><text x="398.074" y="235" font-size="23" fill="#dc2626" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">&lt;/think&gt;</text><line x1="335.69" y1="208" x2="460.458" y2="246" stroke="#dc2626" stroke-width="2.4"/><rect x="474.458" y="202" width="81.384" height="50" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><text x="515.15" y="235" font-size="23" fill="#b45309" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">Wait</text><rect x="563.842" y="202" width="67.538" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="597.611" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">...</text><rect x="639.38" y="202" width="109.076" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="693.918" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">no: 48</text><rect x="756.456" y="202" width="136.768" height="50" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><text x="824.84" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">&lt;/think&gt;</text><text x="20" y="284" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the model wanted to stop; it is made to look again — once, twice, four times</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 318" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-bf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="26" font-size="27" fill="#0b5cad" text-anchor="start" font-weight="700">make it stop: at the limit, append the closing token</text><rect x="20" y="42" width="122.922" height="50" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><text x="81.461" y="75" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">&lt;think&gt;</text><rect x="150.922" y="42" width="67.538" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="184.691" y="75" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">...</text><rect x="226.46" y="42" width="81.384" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="267.152" y="75" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">step</text><rect x="315.844" y="42" width="64" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="347.844" y="75" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">17</text><rect x="387.844" y="42" width="136.768" height="50" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><text x="456.228" y="75" font-size="23" fill="#b45309" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">&lt;/think&gt;</text><rect x="532.612" y="42" width="205.998" height="50" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><text x="635.611" y="75" font-size="23" fill="#b45309" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">Final Answer:</text><rect x="746.61" y="42" width="67.538" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="780.379" y="75" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">...</text><text x="20" y="124" font-size="23" fill="#b45309" text-anchor="start" font-weight="400">amber = appended from outside, not sampled</text><g class="fragment" data-fragment-index="1"><text x="20" y="186" font-size="27" fill="#b45309" text-anchor="start" font-weight="700" textLength="623.4" lengthAdjust="spacing">forbid stopping: the closing token's logit is set to</text><svg x="650.644" y="161.381" width="57.672" height="31.3571" viewBox="0 0 57.672 31.357125"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t33-figure_1">
+  <g id="t33-patch_1">
+   <path d="M 0 31.357125 
+L 57.672 31.357125 
+L 57.672 0 
+L 0 0 
+L 0 31.357125 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t33-text_1">
+   <!-- $-\infty$ -->
+   <g style="fill: #b45309" transform="translate(0 24.618938) scale(0.324 -0.324)">
+    <defs>
+     <path id="t33-Cmsy10-a1" d="M 653 1472 
+Q 600 1472 565 1512 
+Q 531 1553 531 1600 
+Q 531 1647 565 1687 
+Q 600 1728 653 1728 
+L 4325 1728 
+Q 4375 1728 4408 1687 
+Q 4441 1647 4441 1600 
+Q 4441 1553 4408 1512 
+Q 4375 1472 4325 1472 
+L 653 1472 
+z
+" transform="scale(0.015625)"/>
+     <path id="t33-Cmsy10-31" d="M 1575 -72 
+Q 1213 -72 933 140 
+Q 653 353 506 690 
+Q 359 1028 359 1381 
+Q 359 1653 445 1912 
+Q 531 2172 693 2378 
+Q 856 2584 1086 2706 
+Q 1316 2828 1594 2828 
+Q 1881 2828 2150 2718 
+Q 2419 2609 2642 2428 
+Q 2866 2247 3059 2009 
+L 3250 1753 
+Q 3441 2056 3672 2295 
+Q 3903 2534 4195 2681 
+Q 4488 2828 4819 2828 
+Q 5097 2828 5325 2704 
+Q 5553 2581 5712 2368 
+Q 5872 2156 5953 1898 
+Q 6034 1641 6034 1381 
+Q 6034 1019 5882 683 
+Q 5731 347 5451 137 
+Q 5172 -72 4800 -72 
+Q 4381 -72 4004 153 
+Q 3628 378 3334 750 
+L 3144 1006 
+Q 2850 528 2451 228 
+Q 2053 -72 1575 -72 
+z
+M 1509 153 
+Q 2322 153 2963 1241 
+L 2625 1672 
+Q 2331 2059 2078 2278 
+Q 1825 2497 1491 2497 
+Q 1206 2497 986 2336 
+Q 766 2175 645 1915 
+Q 525 1656 525 1375 
+Q 525 1159 592 942 
+Q 659 725 787 547 
+Q 916 369 1098 261 
+Q 1281 153 1509 153 
+z
+M 3769 1088 
+Q 4063 700 4316 481 
+Q 4569 263 4903 263 
+Q 5116 263 5294 356 
+Q 5472 450 5601 609 
+Q 5731 769 5800 969 
+Q 5869 1169 5869 1381 
+Q 5869 1678 5750 1961 
+Q 5631 2244 5407 2425 
+Q 5184 2606 4884 2606 
+Q 4072 2606 3431 1516 
+L 3769 1088 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t33-Cmsy10-a1" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t33-Cmsy10-31" transform="translate(77.685547 0.8125)"/>
+   </g>
+  </g>
+ </g>
+</svg><rect x="20" y="202" width="122.922" height="50" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><text x="81.461" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">&lt;think&gt;</text><rect x="150.922" y="202" width="67.538" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="184.691" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">...</text><rect x="226.46" y="202" width="95.23" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="274.075" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">so 42</text><rect x="329.69" y="202" width="136.768" height="50" rx="6" fill="#fff5f5" stroke="#dc2626" stroke-width="1.8"/><text x="398.074" y="235" font-size="23" fill="#dc2626" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">&lt;/think&gt;</text><line x1="335.69" y1="208" x2="460.458" y2="246" stroke="#dc2626" stroke-width="2.4"/><rect x="474.458" y="202" width="81.384" height="50" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.8"/><text x="515.15" y="235" font-size="23" fill="#b45309" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">Wait</text><rect x="563.842" y="202" width="67.538" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="597.611" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">...</text><rect x="639.38" y="202" width="109.076" height="50" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.8"/><text x="693.918" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="SF Mono,Menlo,Consolas,monospace">no: 48</text><rect x="756.456" y="202" width="136.768" height="50" rx="6" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.8"/><text x="824.84" y="235" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="700" font-family="SF Mono,Menlo,Consolas,monospace">&lt;/think&gt;</text><text x="20" y="284" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the model wanted to stop; it is made to look again — once, twice, four times</text></g></svg>
 ```
