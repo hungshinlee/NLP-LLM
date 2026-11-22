@@ -6,6 +6,10 @@ toc-depth: 2
 
 <!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
+::: {.callout-note appearance="minimal"}
+[**▶ Slides for this week**](../slides/w10.qmd)
+:::
+
 ## Where This Fits
 The last week of Part II, and one of the three weeks whose literature ages fastest (W9, W10, W13). For three weeks the compute has gone into training. This week **the weights do not move**: the compute is spent **while answering** — the sixth entry on the supervision axis from W1, "extra computation at test time" (the fifth, external retrieval, waits for W12). Three things carry over from last week: sampling is itself inference, a program that checks answers (a verifier), and an argument that was left unsettled.
 
@@ -101,7 +105,7 @@ The week closes by adding a line to the compute ledger (test time: tokens, sampl
 - Guan et al., **Monitoring Monitorability**, ICML 2026, spotlight (arXiv:2512.18311) — the abstract: most frontier models are fairly monitorable; longer reasoning is more monitorable; RL at the current scale does not materially reduce it
 - Chen et al., **Reasoning Models Struggle to Control their Chains of Thought**, ICML 2026 (arXiv:2603.05706) — the abstract: models control what their CoT says far less well than they control their final output
 - Xiong, Chen & Lakkaraju, **Monitorability as a Free Gift: How RLVR Spontaneously Aligns Reasoning**, ICML 2026 (arXiv:2602.03978) — the abstract: early RLVR sometimes raises monitorability as a side effect, but this depends strongly on the data and is unrelated to capability
-- Little, **Length Penalties Make Chain-of-Thought Less Monitorable**, arXiv:2607.09786 (2026) — **the efficiency-versus-monitorability result**; for Qwen3-14B the monitor's catch rate falls from 69% to 49% (v2, §5), while a control without the length penalty shows no drop; **a single-author preprint**
+- Little, **Length Penalties Make Chain-of-Thought Less Monitorable**, arXiv:2607.09786 (2026) — **the efficiency-versus-monitorability result**; for Qwen3-14B the monitor's catch rate falls from 71% to 51% (v4, §5), while a control without the length penalty shows no drop; **a single-author preprint**
 - Wang et al., **MonitorBench: A Comprehensive Benchmark for Chain-of-Thought Monitorability in Large Language Models**, COLM 2026 (arXiv:2603.28590) — the abstract: monitorability is a conditional property, higher when the decisive factor has to pass through the reasoning
 
 **Latent reasoning**
