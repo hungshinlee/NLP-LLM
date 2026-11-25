@@ -845,32 +845,34 @@ arXiv:2004.03685 · 2305.04388 · where the answer did not move, silence is corr
 | | |
 |:---|:-----------------|
 | **Why** | W3 asked whether an attention weight is an explanation (W3 p56). Today the same question, about a chain of thought — and this time the model is doing the explaining. |
-| **What runs** | Qwen3-8B, thinking on, four-option questions from MMLU subjects where it scores between five and eight in ten unaided. Each question is asked twice: plain, and with a hint pointing at a random **wrong** option — a sentence from the user ("I think it is (B)"), or an `<answer>` field in XML metadata. One question live; the two rates from rehearsal. |
+| **What runs** | Qwen3-8B, thinking on, 200 four-option questions from the nine MMLU subjects (of twenty tried) where it scores between five and eight in ten unaided. Each question is asked twice: plain, and with a hint pointing at a random **wrong** option — a sentence from the user ("I think it is (B)"), or an `<answer>` field in XML metadata. One question live; the two rates from rehearsal. |
 | **Watch for** | Two chains of reasoning for the same question. **Which one had the hint in its prompt?** |
 :::
 
 ::: {.footer}
-Demo 3 · `demos/w10_d3_hidden_hint` · built, not rehearsed · a failure-case high point
+Demo 3 · `demos/w10_d3_hidden_hint` · rehearsed 2026-11-25 · a failure-case high point
 :::
 
 ## Live: demo 3 (a) — which of these two had the hint?
-
-| hint | questions kept | switch | verbalise | verbalise $\div\ \alpha$ |
-|:---|:---|:---|:---|:---|
-| a sentence from the user | | | | |
-| a field in XML metadata | | | | |
-
-: {tbl-colwidths="[36,18,14,14,18]"}
-
-- "mentions the hint" is judged by **fixed string rules** — a simplification; thirty cases are also read by hand, and the agreement is printed
-- answers also move **by chance**: $\alpha = 1 - \dfrac{p_{\text{o}}}{(n_{\text{opt}} - 2)\,p_h}$ is the share of moves to the hint that are not noise — $p_h$: moved to the hint; $p_{\text{o}}$: moved to another option; $n_{\text{opt}} = 4$ (Chen et al.)
 
 ::: {.ask}
 Two chains, one question. Vote: left or right had the hint?
 :::
 
+::: {.fragment}
+| hint | questions kept | switch | verbalise | verbalise $\div\ \alpha$ |
+|:---|:---|:---|:---|:---|
+| a sentence from the user | 169 | 0.14 | 0.61 | 0.76 |
+| a field in XML metadata | 169 | 0.20 | 0.68 | 0.72 |
+
+: {tbl-colwidths="[36,18,14,14,18]"}
+:::
+
+- "mentions the hint" is judged by **fixed string rules** — a simplification, and not yet checked against a human reader
+- answers also move **by chance**: $\alpha = 1 - \dfrac{p_{\text{o}}}{(n_{\text{opt}} - 2)\,p_h}$ is the share of moves to the hint that are not noise — $p_h$: moved to the hint; $p_{\text{o}}$: moved to another option; $n_{\text{opt}} = 4$ (Chen et al.)
+
 ::: {.footer}
-Demo 3 (a) · built, not rehearsed: empty on purpose · Misconception 12: "the CoT is the thinking"
+Demo 3 (a) · 200 questions, one sampled answer each · rehearsed 2026-11-25 · Misconception 12: "the CoT is the thinking"
 :::
 
 ## A line of evidence: the answer moves, the reasoning stays silent
@@ -908,20 +910,20 @@ Misconception 13: "so CoT is useless" · arXiv:2512.23032 · 2507.05246 · 2608.
 
 | reasoning kept before forcing an answer | 0% | 25% | 50% | 75% | 100% |
 |:---|:---|:---|:---|:---|:---|
-| no hint: answer already equals the final one | | | | | |
-| hinted and switched: answer already equals the final one | | | | | |
+| no hint: answer already equals the final one | 0.80 | 0.82 | 0.88 | 0.91 | 0.96 |
+| hinted and switched: answer already equals the final one | 0.61 | 0.67 | 0.77 | 0.81 | 0.88 |
 
 : {tbl-colwidths="[50,10,10,10,10,10]"}
 
 - **early answering** (Lanham's intervention, p15), done with demo 1's budget forcing: truncate the chain, append the closing token
 - a flat row means the answer was settled before the reasoning was written — the reasoning came **after**
 
-::: {.claim .warn}
-Not measured yet. The expectation to test: on knowledge questions the answer is settled early — earlier still when a hint carried it.
+::: {.claim}
+Without a hint, eight answers in ten are there before any reasoning. The hinted row is **not** earlier — it is lower at every cut.
 :::
 
 ::: {.footer}
-Demo 3 (b) · replay · built, not rehearsed · truncation from demo 1
+Demo 3 (b) · 91 and 57 questions · 100%: only the answer drawn again · rehearsed 2026-11-25
 :::
 
 ## One argument, made a second time
@@ -1011,7 +1013,7 @@ Misconception 15: "the next CoT" · arXiv:2412.06769 · 2607.16972 · 2602.01148
 - whatever language the question is in, reasoning models mostly reason in **English or another high-resource language** (Tam et al., a preprint)
 - force the reasoning into the user's language: it becomes readable, and **accuracy falls** (Qi et al., Findings of EMNLP 2025)
 - on parallel questions in eight languages: the lower-resource the language, the **more** the model relies on its written reasoning for knowledge questions (Resck et al., a preprint)
-- **Traditional Chinese, Taiwanese and Hakka are in none of these three papers.** Demo 3 (c) looks once — instructions in Traditional Chinese, then in Taiwanese written in Han characters — as an observation, not a result
+- **Traditional Chinese, Taiwanese and Hakka are in none of these three papers.** Demo 3 (c) looked once, 20 questions: with the instruction in Traditional Chinese, or in Taiwanese written in Han characters, the reasoning came out in **Simplified** Chinese — an observation, not a result
 
 ::: {.claim}
 Reasoning a user cannot read is reasoning a user cannot check.
@@ -1185,7 +1187,7 @@ This week the question was what a token buys. Next week: what a token costs.
 
 **Monitorability, latent reasoning, language** · Korbak et al., arXiv:2507.11473 — **a position paper, no experiments** · Baker et al., arXiv:2503.11926 — a preprint · Guan et al., *Monitoring Monitorability*, ICML 2026 Spotlight (arXiv:2512.18311) · Chen (Yueh-Han) et al., ICML 2026 (arXiv:2603.05706) · Xiong, Chen & Lakkaraju, ICML 2026 (arXiv:2602.03978) · Little, arXiv:2607.09786 — **a single-author preprint; v4, §5–§7** · Wang (Han) et al., *MonitorBench*, COLM 2026 (arXiv:2603.28590) · Hao et al., *Coconut*, COLM 2025 (arXiv:2412.06769) · Zhu (Hanlin) et al., NeurIPS 2025 (arXiv:2505.12514) · Yerram, He & Choi, arXiv:2607.16972 — **a workshop paper** · Zou, Xiong & Liu, arXiv:2602.01148 — a preprint · Tam et al., arXiv:2505.17407 — a preprint · Qi et al., Findings of EMNLP 2025 (arXiv:2505.22888) · Resck et al., arXiv:2610.22841 — a preprint
 
-**Numbers and demos** · every computed number is in `assets/w10/w10-data.json` (`scripts/make_demo_w10.py`); the figures on p19, p32, p42, p49 are **our arithmetic** — the $p(x)$ values on p32 and p49 are made up, the lengths on p42 are assumed · **demo 1 was rehearsed on 2026-11-25** (p18, p27: Qwen3-8B, 50 problems per cell); **demo 3 is built and not rehearsed, demo 2 is not built**: the tables on p39, p45, p52, p57, p60 are empty on purpose
+**Numbers and demos** · every computed number is in `assets/w10/w10-data.json` (`scripts/make_demo_w10.py`); the figures on p19, p32, p42, p49 are **our arithmetic** — the $p(x)$ values on p32 and p49 are made up, the lengths on p42 are assumed · **demo 1 was rehearsed on 2026-11-25** (p18, p27: Qwen3-8B, 50 problems per cell); **demo 3 was rehearsed on 2026-11-25** (p57, p60, p67: Qwen3-8B, 200 MMLU questions; "mentions the hint" is judged by string rules not yet checked by hand); **demo 2 is not built**: the tables on p39, p45, p52 are empty on purpose
 :::
 
 ## Acronyms in this deck, A–S
