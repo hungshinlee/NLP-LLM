@@ -11,7 +11,7 @@
 | **W7** | [Pre-training: Scaling Laws and Data Curation](weeks/w07.qmd)<br>[Pre-training：scaling laws 與資料策展]{.wk-zh} | Training | [▶ Open](slides/w07.qmd) |
 | **W8** | [Post-training I: SFT, PEFT, and Forgetting](weeks/w08.qmd)<br>[Post-training I：SFT、PEFT 與遺忘]{.wk-zh} | Training | [▶ Open](slides/w08.qmd) |
 | **W9** | [Post-training II: Preference Alignment and Reinforcement Learning](weeks/w09.qmd)<br>[Post-training II：偏好對齊與強化學習]{.wk-zh} | Training | [▶ Open](slides/w09.qmd) |
-| **W10** | Reasoning and Test-Time Compute<br>[Reasoning 與 test-time compute]{.wk-zh} | Training | [▶ Open](slides/w10.qmd) |
+| **W10** | [Reasoning and Test-Time Compute](weeks/w10.qmd)<br>[Reasoning 與 test-time compute]{.wk-zh} | Training | [▶ Open](slides/w10.qmd) |
 | **W11** | Inference Efficiency: From FLOPs to Memory Bandwidth<br>[推論效率：從 FLOPs 到 memory bandwidth]{.wk-zh} | Systems & Scrutiny | — |
 | **W12** | RAG and Context Engineering<br>[RAG 與 context engineering]{.wk-zh} | Systems & Scrutiny | — |
 | **W13** | Agentic Systems: Tools, Planning, Failure Modes, and Security<br>[Agentic systems：工具、規劃、失效與安全]{.wk-zh} | Systems & Scrutiny | — |
