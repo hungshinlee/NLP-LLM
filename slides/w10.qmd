@@ -868,7 +868,7 @@ Two chains, one question. Vote: left or right had the hint?
 : {tbl-colwidths="[36,18,14,14,18]"}
 :::
 
-- "mentions the hint" is judged by **fixed string rules** — a simplification, and not yet checked against a human reader
+- "mentions the hint" is judged by **fixed string rules** — a simplification; thirty switched cases were also read by hand, and the rules agreed on all thirty
 - answers also move **by chance**: $\alpha = 1 - \dfrac{p_{\text{o}}}{(n_{\text{opt}} - 2)\,p_h}$ is the share of moves to the hint that are not noise — $p_h$: moved to the hint; $p_{\text{o}}$: moved to another option; $n_{\text{opt}} = 4$ (Chen et al.)
 
 ::: {.footer}
@@ -1187,7 +1187,7 @@ This week the question was what a token buys. Next week: what a token costs.
 
 **Monitorability, latent reasoning, language** · Korbak et al., arXiv:2507.11473 — **a position paper, no experiments** · Baker et al., arXiv:2503.11926 — a preprint · Guan et al., *Monitoring Monitorability*, ICML 2026 Spotlight (arXiv:2512.18311) · Chen (Yueh-Han) et al., ICML 2026 (arXiv:2603.05706) · Xiong, Chen & Lakkaraju, ICML 2026 (arXiv:2602.03978) · Little, arXiv:2607.09786 — **a single-author preprint; v4, §5–§7** · Wang (Han) et al., *MonitorBench*, COLM 2026 (arXiv:2603.28590) · Hao et al., *Coconut*, COLM 2025 (arXiv:2412.06769) · Zhu (Hanlin) et al., NeurIPS 2025 (arXiv:2505.12514) · Yerram, He & Choi, arXiv:2607.16972 — **a workshop paper** · Zou, Xiong & Liu, arXiv:2602.01148 — a preprint · Tam et al., arXiv:2505.17407 — a preprint · Qi et al., Findings of EMNLP 2025 (arXiv:2505.22888) · Resck et al., arXiv:2610.22841 — a preprint
 
-**Numbers and demos** · every computed number is in `assets/w10/w10-data.json` (`scripts/make_demo_w10.py`); the figures on p19, p32, p42, p49 are **our arithmetic** — the $p(x)$ values on p32 and p49 are made up, the lengths on p42 are assumed · **demo 1 was rehearsed on 2026-11-25** (p18, p27: Qwen3-8B, 50 problems per cell); **demo 3 was rehearsed on 2026-11-25** (p57, p60, p67: Qwen3-8B, 200 MMLU questions; "mentions the hint" is judged by string rules not yet checked by hand); **demo 2 is not built**: the tables on p39, p45, p52 are empty on purpose
+**Numbers and demos** · every computed number is in `assets/w10/w10-data.json` (`scripts/make_demo_w10.py`); the figures on p19, p32, p42, p49 are **our arithmetic** — the $p(x)$ values on p32 and p49 are made up, the lengths on p42 are assumed · **demo 1 was rehearsed on 2026-11-25** (p18, p27: Qwen3-8B, 50 problems per cell); **demo 3 was rehearsed on 2026-11-25** (p57, p60, p67: Qwen3-8B, 200 MMLU questions; "mentions the hint" is judged by string rules; thirty cases read by hand agreed with them); **demo 2 is not built**: the tables on p39, p45, p52 are empty on purpose
 :::
 
 ## Acronyms in this deck, A–S
