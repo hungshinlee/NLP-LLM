@@ -45,7 +45,7 @@ Handed out in week 1 and used every week after. They are short on purpose — th
 
 1. **Was the baseline actually tuned?** The most common source of illusory progress in this field. W8 (LoRA variants) and W9 (GRPO variants) both have concrete cases where the improvement disappears once the baseline gets a learning-rate sweep.
 2. **Is the comparison at equal compute?** Iso-FLOPs, iso-parameter and iso-latency are three different comparisons, and they frequently give opposite answers. W6 is built around this.
-3. **What is the metric rewarding?** The gap between a metric and the capability it stands for is the subject of W14, but it comes up every week — most sharply in W11, where KV-cache compression leaves perplexity almost untouched and quietly breaks instruction following.
+3. **What is the metric rewarding?** The gap between a metric and the capability it stands for is the subject of W14, but it comes up every week — most sharply in W11, where a quantized model keeps its accuracy while a different set of questions is answered correctly, and where evicting part of the KV cache leaves the task score in place while some instructions are silently ignored.
 4. **Is the claim mechanistic or correlational?** "The attention weight is high", "the chain of thought wrote this step", "the reward went up" are all correlational. W3, W10 and W14 are the same error three times over, and the answer is the same each time: ask for an intervention, and ask what the strong baseline does.
 
 <!-- file: textbooks.md -->
@@ -101,7 +101,7 @@ Goldberg, *Neural Network Methods for NLP* (2017) and Paaß & Giesselbach, *Foun
 | W8 | SFT and PEFT | Shuttleworth et al., *LoRA vs Full Fine-tuning: An Illusion of Equivalence*, arXiv:2410.21228 |
 | W9 | Alignment and RL | Rafailov et al., *DPO*, NeurIPS 2023 — with the GRPO section of Shao et al., *DeepSeekMath* |
 | W10 | Reasoning and test-time compute | Yue et al., *Does RL Really Incentivize Reasoning Capacity Beyond the Base Model?*, arXiv:2504.13837 |
-| W11 | Inference efficiency | Leviathan et al., *Fast Inference from Transformers via Speculative Decoding*, ICML 2023 |
+| W11 | Inference efficiency | Leviathan, Kalman & Matias, *Fast Inference from Transformers via Speculative Decoding*, ICML 2023 (oral; arXiv:2211.17192), in full, with §3–§4 of Chen et al., *The Pitfalls of KV Cache Compression*, ACL 2026 — one paper proves a speed-up that leaves the distribution unchanged, the other shows a speed-up after which the score holds and the behaviour does not |
 | W12 | RAG | Li et al., *RAG or Long-Context LLMs?*, EMNLP 2024 industry track |
 | W13 | Agentic systems | Cemri et al., *Why Do Multi-Agent LLM Systems Fail?*, arXiv:2503.13657 |
 | W14 | Evaluation and interpretability | Korznikov et al., *Sanity Checks for Sparse Autoencoders*, arXiv:2602.14111 — with Miller, *Adding Error Bars to Evals* |
@@ -125,7 +125,7 @@ One board derivation and one component per week. Everything is demonstrated in c
 | W8 | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT with `mlx_lm.lora`** | MLX. Pointing it at a quantized model *is* QLoRA |
 | W9 | **DPO in four steps** (one of the three peaks); GRPO's advantage normalization | **The DPO loss, with four tests** | CPU |
 | W10 | The two crossing pass@k curves; the binomial bound behind self-consistency | Budget forcing | MLX, a mid-size model with a thinking mode |
-| W11 | **Roofline and the batch threshold for decode**; the three-line losslessness proof for speculative decoding | A roofline measured | MLX (`mlx_lm.benchmark`, `--draft-model`) |
+| W11 | **The two roofs of the demo machine and the intensity of decode**, with its two boundaries (batch size and context length); the memory argument of PagedAttention; **the three-line proof that speculative sampling leaves the distribution unchanged**, and the optimal draft length; the error of uniform quantization; the arithmetic of answer flips | **The acceptance rule of speculative sampling** (ten lines and five tests, written live); a measured roofline | MLX (`mlx-lm`); plain numpy for the acceptance rule |
 | W12 | InfoNCE, and how the negatives define "similar"; RAG's three-term decomposition | **A minimal RAG, and three deliberate failures** | CPU |
 | W13 | The compound error rate $p^n$, and what a verifier does to it | **An agent broken by prompt injection** | A small local model is enough |
 | W14 | The binomial standard error and paired bootstrap; the sparsity–reconstruction Pareto | An evaluation workshop (no new model) | CPU — TransformerLens avoids MPS by default |

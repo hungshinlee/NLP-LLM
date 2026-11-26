@@ -14,7 +14,7 @@
 | [W8](weeks/w08.qmd) | SFT and PEFT | Shuttleworth et al., *LoRA vs Full Fine-tuning: An Illusion of Equivalence*, arXiv:2410.21228 |
 | [W9](weeks/w09.qmd) | Alignment and RL | Rafailov et al., *DPO*, NeurIPS 2023 — with the GRPO section of Shao et al., *DeepSeekMath* |
 | [W10](weeks/w10.qmd) | Reasoning and test-time compute | Yue et al., *Does RL Really Incentivize Reasoning Capacity Beyond the Base Model?*, arXiv:2504.13837 |
-| W11 | Inference efficiency | Leviathan et al., *Fast Inference from Transformers via Speculative Decoding*, ICML 2023 |
+| W11 | Inference efficiency | Leviathan, Kalman & Matias, *Fast Inference from Transformers via Speculative Decoding*, ICML 2023 (oral; arXiv:2211.17192), in full, with §3–§4 of Chen et al., *The Pitfalls of KV Cache Compression*, ACL 2026 — one paper proves a speed-up that leaves the distribution unchanged, the other shows a speed-up after which the score holds and the behaviour does not |
 | W12 | RAG | Li et al., *RAG or Long-Context LLMs?*, EMNLP 2024 industry track |
 | W13 | Agentic systems | Cemri et al., *Why Do Multi-Agent LLM Systems Fail?*, arXiv:2503.13657 |
 | W14 | Evaluation and interpretability | Korznikov et al., *Sanity Checks for Sparse Autoencoders*, arXiv:2602.14111 — with Miller, *Adding Error Bars to Evals* |

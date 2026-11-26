@@ -16,7 +16,7 @@ One board derivation and one component per week. Everything is demonstrated in c
 | [W8](weeks/w08.qmd) | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT with `mlx_lm.lora`** | MLX. Pointing it at a quantized model *is* QLoRA |
 | [W9](weeks/w09.qmd) | **DPO in four steps** (one of the three peaks); GRPO's advantage normalization | **The DPO loss, with four tests** | CPU |
 | [W10](weeks/w10.qmd) | The two crossing pass@k curves; the binomial bound behind self-consistency | Budget forcing | MLX, a mid-size model with a thinking mode |
-| W11 | **Roofline and the batch threshold for decode**; the three-line losslessness proof for speculative decoding | A roofline measured | MLX (`mlx_lm.benchmark`, `--draft-model`) |
+| W11 | **The two roofs of the demo machine and the intensity of decode**, with its two boundaries (batch size and context length); the memory argument of PagedAttention; **the three-line proof that speculative sampling leaves the distribution unchanged**, and the optimal draft length; the error of uniform quantization; the arithmetic of answer flips | **The acceptance rule of speculative sampling** (ten lines and five tests, written live); a measured roofline | MLX (`mlx-lm`); plain numpy for the acceptance rule |
 | W12 | InfoNCE, and how the negatives define "similar"; RAG's three-term decomposition | **A minimal RAG, and three deliberate failures** | CPU |
 | W13 | The compound error rate $p^n$, and what a verifier does to it | **An agent broken by prompt injection** | A small local model is enough |
 | W14 | The binomial standard error and paired bootstrap; the sparsity–reconstruction Pareto | An evaluation workshop (no new model) | CPU — TransformerLens avoids MPS by default |
