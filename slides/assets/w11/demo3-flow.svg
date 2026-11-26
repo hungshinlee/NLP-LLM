@@ -1,0 +1,306 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 468" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-demo3-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="26" font-size="23" fill="#0b5cad" text-anchor="start" font-weight="700">(a) the same model at six precisions</text><rect x="20" y="38" width="270" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="74" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">six copies</text><text x="38" y="106" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">bf16, 8, 6, 4, 3, 2 bits</text><line x1="293" y1="93" x2="316" y2="93" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="320" y="38" width="330" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="338" y="74" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">three rulers each</text><text x="338" y="106" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">bits per byte · 200 MMLU</text><text x="338" y="136" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">items · 120 instructions</text><line x1="653" y1="93" x2="676" y2="93" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="680" y="38" width="270" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="698" y="74" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">against bf16</text><text x="698" y="106" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">accuracy, and the</text><text x="698" y="136" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="43.3" lengthAdjust="spacing">flips</text><svg x="747.558" y="115.028" width="37.812" height="26.7116" viewBox="0 0 37.812 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t215-figure_1">
+  <g id="t215-patch_1">
+   <path d="M 0 26.711625 
+L 37.812 26.711625 
+L 37.812 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t215-text_1">
+   <!-- $n_{10}$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t215-Cmmi10-6e" d="M 494 109 
+Q 494 147 500 166 
+L 978 2075 
+Q 1025 2253 1025 2388 
+Q 1025 2663 838 2663 
+Q 638 2663 541 2423 
+Q 444 2184 353 1819 
+Q 353 1800 334 1789 
+Q 316 1778 300 1778 
+L 225 1778 
+Q 203 1778 187 1801 
+Q 172 1825 172 1844 
+Q 241 2122 305 2315 
+Q 369 2509 505 2668 
+Q 641 2828 844 2828 
+Q 1084 2828 1268 2676 
+Q 1453 2525 1453 2291 
+Q 1644 2541 1900 2684 
+Q 2156 2828 2444 2828 
+Q 2672 2828 2837 2750 
+Q 3003 2672 3095 2514 
+Q 3188 2356 3188 2138 
+Q 3188 1875 3070 1503 
+Q 2953 1131 2778 672 
+Q 2688 463 2688 288 
+Q 2688 97 2834 97 
+Q 3084 97 3251 365 
+Q 3419 634 3488 941 
+Q 3500 978 3541 978 
+L 3616 978 
+Q 3641 978 3658 962 
+Q 3675 947 3675 922 
+Q 3675 916 3669 903 
+Q 3581 541 3364 234 
+Q 3147 -72 2822 -72 
+Q 2597 -72 2437 83 
+Q 2278 238 2278 459 
+Q 2278 578 2328 709 
+Q 2409 919 2514 1209 
+Q 2619 1500 2686 1765 
+Q 2753 2031 2753 2234 
+Q 2753 2413 2679 2538 
+Q 2606 2663 2431 2663 
+Q 2197 2663 2000 2559 
+Q 1803 2456 1656 2286 
+Q 1509 2116 1388 1881 
+L 953 141 
+Q 931 53 854 -9 
+Q 778 -72 684 -72 
+Q 606 -72 550 -22 
+Q 494 28 494 109 
+z
+" transform="scale(0.015625)"/>
+     <path id="t215-Cmr10-31" d="M 594 0 
+L 594 225 
+Q 1394 225 1394 428 
+L 1394 3788 
+Q 1063 3628 556 3628 
+L 556 3853 
+Q 1341 3853 1741 4263 
+L 1831 4263 
+Q 1853 4263 1873 4245 
+Q 1894 4228 1894 4206 
+L 1894 428 
+Q 1894 225 2694 225 
+L 2694 0 
+L 594 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t215-Cmr10-30" d="M 1600 -141 
+Q 816 -141 533 504 
+Q 250 1150 250 2041 
+Q 250 2597 351 3087 
+Q 453 3578 754 3920 
+Q 1056 4263 1600 4263 
+Q 2022 4263 2290 4056 
+Q 2559 3850 2700 3523 
+Q 2841 3197 2892 2823 
+Q 2944 2450 2944 2041 
+Q 2944 1491 2842 1011 
+Q 2741 531 2444 195 
+Q 2147 -141 1600 -141 
+z
+M 1600 25 
+Q 1956 25 2131 390 
+Q 2306 756 2347 1200 
+Q 2388 1644 2388 2144 
+Q 2388 2625 2347 3031 
+Q 2306 3438 2132 3767 
+Q 1959 4097 1600 4097 
+Q 1238 4097 1063 3765 
+Q 888 3434 847 3029 
+Q 806 2625 806 2144 
+Q 806 1788 823 1472 
+Q 841 1156 916 820 
+Q 991 484 1158 254 
+Q 1325 25 1600 25 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t215-Cmmi10-6e" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t215-Cmr10-31" transform="translate(60.009766 -16.19375) scale(0.7)"/>
+    <use xlink:href="#t215-Cmr10-30" transform="translate(95.009766 -16.19375) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="785.37" y="136" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="6.8" lengthAdjust="spacing">,</text><svg x="798.357" y="115.028" width="37.812" height="26.7116" viewBox="0 0 37.812 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t216-figure_1">
+  <g id="t216-patch_1">
+   <path d="M 0 26.711625 
+L 37.812 26.711625 
+L 37.812 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t216-text_1">
+   <!-- $n_{01}$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t216-Cmmi10-6e" d="M 494 109 
+Q 494 147 500 166 
+L 978 2075 
+Q 1025 2253 1025 2388 
+Q 1025 2663 838 2663 
+Q 638 2663 541 2423 
+Q 444 2184 353 1819 
+Q 353 1800 334 1789 
+Q 316 1778 300 1778 
+L 225 1778 
+Q 203 1778 187 1801 
+Q 172 1825 172 1844 
+Q 241 2122 305 2315 
+Q 369 2509 505 2668 
+Q 641 2828 844 2828 
+Q 1084 2828 1268 2676 
+Q 1453 2525 1453 2291 
+Q 1644 2541 1900 2684 
+Q 2156 2828 2444 2828 
+Q 2672 2828 2837 2750 
+Q 3003 2672 3095 2514 
+Q 3188 2356 3188 2138 
+Q 3188 1875 3070 1503 
+Q 2953 1131 2778 672 
+Q 2688 463 2688 288 
+Q 2688 97 2834 97 
+Q 3084 97 3251 365 
+Q 3419 634 3488 941 
+Q 3500 978 3541 978 
+L 3616 978 
+Q 3641 978 3658 962 
+Q 3675 947 3675 922 
+Q 3675 916 3669 903 
+Q 3581 541 3364 234 
+Q 3147 -72 2822 -72 
+Q 2597 -72 2437 83 
+Q 2278 238 2278 459 
+Q 2278 578 2328 709 
+Q 2409 919 2514 1209 
+Q 2619 1500 2686 1765 
+Q 2753 2031 2753 2234 
+Q 2753 2413 2679 2538 
+Q 2606 2663 2431 2663 
+Q 2197 2663 2000 2559 
+Q 1803 2456 1656 2286 
+Q 1509 2116 1388 1881 
+L 953 141 
+Q 931 53 854 -9 
+Q 778 -72 684 -72 
+Q 606 -72 550 -22 
+Q 494 28 494 109 
+z
+" transform="scale(0.015625)"/>
+     <path id="t216-Cmr10-30" d="M 1600 -141 
+Q 816 -141 533 504 
+Q 250 1150 250 2041 
+Q 250 2597 351 3087 
+Q 453 3578 754 3920 
+Q 1056 4263 1600 4263 
+Q 2022 4263 2290 4056 
+Q 2559 3850 2700 3523 
+Q 2841 3197 2892 2823 
+Q 2944 2450 2944 2041 
+Q 2944 1491 2842 1011 
+Q 2741 531 2444 195 
+Q 2147 -141 1600 -141 
+z
+M 1600 25 
+Q 1956 25 2131 390 
+Q 2306 756 2347 1200 
+Q 2388 1644 2388 2144 
+Q 2388 2625 2347 3031 
+Q 2306 3438 2132 3767 
+Q 1959 4097 1600 4097 
+Q 1238 4097 1063 3765 
+Q 888 3434 847 3029 
+Q 806 2625 806 2144 
+Q 806 1788 823 1472 
+Q 841 1156 916 820 
+Q 991 484 1158 254 
+Q 1325 25 1600 25 
+z
+" transform="scale(0.015625)"/>
+     <path id="t216-Cmr10-31" d="M 594 0 
+L 594 225 
+Q 1394 225 1394 428 
+L 1394 3788 
+Q 1063 3628 556 3628 
+L 556 3853 
+Q 1341 3853 1741 4263 
+L 1831 4263 
+Q 1853 4263 1873 4245 
+Q 1894 4228 1894 4206 
+L 1894 428 
+Q 1894 225 2694 225 
+L 2694 0 
+L 594 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t216-Cmmi10-6e" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t216-Cmr10-30" transform="translate(60.009766 -16.19375) scale(0.7)"/>
+    <use xlink:href="#t216-Cmr10-31" transform="translate(95.009766 -16.19375) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><line x1="953" y1="93" x2="976" y2="93" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="980" y="38" width="240" height="110" rx="8" fill="#fff" stroke="#dc2626" stroke-width="1.6"/><text x="998" y="74" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">row by row</text><text x="998" y="106" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">which row moves</text><text x="998" y="136" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">first: ?</text><rect x="980" y="38" width="240" height="110" rx="8" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/><g class="fragment" data-fragment-index="1"><text x="20" y="182" font-size="23" fill="#b45309" text-anchor="start" font-weight="700">(b) evict part of the prompt's KV</text><rect x="20" y="194" width="290" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="230" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">a system prompt</text><text x="38" y="262" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">one instruction to obey,</text><text x="38" y="292" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">one forbidding a leak</text><line x1="313" y1="249" x2="322" y2="249" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="326" y="194" width="322" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="344" y="230" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">evict part of it</text><text x="344" y="262" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="81.3" lengthAdjust="spacing">a share</text><svg x="431.517" y="241.028" width="12.696" height="26.7116" viewBox="0 0 12.696 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t217-figure_1">
+  <g id="t217-patch_1">
+   <path d="M 0 26.711625 
+L 12.696 26.711625 
+L 12.696 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t217-text_1">
+   <!-- $r$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t217-Cmmi10-72" d="M 494 109 
+Q 494 147 500 166 
+L 978 2075 
+Q 1025 2253 1025 2388 
+Q 1025 2663 838 2663 
+Q 638 2663 541 2423 
+Q 444 2184 353 1819 
+Q 353 1800 334 1789 
+Q 316 1778 300 1778 
+L 225 1778 
+Q 203 1778 187 1801 
+Q 172 1825 172 1844 
+Q 241 2122 305 2315 
+Q 369 2509 505 2668 
+Q 641 2828 844 2828 
+Q 1066 2828 1233 2700 
+Q 1400 2572 1441 2363 
+Q 1603 2575 1811 2701 
+Q 2019 2828 2266 2828 
+Q 2469 2828 2623 2709 
+Q 2778 2591 2778 2388 
+Q 2778 2225 2676 2104 
+Q 2575 1984 2406 1984 
+Q 2303 1984 2233 2048 
+Q 2163 2113 2163 2216 
+Q 2163 2356 2266 2467 
+Q 2369 2578 2503 2578 
+Q 2400 2663 2253 2663 
+Q 1978 2663 1775 2467 
+Q 1572 2272 1409 1972 
+L 953 141 
+Q 931 53 854 -9 
+Q 778 -72 684 -72 
+Q 606 -72 550 -22 
+Q 494 28 494 109 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t217-Cmmi10-72" transform="translate(0 0.8125)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="444.213" y="262" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="146.3" lengthAdjust="spacing">; two policies;</text><text x="344" y="292" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">KV quantization as control</text><line x1="651" y1="249" x2="660" y2="249" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="664" y="194" width="286" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="682" y="230" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">two checks</text><text x="682" y="262" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">obeyed? · leaked</text><text x="682" y="292" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">(ROUGE-L)?</text><line x1="953" y1="249" x2="976" y2="249" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="980" y="194" width="240" height="110" rx="8" fill="#fff" stroke="#dc2626" stroke-width="1.6"/><text x="998" y="230" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">two instructions</text><text x="998" y="262" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">do they fail</text><text x="998" y="292" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">together: ?</text><rect x="980" y="194" width="240" height="110" rx="8" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/></g><g class="fragment" data-fragment-index="2"><text x="20" y="338" font-size="23" fill="#6d28d9" text-anchor="start" font-weight="700">(c) temperature 0, alone and in company</text><rect x="20" y="350" width="270" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="386" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">one prompt</text><text x="38" y="418" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">greedy, 256 tokens</text><line x1="293" y1="405" x2="316" y2="405" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="320" y="350" width="330" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="338" y="386" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">sent 20 times alone</text><text x="338" y="418" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">then 20 times in</text><text x="338" y="448" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">batches of 2–16</text><line x1="653" y1="405" x2="676" y2="405" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="680" y="350" width="270" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="698" y="386" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">aligned</text><text x="698" y="418" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">token by token;</text><text x="698" y="448" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">differences coloured</text><line x1="953" y1="405" x2="976" y2="405" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="980" y="350" width="240" height="110" rx="8" fill="#fff" stroke="#dc2626" stroke-width="1.6"/><text x="998" y="386" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">the same text</text><text x="998" y="418" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">every time: ?</text><text x="998" y="448" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">first fork: ?</text><rect x="980" y="350" width="240" height="110" rx="8" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/></g></svg>

@@ -1,0 +1,616 @@
+<!-- 由 scripts/make_figs_w11.py 產生，勿手改；投影片用 {{< include assets/w11/factory.inline.qmd >}} 貼入 -->
+```{=html}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 372" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-factory" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><rect x="20" y="10" width="340" height="122" rx="8" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="46" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">the warehouse</text><text x="38" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="130.1" lengthAdjust="spacing">the weights:</text><svg x="174.302" y="57.0283" width="53.82" height="26.7116" viewBox="0 0 53.82 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t1-figure_1">
+  <g id="t1-patch_1">
+   <path d="M 0 26.711625 
+L 53.82 26.711625 
+L 53.82 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t1-text_1">
+   <!-- $N\,b_{\mathrm{w}}$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t1-Cmmi10-4e" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 931 225 1031 616 
+L 1900 4116 
+Q 1722 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1278 4247 1287 4286 
+Q 1297 4325 1314 4348 
+Q 1331 4372 1356 4372 
+L 2463 4372 
+Q 2509 4372 2522 4331 
+L 3944 947 
+L 4653 3781 
+Q 4666 3850 4666 3878 
+Q 4666 4147 4172 4147 
+Q 4109 4147 4109 4231 
+Q 4131 4313 4143 4342 
+Q 4156 4372 4219 4372 
+L 5588 4372 
+Q 5650 4372 5650 4288 
+Q 5647 4272 5637 4233 
+Q 5628 4194 5611 4170 
+Q 5594 4147 5569 4147 
+Q 4956 4147 4856 3756 
+L 3938 56 
+Q 3916 0 3872 0 
+L 3794 0 
+Q 3750 0 3738 44 
+L 2106 3916 
+L 2094 3956 
+Q 2081 3969 2081 3975 
+L 1234 588 
+Q 1228 572 1225 548 
+Q 1222 525 1216 494 
+Q 1216 328 1359 276 
+Q 1503 225 1716 225 
+Q 1778 225 1778 141 
+Q 1756 53 1740 26 
+Q 1725 0 1672 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t1-Cmmi10-62" d="M 1106 -72 
+Q 719 -72 503 231 
+Q 288 534 288 941 
+Q 288 1000 317 1173 
+Q 347 1347 347 1388 
+L 966 3872 
+Q 991 3981 997 4044 
+Q 997 4147 581 4147 
+Q 519 4147 519 4231 
+Q 522 4247 533 4287 
+Q 544 4328 561 4350 
+Q 578 4372 609 4372 
+L 1472 4441 
+Q 1550 4441 1550 4359 
+L 1075 2472 
+Q 1438 2828 1806 2828 
+Q 2078 2828 2273 2684 
+Q 2469 2541 2566 2306 
+Q 2663 2072 2663 1806 
+Q 2663 1497 2542 1167 
+Q 2422 838 2209 555 
+Q 1997 272 1712 100 
+Q 1428 -72 1106 -72 
+z
+M 1119 97 
+Q 1338 97 1528 280 
+Q 1719 463 1838 691 
+Q 1966 947 2077 1386 
+Q 2188 1825 2188 2088 
+Q 2188 2316 2092 2489 
+Q 1997 2663 1791 2663 
+Q 1559 2663 1348 2492 
+Q 1138 2322 978 2088 
+L 800 1363 
+Q 697 959 691 716 
+Q 691 475 795 286 
+Q 900 97 1119 97 
+z
+" transform="scale(0.015625)"/>
+     <path id="t1-Cmr10-77" d="M 1416 0 
+L 588 2328 
+Q 531 2469 425 2501 
+Q 319 2534 116 2534 
+L 116 2759 
+L 1434 2759 
+L 1434 2534 
+Q 1056 2534 1056 2375 
+Q 1059 2366 1061 2356 
+Q 1063 2347 1063 2328 
+L 1678 603 
+L 2209 2106 
+L 2125 2328 
+Q 2075 2469 1965 2501 
+Q 1856 2534 1656 2534 
+L 1656 2759 
+L 2919 2759 
+L 2919 2534 
+Q 2541 2534 2541 2375 
+Q 2541 2350 2547 2328 
+L 3188 525 
+L 3769 2156 
+Q 3781 2206 3781 2247 
+Q 3781 2381 3667 2457 
+Q 3553 2534 3413 2534 
+L 3413 2759 
+L 4500 2759 
+L 4500 2534 
+Q 4306 2534 4167 2432 
+Q 4028 2331 3963 2156 
+L 3200 0 
+Q 3178 -72 3103 -72 
+L 3053 -72 
+Q 2978 -72 2956 0 
+L 2309 1825 
+L 1663 0 
+Q 1631 -72 1563 -72 
+L 1516 -72 
+Q 1438 -72 1416 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t1-Cmmi10-4e" transform="translate(0 0.609375)"/>
+    <use xlink:href="#t1-Cmmi10-62" transform="translate(94.95472 0.609375)"/>
+    <use xlink:href="#t1-Cmr10-77" transform="translate(137.874642 -16.396875) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="234.332" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="58.3" lengthAdjust="spacing">bytes</text><text x="38" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">plus this sequence's KV</text><line x1="363" y1="71" x2="446" y2="71" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-factory)"/><rect x="450" y="10" width="340" height="122" rx="8" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.6"/><text x="468" y="46" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">the conveyor belt</text><text x="468" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="205.9" lengthAdjust="spacing">memory bandwidth</text><svg x="680.148" y="57.0283" width="48.024" height="26.7116" viewBox="0 0 48.024 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t2-figure_1">
+  <g id="t2-patch_1">
+   <path d="M 0 26.711625 
+L 48.024 26.711625 
+L 48.024 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t2-text_1">
+   <!-- $\mathrm{BW}$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t2-Cmr10-42" d="M 219 0 
+L 219 225 
+Q 878 225 878 428 
+L 878 3944 
+Q 878 4147 219 4147 
+L 219 4372 
+L 2572 4372 
+Q 2897 4372 3228 4245 
+Q 3559 4119 3776 3870 
+Q 3994 3622 3994 3284 
+Q 3994 2894 3673 2630 
+Q 3353 2366 2925 2284 
+Q 3203 2284 3497 2131 
+Q 3791 1978 3978 1722 
+Q 4166 1466 4166 1178 
+Q 4166 828 3958 559 
+Q 3750 291 3419 145 
+Q 3088 0 2753 0 
+L 219 0 
+z
+M 1434 428 
+Q 1434 291 1512 258 
+Q 1591 225 1759 225 
+L 2572 225 
+Q 2822 225 3036 356 
+Q 3250 488 3375 708 
+Q 3500 928 3500 1178 
+Q 3500 1422 3397 1655 
+Q 3294 1888 3101 2038 
+Q 2909 2188 2663 2188 
+L 1434 2188 
+L 1434 428 
+z
+M 1434 2356 
+L 2394 2356 
+Q 2588 2356 2758 2426 
+Q 2928 2497 3064 2630 
+Q 3200 2763 3273 2930 
+Q 3347 3097 3347 3284 
+Q 3347 3450 3292 3603 
+Q 3238 3756 3131 3881 
+Q 3025 4006 2881 4076 
+Q 2738 4147 2572 4147 
+L 1759 4147 
+Q 1644 4147 1580 4137 
+Q 1516 4128 1475 4083 
+Q 1434 4038 1434 3944 
+L 1434 2356 
+z
+" transform="scale(0.015625)"/>
+     <path id="t2-Cmr10-57" d="M 1991 -72 
+L 684 3944 
+Q 634 4078 490 4112 
+Q 347 4147 116 4147 
+L 116 4372 
+L 1831 4372 
+L 1831 4147 
+Q 1294 4147 1294 3975 
+L 1294 3944 
+L 2316 794 
+L 3188 3488 
+L 3041 3944 
+Q 2991 4078 2847 4112 
+Q 2703 4147 2472 4147 
+L 2472 4372 
+L 4184 4372 
+L 4184 4147 
+Q 3641 4147 3641 3975 
+Q 3641 3966 3647 3947 
+Q 3653 3928 3653 3922 
+L 4672 794 
+L 5631 3769 
+Q 5638 3788 5638 3828 
+Q 5638 3997 5459 4072 
+Q 5281 4147 5088 4147 
+L 5088 4372 
+L 6456 4372 
+L 6456 4147 
+Q 5950 4147 5831 3769 
+L 4581 -72 
+Q 4559 -141 4488 -141 
+L 4441 -141 
+Q 4369 -141 4347 -72 
+L 3291 3188 
+L 2228 -72 
+Q 2206 -141 2131 -141 
+L 2088 -141 
+Q 2013 -141 1991 -72 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t2-Cmr10-42" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t2-Cmr10-57" transform="translate(70.800781 0.6875)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="468" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">bytes per second</text><line x1="793" y1="71" x2="876" y2="71" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-factory)"/><rect x="880" y="10" width="340" height="122" rx="8" fill="#f8fafc" stroke="#d1d5db" stroke-width="1.6"/><text x="898" y="46" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">the workbench</text><text x="898" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="153.1" lengthAdjust="spacing">peak compute</text><svg x="1057.34" y="57.0283" width="55.476" height="26.7116" viewBox="0 0 55.476 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t3-figure_1">
+  <g id="t3-patch_1">
+   <path d="M 0 26.711625 
+L 55.476 26.711625 
+L 55.476 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t3-text_1">
+   <!-- $F_{\max}$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t3-Cmmi10-46" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 709 225 863 269 
+Q 947 297 984 441 
+L 1863 3956 
+Q 1875 4019 1875 4044 
+Q 1875 4113 1797 4122 
+Q 1678 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1278 4247 1287 4286 
+Q 1297 4325 1314 4348 
+Q 1331 4372 1356 4372 
+L 4738 4372 
+Q 4800 4372 4800 4288 
+L 4647 2963 
+Q 4647 2944 4625 2925 
+Q 4603 2906 4581 2906 
+L 4525 2906 
+Q 4459 2906 4459 2988 
+Q 4500 3278 4500 3463 
+Q 4500 3781 4362 3931 
+Q 4225 4081 4015 4114 
+Q 3806 4147 3438 4147 
+L 2753 4147 
+Q 2578 4147 2522 4117 
+Q 2466 4088 2419 3928 
+L 2009 2297 
+L 2491 2297 
+Q 2728 2297 2875 2322 
+Q 3022 2347 3119 2419 
+Q 3216 2491 3280 2627 
+Q 3344 2763 3397 2988 
+Q 3416 3047 3463 3047 
+L 3519 3047 
+Q 3584 3047 3584 2963 
+L 3194 1381 
+Q 3166 1325 3128 1325 
+L 3072 1325 
+Q 3009 1325 3009 1409 
+Q 3025 1475 3034 1519 
+Q 3044 1563 3058 1645 
+Q 3072 1728 3072 1791 
+Q 3072 1975 2909 2025 
+Q 2747 2075 2484 2075 
+L 1959 2075 
+L 1544 416 
+Q 1528 353 1528 353 
+Q 1528 278 1575 269 
+Q 1741 225 2228 225 
+Q 2291 225 2291 141 
+Q 2269 50 2256 25 
+Q 2244 0 2181 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t3-Cmr10-6d" d="M 191 0 
+L 191 225 
+Q 409 225 550 259 
+Q 691 294 691 428 
+L 691 2175 
+Q 691 2347 639 2423 
+Q 588 2500 491 2517 
+Q 394 2534 191 2534 
+L 191 2759 
+L 1119 2828 
+L 1119 2203 
+Q 1247 2478 1498 2653 
+Q 1750 2828 2047 2828 
+Q 2784 2828 2913 2228 
+Q 3041 2497 3287 2662 
+Q 3534 2828 3828 2828 
+Q 4119 2828 4317 2734 
+Q 4516 2641 4616 2448 
+Q 4716 2256 4716 1966 
+L 4716 428 
+Q 4716 294 4858 259 
+Q 5000 225 5216 225 
+L 5216 0 
+L 3750 0 
+L 3750 225 
+Q 3969 225 4109 259 
+Q 4250 294 4250 428 
+L 4250 1947 
+Q 4250 2269 4159 2466 
+Q 4069 2663 3788 2663 
+Q 3419 2663 3178 2366 
+Q 2938 2069 2938 1691 
+L 2938 428 
+Q 2938 294 3078 259 
+Q 3219 225 3438 225 
+L 3438 0 
+L 1972 0 
+L 1972 225 
+Q 2191 225 2331 259 
+Q 2472 294 2472 428 
+L 2472 1947 
+Q 2472 2259 2381 2461 
+Q 2291 2663 2009 2663 
+Q 1638 2663 1398 2366 
+Q 1159 2069 1159 1691 
+L 1159 428 
+Q 1159 294 1300 259 
+Q 1441 225 1656 225 
+L 1656 0 
+L 191 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t3-Cmr10-61" d="M 256 628 
+Q 256 1009 556 1248 
+Q 856 1488 1276 1586 
+Q 1697 1684 2075 1684 
+L 2075 1947 
+Q 2075 2131 1994 2304 
+Q 1913 2478 1759 2589 
+Q 1606 2700 1422 2700 
+Q 997 2700 775 2509 
+Q 897 2509 976 2417 
+Q 1056 2325 1056 2203 
+Q 1056 2075 965 1984 
+Q 875 1894 750 1894 
+Q 622 1894 531 1984 
+Q 441 2075 441 2203 
+Q 441 2541 747 2705 
+Q 1053 2869 1422 2869 
+Q 1681 2869 1943 2758 
+Q 2206 2647 2373 2440 
+Q 2541 2234 2541 1959 
+L 2541 519 
+Q 2541 394 2594 289 
+Q 2647 184 2759 184 
+Q 2866 184 2917 290 
+Q 2969 397 2969 519 
+L 2969 928 
+L 3156 928 
+L 3156 519 
+Q 3156 375 3081 245 
+Q 3006 116 2879 39 
+Q 2753 -38 2606 -38 
+Q 2419 -38 2283 107 
+Q 2147 253 2131 453 
+Q 2013 213 1781 70 
+Q 1550 -72 1288 -72 
+Q 1044 -72 808 0 
+Q 572 72 414 226 
+Q 256 381 256 628 
+z
+M 775 628 
+Q 775 403 940 250 
+Q 1106 97 1331 97 
+Q 1538 97 1706 200 
+Q 1875 303 1975 481 
+Q 2075 659 2075 856 
+L 2075 1522 
+Q 1784 1522 1479 1426 
+Q 1175 1331 975 1128 
+Q 775 925 775 628 
+z
+" transform="scale(0.015625)"/>
+     <path id="t3-Cmr10-78" d="M 78 0 
+L 78 225 
+Q 322 225 537 320 
+Q 753 416 903 603 
+L 1484 1344 
+L 728 2328 
+Q 616 2469 483 2501 
+Q 350 2534 109 2534 
+L 109 2759 
+L 1441 2759 
+L 1441 2534 
+Q 1356 2534 1282 2496 
+Q 1209 2459 1209 2388 
+Q 1209 2363 1228 2328 
+L 1741 1663 
+L 2125 2156 
+Q 2203 2250 2203 2344 
+Q 2203 2422 2151 2478 
+Q 2100 2534 2016 2534 
+L 2016 2759 
+L 3194 2759 
+L 3194 2534 
+Q 2947 2534 2730 2439 
+Q 2513 2344 2363 2156 
+L 1856 1509 
+L 2675 428 
+Q 2797 288 2928 256 
+Q 3059 225 3303 225 
+L 3303 0 
+L 1972 0 
+L 1972 225 
+Q 2050 225 2122 262 
+Q 2194 300 2194 372 
+Q 2194 400 2175 428 
+L 1600 1191 
+L 1141 603 
+Q 1069 522 1069 416 
+Q 1069 338 1122 281 
+Q 1175 225 1247 225 
+L 1247 0 
+L 78 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t3-Cmmi10-46" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t3-Cmr10-6d" transform="translate(64.306641 -16.31875) scale(0.7)"/>
+    <use xlink:href="#t3-Cmr10-61" transform="translate(122.617188 -16.31875) scale(0.7)"/>
+    <use xlink:href="#t3-Cmr10-78" transform="translate(157.617188 -16.31875) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="898" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">FLOPs per second</text><g class="fragment" data-fragment-index="1"><rect x="20" y="168" width="590" height="190" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><text x="38" y="208" font-size="27" fill="#0b5cad" text-anchor="start" font-weight="700">prefill: one big order</text><text x="38" y="244" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the moulds come down the belt once;</text><text x="38" y="278" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="239.9" lengthAdjust="spacing">the bench then makes</text><svg x="284.085" y="257.028" width="36.708" height="26.7116" viewBox="0 0 36.708 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t4-figure_1">
+  <g id="t4-patch_1">
+   <path d="M 0 26.711625 
+L 36.708 26.711625 
+L 36.708 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t4-text_1">
+   <!-- $L_{\mathrm{in}}$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t4-Cmmi10-4c" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 709 225 863 269 
+Q 947 297 984 441 
+L 1863 3956 
+Q 1875 4019 1875 4044 
+Q 1875 4113 1797 4122 
+Q 1678 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1297 4313 1309 4342 
+Q 1322 4372 1381 4372 
+L 3272 4372 
+Q 3328 4372 3328 4288 
+Q 3319 4222 3306 4184 
+Q 3294 4147 3244 4147 
+Q 2772 4147 2613 4116 
+Q 2456 4088 2419 3928 
+L 1544 416 
+Q 1516 338 1516 275 
+Q 1516 225 1734 225 
+L 2328 225 
+Q 2831 225 3143 425 
+Q 3456 625 3606 876 
+Q 3756 1128 3857 1398 
+Q 3959 1669 4006 1678 
+L 4063 1678 
+Q 4128 1678 4128 1594 
+L 3559 44 
+Q 3550 0 3500 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t4-Cmr10-69" d="M 197 0 
+L 197 225 
+Q 416 225 556 259 
+Q 697 294 697 428 
+L 697 2175 
+Q 697 2422 601 2478 
+Q 506 2534 225 2534 
+L 225 2759 
+L 1147 2828 
+L 1147 428 
+Q 1147 294 1269 259 
+Q 1391 225 1594 225 
+L 1594 0 
+L 197 0 
+z
+M 469 3928 
+Q 469 4069 575 4175 
+Q 681 4281 819 4281 
+Q 909 4281 993 4234 
+Q 1078 4188 1125 4103 
+Q 1172 4019 1172 3928 
+Q 1172 3791 1065 3684 
+Q 959 3578 819 3578 
+Q 681 3578 575 3684 
+Q 469 3791 469 3928 
+z
+" transform="scale(0.015625)"/>
+     <path id="t4-Cmr10-6e" d="M 191 0 
+L 191 225 
+Q 409 225 550 259 
+Q 691 294 691 428 
+L 691 2175 
+Q 691 2347 639 2423 
+Q 588 2500 491 2517 
+Q 394 2534 191 2534 
+L 191 2759 
+L 1119 2828 
+L 1119 2203 
+Q 1247 2478 1498 2653 
+Q 1750 2828 2047 2828 
+Q 2491 2828 2714 2615 
+Q 2938 2403 2938 1966 
+L 2938 428 
+Q 2938 294 3078 259 
+Q 3219 225 3438 225 
+L 3438 0 
+L 1972 0 
+L 1972 225 
+Q 2191 225 2331 259 
+Q 2472 294 2472 428 
+L 2472 1947 
+Q 2472 2259 2381 2461 
+Q 2291 2663 2009 2663 
+Q 1638 2663 1398 2366 
+Q 1159 2069 1159 1691 
+L 1159 428 
+Q 1159 294 1300 259 
+Q 1441 225 1656 225 
+L 1656 0 
+L 191 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t4-Cmmi10-4c" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t4-Cmr10-69" transform="translate(68.017578 -16.31875) scale(0.7)"/>
+    <use xlink:href="#t4-Cmr10-6e" transform="translate(87.397461 -16.31875) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="327.003" y="278" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="169.3" lengthAdjust="spacing">items with them</text><text x="38" y="312" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the bench is what we wait for</text></g><g class="fragment" data-fragment-index="2"><rect x="630" y="168" width="590" height="190" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.6"/><text x="648" y="208" font-size="27" fill="#b45309" text-anchor="start" font-weight="700">decode: one item at a time</text><text x="648" y="244" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">every single item sends for the whole</text><text x="648" y="278" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">set of moulds again</text><text x="648" y="312" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the belt is what we wait for</text></g></svg>
+```

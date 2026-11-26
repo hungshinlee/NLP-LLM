@@ -1,0 +1,1140 @@
+{
+ "machine": {
+  "BW_spec_bytes_per_s": 614000000000.0,
+  "BW_src": "Apple press release, 2026-03-03: M5 Max unified memory bandwidth 'up to 614GB/s' — a vendor specification, not a measurement",
+  "Fmax_lower_flops_per_s": 60162328782302.016,
+  "Fmax_src": "2 N x prefill tokens/s: W3 demo 2 curve.json (2026-09-29; mlx-community/Meta-Llama-3.1-8B-Instruct-4bit, 1,024-token prefill, 3745.98 tok/s; N = 8030261248). A lower bound: measured on 4-bit weights, attention-side FLOPs not counted.",
+  "I_star": 97.98424883111078,
+  "device": "Apple M5 Max",
+  "note": "I* = Fmax / BW mixes a measured lower bound with a specification. W11 demo 1 replaces both with numbers measured in one run."
+ },
+ "points": {
+  "model": "Qwen/Qwen3-8B",
+  "N": 8190735360,
+  "prefill": {
+   "L_in": 1000,
+   "I_bf16": 1000.0,
+   "I_4bit": 3555.5555555555557,
+   "formula": "I ≈ 2 N L_in / (N b_w) = 2 L_in / b_w (weights read once; attention side left out)"
+  },
+  "decode": {
+   "bf16": {
+    "b_w": 2.0,
+    "weights_GB": 16.38147072,
+    "I": 1.0,
+    "t_step_ms_lower": 26.67991973941368,
+    "tok_per_s_upper": 37.481372124321695
+   },
+   "4bit": {
+    "b_w": 0.5625,
+    "weights_GB": 4.60728864,
+    "I": 3.5555555555555554,
+    "t_step_ms_lower": 7.503727426710098,
+    "tok_per_s_upper": 133.26710088647712
+   }
+  },
+  "measured": {
+   "decode_bf16_B1_tok_per_s": 14.12,
+   "effective_GB_per_s": 231.3063665664,
+   "share_of_spec": 0.3767204667205212,
+   "achieved_flops_per_s": 231306366566.4,
+   "src": "W10 demo 1 probe.json (2026-11-23): Qwen3-8B bf16, reasoning prompts with a logits processor, context growing to 1–2k tokens — not a clean decode measurement; replaced after W11 demo 1 is rehearsed",
+   "by_batch": [
+    {
+     "B": 1,
+     "tok_per_s": 14.12,
+     "peak_GB": 16.74,
+     "x_total": 1.0,
+     "per_seq": 14.12,
+     "per_seq_vs_B1": 1.0
+    },
+    {
+     "B": 8,
+     "tok_per_s": 70.32,
+     "peak_GB": 19.39,
+     "x_total": 4.980169971671388,
+     "per_seq": 8.79,
+     "per_seq_vs_B1": 0.6225212464589235
+    },
+    {
+     "B": 16,
+     "tok_per_s": 104.0,
+     "peak_GB": 22.62,
+     "x_total": 7.36543909348442,
+     "per_seq": 6.5,
+     "per_seq_vs_B1": 0.4603399433427762
+    }
+   ]
+  }
+ },
+ "intensity": {
+  "model": "Qwen/Qwen3-8B",
+  "I_star": 97.98424883111078,
+  "kv_bytes_per_token": 147456,
+  "kv_KiB_per_token": 144.0,
+  "kv_side_intensity": 4.0,
+  "B_star": {
+   "bf16": 97.98424883111078,
+   "4bit": 27.558069983749906
+  },
+  "L_c": 1182.0486912968643,
+  "table": [
+   {
+    "L": 256,
+    "by_B": {
+     "1": 1.0068971736630645,
+     "8": 7.927595384411987,
+     "16": 15.573296138733157,
+     "64": 56.28854922958904,
+     "256": 162.4990324640568
+    },
+    "limit": 437.9607747395833
+   },
+   {
+    "L": 1024,
+    "by_B": {
+     "1": 1.0273997140660265,
+     "8": 7.7252987656063175,
+     "16": 14.457709845917808,
+     "64": 41.737864872394475,
+     "256": 79.00758396871701
+    },
+    "limit": 112.49019368489583
+   },
+   {
+    "L": 4096,
+    "by_B": {
+     "1": 1.1066759653167106,
+     "8": 7.088904380848887,
+     "16": 11.547572974478895,
+     "64": 21.85894856398024,
+     "256": 28.14107332765188
+    },
+    "limit": 31.122548421223957
+   },
+   {
+    "L": 32768,
+    "by_B": {
+     "1": 1.683321714363335,
+     "8": 5.190596570932016,
+     "16": 6.0981513285283055,
+     "64": 7.0185213177208166,
+     "256": 7.293724607902551
+    },
+    "limit": 7.390318552652995
+   }
+  ],
+  "curves": {
+   "256": [
+    {
+     "B": 1,
+     "I": 1.0068971736630645
+    },
+    {
+     "B": 2,
+     "I": 2.0091751373787914
+    },
+    {
+     "B": 4,
+     "I": 4.0
+    },
+    {
+     "B": 8,
+     "I": 7.927595384411987
+    },
+    {
+     "B": 16,
+     "I": 15.573296138733157
+    },
+    {
+     "B": 32,
+     "I": 30.077091359244225
+    },
+    {
+     "B": 64,
+     "I": 56.28854922958904
+    },
+    {
+     "B": 128,
+     "I": 99.75603580631548
+    },
+    {
+     "B": 256,
+     "I": 162.4990324640568
+    },
+    {
+     "B": 512,
+     "I": 237.0456816546091
+    },
+    {
+     "B": 1024,
+     "I": 307.6021255876641
+    }
+   ],
+   "1024": [
+    {
+     "B": 1,
+     "I": 1.0273997140660265
+    },
+    {
+     "B": 2,
+     "I": 2.0362023077940066
+    },
+    {
+     "B": 4,
+     "I": 4.0
+    },
+    {
+     "B": 8,
+     "I": 7.7252987656063175
+    },
+    {
+     "B": 16,
+     "I": 14.457709845917808
+    },
+    {
+     "B": 32,
+     "I": 25.622330665942208
+    },
+    {
+     "B": 64,
+     "I": 41.737864872394475
+    },
+    {
+     "B": 128,
+     "I": 60.88516638813293
+    },
+    {
+     "B": 256,
+     "I": 79.00758396871701
+    },
+    {
+     "B": 512,
+     "I": 92.82173957436494
+    },
+    {
+     "B": 1024,
+     "I": 101.7138682309719
+    }
+   ],
+   "4096": [
+    {
+     "B": 1,
+     "I": 1.1066759653167106
+    },
+    {
+     "B": 2,
+     "I": 2.1373506171968413
+    },
+    {
+     "B": 4,
+     "I": 4.0
+    },
+    {
+     "B": 8,
+     "I": 7.088904380848887
+    },
+    {
+     "B": 16,
+     "I": 11.547572974478895
+    },
+    {
+     "B": 32,
+     "I": 16.84503757151389
+    },
+    {
+     "B": 64,
+     "I": 21.85894856398024
+    },
+    {
+     "B": 128,
+     "I": 25.68089706145916
+    },
+    {
+     "B": 256,
+     "I": 28.14107332765188
+    },
+    {
+     "B": 512,
+     "I": 29.556813823369577
+    },
+    {
+     "B": 1024,
+     "I": 30.319480474661116
+    }
+   ],
+   "32768": [
+    {
+     "B": 1,
+     "I": 1.683321714363335
+    },
+    {
+     "B": 2,
+     "I": 2.742071170920184
+    },
+    {
+     "B": 4,
+     "I": 4.0
+    },
+    {
+     "B": 8,
+     "I": 5.190596570932016
+    },
+    {
+     "B": 16,
+     "I": 6.0981513285283055
+    },
+    {
+     "B": 32,
+     "I": 6.682341480850209
+    },
+    {
+     "B": 64,
+     "I": 7.0185213177208166
+    },
+    {
+     "B": 128,
+     "I": 7.199623116527429
+    },
+    {
+     "B": 256,
+     "I": 7.293724607902551
+    },
+    {
+     "B": 512,
+     "I": 7.341703875199531
+    },
+    {
+     "B": 1024,
+     "I": 7.365931001352752
+    }
+   ]
+  },
+  "gamma_example": {
+   "L": 4096,
+   "B": 64,
+   "I_gamma0": 21.85894856398024,
+   "I_gamma4": 109.2947428199012
+  },
+  "throughput_upper": {
+   "L": 96,
+   "curves": {
+    "bf16": [
+     {
+      "B": 1,
+      "tok_per_s_upper": 37.4490111829393,
+      "per_seq": 37.4490111829393,
+      "bound": "memory"
+     },
+     {
+      "B": 2,
+      "tok_per_s_upper": 74.83341214681047,
+      "per_seq": 37.41670607340524,
+      "bound": "memory"
+     },
+     {
+      "B": 4,
+      "tok_per_s_upper": 149.4090510916894,
+      "per_seq": 37.35226277292235,
+      "bound": "memory"
+     },
+     {
+      "B": 8,
+      "tok_per_s_upper": 297.7923186824634,
+      "per_seq": 37.22403983530793,
+      "bound": "memory"
+     },
+     {
+      "B": 16,
+      "tok_per_s_upper": 591.5234709730994,
+      "per_seq": 36.97021693581871,
+      "bound": "memory"
+     },
+     {
+      "B": 32,
+      "tok_per_s_upper": 1167.1301123644441,
+      "per_seq": 36.47281601138888,
+      "bound": "memory"
+     },
+     {
+      "B": 64,
+      "tok_per_s_upper": 2273.0953297383185,
+      "per_seq": 35.517114527161226,
+      "bound": "memory"
+     },
+     {
+      "B": 128,
+      "tok_per_s_upper": 3659.9334099470593,
+      "per_seq": 28.5932297652114,
+      "bound": "compute"
+     },
+     {
+      "B": 256,
+      "tok_per_s_upper": 3659.9334099470593,
+      "per_seq": 14.2966148826057,
+      "bound": "compute"
+     }
+    ],
+    "4bit": [
+     {
+      "B": 1,
+      "tok_per_s_upper": 132.85889534325193,
+      "per_seq": 132.85889534325193,
+      "bound": "memory"
+     },
+     {
+      "B": 2,
+      "tok_per_s_upper": 264.9063657645133,
+      "per_seq": 132.45318288225664,
+      "bound": "memory"
+     },
+     {
+      "B": 4,
+      "tok_per_s_upper": 526.5965856149786,
+      "per_seq": 131.64914640374465,
+      "bound": "memory"
+     },
+     {
+      "B": 8,
+      "tok_per_s_upper": 1040.560054774539,
+      "per_seq": 130.07000684681736,
+      "bound": "memory"
+     },
+     {
+      "B": 16,
+      "tok_per_s_upper": 2032.3634616850964,
+      "per_seq": 127.02271635531852,
+      "bound": "memory"
+     },
+     {
+      "B": 32,
+      "tok_per_s_upper": 3659.9334099470593,
+      "per_seq": 114.3729190608456,
+      "bound": "compute"
+     },
+     {
+      "B": 64,
+      "tok_per_s_upper": 3659.9334099470593,
+      "per_seq": 57.1864595304228,
+      "bound": "compute"
+     },
+     {
+      "B": 128,
+      "tok_per_s_upper": 3659.9334099470593,
+      "per_seq": 28.5932297652114,
+      "bound": "compute"
+     },
+     {
+      "B": 256,
+      "tok_per_s_upper": 3659.9334099470593,
+      "per_seq": 14.2966148826057,
+      "bound": "compute"
+     }
+    ]
+   },
+   "plateau_tok_per_s": 3659.9334099470593
+  },
+  "kv_knobs": {
+   "b_kv_1": 62.245096842447914,
+   "b_kv_2": 31.122548421223957,
+   "L_c_if_kv_halved": 2469.186769383225
+  },
+  "formula": "I(B, L, γ) = B (γ+1) (2N + 4 n_layer L d) / (N b_w + B M_KV(L)),  M_KV(L) = 2 n_layer n_kv d_head L b_kv",
+  "note": "our derivation, with W3's bookkeeping (outline W11, 〈關鍵數學〉 3). B* and L_c use I* = Fmax(lower bound)/BW(spec): estimates for this machine, to be replaced by demo 1's measured numbers."
+ },
+ "serving": {
+  "prefill_32k_seconds": 17.085307121276855,
+  "prefill_32k_src": "W3 demo 2 curve.json (2026-09-29), Llama 3.1 8B 4-bit",
+  "kv_32k_GiB_llama": 4.0,
+  "paging_example": {
+   "block": 16,
+   "L_max": 2048,
+   "lengths": [
+    37,
+    250,
+    1003
+   ],
+   "contiguous_reserved_slots": [
+    2011,
+    1798,
+    1045
+   ],
+   "contiguous_used_share": 0.2099609375,
+   "paged_wasted_slots": [
+    11,
+    6,
+    5
+   ],
+   "paged_used_share": 0.9832317073170732,
+   "note": "made-up lengths; reserving to L_max is the 'Max' baseline in Kwon et al. The bound: at most block-1 empty slots per sequence."
+  }
+ },
+ "spec": {
+  "curves": [
+   {
+    "alpha": 0.8,
+    "c": 0.05,
+    "rows": [
+     {
+      "gamma": 0,
+      "omega": 1.0,
+      "S": 1.0
+     },
+     {
+      "gamma": 1,
+      "omega": 1.7999999999999998,
+      "S": 1.714285714285714
+     },
+     {
+      "gamma": 2,
+      "omega": 2.44,
+      "S": 2.218181818181818
+     },
+     {
+      "gamma": 3,
+      "omega": 2.9520000000000004,
+      "S": 2.566956521739131
+     },
+     {
+      "gamma": 4,
+      "omega": 3.3616,
+      "S": 2.8013333333333335
+     },
+     {
+      "gamma": 5,
+      "omega": 3.68928,
+      "S": 2.9514240000000003
+     },
+     {
+      "gamma": 6,
+      "omega": 3.9514240000000003,
+      "S": 3.039556923076923
+     },
+     {
+      "gamma": 7,
+      "omega": 4.161139200000001,
+      "S": 3.082325333333334
+     },
+     {
+      "gamma": 8,
+      "omega": 4.32891136,
+      "S": 3.0920795428571433
+     },
+     {
+      "gamma": 9,
+      "omega": 4.4631290880000005,
+      "S": 3.0780200606896555
+     },
+     {
+      "gamma": 10,
+      "omega": 4.570503270400001,
+      "S": 3.047002180266667
+     },
+     {
+      "gamma": 11,
+      "omega": 4.656402616320001,
+      "S": 3.004130720206452
+     },
+     {
+      "gamma": 12,
+      "omega": 4.725122093056001,
+      "S": 2.9532013081600006
+     },
+     {
+      "gamma": 13,
+      "omega": 4.780097674444801,
+      "S": 2.8970288936029096
+     },
+     {
+      "gamma": 14,
+      "omega": 4.824078139555841,
+      "S": 2.8376930232681414
+     },
+     {
+      "gamma": 15,
+      "omega": 4.859262511644673,
+      "S": 2.7767214352255274
+     },
+     {
+      "gamma": 16,
+      "omega": 4.887410009315738,
+      "S": 2.715227782953188
+     }
+    ],
+    "best_gamma": 8,
+    "best_S": 3.0920795428571433
+   },
+   {
+    "alpha": 0.8,
+    "c": 0.2,
+    "rows": [
+     {
+      "gamma": 0,
+      "omega": 1.0,
+      "S": 1.0
+     },
+     {
+      "gamma": 1,
+      "omega": 1.7999999999999998,
+      "S": 1.5
+     },
+     {
+      "gamma": 2,
+      "omega": 2.44,
+      "S": 1.7428571428571429
+     },
+     {
+      "gamma": 3,
+      "omega": 2.9520000000000004,
+      "S": 1.8450000000000002
+     },
+     {
+      "gamma": 4,
+      "omega": 3.3616,
+      "S": 1.8675555555555556
+     },
+     {
+      "gamma": 5,
+      "omega": 3.68928,
+      "S": 1.84464
+     },
+     {
+      "gamma": 6,
+      "omega": 3.9514240000000003,
+      "S": 1.7961018181818182
+     },
+     {
+      "gamma": 7,
+      "omega": 4.161139200000001,
+      "S": 1.7338080000000002
+     },
+     {
+      "gamma": 8,
+      "omega": 4.32891136,
+      "S": 1.6649659076923078
+     },
+     {
+      "gamma": 9,
+      "omega": 4.4631290880000005,
+      "S": 1.5939746742857146
+     },
+     {
+      "gamma": 10,
+      "omega": 4.570503270400001,
+      "S": 1.5235010901333335
+     },
+     {
+      "gamma": 11,
+      "omega": 4.656402616320001,
+      "S": 1.4551258176000004
+     },
+     {
+      "gamma": 12,
+      "omega": 4.725122093056001,
+      "S": 1.3897417920752944
+     },
+     {
+      "gamma": 13,
+      "omega": 4.780097674444801,
+      "S": 1.3278049095680002
+     },
+     {
+      "gamma": 14,
+      "omega": 4.824078139555841,
+      "S": 1.269494247251537
+     },
+     {
+      "gamma": 15,
+      "omega": 4.859262511644673,
+      "S": 1.2148156279111681
+     },
+     {
+      "gamma": 16,
+      "omega": 4.887410009315738,
+      "S": 1.1636690498370805
+     }
+    ],
+    "best_gamma": 4,
+    "best_S": 1.8675555555555556
+   },
+   {
+    "alpha": 0.6,
+    "c": 0.05,
+    "rows": [
+     {
+      "gamma": 0,
+      "omega": 1.0,
+      "S": 1.0
+     },
+     {
+      "gamma": 1,
+      "omega": 1.5999999999999999,
+      "S": 1.5238095238095237
+     },
+     {
+      "gamma": 2,
+      "omega": 1.96,
+      "S": 1.7818181818181817
+     },
+     {
+      "gamma": 3,
+      "omega": 2.176,
+      "S": 1.8921739130434785
+     },
+     {
+      "gamma": 4,
+      "omega": 2.3056,
+      "S": 1.9213333333333336
+     },
+     {
+      "gamma": 5,
+      "omega": 2.3833599999999997,
+      "S": 1.9066879999999997
+     },
+     {
+      "gamma": 6,
+      "omega": 2.430016,
+      "S": 1.869243076923077
+     },
+     {
+      "gamma": 7,
+      "omega": 2.4580096,
+      "S": 1.8207478518518518
+     },
+     {
+      "gamma": 8,
+      "omega": 2.4748057599999997,
+      "S": 1.7677184
+     },
+     {
+      "gamma": 9,
+      "omega": 2.484883456,
+      "S": 1.7137127282758622
+     },
+     {
+      "gamma": 10,
+      "omega": 2.4909300736,
+      "S": 1.6606200490666667
+     },
+     {
+      "gamma": 11,
+      "omega": 2.4945580441599997,
+      "S": 1.6093922865548385
+     },
+     {
+      "gamma": 12,
+      "omega": 2.4967348264959996,
+      "S": 1.5604592665599997
+     },
+     {
+      "gamma": 13,
+      "omega": 2.4980408958975997,
+      "S": 1.5139641793318788
+     },
+     {
+      "gamma": 14,
+      "omega": 2.49882453753856,
+      "S": 1.469896786787388
+     },
+     {
+      "gamma": 15,
+      "omega": 2.499294722523136,
+      "S": 1.4281684128703633
+     },
+     {
+      "gamma": 16,
+      "omega": 2.4995768335138813,
+      "S": 1.3886537963966006
+     }
+    ],
+    "best_gamma": 4,
+    "best_S": 1.9213333333333336
+   }
+  ],
+  "overlap": {
+   "p": [
+    0.5,
+    0.3,
+    0.15,
+    0.05
+   ],
+   "q": [
+    0.4,
+    0.4,
+    0.1,
+    0.1
+   ],
+   "min": [
+    0.4,
+    0.3,
+    0.1,
+    0.05
+   ],
+   "residual": [
+    0.09999999999999998,
+    0.0,
+    0.04999999999999999,
+    0.0
+   ],
+   "beta_min": 0.85,
+   "residual_norm": [
+    0.6666666666666664,
+    0.0,
+    0.3333333333333332,
+    0.0
+   ],
+   "beta_match": 0.34,
+   "check_output": [
+    0.5,
+    0.3,
+    0.15,
+    0.05
+   ],
+   "wrong_redraw": [
+    0.47500000000000003,
+    0.345,
+    0.12250000000000001,
+    0.0575
+   ]
+  },
+  "compute_bound": [
+   {
+    "gamma": 1,
+    "S": 0.8780487804878049
+   },
+   {
+    "gamma": 2,
+    "S": 0.7870967741935484
+   },
+   {
+    "gamma": 4,
+    "S": 0.6464615384615384
+   },
+   {
+    "gamma": 8,
+    "S": 0.460522485106383
+   }
+  ],
+  "ops_factor": [
+   {
+    "gamma": 1,
+    "factor": 1.1388888888888888
+   },
+   {
+    "gamma": 4,
+    "factor": 1.5468824369347929
+   },
+   {
+    "gamma": 8,
+    "factor": 2.1714466336404725
+   }
+  ],
+  "reads_factor": [
+   {
+    "gamma": 1,
+    "factor": 0.5555555555555556
+   },
+   {
+    "gamma": 4,
+    "factor": 0.2974773917182294
+   },
+   {
+    "gamma": 8,
+    "factor": 0.23100496102558218
+   }
+  ],
+  "exercise": {
+   "alpha": 0.8,
+   "c": 0.05,
+   "S4": 2.8013333333333335,
+   "S8": 3.0920795428571433,
+   "S16": 2.715227782953188,
+   "omega4": 3.3616
+  },
+  "src": "Leviathan, Kalman & Matias, ICML 2023 (arXiv:2211.17192v2): Eq. (1), Theorem 3.8 (walltime), Theorem 3.11 (operations); the three (alpha, c) pairs and the example p, q are ours"
+ },
+ "quant": {
+  "uniform": [
+   {
+    "P": 8,
+    "levels": 256,
+    "step": 0.00784313725490196,
+    "var": 5.126233499935921e-06,
+    "rms": 0.002264118702704415
+   },
+   {
+    "P": 6,
+    "levels": 64,
+    "step": 0.031746031746031744,
+    "var": 8.398421096833795e-05,
+    "rms": 0.009164289987136916
+   },
+   {
+    "P": 4,
+    "levels": 16,
+    "step": 0.13333333333333333,
+    "var": 0.0014814814814814814,
+    "rms": 0.03849001794597505
+   },
+   {
+    "P": 3,
+    "levels": 8,
+    "step": 0.2857142857142857,
+    "var": 0.006802721088435374,
+    "rms": 0.08247860988423225
+   },
+   {
+    "P": 2,
+    "levels": 4,
+    "step": 0.6666666666666666,
+    "var": 0.037037037037037035,
+    "rms": 0.19245008972987526
+   }
+  ],
+  "range": 2.0,
+  "per_bit": "one bit fewer: the step doubles (nearly), the error variance quadruples",
+  "outlier": {
+   "factor": 10,
+   "variance_factor": 100,
+   "bits_lost": 3.321928094887362
+  },
+  "group": {
+   "size": 64,
+   "bits": 4,
+   "bits_per_weight_formula": 4.5,
+   "bits_per_weight_from_file": 4.500381277757404,
+   "file_bytes": 4517404672,
+   "N": 8030261248,
+   "model": "mlx-community/Meta-Llama-3.1-8B-Instruct-4bit"
+  },
+  "formats": [
+   {
+    "format": "MXFP8",
+    "element": "E5M2/E4M3",
+    "scale": "UE8M0",
+    "block": 32
+   },
+   {
+    "format": "MXFP4",
+    "element": "E2M1",
+    "scale": "UE8M0",
+    "block": 32
+   },
+   {
+    "format": "NVFP4",
+    "element": "E2M1",
+    "scale": "E4M3",
+    "block": 16
+   }
+  ],
+  "formats_src": "NVIDIA, arXiv:2509.25149, Table 1 (read 2026-11-26)"
+ },
+ "flips": {
+  "n": 1000,
+  "acc_before": 0.7,
+  "acc_after": 0.7,
+  "min_flips": 0,
+  "max_flips": 600,
+  "cases": [
+   {
+    "n10": 0,
+    "n01": 0
+   },
+   {
+    "n10": 50,
+    "n01": 50
+   },
+   {
+    "n10": 300,
+    "n01": 300
+   }
+  ],
+  "identity": "a' - a = n01 - n10; answers that changed sides = n10 + n01",
+  "note": "our arithmetic (outline W11, 〈關鍵數學〉 9)"
+ },
+ "float32": {
+  "a": 100000000.0,
+  "b": -100000000.0,
+  "c": 1.0,
+  "(a+b)+c": 1.0,
+  "a+(b+c)": 0.0,
+  "spacing_at_1e8": 8.0,
+  "note": "single precision emulated with struct: near 1e8 neighbouring float32 values are 8 apart, so -1e8 + 1 rounds back to -1e8"
+ },
+ "opening": {
+  "read_1k_seconds": 0.273360013961792,
+  "read_src": "W3 demo 2 (2026-09-29): mlx-community/Meta-Llama-3.1-8B-Instruct-4bit, 1,024-token prefill",
+  "write_tok_per_s": 14.12,
+  "write_1k_seconds": 70.8215297450425,
+  "write_src": "W10 demo 1 probe (2026-11-23): Qwen/Qwen3-8B bf16, batch 1",
+  "ratio": 265.2957373241133,
+  "note": "two different models and two different runs — replaced by one pair from W11 demo 1 (a) once it is rehearsed"
+ },
+ "lastweek": {
+  "assumed": {
+   "L_in": 200,
+   "L_out": 4096,
+   "k": 16
+  },
+  "bytes_per_generated_token": {
+   "seq_GB": 16.712951808,
+   "par_GB": 1.072207488,
+   "ratio": 15.587423138757263
+  },
+  "flops_seq_over_par": 1.0651783883168,
+  "weights_GB": 16.38147072,
+  "kv_KiB_per_token": 144.0,
+  "note": "W10 p42 and p73, copied from w10-data.json bill — no new numbers"
+ },
+ "ledger": {
+  "I_star": 97.98424883111078,
+  "rows": [
+   {
+    "row": "training, one step",
+    "I": null,
+    "side": "compute",
+    "why": "a batch of thousands of tokens per read of the weights"
+   },
+   {
+    "row": "prefill, 1,000 tokens",
+    "I": 1000.0,
+    "side": "compute",
+    "why": "weights read once, used 1,000 times"
+   },
+   {
+    "row": "decode, B = 1",
+    "I": 1.0068971736630645,
+    "side": "bandwidth",
+    "why": "every weight read for one token"
+   },
+   {
+    "row": "decode, B = 16, short",
+    "I": 15.573296138733157,
+    "side": "bandwidth",
+    "why": "one read serves 16 tokens"
+   },
+   {
+    "row": "decode, 4-bit, B = 1",
+    "I": 3.5555555555555554,
+    "side": "bandwidth",
+    "why": "fewer bytes per weight"
+   },
+   {
+    "row": "decode, 32k context, any B",
+    "I": 7.390318552652995,
+    "side": "bandwidth",
+    "why": "the per-sequence KV is not shared"
+   },
+   {
+    "row": "verify γ = 4, B = 1",
+    "I": 5.034485868315323,
+    "side": "bandwidth",
+    "why": "five positions per read"
+   }
+  ],
+  "note": "positions on the roofline, Qwen3-8B bf16 unless stated; our arithmetic"
+ },
+ "quotes": {
+  "apple_m5_vs_m4": {
+   "src": "Apple Machine Learning Research blog, 2025-11-19, 'Exploring LLMs with MLX and the Neural Accelerators in the M5 GPU' — a company blog post, not a paper; MacBook Pro M5 (24 GB) against a similarly configured M4; the base M5, not the classroom machine",
+   "rows": [
+    [
+     "Qwen3-1.7B, bf16",
+     3.57,
+     1.27
+    ],
+    [
+     "Qwen3-8B, bf16",
+     3.62,
+     1.24
+    ],
+    [
+     "Qwen3-8B, 4-bit",
+     3.97,
+     1.24
+    ],
+    [
+     "Qwen3-14B, 4-bit",
+     4.06,
+     1.19
+    ],
+    [
+     "gpt-oss-20b, MXFP4",
+     3.33,
+     1.24
+    ],
+    [
+     "Qwen3-30B-A3B, 4-bit",
+     3.52,
+     1.25
+    ]
+   ],
+   "bw_GB_per_s": {
+    "M4": 120,
+    "M5": 153,
+    "ratio": 1.275
+   }
+  },
+  "kwon_2023": {
+   "src": "Kwon et al., SOSP 2023 (arXiv:2309.06180v1), read 2026-11-26",
+   "kv_memory_used_for_token_states": "20.4%–38.2% (§1, Fig. 2)",
+   "block_size_default": 16,
+   "block_size_src": "§7.2",
+   "kernel_overhead": "20–26% higher attention kernel latency (§7.1)",
+   "throughput": "2–4x (abstract)",
+   "wastes": "reserved, internal fragmentation, external fragmentation (Fig. 3)"
+  },
+  "distserve": {
+   "src": "Zhong et al., OSDI 2024 (arXiv:2401.09670), abstract, read 2026-11-26",
+   "claim": "7.4x more requests or 12.6x tighter SLO"
+  },
+  "leviathan": {
+   "src": "Leviathan et al., ICML 2023 (arXiv:2211.17192v2), read 2026-11-26",
+   "table2_alpha": "0.53–0.82 (T5-XXL target; T5-small/base/large drafts; EnDe and CNN/DM; T = 0 and 1)",
+   "table3_unigram_bigram_alpha": "0.03–0.23 (unigram 0.03–0.13; bigram 0.05–0.23)",
+   "sec3_4": "the target model's weights and KV cache can be read once per execution of Algorithm 1, so the number of memory accesses for reading them shrinks by a factor of (1 − α^(γ+1))/(1 − α)"
+  },
+  "magicdec": {
+   "src": "Sadhukhan et al., ICLR 2025 (arXiv:2408.11049), read 2026-11-26",
+   "claim": "up to 2.51x for Llama-3.1-8B at batch sizes 32–256 (abstract); Eq. (2); a critical sequence length that depends on model, hardware and drafting strategy (§3.2)"
+  },
+  "awq_fig2": {
+   "src": "Lin et al., MLSys 2024 (arXiv:2306.00978), Fig. 2: OPT-6.7B, INT3-g128, perplexity",
+   "rtn": 43.2,
+   "keep_1pct_fp16": 13.0,
+   "scaled": 13.0
+  },
+  "gptq": {
+   "src": "Frantar et al., ICLR 2023 (arXiv:2210.17323), §3–§4, read 2026-11-26",
+   "claim": "layer-wise; H = 2XX^T; one column at a time; calibration data: 128 random 2,048-token segments"
+  },
+  "dutta": {
+   "src": "Dutta et al., NeurIPS 2024 (arXiv:2407.09141), §1, read 2026-11-26",
+   "claim": "accuracy difference negligible (≤ 2%) while flips are ≥ 5%, up to 13.6%; GPTQ W8A16 is the exception"
+  },
+  "dettmers_4bit": {
+   "src": "Dettmers & Zettlemoyer, ICML 2023 (arXiv:2212.09720), abstract",
+   "claim": "more than 35,000 experiments; 4-bit almost universally optimal"
+  },
+  "chen_pitfalls": {
+   "src": "Chen et al., ACL 2026 (arXiv:2510.00231v2), read 2026-11-26",
+   "setup": "five eviction policies (StreamingLLM, SnapKV, TOVA, H2O, K-Norm); Llama3 8B and Qwen2.5 14B; 541 prompts of a modified IFEval; only the query is compressed; greedy decoding; leakage measured with ROUGE-L recall",
+   "pitfalls": [
+    "Instructions do not degrade at the same rate under KV compression.",
+    "The effects of KV cache compression highly depend on eviction policy and model.",
+    "KV cache compression leads to system prompt leakage.",
+    "Order of instructions heavily impacts the performance of instruction following.",
+    "KV cache eviction disproportionally targets certain instructions, often causing them to be ignored by the LLM.",
+    "Eviction corresponding to the wrong tokens can play a critical role in degradation."
+   ]
+  },
+  "he_2025": {
+   "src": "He et al., Thinking Machines Lab blog, 2025-09-10 — a company blog post, not a paper (read at step 1 via WebFetch)",
+   "claim": "1,000 completions of one prompt at temperature 0: 80 unique; the most common 78 times; identical for the first 102 tokens; all 1,000 identical with batch-invariant kernels; 26 s default, 55 s unoptimised deterministic, 42 s with an improved attention kernel"
+  },
+  "yuan_2025": {
+   "src": "Yuan et al., NeurIPS 2025 Oral (arXiv:2506.09501), abstract, read 2026-11-26",
+   "claim": "bfloat16, greedy: up to 9% variation in accuracy and 9,000 tokens difference in response length (DeepSeek-R1-Distill-Qwen-7B) from GPU count, type and evaluation batch size"
+  }
+ }
+}

@@ -6,6 +6,10 @@ toc-depth: 2
 
 <!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
+::: {.callout-note appearance="minimal"}
+[**▶ Slides for this week**](../slides/w11.qmd)
+:::
+
 ## Where This Fits
 The first week of Part III. For ten weeks every line of the compute ledger has been written in FLOPs. This week adds the two units that were missing — **bytes and bytes per second** — and folds the ledger into one picture, the roofline. Last week ended on the question of what each generated token costs in time and memory.
 
