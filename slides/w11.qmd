@@ -220,7 +220,7 @@ Apple ML Research blog, 2025-11-19 — not a paper; the base M5, not this machin
 :::
 
 ::: {.footer}
-Demo 1 · `demos/w11_d1_two_roofs` · not built yet (2026-11-26)
+Demo 1 · `demos/w11_d1_two_roofs` · built 2026-11-27, not rehearsed yet
 :::
 
 ## Demo 1: how it runs
@@ -232,7 +232,7 @@ The red boxes are what the demo is for. Nothing in them is known yet.
 :::
 
 ::: {.footer}
-Demo 1 · `demos/w11_d1_two_roofs` · drawn from the outline's spec; redrawn once built
+Demo 1 · `demos/w11_d1_two_roofs` · checked against `demo.py`, 2026-11-27
 :::
 
 ## Live: demo 1 (a) — one model, two numbers
@@ -251,7 +251,7 @@ Before the numbers appear: per token, how many times slower is writing than read
 : {tbl-colwidths="[40,20,20,20]"}
 
 ::: {.footer}
-Demo 1 (a) · not built yet (2026-11-26): the table is filled in live, then from rehearsal
+Demo 1 (a) · built 2026-11-27, not rehearsed: filled in live, then from rehearsal
 :::
 
 ## "It fits in 64 GB, so it will be fast"
@@ -372,7 +372,7 @@ Two predictions to check: the line bends near $B^{*}$; past $L_c$ a larger batch
 : {tbl-colwidths="[40,12,12,12,12,12]"}
 
 ::: {.footer}
-Demo 1 (b), (c) · not built yet (2026-11-26): filled in from rehearsal · "—": not run
+Demo 1 (b), (c) · built 2026-11-27, not rehearsed: filled in from rehearsal · "—": not run
 :::
 
 ## MoE in the same formula: the union of experts
@@ -1316,7 +1316,7 @@ This week: what a token costs. Next week: which tokens are worth paying for.
 
 **Distillation** · Hinton, Vinyals & Dean, arXiv:1503.02531 (2015; NIPS 2014 Deep Learning Workshop) · Agarwal et al., *GKD*, ICLR 2024 (arXiv:2306.13649) · Gu et al., *MiniLLM*, ICLR 2024 (arXiv:2306.08543) · Lu & Thinking Machines Lab, *On-Policy Distillation*, 2025-10-27 — **a blog post**
 
-**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The two roofs on p11–p13, p21, p23, p27 and p84 are **a vendor specification (614 GB/s) and a lower bound measured in W3** — not one measurement; $B^{*}$, $L_c$ and every point on the roofline follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p67 are ours. **None of the three demos has been built yet** (2026-11-26): the tables on p17, p25, p47, p49, p66, p69 and p75 are empty until rehearsal. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
+**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The two roofs on p11–p13, p21, p23, p27 and p84 are **a vendor specification (614 GB/s) and a lower bound measured in W3** — not one measurement; $B^{*}$, $L_c$ and every point on the roofline follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p67 are ours. **Demo 1 was built on 2026-11-27 and has not been rehearsed; demos 2 and 3 have not been built yet**: the tables on p17, p25, p47, p49, p66, p69 and p75 are empty until rehearsal. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
 :::
 
 ## Acronyms in this deck, A–M
