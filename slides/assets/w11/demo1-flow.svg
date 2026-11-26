@@ -473,11 +473,124 @@ z
    </g>
   </g>
  </g>
-</svg><text x="1178.08" y="114" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="27.1" lengthAdjust="spacing">: ?</text><text x="1008" y="144" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">measured BW: ?</text><text x="1008" y="174" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="25.7" lengthAdjust="spacing">so</text><svg x="1039.96" y="146.128" width="26.772" height="33.6116" viewBox="0 -6.9 26.772 33.6116"><defs>
+</svg><text x="1178.08" y="114" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="27.1" lengthAdjust="spacing">: ?</text><text x="1008" y="144" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="108.4" lengthAdjust="spacing">measured</text><svg x="1122.6" y="123.028" width="48.024" height="26.7116" viewBox="0 0 48.024 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t200-figure_1">
   <g id="t200-patch_1">
+   <path d="M 0 26.711625 
+L 48.024 26.711625 
+L 48.024 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t200-text_1">
+   <!-- $\mathrm{BW}$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t200-Cmr10-42" d="M 219 0 
+L 219 225 
+Q 878 225 878 428 
+L 878 3944 
+Q 878 4147 219 4147 
+L 219 4372 
+L 2572 4372 
+Q 2897 4372 3228 4245 
+Q 3559 4119 3776 3870 
+Q 3994 3622 3994 3284 
+Q 3994 2894 3673 2630 
+Q 3353 2366 2925 2284 
+Q 3203 2284 3497 2131 
+Q 3791 1978 3978 1722 
+Q 4166 1466 4166 1178 
+Q 4166 828 3958 559 
+Q 3750 291 3419 145 
+Q 3088 0 2753 0 
+L 219 0 
+z
+M 1434 428 
+Q 1434 291 1512 258 
+Q 1591 225 1759 225 
+L 2572 225 
+Q 2822 225 3036 356 
+Q 3250 488 3375 708 
+Q 3500 928 3500 1178 
+Q 3500 1422 3397 1655 
+Q 3294 1888 3101 2038 
+Q 2909 2188 2663 2188 
+L 1434 2188 
+L 1434 428 
+z
+M 1434 2356 
+L 2394 2356 
+Q 2588 2356 2758 2426 
+Q 2928 2497 3064 2630 
+Q 3200 2763 3273 2930 
+Q 3347 3097 3347 3284 
+Q 3347 3450 3292 3603 
+Q 3238 3756 3131 3881 
+Q 3025 4006 2881 4076 
+Q 2738 4147 2572 4147 
+L 1759 4147 
+Q 1644 4147 1580 4137 
+Q 1516 4128 1475 4083 
+Q 1434 4038 1434 3944 
+L 1434 2356 
+z
+" transform="scale(0.015625)"/>
+     <path id="t200-Cmr10-57" d="M 1991 -72 
+L 684 3944 
+Q 634 4078 490 4112 
+Q 347 4147 116 4147 
+L 116 4372 
+L 1831 4372 
+L 1831 4147 
+Q 1294 4147 1294 3975 
+L 1294 3944 
+L 2316 794 
+L 3188 3488 
+L 3041 3944 
+Q 2991 4078 2847 4112 
+Q 2703 4147 2472 4147 
+L 2472 4372 
+L 4184 4372 
+L 4184 4147 
+Q 3641 4147 3641 3975 
+Q 3641 3966 3647 3947 
+Q 3653 3928 3653 3922 
+L 4672 794 
+L 5631 3769 
+Q 5638 3788 5638 3828 
+Q 5638 3997 5459 4072 
+Q 5281 4147 5088 4147 
+L 5088 4372 
+L 6456 4372 
+L 6456 4147 
+Q 5950 4147 5831 3769 
+L 4581 -72 
+Q 4559 -141 4488 -141 
+L 4441 -141 
+Q 4369 -141 4347 -72 
+L 3291 3188 
+L 2228 -72 
+Q 2206 -141 2131 -141 
+L 2088 -141 
+Q 2013 -141 1991 -72 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t200-Cmr10-42" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t200-Cmr10-57" transform="translate(70.800781 0.6875)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="1170.63" y="144" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="27.1" lengthAdjust="spacing">: ?</text><text x="1008" y="174" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="25.7" lengthAdjust="spacing">so</text><svg x="1039.96" y="146.128" width="26.772" height="33.6116" viewBox="0 -6.9 26.772 33.6116"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t201-figure_1">
+  <g id="t201-patch_1">
    <path d="M 0 26.711625 
 L 26.772 26.711625 
 L 26.772 0 
@@ -486,11 +599,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t200-text_1">
+  <g id="t201-text_1">
    <!-- $I^{*}$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t200-Cmmi10-49" d="M 269 0 
+     <path id="t201-Cmmi10-49" d="M 269 0 
 Q 206 0 206 84 
 Q 231 225 288 225 
 Q 666 225 800 250 
@@ -523,7 +636,7 @@ Q 2116 0 2053 0
 L 269 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t200-Cmsy10-a4" d="M 603 813 
+     <path id="t201-Cmsy10-a4" d="M 603 813 
 Q 531 813 473 873 
 Q 416 934 416 1006 
 Q 416 1116 506 1159 
@@ -565,29 +678,29 @@ Q 650 813 603 813
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t200-Cmmi10-49" transform="translate(0 0.196875)"/>
-    <use xlink:href="#t200-Cmsy10-a4" transform="translate(55.266016 38.460938) scale(0.7)"/>
+    <use xlink:href="#t201-Cmmi10-49" transform="translate(0 0.196875)"/>
+    <use xlink:href="#t201-Cmsy10-a4" transform="translate(55.266016 38.460938) scale(0.7)"/>
    </g>
   </g>
  </g>
-</svg><text x="1066.73" y="174" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="27.1" lengthAdjust="spacing">: ?</text><rect x="990" y="46" width="230" height="150" rx="8" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/><rect x="310" y="206" width="603.49" height="28" rx="5" fill="#fff" stroke="#6b7280" stroke-width="1.2"/><text x="319" y="226" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">live: one prefill of 1,000 tokens, one decode of 64 — two numbers</text><g class="fragment" data-fragment-index="1"><text x="20" y="276" font-size="27" fill="#b45309" text-anchor="start" font-weight="700">(b) (c) the same decode, pushed</text><rect x="20" y="292" width="320" height="118" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="328" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">(b) batch sweep</text><svg x="38" y="339.028" width="20.976" height="26.7116" viewBox="0 0 20.976 26.711625"><defs>
+</svg><text x="1066.73" y="174" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="27.1" lengthAdjust="spacing">: ?</text><rect x="990" y="46" width="230" height="150" rx="8" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/><rect x="310" y="206" width="603.49" height="28" rx="5" fill="#fff" stroke="#6b7280" stroke-width="1.2"/><text x="319" y="226" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">live: one prefill of 1,000 tokens, one decode of 64 — two numbers</text><g class="fragment" data-fragment-index="1"><text x="20" y="276" font-size="27" fill="#b45309" text-anchor="start" font-weight="700">(b) (c) the same decode, pushed</text><rect x="20" y="292" width="320" height="118" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="328" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">(b) batch sweep</text><svg x="38" y="339.028" width="134.964" height="26.7116" viewBox="0 0 134.964 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t201-figure_1">
-  <g id="t201-patch_1">
+ <g id="t202-figure_1">
+  <g id="t202-patch_1">
    <path d="M 0 26.711625 
-L 20.976 26.711625 
-L 20.976 0 
+L 134.964 26.711625 
+L 134.964 0 
 L 0 0 
 L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
-  <g id="t201-text_1">
-   <!-- $B$ -->
+  <g id="t202-text_1">
+   <!-- $B = 1 \ldots 128$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t201-Cmmi10-42" d="M 319 0 
+     <path id="t202-Cmmi10-42" d="M 319 0 
 Q 256 0 256 84 
 Q 259 100 268 137 
 Q 278 175 293 200 
@@ -647,16 +760,187 @@ Q 2441 4084 2400 3928
 L 2009 2356 
 z
 " transform="scale(0.015625)"/>
+     <path id="t202-Cmr10-3d" d="M 481 850 
+Q 428 850 393 890 
+Q 359 931 359 978 
+Q 359 1031 393 1068 
+Q 428 1106 481 1106 
+L 4500 1106 
+Q 4547 1106 4581 1068 
+Q 4616 1031 4616 978 
+Q 4616 931 4581 890 
+Q 4547 850 4500 850 
+L 481 850 
+z
+M 481 2094 
+Q 428 2094 393 2131 
+Q 359 2169 359 2222 
+Q 359 2269 393 2309 
+Q 428 2350 481 2350 
+L 4500 2350 
+Q 4547 2350 4581 2309 
+Q 4616 2269 4616 2222 
+Q 4616 2169 4581 2131 
+Q 4547 2094 4500 2094 
+L 481 2094 
+z
+" transform="scale(0.015625)"/>
+     <path id="t202-Cmr10-31" d="M 594 0 
+L 594 225 
+Q 1394 225 1394 428 
+L 1394 3788 
+Q 1063 3628 556 3628 
+L 556 3853 
+Q 1341 3853 1741 4263 
+L 1831 4263 
+Q 1853 4263 1873 4245 
+Q 1894 4228 1894 4206 
+L 1894 428 
+Q 1894 225 2694 225 
+L 2694 0 
+L 594 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t202-STIXGeneral-Regular-2026" d="M 5683 275 
+Q 5683 134 5577 32 
+Q 5472 -70 5325 -70 
+Q 5178 -70 5075 32 
+Q 4973 134 4973 281 
+Q 4973 429 5078 534 
+Q 5184 640 5331 640 
+Q 5472 640 5577 531 
+Q 5683 422 5683 275 
+z
+M 3552 275 
+Q 3552 134 3446 32 
+Q 3341 -70 3193 -70 
+Q 3046 -70 2944 32 
+Q 2842 134 2842 281 
+Q 2842 429 2947 534 
+Q 3053 640 3200 640 
+Q 3341 640 3446 531 
+Q 3552 422 3552 275 
+z
+M 1421 275 
+Q 1421 134 1315 32 
+Q 1210 -70 1062 -70 
+Q 915 -70 812 32 
+Q 710 134 710 281 
+Q 710 429 816 534 
+Q 922 640 1069 640 
+Q 1210 640 1315 531 
+Q 1421 422 1421 275 
+z
+" transform="scale(0.015625)"/>
+     <path id="t202-Cmr10-32" d="M 319 0 
+L 319 172 
+Q 319 188 331 206 
+L 1325 1306 
+Q 1550 1550 1690 1715 
+Q 1831 1881 1968 2097 
+Q 2106 2313 2186 2536 
+Q 2266 2759 2266 3009 
+Q 2266 3272 2169 3511 
+Q 2072 3750 1880 3894 
+Q 1688 4038 1416 4038 
+Q 1138 4038 916 3870 
+Q 694 3703 603 3438 
+Q 628 3444 672 3444 
+Q 816 3444 917 3347 
+Q 1019 3250 1019 3097 
+Q 1019 2950 917 2848 
+Q 816 2747 672 2747 
+Q 522 2747 420 2851 
+Q 319 2956 319 3097 
+Q 319 3338 409 3548 
+Q 500 3759 670 3923 
+Q 841 4088 1055 4175 
+Q 1269 4263 1509 4263 
+Q 1875 4263 2190 4108 
+Q 2506 3953 2690 3670 
+Q 2875 3388 2875 3009 
+Q 2875 2731 2753 2481 
+Q 2631 2231 2440 2026 
+Q 2250 1822 1953 1562 
+Q 1656 1303 1563 1216 
+L 838 519 
+L 1453 519 
+Q 1906 519 2211 526 
+Q 2516 534 2534 550 
+Q 2609 631 2688 1141 
+L 2875 1141 
+L 2694 0 
+L 319 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t202-Cmr10-38" d="M 269 972 
+Q 269 1356 522 1651 
+Q 775 1947 1172 2144 
+L 934 2297 
+Q 716 2441 578 2680 
+Q 441 2919 441 3181 
+Q 441 3488 602 3734 
+Q 763 3981 1030 4122 
+Q 1297 4263 1600 4263 
+Q 1884 4263 2148 4147 
+Q 2413 4031 2583 3815 
+Q 2753 3600 2753 3303 
+Q 2753 3088 2651 2903 
+Q 2550 2719 2373 2572 
+Q 2197 2425 1997 2322 
+L 2363 2088 
+Q 2616 1922 2770 1653 
+Q 2925 1384 2925 1088 
+Q 2925 741 2739 456 
+Q 2553 172 2247 15 
+Q 1941 -141 1600 -141 
+Q 1269 -141 961 -6 
+Q 653 128 461 383 
+Q 269 638 269 972 
+z
+M 616 972 
+Q 616 719 755 509 
+Q 894 300 1122 181 
+Q 1350 63 1600 63 
+Q 1972 63 2275 280 
+Q 2578 497 2578 856 
+Q 2578 978 2529 1098 
+Q 2481 1219 2395 1317 
+Q 2309 1416 2203 1478 
+L 1344 2034 
+Q 1144 1928 976 1765 
+Q 809 1603 712 1400 
+Q 616 1197 616 972 
+z
+M 1056 2925 
+L 1831 2425 
+Q 2100 2581 2272 2803 
+Q 2444 3025 2444 3303 
+Q 2444 3519 2323 3698 
+Q 2203 3878 2009 3978 
+Q 1816 4078 1594 4078 
+Q 1400 4078 1203 4003 
+Q 1006 3928 878 3779 
+Q 750 3631 750 3431 
+Q 750 3131 1056 2925 
+z
+" transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t201-Cmmi10-42" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t202-Cmmi10-42" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t202-Cmr10-3d" transform="translate(93.339844 0.6875)"/>
+    <use xlink:href="#t202-Cmr10-31" transform="translate(188.583984 0.6875)"/>
+    <use xlink:href="#t202-STIXGeneral-Regular-2026" transform="translate(238.583984 0.6875)"/>
+    <use xlink:href="#t202-Cmr10-31" transform="translate(338.583969 0.6875)"/>
+    <use xlink:href="#t202-Cmr10-32" transform="translate(388.583969 0.6875)"/>
+    <use xlink:href="#t202-Cmr10-38" transform="translate(438.583969 0.6875)"/>
    </g>
   </g>
  </g>
-</svg><text x="65.186" y="360" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="266.3" lengthAdjust="spacing">= 1 … 128, short context</text><text x="38" y="390" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">bf16 and 4-bit</text><line x1="343" y1="351" x2="356" y2="351" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo1-flow)"/><rect x="360" y="292" width="320" height="118" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="378" y="328" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">(c) long context</text><svg x="378" y="339.028" width="19.044" height="26.7116" viewBox="0 0 19.044 26.711625"><defs>
+</svg><text x="172.964" y="360" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="153.1" lengthAdjust="spacing">, short context</text><text x="38" y="390" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">bf16 and 4-bit</text><line x1="343" y1="351" x2="356" y2="351" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo1-flow)"/><rect x="360" y="292" width="320" height="118" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="378" y="328" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">(c) long context</text><svg x="378" y="339.028" width="19.044" height="26.7116" viewBox="0 0 19.044 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t202-figure_1">
-  <g id="t202-patch_1">
+ <g id="t203-figure_1">
+  <g id="t203-patch_1">
    <path d="M 0 26.711625 
 L 19.044 26.711625 
 L 19.044 0 
@@ -665,11 +949,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t202-text_1">
+  <g id="t203-text_1">
    <!-- $L$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t202-Cmmi10-4c" d="M 300 0 
+     <path id="t203-Cmmi10-4c" d="M 300 0 
 Q 238 0 238 84 
 Q 241 100 250 139 
 Q 259 178 276 201 
@@ -705,15 +989,15 @@ L 300 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t202-Cmmi10-4c" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t203-Cmmi10-4c" transform="translate(0 0.6875)"/>
    </g>
   </g>
  </g>
 </svg><text x="403.254" y="360" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="107.1" lengthAdjust="spacing">up to 16k,</text><svg x="516.541" y="339.028" width="20.976" height="26.7116" viewBox="0 0 20.976 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t203-figure_1">
-  <g id="t203-patch_1">
+ <g id="t204-figure_1">
+  <g id="t204-patch_1">
    <path d="M 0 26.711625 
 L 20.976 26.711625 
 L 20.976 0 
@@ -722,90 +1006,8 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t203-text_1">
-   <!-- $B$ -->
-   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
-    <defs>
-     <path id="t203-Cmmi10-42" d="M 319 0 
-Q 256 0 256 84 
-Q 259 100 268 137 
-Q 278 175 293 200 
-Q 309 225 341 225 
-Q 522 225 656 234 
-Q 791 244 884 269 
-Q 959 297 1006 441 
-L 1881 3956 
-Q 1894 4019 1894 4044 
-Q 1894 4113 1819 4122 
-Q 1697 4147 1356 4147 
-Q 1294 4147 1294 4231 
-Q 1297 4247 1306 4286 
-Q 1316 4325 1333 4348 
-Q 1350 4372 1375 4372 
-L 3669 4372 
-Q 3878 4372 4083 4320 
-Q 4288 4269 4461 4156 
-Q 4634 4044 4736 3876 
-Q 4838 3709 4838 3488 
-Q 4838 3247 4714 3040 
-Q 4591 2834 4395 2681 
-Q 4200 2528 3973 2429 
-Q 3747 2331 3500 2284 
-Q 3675 2284 3854 2215 
-Q 4034 2147 4175 2028 
-Q 4316 1909 4402 1743 
-Q 4488 1578 4488 1388 
-Q 4488 1003 4219 684 
-Q 3950 366 3542 183 
-Q 3134 0 2753 0 
-L 319 0 
-z
-M 1497 275 
-Q 1497 225 1716 225 
-L 2631 225 
-Q 2944 225 3231 398 
-Q 3519 572 3692 859 
-Q 3866 1147 3866 1459 
-Q 3866 1650 3786 1820 
-Q 3706 1991 3556 2089 
-Q 3406 2188 3213 2188 
-L 1966 2188 
-L 1522 416 
-Q 1497 328 1497 275 
-z
-M 2009 2356 
-L 2981 2356 
-Q 3288 2356 3577 2512 
-Q 3866 2669 4048 2937 
-Q 4231 3206 4231 3506 
-Q 4231 3784 4057 3965 
-Q 3884 4147 3609 4147 
-L 2731 4147 
-Q 2559 4147 2500 4115 
-Q 2441 4084 2400 3928 
-L 2009 2356 
-z
-" transform="scale(0.015625)"/>
-    </defs>
-    <use xlink:href="#t203-Cmmi10-42" transform="translate(0 0.6875)"/>
-   </g>
-  </g>
- </g>
-</svg><text x="543.727" y="360" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="88.1" lengthAdjust="spacing">up to 16</text><text x="378" y="390" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">KV at 16, 8 and 4 bits</text><line x1="683" y1="351" x2="696" y2="351" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo1-flow)"/><rect x="700" y="292" width="230" height="118" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="718" y="328" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">over the bound</text><text x="718" y="360" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the predicted</text><text x="718" y="390" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="154.5" lengthAdjust="spacing">curve; bend at</text><svg x="878.706" y="362.128" width="35.604" height="33.6116" viewBox="0 -6.9 35.604 33.6116"><defs>
-  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
- </defs>
- <g id="t204-figure_1">
-  <g id="t204-patch_1">
-   <path d="M 0 26.711625 
-L 35.604 26.711625 
-L 35.604 0 
-L 0 0 
-L 0 26.711625 
-z
-" style="fill: none"/>
-  </g>
   <g id="t204-text_1">
-   <!-- $B^{*}$ -->
+   <!-- $B$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
      <path id="t204-Cmmi10-42" d="M 319 0 
@@ -868,7 +1070,89 @@ Q 2441 4084 2400 3928
 L 2009 2356 
 z
 " transform="scale(0.015625)"/>
-     <path id="t204-Cmsy10-a4" d="M 603 813 
+    </defs>
+    <use xlink:href="#t204-Cmmi10-42" transform="translate(0 0.6875)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="543.727" y="360" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="88.1" lengthAdjust="spacing">up to 16</text><text x="378" y="390" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">KV at 16, 8 and 4 bits</text><line x1="683" y1="351" x2="696" y2="351" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo1-flow)"/><rect x="700" y="292" width="230" height="118" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="718" y="328" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">over the bound</text><text x="718" y="360" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the predicted</text><text x="718" y="390" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="154.5" lengthAdjust="spacing">curve; bend at</text><svg x="878.706" y="362.128" width="35.604" height="33.6116" viewBox="0 -6.9 35.604 33.6116"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t205-figure_1">
+  <g id="t205-patch_1">
+   <path d="M 0 26.711625 
+L 35.604 26.711625 
+L 35.604 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t205-text_1">
+   <!-- $B^{*}$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t205-Cmmi10-42" d="M 319 0 
+Q 256 0 256 84 
+Q 259 100 268 137 
+Q 278 175 293 200 
+Q 309 225 341 225 
+Q 522 225 656 234 
+Q 791 244 884 269 
+Q 959 297 1006 441 
+L 1881 3956 
+Q 1894 4019 1894 4044 
+Q 1894 4113 1819 4122 
+Q 1697 4147 1356 4147 
+Q 1294 4147 1294 4231 
+Q 1297 4247 1306 4286 
+Q 1316 4325 1333 4348 
+Q 1350 4372 1375 4372 
+L 3669 4372 
+Q 3878 4372 4083 4320 
+Q 4288 4269 4461 4156 
+Q 4634 4044 4736 3876 
+Q 4838 3709 4838 3488 
+Q 4838 3247 4714 3040 
+Q 4591 2834 4395 2681 
+Q 4200 2528 3973 2429 
+Q 3747 2331 3500 2284 
+Q 3675 2284 3854 2215 
+Q 4034 2147 4175 2028 
+Q 4316 1909 4402 1743 
+Q 4488 1578 4488 1388 
+Q 4488 1003 4219 684 
+Q 3950 366 3542 183 
+Q 3134 0 2753 0 
+L 319 0 
+z
+M 1497 275 
+Q 1497 225 1716 225 
+L 2631 225 
+Q 2944 225 3231 398 
+Q 3519 572 3692 859 
+Q 3866 1147 3866 1459 
+Q 3866 1650 3786 1820 
+Q 3706 1991 3556 2089 
+Q 3406 2188 3213 2188 
+L 1966 2188 
+L 1522 416 
+Q 1497 328 1497 275 
+z
+M 2009 2356 
+L 2981 2356 
+Q 3288 2356 3577 2512 
+Q 3866 2669 4048 2937 
+Q 4231 3206 4231 3506 
+Q 4231 3784 4057 3965 
+Q 3884 4147 3609 4147 
+L 2731 4147 
+Q 2559 4147 2500 4115 
+Q 2441 4084 2400 3928 
+L 2009 2356 
+z
+" transform="scale(0.015625)"/>
+     <path id="t205-Cmsy10-a4" d="M 603 813 
 Q 531 813 473 873 
 Q 416 934 416 1006 
 Q 416 1116 506 1159 
@@ -910,8 +1194,8 @@ Q 650 813 603 813
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t204-Cmmi10-42" transform="translate(0 0.196875)"/>
-    <use xlink:href="#t204-Cmsy10-a4" transform="translate(87.150781 38.460938) scale(0.7)"/>
+    <use xlink:href="#t205-Cmmi10-42" transform="translate(0 0.196875)"/>
+    <use xlink:href="#t205-Cmsy10-a4" transform="translate(87.150781 38.460938) scale(0.7)"/>
    </g>
   </g>
  </g>

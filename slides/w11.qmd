@@ -190,18 +190,18 @@ BW: Apple's press release, a specification · $F_{\max}$: W3 demo 2, a measured 
 
 | Model, as run with MLX | first token arrives | each later token |
 |:---|---:|---:|
-| Qwen3-1.7B, bf16 | 3.57× sooner | 1.27× faster |
-| Qwen3-8B, bf16 | 3.62× | 1.24× |
-| Qwen3-8B, 4-bit | 3.97× | 1.24× |
-| Qwen3-14B, 4-bit | 4.06× | 1.19× |
-| gpt-oss-20b, MXFP4 | 3.33× | 1.24× |
-| Qwen3-30B-A3B, 4-bit | 3.52× | 1.25× |
+| Qwen3-1.7B, bf16 | $3.57\times$ sooner | $1.27\times$ faster |
+| Qwen3-8B, bf16 | $3.62\times$ | $1.24\times$ |
+| Qwen3-8B, 4-bit | $3.97\times$ | $1.24\times$ |
+| Qwen3-14B, 4-bit | $4.06\times$ | $1.19\times$ |
+| gpt-oss-20b, MXFP4 | $3.33\times$ | $1.24\times$ |
+| Qwen3-30B-A3B, 4-bit | $3.52\times$ | $1.25\times$ |
 
 : {tbl-colwidths="[44,28,28]"}
 
 ::: {.fragment}
 ::: {.claim}
-**From the M4 to the M5, memory bandwidth went from 120 to 153 GB/s: 1.28×.** Writing sped up by the bandwidth. Reading sped up by the arithmetic.
+**From the M4 to the M5, memory bandwidth went from 120 to 153 GB/s: $1.28\times$.** Writing sped up by the bandwidth. Reading sped up by the arithmetic.
 :::
 :::
 
@@ -238,7 +238,7 @@ Demo 1 · `demos/w11_d1_two_roofs` · drawn from the outline's spec; redrawn onc
 ## Live: demo 1 (a) — one model, two numbers
 
 ::: {.ask}
-Before the numbers appear: per token, how many times slower is writing than reading on this machine — 3×, 30×, or 300×?
+Before the numbers appear: per token, how many times slower is writing than reading on this machine — $3\times$, $30\times$, or $300\times$?
 :::
 
 | Qwen3-8B | tokens per second | converted | share of p13's roof |
@@ -261,7 +261,7 @@ Demo 1 (a) · not built yet (2026-11-26): the table is filled in live, then from
 - the two are separate limits. More memory changes the first and leaves the second where it was
 
 ::: {.claim}
-This machine holds the bf16 model four times over. At batch 1 it still cannot write more than **37.5 tokens a second** — and writes 14.
+This machine has room for the bf16 model almost four times over. At batch 1 it still cannot write more than **37.5 tokens a second** — and writes 14.
 :::
 
 ::: {.footer}
@@ -288,7 +288,7 @@ our derivation, on W3 p37's bookkeeping · FLOPs above, bytes below · $\gamma =
 ## Knob one, the batch: where the roof bends
 
 ::: {.ask}
-Sixteen sequences decoded together instead of one: how many times the total tokens per second — 16×, 8×, 2×?
+Sixteen sequences decoded together instead of one: how many times the total tokens per second — $16\times$, $8\times$, $2\times$?
 :::
 
 {{< include assets/w11/batch.inline.qmd >}}
@@ -305,9 +305,9 @@ the lines are upper bounds for this machine, from p13's two numbers
 
 | batch $B$ | tokens/s, all sequences | against $B = 1$ | each sequence's own speed |
 |---:|---:|---:|---:|
-| 1 | 14.1 | 1.0× | 14.1 tokens/s |
-| 8 | 70.3 | 5.0× | 8.8 tokens/s |
-| 16 | 104 | 7.4× | 6.5 tokens/s |
+| 1 | 14.1 | $1.0\times$ | 14.1 tokens/s |
+| 8 | 70.3 | $5.0\times$ | 8.8 tokens/s |
+| 16 | 104 | $7.4\times$ | 6.5 tokens/s |
 
 : {tbl-colwidths="[16,30,24,30]"}
 
@@ -355,20 +355,6 @@ Each one makes $M_{\text{KV}}$ smaller, and $L_c$ longer by the same factor. **T
 W3 p33 · W5 p49, p52 · W6 p54 · KIVI: ICML 2024 · KVQuant: NeurIPS 2024 · NSA: ACL 2025
 :::
 
-## MoE and a fixed-size state, in the same formula
-
-- **MoE** (W6): a token uses $N_{\text{active}}$, so the top becomes $2N_{\text{active}}$. But a batch of tokens uses **different experts**: the bytes moved are the **union** — between $N_{\text{active}}\,b_{\text{w}}$ and $N_{\text{total}}\,b_{\text{w}}$
-- so at small $B$ batching shares almost nothing; it starts to pay only when the union is nearly the whole model
-- **A fixed-size state** (W6): $M_{\text{KV}}$ becomes a constant. The second boundary disappears — and a capacity bound takes its place (W6 p31)
-
-::: {.claim}
-The formula assumed that every byte is moved once and the belt runs full. **On MoE models that assumption is the thing to check.**
-:::
-
-::: {.footer}
-the union argument is our arithmetic · Ranjan et al., NeurIPS 2026: ten sparse MoE models
-:::
-
 ## Replay: demo 1 (b), (c) — the batch sweep, and a long context
 
 ::: {.ask}
@@ -387,6 +373,20 @@ Two predictions to check: the line bends near $B^{*}$; past $L_c$ a larger batch
 
 ::: {.footer}
 Demo 1 (b), (c) · not built yet (2026-11-26): filled in from rehearsal · "—": not run
+:::
+
+## MoE in the same formula: the union of experts
+
+- **MoE** (W6): one token uses $N_{\text{active}}$ of the $N_{\text{total}}$ parameters, so the top becomes $2N_{\text{active}}$
+- but a batch of tokens uses **different experts**: the bytes moved are the **union** — between $N_{\text{active}}\,b_{\text{w}}$ and $N_{\text{total}}\,b_{\text{w}}$
+- so at small $B$ batching shares almost nothing; it starts to pay only when the union is nearly the whole model
+
+::: {.claim}
+The formula assumed that every byte is moved once and the belt runs full. **On MoE models that assumption is the thing to check.**
+:::
+
+::: {.footer}
+the union argument is our arithmetic · Ranjan et al., NeurIPS 2026: ten sparse MoE models
 :::
 
 ## Four knobs, one picture
@@ -527,7 +527,7 @@ Once the KV is something to ship and to store, **it has become the unit a servin
 :::
 
 ::: {.footer}
-Splitwise: ISCA 2024 · DistServe: OSDI 2024 (7.4×: its abstract) · Mooncake: FAST 2025
+Splitwise: ISCA 2024 · DistServe: OSDI 2024 ($7.4\times$: its abstract) · Mooncake: FAST 2025
 :::
 
 ## Half-time: where the time goes is settled. Next, the price
@@ -535,7 +535,7 @@ Splitwise: ISCA 2024 · DistServe: OSDI 2024 (7.4×: its abstract) · Mooncake: 
 ![](assets/w11/half-time.svg){width="100%"}
 
 ::: {.claim}
-So far: **where** a token's time goes, and three ways to save it that leave the model alone. From here: savings that touch the model's output or its weights — **and what each one costs.**
+So far: **where** a token's time goes, and the one knob a serving system turns without touching the model — the batch. From here: the knobs that change its output or its weights — **and what each one costs.**
 :::
 
 ::: {.footer}
@@ -676,12 +676,12 @@ Demo 2 (a) · numpy only, no model · not built yet (2026-11-26): the last colum
 
 ## Tokens per round, the speed-up, the best $\gamma$
 
-$$\Omega(\gamma, \alpha) = \frac{1 - \alpha^{\gamma+1}}{1 - \alpha}, \qquad S(\gamma) = \frac{1 - \alpha^{\gamma+1}}{(1 - \alpha)\,(\gamma c + 1)}$$
+$$\Omega(\gamma, \alpha) = 1 + \alpha + \dots + \alpha^{\gamma} = \frac{1 - \alpha^{\gamma+1}}{1 - \alpha}, \qquad S(\gamma) = \frac{\Omega(\gamma, \alpha)}{\gamma c + 1}$$
 
 {{< include assets/w11/speedup.inline.qmd >}}
 
 ::: {.ask}
-On paper: $\alpha = 0.8$, $c = 0.05$. Compute $S(4)$ and $S(8)$. Which is larger — and what happens at $\gamma = 16$?
+On paper: $\alpha = 0.8$, $c = 0.05$. Compute $S(4)$ and $S(8)$ — which is larger? And at $\gamma = 16$?
 :::
 
 ::: {.footer}
@@ -715,8 +715,8 @@ Demo 2 (b) · not built yet (2026-11-26): filled in from rehearsal
 
 | at $\alpha = 0.8$, draft cost $\hat{c} = 0.05$ | $\gamma = 1$ | $\gamma = 4$ | $\gamma = 8$ |
 |:---|---:|---:|---:|
-| arithmetic per token, against plain decoding | 1.14× | 1.55× | 2.17× |
-| reads of the target's weights per token | 0.56× | 0.30× | 0.23× |
+| arithmetic per token, against plain decoding | $1.14\times$ | $1.55\times$ | $2.17\times$ |
+| reads of the target's weights per token | $0.56\times$ | $0.30\times$ | $0.23\times$ |
 
 : {tbl-colwidths="[52,16,16,16]"}
 
@@ -733,7 +733,7 @@ Leviathan et al., §3.4 and Theorem 3.11 · both rows computed from their formul
 $$S \;=\; \frac{\Omega(\gamma, \alpha)}{\gamma\,\dfrac{T_D}{T_T} + \dfrac{T_V(\gamma)}{T_T}} \qquad \begin{aligned} &\text{bandwidth-bound:}\ \ T_V(\gamma)/T_T \approx 1 \\ &\text{compute-bound:}\ \ T_V(\gamma)/T_T \to \gamma + 1 \end{aligned}$$
 
 - **short context, large batch**: the bench is already full. Verification costs $\gamma + 1$ steps, and $S < 1$ — at $\alpha = 0.8$: 0.88, 0.79, 0.65 for $\gamma$ = 1, 2, 4. Slower than not doing it
-- **long context**: each sequence's KV keeps the target on the slope at any batch (p23). MagicDec: **up to 2.51×** at batch sizes 32–256
+- **long context**: each sequence's KV keeps the target on the slope at any batch (p23). MagicDec: **up to $2.51\times$** at batch sizes 32–256
 - **a poor draft**: nothing pays in either regime
 
 ::: {.claim}
@@ -822,7 +822,7 @@ Multiplying *in* low precision — INT8, FP8, NVFP4 — needs hardware that has 
 :::
 
 ::: {.footer}
-Misconception 10 · W8 p40 · 4,517,404,672 bytes × 8 ÷ 8.03 × 10⁹ parameters = 4.50
+Misconception 10 · W8 p40 · $4{,}517{,}404{,}672 \times 8 \,/\, (8.03 \times 10^{9}) = 4.50$ bits
 :::
 
 ## On the board: the step, the error, and one outlier
@@ -832,8 +832,8 @@ $$\Delta = \frac{w_{\max} - w_{\min}}{2^{P} - 1}, \qquad \text{rounding error} \
 {{< include assets/w11/grid.inline.qmd >}}
 
 ::: {.fragment fragment-index=1}
-- one bit fewer: $\Delta$ doubles, the error variance is **4×**
-- one weight 10× larger: $\Delta$ is 10× wider **for the whole group** — variance 100×, as if $\log_2 10 \approx 3.3$ bits were thrown away
+- one bit fewer: $\Delta$ doubles, the error variance is **$4\times$**
+- one weight $10\times$ larger: $\Delta$ is $10\times$ wider **for the whole group** — variance $100\times$, as if $\log_2 10 \approx 3.3$ bits were thrown away
 :::
 
 ::: {.footer}
@@ -858,7 +858,7 @@ AWQ, Fig. 2: OPT-6.7B at 3 bits, perplexity 43.2 → 13.0 with 1% protected · G
 
 ## Why four bits — and the cliff below
 
-- **fix the total number of bits** a model may use, and compare (parameters × bits per weight): across more than 35,000 experiments, **4-bit is almost universally the best split** (Dettmers & Zettlemoyer, ICML 2023)
+- **fix the total number of bits** a model may use, and compare (parameters $\times$ bits per weight): across more than 35,000 experiments, **4-bit is almost universally the best split** (Dettmers & Zettlemoyer, ICML 2023)
 - the same bits buy twice the parameters at half the precision — and the parameters win
 - as a scaling law (W7 p28): precision lowers the *effective* parameter count, $N_{\text{eff}} = N\,g(P)$. And **the longer a model was trained, the more quantization hurts it** (Kumar et al., ICLR 2025)
 - towards 2 bits, post-training quantization does not degrade gracefully — **it breaks**
@@ -892,9 +892,9 @@ NVIDIA, arXiv:2509.25149, Table 1 — a company report: a 12B model, 10 trillion
 ## The KV cache can be stored coarser too
 
 - the other term under the line: $B\,M_{\text{KV}}(L)$, with $b_{\text{kv}}$ bytes per element — and past $L_c$ it is the larger one
-- **KIVI** (ICML 2024): keys and values have different statistics — quantize **keys per channel, values per token**. At 2 bits, 2.6× less peak memory, weights included
+- **KIVI** (ICML 2024): keys and values have different statistics — quantize **keys per channel, values per token**. At 2 bits, $2.6\times$ less peak memory, weights included
 - **KVQuant** (NeurIPS 2024): quantize the keys **before** the rotary position embedding is applied
-- on this machine: `--kv-bits` in mlx-lm — demo 1 (c) measured whether the step actually gets faster
+- on this machine: `--kv-bits` in mlx-lm — demo 1 (c) measures whether the step actually gets faster
 
 ::: {.claim}
 Quantizing the cache keeps **every token** — each one remembered less exactly. Hold on to that: the next part meets methods that do not.
@@ -1156,7 +1156,7 @@ Only distillation makes **every** cell smaller — and it is the only one that n
 - **shorter reasoning**: a length penalty to save tokens makes chain-of-thought less monitorable (W10 p65)
 - **KV eviction**: the instruction that fails first can be the one **guarding against a leak** (Chen et al., p70)
 - **KV eviction again**: the answer survives, the evidence for it does not (Ai et al., p71)
-- **batching**: whether one prompt is refused can change with the batch it lands in — for about 0.16% of prompts, and for none with batch-invariant kernels (Kadadekar, an ICML 2026 workshop paper)
+- **batching**: whether one prompt is refused can change with the batch it lands in — for about 0.16% of prompts; with batch-invariant kernels, 0 of 55 re-tested cases (Kadadekar, an ICML 2026 workshop paper)
 
 ::: {.claim}
 Does optimising for efficiency **systematically** erode our ability to oversee a model? Four collisions are on record. **Nobody has studied the question as a whole** — W14.
@@ -1197,7 +1197,7 @@ compare with your guess from p7 · the route's stations: p37 for the first three
 : {tbl-colwidths="[20,16,40,24]"}
 
 ::: {.footer}
-W10 p72–p73's rows, a unit each · last week's test-time row: decode at $B = k$ · MoE: p25
+W10 p72–p73's rows, a unit each · last week's test-time row: decode at $B = k$ · MoE: p26
 :::
 
 ## The ledger on one roofline
@@ -1316,7 +1316,7 @@ This week: what a token costs. Next week: which tokens are worth paying for.
 
 **Distillation** · Hinton, Vinyals & Dean, arXiv:1503.02531 (2015; NIPS 2014 Deep Learning Workshop) · Agarwal et al., *GKD*, ICLR 2024 (arXiv:2306.13649) · Gu et al., *MiniLLM*, ICLR 2024 (arXiv:2306.08543) · Lu & Thinking Machines Lab, *On-Policy Distillation*, 2025-10-27 — **a blog post**
 
-**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The two roofs on p11–p13, p21, p23, p27 and p84 are **a vendor specification (614 GB/s) and a lower bound measured in W3** — not one measurement; $B^{*}$, $L_c$ and every point on the roofline follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p67 are ours. **None of the three demos has been built yet** (2026-11-26): the tables on p17, p26, p47, p49, p66, p69 and p75 are empty until rehearsal. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
+**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The two roofs on p11–p13, p21, p23, p27 and p84 are **a vendor specification (614 GB/s) and a lower bound measured in W3** — not one measurement; $B^{*}$, $L_c$ and every point on the roofline follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p67 are ours. **None of the three demos has been built yet** (2026-11-26): the tables on p17, p25, p47, p49, p66, p69 and p75 are empty until rehearsal. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
 :::
 
 ## Acronyms in this deck, A–M

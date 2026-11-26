@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 424" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-demo2-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="30" font-size="27" fill="#0b5cad" text-anchor="start" font-weight="700">(a) the rule, without any model</text><rect x="20" y="46" width="200" height="122" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="82" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">toy inputs</text><svg x="38" y="93.0283" width="14.076" height="26.7116" viewBox="0 0 14.076 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t205-figure_1">
-  <g id="t205-patch_1">
+ <g id="t206-figure_1">
+  <g id="t206-patch_1">
    <path d="M 0 26.711625 
 L 14.076 26.711625 
 L 14.076 0 
@@ -11,11 +11,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t205-text_1">
+  <g id="t206-text_1">
    <!-- $p$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t205-Cmmi10-70" d="M -159 -1241 
+     <path id="t206-Cmmi10-70" d="M -159 -1241 
 Q -219 -1241 -219 -1159 
 Q -197 -1019 -134 -1019 
 Q 66 -1019 145 -983 
@@ -70,15 +70,15 @@ Q 1388 97 1594 97
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t205-Cmmi10-70" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t206-Cmmi10-70" transform="translate(0 0.8125)"/>
    </g>
   </g>
  </g>
 </svg><text x="58.286" y="114" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="40.7" lengthAdjust="spacing">and</text><svg x="105.162" y="93.0283" width="12.42" height="26.7116" viewBox="0 0 12.42 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t206-figure_1">
-  <g id="t206-patch_1">
+ <g id="t207-figure_1">
+  <g id="t207-patch_1">
    <path d="M 0 26.711625 
 L 12.42 26.711625 
 L 12.42 0 
@@ -87,11 +87,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t206-text_1">
+  <g id="t207-text_1">
    <!-- $q$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t206-Cmmi10-71" d="M 941 -1159 
+     <path id="t207-Cmmi10-71" d="M 941 -1159 
 Q 963 -1019 1025 -1019 
 Q 1256 -1019 1389 -981 
 Q 1522 -944 1563 -800 
@@ -132,15 +132,15 @@ Q 913 97 1119 97
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t206-Cmmi10-71" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t207-Cmmi10-71" transform="translate(0 0.8125)"/>
    </g>
   </g>
  </g>
 </svg><text x="123.792" y="114" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="47.4" lengthAdjust="spacing">over</text><text x="38" y="144" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">four tokens</text><line x1="223" y1="107" x2="246" y2="107" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo2-flow)"/><rect x="250" y="46" width="250" height="122" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><text x="268" y="82" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">speculative_step</text><text x="268" y="114" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">about ten lines,</text><text x="268" y="144" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">written live</text><line x1="503" y1="107" x2="526" y2="107" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo2-flow)"/><rect x="530" y="46" width="210" height="122" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="548" y="82" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">200,000 draws</text><text x="548" y="114" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">count what</text><text x="548" y="144" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">comes out</text><line x1="744" y1="107" x2="766" y2="107" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo2-flow)"/><rect x="770" y="26" width="450" height="196" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/><text x="788" y="62" font-size="23" fill="#15803d" text-anchor="start" font-weight="700">five tests, one Enter each</text><text x="788" y="93" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="283.2" lengthAdjust="spacing">(1) the histogram matches</text><svg x="1077.38" y="72.0283" width="14.076" height="26.7116" viewBox="0 0 14.076 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t207-figure_1">
-  <g id="t207-patch_1">
+ <g id="t208-figure_1">
+  <g id="t208-patch_1">
    <path d="M 0 26.711625 
 L 14.076 26.711625 
 L 14.076 0 
@@ -149,11 +149,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t207-text_1">
+  <g id="t208-text_1">
    <!-- $p$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t207-Cmmi10-70" d="M -159 -1241 
+     <path id="t208-Cmmi10-70" d="M -159 -1241 
 Q -219 -1241 -219 -1159 
 Q -197 -1019 -134 -1019 
 Q 66 -1019 145 -983 
@@ -208,15 +208,15 @@ Q 1388 97 1594 97
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t207-Cmmi10-70" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t208-Cmmi10-70" transform="translate(0 0.8125)"/>
    </g>
   </g>
  </g>
 </svg><text x="788" y="122" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="215.4" lengthAdjust="spacing">(2) the share kept is</text><svg x="1009.66" y="101.028" width="15.732" height="26.7116" viewBox="0 0 15.732 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t208-figure_1">
-  <g id="t208-patch_1">
+ <g id="t209-figure_1">
+  <g id="t209-patch_1">
    <path d="M 0 26.711625 
 L 15.732 26.711625 
 L 15.732 0 
@@ -225,11 +225,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t208-text_1">
+  <g id="t209-text_1">
    <!-- $\beta$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t208-Cmmi10-af" d="M 172 -1241 
+     <path id="t209-Cmmi10-af" d="M 172 -1241 
 Q 153 -1241 137 -1219 
 Q 122 -1197 122 -1178 
 L 1106 2778 
@@ -289,15 +289,15 @@ Q 2181 2591 2106 2553
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t208-Cmmi10-af" transform="translate(0 0.484375)"/>
+    <use xlink:href="#t209-Cmmi10-af" transform="translate(0 0.484375)"/>
    </g>
   </g>
  </g>
 </svg><text x="788" y="151" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">(3) a wrong redraw fails (1)</text><text x="788" y="180" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">(4) match-only also passes (1)</text><text x="788" y="209" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="29.8" lengthAdjust="spacing">(5)</text><svg x="824.002" y="188.028" width="57.408" height="26.7116" viewBox="0 0 57.408 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t209-figure_1">
-  <g id="t209-patch_1">
+ <g id="t210-figure_1">
+  <g id="t210-patch_1">
    <path d="M 0 26.711625 
 L 57.408 26.711625 
 L 57.408 0 
@@ -306,11 +306,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t209-text_1">
+  <g id="t210-text_1">
    <!-- $p = q$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t209-Cmmi10-70" d="M -159 -1241 
+     <path id="t210-Cmmi10-70" d="M -159 -1241 
 Q -219 -1241 -219 -1159 
 Q -197 -1019 -134 -1019 
 Q 66 -1019 145 -983 
@@ -364,7 +364,7 @@ Q 1138 419 1263 258
 Q 1388 97 1594 97 
 z
 " transform="scale(0.015625)"/>
-     <path id="t209-Cmr10-3d" d="M 481 850 
+     <path id="t210-Cmr10-3d" d="M 481 850 
 Q 428 850 393 890 
 Q 359 931 359 978 
 Q 359 1031 393 1068 
@@ -389,7 +389,7 @@ Q 4547 2094 4500 2094
 L 481 2094 
 z
 " transform="scale(0.015625)"/>
-     <path id="t209-Cmmi10-71" d="M 941 -1159 
+     <path id="t210-Cmmi10-71" d="M 941 -1159 
 Q 963 -1019 1025 -1019 
 Q 1256 -1019 1389 -981 
 Q 1522 -944 1563 -800 
@@ -430,17 +430,17 @@ Q 913 97 1119 97
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t209-Cmmi10-70" transform="translate(0 0.8125)"/>
-    <use xlink:href="#t209-Cmr10-3d" transform="translate(67.851562 0.8125)"/>
-    <use xlink:href="#t209-Cmmi10-71" transform="translate(163.095703 0.8125)"/>
+    <use xlink:href="#t210-Cmmi10-70" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t210-Cmr10-3d" transform="translate(67.851562 0.8125)"/>
+    <use xlink:href="#t210-Cmmi10-71" transform="translate(163.095703 0.8125)"/>
    </g>
   </g>
  </g>
 </svg><text x="881.41" y="209" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="206.0" lengthAdjust="spacing">: every draft is kept</text><g class="fragment" data-fragment-index="1"><text x="20" y="264" font-size="27" fill="#b45309" text-anchor="start" font-weight="700">(b) on real models: sweep the draft length</text><rect x="20" y="280" width="250" height="122" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.6"/><text x="38" y="316" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">draft</text><text x="38" y="348" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Qwen3-0.6B / 1.7B</text><text x="38" y="378" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="63.7" lengthAdjust="spacing">writes</text><svg x="107.866" y="357.36" width="14.352" height="26.7116" viewBox="0 0 14.352 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t210-figure_1">
-  <g id="t210-patch_1">
+ <g id="t211-figure_1">
+  <g id="t211-patch_1">
    <path d="M 0 26.711625 
 L 14.352 26.711625 
 L 14.352 0 
@@ -449,67 +449,8 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t210-text_1">
-   <!-- $\gamma$ -->
-   <g style="fill: #1f2328" transform="translate(0 20.639625) scale(0.276 -0.276)">
-    <defs>
-     <path id="t210-Cmmi10-b0" d="M 1888 -1253 
-Q 1888 -1109 1952 -834 
-Q 2016 -559 2108 -248 
-Q 2200 63 2266 263 
-Q 2291 581 2291 744 
-Q 2291 1156 2209 1511 
-Q 2128 1866 1903 2105 
-Q 1678 2344 1275 2344 
-Q 1063 2344 852 2253 
-Q 641 2163 489 2000 
-Q 338 1838 281 1631 
-Q 269 1594 231 1594 
-L 153 1594 
-Q 103 1594 103 1650 
-L 103 1672 
-Q 175 1959 358 2226 
-Q 541 2494 805 2661 
-Q 1069 2828 1363 2828 
-Q 1663 2828 1881 2625 
-Q 2100 2422 2231 2109 
-Q 2363 1797 2420 1478 
-Q 2478 1159 2478 878 
-Q 2800 1753 3200 2534 
-L 3297 2741 
-Q 3316 2759 3341 2759 
-L 3419 2759 
-Q 3469 2759 3469 2700 
-Q 3469 2688 3456 2663 
-L 3359 2463 
-Q 3081 1909 2848 1340 
-Q 2616 772 2450 244 
-Q 2425 28 2354 -347 
-Q 2284 -722 2184 -1045 
-Q 2084 -1369 1984 -1381 
-Q 1888 -1381 1888 -1253 
-z
-" transform="scale(0.015625)"/>
-    </defs>
-    <use xlink:href="#t210-Cmmi10-b0" transform="translate(0 0.8125)"/>
-   </g>
-  </g>
- </g>
-</svg><text x="128.428" y="378" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="71.8" lengthAdjust="spacing">tokens</text><line x1="273" y1="341" x2="296" y2="341" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo2-flow)"/><rect x="300" y="280" width="250" height="122" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="318" y="316" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">target</text><text x="318" y="348" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Qwen3-8B verifies</text><svg x="318" y="357.36" width="59.34" height="26.7116" viewBox="0 0 59.34 26.711625"><defs>
-  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
- </defs>
- <g id="t211-figure_1">
-  <g id="t211-patch_1">
-   <path d="M 0 26.711625 
-L 59.34 26.711625 
-L 59.34 0 
-L 0 0 
-L 0 26.711625 
-z
-" style="fill: none"/>
-  </g>
   <g id="t211-text_1">
-   <!-- $\gamma + 1$ -->
+   <!-- $\gamma$ -->
    <g style="fill: #1f2328" transform="translate(0 20.639625) scale(0.276 -0.276)">
     <defs>
      <path id="t211-Cmmi10-b0" d="M 1888 -1253 
@@ -549,129 +490,29 @@ Q 2084 -1369 1984 -1381
 Q 1888 -1381 1888 -1253 
 z
 " transform="scale(0.015625)"/>
-     <path id="t211-Cmr10-2b" d="M 481 1472 
-Q 428 1472 393 1512 
-Q 359 1553 359 1600 
-Q 359 1647 393 1687 
-Q 428 1728 481 1728 
-L 2363 1728 
-L 2363 3616 
-Q 2363 3666 2400 3698 
-Q 2438 3731 2491 3731 
-Q 2538 3731 2578 3698 
-Q 2619 3666 2619 3616 
-L 2619 1728 
-L 4500 1728 
-Q 4547 1728 4581 1687 
-Q 4616 1647 4616 1600 
-Q 4616 1553 4581 1512 
-Q 4547 1472 4500 1472 
-L 2619 1472 
-L 2619 -416 
-Q 2619 -466 2578 -498 
-Q 2538 -531 2491 -531 
-Q 2438 -531 2400 -498 
-Q 2363 -466 2363 -416 
-L 2363 1472 
-L 481 1472 
-z
-" transform="scale(0.015625)"/>
-     <path id="t211-Cmr10-31" d="M 594 0 
-L 594 225 
-Q 1394 225 1394 428 
-L 1394 3788 
-Q 1063 3628 556 3628 
-L 556 3853 
-Q 1341 3853 1741 4263 
-L 1831 4263 
-Q 1853 4263 1873 4245 
-Q 1894 4228 1894 4206 
-L 1894 428 
-Q 1894 225 2694 225 
-L 2694 0 
-L 594 0 
-z
-" transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t211-Cmmi10-b0" transform="translate(0 0.390625)"/>
-    <use xlink:href="#t211-Cmr10-2b" transform="translate(69.267578 0.390625)"/>
-    <use xlink:href="#t211-Cmr10-31" transform="translate(164.511719 0.390625)"/>
+    <use xlink:href="#t211-Cmmi10-b0" transform="translate(0 0.8125)"/>
    </g>
   </g>
  </g>
-</svg><text x="383.55" y="378" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="96.2" lengthAdjust="spacing">positions</text><line x1="553" y1="341" x2="576" y2="341" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo2-flow)"/><rect x="580" y="280" width="350" height="122" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="598" y="316" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">recorded per cell</text><text x="598" y="348" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="249.4" lengthAdjust="spacing">speed-up · share kept ·</text><svg x="853.569" y="327.028" width="12.144" height="26.7116" viewBox="0 0 12.144 26.711625"><defs>
+</svg><text x="128.428" y="378" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="71.8" lengthAdjust="spacing">tokens</text><line x1="273" y1="341" x2="296" y2="341" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo2-flow)"/><rect x="300" y="280" width="250" height="122" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="318" y="316" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">target</text><text x="318" y="348" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Qwen3-8B verifies</text><svg x="318" y="357.36" width="59.34" height="26.7116" viewBox="0 0 59.34 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t212-figure_1">
   <g id="t212-patch_1">
    <path d="M 0 26.711625 
-L 12.144 26.711625 
-L 12.144 0 
+L 59.34 26.711625 
+L 59.34 0 
 L 0 0 
 L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
   <g id="t212-text_1">
-   <!-- $c$ -->
-   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
-    <defs>
-     <path id="t212-Cmmi10-63" d="M 750 763 
-Q 750 484 892 290 
-Q 1034 97 1300 97 
-Q 1681 97 2032 272 
-Q 2384 447 2606 756 
-Q 2625 775 2656 775 
-Q 2688 775 2720 739 
-Q 2753 703 2753 672 
-Q 2753 647 2741 634 
-Q 2506 306 2109 117 
-Q 1713 -72 1288 -72 
-Q 981 -72 747 73 
-Q 513 219 384 462 
-Q 256 706 256 1013 
-Q 256 1444 497 1869 
-Q 738 2294 1138 2561 
-Q 1538 2828 1978 2828 
-Q 2266 2828 2495 2689 
-Q 2725 2550 2725 2278 
-Q 2725 2103 2623 1979 
-Q 2522 1856 2350 1856 
-Q 2247 1856 2176 1920 
-Q 2106 1984 2106 2088 
-Q 2106 2238 2215 2344 
-Q 2325 2450 2472 2450 
-L 2484 2450 
-Q 2409 2559 2267 2611 
-Q 2125 2663 1972 2663 
-Q 1597 2663 1315 2342 
-Q 1034 2022 892 1576 
-Q 750 1131 750 763 
-z
-" transform="scale(0.015625)"/>
-    </defs>
-    <use xlink:href="#t212-Cmmi10-63" transform="translate(0 0.8125)"/>
-   </g>
-  </g>
- </g>
-</svg><svg x="598" y="357.36" width="14.352" height="26.7116" viewBox="0 0 14.352 26.711625"><defs>
-  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
- </defs>
- <g id="t213-figure_1">
-  <g id="t213-patch_1">
-   <path d="M 0 26.711625 
-L 14.352 26.711625 
-L 14.352 0 
-L 0 0 
-L 0 26.711625 
-z
-" style="fill: none"/>
-  </g>
-  <g id="t213-text_1">
-   <!-- $\gamma$ -->
+   <!-- $\gamma + 1$ -->
    <g style="fill: #1f2328" transform="translate(0 20.639625) scale(0.276 -0.276)">
     <defs>
-     <path id="t213-Cmmi10-b0" d="M 1888 -1253 
+     <path id="t212-Cmmi10-b0" d="M 1888 -1253 
 Q 1888 -1109 1952 -834 
 Q 2016 -559 2108 -248 
 Q 2200 63 2266 263 
@@ -708,26 +549,126 @@ Q 2084 -1369 1984 -1381
 Q 1888 -1381 1888 -1253 
 z
 " transform="scale(0.015625)"/>
+     <path id="t212-Cmr10-2b" d="M 481 1472 
+Q 428 1472 393 1512 
+Q 359 1553 359 1600 
+Q 359 1647 393 1687 
+Q 428 1728 481 1728 
+L 2363 1728 
+L 2363 3616 
+Q 2363 3666 2400 3698 
+Q 2438 3731 2491 3731 
+Q 2538 3731 2578 3698 
+Q 2619 3666 2619 3616 
+L 2619 1728 
+L 4500 1728 
+Q 4547 1728 4581 1687 
+Q 4616 1647 4616 1600 
+Q 4616 1553 4581 1512 
+Q 4547 1472 4500 1472 
+L 2619 1472 
+L 2619 -416 
+Q 2619 -466 2578 -498 
+Q 2538 -531 2491 -531 
+Q 2438 -531 2400 -498 
+Q 2363 -466 2363 -416 
+L 2363 1472 
+L 481 1472 
+z
+" transform="scale(0.015625)"/>
+     <path id="t212-Cmr10-31" d="M 594 0 
+L 594 225 
+Q 1394 225 1394 428 
+L 1394 3788 
+Q 1063 3628 556 3628 
+L 556 3853 
+Q 1341 3853 1741 4263 
+L 1831 4263 
+Q 1853 4263 1873 4245 
+Q 1894 4228 1894 4206 
+L 1894 428 
+Q 1894 225 2694 225 
+L 2694 0 
+L 594 0 
+z
+" transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t213-Cmmi10-b0" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t212-Cmmi10-b0" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t212-Cmr10-2b" transform="translate(69.267578 0.390625)"/>
+    <use xlink:href="#t212-Cmr10-31" transform="translate(164.511719 0.390625)"/>
    </g>
   </g>
  </g>
-</svg><text x="618.562" y="378" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="274.4" lengthAdjust="spacing">= 1 … 12; 3 prompt types</text><line x1="934" y1="341" x2="956" y2="341" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo2-flow)"/><rect x="960" y="280" width="260" height="122" rx="8" fill="#fff" stroke="#dc2626" stroke-width="1.6"/><text x="978" y="316" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">vs. Theorem 3.8</text><text x="978" y="348" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">on the curve: ?</text><text x="978" y="378" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="46.1" lengthAdjust="spacing">best</text><svg x="1030.29" y="357.36" width="14.352" height="26.7116" viewBox="0 0 14.352 26.711625"><defs>
+</svg><text x="383.55" y="378" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="96.2" lengthAdjust="spacing">positions</text><line x1="553" y1="341" x2="576" y2="341" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo2-flow)"/><rect x="580" y="280" width="350" height="122" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="598" y="316" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">recorded per cell</text><text x="598" y="348" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="249.4" lengthAdjust="spacing">speed-up · share kept ·</text><svg x="853.569" y="327.028" width="12.144" height="26.7116" viewBox="0 0 12.144 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t213-figure_1">
+  <g id="t213-patch_1">
+   <path d="M 0 26.711625 
+L 12.144 26.711625 
+L 12.144 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t213-text_1">
+   <!-- $c$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t213-Cmmi10-63" d="M 750 763 
+Q 750 484 892 290 
+Q 1034 97 1300 97 
+Q 1681 97 2032 272 
+Q 2384 447 2606 756 
+Q 2625 775 2656 775 
+Q 2688 775 2720 739 
+Q 2753 703 2753 672 
+Q 2753 647 2741 634 
+Q 2506 306 2109 117 
+Q 1713 -72 1288 -72 
+Q 981 -72 747 73 
+Q 513 219 384 462 
+Q 256 706 256 1013 
+Q 256 1444 497 1869 
+Q 738 2294 1138 2561 
+Q 1538 2828 1978 2828 
+Q 2266 2828 2495 2689 
+Q 2725 2550 2725 2278 
+Q 2725 2103 2623 1979 
+Q 2522 1856 2350 1856 
+Q 2247 1856 2176 1920 
+Q 2106 1984 2106 2088 
+Q 2106 2238 2215 2344 
+Q 2325 2450 2472 2450 
+L 2484 2450 
+Q 2409 2559 2267 2611 
+Q 2125 2663 1972 2663 
+Q 1597 2663 1315 2342 
+Q 1034 2022 892 1576 
+Q 750 1131 750 763 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t213-Cmmi10-63" transform="translate(0 0.8125)"/>
+   </g>
+  </g>
+ </g>
+</svg><svg x="598" y="357.36" width="114.54" height="26.7116" viewBox="0 0 114.54 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t214-figure_1">
   <g id="t214-patch_1">
    <path d="M 0 26.711625 
-L 14.352 26.711625 
-L 14.352 0 
+L 114.54 26.711625 
+L 114.54 0 
 L 0 0 
 L 0 26.711625 
 z
 " style="fill: none"/>
   </g>
   <g id="t214-text_1">
-   <!-- $\gamma$ -->
+   <!-- $\gamma = 1 \ldots 12$ -->
    <g style="fill: #1f2328" transform="translate(0 20.639625) scale(0.276 -0.276)">
     <defs>
      <path id="t214-Cmmi10-b0" d="M 1888 -1253 
@@ -767,8 +708,185 @@ Q 2084 -1369 1984 -1381
 Q 1888 -1381 1888 -1253 
 z
 " transform="scale(0.015625)"/>
+     <path id="t214-Cmr10-3d" d="M 481 850 
+Q 428 850 393 890 
+Q 359 931 359 978 
+Q 359 1031 393 1068 
+Q 428 1106 481 1106 
+L 4500 1106 
+Q 4547 1106 4581 1068 
+Q 4616 1031 4616 978 
+Q 4616 931 4581 890 
+Q 4547 850 4500 850 
+L 481 850 
+z
+M 481 2094 
+Q 428 2094 393 2131 
+Q 359 2169 359 2222 
+Q 359 2269 393 2309 
+Q 428 2350 481 2350 
+L 4500 2350 
+Q 4547 2350 4581 2309 
+Q 4616 2269 4616 2222 
+Q 4616 2169 4581 2131 
+Q 4547 2094 4500 2094 
+L 481 2094 
+z
+" transform="scale(0.015625)"/>
+     <path id="t214-Cmr10-31" d="M 594 0 
+L 594 225 
+Q 1394 225 1394 428 
+L 1394 3788 
+Q 1063 3628 556 3628 
+L 556 3853 
+Q 1341 3853 1741 4263 
+L 1831 4263 
+Q 1853 4263 1873 4245 
+Q 1894 4228 1894 4206 
+L 1894 428 
+Q 1894 225 2694 225 
+L 2694 0 
+L 594 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t214-STIXGeneral-Regular-2026" d="M 5683 275 
+Q 5683 134 5577 32 
+Q 5472 -70 5325 -70 
+Q 5178 -70 5075 32 
+Q 4973 134 4973 281 
+Q 4973 429 5078 534 
+Q 5184 640 5331 640 
+Q 5472 640 5577 531 
+Q 5683 422 5683 275 
+z
+M 3552 275 
+Q 3552 134 3446 32 
+Q 3341 -70 3193 -70 
+Q 3046 -70 2944 32 
+Q 2842 134 2842 281 
+Q 2842 429 2947 534 
+Q 3053 640 3200 640 
+Q 3341 640 3446 531 
+Q 3552 422 3552 275 
+z
+M 1421 275 
+Q 1421 134 1315 32 
+Q 1210 -70 1062 -70 
+Q 915 -70 812 32 
+Q 710 134 710 281 
+Q 710 429 816 534 
+Q 922 640 1069 640 
+Q 1210 640 1315 531 
+Q 1421 422 1421 275 
+z
+" transform="scale(0.015625)"/>
+     <path id="t214-Cmr10-32" d="M 319 0 
+L 319 172 
+Q 319 188 331 206 
+L 1325 1306 
+Q 1550 1550 1690 1715 
+Q 1831 1881 1968 2097 
+Q 2106 2313 2186 2536 
+Q 2266 2759 2266 3009 
+Q 2266 3272 2169 3511 
+Q 2072 3750 1880 3894 
+Q 1688 4038 1416 4038 
+Q 1138 4038 916 3870 
+Q 694 3703 603 3438 
+Q 628 3444 672 3444 
+Q 816 3444 917 3347 
+Q 1019 3250 1019 3097 
+Q 1019 2950 917 2848 
+Q 816 2747 672 2747 
+Q 522 2747 420 2851 
+Q 319 2956 319 3097 
+Q 319 3338 409 3548 
+Q 500 3759 670 3923 
+Q 841 4088 1055 4175 
+Q 1269 4263 1509 4263 
+Q 1875 4263 2190 4108 
+Q 2506 3953 2690 3670 
+Q 2875 3388 2875 3009 
+Q 2875 2731 2753 2481 
+Q 2631 2231 2440 2026 
+Q 2250 1822 1953 1562 
+Q 1656 1303 1563 1216 
+L 838 519 
+L 1453 519 
+Q 1906 519 2211 526 
+Q 2516 534 2534 550 
+Q 2609 631 2688 1141 
+L 2875 1141 
+L 2694 0 
+L 319 0 
+z
+" transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t214-Cmmi10-b0" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t214-Cmmi10-b0" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t214-Cmr10-3d" transform="translate(69.267578 0.390625)"/>
+    <use xlink:href="#t214-Cmr10-31" transform="translate(164.511719 0.390625)"/>
+    <use xlink:href="#t214-STIXGeneral-Regular-2026" transform="translate(214.511719 0.390625)"/>
+    <use xlink:href="#t214-Cmr10-31" transform="translate(314.511703 0.390625)"/>
+    <use xlink:href="#t214-Cmr10-32" transform="translate(364.511703 0.390625)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="712.54" y="378" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="174.8" lengthAdjust="spacing">; 3 prompt types</text><line x1="934" y1="341" x2="956" y2="341" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo2-flow)"/><rect x="960" y="280" width="260" height="122" rx="8" fill="#fff" stroke="#dc2626" stroke-width="1.6"/><text x="978" y="316" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">vs. Theorem 3.8</text><text x="978" y="348" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">on the curve: ?</text><text x="978" y="378" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="46.1" lengthAdjust="spacing">best</text><svg x="1030.29" y="357.36" width="14.352" height="26.7116" viewBox="0 0 14.352 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t215-figure_1">
+  <g id="t215-patch_1">
+   <path d="M 0 26.711625 
+L 14.352 26.711625 
+L 14.352 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t215-text_1">
+   <!-- $\gamma$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.639625) scale(0.276 -0.276)">
+    <defs>
+     <path id="t215-Cmmi10-b0" d="M 1888 -1253 
+Q 1888 -1109 1952 -834 
+Q 2016 -559 2108 -248 
+Q 2200 63 2266 263 
+Q 2291 581 2291 744 
+Q 2291 1156 2209 1511 
+Q 2128 1866 1903 2105 
+Q 1678 2344 1275 2344 
+Q 1063 2344 852 2253 
+Q 641 2163 489 2000 
+Q 338 1838 281 1631 
+Q 269 1594 231 1594 
+L 153 1594 
+Q 103 1594 103 1650 
+L 103 1672 
+Q 175 1959 358 2226 
+Q 541 2494 805 2661 
+Q 1069 2828 1363 2828 
+Q 1663 2828 1881 2625 
+Q 2100 2422 2231 2109 
+Q 2363 1797 2420 1478 
+Q 2478 1159 2478 878 
+Q 2800 1753 3200 2534 
+L 3297 2741 
+Q 3316 2759 3341 2759 
+L 3419 2759 
+Q 3469 2759 3469 2700 
+Q 3469 2688 3456 2663 
+L 3359 2463 
+Q 3081 1909 2848 1340 
+Q 2616 772 2450 244 
+Q 2425 28 2354 -347 
+Q 2284 -722 2184 -1045 
+Q 2084 -1369 1984 -1381 
+Q 1888 -1381 1888 -1253 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t215-Cmmi10-b0" transform="translate(0 0.8125)"/>
    </g>
   </g>
  </g>
