@@ -1,0 +1,338 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W11 demo 2 (b) 的 prompt。全部是為這個 demo 自己寫的，沒有取自任何資料集。
+# kind：code（程式碼）、en（英文說明文）、zh（繁體中文說明文）、tai（台語漢字，只有幾個）。
+# 每個 prompt 都要求一段夠長的輸出（demo_config.toml 的 max_tokens 之內通常寫不完）。
+
+# ── code ────────────────────────────────────────────────────────
+[[prompt]]
+id = "code-01"
+kind = "code"
+text = "Write a Python function that checks whether a string is a valid IPv4 address. Include a docstring and a few example calls."
+
+[[prompt]]
+id = "code-02"
+kind = "code"
+text = "Write a Python class for a fixed-capacity LRU cache with get and put methods, using only the standard library."
+
+[[prompt]]
+id = "code-03"
+kind = "code"
+text = "Write a Python function that merges two sorted lists into one sorted list without using sort(), and then a function that uses it to implement merge sort."
+
+[[prompt]]
+id = "code-04"
+kind = "code"
+text = "Write a Python script that reads a CSV file given on the command line and prints the mean, minimum and maximum of every numeric column."
+
+[[prompt]]
+id = "code-05"
+kind = "code"
+text = "Implement binary search in Python, both iteratively and recursively, and add unit tests with the unittest module."
+
+[[prompt]]
+id = "code-06"
+kind = "code"
+text = "Write a Python function that parses a simple arithmetic expression with +, -, *, / and parentheses and returns its value, without using eval."
+
+[[prompt]]
+id = "code-07"
+kind = "code"
+text = "Write a Python generator that yields the prime numbers, and a function that returns the first n primes using it."
+
+[[prompt]]
+id = "code-08"
+kind = "code"
+text = "Write a Python dataclass for a 2D vector with addition, subtraction, scalar multiplication, dot product and length."
+
+[[prompt]]
+id = "code-09"
+kind = "code"
+text = "Write a JavaScript function that debounces another function, and show how to use it on a text input's input event."
+
+[[prompt]]
+id = "code-10"
+kind = "code"
+text = "Write a SQL schema for a small library (books, members, loans) and three queries: overdue loans, the most borrowed book, and members with no loans."
+
+[[prompt]]
+id = "code-11"
+kind = "code"
+text = "Write a Python function that walks a directory tree and returns the ten largest files with their sizes, using pathlib."
+
+[[prompt]]
+id = "code-12"
+kind = "code"
+text = "Write a Python implementation of a trie with insert, search and starts_with methods."
+
+[[prompt]]
+id = "code-13"
+kind = "code"
+text = "Write a Bash script that backs up a directory into a dated tar.gz file and deletes backups older than seven days."
+
+[[prompt]]
+id = "code-14"
+kind = "code"
+text = "Write a Python function that computes the Levenshtein edit distance between two strings with dynamic programming, and explain the recurrence in comments."
+
+[[prompt]]
+id = "code-15"
+kind = "code"
+text = "Write a Python context manager that measures how long a block of code takes and prints the elapsed time, first as a class and then with contextlib."
+
+[[prompt]]
+id = "code-16"
+kind = "code"
+text = "Write a C function that reverses a singly linked list in place, with the struct definition and a small main that tests it."
+
+[[prompt]]
+id = "code-17"
+kind = "code"
+text = "Write a Python function that counts word frequencies in a text file and prints the twenty most common words, ignoring case and punctuation."
+
+[[prompt]]
+id = "code-18"
+kind = "code"
+text = "Write a Python implementation of breadth-first search on a graph given as an adjacency list, returning the shortest path between two nodes."
+
+[[prompt]]
+id = "code-19"
+kind = "code"
+text = "Write a Python decorator that retries a function up to three times with exponential backoff when it raises an exception."
+
+[[prompt]]
+id = "code-20"
+kind = "code"
+text = "Write a NumPy function that standardizes each column of a matrix to zero mean and unit variance, handling columns whose variance is zero."
+
+# ── en ──────────────────────────────────────────────────────────
+[[prompt]]
+id = "en-01"
+kind = "en"
+text = "Explain how a refrigerator keeps food cold, in a few paragraphs for a general reader."
+
+[[prompt]]
+id = "en-02"
+kind = "en"
+text = "Explain why the sky is blue during the day and red at sunset."
+
+[[prompt]]
+id = "en-03"
+kind = "en"
+text = "Describe how vaccines train the immune system, in plain language."
+
+[[prompt]]
+id = "en-04"
+kind = "en"
+text = "Explain what inflation is and why a moderate amount of it is considered normal."
+
+[[prompt]]
+id = "en-05"
+kind = "en"
+text = "Describe the water cycle from evaporation to rainfall, step by step."
+
+[[prompt]]
+id = "en-06"
+kind = "en"
+text = "Explain how a bill becomes a law in a parliamentary system, in general terms."
+
+[[prompt]]
+id = "en-07"
+kind = "en"
+text = "Explain how noise-cancelling headphones work."
+
+[[prompt]]
+id = "en-08"
+kind = "en"
+text = "Describe what happens inside a computer between pressing a key and seeing the letter on the screen."
+
+[[prompt]]
+id = "en-09"
+kind = "en"
+text = "Explain why the seasons change over the year, and why they are opposite in the two hemispheres."
+
+[[prompt]]
+id = "en-10"
+kind = "en"
+text = "Explain the difference between weather and climate, with examples."
+
+[[prompt]]
+id = "en-11"
+kind = "en"
+text = "Describe how bread rises, from mixing the dough to baking."
+
+[[prompt]]
+id = "en-12"
+kind = "en"
+text = "Explain how public-key cryptography lets two strangers communicate securely."
+
+[[prompt]]
+id = "en-13"
+kind = "en"
+text = "Explain why ships made of steel float even though steel is denser than water."
+
+[[prompt]]
+id = "en-14"
+kind = "en"
+text = "Describe how the printing press changed the spread of knowledge in Europe."
+
+[[prompt]]
+id = "en-15"
+kind = "en"
+text = "Explain what a black hole is and how astronomers know that black holes exist."
+
+[[prompt]]
+id = "en-16"
+kind = "en"
+text = "Explain how a search engine decides which pages to show first."
+
+[[prompt]]
+id = "en-17"
+kind = "en"
+text = "Describe how earthquakes happen and why some regions have many more than others."
+
+[[prompt]]
+id = "en-18"
+kind = "en"
+text = "Explain how compound interest works and why starting to save early matters."
+
+[[prompt]]
+id = "en-19"
+kind = "en"
+text = "Explain how GPS finds your position from satellite signals."
+
+[[prompt]]
+id = "en-20"
+kind = "en"
+text = "Describe how antibiotics work and why resistance to them develops."
+
+# ── zh ──────────────────────────────────────────────────────────
+[[prompt]]
+id = "zh-01"
+kind = "zh"
+text = "請用繁體中文說明冰箱是怎麼讓食物保持低溫的，寫幾段給一般讀者看。"
+
+[[prompt]]
+id = "zh-02"
+kind = "zh"
+text = "請用繁體中文解釋，為什麼白天的天空是藍色的，日落時卻變成紅色。"
+
+[[prompt]]
+id = "zh-03"
+kind = "zh"
+text = "請用繁體中文說明颱風是怎麼形成的，以及為什麼臺灣夏秋兩季特別容易遇到颱風。"
+
+[[prompt]]
+id = "zh-04"
+kind = "zh"
+text = "請用繁體中文解釋什麼是通貨膨脹，以及它對一般家庭的生活有什麼影響。"
+
+[[prompt]]
+id = "zh-05"
+kind = "zh"
+text = "請用繁體中文說明地震是怎麼發生的，以及臺灣為什麼地震特別多。"
+
+[[prompt]]
+id = "zh-06"
+kind = "zh"
+text = "請用繁體中文介紹珍珠奶茶的由來，以及它是怎麼做出來的。"
+
+[[prompt]]
+id = "zh-07"
+kind = "zh"
+text = "請用繁體中文解釋疫苗是怎麼讓人體產生免疫力的。"
+
+[[prompt]]
+id = "zh-08"
+kind = "zh"
+text = "請用繁體中文說明全民健康保險的基本運作方式：錢從哪裡來、看病時怎麼用。"
+
+[[prompt]]
+id = "zh-09"
+kind = "zh"
+text = "請用繁體中文解釋為什麼一年有四季，以及南北半球的季節為什麼相反。"
+
+[[prompt]]
+id = "zh-10"
+kind = "zh"
+text = "請用繁體中文說明高鐵為什麼能跑得比一般火車快，從軌道、車輛與路線三方面來談。"
+
+[[prompt]]
+id = "zh-11"
+kind = "zh"
+text = "請用繁體中文介紹臺灣的夜市文化，包括常見的小吃與它在日常生活中的角色。"
+
+[[prompt]]
+id = "zh-12"
+kind = "zh"
+text = "請用繁體中文解釋複利是什麼，以及為什麼越早開始存錢差別越大。"
+
+[[prompt]]
+id = "zh-13"
+kind = "zh"
+text = "請用繁體中文說明手機是怎麼透過基地台打電話與上網的。"
+
+[[prompt]]
+id = "zh-14"
+kind = "zh"
+text = "請用繁體中文解釋為什麼鋼鐵做的船可以浮在水面上。"
+
+[[prompt]]
+id = "zh-15"
+kind = "zh"
+text = "請用繁體中文說明垃圾分類與資源回收為什麼重要，以及回收的東西後來去了哪裡。"
+
+[[prompt]]
+id = "zh-16"
+kind = "zh"
+text = "請用繁體中文介紹茶葉從採收到製成烏龍茶的過程。"
+
+[[prompt]]
+id = "zh-17"
+kind = "zh"
+text = "請用繁體中文解釋搜尋引擎是怎麼決定哪些網頁排在前面的。"
+
+[[prompt]]
+id = "zh-18"
+kind = "zh"
+text = "請用繁體中文說明梅雨是什麼，以及它對臺灣的水資源為什麼重要。"
+
+[[prompt]]
+id = "zh-19"
+kind = "zh"
+text = "請用繁體中文解釋抗生素的作用，以及抗藥性是怎麼產生的。"
+
+[[prompt]]
+id = "zh-20"
+kind = "zh"
+text = "請用繁體中文說明活字印刷術的發明，如何改變了知識的傳播。"
+
+# ── tai：台語漢字（教育部推薦用字的寫法；樣本很少，只當補充）──────
+[[prompt]]
+id = "tai-01"
+kind = "tai"
+text = "請用台語漢字寫一段短文，講你透早去菜市仔買菜的情形。"
+
+[[prompt]]
+id = "tai-02"
+kind = "tai"
+text = "請用台語漢字解說：是按怎落雨進前，天會變甲烏烏暗暗？"
+
+[[prompt]]
+id = "tai-03"
+kind = "tai"
+text = "請用台語漢字寫一張批予阿媽，共伊講你最近讀冊的代誌。"
+
+[[prompt]]
+id = "tai-04"
+kind = "tai"
+text = "請用台語漢字紹介台南的小食，上無愛講著三項。"
+
+[[prompt]]
+id = "tai-05"
+kind = "tai"
+text = "請用台語漢字講一个古早的故事，主角是一隻狗仔。"
+
+[[prompt]]
+id = "tai-06"
+kind = "tai"
+text = "請用台語漢字說明，囡仔人是按怎愛早睏早起。"

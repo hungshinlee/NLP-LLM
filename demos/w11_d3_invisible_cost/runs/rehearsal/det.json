@@ -1,0 +1,1998 @@
+{
+ "date": "2026-11-27T14:51:33",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "tiny": false,
+ "conditions": {
+  "note": "接電源、其他程式都關了",
+  "loadavg": [
+   4.16,
+   3.43,
+   3.24
+  ],
+  "power": "Now drawing from 'AC Power'"
+ },
+ "what": "(c) greedy decoding, alone and inside batches",
+ "max_tokens": 256,
+ "batches": [
+  2,
+  4,
+  8,
+  16
+ ],
+ "reps": {
+  "alone": 20,
+  "equal": 8,
+  "padded": 20
+ },
+ "companions": 66,
+ "models": {
+  "bf16": {
+   "info": {
+    "label": "Qwen3-8B, bf16",
+    "repo": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "quantization": null,
+    "weight_bytes": 16381470720,
+    "bits_per_weight": 16.0
+   },
+   "targets": {
+    "det-en": {
+     "id": "det-en",
+     "thinking": false,
+     "prompt_tokens": 32,
+     "max_tokens": 256,
+     "output_tokens": 256,
+     "eos": false,
+     "tok_per_s": 28.9,
+     "alone": {
+      "reps": 20,
+      "distinct": 1,
+      "distinct_with_ref": 1,
+      "differ": 0,
+      "first": [
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null
+      ],
+      "first_median": null,
+      "first_min": null,
+      "gap": [],
+      "gap_median": null,
+      "gap_max": null,
+      "gap_zero": 0,
+      "to_second": 0
+     },
+     "alone_bg": {
+      "reps": 3,
+      "distinct": 1,
+      "distinct_with_ref": 2,
+      "differ": 3,
+      "first": 31,
+      "first_median": 31,
+      "first_min": 31,
+      "gap": [
+       0.25,
+       0.25,
+       0.25
+      ],
+      "gap_median": 0.25,
+      "gap_max": 0.25,
+      "gap_zero": 0,
+      "to_second": 3,
+      "note": "BatchGenerator with B = 1, against our own loop"
+     },
+     "gap_profile": {
+      "median": 4.6875,
+      "zero": 4,
+      "below_0.13": 9,
+      "n": 256
+     },
+     "equal": {
+      "2": {
+       "reps": 8,
+       "distinct": 1,
+       "distinct_with_ref": 2,
+       "differ": 8,
+       "first": [
+        92,
+        92,
+        92,
+        92,
+        92,
+        92,
+        92,
+        92
+       ],
+       "first_median": 92.0,
+       "first_min": 92,
+       "gap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "gap_median": 0.0,
+       "gap_max": 0.0,
+       "gap_zero": 8,
+       "gap_n": 8,
+       "to_second": 8,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 92,
+        "alone": "### Step-by-step:\n\n1. **Take the key** you want to insert.\n2. **Apply the hash function** to the key",
+        "batched": "### Step-by-step:\n\n1. **Take the key** from the key-value pair you want to insert.\n2. **Apply the hash",
+        "gap": 0.0
+       }
+      },
+      "4": {
+       "reps": 8,
+       "distinct": 1,
+       "distinct_with_ref": 2,
+       "differ": 8,
+       "first": [
+        92,
+        92,
+        92,
+        92,
+        92,
+        92,
+        92,
+        92
+       ],
+       "first_median": 92.0,
+       "first_min": 92,
+       "gap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "gap_median": 0.0,
+       "gap_max": 0.0,
+       "gap_zero": 8,
+       "gap_n": 8,
+       "to_second": 8,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 92,
+        "alone": "### Step-by-step:\n\n1. **Take the key** you want to insert.\n2. **Apply the hash function** to the key",
+        "batched": "### Step-by-step:\n\n1. **Take the key** from the key-value pair you want to insert.\n2. **Apply the hash",
+        "gap": 0.0
+       }
+      },
+      "8": {
+       "reps": 8,
+       "distinct": 1,
+       "distinct_with_ref": 2,
+       "differ": 8,
+       "first": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+       ],
+       "first_median": 31.0,
+       "first_min": 31,
+       "gap": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+       ],
+       "gap_median": 0.25,
+       "gap_max": 0.25,
+       "gap_zero": 0,
+       "gap_n": 8,
+       "to_second": 8,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 31,
+        "alone": " uses a **hash function** to compute an index where the key-value pair should be stored or retrieved. Here's a step-by-step explanation",
+        "batched": " uses a **hash function** to compute an index where the value should be stored or retrieved. Here's a step-by-step explanation of how",
+        "gap": 0.25
+       }
+      },
+      "16": {
+       "reps": 8,
+       "distinct": 1,
+       "distinct_with_ref": 2,
+       "differ": 8,
+       "first": [
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31,
+        31
+       ],
+       "first_median": 31.0,
+       "first_min": 31,
+       "gap": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+       ],
+       "gap_median": 0.25,
+       "gap_max": 0.25,
+       "gap_zero": 0,
+       "gap_n": 8,
+       "to_second": 8,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 31,
+        "alone": " uses a **hash function** to compute an index where the key-value pair should be stored or retrieved. Here's a step-by-step explanation",
+        "batched": " uses a **hash function** to compute an index where the value should be stored or retrieved. Here's a step-by-step explanation of how",
+        "gap": 0.25
+       }
+      }
+     },
+     "padded": {
+      "2": {
+       "reps": 20,
+       "distinct": 5,
+       "distinct_with_ref": 6,
+       "differ": 20,
+       "first": [
+        41,
+        41,
+        17,
+        17,
+        17,
+        17,
+        17,
+        82,
+        174,
+        82,
+        41,
+        17,
+        41,
+        17,
+        82,
+        17,
+        17,
+        17,
+        17,
+        41
+       ],
+       "first_median": 17.0,
+       "first_min": 17,
+       "gap": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+       ],
+       "gap_median": 0.25,
+       "gap_max": 0.25,
+       "gap_zero": 0,
+       "gap_n": 11,
+       "to_second": 11,
+       "by_pad": {
+        "0": 1,
+        "1": 1,
+        "2": 1,
+        "4": 1,
+        "7": 1,
+        "10": 1
+       },
+       "pads": 6,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        4,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        10,
+        2,
+        4,
+        0,
+        4,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 41,
+        "alone": " where the value should be stored or retrieved. Here's a step-by-step explanation of how a hash table handles **insertion**, **lookup",
+        "batched": " where the value should be stored or retrieved. Here's a **step-by-step explanation** of how a hash table handles **insertion**,",
+        "gap": null
+       }
+      },
+      "4": {
+       "reps": 20,
+       "distinct": 8,
+       "distinct_with_ref": 9,
+       "differ": 20,
+       "first": [
+        82,
+        41,
+        82,
+        31,
+        41,
+        41,
+        82,
+        82,
+        17,
+        82,
+        174,
+        17,
+        41,
+        82,
+        31,
+        82,
+        41,
+        82,
+        41,
+        82
+       ],
+       "first_median": 61.5,
+       "first_min": 17,
+       "gap": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+       ],
+       "gap_median": 0.25,
+       "gap_max": 0.25,
+       "gap_zero": 0,
+       "gap_n": 4,
+       "to_second": 2,
+       "by_pad": {
+        "0": 1,
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1,
+        "7": 1,
+        "10": 1,
+        "13": 1
+       },
+       "pads": 9,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        7,
+        4,
+        2,
+        5,
+        1,
+        1,
+        7,
+        2,
+        0,
+        7,
+        10,
+        0,
+        4,
+        7,
+        5,
+        7,
+        4,
+        13,
+        4,
+        3
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 82,
+        "alone": "� 1. **Insertion**\n\n### Step-by-step:\n1. **Take the key** you want to insert.\n2. **",
+        "batched": "� 1. **Insertion**\n\n### Step-by-step:\n\n1. **Take the key** you want to insert.\n2. **",
+        "gap": null
+       }
+      },
+      "8": {
+       "reps": 20,
+       "distinct": 6,
+       "distinct_with_ref": 7,
+       "differ": 20,
+       "first": [
+        82,
+        82,
+        31,
+        31,
+        82,
+        82,
+        82,
+        31,
+        82,
+        31,
+        31,
+        31,
+        41,
+        31,
+        31,
+        31,
+        31,
+        82,
+        41,
+        31
+       ],
+       "first_median": 31.0,
+       "first_min": 31,
+       "gap": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+       ],
+       "gap_median": 0.25,
+       "gap_max": 0.25,
+       "gap_zero": 0,
+       "gap_n": 11,
+       "to_second": 0,
+       "by_pad": {
+        "2": 1,
+        "4": 1,
+        "5": 1,
+        "7": 1,
+        "9": 1,
+        "10": 1,
+        "13": 1
+       },
+       "pads": 7,
+       "pads_with_several": 0,
+       "same_as_own_loop": 11,
+       "pad_when_differs": [
+        9,
+        4,
+        7,
+        7,
+        4,
+        5,
+        2,
+        7,
+        4,
+        7,
+        7,
+        7,
+        13,
+        7,
+        7,
+        7,
+        7,
+        2,
+        10,
+        7
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 82,
+        "alone": "� 1. **Insertion**\n\n### Step-by-step:\n1. **Take the key** you want to insert.\n2. **",
+        "batched": "� 1. **Insertion**\n\n### Step-by-step:\n\n1. **Take the key** you want to insert.\n2. **",
+        "gap": null
+       }
+      },
+      "16": {
+       "reps": 20,
+       "distinct": 5,
+       "distinct_with_ref": 6,
+       "differ": 20,
+       "first": [
+        82,
+        82,
+        31,
+        82,
+        82,
+        82,
+        31,
+        82,
+        82,
+        82,
+        82,
+        82,
+        82,
+        82,
+        31,
+        41,
+        31,
+        82,
+        82,
+        31
+       ],
+       "first_median": 82.0,
+       "first_min": 31,
+       "gap": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+       ],
+       "gap_median": 0.25,
+       "gap_max": 0.25,
+       "gap_zero": 0,
+       "gap_n": 5,
+       "to_second": 0,
+       "by_pad": {
+        "5": 1,
+        "7": 1,
+        "9": 1,
+        "10": 1,
+        "13": 2
+       },
+       "pads": 5,
+       "pads_with_several": 1,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        13,
+        9,
+        7,
+        10,
+        10,
+        13,
+        7,
+        10,
+        13,
+        13,
+        13,
+        13,
+        13,
+        13,
+        7,
+        5,
+        7,
+        13,
+        10,
+        7
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 82,
+        "alone": "� 1. **Insertion**\n\n### Step-by-step:\n1. **Take the key** you want to insert.\n2. **",
+        "batched": "� 1. **Insertion**\n\n### Step-by-step:\n\n1. **Take the key** you want to insert.\n2. **",
+        "gap": null
+       }
+      }
+     },
+     "text": "A **hash table** is a data structure that stores key-value pairs in an array. It uses a **hash function** to compute an index where the key-value pair should be stored or retrieved. Here's a step-by-step explanation of how a hash table handles **insertion**, **lookup**, **collisions**, and **resizing**.\n\n---\n\n## 🔧 1. **Insertion**\n\n### Step-by-step:\n\n1. **Take the key** you want to insert.\n2. **Apply the hash function** to the key to compute a **hash value**.\n3. **Compute the index** using the hash value (often modulo the size of the array).\n4. **Check if the index is empty**:\n   - If it is, insert the key-value pair directly.\n   - If it's not, handle the **collision** (explained below).\n5. **Store the key-value pair** at the computed index.\n\n> ⚠️ **Note**: The hash function should distribute keys uniformly across the array to minimize collisions.\n\n---\n\n## 🔍 2. **Lookup**\n\n### Step-by-step:\n\n1. **Take the key** you want to look up.\n2. **Apply the hash function** to the key to compute the **hash"
+    },
+    "det-zh": {
+     "id": "det-zh",
+     "thinking": false,
+     "prompt_tokens": 40,
+     "max_tokens": 256,
+     "output_tokens": 256,
+     "eos": false,
+     "tok_per_s": 13.25,
+     "alone": {
+      "reps": 5,
+      "distinct": 1,
+      "distinct_with_ref": 1,
+      "differ": 0,
+      "first": [
+       null,
+       null,
+       null,
+       null,
+       null
+      ],
+      "first_median": null,
+      "first_min": null,
+      "gap": [],
+      "gap_median": null,
+      "gap_max": null,
+      "gap_zero": 0,
+      "to_second": 0
+     },
+     "alone_bg": {
+      "reps": 3,
+      "distinct": 1,
+      "distinct_with_ref": 2,
+      "differ": 3,
+      "first": 51,
+      "first_median": 51,
+      "first_min": 51,
+      "gap": [
+       0.125,
+       0.125,
+       0.125
+      ],
+      "gap_median": 0.125,
+      "gap_max": 0.125,
+      "gap_zero": 0,
+      "to_second": 3,
+      "note": "BatchGenerator with B = 1, against our own loop"
+     },
+     "gap_profile": {
+      "median": 3.1875,
+      "zero": 6,
+      "below_0.13": 17,
+      "n": 256
+     },
+     "equal": {
+      "2": {
+       "reps": 4,
+       "distinct": 1,
+       "distinct_with_ref": 2,
+       "differ": 4,
+       "first": [
+        143,
+        143,
+        143,
+        143
+       ],
+       "first_median": 143.0,
+       "first_min": 143,
+       "gap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "gap_median": 0.0,
+       "gap_max": 0.0,
+       "gap_zero": 4,
+       "gap_n": 4,
+       "to_second": 4,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 143,
+        "alone": " 1. **熱帶氣旋的初始階段（熱帶擾動）**\n- 颱風的形成通常始於",
+        "batched": " 1. **熱帶氣旋的初始階段（擾動系統）**\n- 颱風通常起源自熱帶海洋",
+        "gap": 0.0
+       }
+      },
+      "4": {
+       "reps": 4,
+       "distinct": 1,
+       "distinct_with_ref": 2,
+       "differ": 4,
+       "first": [
+        143,
+        143,
+        143,
+        143
+       ],
+       "first_median": 143.0,
+       "first_min": 143,
+       "gap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "gap_median": 0.0,
+       "gap_max": 0.0,
+       "gap_zero": 4,
+       "gap_n": 4,
+       "to_second": 4,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 143,
+        "alone": " 1. **熱帶氣旋的初始階段（熱帶擾動）**\n- 颱風的形成通常始於",
+        "batched": " 1. **熱帶氣旋的初始階段（擾動系統）**\n- 颱風通常起源自熱帶海洋",
+        "gap": 0.0
+       }
+      },
+      "8": {
+       "reps": 4,
+       "distinct": 1,
+       "distinct_with_ref": 2,
+       "differ": 4,
+       "first": [
+        51,
+        51,
+        51,
+        51
+       ],
+       "first_median": 51.0,
+       "first_min": 51,
+       "gap": [
+        0.125,
+        0.125,
+        0.125,
+        0.125
+       ],
+       "gap_median": 0.125,
+       "gap_max": 0.125,
+       "gap_zero": 0,
+       "gap_n": 4,
+       "to_second": 4,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 51,
+        "alone": "形成過程與大氣環流、海水溫度、風切變等因素密切相關。以下將詳細說明颱風是如何形成的",
+        "batched": "形成過程與大氣環流、海水溫度、濕度、風速等多種因素密切相關。以下將詳細說明",
+        "gap": 0.125
+       }
+      },
+      "16": {
+       "reps": 4,
+       "distinct": 1,
+       "distinct_with_ref": 1,
+       "differ": 0,
+       "first": [
+        null,
+        null,
+        null,
+        null
+       ],
+       "first_median": null,
+       "first_min": null,
+       "gap": [],
+       "gap_median": null,
+       "gap_max": null,
+       "gap_zero": 0,
+       "gap_n": 0,
+       "to_second": 0,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 4,
+       "pad_when_differs": [],
+       "pad_when_same": [
+        0,
+        0,
+        0,
+        0
+       ]
+      }
+     },
+     "padded": {
+      "2": {
+       "reps": 10,
+       "distinct": 2,
+       "distinct_with_ref": 3,
+       "differ": 10,
+       "first": [
+        164,
+        164,
+        164,
+        164,
+        164,
+        164,
+        164,
+        170,
+        164,
+        164
+       ],
+       "first_median": 164.0,
+       "first_min": 164,
+       "gap": [],
+       "gap_median": null,
+       "gap_max": null,
+       "gap_zero": 0,
+       "gap_n": 0,
+       "to_second": 0,
+       "by_pad": {
+        "0": 1,
+        "5": 1
+       },
+       "pads": 2,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 164,
+        "alone": "才能提供足夠的熱能和水汽。\n- 高溫海水蒸發後形成大量水汽，並在大氣",
+        "batched": "才能提供足夠的熱能和水汽。\n- 水溫越高，越容易形成強烈的對流活動，",
+        "gap": null
+       }
+      },
+      "4": {
+       "reps": 10,
+       "distinct": 2,
+       "distinct_with_ref": 3,
+       "differ": 10,
+       "first": [
+        164,
+        164,
+        164,
+        164,
+        164,
+        164,
+        170,
+        164,
+        170,
+        164
+       ],
+       "first_median": 164.0,
+       "first_min": 164,
+       "gap": [],
+       "gap_median": null,
+       "gap_max": null,
+       "gap_zero": 0,
+       "gap_n": 0,
+       "to_second": 0,
+       "by_pad": {
+        "0": 1,
+        "5": 1
+       },
+       "pads": 2,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        5,
+        0,
+        5,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 164,
+        "alone": "才能提供足夠的熱能和水汽。\n- 高溫海水蒸發後形成大量水汽，並在大氣",
+        "batched": "才能提供足夠的熱能和水汽。\n- 水溫越高，越容易形成強烈的對流活動，",
+        "gap": null
+       }
+      },
+      "8": {
+       "reps": 10,
+       "distinct": 2,
+       "distinct_with_ref": 3,
+       "differ": 10,
+       "first": [
+        51,
+        164,
+        51,
+        164,
+        164,
+        164,
+        164,
+        164,
+        164,
+        164
+       ],
+       "first_median": 164.0,
+       "first_min": 51,
+       "gap": [
+        0.125,
+        0.125
+       ],
+       "gap_median": 0.125,
+       "gap_max": 0.125,
+       "gap_zero": 0,
+       "gap_n": 2,
+       "to_second": 0,
+       "by_pad": {
+        "0": 1,
+        "2": 1,
+        "5": 1
+       },
+       "pads": 3,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        2,
+        0,
+        2,
+        5,
+        0,
+        0,
+        5,
+        0,
+        5,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 51,
+        "alone": "形成過程與大氣環流、海水溫度、濕度、風速等多種因素密切相關。以下將詳細說明",
+        "batched": "形成過程與大氣環流、海水溫度、風切變等因素密切相關。以下將詳細說明颱風是如何形成的",
+        "gap": 0.125
+       }
+      },
+      "16": {
+       "reps": 10,
+       "distinct": 6,
+       "distinct_with_ref": 7,
+       "differ": 10,
+       "first": [
+        51,
+        164,
+        51,
+        51,
+        150,
+        51,
+        164,
+        51,
+        164,
+        164
+       ],
+       "first_median": 100.5,
+       "first_min": 51,
+       "gap": [
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125
+       ],
+       "gap_median": 0.125,
+       "gap_max": 0.125,
+       "gap_zero": 0,
+       "gap_n": 5,
+       "to_second": 0,
+       "by_pad": {
+        "0": 3,
+        "2": 1,
+        "5": 2
+       },
+       "pads": 3,
+       "pads_with_several": 2,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        2,
+        0,
+        5,
+        5,
+        0,
+        5,
+        0,
+        2,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 51,
+        "alone": "形成過程與大氣環流、海水溫度、濕度、風速等多種因素密切相關。以下將詳細說明",
+        "batched": "形成過程與大氣環流、海水溫度、風切變等因素密切相關。以下將詳細說明颱風是如何形成的",
+        "gap": 0.125
+       }
+      }
+     },
+     "text": "颱風（在西北太平洋地區稱為「颱風」，在東太平洋則稱為「颶風」）是一種強烈的熱帶氣旋，其形成過程與大氣環流、海水溫度、風切變等因素密切相關。以下將詳細說明颱風是如何形成的，以及為何颱風通過台灣後路徑常常會改變。\n\n---\n\n## 一、颱風是如何形成的？\n\n颱風的形成需要具備幾個關鍵條件，這些條件共同作用，才能讓熱帶氣旋發展成為颱風。以下是形成過程的詳細說明：\n\n### 1. **熱帶氣旋的初始階段（熱帶擾動）**\n- 颱風的形成通常始於**熱帶擾動**（Tropical Disturbance），這是一種在熱帶海洋上空的不穩定氣流，可能由季風、雷暴或氣壓系統引起。\n- 這些擾動通常位於**赤道附近**（約北緯5°至20°之間），因為赤道地區的科里奧利力（地轉偏向力）較弱，不利於氣旋形成，但離赤道稍遠"
+    },
+    "det-think": {
+     "id": "det-think",
+     "thinking": true,
+     "prompt_tokens": 43,
+     "max_tokens": 512,
+     "output_tokens": 512,
+     "eos": false,
+     "tok_per_s": 23.21,
+     "alone": {
+      "reps": 10,
+      "distinct": 1,
+      "distinct_with_ref": 1,
+      "differ": 0,
+      "first": [
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null
+      ],
+      "first_median": null,
+      "first_min": null,
+      "gap": [],
+      "gap_median": null,
+      "gap_max": null,
+      "gap_zero": 0,
+      "to_second": 0
+     },
+     "alone_bg": {
+      "reps": 3,
+      "distinct": 1,
+      "distinct_with_ref": 2,
+      "differ": 3,
+      "first": 245,
+      "first_median": 245,
+      "first_min": 245,
+      "gap": [
+       0.5,
+       0.5,
+       0.5
+      ],
+      "gap_median": 0.5,
+      "gap_max": 0.5,
+      "gap_zero": 0,
+      "to_second": 3,
+      "note": "BatchGenerator with B = 1, against our own loop"
+     },
+     "gap_profile": {
+      "median": 13.25,
+      "zero": 2,
+      "below_0.13": 3,
+      "n": 512
+     },
+     "equal": {
+      "8": {
+       "reps": 0,
+       "distinct": 0,
+       "distinct_with_ref": 1,
+       "differ": 0,
+       "first": [],
+       "first_median": null,
+       "first_min": null,
+       "gap": [],
+       "gap_median": null,
+       "gap_max": null,
+       "gap_zero": 0,
+       "gap_n": 0,
+       "to_second": 0,
+       "by_pad": {},
+       "pads": 0,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [],
+       "pad_when_same": []
+      }
+     },
+     "padded": {
+      "8": {
+       "reps": 10,
+       "distinct": 3,
+       "distinct_with_ref": 4,
+       "differ": 10,
+       "first": [
+        245,
+        57,
+        245,
+        57,
+        57,
+        57,
+        57,
+        57,
+        57,
+        57
+       ],
+       "first_median": 57.0,
+       "first_min": 57,
+       "gap": [
+        0.5,
+        0.25,
+        0.5,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+       ],
+       "gap_median": 0.25,
+       "gap_max": 0.5,
+       "gap_zero": 0,
+       "gap_n": 10,
+       "to_second": 8,
+       "by_pad": {
+        "0": 2,
+        "2": 1
+       },
+       "pads": 2,
+       "pads_with_several": 1,
+       "same_as_own_loop": 2,
+       "pad_when_differs": [
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 245,
+        "alone": " try substitution first. \n\nFrom the first equation, I can express one variable in terms of the other. Let me solve for 'c'",
+        "batched": " try substitution first. \n\nFrom the first equation, I can solve for one variable in terms of the other. Let me solve for 'c",
+        "gap": 0.5
+       }
+      }
+     },
+     "text": "<think>\nOkay, so there's this problem about a farmer who has chickens and rabbits. Together, they have 35 heads and 94 legs. I need to figure out how many chickens and rabbits there are. Hmm, let me think. \n\nFirst, I remember that chickens and rabbits both have one head each, right? So the total number of heads is the sum of chickens and rabbits. Let me write that down. Let me call the number of chickens 'c' and the number of rabbits 'r'. So, the first equation would be:\n\nc + r = 35\n\nThat makes sense because each animal has one head. Now, for the legs. Chickens have 2 legs each, and rabbits have 4 legs each. So the total number of legs would be 2 times the number of chickens plus 4 times the number of rabbits. So the second equation is:\n\n2c + 4r = 94\n\nAlright, so now I have a system of two equations with two variables. I need to solve this system. Let me think about how to do that. Maybe substitution or elimination? Let me try substitution first. \n\nFrom the first equation, I can solve for one variable in terms of the other. Let me solve for 'c' in terms of 'r'. So:\n\nc = 35 - r\n\nThen I can substitute this into the second equation. Let me do that:\n\n2(35 - r) + 4r = 94\n\nLet me compute"
+    }
+   },
+   "seconds": 4240.9,
+   "peak_gb": 19.69
+  },
+  "q4": {
+   "info": {
+    "label": "Qwen3-8B, 4-bit (mlx-community)",
+    "repo": "mlx-community/Qwen3-8B-4bit",
+    "revision": "545dc4251c05440727734bcd94334791f6ab0192",
+    "quantization": {
+     "group_size": 64,
+     "bits": 4
+    },
+    "weight_bytes": 4607731712,
+    "bits_per_weight": 4.5
+   },
+   "targets": {
+    "det-en": {
+     "id": "det-en",
+     "thinking": false,
+     "prompt_tokens": 32,
+     "max_tokens": 256,
+     "output_tokens": 256,
+     "eos": false,
+     "tok_per_s": 67.29,
+     "alone": {
+      "reps": 20,
+      "distinct": 1,
+      "distinct_with_ref": 1,
+      "differ": 0,
+      "first": [
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null
+      ],
+      "first_median": null,
+      "first_min": null,
+      "gap": [],
+      "gap_median": null,
+      "gap_max": null,
+      "gap_zero": 0,
+      "to_second": 0
+     },
+     "alone_bg": {
+      "reps": 3,
+      "distinct": 1,
+      "distinct_with_ref": 2,
+      "differ": 3,
+      "first": 78,
+      "first_median": 78,
+      "first_min": 78,
+      "gap": [
+       0.0,
+       0.0,
+       0.0
+      ],
+      "gap_median": 0.0,
+      "gap_max": 0.0,
+      "gap_zero": 3,
+      "to_second": 3,
+      "note": "BatchGenerator with B = 1, against our own loop"
+     },
+     "gap_profile": {
+      "median": 4.25,
+      "zero": 6,
+      "below_0.13": 10,
+      "n": 256
+     },
+     "equal": {
+      "2": {
+       "reps": 8,
+       "distinct": 1,
+       "distinct_with_ref": 2,
+       "differ": 8,
+       "first": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+       ],
+       "first_median": 140.0,
+       "first_min": 140,
+       "gap": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+       ],
+       "gap_median": 0.25,
+       "gap_max": 0.25,
+       "gap_zero": 0,
+       "gap_n": 8,
+       "to_second": 8,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 140,
+        "alone": " the Index**:\n   - Use the hash value to compute an index in the array (modulo the array size).\n   - Example: `",
+        "batched": " the Index**:\n   - Use the hash value to compute the index in the array where the key-value pair should be stored.\n   -",
+        "gap": 0.25
+       }
+      },
+      "4": {
+       "reps": 8,
+       "distinct": 1,
+       "distinct_with_ref": 2,
+       "differ": 8,
+       "first": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+       ],
+       "first_median": 140.0,
+       "first_min": 140,
+       "gap": [
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25,
+        0.25
+       ],
+       "gap_median": 0.25,
+       "gap_max": 0.25,
+       "gap_zero": 0,
+       "gap_n": 8,
+       "to_second": 8,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 140,
+        "alone": " the Index**:\n   - Use the hash value to compute an index in the array (modulo the array size).\n   - Example: `",
+        "batched": " the Index**:\n   - Use the hash value to compute the index in the array where the key-value pair should be stored.\n   -",
+        "gap": 0.25
+       }
+      },
+      "8": {
+       "reps": 8,
+       "distinct": 1,
+       "distinct_with_ref": 2,
+       "differ": 8,
+       "first": [
+        78,
+        78,
+        78,
+        78,
+        78,
+        78,
+        78,
+        78
+       ],
+       "first_median": 78.0,
+       "first_min": 78,
+       "gap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "gap_median": 0.0,
+       "gap_max": 0.0,
+       "gap_zero": 8,
+       "gap_n": 8,
+       "to_second": 8,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 78,
+        "alone": " (Adding a Key-Value Pair)**\n\n### Step-by-Step:\n1. **Hash the Key**:\n   - Use a hash",
+        "batched": " (Adding a Key-Value Pair)**\n\n### Step-by-step:\n1. **Hash the Key**:\n   - Use a hash function",
+        "gap": 0.0
+       }
+      },
+      "16": {
+       "reps": 8,
+       "distinct": 1,
+       "distinct_with_ref": 2,
+       "differ": 8,
+       "first": [
+        102,
+        102,
+        102,
+        102,
+        102,
+        102,
+        102,
+        102
+       ],
+       "first_median": 102.0,
+       "first_min": 102,
+       "gap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "gap_median": 0.0,
+       "gap_max": 0.0,
+       "gap_zero": 8,
+       "gap_n": 8,
+       "to_second": 8,
+       "by_pad": {
+        "0": 1
+       },
+       "pads": 1,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 102,
+        "alone": " - Use a hash function to convert the key into a hash value (a number).\n   - Example: `hash(\"apple\") = ",
+        "batched": " - Use a hash function to convert the key into a hash code (a number).\n   - Example: `hash(\"apple\") = ",
+        "gap": 0.0
+       }
+      }
+     },
+     "padded": {
+      "2": {
+       "reps": 20,
+       "distinct": 5,
+       "distinct_with_ref": 6,
+       "differ": 20,
+       "first": [
+        107,
+        107,
+        166,
+        166,
+        166,
+        166,
+        166,
+        86,
+        10,
+        78,
+        107,
+        166,
+        107,
+        166,
+        78,
+        166,
+        166,
+        166,
+        166,
+        78
+       ],
+       "first_median": 166.0,
+       "first_min": 10,
+       "gap": [
+        0.125,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "gap_median": 0.0,
+       "gap_max": 0.125,
+       "gap_zero": 3,
+       "gap_n": 4,
+       "to_second": 1,
+       "by_pad": {
+        "0": 1,
+        "1": 1,
+        "2": 1,
+        "4": 1,
+        "7": 1,
+        "10": 1
+       },
+       "pads": 6,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        4,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        7,
+        10,
+        2,
+        4,
+        0,
+        4,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        1
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 107,
+        "alone": " into a hash value (a number).\n2. **Compute Index**: Use the hash value to compute an index in the array (e.g",
+        "batched": " into a hash value (a number).\n2. **Compute the Index**: Use the hash value to compute an index in the array (e",
+        "gap": null
+       }
+      },
+      "4": {
+       "reps": 20,
+       "distinct": 7,
+       "distinct_with_ref": 8,
+       "differ": 20,
+       "first": [
+        86,
+        86,
+        86,
+        86,
+        107,
+        107,
+        86,
+        86,
+        78,
+        86,
+        86,
+        78,
+        86,
+        86,
+        86,
+        86,
+        86,
+        86,
+        86,
+        86
+       ],
+       "first_median": 86.0,
+       "first_min": 78,
+       "gap": [
+        0.0,
+        0.0
+       ],
+       "gap_median": 0.0,
+       "gap_max": 0.0,
+       "gap_zero": 2,
+       "gap_n": 2,
+       "to_second": 0,
+       "by_pad": {
+        "0": 1,
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 1,
+        "7": 1,
+        "10": 1,
+        "13": 1
+       },
+       "pads": 9,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        7,
+        4,
+        2,
+        5,
+        1,
+        1,
+        7,
+        2,
+        0,
+        7,
+        10,
+        0,
+        4,
+        7,
+        5,
+        7,
+        4,
+        13,
+        4,
+        3
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 86,
+        "alone": "\n\n### Step-by-step:\n1. **Hash the Key**: Use a hash function to convert the key into a hash value (a number",
+        "batched": "\n\n### Step-by-step:\n1. **Hash the Key**:\n   - Use a hash function to convert the key into a hash value",
+        "gap": null
+       }
+      },
+      "8": {
+       "reps": 20,
+       "distinct": 6,
+       "distinct_with_ref": 7,
+       "differ": 20,
+       "first": [
+        166,
+        78,
+        10,
+        10,
+        78,
+        86,
+        78,
+        10,
+        78,
+        10,
+        10,
+        10,
+        107,
+        10,
+        10,
+        10,
+        10,
+        78,
+        107,
+        10
+       ],
+       "first_median": 10.0,
+       "first_min": 10,
+       "gap": [
+        0.0,
+        0.125,
+        0.125,
+        0.0,
+        0.0,
+        0.125,
+        0.0,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.125,
+        0.0,
+        0.125
+       ],
+       "gap_median": 0.125,
+       "gap_max": 0.125,
+       "gap_zero": 5,
+       "gap_n": 16,
+       "to_second": 11,
+       "by_pad": {
+        "2": 1,
+        "4": 1,
+        "5": 1,
+        "7": 1,
+        "9": 1,
+        "10": 1,
+        "13": 1
+       },
+       "pads": 7,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        9,
+        4,
+        7,
+        7,
+        4,
+        5,
+        2,
+        7,
+        4,
+        7,
+        7,
+        7,
+        13,
+        7,
+        7,
+        7,
+        7,
+        2,
+        10,
+        7
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 166,
+        "alone": "-value pair directly.\n   - If the index is already occupied (collision), handle the collision (see next section).\n4. **Insert the",
+        "batched": "-value pair directly.\n   - If the index is already occupied, a **collision** occurs.\n4. **Handle Collision**:\n   -",
+        "gap": null
+       }
+      },
+      "16": {
+       "reps": 20,
+       "distinct": 5,
+       "distinct_with_ref": 6,
+       "differ": 20,
+       "first": [
+        78,
+        86,
+        78,
+        78,
+        78,
+        78,
+        78,
+        78,
+        78,
+        78,
+        78,
+        78,
+        78,
+        78,
+        78,
+        98,
+        78,
+        78,
+        78,
+        78
+       ],
+       "first_median": 78.0,
+       "first_min": 78,
+       "gap": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "gap_median": 0.0,
+       "gap_max": 0.0,
+       "gap_zero": 18,
+       "gap_n": 18,
+       "to_second": 0,
+       "by_pad": {
+        "5": 1,
+        "7": 1,
+        "9": 1,
+        "10": 1,
+        "13": 1
+       },
+       "pads": 5,
+       "pads_with_several": 0,
+       "same_as_own_loop": 0,
+       "pad_when_differs": [
+        13,
+        9,
+        7,
+        10,
+        10,
+        13,
+        7,
+        10,
+        13,
+        13,
+        13,
+        13,
+        13,
+        13,
+        7,
+        5,
+        7,
+        13,
+        10,
+        7
+       ],
+       "pad_when_same": [],
+       "example": {
+        "at": 78,
+        "alone": " (Adding a Key-Value Pair)**\n\n### Step-by-step:\n1. **Hash the Key**: Use a hash function to convert the",
+        "batched": " (Adding a Key-Value Pair)**\n\n### Step-by-Step:\n1. **Hash the Key**:\n   - Use a hash",
+        "gap": 0.0
+       }
+      }
+     },
+     "text": "A **hash table** is a data structure that maps keys to values using a hash function. It efficiently handles **insertion**, **lookup**, **collisions**, and **resizing**. Here's a step-by-step explanation of how a hash table handles each of these operations.\n\n---\n\n## 🔹 1. **Insertion (Adding a Key-Value Pair)**\n\n### Step-by-Step:\n1. **Hash the Key**:\n   - Use a hash function to convert the key into a hash value (a number).\n   - Example: `hash(\"apple\") = 12345`.\n\n2. **Compute the Index**:\n   - Use the hash value to compute an index in the array (modulo the array size).\n   - Example: `index = hash(\"apple\") % array_size = 12345 % 1000 = 234`.\n\n3. **Check for Collision**:\n   - If the index is already occupied by another key, a **collision** occurs.\n\n4. **Handle the Collision**:\n   - **Chaining**: Store the key-value pair in a linked list at that index.\n   - **Open Addressing**: Find the next available slot using probing (e.g., linear"
+    }
+   },
+   "seconds": 1110.7,
+   "peak_gb": 6.99
+  }
+ },
+ "floor": {
+  "n": 200,
+  "batch": 16,
+  "alone_accuracy": 0.695,
+  "alone_again": {
+   "n10": 0,
+   "n01": 0,
+   "flips": 0,
+   "net": 0,
+   "answers_changed": 0
+  },
+  "orders": [
+   {
+    "accuracy": 0.7,
+    "unparsed": 3,
+    "n10": 0,
+    "n01": 1,
+    "flips": 1,
+    "net": 1,
+    "answers_changed": 1
+   },
+   {
+    "accuracy": 0.695,
+    "unparsed": 3,
+    "n10": 1,
+    "n01": 1,
+    "flips": 2,
+    "net": 0,
+    "answers_changed": 2
+   }
+  ],
+  "between_orders": {
+   "n10": 2,
+   "n01": 1,
+   "flips": 3,
+   "net": -1,
+   "answers_changed": 3
+  }
+ },
+ "rescored": "2026-11-27T17:44:39"
+}

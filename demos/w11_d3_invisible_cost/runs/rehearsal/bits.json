@@ -1,0 +1,883 @@
+{
+ "date": "2026-11-27T16:59:20",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "tiny": false,
+ "conditions": {
+  "note": "接電源、其他程式都關了",
+  "loadavg": [
+   2.23,
+   2.6,
+   2.96
+  ],
+  "power": "Now drawing from 'AC Power'"
+ },
+ "what": "(a) bits per weight: three rulers, one request at a time, greedy",
+ "source": {
+  "file": "w07_d4_dedup_decontam/data/mmlu_test.jsonl",
+  "repo": "cais/mmlu",
+  "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+  "license": "MIT",
+  "rows": 14042,
+  "subjects": [
+   "virology",
+   "human_aging",
+   "philosophy",
+   "sociology",
+   "public_relations",
+   "professional_medicine",
+   "international_law",
+   "astronomy",
+   "econometrics"
+  ],
+  "subjects_from": "probe.json (in band)",
+  "seed": 20261125,
+  "via": "w10_d3_hidden_hint/demo.py"
+ },
+ "instructions": {
+  "kinds": [
+   "words",
+   "zh_tw",
+   "json",
+   "bullets",
+   "avoid",
+   "ending"
+  ],
+  "per_kind": 20,
+  "opencc": true,
+  "rules": {
+   "words_max": 40,
+   "zh_min_han": 0.6,
+   "zh_max_simp": 0.02,
+   "json_keys": [
+    "answer",
+    "confidence"
+   ],
+   "ending_sentence": "Is there anything else I can help with?",
+   "min_units": 3,
+   "max_tokens": 320
+  }
+ },
+ "rows": {
+  "bf16": {
+   "key": "bf16",
+   "label": "bf16",
+   "main": true,
+   "info": {
+    "label": "Qwen3-8B, bf16",
+    "repo": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "quantization": null,
+    "weight_bytes": 16381470720,
+    "bits_per_weight": 16.0
+   },
+   "bpb": {
+    "zh": {
+     "bytes": 627,
+     "tokens": 166,
+     "nll_nats": 582.296,
+     "bpb": 1.3398,
+     "ppl": 33.375
+    },
+    "en": {
+     "bytes": 753,
+     "tokens": 165,
+     "nll_nats": 501.336,
+     "bpb": 0.9605,
+     "ppl": 20.872
+    },
+    "wiki": {
+     "bytes": 65536,
+     "tokens": 15272,
+     "nll_nats": 45179.498,
+     "bpb": 0.9946,
+     "ppl": 19.266
+    }
+   },
+   "mmlu": {
+    "n": 200,
+    "accuracy": 0.695,
+    "se": 0.0326,
+    "unparsed": 3
+   },
+   "instr": {
+    "n": 120,
+    "followed": 116,
+    "rate": 0.9667,
+    "by_kind": {
+     "words": {
+      "n": 20,
+      "followed": 18,
+      "cut": 0,
+      "silent": 0
+     },
+     "zh_tw": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "json": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "bullets": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "avoid": {
+      "n": 20,
+      "followed": 18,
+      "cut": 0,
+      "silent": 0
+     },
+     "ending": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     }
+    },
+    "cut": 0,
+    "silent": 0
+   },
+   "seconds": {
+    "bpb": 10.3,
+    "mmlu": 45.2,
+    "instr": 438.4
+   },
+   "peak_gb": 17.8
+  },
+  "8": {
+   "key": "8",
+   "label": "8",
+   "main": true,
+   "info": {
+    "label": "Qwen3-8B, bf16 → affine 8-bit",
+    "repo": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "quantization": null,
+    "quantized_here": {
+     "mode": "affine",
+     "bits": 8,
+     "group_size": 64
+    },
+    "weight_bytes": 8702945280,
+    "bits_per_weight": 8.5
+   },
+   "bpb": {
+    "zh": {
+     "bytes": 627,
+     "tokens": 166,
+     "nll_nats": 561.365,
+     "bpb": 1.2917,
+     "ppl": 29.421
+    },
+    "en": {
+     "bytes": 753,
+     "tokens": 165,
+     "nll_nats": 489.037,
+     "bpb": 0.937,
+     "ppl": 19.373
+    },
+    "wiki": {
+     "bytes": 65536,
+     "tokens": 15272,
+     "nll_nats": 44834.103,
+     "bpb": 0.987,
+     "ppl": 18.835
+    }
+   },
+   "mmlu": {
+    "n": 200,
+    "accuracy": 0.695,
+    "se": 0.0326,
+    "unparsed": 3,
+    "vs_bf16": {
+     "n10": 0,
+     "n01": 0,
+     "flips": 0,
+     "net": 0,
+     "answers_changed": 0
+    }
+   },
+   "instr": {
+    "n": 120,
+    "followed": 114,
+    "rate": 0.95,
+    "by_kind": {
+     "words": {
+      "n": 20,
+      "followed": 17,
+      "cut": 0,
+      "silent": 0
+     },
+     "zh_tw": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "json": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "bullets": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "avoid": {
+      "n": 20,
+      "followed": 17,
+      "cut": 0,
+      "silent": 0
+     },
+     "ending": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     }
+    },
+    "cut": 0,
+    "silent": 0,
+    "vs_bf16": {
+     "n10": 2,
+     "n01": 0,
+     "flips": 2,
+     "net": -2
+    },
+    "same_text": 47
+   },
+   "seconds": {
+    "bpb": 10.2,
+    "mmlu": 32.8,
+    "instr": 276.2
+   },
+   "peak_gb": 17.56
+  },
+  "6": {
+   "key": "6",
+   "label": "6",
+   "main": true,
+   "info": {
+    "label": "Qwen3-8B, bf16 → affine 6-bit",
+    "repo": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "quantization": null,
+    "quantized_here": {
+     "mode": "affine",
+     "bits": 6,
+     "group_size": 64
+    },
+    "weight_bytes": 6655338496,
+    "bits_per_weight": 6.5
+   },
+   "bpb": {
+    "zh": {
+     "bytes": 627,
+     "tokens": 166,
+     "nll_nats": 555.353,
+     "bpb": 1.2778,
+     "ppl": 28.375
+    },
+    "en": {
+     "bytes": 753,
+     "tokens": 165,
+     "nll_nats": 492.018,
+     "bpb": 0.9427,
+     "ppl": 19.726
+    },
+    "wiki": {
+     "bytes": 65536,
+     "tokens": 15272,
+     "nll_nats": 45125.85,
+     "bpb": 0.9934,
+     "ppl": 19.198
+    }
+   },
+   "mmlu": {
+    "n": 200,
+    "accuracy": 0.705,
+    "se": 0.0322,
+    "unparsed": 3,
+    "vs_bf16": {
+     "n10": 3,
+     "n01": 5,
+     "flips": 8,
+     "net": 2,
+     "answers_changed": 8
+    }
+   },
+   "instr": {
+    "n": 120,
+    "followed": 116,
+    "rate": 0.9667,
+    "by_kind": {
+     "words": {
+      "n": 20,
+      "followed": 18,
+      "cut": 0,
+      "silent": 0
+     },
+     "zh_tw": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "json": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "bullets": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "avoid": {
+      "n": 20,
+      "followed": 18,
+      "cut": 0,
+      "silent": 0
+     },
+     "ending": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     }
+    },
+    "cut": 0,
+    "silent": 0,
+    "vs_bf16": {
+     "n10": 1,
+     "n01": 1,
+     "flips": 2,
+     "net": 0
+    },
+    "same_text": 22
+   },
+   "seconds": {
+    "bpb": 10.9,
+    "mmlu": 32.0,
+    "instr": 272.0
+   },
+   "peak_gb": 17.4
+  },
+  "4": {
+   "key": "4",
+   "label": "4",
+   "main": true,
+   "info": {
+    "label": "Qwen3-8B, bf16 → affine 4-bit",
+    "repo": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "quantization": null,
+    "quantized_here": {
+     "mode": "affine",
+     "bits": 4,
+     "group_size": 64
+    },
+    "weight_bytes": 4607731712,
+    "bits_per_weight": 4.5
+   },
+   "bpb": {
+    "zh": {
+     "bytes": 627,
+     "tokens": 166,
+     "nll_nats": 619.682,
+     "bpb": 1.4259,
+     "ppl": 41.805
+    },
+    "en": {
+     "bytes": 753,
+     "tokens": 165,
+     "nll_nats": 550.965,
+     "bpb": 1.0556,
+     "ppl": 28.196
+    },
+    "wiki": {
+     "bytes": 65536,
+     "tokens": 15272,
+     "nll_nats": 46827.593,
+     "bpb": 1.0309,
+     "ppl": 21.461
+    }
+   },
+   "mmlu": {
+    "n": 200,
+    "accuracy": 0.695,
+    "se": 0.0326,
+    "unparsed": 7,
+    "vs_bf16": {
+     "n10": 9,
+     "n01": 9,
+     "flips": 18,
+     "net": 0,
+     "answers_changed": 25
+    }
+   },
+   "instr": {
+    "n": 120,
+    "followed": 118,
+    "rate": 0.9833,
+    "by_kind": {
+     "words": {
+      "n": 20,
+      "followed": 19,
+      "cut": 0,
+      "silent": 0
+     },
+     "zh_tw": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "json": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "bullets": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "avoid": {
+      "n": 20,
+      "followed": 19,
+      "cut": 0,
+      "silent": 0
+     },
+     "ending": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     }
+    },
+    "cut": 0,
+    "silent": 0,
+    "vs_bf16": {
+     "n10": 2,
+     "n01": 4,
+     "flips": 6,
+     "net": 2
+    },
+    "same_text": 1
+   },
+   "seconds": {
+    "bpb": 11.1,
+    "mmlu": 28.2,
+    "instr": 174.5
+   },
+   "peak_gb": 17.09
+  },
+  "3": {
+   "key": "3",
+   "label": "3",
+   "main": true,
+   "info": {
+    "label": "Qwen3-8B, bf16 → affine 3-bit",
+    "repo": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "quantization": null,
+    "quantized_here": {
+     "mode": "affine",
+     "bits": 3,
+     "group_size": 64
+    },
+    "weight_bytes": 3583928320,
+    "bits_per_weight": 3.5
+   },
+   "bpb": {
+    "zh": {
+     "bytes": 627,
+     "tokens": 166,
+     "nll_nats": 541.918,
+     "bpb": 1.2469,
+     "ppl": 26.169
+    },
+    "en": {
+     "bytes": 753,
+     "tokens": 165,
+     "nll_nats": 469.388,
+     "bpb": 0.8993,
+     "ppl": 17.198
+    },
+    "wiki": {
+     "bytes": 65536,
+     "tokens": 15272,
+     "nll_nats": 45039.093,
+     "bpb": 0.9915,
+     "ppl": 19.089
+    }
+   },
+   "mmlu": {
+    "n": 200,
+    "accuracy": 0.605,
+    "se": 0.0346,
+    "unparsed": 3,
+    "vs_bf16": {
+     "n10": 26,
+     "n01": 8,
+     "flips": 34,
+     "net": -18,
+     "answers_changed": 61
+    }
+   },
+   "instr": {
+    "n": 120,
+    "followed": 110,
+    "rate": 0.9167,
+    "by_kind": {
+     "words": {
+      "n": 20,
+      "followed": 18,
+      "cut": 0,
+      "silent": 0
+     },
+     "zh_tw": {
+      "n": 20,
+      "followed": 19,
+      "cut": 0,
+      "silent": 0
+     },
+     "json": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "bullets": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "avoid": {
+      "n": 20,
+      "followed": 13,
+      "cut": 0,
+      "silent": 0
+     },
+     "ending": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     }
+    },
+    "cut": 0,
+    "silent": 0,
+    "vs_bf16": {
+     "n10": 9,
+     "n01": 3,
+     "flips": 12,
+     "net": -6
+    },
+    "same_text": 0
+   },
+   "seconds": {
+    "bpb": 11.1,
+    "mmlu": 40.1,
+    "instr": 192.2
+   },
+   "peak_gb": 16.93
+  },
+  "2": {
+   "key": "2",
+   "label": "2",
+   "main": true,
+   "info": {
+    "label": "Qwen3-8B, bf16 → affine 2-bit",
+    "repo": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "quantization": null,
+    "quantized_here": {
+     "mode": "affine",
+     "bits": 2,
+     "group_size": 64
+    },
+    "weight_bytes": 2560124928,
+    "bits_per_weight": 2.501
+   },
+   "bpb": {
+    "zh": {
+     "bytes": 627,
+     "tokens": 166,
+     "nll_nats": 1417.396,
+     "bpb": 3.2614,
+     "ppl": 5107.841
+    },
+    "en": {
+     "bytes": 753,
+     "tokens": 165,
+     "nll_nats": 1278.061,
+     "bpb": 2.4487,
+     "ppl": 2311.893
+    },
+    "wiki": {
+     "bytes": 65536,
+     "tokens": 15272,
+     "nll_nats": 118804.868,
+     "bpb": 2.6153,
+     "ppl": 2390.507
+    }
+   },
+   "mmlu": {
+    "n": 200,
+    "accuracy": 0.015,
+    "se": 0.0086,
+    "unparsed": 178,
+    "vs_bf16": {
+     "n10": 136,
+     "n01": 0,
+     "flips": 136,
+     "net": -136,
+     "answers_changed": 191
+    }
+   },
+   "instr": {
+    "n": 120,
+    "followed": 20,
+    "rate": 0.1667,
+    "by_kind": {
+     "words": {
+      "n": 20,
+      "followed": 0,
+      "cut": 20,
+      "silent": 1
+     },
+     "zh_tw": {
+      "n": 20,
+      "followed": 0,
+      "cut": 20,
+      "silent": 1
+     },
+     "json": {
+      "n": 20,
+      "followed": 0,
+      "cut": 20,
+      "silent": 0
+     },
+     "bullets": {
+      "n": 20,
+      "followed": 0,
+      "cut": 20,
+      "silent": 1
+     },
+     "avoid": {
+      "n": 20,
+      "followed": 20,
+      "cut": 20,
+      "silent": 0
+     },
+     "ending": {
+      "n": 20,
+      "followed": 0,
+      "cut": 20,
+      "silent": 0
+     }
+    },
+    "cut": 120,
+    "silent": 3,
+    "vs_bf16": {
+     "n10": 98,
+     "n01": 2,
+     "flips": 100,
+     "net": -96
+    },
+    "same_text": 0
+   },
+   "seconds": {
+    "bpb": 10.3,
+    "mmlu": 36.4,
+    "instr": 455.4
+   },
+   "peak_gb": 16.77
+  },
+  "mxfp4:4:32": {
+   "key": "mxfp4:4:32",
+   "label": "mxfp4",
+   "main": false,
+   "info": {
+    "label": "Qwen3-8B, bf16 → mxfp4 4-bit",
+    "repo": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "quantization": null,
+    "quantized_here": {
+     "mode": "mxfp4",
+     "bits": 4,
+     "group_size": 32
+    },
+    "weight_bytes": 4351780864,
+    "bits_per_weight": 4.25
+   },
+   "bpb": {
+    "zh": {
+     "bytes": 627,
+     "tokens": 166,
+     "nll_nats": 439.118,
+     "bpb": 1.0104,
+     "ppl": 14.088
+    },
+    "en": {
+     "bytes": 753,
+     "tokens": 165,
+     "nll_nats": 485.968,
+     "bpb": 0.9311,
+     "ppl": 19.016
+    },
+    "wiki": {
+     "bytes": 65536,
+     "tokens": 15272,
+     "nll_nats": 42514.198,
+     "bpb": 0.9359,
+     "ppl": 16.18
+    }
+   },
+   "mmlu": {
+    "n": 200,
+    "accuracy": 0.69,
+    "se": 0.0327,
+    "unparsed": 2,
+    "vs_bf16": {
+     "n10": 11,
+     "n01": 10,
+     "flips": 21,
+     "net": -1,
+     "answers_changed": 24
+    }
+   },
+   "instr": {
+    "n": 120,
+    "followed": 115,
+    "rate": 0.9583,
+    "by_kind": {
+     "words": {
+      "n": 20,
+      "followed": 17,
+      "cut": 0,
+      "silent": 0
+     },
+     "zh_tw": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "json": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "bullets": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     },
+     "avoid": {
+      "n": 20,
+      "followed": 18,
+      "cut": 0,
+      "silent": 0
+     },
+     "ending": {
+      "n": 20,
+      "followed": 20,
+      "cut": 0,
+      "silent": 0
+     }
+    },
+    "cut": 0,
+    "silent": 0,
+    "vs_bf16": {
+     "n10": 3,
+     "n01": 2,
+     "flips": 5,
+     "net": -1
+    },
+    "same_text": 0
+   },
+   "seconds": {
+    "bpb": 9.8,
+    "mmlu": 24.1,
+    "instr": 167.5
+   },
+   "peak_gb": 17.05
+  }
+ },
+ "floor": {
+  "n": 200,
+  "batch": 16,
+  "alone_accuracy": 0.695,
+  "alone_again": {
+   "n10": 0,
+   "n01": 0,
+   "flips": 0,
+   "net": 0,
+   "answers_changed": 0
+  },
+  "orders": [
+   {
+    "accuracy": 0.7,
+    "unparsed": 3,
+    "n10": 0,
+    "n01": 1,
+    "flips": 1,
+    "net": 1,
+    "answers_changed": 1
+   },
+   {
+    "accuracy": 0.695,
+    "unparsed": 3,
+    "n10": 1,
+    "n01": 1,
+    "flips": 2,
+    "net": 0,
+    "answers_changed": 2
+   }
+  ],
+  "between_orders": {
+   "n10": 2,
+   "n01": 1,
+   "flips": 3,
+   "net": -1,
+   "answers_changed": 3
+  }
+ }
+}

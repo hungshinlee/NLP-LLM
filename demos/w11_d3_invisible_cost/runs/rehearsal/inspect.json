@@ -1,0 +1,152 @@
+{
+ "date": "2026-11-27T14:49:34",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "tiny": false,
+ "conditions": {
+  "note": "",
+  "loadavg": [
+   3.32,
+   3.14,
+   3.13
+  ],
+  "power": "Now drawing from 'AC Power'"
+ },
+ "checks": {
+  "_right_pad_prompts": [
+   "  809  def _right_pad_prompts(prompts, max_length=None):",
+   "  812      return mx.array([p + [0] * (max_length - len(p)) for p in prompts])"
+  ],
+  "PromptProcessingBatch.prompt": [
+   " 1184          padding = [max_length - l for l in lengths]",
+   " 1185          max_padding = max(padding)",
+   " 1189          if max_padding > 0:",
+   " 1192                  c.prepare(lengths=lengths, right_padding=padding)",
+   " 1204          # Finalize the cache if there was any padding",
+   " 1205          if max_padding > 0:",
+   " 1207                  c.finalize()"
+  ],
+  "BatchKVCache.finalize": [
+   "  951      def finalize(self):",
+   "  954              self.keys = dynamic_roll(self.keys, padding[:, None], axis=2)",
+   "  955              self.values = dynamic_roll(self.values, padding[:, None], axis=2)",
+   "  956              self.offset = self.offset - padding"
+  ],
+  "GenerationBatch._step": [
+   " 1367          logits = self.model(inputs[:, None], cache=self.prompt_cache)",
+   " 1395              sampled = (samplers[0] if samplers else self.fallback_sampler)(logprobs)",
+   " 1397              sampled = mx.concatenate("
+  ],
+  "BatchGenerator.__init__": [
+   " 1529          sampler: Optional[Sampler] = None,",
+   " 1539          self.sampler = sampler or greedy_sampler",
+   " 1555              self.sampler,",
+   " 1558          self._generation_batch = GenerationBatch.empty(self.model, self.sampler)"
+  ],
+  "span_directive_first": {
+   "prompt": 178,
+   "system": [
+    3,
+    149
+   ],
+   "parts": {
+    "role": [
+     3,
+     54
+    ],
+    "directive": [
+     54,
+     97
+    ],
+    "defense": [
+     98,
+     149
+    ]
+   }
+  },
+  "span_defense_first": {
+   "prompt": 178,
+   "system": [
+    3,
+    149
+   ],
+   "parts": {
+    "role": [
+     3,
+     54
+    ],
+    "defense": [
+     54,
+     105
+    ],
+    "directive": [
+     106,
+     149
+    ]
+   }
+  },
+  "loop_vs_generate_step": 31,
+  "loop_vs_BatchGenerator, B = 1": 31,
+  "q4_here_vs_file": {
+   "arrays_here": 907,
+   "arrays_file": 907,
+   "identical": 399,
+   "bpw": [
+    4.5,
+    4.5
+   ],
+   "file_quantization": {
+    "group_size": 64,
+    "bits": 4
+   },
+   "scales_dtype": [
+    "mlx.core.bfloat16"
+   ]
+  }
+ },
+ "pool": {
+  "file": "w07_d4_dedup_decontam/data/mmlu_test.jsonl",
+  "repo": "cais/mmlu",
+  "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+  "license": "MIT",
+  "rows": 14042,
+  "subjects": [
+   "virology",
+   "human_aging",
+   "philosophy",
+   "sociology",
+   "public_relations",
+   "professional_medicine",
+   "international_law",
+   "astronomy",
+   "econometrics"
+  ],
+  "subjects_from": "probe.json (in band)",
+  "seed": 20261125,
+  "via": "w10_d3_hidden_hint/demo.py"
+ },
+ "bf16": {
+  "label": "Qwen3-8B, bf16",
+  "repo": "Qwen/Qwen3-8B",
+  "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+  "quantization": null,
+  "weight_bytes": 16381470720,
+  "bits_per_weight": 16.0
+ }
+}

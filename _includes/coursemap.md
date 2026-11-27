@@ -23,7 +23,7 @@
 </div>
 <div class="cm-col">
 <div class="cm-part">Part III — Systems &amp; Scrutiny</div>
-<div class="cm-wk cm-soon"><span class="cm-n">W11</span><span class="cm-t">Inference efficiency</span></div>
+<a class="cm-wk" href="weeks/w11.html"><span class="cm-n">W11</span><span class="cm-t">Inference efficiency</span></a>
 <div class="cm-wk cm-soon"><span class="cm-n">W12</span><span class="cm-t">RAG</span></div>
 <div class="cm-wk cm-soon"><span class="cm-n">W13</span><span class="cm-t">Agentic systems</span></div>
 <div class="cm-wk cm-soon"><span class="cm-n">W14</span><span class="cm-t">Evaluation &amp; interp.</span></div>

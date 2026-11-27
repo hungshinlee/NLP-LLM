@@ -1,0 +1,196 @@
+{
+ "date": "2026-11-27T01:21:28",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "conditions": {
+  "note": "",
+  "loadavg": [
+   2.94,
+   3.11,
+   3.18
+  ],
+  "power": "Now drawing from 'AC Power'"
+ },
+ "tiny": false,
+ "models": {
+  "bf16": {
+   "info": {
+    "label": "Qwen3-8B, bf16",
+    "repo": "Qwen/Qwen3-8B",
+    "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+    "config": {
+     "d": 4096,
+     "d_ff": 12288,
+     "n_layer": 36,
+     "n_head": 32,
+     "n_kv": 8,
+     "d_head": 128,
+     "V": 151936,
+     "tied": false,
+     "max_position_embeddings": 40960
+    },
+    "counts": {
+     "per_layer_linear": 192937984,
+     "blocks": 6945767424,
+     "norms": 308224,
+     "embedding": 622329856,
+     "lm_head": 622329856,
+     "N": 8190735360
+    },
+    "weight_bytes": 16381470720,
+    "embedding_bytes": 1244659712,
+    "bits_per_weight": 16.0,
+    "quantization": null,
+    "kv_dtype": "mlx.core.bfloat16",
+    "kv_bytes_per_token": 147456,
+    "load_seconds": 4.03
+   },
+   "decode_ours": {
+    "B": 1,
+    "L_start": 32,
+    "n_gen": 64,
+    "kv_bits": 0,
+    "context": "distinct",
+    "tok_per_s": 33.853386141117845,
+    "per_seq_tok_per_s": 33.853386141117845,
+    "step_ms": 29.8676248639822,
+    "all_tok_per_s": [
+     33.376108050420235,
+     33.89305715338455,
+     33.853386141117845
+    ],
+    "kv_allocated_bytes": 37748736,
+    "peak_gb": 16.45011988,
+    "first_tokens_row0": [
+     198,
+     2132,
+     4977,
+     1075,
+     697,
+     1946,
+     374,
+     264
+    ],
+    "date": "2026-11-27T01:21:39"
+   },
+   "decode_mlx_lm": {
+    "generation_tps": 33.953745732171605,
+    "generation_tokens": 47,
+    "prompt_tps": 306.5865798126565,
+    "peak_memory_gb": 16.45043118
+   }
+  },
+  "q4": {
+   "info": {
+    "label": "Qwen3-8B, 4-bit",
+    "repo": "mlx-community/Qwen3-8B-4bit",
+    "revision": "545dc4251c05440727734bcd94334791f6ab0192",
+    "config": {
+     "d": 4096,
+     "d_ff": 12288,
+     "n_layer": 36,
+     "n_head": 32,
+     "n_kv": 8,
+     "d_head": 128,
+     "V": 151936,
+     "tied": false,
+     "max_position_embeddings": 40960
+    },
+    "counts": {
+     "per_layer_linear": 192937984,
+     "blocks": 6945767424,
+     "norms": 308224,
+     "embedding": 622329856,
+     "lm_head": 622329856,
+     "N": 8190735360
+    },
+    "weight_bytes": 4607731712,
+    "embedding_bytes": 350060544,
+    "bits_per_weight": 4.500432754306446,
+    "quantization": {
+     "group_size": 64,
+     "bits": 4
+    },
+    "kv_dtype": "mlx.core.bfloat16",
+    "kv_bytes_per_token": 147456,
+    "load_seconds": 0.64
+   },
+   "quantized_layer": {
+    "weight": [
+     "mlx.core.uint32",
+     [
+      12288,
+      512
+     ]
+    ],
+    "scales": [
+     "mlx.core.bfloat16",
+     [
+      12288,
+      64
+     ]
+    ],
+    "biases": [
+     "mlx.core.bfloat16",
+     [
+      12288,
+      64
+     ]
+    ],
+    "bits": 4,
+    "group_size": 64,
+    "mode": "affine"
+   },
+   "decode_ours": {
+    "B": 1,
+    "L_start": 32,
+    "n_gen": 64,
+    "kv_bits": 0,
+    "context": "distinct",
+    "tok_per_s": 109.88007125054148,
+    "per_seq_tok_per_s": 109.88007125054148,
+    "step_ms": 9.027708088979125,
+    "all_tok_per_s": [
+     109.06007318458775,
+     109.88007125054148,
+     111.51409128961912
+    ],
+    "kv_allocated_bytes": 37748736,
+    "peak_gb": 4.805503356,
+    "first_tokens_row0": [
+     82,
+     198,
+     32313,
+     11,
+     358,
+     1184,
+     311,
+     7071
+    ],
+    "date": "2026-11-27T01:21:45"
+   },
+   "decode_mlx_lm": {
+    "generation_tps": 111.91286184562244,
+    "generation_tokens": 64,
+    "prompt_tps": 689.1211331299457,
+    "peak_memory_gb": 4.80550336
+   }
+  }
+ }
+}

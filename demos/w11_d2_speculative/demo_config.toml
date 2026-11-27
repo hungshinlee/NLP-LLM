@@ -1,0 +1,104 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W11 demo 2（投影片 p45 前導頁、p46 示意圖、p47「Live: demo 2 (a)」、p49「Replay: demo 2 (b)」）的設定
+#
+# 改這個檔就能換模型、換網格，不必動程式。prompt 在 prompts.toml。
+
+[demo]
+title = "W11 · Demo 2 — speculative decoding: ten lines, five tests, then a sweep of the draft length"
+seed = 20261127
+# 每個 prompt 最多生成幾個 token（遇到 EOS 就停）。
+max_tokens = 160
+# chat template 的 enable_thinking。false：模型直接作答。
+enable_thinking = false
+# 預估的權重（target + 它的 draft）超過這個數就不載。
+memory_limit_gb = 48.0
+
+# ── (a) 五個測試的輸入（投影片 p42 的那一組）──────────────────
+[live]
+p = [0.5, 0.3, 0.15, 0.05]
+q = [0.4, 0.4, 0.1, 0.1]
+n_draws = 200000
+# 「取樣誤差內」= 每個 token 的差不超過 z 個標準差
+z = 4.0
+seed = 20261127
+
+# ── 模型 ──────────────────────────────────────────────────────
+# 四個都已經在 ../versions.lock（第三、八週下載的），不必再 fetch。三個尺寸共用同一個 tokenizer。
+[targets.bf16]
+repo = "Qwen/Qwen3-8B"
+label = "Qwen3-8B, bf16"
+revision = ""
+
+[targets.q4]
+repo = "mlx-community/Qwen3-8B-4bit"
+label = "Qwen3-8B, 4-bit"
+revision = ""
+
+[drafts.d06]
+repo = "Qwen/Qwen3-0.6B"
+label = "Qwen3-0.6B"
+revision = ""
+
+[drafts.d17]
+repo = "Qwen/Qwen3-1.7B"
+label = "Qwen3-1.7B"
+revision = ""
+
+# ── (b) 掃描：每個 target 一段 ────────────────────────────────
+# per_kind：code／en／zh 各用前幾個 prompt；tai_prompts：台語漢字的用前幾個。
+[sweep.bf16]
+drafts = ["d06", "d17"]
+gammas = [1, 2, 3, 4, 6, 8, 12]
+temperatures = [0.0, 0.6]
+per_kind = 20
+tai_prompts = 6
+
+[sweep.q4]
+drafts = ["d06"]
+gammas = [1, 2, 4, 8]
+temperatures = [0.0]
+per_kind = 5
+tai_prompts = 0
+
+[measure]
+# draft 單獨生成、量它一步的時間，用幾個 prompt（每一類輪流取）。
+draft_step_prompts = 12
+# 驗一趟的時間：context 先放這麼多個 token，再計時「一次餵 k 個 token」，k = 1 … 最大的 gamma + 1。
+verify_context_tokens = 128
+verify_repeats = 9
+# probe：每一類取幾個 prompt、哪幾個 gamma，用來估全套要多久。
+probe_per_kind = 1
+probe_gammas = [2, 8]
+
+# ── show（可選的現場版）：一個 prompt，先不用 draft、再用 ──────
+[show]
+target = "bf16"
+draft = "d06"
+gamma = 4
+prompt = "zh-03"
+temperature = 0.0
+
+# ── 對照用的數（投影片上的，test 會對）────────────────────────
+[reference]
+sum_min = 0.85
+sum_pq = 0.34
+wrong_redraw = [0.475, 0.345, 0.1225, 0.0575]
+# p48 的課堂練習：alpha、c → S(4)、S(8)、S(16)
+exercise = { alpha = 0.8, c = 0.05, S4 = 2.80, S8 = 3.09, S16 = 2.72 }
+# p48 的三條曲線：alpha、c、最好的 gamma、那裡的 S
+curves = [[0.8, 0.05, 8, 3.09], [0.8, 0.2, 4, 1.87], [0.6, 0.05, 4, 1.92]]
+# demo 1 的彩排紀錄（「驗一趟」的修正線讀它的 (b)：models.<target>.b.<B>.step_ms）
+demo1_record = "../w11_d1_two_roofs/runs/rehearsal/roofs.json"
+
+# ── tiny：亂數權重的小模型，不下載任何東西，只為了走一遍真的流程 ──
+[tiny]
+max_tokens = 48
+gammas = [1, 2, 4]
+temperatures = [0.0, 0.6]
+per_kind = 2
+tai_prompts = 1
+draft_step_prompts = 3
+verify_context_tokens = 24
+verify_repeats = 3
+# 小模型的 draft 是 target 的權重加雜訊：雜訊的標準差 = 這個數 × 各張量自己的標準差
+draft_noise = { d06 = 0.12, d17 = 0.05 }

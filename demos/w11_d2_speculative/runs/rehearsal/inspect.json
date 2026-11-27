@@ -1,0 +1,120 @@
+{
+ "date": "2026-11-27T09:22:10",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "conditions": {
+  "note": "",
+  "loadavg": [
+   2.27,
+   2.88,
+   3.2
+  ],
+  "power": "Now drawing from 'AC Power'"
+ },
+ "tiny": false,
+ "rule": {
+  "match_only_line_found": true,
+  "signature": "(prompt: mlx.core.array, model: mlx.nn.layers.base.Module, draft_model: mlx.nn.layers.base.Module, stream: mlx.core.Stream | mlx.core.ThreadLocalStream = ThreadLocalStream(Device(gpu, 0), 0), *, num_draft_tokens: int = 2, max_tokens: int = 256, sampler: Optional[Callable[[mlx.core.array], mlx.core.array]] = None, logits_processors: Optional[List[Callable[[mlx.core.array, mlx.core.array], mlx.core.array]]] = None, prompt_cache: Optional[Any] = None, prefill_step_size: int = 512, kv_bits: Optional[int] = None, kv_group_size: int = 64, quantized_kv_start: int = 5000) -> Generator[Tuple[mlx.core.array, mlx.core.array, bool], NoneType, NoneType]"
+ },
+ "models": {
+  "bf16": {
+   "label": "Qwen3-8B, bf16",
+   "repo": "Qwen/Qwen3-8B",
+   "revision": "b968826d9c46dd6066d109eabc6255188de91218",
+   "vocab_size": 151936,
+   "hidden_size": 4096,
+   "num_hidden_layers": 36,
+   "quantization": null,
+   "weight_bytes": 16381470720,
+   "n_arrays": 399
+  },
+  "d06": {
+   "label": "Qwen3-0.6B",
+   "repo": "Qwen/Qwen3-0.6B",
+   "revision": "c1899de289a04d12100db370d81485cdf75e47ca",
+   "vocab_size": 151936,
+   "hidden_size": 1024,
+   "num_hidden_layers": 28,
+   "quantization": null,
+   "weight_bytes": 1192099840,
+   "n_arrays": 310
+  },
+  "d17": {
+   "label": "Qwen3-1.7B",
+   "repo": "Qwen/Qwen3-1.7B",
+   "revision": "70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+   "vocab_size": 151936,
+   "hidden_size": 2048,
+   "num_hidden_layers": 28,
+   "quantization": null,
+   "weight_bytes": 3441149952,
+   "n_arrays": 310
+  }
+ },
+ "same_tokenizer": {
+  "d06": true,
+  "d17": true
+ },
+ "prompt_tokens": {
+  "code": {
+   "n": 20,
+   "min": 28,
+   "median": 37.0,
+   "max": 45
+  },
+  "en": {
+   "n": 20,
+   "min": 22,
+   "median": 26.0,
+   "max": 34
+  },
+  "zh": {
+   "n": 20,
+   "min": 27,
+   "median": 33.5,
+   "max": 45
+  },
+  "tai": {
+   "n": 6,
+   "min": 30,
+   "median": 34.0,
+   "max": 38
+  }
+ },
+ "self_draft": [
+  {
+   "gamma": 1,
+   "accepted": 80,
+   "tested": 80,
+   "first_divergence": null
+  },
+  {
+   "gamma": 4,
+   "accepted": 127,
+   "tested": 128,
+   "first_divergence": null
+  },
+  {
+   "gamma": 12,
+   "accepted": 137,
+   "tested": 138,
+   "first_divergence": 150
+  }
+ ]
+}

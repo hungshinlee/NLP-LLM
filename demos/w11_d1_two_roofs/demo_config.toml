@@ -1,0 +1,93 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W11 demo 1（投影片 p15 前導頁、p16 示意圖、p17「Live: demo 1 (a)」、p25「Replay: demo 1 (b), (c)」）的設定
+#
+# 改這個檔就能換模型、換網格，不必動程式。
+
+[demo]
+title = "W11 · Demo 1 — two roofs: measuring the roofline on this machine"
+seed = 20261127
+# 每個點：先跑 warmup 次不計時，再計時 repeats 次、取中位數。
+warmup = 1
+repeats = 3
+# prefill 分塊大小，與 mlx-lm generate_step 的 prefill_step_size 預設相同。
+prefill_step_size = 2048
+# decode 每次計時之前先走幾步不計時的。
+decode_warm_steps = 4
+# 預估的記憶體（權重 + 1.1 × KV）超過這個數的點不跑，表上記 skipped。
+# 這台機器 MLX 的 working set 上限約 55.7 GB（W8 demo 2 量到的）。
+memory_limit_gb = 48.0
+# 一批裡各條序列用不同的 prompt、一次 prefill（"distinct"）的上限；
+# 超過這個 token 數（B × L）就只 prefill 一條、把它的 KV 複製成 B 份（"tiled"）。
+distinct_token_budget = 8192
+
+# ── 模型：同一個模型的兩種存法 ─────────────────────────────────
+# 兩個都已經在 ../versions.lock（W8 demo 2 與 W3 demo 2 下載的），不必再 fetch。
+[models.bf16]
+repo = "Qwen/Qwen3-8B"
+label = "Qwen3-8B, bf16"
+revision = ""
+
+[models.q4]
+repo = "mlx-community/Qwen3-8B-4bit"
+label = "Qwen3-8B, 4-bit"
+revision = ""
+
+# ── (a) 兩個點 ────────────────────────────────────────────────
+[a]
+prefill_lengths = [64, 256, 1024, 4096, 16384]
+decode_prompt_tokens = 32
+decode_tokens = 64
+# 現場跑的那兩個數（p17）
+live_prefill_tokens = 1000
+live_decode_tokens = 64
+live_model = "bf16"
+
+# ── (b) batch 掃描，短 context ────────────────────────────────
+[b]
+batch_sizes = [1, 2, 4, 8, 16, 32, 64, 128]
+prompt_tokens = 32
+decode_tokens = 128
+
+# ── (c) 長 context ────────────────────────────────────────────
+[c]
+context_lengths = [1024, 4096, 16384]
+batch_sizes = [1, 4, 16]
+decode_tokens = 64
+# B = 1 時把 KV 存成幾 bit（0 = 不量化，就是 KV 原本的 dtype）
+kv_bits = [0, 8, 4]
+kv_group_size = 64
+
+# ── 對照用的數（不是這個 demo 量的）──────────────────────────
+[reference]
+# Apple 的新聞稿（2026-03-03）：M5 Max 的 unified memory bandwidth "up to 614GB/s"。規格，不是量測。
+bw_spec_bytes_per_s = 614e9
+# 投影片 p13 的下界：2N × tokens/s，W3 demo 2（2026-09-29，Llama 3.1 8B 4-bit，1,024 個 token 的 prefill）。
+fmax_w3_flops_per_s = 6.0162e13
+fmax_w3_src = "W3 demo 2: 2 x 8,030,261,248 x 3,745.98 tokens/s"
+
+# test 不載模型時用的形狀（Qwen3-8B 的 config.json；W8 demo 2 對過 safetensors）。
+[reference.qwen3_8b]
+d = 4096
+d_ff = 12288
+n_layer = 36
+n_head = 32
+n_kv = 8
+d_head = 128
+V = 151936
+tied = false
+N = 8190735360
+
+# ── tiny：亂數權重的小模型，不下載任何東西，只為了走一遍真的流程 ──
+[tiny]
+prefill_lengths = [16, 64, 256]
+decode_prompt_tokens = 8
+decode_tokens = 16
+live_prefill_tokens = 100
+live_decode_tokens = 16
+b_batch_sizes = [1, 2, 4, 8]
+b_prompt_tokens = 8
+b_decode_tokens = 16
+c_context_lengths = [64, 300]
+c_batch_sizes = [1, 4]
+c_decode_tokens = 8
+distinct_token_budget = 128

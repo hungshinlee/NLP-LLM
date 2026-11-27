@@ -1,0 +1,48 @@
+{
+ "date": "2026-11-27T14:51:32",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "tiny": false,
+ "conditions": {
+  "note": "",
+  "loadavg": [
+   4.16,
+   3.43,
+   3.24
+  ],
+  "power": "Now drawing from 'AC Power'"
+ },
+ "seconds": {
+  "question": 0.09478551149368286,
+  "instruction": 3.5611965656280518,
+  "evict_message": 18.00691056251526,
+  "det_alone": 8.513972997665405,
+  "det_batch": {
+   "2": 8.317594766616821,
+   "4": 8.811399936676025,
+   "8": 10.317631959915161,
+   "16": 16.37979006767273
+  }
+ },
+ "estimate_minutes": {
+  "det": 65.05730774005254,
+  "bits": 59.068413853645325,
+  "evict": 18.00691056251526
+ }
+}
