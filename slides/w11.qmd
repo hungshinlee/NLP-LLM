@@ -647,7 +647,7 @@ Lemma 3.3, Thm 3.5, Cor. 3.6 · match-only: mlx-lm at 872ae88, read 2026-11-26 �
 :::
 
 ::: {.footer}
-Demo 2 · `demos/w11_d2_speculative` · not built yet (2026-11-26)
+Demo 2 · `demos/w11_d2_speculative` · built 2026-11-27, not rehearsed yet
 :::
 
 ## Demo 2: how it runs
@@ -659,7 +659,7 @@ Top row: nothing but two lists of four numbers. Bottom row: three real models, a
 :::
 
 ::: {.footer}
-Demo 2 · `demos/w11_d2_speculative` · drawn from the outline's spec; redrawn once built
+Demo 2 · `demos/w11_d2_speculative` · checked against the program, 2026-11-27
 :::
 
 ## Live: demo 2 (a) — ten lines, five tests
@@ -675,7 +675,7 @@ Demo 2 · `demos/w11_d2_speculative` · drawn from the outline's spec; redrawn o
 : {tbl-colwidths="[44,40,16]"}
 
 ::: {.footer}
-Demo 2 (a) · numpy only, no model · not built yet (2026-11-26): the last column is filled in live
+Demo 2 (a) · numpy only, no model · built 2026-11-27, not rehearsed: last column filled in live
 :::
 
 ## Tokens per round, the speed-up, the best $\gamma$
@@ -708,7 +708,7 @@ Before the rows appear: which draft wins — the cheap one or the accurate one? 
 :::
 
 ::: {.footer}
-Demo 2 (b) · not built yet (2026-11-26): filled in from rehearsal
+Demo 2 (b) · built 2026-11-27, not rehearsed: filled in from rehearsal
 :::
 
 ## Why it pays: the verification rides on an idle bench
@@ -1320,7 +1320,7 @@ This week: what a token costs. Next week: which tokens are worth paying for.
 
 **Distillation** · Hinton, Vinyals & Dean, arXiv:1503.02531 (2015; NIPS 2014 Deep Learning Workshop) · Agarwal et al., *GKD*, ICLR 2024 (arXiv:2306.13649) · Gu et al., *MiniLLM*, ICLR 2024 (arXiv:2306.08543) · Lu & Thinking Machines Lab, *On-Policy Distillation*, 2025-10-27 — **a blog post**
 
-**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The roof on p11–p13 is an estimate from **a vendor specification (614 GB/s) and a number measured in W3**. From p17 on, both roofs are **measured in demo 1** (Qwen3-8B bf16, 2026-11-27: $6.8 \times 10^{13}$ FLOPs/s counting $2N$ per token, 549 GB/s); $B^{*}$, $L_c$ and every point on p21, p23, p27 and p84 follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p67 are ours. **Demo 1 was rehearsed on 2026-11-27** (`demos/w11_d1_two_roofs`); **demos 2 and 3 have not been built yet**: the tables on p47, p49, p66, p69 and p75 are empty until rehearsal. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
+**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The roof on p11–p13 is an estimate from **a vendor specification (614 GB/s) and a number measured in W3**. From p17 on, both roofs are **measured in demo 1** (Qwen3-8B bf16, 2026-11-27: $6.8 \times 10^{13}$ FLOPs/s counting $2N$ per token, 549 GB/s); $B^{*}$, $L_c$ and every point on p21, p23, p27 and p84 follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p67 are ours. **Demo 1 was rehearsed on 2026-11-27** (`demos/w11_d1_two_roofs`); **demo 2 is built, not yet rehearsed; demo 3 is not built yet**: the tables on p47, p49, p66, p69 and p75 are empty until rehearsal. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
 :::
 
 ## Acronyms in this deck, A–M
