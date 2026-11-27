@@ -647,7 +647,7 @@ Lemma 3.3, Thm 3.5, Cor. 3.6 · match-only: mlx-lm at 872ae88, read 2026-11-26 �
 :::
 
 ::: {.footer}
-Demo 2 · `demos/w11_d2_speculative` · built 2026-11-27, not rehearsed yet
+Demo 2 · `demos/w11_d2_speculative` · rehearsed 2026-11-27
 :::
 
 ## Demo 2: how it runs
@@ -675,7 +675,7 @@ Demo 2 · `demos/w11_d2_speculative` · checked against the program, 2026-11-27
 : {tbl-colwidths="[44,40,16]"}
 
 ::: {.footer}
-Demo 2 (a) · numpy only, no model · built 2026-11-27, not rehearsed: last column filled in live
+Demo 2 (a) · numpy only, no model · rehearsed 2026-11-27: the last column is filled in live
 :::
 
 ## Tokens per round, the speed-up, the best $\gamma$
@@ -694,21 +694,29 @@ Leviathan et al., Eq. (1) and Theorem 3.8 · assumes one verification pass costs
 
 ## Replay: demo 2 (b) — sweep $\gamma$ on real models
 
-| Target: Qwen3-8B, bf16 | $c$ | share kept, $T = 0$ | share kept, $T = 0.6$ | best $\gamma$ | speed-up | Theorem 3.8 says |
-|:---|---:|---:|---:|---:|---:|---:|
-| draft: Qwen3-0.6B | | | | | | |
-| draft: Qwen3-1.7B | | | | | | |
-| 0.6B, code only | | | | | | |
-| 0.6B, Traditional Chinese only | | | | | | |
-
-: {tbl-colwidths="[28,9,14,14,10,11,14]"}
-
 ::: {.ask}
 Before the rows appear: which draft wins — the cheap one or the accurate one? And on which kind of text are drafts kept least?
 :::
 
+::: {.fragment}
+| Target: Qwen3-8B, bf16 | $c$ | $\alpha$, $T = 0$ | $\alpha$, $T = 0.6$ | best $\gamma$ | speed-up | Theorem 3.8 says |
+|:---|---:|---:|---:|---:|---:|---:|
+| draft: Qwen3-0.6B | 0.13 | 0.71 | 0.67 | 4 | $1.73\times$ | $1.87\times$ |
+| draft: Qwen3-1.7B | 0.27 | 0.79 | 0.77 | 3 | $1.52\times$ | $1.62\times$ |
+| 0.6B, code only | 0.13 | 0.84 | 0.81 | 4 | $2.08\times$ | $2.41\times$ |
+| 0.6B, Traditional Chinese only | 0.13 | 0.63 | 0.59 | 3 | $1.61\times$ | $1.64\times$ |
+
+: {tbl-colwidths="[28,9,14,14,10,11,14]"}
+:::
+
+::: {.fragment}
+::: {.claim}
+**The cheap draft wins.** Up to $\gamma = 4$ the machine runs 4–7% under the theorem. At $\gamma = 12$ the theorem says $1.37\times$ and the machine says $0.91\times$.
+:::
+:::
+
 ::: {.footer}
-Demo 2 (b) · built 2026-11-27, not rehearsed: filled in from rehearsal
+Demo 2 (b) · rehearsed 2026-11-27 · $\alpha$: share of checked drafts kept · last three columns at $T = 0$
 :::
 
 ## Why it pays: the verification rides on an idle bench
@@ -772,7 +780,7 @@ Misconception 9: "middle layers can be removed, so they are redundant" · W4 p38
 - **batched speculative decoding**: each sequence accepts a different number of drafts. Position ids, attention masks and the KV cache must all be realigned — the "ragged tensor" problem
 - Zhang et al. (Findings of EMNLP 2026): several widely used batched implementations **silently produce corrupted output** — invisible when only throughput is measured
 - **MoE targets**: the prediction from expert saturation does not hold for fine-grained models (Ranjan et al., NeurIPS 2026)
-- **the draft is a model of some language**: on Traditional Chinese and Taiwanese text we expect fewer drafts kept — **no literature to cite; demo 2 measures it**
+- **the draft is a model of some language**: in demo 2, $\alpha$ was 0.84 on code, 0.72 on English, 0.63 on Traditional Chinese, 0.54 on Taiwanese prompts — **our measurement, one model pair; no literature to cite**
 
 ::: {.claim}
 The theorem guarantees the algorithm. **Whether a system delivers it is an empirical question** — and throughput is the wrong metric to ask.
@@ -1320,7 +1328,7 @@ This week: what a token costs. Next week: which tokens are worth paying for.
 
 **Distillation** · Hinton, Vinyals & Dean, arXiv:1503.02531 (2015; NIPS 2014 Deep Learning Workshop) · Agarwal et al., *GKD*, ICLR 2024 (arXiv:2306.13649) · Gu et al., *MiniLLM*, ICLR 2024 (arXiv:2306.08543) · Lu & Thinking Machines Lab, *On-Policy Distillation*, 2025-10-27 — **a blog post**
 
-**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The roof on p11–p13 is an estimate from **a vendor specification (614 GB/s) and a number measured in W3**. From p17 on, both roofs are **measured in demo 1** (Qwen3-8B bf16, 2026-11-27: $6.8 \times 10^{13}$ FLOPs/s counting $2N$ per token, 549 GB/s); $B^{*}$, $L_c$ and every point on p21, p23, p27 and p84 follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p67 are ours. **Demo 1 was rehearsed on 2026-11-27** (`demos/w11_d1_two_roofs`); **demo 2 is built, not yet rehearsed; demo 3 is not built yet**: the tables on p47, p49, p66, p69 and p75 are empty until rehearsal. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
+**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The roof on p11–p13 is an estimate from **a vendor specification (614 GB/s) and a number measured in W3**. From p17 on, both roofs are **measured in demo 1** (Qwen3-8B bf16, 2026-11-27: $6.8 \times 10^{13}$ FLOPs/s counting $2N$ per token, 549 GB/s); $B^{*}$, $L_c$ and every point on p21, p23, p27 and p84 follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p67 are ours. The table on p49 and the four shares on p53 are **measured in demo 2**. **Demos 1 and 2 were rehearsed on 2026-11-27** (`demos/w11_d1_two_roofs`, `demos/w11_d2_speculative`); **demo 3 is not built yet**: the tables on p66, p69 and p75 are empty until rehearsal, and the last column of p47 is filled in live. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
 :::
 
 ## Acronyms in this deck, A–M
