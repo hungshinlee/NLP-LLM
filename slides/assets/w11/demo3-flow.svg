@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 468" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-demo3-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="26" font-size="23" fill="#0b5cad" text-anchor="start" font-weight="700">(a) the same model at six precisions</text><rect x="20" y="38" width="270" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="74" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">six copies</text><text x="38" y="106" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">bf16, 8, 6, 4, 3, 2 bits</text><line x1="293" y1="93" x2="316" y2="93" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="320" y="38" width="330" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="338" y="74" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">three rulers each</text><text x="338" y="106" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">bits per byte · 200 MMLU</text><text x="338" y="136" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">items · 120 instructions</text><line x1="653" y1="93" x2="676" y2="93" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="680" y="38" width="270" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="698" y="74" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">against bf16</text><text x="698" y="106" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">accuracy, and the</text><text x="698" y="136" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="43.3" lengthAdjust="spacing">flips</text><svg x="747.558" y="115.028" width="37.812" height="26.7116" viewBox="0 0 37.812 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t216-figure_1">
-  <g id="t216-patch_1">
+ <g id="t209-figure_1">
+  <g id="t209-patch_1">
    <path d="M 0 26.711625 
 L 37.812 26.711625 
 L 37.812 0 
@@ -11,11 +11,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t216-text_1">
+  <g id="t209-text_1">
    <!-- $n_{10}$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t216-Cmmi10-6e" d="M 494 109 
+     <path id="t209-Cmmi10-6e" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -68,7 +68,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t216-Cmr10-31" d="M 594 0 
+     <path id="t209-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -84,7 +84,7 @@ L 2694 0
 L 594 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t216-Cmr10-30" d="M 1600 -141 
+     <path id="t209-Cmr10-30" d="M 1600 -141 
 Q 816 -141 533 504 
 Q 250 1150 250 2041 
 Q 250 2597 351 3087 
@@ -115,17 +115,17 @@ Q 1325 25 1600 25
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t216-Cmmi10-6e" transform="translate(0 0.8125)"/>
-    <use xlink:href="#t216-Cmr10-31" transform="translate(60.009766 -16.19375) scale(0.7)"/>
-    <use xlink:href="#t216-Cmr10-30" transform="translate(95.009766 -16.19375) scale(0.7)"/>
+    <use xlink:href="#t209-Cmmi10-6e" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t209-Cmr10-31" transform="translate(60.009766 -16.19375) scale(0.7)"/>
+    <use xlink:href="#t209-Cmr10-30" transform="translate(95.009766 -16.19375) scale(0.7)"/>
    </g>
   </g>
  </g>
 </svg><text x="785.37" y="136" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="6.8" lengthAdjust="spacing">,</text><svg x="798.357" y="115.028" width="37.812" height="26.7116" viewBox="0 0 37.812 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t217-figure_1">
-  <g id="t217-patch_1">
+ <g id="t210-figure_1">
+  <g id="t210-patch_1">
    <path d="M 0 26.711625 
 L 37.812 26.711625 
 L 37.812 0 
@@ -134,11 +134,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t217-text_1">
+  <g id="t210-text_1">
    <!-- $n_{01}$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t217-Cmmi10-6e" d="M 494 109 
+     <path id="t210-Cmmi10-6e" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -191,7 +191,7 @@ Q 606 -72 550 -22
 Q 494 28 494 109 
 z
 " transform="scale(0.015625)"/>
-     <path id="t217-Cmr10-30" d="M 1600 -141 
+     <path id="t210-Cmr10-30" d="M 1600 -141 
 Q 816 -141 533 504 
 Q 250 1150 250 2041 
 Q 250 2597 351 3087 
@@ -221,7 +221,7 @@ Q 991 484 1158 254
 Q 1325 25 1600 25 
 z
 " transform="scale(0.015625)"/>
-     <path id="t217-Cmr10-31" d="M 594 0 
+     <path id="t210-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -238,17 +238,17 @@ L 594 0
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t217-Cmmi10-6e" transform="translate(0 0.8125)"/>
-    <use xlink:href="#t217-Cmr10-30" transform="translate(60.009766 -16.19375) scale(0.7)"/>
-    <use xlink:href="#t217-Cmr10-31" transform="translate(95.009766 -16.19375) scale(0.7)"/>
+    <use xlink:href="#t210-Cmmi10-6e" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t210-Cmr10-30" transform="translate(60.009766 -16.19375) scale(0.7)"/>
+    <use xlink:href="#t210-Cmr10-31" transform="translate(95.009766 -16.19375) scale(0.7)"/>
    </g>
   </g>
  </g>
 </svg><line x1="953" y1="93" x2="976" y2="93" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="980" y="38" width="240" height="110" rx="8" fill="#fff" stroke="#dc2626" stroke-width="1.6"/><text x="998" y="74" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">row by row</text><text x="998" y="106" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">which row moves</text><text x="998" y="136" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">first: ?</text><rect x="980" y="38" width="240" height="110" rx="8" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/><g class="fragment" data-fragment-index="1"><text x="20" y="182" font-size="23" fill="#b45309" text-anchor="start" font-weight="700">(b) evict part of the prompt's KV</text><rect x="20" y="194" width="290" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="230" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">a system prompt</text><text x="38" y="262" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">one instruction to obey,</text><text x="38" y="292" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">one forbidding a leak</text><line x1="313" y1="249" x2="322" y2="249" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo3-flow)"/><rect x="326" y="194" width="322" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="344" y="230" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">evict part of it</text><text x="344" y="262" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="81.3" lengthAdjust="spacing">a share</text><svg x="431.517" y="241.028" width="12.696" height="26.7116" viewBox="0 0 12.696 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t218-figure_1">
-  <g id="t218-patch_1">
+ <g id="t211-figure_1">
+  <g id="t211-patch_1">
    <path d="M 0 26.711625 
 L 12.696 26.711625 
 L 12.696 0 
@@ -257,11 +257,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t218-text_1">
+  <g id="t211-text_1">
    <!-- $r$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t218-Cmmi10-72" d="M 494 109 
+     <path id="t211-Cmmi10-72" d="M 494 109 
 Q 494 147 500 166 
 L 978 2075 
 Q 1025 2253 1025 2388 
@@ -299,7 +299,7 @@ Q 494 28 494 109
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t218-Cmmi10-72" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t211-Cmmi10-72" transform="translate(0 0.8125)"/>
    </g>
   </g>
  </g>

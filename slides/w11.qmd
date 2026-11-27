@@ -45,7 +45,7 @@ format:
           </script>
 ---
 
-# Reading a thousand tokens takes under a second. Writing a thousand takes a minute. Why? {.section-title}
+# Reading a thousand tokens takes under a second. Writing a thousand takes half a minute. Why? {.section-title}
 
 ## Where we are: week 11 of 14
 
@@ -97,7 +97,7 @@ Outline W11 · Learning objectives 1–8
 ## One question before we start — two numbers, one kind of forward pass
 
 ::: {.ask}
-On this machine an 8B model **reads** a 1,000-token prompt in about **0.3 s**. It **writes** 1,000 tokens in about **70 s**. The same weights, the same forward pass. **Where do the other 69 seconds go?**
+On this machine an 8B model **reads** a 1,000-token prompt in about **0.25 s**. It **writes** 1,000 tokens in about **30 s**. The same weights, the same forward pass. **Where does the rest of the half-minute go?**
 :::
 
 - write down **one guess** — and what your guess predicts if the chip's arithmetic became twice as fast
@@ -105,7 +105,7 @@ On this machine an 8B model **reads** a 1,000-token prompt in about **0.3 s**. I
 - keep the two predictions: p14 checks them against a real pair of chips
 
 ::: {.footer}
-0.27 s: W3 demo 2, Llama 3.1 8B 4-bit · 14.1 tokens/s: W10 demo 1, Qwen3-8B bf16 · two runs
+Qwen3-8B, bf16, one run: 4,100 tokens/s reading, 33.5 writing · demo 1 (a), rehearsed 2026-11-27
 :::
 
 ## Notation for today: FLOPs, bytes, and bytes per second
@@ -159,7 +159,7 @@ Williams, Waterman & Patterson, *CACM* 2009: the roofline model · the numbers: 
 
 ::: {.fragment fragment-index=3}
 ::: {.claim}
-**Three orders of magnitude apart, with the ridge between them.** And the roof is a bound, not a forecast: the measured point sits below it.
+**Three orders of magnitude apart, with the ridge between them.** And the roof is a bound, not a forecast: where the model actually lands has to be measured.
 :::
 :::
 
@@ -178,12 +178,12 @@ $$I^{*} = \frac{F_{\max}}{\text{BW}} \;\gtrsim\; \frac{6.0 \times 10^{13}\ \text
 
 ::: {.fragment}
 ::: {.claim}
-**Measured last week, bf16: 14.1 tokens/s — 38% of the bound.** The roof says where the ceiling is, not where the model will land.
+**The roof says where the ceiling is, not where the model will land.** And both inputs are borrowed — a specification, and a number from another model. Demo 1 measures them.
 :::
 :::
 
 ::: {.footer}
-BW: Apple's press release, a specification · $F_{\max}$: W3 demo 2, a measured lower bound
+BW: Apple's press release, a specification · $F_{\max}$: W3 demo 2, counting $2N$ FLOPs per token
 :::
 
 ## A natural experiment: the same models on a faster chip
@@ -220,7 +220,7 @@ Apple ML Research blog, 2025-11-19 — not a paper; the base M5, not this machin
 :::
 
 ::: {.footer}
-Demo 1 · `demos/w11_d1_two_roofs` · built 2026-11-27, not rehearsed yet
+Demo 1 · `demos/w11_d1_two_roofs` · rehearsed 2026-11-27
 :::
 
 ## Demo 1: how it runs
@@ -238,20 +238,22 @@ Demo 1 · `demos/w11_d1_two_roofs` · checked against `demo.py`, 2026-11-27
 ## Live: demo 1 (a) — one model, two numbers
 
 ::: {.ask}
-Before the numbers appear: per token, how many times slower is writing than reading on this machine — $3\times$, $30\times$, or $300\times$?
+Before the numbers appear: per token, how many times slower is writing than reading on this machine — $10\times$, $100\times$, or $1{,}000\times$?
 :::
 
-| Qwen3-8B | tokens per second | converted | share of p13's roof |
+::: {.fragment}
+| Qwen3-8B | tokens per second | converted | against p13 |
 |:---|---:|---:|---:|
-| **prefill**, 1,000 tokens, bf16 | | FLOPs/s: | |
-| **decode**, 64 tokens, $B = 1$, bf16 | | bytes/s: | |
-| **prefill**, 1,000 tokens, 4-bit | | FLOPs/s: | |
-| **decode**, 64 tokens, $B = 1$, 4-bit | | bytes/s: | |
+| **prefill**, 1,000 tokens, bf16 | 4,100 | $6.8 \times 10^{13}$ FLOPs/s | $1.14\times$ its $F_{\max}$ |
+| **decode**, 64 tokens, $B = 1$, bf16 | 33.5 | 549 GB/s | 89% of 614 GB/s |
+| **prefill**, 1,000 tokens, 4-bit | 2,223 | $3.7 \times 10^{13}$ FLOPs/s | $0.62\times$ |
+| **decode**, 64 tokens, $B = 1$, 4-bit | 104 | 479 GB/s | 78% |
 
-: {tbl-colwidths="[40,20,20,20]"}
+: {tbl-colwidths="[40,18,24,18]"}
+:::
 
 ::: {.footer}
-Demo 1 (a) · built 2026-11-27, not rehearsed: filled in live, then from rehearsal
+Demo 1 (a) · rehearsed 2026-11-27, median of three runs (prefill at 1,024 tokens) · run live first
 :::
 
 ## "It fits in 64 GB, so it will be fast"
@@ -261,7 +263,7 @@ Demo 1 (a) · built 2026-11-27, not rehearsed: filled in live, then from rehears
 - the two are separate limits. More memory changes the first and leaves the second where it was
 
 ::: {.claim}
-This machine has room for the bf16 model almost four times over. At batch 1 it still cannot write more than **37.5 tokens a second** — and writes 14.
+This machine has room for the bf16 model almost four times over. At batch 1 it still cannot write more than **37.5 tokens a second** — and writes 33.5, nine-tenths of that.
 :::
 
 ::: {.footer}
@@ -294,24 +296,24 @@ Sixteen sequences decoded together instead of one: how many times the total toke
 {{< include assets/w11/batch.inline.qmd >}}
 
 ::: {.fragment fragment-index=3}
-$$\text{short context: } I \approx \frac{2B}{b_{\text{w}}} = I^{*} \;\Longrightarrow\; B^{*} = \frac{I^{*}\,b_{\text{w}}}{2} \approx 98\ \text{(bf16)},\quad 28\ \text{(4-bit)}$$
+$$\text{short context: } I \approx \frac{2B}{b_{\text{w}}} = I^{*} \;\Longrightarrow\; B^{*} = \frac{I^{*}\,b_{\text{w}}}{2} \approx 125\ \text{(bf16)},\quad 35\ \text{(4-bit)}$$
 :::
 
 ::: {.footer}
-the lines are upper bounds for this machine, from p13's two numbers
+the lines are upper bounds from the two roofs measured in demo 1 (a) · points: demo 1 (b)
 :::
 
 ## "Decode is memory-bound, so batching is free"
 
 | batch $B$ | tokens/s, all sequences | against $B = 1$ | each sequence's own speed |
 |---:|---:|---:|---:|
-| 1 | 14.1 | $1.0\times$ | 14.1 tokens/s |
-| 8 | 70.3 | $5.0\times$ | 8.8 tokens/s |
-| 16 | 104 | $7.4\times$ | 6.5 tokens/s |
+| 1 | 33.0 | $1.0\times$ | 33.0 tokens/s |
+| 8 | 245 | $7.4\times$ | 30.7 tokens/s |
+| 16 | 293 | $8.9\times$ | 18.3 tokens/s |
 
 : {tbl-colwidths="[16,30,24,30]"}
 
-- **compute** — past $B^{*}$ the bench is full; more sequences only queue
+- **compute** — past $B^{*}$ the bench is full; and the kernels may stop keeping up long before that
 - **the KV** — each sequence brings its own cache, and nobody shares it (next slide)
 - **latency** — every sequence in the batch waits for the whole step
 
@@ -320,7 +322,7 @@ the lines are upper bounds for this machine, from p13's two numbers
 :::
 
 ::: {.footer}
-Misconception 3 · W10 demo 1's probe, 2026-11-23: long reasoning chains, not a clean run
+Misconception 3 · demo 1 (b), rehearsed 2026-11-27: bf16, short context, greedy
 :::
 
 ## The second boundary: a long context cannot be batched away
@@ -328,7 +330,7 @@ Misconception 3 · W10 demo 1's probe, 2026-11-23: long reasoning chains, not a 
 {{< include assets/w11/lc.inline.qmd >}}
 
 ::: {.fragment fragment-index=2}
-$$\lim_{B \to \infty} I = \frac{2N}{M_{\text{KV}}(L)} + \frac{2\,n_{\text{head}}}{n_{\text{kv}}\,b_{\text{kv}}} = I^{*} \;\Longrightarrow\; L_c \approx \frac{2N}{(I^{*} - 4)\cdot 147{,}456} \approx 1.2 \times 10^{3}\ \text{tokens}$$
+$$\lim_{B \to \infty} I = \frac{2N}{M_{\text{KV}}(L)} + \frac{2\,n_{\text{head}}}{n_{\text{kv}}\,b_{\text{kv}}} = I^{*} \;\Longrightarrow\; L_c \approx \frac{2N}{(I^{*} - 4)\cdot 147{,}456} \approx 920\ \text{tokens}$$
 :::
 
 ::: {.footer}
@@ -361,18 +363,20 @@ W3 p33 · W5 p49, p52 · W6 p54 · KIVI: ICML 2024 · KVQuant: NeurIPS 2024 · N
 Two predictions to check: the line bends near $B^{*}$; past $L_c$ a larger batch buys little. Which one do you trust less?
 :::
 
-| | $B = 1$ | $4$ | $16$ | $64$ | $128$ |
+::: {.fragment}
+| tokens/s, all sequences | $B = 1$ | $4$ | $16$ | $64$ | $128$ |
 |:---|---:|---:|---:|---:|---:|
-| **(b)** short context, bf16 — tokens/s | | | | | |
-| **(b)** short context, 4-bit | | | | | |
-| **(c)** $L = 4\text{k}$, 4-bit | | | | — | — |
-| **(c)** $L = 16\text{k}$, 4-bit | | | | — | — |
-| **(c)** $L = 16\text{k}$, KV at 4 bits | | — | — | — | — |
+| **(b)** short context, bf16 | 33.0 | 136 | 293 | 1,034 | 1,539 |
+| **(b)** short context, 4-bit | 81.2 | 207 | 347 | 847 | 1,461 |
+| **(c)** $L = 4\text{k}$, 4-bit | 84.5 | 159 | 221 | — | — |
+| **(c)** $L = 16\text{k}$, 4-bit | 53.8 | 85.2 | 108 | — | — |
+| **(c)** $L = 16\text{k}$, KV at 4 bits | 60.8 | — | — | — | — |
 
 : {tbl-colwidths="[40,12,12,12,12,12]"}
+:::
 
 ::: {.footer}
-Demo 1 (b), (c) · built 2026-11-27, not rehearsed: filled in from rehearsal · "—": not run
+Demo 1 (b), (c) · rehearsed 2026-11-27, median of three runs · "—": not run
 :::
 
 ## MoE in the same formula: the union of experts
@@ -813,9 +817,9 @@ a sketch · quantization-aware training and low-precision training are a differe
 ## "A 4-bit model computes in 4 bits"
 
 - **weight-only quantization stores 4 bits and computes in bf16**: every forward pass decodes the codes back before multiplying
-- what it saves is **bytes moved** — so decode gets faster, and a larger model fits. The FLOPs are the same
+- what it saves is **bytes moved** — so decode gets faster, and a larger model fits. The FLOPs are the same, plus the decoding: demo 1's 4-bit prefill ran at $0.54\times$
 - the files this course has used since W3: groups of 64 weights, each group with its own scale and offset — $4 + 32/64 = 4.5$ bits per weight
-- on the roofline: $I$ goes from 1 to 3.6, the decode bound from 37.5 to 133 tokens/s — and $B^{*}$ from 98 to 28
+- on the roofline: $I$ goes from 1 to 3.6, the decode bound from 37.5 to 133 tokens/s — and $B^{*}$ from 125 to 35
 
 ::: {.claim}
 Multiplying *in* low precision — INT8, FP8, NVFP4 — needs hardware that has the format. **This machine can store those formats. It cannot compute in them.**
@@ -894,7 +898,7 @@ NVIDIA, arXiv:2509.25149, Table 1 — a company report: a 12B model, 10 trillion
 - the other term under the line: $B\,M_{\text{KV}}(L)$, with $b_{\text{kv}}$ bytes per element — and past $L_c$ it is the larger one
 - **KIVI** (ICML 2024): keys and values have different statistics — quantize **keys per channel, values per token**. At 2 bits, $2.6\times$ less peak memory, weights included
 - **KVQuant** (NeurIPS 2024): quantize the keys **before** the rotary position embedding is applied
-- on this machine: `--kv-bits` in mlx-lm — demo 1 (c) measures whether the step actually gets faster
+- on this machine: `--kv-bits` in mlx-lm — demo 1 (c): the KV shrank to 28% of its bytes; the step time barely moved
 
 ::: {.claim}
 Quantizing the cache keeps **every token** — each one remembered less exactly. Hold on to that: the next part meets methods that do not.
@@ -1171,10 +1175,10 @@ Misconception 16: "efficiency is unrelated to safety" · Kadadekar: one author, 
 ## The opening question, answered
 
 ::: {.ask}
-p7 asked: reading 1,000 tokens takes 0.3 s, writing 1,000 takes 70 s. The same weights, the same forward pass. Where do the other 69 seconds go?
+p7 asked: reading 1,000 tokens takes 0.25 s, writing 1,000 takes 30 s. The same weights, the same forward pass. Where does the rest of the half-minute go?
 :::
 
-- **into moving bytes.** Reading uses each weight 1,000 times per trip from memory; writing uses it once. On this machine a trip buys about 100 operations — writing uses one of them
+- **into moving bytes.** Reading uses each weight 1,000 times per trip from memory; writing uses it once. On this machine a trip buys about 125 operations — writing uses one of them
 - **what moves fewer bytes per token**: a batch; fewer bits per weight; a smaller KV; several tokens verified per trip (p27)
 - **what each costs**: nothing, if the output distribution is provably unchanged (p43); precision (p58); or something the usual metric does not show — flips, a lost instruction, a different run of "the same" request (p67, p70, p73)
 - **or a smaller model**: every cell shrinks, and the cost moves to training (p79)
@@ -1209,7 +1213,7 @@ W10 p72–p73's rows, a unit each · last week's test-time row: decode at $B = k
 :::
 
 ::: {.footer}
-our arithmetic, Qwen3-8B · the two roofs are p13's, to be replaced by demo 1's numbers
+our arithmetic, Qwen3-8B · the two roofs: measured in demo 1 (a)
 :::
 
 ## Three axes, week 11
@@ -1316,7 +1320,7 @@ This week: what a token costs. Next week: which tokens are worth paying for.
 
 **Distillation** · Hinton, Vinyals & Dean, arXiv:1503.02531 (2015; NIPS 2014 Deep Learning Workshop) · Agarwal et al., *GKD*, ICLR 2024 (arXiv:2306.13649) · Gu et al., *MiniLLM*, ICLR 2024 (arXiv:2306.08543) · Lu & Thinking Machines Lab, *On-Policy Distillation*, 2025-10-27 — **a blog post**
 
-**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The two roofs on p11–p13, p21, p23, p27 and p84 are **a vendor specification (614 GB/s) and a lower bound measured in W3** — not one measurement; $B^{*}$, $L_c$ and every point on the roofline follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p67 are ours. **Demo 1 was built on 2026-11-27 and has not been rehearsed; demos 2 and 3 have not been built yet**: the tables on p17, p25, p47, p49, p66, p69 and p75 are empty until rehearsal. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
+**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The roof on p11–p13 is an estimate from **a vendor specification (614 GB/s) and a number measured in W3**. From p17 on, both roofs are **measured in demo 1** (Qwen3-8B bf16, 2026-11-27: $6.8 \times 10^{13}$ FLOPs/s counting $2N$ per token, 549 GB/s); $B^{*}$, $L_c$ and every point on p21, p23, p27 and p84 follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p67 are ours. **Demo 1 was rehearsed on 2026-11-27** (`demos/w11_d1_two_roofs`); **demos 2 and 3 have not been built yet**: the tables on p47, p49, p66, p69 and p75 are empty until rehearsal. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
 :::
 
 ## Acronyms in this deck, A–M
