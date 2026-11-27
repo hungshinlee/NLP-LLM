@@ -76,7 +76,7 @@ W10 p42, p73, p77 · W3 p37–p38 — no new numbers
 :::
 
 ::: {.footer}
-half-time: p37 · board: p13, p20, p33–p34, p43, p58, p67, p73 · live: p17, p47, p75
+half-time: p37 · board: p13, p20, p33–p34, p43, p59, p68, p74 · live: p17, p47, p76
 :::
 
 ## What you should be able to do by the end of today
@@ -140,7 +140,7 @@ the ledger's $b$ splits into $b_{\text{w}}$ and $b_{\text{kv}}$ today · $p$, $q
 :::
 
 ::: {.footer}
-a metaphor for today · where it fails: p12, p54, p36
+a metaphor for today · where it fails: p12, p55, p36
 :::
 
 ## Arithmetic intensity, and a roof in two pieces
@@ -404,7 +404,7 @@ the union argument is our arithmetic · Ranjan et al., NeurIPS 2026: ten sparse 
 :::
 
 ::: {.footer}
-Misconception 5: "LoRA, MoE, quantization, distillation all shrink the model" · table: p79
+Misconception 5: "LoRA, MoE, quantization, distillation all shrink the model" · table: p80
 :::
 
 # The batch is the biggest knob. Users arrive one at a time — where does it come from? {.section-title}
@@ -543,7 +543,7 @@ So far: **where** a token's time goes, and the one knob a serving system turns w
 :::
 
 ::: {.footer}
-p5's route · first half: p9–p36 · second half: p38–p80
+p5's route · first half: p9–p36 · second half: p38–p81
 :::
 
 # Can a speed-up change how tokens are produced — and nothing about which tokens? {.section-title}
@@ -557,7 +557,7 @@ p5's route · first half: p9–p36 · second half: p38–p80
 | **The question** | A decode step leaves the arithmetic units idle. Can one pass of the large model settle **more than one token** — without changing what it would have written? |
 | **The idea** | A small **draft** model writes $\gamma$ tokens. The large **target** model scores all of them in **one pass**. An acceptance rule keeps a prefix of the drafts and corrects the first one it rejects. |
 | **What it added** | A theorem, not a heuristic: the output is distributed **exactly** as the target's own samples. No retraining, no change to either model. |
-| **What it leaves open** | How often drafts are kept, and the best $\gamma$ (p44, p48); when it stops paying (p51); whether an implementation keeps the promise (p53). |
+| **What it leaves open** | How often drafts are kept, and the best $\gamma$ (p44, p48); when it stops paying (p52); whether an implementation keeps the promise (p54). |
 :::
 
 ::: {.footer}
@@ -709,14 +709,22 @@ Before the rows appear: which draft wins — the cheap one or the accurate one? 
 : {tbl-colwidths="[28,9,14,14,10,11,14]"}
 :::
 
-::: {.fragment}
+::: {.footer}
+Demo 2 (b) · rehearsed 2026-11-27 · $\alpha$: share of checked drafts kept · last three columns at $T = 0$
+:::
+
+## Measured against the theorem: it holds up to $\gamma = 4$
+
+{{< include assets/w11/demo2-measured.inline.qmd >}}
+
+::: {.fragment fragment-index=3}
 ::: {.claim}
 **The cheap draft wins.** Up to $\gamma = 4$ the machine runs 4–7% under the theorem. At $\gamma = 12$ the theorem says $1.37\times$ and the machine says $0.91\times$.
 :::
 :::
 
 ::: {.footer}
-Demo 2 (b) · rehearsed 2026-11-27 · $\alpha$: share of checked drafts kept · last three columns at $T = 0$
+Demo 2 (b) · dashed: Theorem 3.8 with each draft's measured $\alpha$ and $c$
 :::
 
 ## Why it pays: the verification rides on an idle bench
@@ -801,7 +809,7 @@ Zhang et al., arXiv:2510.22876 · Ranjan et al., arXiv:2610.38981 · both read a
 | **The question** | Decode moves $N\,b_{\text{w}}$ bytes per step. Can $b_{\text{w}}$ fall from 2 bytes to about half a byte — and the model still behave? |
 | **The idea** | Replace each weight by an **integer code** on a small grid, plus one **scale** per group of weights. A small calibration set decides the grid; then it is thrown away. |
 | **What it added** | The knob $b_{\text{w}}$: fewer bytes per step, a model that fits where it did not. **The same FLOPs.** |
-| **What it leaves open** | Which weights matter (p59); how low it can go (p60–p61); and "still behave" — measured how? (part 6) |
+| **What it leaves open** | Which weights matter (p60); how low it can go (p61–p62); and "still behave" — measured how? (part 6) |
 :::
 
 ::: {.footer}
@@ -819,7 +827,7 @@ GPTQ: arXiv:2210.17323 · AWQ: arXiv:2306.00978 · W1 p25: this compresses the c
 :::
 
 ::: {.footer}
-a sketch · quantization-aware training and low-precision training are a different picture: p61
+a sketch · quantization-aware training and low-precision training are a different picture: p62
 :::
 
 ## "A 4-bit model computes in 4 bits"
@@ -1114,7 +1122,7 @@ Demo 3 (c) · not built yet (2026-11-26) · MLX documents no batch invariance: t
 | **the saving** | several tokens per pass of the large model | fewer KV entries per sequence |
 | **what it promises** | the output distribution is unchanged — a theorem | "negligible loss" on the benchmarks reported |
 | **the metric used** | walltime; the acceptance rate $\alpha$ | benchmark accuracy — then per-instruction accuracy and leakage |
-| **what that metric cannot see** | a broken implementation (p53) | which instruction was lost |
+| **what that metric cannot see** | a broken implementation (p54) | which instruction was lost |
 
 : {tbl-colwidths="[24,38,38]"}
 
@@ -1166,8 +1174,8 @@ Only distillation makes **every** cell smaller — and it is the only one that n
 ## Efficiency meets oversight: four collisions
 
 - **shorter reasoning**: a length penalty to save tokens makes chain-of-thought less monitorable (W10 p65)
-- **KV eviction**: the instruction that fails first can be the one **guarding against a leak** (Chen et al., p70)
-- **KV eviction again**: the answer survives, the evidence for it does not (Ai et al., p71)
+- **KV eviction**: the instruction that fails first can be the one **guarding against a leak** (Chen et al., p71)
+- **KV eviction again**: the answer survives, the evidence for it does not (Ai et al., p72)
 - **batching**: whether one prompt is refused can change with the batch it lands in — for about 0.16% of prompts; with batch-invariant kernels, 0 of 55 re-tested cases (Kadadekar, an ICML 2026 workshop paper)
 
 ::: {.claim}
@@ -1188,8 +1196,8 @@ p7 asked: reading 1,000 tokens takes 0.25 s, writing 1,000 takes 30 s. The same 
 
 - **into moving bytes.** Reading uses each weight 1,000 times per trip from memory; writing uses it once. On this machine a trip buys about 125 operations — writing uses one of them
 - **what moves fewer bytes per token**: a batch; fewer bits per weight; a smaller KV; several tokens verified per trip (p27)
-- **what each costs**: nothing, if the output distribution is provably unchanged (p43); precision (p58); or something the usual metric does not show — flips, a lost instruction, a different run of "the same" request (p67, p70, p73)
-- **or a smaller model**: every cell shrinks, and the cost moves to training (p79)
+- **what each costs**: nothing, if the output distribution is provably unchanged (p43); precision (p59); or something the usual metric does not show — flips, a lost instruction, a different run of "the same" request (p68, p71, p74)
+- **or a smaller model**: every cell shrinks, and the cost moves to training (p80)
 
 ::: {.footer}
 compare with your guess from p7 · the route's stations: p37 for the first three
@@ -1229,7 +1237,7 @@ our arithmetic, Qwen3-8B · the two roofs: measured in demo 1 (a)
 ::: {.prose}
 | Axis | This week |
 |:---|:---|
-| **Representation** | the unit is **a bit**: how many bits one weight, or one KV element, is stored in — who decides (a hardware format), and what it costs downstream (p67–p71) |
+| **Representation** | the unit is **a bit**: how many bits one weight, or one KV element, is stored in — who decides (a hardware format), and what it costs downstream (p68–p72) |
 | **Compute** | **the whole lecture.** "FLOPs-bound or bandwidth-bound?" — asked every week since W2 — now has a formula, two boundaries and a picture |
 | **Supervision** | no new entry. Distillation is supervised by **another model**: W9 filed it next to the verifiable reward |
 :::
@@ -1292,7 +1300,7 @@ W1 p19–p20 · W10 p71 · the criticism line has no station this week; part 6 i
 - today the KV cache became something to ship, store and reuse (p36). Next week: **what to put in the context in the first place**
 
 ::: {.ask}
-Before then: **Leviathan et al.**, in full, with **Chen et al., §3–§4**. For each paper one sentence on what its evaluation metric rewards; then one measurement that would catch what it misses (p76).
+Before then: **Leviathan et al.**, in full, with **Chen et al., §3–§4**. For each paper one sentence on what its evaluation metric rewards; then one measurement that would catch what it misses (p77).
 :::
 
 ::: {.claim}
@@ -1328,38 +1336,38 @@ This week: what a token costs. Next week: which tokens are worth paying for.
 
 **Distillation** · Hinton, Vinyals & Dean, arXiv:1503.02531 (2015; NIPS 2014 Deep Learning Workshop) · Agarwal et al., *GKD*, ICLR 2024 (arXiv:2306.13649) · Gu et al., *MiniLLM*, ICLR 2024 (arXiv:2306.08543) · Lu & Thinking Machines Lab, *On-Policy Distillation*, 2025-10-27 — **a blog post**
 
-**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The roof on p11–p13 is an estimate from **a vendor specification (614 GB/s) and a number measured in W3**. From p17 on, both roofs are **measured in demo 1** (Qwen3-8B bf16, 2026-11-27: $6.8 \times 10^{13}$ FLOPs/s counting $2N$ per token, 549 GB/s); $B^{*}$, $L_c$ and every point on p21, p23, p27 and p84 follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p67 are ours. The table on p49 and the four shares on p53 are **measured in demo 2**. **Demos 1 and 2 were rehearsed on 2026-11-27** (`demos/w11_d1_two_roofs`, `demos/w11_d2_speculative`); **demo 3 is not built yet**: the tables on p66, p69 and p75 are empty until rehearsal, and the last column of p47 is filled in live. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
+**Numbers and demos** · every computed number is in `assets/w11/w11-data.json` (`scripts/make_demo_w11.py`). The roof on p11–p13 is an estimate from **a vendor specification (614 GB/s) and a number measured in W3**. From p17 on, both roofs are **measured in demo 1** (Qwen3-8B bf16, 2026-11-27: $6.8 \times 10^{13}$ FLOPs/s counting $2N$ per token, 549 GB/s); $B^{*}$, $L_c$ and every point on p21, p23, p27 and p85 follow from them and are **our arithmetic**. The speed-up curves on p48, the four-token example on p42 and the counts on p68 are ours. The table on p49, the curves on p50 and the four shares on p54 are **measured in demo 2**. **Demos 1 and 2 were rehearsed on 2026-11-27** (`demos/w11_d1_two_roofs`, `demos/w11_d2_speculative`); **demo 3 is not built yet**: the tables on p67, p70 and p76 are empty until rehearsal, and the last column of p47 is filled in live. No CUDA on the demo machine: vLLM, FP8 and NVFP4 cannot run on it.
 :::
 
 ## Acronyms in this deck, A–M
 
 | | |
 |:----|:----------------|
-| AWQ | activation-aware weight quantization, Lin et al. 2024 (p55) |
+| AWQ | activation-aware weight quantization, Lin et al. 2024 (p56) |
 | bf16 | bfloat16, a 16-bit floating-point format (W8) |
 | FLOPs | floating-point operations (W1) |
-| GPTQ | a method name, Frantar et al. 2023; the paper does not expand it (p55) |
+| GPTQ | a method name, Frantar et al. 2023; the paper does not expand it (p56) |
 | GQA | grouped-query attention (W3) |
 | H$_2$O | Heavy-Hitter Oracle, Zhang et al. 2023 (W5) |
-| INT8, FP8 | 8-bit integer, 8-bit floating point (p57) |
+| INT8, FP8 | 8-bit integer, 8-bit floating point (p58) |
 | KL | Kullback–Leibler (divergence) (W8) |
 | KV | key–value (cache) (W3) |
 | LoRA | low-rank adaptation (W8) |
 | MLA | multi-head latent attention (W3) |
 | MoE | mixture of experts (W6) |
-| MXFP4, MXFP8 | microscaling block floating-point formats, 4- and 8-bit (p61) |
+| MXFP4, MXFP8 | microscaling block floating-point formats, 4- and 8-bit (p62) |
 
 ## Acronyms in this deck, N–T
 
 | | |
 |:----|:----------------|
 | NSA | native sparse attention, Yuan et al. 2025 (W5) |
-| NVFP4 | a 4-bit block floating-point format with an 8-bit floating-point scale per block of 16 (p61) |
-| PTQ | post-training quantization (p55) |
-| QAT | quantization-aware training (p61) |
-| RAG | retrieval-augmented generation (p89; W12) |
+| NVFP4 | a 4-bit block floating-point format with an 8-bit floating-point scale per block of 16 (p62) |
+| PTQ | post-training quantization (p56) |
+| QAT | quantization-aware training (p62) |
+| RAG | retrieval-augmented generation (p90; W12) |
 | RoPE | rotary position embedding (W5) |
-| ROUGE-L | Recall-Oriented Understudy for Gisting Evaluation, the longest-common-subsequence variant (p69) |
+| ROUGE-L | Recall-Oriented Understudy for Gisting Evaluation, the longest-common-subsequence variant (p70) |
 | SLO | service-level objective: the latency targets a service promises (p29) |
 | SSM | state space model (W6) |
 | TPOT | time per output token (p29) |
