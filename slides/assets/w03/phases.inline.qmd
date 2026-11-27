@@ -1721,7 +1721,7 @@ z
    </g>
   </g>
  </g>
-</svg><text x="377.061" y="270" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="238.5" lengthAdjust="spacing">entries per layer (p43)</text><text x="24" y="304" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="395.7" lengthAdjust="spacing">the mask works here: attention costs</text><svg x="425.873" y="283.028" width="131.376" height="26.7116" viewBox="0 0 131.376 26.711625"><defs>
+</svg><text x="377.061" y="270" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="238.5" lengthAdjust="spacing">entries per layer (p45)</text><text x="24" y="304" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="395.7" lengthAdjust="spacing">the mask works here: attention costs</text><svg x="425.873" y="283.028" width="131.376" height="26.7116" viewBox="0 0 131.376 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t239-figure_1">
@@ -1930,7 +1930,7 @@ z
    </g>
   </g>
  </g>
-</svg><text x="563.459" y="304" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="56.9" lengthAdjust="spacing">(p42)</text><text x="24" y="338" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="151.8" lengthAdjust="spacing">training keeps</text><svg x="181.976" y="317.028" width="19.044" height="26.7116" viewBox="0 0 19.044 26.711625"><defs>
+</svg><text x="563.459" y="304" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="56.9" lengthAdjust="spacing">(p44)</text><text x="24" y="338" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="151.8" lengthAdjust="spacing">training keeps</text><svg x="181.976" y="317.028" width="19.044" height="26.7116" viewBox="0 0 19.044 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t240-figure_1">
@@ -1984,7 +1984,7 @@ z
    </g>
   </g>
  </g>
-</svg><text x="207.23" y="338" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="415.9" lengthAdjust="spacing">for backward — or recomputes it (p45)</text><line x1="742" y1="20" x2="742" y2="362" stroke="#d1d5db" stroke-width="1.2" stroke-dasharray="4 4"/><g class="fragment" data-fragment-index="1"><text x="766" y="30" font-size="23" fill="#15803d" text-anchor="start" font-weight="700">decode: one query, L cached keys</text><rect x="766" y="100" width="62" height="36" rx="5" fill="#dcfce7" stroke="#15803d" stroke-width="1.6"/><svg x="789.686" y="105.028" width="14.628" height="26.7116" viewBox="0 0 14.628 26.711625"><defs>
+</svg><text x="207.23" y="338" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="415.9" lengthAdjust="spacing">for backward — or recomputes it (p47)</text><line x1="742" y1="20" x2="742" y2="362" stroke="#d1d5db" stroke-width="1.2" stroke-dasharray="4 4"/><g class="fragment" data-fragment-index="1"><text x="766" y="30" font-size="23" fill="#15803d" text-anchor="start" font-weight="700">decode: one query, L cached keys</text><rect x="766" y="100" width="62" height="36" rx="5" fill="#dcfce7" stroke="#15803d" stroke-width="1.6"/><svg x="789.686" y="105.028" width="14.628" height="26.7116" viewBox="0 0 14.628 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t241-figure_1">
@@ -3389,5 +3389,5 @@ z
    </g>
   </g>
  </g>
-</svg><text x="1067.01" y="304" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="121.9" lengthAdjust="spacing">bytes (p37)</text><text x="766" y="338" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">nothing kept for a backward pass</text></g></svg>
+</svg><text x="1067.01" y="304" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="121.9" lengthAdjust="spacing">bytes (p39)</text><text x="766" y="338" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">nothing kept for a backward pass</text></g></svg>
 ```

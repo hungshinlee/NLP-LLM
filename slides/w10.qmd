@@ -62,7 +62,7 @@ format:
 :::
 
 ::: {.footer}
-W1 p20 · W9 p42, p64, p70, p74 — no new numbers
+W1 p20 · W9 p43, p67, p73, p77 — no new numbers
 :::
 
 ## Today's route: two halves, seven questions
@@ -76,7 +76,7 @@ W1 p20 · W9 p42, p64, p70, p74 — no new numbers
 :::
 
 ::: {.footer}
-half-time: p46 · board: p32, p49 · live: p18, p39, p57
+half-time: p48 · board: p33, p51 · live: p19, p41, p60
 :::
 
 ## What you should be able to do by the end of today
@@ -102,10 +102,10 @@ The same model, the same question. Asked to answer directly, it is **wrong**. As
 
 - write **two different accounts** of what happened
 - for each one: **what would it predict** if we replaced the lines with something else — dots, a paraphrase, the same lines cut short?
-- keep your two lines: p70 comes back to them
+- keep your two lines: p73 comes back to them
 
 ::: {.footer}
-W9 p74 · part 1 answers it; part 6 answers it again, differently
+W9 p77 · part 1 answers it; part 6 answers it again, differently
 :::
 
 ## Notation for today: an answer in two parts, and a coin
@@ -143,7 +143,7 @@ last week's best-of-$n$ is today's best-of-$k$ · theory papers write $T$ for $L
 - where the metaphor stops — the first is this week's core: it assumes **the draft is how the answer was reached**; it assumes **what is not on paper was not computed**; and a person does not re-read the whole sheet for every new word — the model does
 
 ::: {.footer}
-W9 p10: three examiners · returns at p23, p36, p42, p57
+W9 p10: three examiners · returns at p24, p37, p44, p60
 :::
 
 ## One forward pass is $n_{\text{layer}}$ steps deep — however long the prompt
@@ -258,6 +258,18 @@ Misconception 1: "chain of thought helps on every kind of question" · arXiv:240
 Demo 1 · `demos/w10_d1_depth_and_budget` · rehearsed 2026-11-25 on the M5 Max
 :::
 
+## Demo 1: how it runs
+
+{{< include assets/w10/demo1-flow.inline.qmd >}}
+
+::: {.small}
+All three ways end on the same forced opening, so the three answers are scored alike.
+:::
+
+::: {.footer}
+Demo 1 · `demos/w10_d1_depth_and_budget` · how it runs · as rehearsed
+:::
+
 ## Live: demo 1 (a) — one problem, answered three ways
 
 ::: {.ask}
@@ -295,7 +307,7 @@ A cliff in accuracy does not need a cliff in ability. **Read the collapse as an 
 :::
 
 ::: {.footer}
-our arithmetic, a baseline, not a law: steps assumed independent · W7 p35
+our arithmetic, a baseline, not a law: steps assumed independent · W7 p36
 :::
 
 ## "Accuracy collapsed past some complexity, so it cannot reason"
@@ -328,7 +340,7 @@ Misconception 2: "a collapse proves it cannot reason" · arXiv:2506.06941 · 250
 - and a fourth thing, of a different kind: **what the model says it did is not always what it did**. In one model, two-digit addition ran on two parallel paths — a rough magnitude, and the exact last digit — yet asked how it added, it described carrying the one
 
 ::: {.footer}
-Misconception 3 (W2 p74) · Lindsey et al., Anthropic 2025: a company report, not peer-reviewed
+Misconception 3 (W2 p77) · Lindsey et al., Anthropic 2025: a company report, not peer-reviewed
 :::
 
 # Train the model to write its own scratch paper. How long should it write? {.section-title}
@@ -342,7 +354,7 @@ Misconception 3 (W2 p74) · Lindsey et al., Anthropic 2025: a company report, no
 | **The question** | A prompt can ask for steps. Can the model learn **when and how** to write them itself — and be given a budget for it? |
 | **The idea** | **The same decoder-only Transformer** (W4). Its output becomes `<think>` $z$ `</think>` $a$. Post-training — last week's RL, or SFT on another model's traces — shapes $z$; at inference a token budget limits $L_{\text{think}}$. |
 | **What it added** | Nothing to the architecture. A **new knob at inference**, and answers whose length the user no longer sees or sets directly. |
-| **What it leaves open** | How long to think (p26–p28); whether RL gave it anything the base model lacked (part 5); whether $z$ is what the model computed (part 6). |
+| **What it leaves open** | How long to think (p27–p29); whether RL gave it anything the base model lacked (part 5); whether $z$ is what the model computed (part 6). |
 :::
 
 ::: {.footer}
@@ -360,7 +372,7 @@ Misconception 4: "a new architecture" · DeepSeek-R1, *Nature* 2025 · Qwen3: a 
 :::
 
 ::: {.footer}
-DeepSeek-R1 §2: GRPO; accuracy and format rewards · W9 p44 · W9 p15
+DeepSeek-R1 §2: GRPO; accuracy and format rewards · W9 p45 · W9 p15
 :::
 
 ## Three recipes — and what each one learns from
@@ -433,7 +445,7 @@ The best length moves with the difficulty of the question. Budget forcing is use
 :::
 
 ::: {.footer}
-Misconception 5: "the longer it thinks, the better" · s1 itself reports a plateau (p26)
+Misconception 5: "the longer it thinks, the better" · s1 itself reports a plateau (p27)
 :::
 
 # Not longer — more. What do $k$ answers buy? {.section-title}
@@ -466,7 +478,7 @@ no RL background needed: $p(x)$ is an average of zeros and ones
 | **The question** | If the model may try $k$ times, how often does it get there at all? |
 | **The idea** | Per question, $1 - (1 - p(x))^{k}$; average over questions. $k = 1$ is ordinary accuracy. |
 | **What it added** | A way to separate **"can produce the right answer"** from **"produces it first time"** — and a ceiling for any method that picks among samples. |
-| **What it leaves open** | It is a **quantity, not a method**: it needs something to tell which answer was right. What it means at large $k$ is this week's reading (p48–p53). |
+| **What it leaves open** | It is a **quantity, not a method**: it needs something to tell which answer was right. What it means at large $k$ is this week's reading (p50–p55). |
 :::
 
 ::: {.footer}
@@ -540,7 +552,7 @@ $$
 :::
 
 ::: {.footer}
-Misconception 7: "with enough votes it will be right" · arXiv:2203.11171 · questions 4 and 5 of p32
+Misconception 7: "with enough votes it will be right" · arXiv:2203.11171 · questions 4 and 5 of p33
 :::
 
 ## The examiner moves into the exam room
@@ -556,7 +568,7 @@ Training and use are two pictures again — **the other way round from last week
 :::
 
 ::: {.footer}
-W9 p10, p15, p54 · Lightman et al., ICLR 2024 · Math-Shepherd, ACL 2024
+W9 p10, p15, p56 · Lightman et al., ICLR 2024 · Math-Shepherd, ACL 2024
 :::
 
 ## Best-of-$k$ is optimisation — and can be over-done
@@ -579,13 +591,25 @@ Misconception 8: "it cannot be gamed" · Gao et al., ICML 2023, §2 · Snell et 
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | Three quantities, three limits (p32) — on our own model, with every $\hat{p}(x)$ visible. And later today: what the same tokens cost when spent two ways, and whether last week's RL moved the curve. |
-| **What runs** | **(a)**, now: last week's $\pi_{\text{ref}}$ answers 200 generated arithmetic problems, $n = 256$ samples each (rehearsed). Live, the estimator of p33 and a majority vote are written — eight lines — and run on the stored samples. **(c)**, at p45: one chain of 4,096 tokens against 16 chains of 256, timed. **(b)**, at p52: the base model against last week's RL-trained one. |
+| **Why** | Three quantities, three limits (p33) — on our own model, with every $\hat{p}(x)$ visible. And later today: what the same tokens cost when spent two ways, and whether last week's RL moved the curve. |
+| **What runs** | **(a)**, now: last week's $\pi_{\text{ref}}$ answers 200 generated arithmetic problems, $n = 256$ samples each (rehearsed). Live, the estimator of p34 and a majority vote are written — eight lines — and run on the stored samples. **(c)**, at p47: one chain of 4,096 tokens against 16 chains of 256, timed. **(b)**, at p54: the base model against last week's RL-trained one. |
 | **Watch for** (a) | How far apart coverage and the vote end up at $k = 256$ — and whether "pick by the model's own log-probability" behaves like an examiner, or like the vote. |
 :::
 
 ::: {.footer}
 Demo 2 · `demos/w10_d2_many_samples` · **not built yet** · (b) waits for W9's demo 2
+:::
+
+## Demo 2: how it runs
+
+{{< include assets/w10/demo2-flow.inline.qmd >}}
+
+::: {.small}
+Planned: this demo is not built yet. The diagram follows its specification.
+:::
+
+::: {.footer}
+Demo 2 · `demos/w10_d2_many_samples` · how it runs · as planned · not built yet
 :::
 
 ## Live: demo 2 (a) — eight lines, three curves
@@ -637,7 +661,7 @@ Decoding is bound by **moving the weights through memory** (W3). Sixteen chains 
 :::
 
 ::: {.footer}
-Misconception 9: "the same tokens cost the same" · W3 p37 · demo 2 (c) times it
+Misconception 9: "the same tokens cost the same" · W3 p39 · demo 2 (c) times it
 :::
 
 ## Count the memory, and "a small model that thinks longer" changes
@@ -671,7 +695,7 @@ Do not memorise the direction. Memorise that **the optimum moves with difficulty
 :::
 
 ::: {.footer}
-the formula is Snell et al.'s (§7); the derivation is ours · W7 p24, p27
+the formula is Snell et al.'s (§7); the derivation is ours · W7 p25, p28
 :::
 
 ## Replay: demo 2 (c) — one chain of 4,096 against 16 of 256
@@ -685,10 +709,10 @@ the formula is Snell et al.'s (§7); the derivation is ours · W7 p24, p27
 : {tbl-colwidths="[52,16,16,16]"}
 
 - row 2 against row 3 is the **batch**; row 3 against row 1 is the **square term** (and the growing KV)
-- the arithmetic of p42 says: about $16\times$ in bytes moved, a few per cent in FLOPs. What does the clock say?
+- the arithmetic of p44 says: about $16\times$ in bytes moved, a few per cent in FLOPs. What does the clock say?
 
 ::: {.claim .warn}
-Not measured yet. Whatever the machine shows goes into the ledger's new row (p73).
+Not measured yet. Whatever the machine shows goes into the ledger's new row (p76).
 :::
 
 ::: {.footer}
@@ -704,7 +728,7 @@ So far: **how** to spend compute at answer time, and what it costs. From here: *
 :::
 
 ::: {.footer}
-p5's route · first half: p10–p45 · second half: p48–p68
+p5's route · first half: p10–p47 · second half: p50–p71
 :::
 
 # RL trained the reasoning model. Did it give it anything new? {.section-title}
@@ -717,7 +741,7 @@ p5's route · first half: p10–p45 · second half: p48–p68
 - **distillation is different**: a distilled model's curve lies above the base model's at every $k$
 
 ::: {.footer}
-Yue et al., NeurIPS 2025 (oral), arXiv:2504.13837 — **this week's reading** · W9 p42
+Yue et al., NeurIPS 2025 (oral), arXiv:2504.13837 — **this week's reading** · W9 p43
 :::
 
 ## Two lines, drawn by you: how a crossover arises
@@ -731,7 +755,7 @@ $1 - (1-p)^{k}$ is concave in $p$: with pass@1 held fixed, the model whose $p(x)
 :::
 
 ::: {.footer}
-board · two questions, numbers made up · the same bars as p32
+board · two questions, numbers made up · the same bars as p33
 :::
 
 ## What a crossover cannot show by itself: three caveats
@@ -810,7 +834,7 @@ For each paper, one sentence: **what does its metric reward?** Then: which exper
 - where you will want to look: how each paper checks its own metric — the hand-read chains; the judge
 
 ::: {.footer}
-arXiv:2504.13837 · arXiv:2506.14245, §4 · W1 p21 · last week: W9 p61–p62
+arXiv:2504.13837 · arXiv:2506.14245, §4 · W1 p21 · last week: W9 p64–p65
 :::
 
 # Is the written reasoning how the model got its answer? {.section-title}
@@ -844,13 +868,25 @@ arXiv:2004.03685 · 2305.04388 · where the answer did not move, silence is corr
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | W3 asked whether an attention weight is an explanation (W3 p56). Today the same question, about a chain of thought — and this time the model is doing the explaining. |
+| **Why** | W3 asked whether an attention weight is an explanation (W3 p59). Today the same question, about a chain of thought — and this time the model is doing the explaining. |
 | **What runs** | Qwen3-8B, thinking on, 200 four-option questions from the nine MMLU subjects (of twenty tried) where it scores between five and eight in ten unaided. Each question is asked twice: plain, and with a hint pointing at a random **wrong** option — a sentence from the user ("I think it is (B)"), or an `<answer>` field in XML metadata. One question live; the two rates from rehearsal. |
 | **Watch for** | Two chains of reasoning for the same question. **Which one had the hint in its prompt?** |
 :::
 
 ::: {.footer}
 Demo 3 · `demos/w10_d3_hidden_hint` · rehearsed 2026-11-25 · a failure-case high point
+:::
+
+## Demo 3: how it runs
+
+{{< include assets/w10/demo3-flow.inline.qmd >}}
+
+::: {.small}
+The hint always points at a wrong option, so following it is visible in the answer.
+:::
+
+::: {.footer}
+Demo 3 · `demos/w10_d3_hidden_hint` · how it runs · as rehearsed
 :::
 
 ## Live: demo 3 (a) — which of these two had the hint?
@@ -940,7 +976,7 @@ Demo 3 (b) · 91 and 57 questions · 100%: only the answer drawn again · rehear
 - **rationalisation** (written after the answer) against **computation** (the answer needs it): one model does both
 
 ::: {.footer}
-W3 p56 · W1 p21, the fourth question · W14 closes the table
+W3 p59 · W1 p21, the fourth question · W14 closes the table
 :::
 
 # Can we watch a model through its reasoning — and will that last? {.section-title}
@@ -954,7 +990,7 @@ W3 p56 · W1 p21, the fourth question · W14 closes the table
 | **The question** | The reasoning is not a complete explanation. Is it still enough to **catch** a model doing something it should not? |
 | **The idea** | If a behaviour needs serial reasoning (part 1), that reasoning has to pass through the written tokens — where it can be read. |
 | **What it added** | A use for the reasoning that does not need faithfulness in full: Baker et al. (a preprint) found reading the CoT an effective way to catch reward hacking. |
-| **What it leaves open** | It is a **by-product of how models are trained today**. The picture is next; three things remove it (p65); what has been measured so far (p68). |
+| **What it leaves open** | It is a **by-product of how models are trained today**. The picture is next; three things remove it (p68); what has been measured so far (p71). |
 :::
 
 ::: {.footer}
@@ -990,7 +1026,7 @@ a schematic · Baker et al., arXiv:2503.11926 · Little, arXiv:2607.09786v4 — 
 :::
 
 ::: {.footer}
-Misconception 14: "the model has it" · arXiv:2503.11926 · 2607.09786v4, §5–§7 · W9 p49
+Misconception 14: "the model has it" · arXiv:2503.11926 · 2607.09786v4, §5–§7 · W9 p50
 :::
 
 ## Latent reasoning: skip the tokens
@@ -1046,9 +1082,9 @@ p7 asked: asked directly, wrong; after a few written lines, right; the weights u
 :::
 
 - **Answer one: computation.** Each written token is one more pass through the stack — serial depth the model does not otherwise have (p11). Damage the lines and the answer changes (p15)
-- **Answer two: an account written afterwards.** The answer was settled first; the lines are the model's output about it, and can leave out what moved the answer (p57, p58)
-- **Which one? It depends on whether the question needs them** (p16, p60, p61): maths and multi-step problems lean to the first; recall leans to the second
-- the route's other stations — **how to spend it**: p46 · **did RL add anything?** no verdict: one curve, five readings (p51) · **can we watch it?** today, mostly — as a by-product that can be traded away (p65, p68)
+- **Answer two: an account written afterwards.** The answer was settled first; the lines are the model's output about it, and can leave out what moved the answer (p60, p61)
+- **Which one? It depends on whether the question needs them** (p16, p63, p64): maths and multi-step problems lean to the first; recall leans to the second
+- the route's other stations — **how to spend it**: p48 · **did RL add anything?** no verdict: one curve, five readings (p53) · **can we watch it?** today, mostly — as a by-product that can be traded away (p68, p71)
 
 ::: {.footer}
 compare with your two lines from p7 · W11: what each token costs
@@ -1069,7 +1105,7 @@ Part II ends here. Five of six entries are ticked; the fifth — retrieved knowl
 :::
 
 ::: {.footer}
-W1 p19–p20 · W9 p70 · the ledger, next two slides
+W1 p19–p20 · W9 p73 · the ledger, next two slides
 :::
 
 ## The ledger, week 10: the training half
@@ -1084,7 +1120,7 @@ W1 p19–p20 · W9 p70 · the ledger, next two slides
 : {tbl-colwidths="[18,46,14,22]"}
 
 ::: {.footer}
-W9 p71's master, split in two: a ninth row does not fit · $\alpha$, $\beta$ are W7's
+W9 p74's master, split in two: a ninth row does not fit · $\alpha$, $\beta$ are W7's
 :::
 
 ## The ledger, week 10: the inference half, one new row
@@ -1149,11 +1185,11 @@ one row added · $L_{\text{out}}$ is the total over the $k$ chains · $\rho$ is 
 ## Next week: what each of these tokens costs
 
 - Part II is done. **Part III — systems and scrutiny** — starts with the bill itself: inference efficiency, from FLOPs to memory bandwidth
-- three things to have ready: **the unit of every ledger row** — FLOPs, bytes, bytes per second; **W3's KV-cache formula** (p73); and today's picture of one long chain against sixteen short ones (p42)
+- three things to have ready: **the unit of every ledger row** — FLOPs, bytes, bytes per second; **W3's KV-cache formula** (p76); and today's picture of one long chain against sixteen short ones (p44)
 - today every extra token was "compute spent while answering". Next week: **why a token costs what it costs** — and four ways to make it cheaper
 
 ::: {.ask}
-Before then: **Yue et al.**, in full, with **Wen et al., §4**. For each paper one sentence on what its metric rewards; then one experiment that would tell the two readings apart (p53).
+Before then: **Yue et al.**, in full, with **Wen et al., §4**. For each paper one sentence on what its metric rewards; then one experiment that would tell the two readings apart (p55).
 :::
 
 ::: {.claim}
@@ -1187,7 +1223,7 @@ This week the question was what a token buys. Next week: what a token costs.
 
 **Monitorability, latent reasoning, language** · Korbak et al., arXiv:2507.11473 — **a position paper, no experiments** · Baker et al., arXiv:2503.11926 — a preprint · Guan et al., *Monitoring Monitorability*, ICML 2026 Spotlight (arXiv:2512.18311) · Chen (Yueh-Han) et al., ICML 2026 (arXiv:2603.05706) · Xiong, Chen & Lakkaraju, ICML 2026 (arXiv:2602.03978) · Little, arXiv:2607.09786 — **a single-author preprint; v4, §5–§7** · Wang (Han) et al., *MonitorBench*, COLM 2026 (arXiv:2603.28590) · Hao et al., *Coconut*, COLM 2025 (arXiv:2412.06769) · Zhu (Hanlin) et al., NeurIPS 2025 (arXiv:2505.12514) · Yerram, He & Choi, arXiv:2607.16972 — **a workshop paper** · Zou, Xiong & Liu, arXiv:2602.01148 — a preprint · Tam et al., arXiv:2505.17407 — a preprint · Qi et al., Findings of EMNLP 2025 (arXiv:2505.22888) · Resck et al., arXiv:2610.22841 — a preprint
 
-**Numbers and demos** · every computed number is in `assets/w10/w10-data.json` (`scripts/make_demo_w10.py`); the figures on p19, p32, p42, p49 are **our arithmetic** — the $p(x)$ values on p32 and p49 are made up, the lengths on p42 are assumed · **demo 1 was rehearsed on 2026-11-25** (p18, p27: Qwen3-8B, 50 problems per cell); **demo 3 was rehearsed on 2026-11-25** (p57, p60, p67: Qwen3-8B, 200 MMLU questions; "mentions the hint" is judged by string rules; thirty cases read by hand agreed with them); **demo 2 is not built**: the tables on p39, p45, p52 are empty on purpose
+**Numbers and demos** · every computed number is in `assets/w10/w10-data.json` (`scripts/make_demo_w10.py`); the figures on p20, p33, p44, p51 are **our arithmetic** — the $p(x)$ values on p33 and p51 are made up, the lengths on p44 are assumed · **demo 1 was rehearsed on 2026-11-25** (p19, p28: Qwen3-8B, 50 problems per cell); **demo 3 was rehearsed on 2026-11-25** (p60, p63, p70: Qwen3-8B, 200 MMLU questions; "mentions the hint" is judged by string rules; thirty cases read by hand agreed with them); **demo 2 is not built**: the tables on p41, p47, p54 are empty on purpose
 :::
 
 ## Acronyms in this deck, A–S
@@ -1195,15 +1231,15 @@ This week the question was what a token buys. Next week: what a token costs.
 | | |
 |:----|:----------------|
 | $\mathsf{AC}^0$ | the class of problems solved by constant-depth, polynomial-size circuits with unbounded fan-in (p13) |
-| Coconut | Chain of Continuous Thought, Hao et al. 2025 (p66) |
+| Coconut | Chain of Continuous Thought, Hao et al. 2025 (p69) |
 | CoT | chain of thought (p12) |
 | FLOPs | floating-point operations (W1) |
 | GRPO | group relative policy optimization (W9) |
 | KL | Kullback–Leibler (divergence) (W8) |
 | KV | key–value (cache) (W3) |
-| LIMO | Less Is More for Reasoning, Ye et al. 2025 (p25) |
+| LIMO | Less Is More for Reasoning, Ye et al. 2025 (p26) |
 | MoE | mixture of experts (W6) |
-| PRM, ORM | process / outcome reward model (W9; p36) |
+| PRM, ORM | process / outcome reward model (W9; p37) |
 | RL | reinforcement learning (W9) |
 | RLVR | reinforcement learning with verifiable rewards (W9) |
 | SFT | supervised fine-tuning (W8) |

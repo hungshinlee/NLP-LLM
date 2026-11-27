@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W7 demo 1（投影片 p12「Live: demo 1 (a)」、p25「Live: demo 1 (b)」）課前與課堂的入口。純標準函式庫，不載模型、不需要網路。
+# W7 demo 1（投影片 p12「Live: demo 1 (a)」、p26「Live: demo 1 (b)」）課前與課堂的入口。純標準函式庫，不載模型、不需要網路。
 #
 #   ./present.sh table           (a) C = 10^18 … 10^26 的 N*、D*、D*/N*、L*（閉式解 Eq. (4)；★ 是 p12 要填的五列）
 #   ./present.sh points          (a) 三個真實點（W1 7B／140B、Chinchilla 70B／1.4T、Llama 3 8B／15T）：C、該 C 的最優、loss 差

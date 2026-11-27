@@ -1,0 +1,196 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 388" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-demo1-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="28" font-size="23" fill="#0b5cad" text-anchor="start" font-weight="700">Four classes, written live, in this order</text><text x="1220" y="28" font-size="19" fill="#6b7280" text-anchor="end" font-weight="400">plain torch</text><rect x="20" y="42" width="270" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">1 · RMSNorm</text><text x="38" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">one line of math, one</text><text x="38" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">parameter vector</text><line x1="294" y1="112" x2="315" y2="112" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo1-flow)"/><rect x="320" y="42" width="250" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="338" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">2 · SwiGLU</text><text x="338" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">three Linear, no</text><text x="338" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">bias</text><line x1="574" y1="112" x2="595" y2="112" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo1-flow)"/><rect x="600" y="42" width="290" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="618" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">3 · Block</text><text x="618" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">two sub-layers around</text><text x="618" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">W3's attention, pre-LN</text><line x1="894" y1="112" x2="915" y2="112" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo1-flow)"/><rect x="920" y="42" width="300" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="938" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">4 · GPT</text><text x="938" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">embedding, blocks, final</text><text x="938" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Norm, tied</text><text x="938" y="168" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">unembedding</text><g class="fragment" data-fragment-index="1"><text x="20" y="226" font-size="23" fill="#b45309" text-anchor="start" font-weight="700">A test after each class; then the same program comes back twice</text><text x="950" y="226" font-size="19" fill="#6b7280" text-anchor="end" font-weight="400">tests.py</text><rect x="20" y="240" width="290" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="276" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">now: shapes</text><text x="38" y="306" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">a batch goes in,</text><svg x="38" y="315.3" width="96.048" height="27.6" viewBox="0 0 96.048 27.6"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t213-figure_1">
+  <g id="t213-patch_1">
+   <path d="M 0 27.6 
+L 96.048 27.6 
+L 96.048 0 
+L 0 0 
+L 0 27.6 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t213-text_1">
+   <!-- $[B, L, V]$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.7) scale(0.276 -0.276)">
+    <defs>
+     <path id="t213-Cmr10-5b" d="M 756 -1600 
+L 756 4800 
+L 1631 4800 
+L 1631 4544 
+L 1013 4544 
+L 1013 -1344 
+L 1631 -1344 
+L 1631 -1600 
+L 756 -1600 
+z
+" transform="scale(0.015625)"/>
+     <path id="t213-Cmmi10-42" d="M 319 0 
+Q 256 0 256 84 
+Q 259 100 268 137 
+Q 278 175 293 200 
+Q 309 225 341 225 
+Q 522 225 656 234 
+Q 791 244 884 269 
+Q 959 297 1006 441 
+L 1881 3956 
+Q 1894 4019 1894 4044 
+Q 1894 4113 1819 4122 
+Q 1697 4147 1356 4147 
+Q 1294 4147 1294 4231 
+Q 1297 4247 1306 4286 
+Q 1316 4325 1333 4348 
+Q 1350 4372 1375 4372 
+L 3669 4372 
+Q 3878 4372 4083 4320 
+Q 4288 4269 4461 4156 
+Q 4634 4044 4736 3876 
+Q 4838 3709 4838 3488 
+Q 4838 3247 4714 3040 
+Q 4591 2834 4395 2681 
+Q 4200 2528 3973 2429 
+Q 3747 2331 3500 2284 
+Q 3675 2284 3854 2215 
+Q 4034 2147 4175 2028 
+Q 4316 1909 4402 1743 
+Q 4488 1578 4488 1388 
+Q 4488 1003 4219 684 
+Q 3950 366 3542 183 
+Q 3134 0 2753 0 
+L 319 0 
+z
+M 1497 275 
+Q 1497 225 1716 225 
+L 2631 225 
+Q 2944 225 3231 398 
+Q 3519 572 3692 859 
+Q 3866 1147 3866 1459 
+Q 3866 1650 3786 1820 
+Q 3706 1991 3556 2089 
+Q 3406 2188 3213 2188 
+L 1966 2188 
+L 1522 416 
+Q 1497 328 1497 275 
+z
+M 2009 2356 
+L 2981 2356 
+Q 3288 2356 3577 2512 
+Q 3866 2669 4048 2937 
+Q 4231 3206 4231 3506 
+Q 4231 3784 4057 3965 
+Q 3884 4147 3609 4147 
+L 2731 4147 
+Q 2559 4147 2500 4115 
+Q 2441 4084 2400 3928 
+L 2009 2356 
+z
+" transform="scale(0.015625)"/>
+     <path id="t213-Cmmi10-3b" d="M 634 -1153 
+Q 634 -1125 659 -1100 
+Q 891 -878 1019 -587 
+Q 1147 -297 1147 25 
+L 1147 103 
+Q 1044 0 891 0 
+Q 744 0 641 103 
+Q 538 206 538 353 
+Q 538 503 641 603 
+Q 744 703 891 703 
+Q 1119 703 1216 492 
+Q 1313 281 1313 25 
+Q 1313 -331 1170 -651 
+Q 1028 -972 769 -1228 
+Q 744 -1241 728 -1241 
+Q 697 -1241 665 -1212 
+Q 634 -1184 634 -1153 
+z
+" transform="scale(0.015625)"/>
+     <path id="t213-Cmmi10-4c" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 709 225 863 269 
+Q 947 297 984 441 
+L 1863 3956 
+Q 1875 4019 1875 4044 
+Q 1875 4113 1797 4122 
+Q 1678 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1297 4313 1309 4342 
+Q 1322 4372 1381 4372 
+L 3272 4372 
+Q 3328 4372 3328 4288 
+Q 3319 4222 3306 4184 
+Q 3294 4147 3244 4147 
+Q 2772 4147 2613 4116 
+Q 2456 4088 2419 3928 
+L 1544 416 
+Q 1516 338 1516 275 
+Q 1516 225 1734 225 
+L 2328 225 
+Q 2831 225 3143 425 
+Q 3456 625 3606 876 
+Q 3756 1128 3857 1398 
+Q 3959 1669 4006 1678 
+L 4063 1678 
+Q 4128 1678 4128 1594 
+L 3559 44 
+Q 3550 0 3500 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t213-Cmmi10-56" d="M 1409 -72 
+L 897 4006 
+Q 850 4147 416 4147 
+Q 353 4147 353 4231 
+Q 366 4300 384 4336 
+Q 403 4372 459 4372 
+L 2022 4372 
+Q 2056 4372 2072 4347 
+Q 2088 4322 2088 4288 
+Q 2063 4147 2003 4147 
+Q 1503 4147 1472 3975 
+L 1894 628 
+L 3866 3775 
+Q 3922 3881 3922 3944 
+Q 3922 4056 3820 4101 
+Q 3719 4147 3584 4147 
+Q 3519 4147 3519 4231 
+Q 3531 4281 3540 4309 
+Q 3550 4338 3569 4355 
+Q 3588 4372 3628 4372 
+L 4863 4372 
+Q 4922 4372 4922 4288 
+Q 4897 4147 4838 4147 
+Q 4356 4147 4084 3725 
+Q 4072 3713 4063 3713 
+L 1703 -72 
+Q 1656 -141 1581 -141 
+L 1491 -141 
+Q 1419 -141 1409 -72 
+z
+" transform="scale(0.015625)"/>
+     <path id="t213-Cmr10-5d" d="M 141 -1600 
+L 141 -1344 
+L 763 -1344 
+L 763 4544 
+L 141 4544 
+L 141 4800 
+L 1019 4800 
+L 1019 -1600 
+L 141 -1600 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t213-Cmr10-5b"/>
+    <use xlink:href="#t213-Cmmi10-42" transform="translate(27.685547 0)"/>
+    <use xlink:href="#t213-Cmmi10-3b" transform="translate(103.466797 0)"/>
+    <use xlink:href="#t213-Cmmi10-4c" transform="translate(148.710938 0)"/>
+    <use xlink:href="#t213-Cmmi10-3b" transform="translate(216.728516 0)"/>
+    <use xlink:href="#t213-Cmmi10-56" transform="translate(261.972656 0)"/>
+    <use xlink:href="#t213-Cmr10-5d" transform="translate(320.273438 0)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="140.258" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="119.2" lengthAdjust="spacing">comes out,</text><text x="38" y="366" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">every logit finite</text><rect x="340" y="240" width="290" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="358" y="276" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">later: count_params</text><text x="358" y="306" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">two real config.json</text><text x="358" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">files, after the</text><text x="358" y="366" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">accounting</text><rect x="660" y="240" width="290" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="678" y="276" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">later: train.py</text><text x="678" y="306" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">a training run,</text><text x="678" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">rehearsed before class</text><line x1="954" y1="310" x2="975" y2="310" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo1-flow)"/><rect x="980" y="240" width="240" height="140" rx="8" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/><text x="998" y="276" font-size="23" fill="#15803d" text-anchor="start" font-weight="700">expect</text><text x="998" y="306" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">each test passes</text><text x="998" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">as soon as its</text><text x="998" y="366" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">class exists</text></g></svg>

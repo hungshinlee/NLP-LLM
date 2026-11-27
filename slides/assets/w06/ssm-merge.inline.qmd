@@ -5475,7 +5475,7 @@ z
    </g>
   </g>
  </g>
-</svg><text x="186.451" y="374" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="936.3" lengthAdjust="spacing">: with one scalar per step the unrolled recurrence is a semiseparable matrix (p49–p50),</text><text x="36" y="404" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="629.3" lengthAdjust="spacing">so a chunk of tokens is one matmul; Mamba's per-channel</text><svg x="671.531" y="369.224" width="47.196" height="42.228" viewBox="0 -6.9 47.196 42.228"><defs>
+</svg><text x="186.451" y="374" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="936.3" lengthAdjust="spacing">: with one scalar per step the unrolled recurrence is a semiseparable matrix (p52–p53),</text><text x="36" y="404" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="629.3" lengthAdjust="spacing">so a chunk of tokens is one matmul; Mamba's per-channel</text><svg x="671.531" y="369.224" width="47.196" height="42.228" viewBox="0 -6.9 47.196 42.228"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t487-figure_1">
@@ -5653,5 +5653,5 @@ z
    </g>
   </g>
  </g>
-</svg><text x="724.937" y="404" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="418.7" lengthAdjust="spacing">has no such form: it stays a scan (p42)</text></g></svg>
+</svg><text x="724.937" y="404" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="418.7" lengthAdjust="spacing">has no such form: it stays a scan (p45)</text></g></svg>
 ```

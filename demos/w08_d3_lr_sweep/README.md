@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W8 · Demo 3 — two learning-rate sweeps: LoRA and full fine-tuning (slides p51–p52)
+# W8 · Demo 3 — two learning-rate sweeps: LoRA and full fine-tuning (slides p53–p55)
 
 The same model, the same data and the same seed as demo 1; two ways of fine-tuning it; each swept over its own learning rates. LoRA ($r = 16$, every linear layer of every block) and full fine-tuning are each trained at five learning rates with `mlx_lm.lora` — same 500 steps, same batch, same mask, same seed — and the held-out loss at the end is plotted against the learning rate. Two U-shaped curves come out, and two numbers are read off them: where each minimum sits, and what the ratio of the two best learning rates is. Then the comparison most papers actually make is run on purpose: both methods at *full fine-tuning's* best learning rate. How much worse does LoRA look when it is not given its own sweep?
 
@@ -7,7 +7,7 @@ Everything is rehearsed in advance (ten training runs plus two cross runs do not
 
 - **Figure 1.** Final held-out response loss against learning rate, two curves. Printed as a text plot and as a table; the two best learning rates and their ratio, in mlx units and converted to PEFT units (see *The ratio* below).
 - **Figure 2.** Validation loss every 25 steps for four runs: full fine-tuning at its own best, LoRA at its own best, LoRA at full fine-tuning's best, and full fine-tuning at LoRA's best.
-- **The table on p52.** Best learning rate per method; loss with each at its own best; loss with both at full fine-tuning's best.
+- **The table on p55.** Best learning rate per method; loss with each at its own best; loss with both at full fine-tuning's best.
 
 ## What is being measured
 

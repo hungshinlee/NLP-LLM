@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W8 demo 4：旁路留下了什麼——intruder dimensions 與遺忘（投影片 p58 前導頁、p59 live、p62 replay）。
+"""W8 demo 4：旁路留下了什麼——intruder dimensions 與遺忘（投影片 p61 前導頁、p63 live、p66 replay）。
 
     ./present.sh inspect        課前：版本、demo 3 的兩個權重資料夾在不在、矩陣鍵名與形狀對得上、四段 held-out 的 byte 數 → runs/rehearsal/inspect.json
-    ./present.sh intruders      課堂 (a)：對 [intruders].matrices 的每個矩陣，數 full 與 LoRA 各有幾個 intruder dimension（p59 的表）。
+    ./present.sh intruders      課堂 (a)：對 [intruders].matrices 的每個矩陣，數 full 與 LoRA 各有幾個 intruder dimension（p63 的表）。
                                 函數在 intruders_live.py（現場寫）；--ref 用 intruders_final.py；--rehearsal 把結果寫進 runs/rehearsal/intruders.json
-    ./present.sh scan           彩排前：所有層 × [scan].names 的 intruder 數（用來挑 p59 要看的那一層）→ runs/rehearsal/scan.json
+    ./present.sh scan           彩排前：所有層 × [scan].names 的 intruder 數（用來挑 p63 要看的那一層）→ runs/rehearsal/scan.json
     ./present.sh forget         彩排 (b)：base／LoRA／full 在四段 held-out 上的 bits-per-byte → runs/rehearsal/forgetting.json
-    ./present.sh replay         課堂 (b)：讀 forgetting.json，Enter 一列印 p62 的表（不載模型）；--intruders 改印 intruders.json
+    ./present.sh replay         課堂 (b)：讀 forgetting.json，Enter 一列印 p66 的表（不載模型）；--intruders 改印 intruders.json
     ./present.sh rehearse       彩排全套：inspect → intruders --ref --rehearsal → forget（--intervene 加做介入）
     ./present.sh intervene      可選（若時間）：把 LoRA 模型 intruder 方向的奇異值乘 λ，再量 (b)——回升多少 → runs/rehearsal/intervene.json
     ./present.sh fake ...       沒有 mlx 也能演練流程（輸出是假的，畫面會標明）
@@ -442,7 +442,7 @@ def fake_bpb(key: str, model: str, seed: int) -> dict:
 
 
 def print_forget_table(rec: dict, upto: int | None = None) -> None:
-    """p62 的表：列 = 四段 held-out，欄 = base／LoRA／full 的 bits-per-byte（括號是對 base 的差）。"""
+    """p66 的表：列 = 四段 held-out，欄 = base／LoRA／full 的 bits-per-byte（括號是對 base 的差）。"""
     order, labels = rec["models_order"], rec["models_labels"]
     W = 28
     print(f"  {'held-out text (bits per byte)':<42}" + "".join(f"{labels[g][:W - 2]:>{W}}" for g in order))
@@ -645,7 +645,7 @@ def cmd_inspect(args, cfg):
             key = matrix_key(int(m["layer"]), m["name"])
             sh = bw.shape(key + ".weight")
             rec["matrices"].append({"layer": m["layer"], "name": m["name"], "shape": sh, "in_full": key + ".weight" in hdr_full, "in_lora": key + ".lora_a" in hdr_lora})
-            print(f"  p59 matrix: {key}  {sh}  full {'✓' if key + '.weight' in hdr_full else RED + '✗' + RESET}  lora {'✓' if key + '.lora_a' in hdr_lora else RED + '✗' + RESET}")
+            print(f"  p63 matrix: {key}  {sh}  full {'✓' if key + '.weight' in hdr_full else RED + '✗' + RESET}  lora {'✓' if key + '.lora_a' in hdr_lora else RED + '✗' + RESET}")
         rec["base_test_loss"] = weights["base_test_loss"]
     texts = load_texts(cfg, fake=bool(args.fake))
     rec["texts"] = [{k: v for k, v in t.items() if k != "bytes"} for t in texts]
@@ -664,7 +664,7 @@ def cmd_rehearse(args, cfg):
     cmd_forget(args, cfg)
     if args.intervene:
         cmd_intervene(args, cfg)
-    print(f"\n{GREEN}rehearsal done{RESET} → runs/rehearsal/{{inspect,intruders,forgetting}}.json；接著回填 p59 的表頭（ε、層）與 p62 的表")
+    print(f"\n{GREEN}rehearsal done{RESET} → runs/rehearsal/{{inspect,intruders,forgetting}}.json；接著回填 p63 的表頭（ε、層）與 p66 的表")
 
 
 def main():

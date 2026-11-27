@@ -62,7 +62,7 @@ format:
 :::
 
 ::: {.footer}
-W1 p16–p18 · W4 p22 · W6 p59, p69 · w07-data.json lastweek — no new numbers
+W1 p16–p18 · W4 p23 · W6 p63, p73 · w07-data.json lastweek — no new numbers
 :::
 
 ## The problem this week handles, in one picture
@@ -76,7 +76,7 @@ W1 p16–p18 · W4 p22 · W6 p59, p69 · w07-data.json lastweek — no new numbe
 :::
 
 ::: {.footer}
-half-time: p39 · board: p17–p18, p24, p49–p50 · live: p13, p25, p47, p52 · replay: p37, p47
+half-time: p41 · board: p18–p19, p25, p52–p53 · live: p14, p26, p50, p56 · replay: p39, p50
 :::
 
 ## What you should be able to do by the end of today
@@ -99,7 +99,7 @@ half-time: p39 · board: p17–p18, p24, p49–p50 · live: p13, p25, p47, p52 �
 **(b)** Llama 3 8B was trained on 15T tokens: $D/N \approx 1900$, almost a hundred times "20". **Did Meta not do the arithmetic?**
 :::
 
-- Keep your two lines: p62 comes back to both
+- Keep your two lines: p66 comes back to both
 - (a) is the ledger's first row (W1 p16): six weeks of $6ND$ and no rule for splitting $C$ between $N$ and $D$
 - (b) is where today's second section ends: a cost the rule never counted
 
@@ -135,7 +135,7 @@ A **scaling law** is a curve **fitted** to many training runs, then read off at 
 :::
 
 ::: {.footer}
-Hoffmann et al. 2022, Eq. (10) and abstract · the three terms: p15 · when the fit fails: p31–p38
+Hoffmann et al. 2022, Eq. (10) and abstract · the three terms: p16 · when the fit fails: p32–p40
 :::
 
 ## The fuel-efficiency curve: one metaphor for the first half
@@ -145,7 +145,7 @@ Hoffmann et al. 2022, Eq. (10) and abstract · the three terms: p15 · when the 
 |:---|:-----------------|
 | **The picture** | A scaling law is an engine's **fuel-efficiency curve**: one tank ($C$) tells you how far you get (how low the loss), and how to split the tank between engine displacement ($N$) and mileage ($D$). It does not tell you where to drive. |
 | **Where it extends** | Every 2024–2026 correction adds a cost beyond fuel: the car is driven for years (inference; Roberts even counts how many times each trip is re-run), the fuel has impurities (precision), the pump runs dry (data). **Add a cost axis and the optimum moves** — W10 adds test-time compute, W11 deployment. |
-| **Where it fails** | (a) It says the goal is distance (low loss); the goal is downstream ability, and the two are not on one curve (p35). (b) It treats fuel as homogeneous; *which* tokens matter more than how many (the second half). (c) An MoE has two displacements, $N_{\text{total}}$ and $N_{\text{active}}$ — one curve is not enough (p30). (d) The curve is **fitted** in a range; ten tanks out it is belief, not measurement (p32). |
+| **Where it fails** | (a) It says the goal is distance (low loss); the goal is downstream ability, and the two are not on one curve (p36). (b) It treats fuel as homogeneous; *which* tokens matter more than how many (the second half). (c) An MoE has two displacements, $N_{\text{total}}$ and $N_{\text{active}}$ — one curve is not enough (p31). (d) The curve is **fitted** in a range; ten tanks out it is belief, not measurement (p33). |
 :::
 
 ::: {.footer}
@@ -161,11 +161,11 @@ Outline W7 · the metaphor is this course's, not a paper's · it carries to W10 
 | **The question** | Given a fixed FLOPs budget, how should model size $N$ and the number of training tokens $D$ be traded off? |
 | **The idea** | Train 400+ models, 70M–16B, on 5B–500B tokens; find the optimum three ways — fix $N$, sweep $D$; fix $C$, sweep $N$; fit $\mathcal{L}(N, D) = E + AN^{-\alpha} + BD^{-\beta}$ and solve. |
 | **What it added** | **$N$ and $D$ should be scaled equally**: double the model, double the tokens. The 70B Chinchilla on 4$\times$ the data beats the 280B Gopher at the same compute — the abstract's claim, and the origin of "20 tokens per parameter". |
-| **What it leaves open** | What the three methods disagree about (p19–p20); why Kaplan said $C^{0.73}$ (p21); whether the Approach 3 fit holds (p22); what the budget did not count (p23 on). |
+| **What it leaves open** | What the three methods disagree about (p20–p21); why Kaplan said $C^{0.73}$ (p22); whether the Approach 3 fit holds (p23); what the budget did not count (p24 on). |
 :::
 
 ::: {.footer}
-Hoffmann et al. 2022, abstract and §3 · assigned reading: §3 · mechanism: p15–p19
+Hoffmann et al. 2022, abstract and §3 · assigned reading: §3 · mechanism: p16–p20
 :::
 
 ## Before Demo 1: compute-optimal, from five constants
@@ -180,6 +180,18 @@ Hoffmann et al. 2022, abstract and §3 · assigned reading: §3 · mechanism: p1
 
 ::: {.footer}
 Demo 1 · `demos/w07_d1_compute_optimal` · standard library only · built 2026-10-26
+:::
+
+## Demo 1: how it runs
+
+{{< include assets/w07/demo1-flow.inline.qmd >}}
+
+::: {.small}
+No model and no data: five fitted constants, and the formula they define.
+:::
+
+::: {.footer}
+Demo 1 · `demos/w07_d1_compute_optimal` · how it runs · as rehearsed
 :::
 
 ## Live: demo 1 (a) — $N^{*}$, $D^{*}$ against $C$; three real models
@@ -225,7 +237,7 @@ Two power laws and a floor. The **constraint** $C = 6ND$ (W1 p17: $2$ forward $+
 :::
 
 ::: {.footer}
-Hoffmann et al. 2022 Eq. (2); constants fitted in Eq. (10) · Misconception 1, continued on p18
+Hoffmann et al. 2022 Eq. (2); constants fitted in Eq. (10) · Misconception 1, continued on p19
 :::
 
 ## As a picture: a budget line meets a loss curve
@@ -239,7 +251,7 @@ Hoffmann et al. 2022 Eq. (2); constants fitted in Eq. (10) · Misconception 1, c
 :::
 
 ::: {.footer}
-computed from Eq. (10) · blue budget: W1 p18 · the plane returns on p26, p33
+computed from Eq. (10) · blue budget: W1 p18 · the plane returns on p27, p34
 :::
 
 ## Substitute, differentiate: two marginal returns, made equal
@@ -287,8 +299,8 @@ Hoffmann Eq. (4), computed from Eq. (10): $a = 0.452$, $G = 1.345$, $G^{-2} = 0.
 | approach | holds fixed | reads off | $a$ ($N^{*} \propto C^{a}$) | $b$ |
 |:---|:---|:---|:---|:---|
 | **1** · minimum over training curves | $N$; sweep $D$ | the lowest loss at each $C$ (the envelope) | 0.50 | 0.50 |
-| **2** · IsoFLOP profiles | $C$; sweep $N$ | the valley floor of each curve (p18) | 0.49 | 0.51 |
-| **3** · parametric fit | nothing: fit $E, A, B, \alpha, \beta$ | p18's closed form with Eq. (10)'s constants | **0.46** (0.454, 0.455) | 0.54 |
+| **2** · IsoFLOP profiles | $C$; sweep $N$ | the valley floor of each curve (p19) | 0.49 | 0.51 |
+| **3** · parametric fit | nothing: fit $E, A, B, \alpha, \beta$ | p19's closed form with Eq. (10)'s constants | **0.46** (0.454, 0.455) | 0.54 |
 | Kaplan et al. 2020 | $N_{\text{nv}}$, non-embedding | separate power laws in $N$ and $D$ | **0.73** | 0.27 |
 
 : {tbl-colwidths="[28,22,30,12,8]"}
@@ -325,14 +337,14 @@ w07-data.json chinchilla.points · arithmetic on Eq. (10), not a measurement · 
 
 | cause (Porian et al.; Pearce & Song) | what Kaplan did | why it tilts the slope |
 |:---|:---|:---|
-| **which $N$** | counted $N_{\text{nv}}$, non-embedding only (§2.1) | small models lose a third of $N$, large ones a few %: the log-log line steepens (W4 p22) |
+| **which $N$** | counted $N_{\text{nv}}$, non-embedding only (§2.1) | small models lose a third of $N$, large ones a few %: the log-log line steepens (W4 p23) |
 | **the last layer's compute** | dropped $2Vd$ per token from $C$ | same shape: a cost that matters most at small scale |
-| **warmup; no per-size re-tuning** | one schedule for all sizes | small runs under-tuned, their loss too high — muP (W4 p58) is one answer |
+| **warmup; no per-size re-tuning** | one schedule for all sizes | small runs under-tuned, their loss too high — muP (W4 p61) is one answer |
 
 : {tbl-colwidths="[28,30,42]"}
 
 ::: {.footer}
-Porian 2024 · Pearce & Song 2024 · W4 p22 · Misconception 2: "one of them botched it"
+Porian 2024 · Pearce & Song 2024 · W4 p23 · Misconception 2: "one of them botched it"
 :::
 
 ## Besiroglu's three charges — why "overturned" is wrong
@@ -340,9 +352,9 @@ Porian 2024 · Pearce & Song 2024 · W4 p22 · Misconception 2: "one of them bot
 ::: {.prose}
 | charge (abstract) | what it means | already seen today |
 |:---|:---|:---|
-| **1** · **inconsistent with the other two methods** | Eq. (10)'s constants imply a different optimum than Table 3 | Chinchilla's own 70B / 1.4T is off Eq. (10)'s valley floor (p13, p19) |
+| **1** · **inconsistent with the other two methods** | Eq. (10)'s constants imply a different optimum than Table 3 | Chinchilla's own 70B / 1.4T is off Eq. (10)'s valley floor (p14, p20) |
 | **2** · it **fails to fit the extracted data** | the points re-digitised from the paper's figure miss the published curve; their own re-fit is **compatible with methods 1–2** | — |
-| **3** · **implausibly narrow confidence intervals** | 0.454–0.455 would need about 600,000 runs; the paper had under 500 | Table 2's interval (p19); the mechanism is p33 |
+| **3** · **implausibly narrow confidence intervals** | 0.454–0.455 would need about 600,000 runs; the paper had under 500 | Table 2's interval (p20); the mechanism is p34 |
 
 : {tbl-colwidths="[36,36,28]"}
 :::
@@ -369,7 +381,7 @@ $$\frac{\partial C_{\text{total}}/\partial N}{\partial C_{\text{total}}/\partial
 
 ::: {.fragment fragment-index=3}
 ::: {.claim}
-**Read the numerator.** $D_{\text{inf}} = 0$ gives p17 back. $D_{\text{inf}} > 0$ raises the marginal cost of $N$ and leaves $D$'s alone — so the same loss is reached with a **smaller $N$ and more $D$**. The inference term overtakes training when $2ND_{\text{inf}} > 6ND$, i.e. $D_{\text{inf}} > 3D$: for a model served for years, the normal case.
+**Read the numerator.** $D_{\text{inf}} = 0$ gives p18 back. $D_{\text{inf}} > 0$ raises the marginal cost of $N$ and leaves $D$'s alone — so the same loss is reached with a **smaller $N$ and more $D$**. The inference term overtakes training when $2ND_{\text{inf}} > 6ND$, i.e. $D_{\text{inf}} > 3D$: for a model served for years, the normal case.
 :::
 :::
 
@@ -405,7 +417,7 @@ The inference term has no $D$ in it. While $D \ll D_{\text{inf}}/3$, more tokens
 :::
 
 ::: {.footer}
-computed from Eq. (10) · the four points: demo 1 (b) · p16's plane · Llama 3's 15T: paper body
+computed from Eq. (10) · the four points: demo 1 (b) · p17's plane · Llama 3's 15T: paper body
 :::
 
 ## At a glance: the $T^{2}$ scaling law (Roberts et al. 2026)
@@ -417,7 +429,7 @@ computed from Eq. (10) · the four points: demo 1 (b) · p16's plane · Llama 3'
 | **The question** | If a deployed model answers by drawing $k$ samples (W10's test-time compute), the inference term becomes $2N\,k\,D_{\text{inf}}$. Under one end-to-end budget, how should $N$, $D$ **and $k$** be chosen together? |
 | **The idea** | Fit the task accuracy — pass@$k$, not the loss — as a function of $(N, D, k)$, and optimise all three under the total cost. |
 | **What it added** | The optimum moves "radically" into the **overtraining** regime, outside the range of standard scaling suites — and the conclusion survives post-training. |
-| **What it leaves open** | The objective is a task metric, so everything p35 says about loss vs. ability applies; and $k$ is one way to spend test-time compute among several (W10). Kinetics (Sadhukhan et al. 2025) adds that under test-time scaling the cost is memory access and attention, not parameters (W11). |
+| **What it leaves open** | The objective is a task metric, so everything p36 says about loss vs. ability applies; and $k$ is one way to spend test-time compute among several (W10). Kinetics (Sadhukhan et al. 2025) adds that under test-time scaling the cost is memory access and attention, not parameters (W11). |
 :::
 
 ::: {.footer}
@@ -444,8 +456,8 @@ Kumar et al., ICLR 2025 Oral (abstract) · $g(P)$'s form is in the body, not quo
 
 ![](assets/w07/deff.svg){width="100%"}
 
-- Put $D^{\prime}$ for $D$ in p17's loss and re-derive: once unique data run out, extra compute buys **$N$ or more epochs** — and past ~4 epochs the value of added compute decays toward zero (abstract)
-- The same form holds for $N$ (Eq. 6), with $R^{*}_{N} < R^{*}_{D}$ · this is why 15T-token runs make the ceiling real, and why synthetic data (p59) is taken seriously
+- Put $D^{\prime}$ for $D$ in p18's loss and re-derive: once unique data run out, extra compute buys **$N$ or more epochs** — and past ~4 epochs the value of added compute decays toward zero (abstract)
+- The same form holds for $N$ (Eq. 6), with $R^{*}_{N} < R^{*}_{D}$ · this is why 15T-token runs make the ceiling real, and why synthetic data (p63) is taken seriously
 
 ::: {.footer}
 Muennighoff et al. 2023 · Eq. (5)–(6) §3.1 · $R^{*}_{D} \approx 15$ §6 · "4 epochs": abstract
@@ -456,14 +468,14 @@ Muennighoff et al. 2023 · Eq. (5)–(6) §3.1 · $R^{*}_{D} \approx 15$ §6 · 
 ::: {.prose}
 | debt | the facts | what the law should read |
 |:---|:---|:---|
-| **W6 p69: a scaling law is written in $N$ — for an MoE, which?** | $C \approx 6N_{\text{active}}D$; memory and capacity follow $N_{\text{total}}$; W4's $12\,n_{\text{layer}}d^{2}$ is the dense case; W6's $\rho$ has a floor | **Neither.** Clark et al.: loss as a function of parameters *and* expert count, collapsed into an **effective parameter count**. Abnar et al.: under a fixed parameter or compute budget there **is** an optimal sparsity — two axes |
-| **W2 p45–p47: vocabulary is in the budget** | $N = N_{\text{nv}} + N_{\text{v}}$; $D$ in tokens depends on $V$ (W2 p50) | Tao et al.: the first-order condition W2 derived — a fourth variable. Limisiewicz 2026: scale $N$ with data in **bytes** — one preprint, unreplicated |
+| **W6 p73: a scaling law is written in $N$ — for an MoE, which?** | $C \approx 6N_{\text{active}}D$; memory and capacity follow $N_{\text{total}}$; W4's $12\,n_{\text{layer}}d^{2}$ is the dense case; W6's $\rho$ has a floor | **Neither.** Clark et al.: loss as a function of parameters *and* expert count, collapsed into an **effective parameter count**. Abnar et al.: under a fixed parameter or compute budget there **is** an optimal sparsity — two axes |
+| **W2 p47–p49: vocabulary is in the budget** | $N = N_{\text{nv}} + N_{\text{v}}$; $D$ in tokens depends on $V$ (W2 p52) | Tao et al.: the first-order condition W2 derived — a fourth variable. Limisiewicz 2026: scale $N$ with data in **bytes** — one preprint, unreplicated |
 
 : {tbl-colwidths="[26,30,44]"}
 :::
 
 ::: {.footer}
-Clark 2022 · Abnar 2025 · Tao 2024 · W6 p69 · W2 p47 · Misconception 4: "MoE's $N$ is the total"
+Clark 2022 · Abnar 2025 · Tao 2024 · W6 p73 · W2 p49 · Misconception 4: "MoE's $N$ is the total"
 :::
 
 # Every axis is a small-scale fit, extrapolated. Can the fit be trusted? {.section-title}
@@ -473,15 +485,15 @@ Clark 2022 · Abnar 2025 · Tao 2024 · W6 p69 · W2 p47 · Misconception 4: "Mo
 | # | what goes wrong | the paper | what to ask of a paper's fit |
 |:---|:---|:---|:---|
 | **1** | too few points, too close, extrapolated too far | (Mis)Fitting, ICLR 2025: 45 of 50+ papers fit a power law; most under-report | how many runs, over how many decades of $C$? raw points released? |
-| **2** | a **collinear design**: every run on one ray $D = kN$ | Kricheli et al. 2026 (p33) | is $D/N$ varied at a fixed $N$? |
-| **3** | hyperparameters **not re-tuned** per size | Porian et al. 2024 (p21); muP (W4 p58) | swept per size, or transferred? |
-| **4** | the schedule **ties the run to one length** | Hägele et al. 2024; MiniCPM (p34) | cosine to a fixed $T$, or constant + cooldown? |
-| **5** | loss and ability are **not one curve** | Gadre et al. 2025 vs. Schaeffer et al. 2023 (p35) | is the $y$-axis a loss, an average, or a thresholded metric? |
+| **2** | a **collinear design**: every run on one ray $D = kN$ | Kricheli et al. 2026 (p34) | is $D/N$ varied at a fixed $N$? |
+| **3** | hyperparameters **not re-tuned** per size | Porian et al. 2024 (p22); muP (W4 p61) | swept per size, or transferred? |
+| **4** | the schedule **ties the run to one length** | Hägele et al. 2024; MiniCPM (p35) | cosine to a fixed $T$, or constant + cooldown? |
+| **5** | loss and ability are **not one curve** | Gadre et al. 2025 vs. Schaeffer et al. 2023 (p36) | is the $y$-axis a loss, an average, or a thresholded metric? |
 
 : {tbl-colwidths="[5,30,35,30]"}
 
 ::: {.claim}
-Demo 2 (p37) is built to trip on **1** and **2**: five points, one ray, three used for the fit.
+Demo 2 (p39) is built to trip on **1** and **2**: five points, one ray, three used for the fit.
 :::
 
 ::: {.footer}
@@ -497,7 +509,7 @@ Chinchilla-style suites fix tokens-per-parameter; when $\alpha \approx \beta$ th
 :::
 
 ::: {.footer}
-Kricheli et al., NeurIPS 2026 (abstract) · TPP = tokens per parameter · explains p22's charge 3
+Kricheli et al., NeurIPS 2026 (abstract) · TPP = tokens per parameter · explains p23's charge 3
 :::
 
 ## Re-tune at every size; a schedule that does not tie the length
@@ -506,13 +518,13 @@ Kricheli et al., NeurIPS 2026 (abstract) · TPP = tokens per parameter · explai
 
 | reason | the fix | why it matters for a fit |
 |:---|:---|:---|
-| **3** · one learning rate for all sizes | sweep per size, or **muP** (W4 p58): tune small, transfer wide | an under-tuned small run puts its point too high and tilts the line (p21) |
-| **4** · cosine to a fixed $T$ | **constant + cooldown** (Hägele; MiniCPM's **WSD**: warmup–stable–decay): one trunk, branch off at any length | one run gives every $D$ on the axis — and the cooldown is where today's second half puts its best data (p57) |
+| **3** · one learning rate for all sizes | sweep per size, or **muP** (W4 p61): tune small, transfer wide | an under-tuned small run puts its point too high and tilts the line (p22) |
+| **4** · cosine to a fixed $T$ | **constant + cooldown** (Hägele; MiniCPM's **WSD**: warmup–stable–decay): one trunk, branch off at any length | one run gives every $D$ on the axis — and the cooldown is where today's second half puts its best data (p61) |
 
 : {tbl-colwidths="[30,38,32]"}
 
 ::: {.footer}
-Hägele et al. 2024 · Hu et al., MiniCPM 2024 (abstracts) · W4 p58
+Hägele et al. 2024 · Hu et al., MiniCPM 2024 (abstracts) · W4 p61
 :::
 
 ## Loss is the $y$-axis, not the goal: Gadre and Schaeffer
@@ -545,6 +557,18 @@ Gadre 2025 · Schaeffer 2023 · Wei 2022 · Misconception 6: "lower loss is more
 Demo 2 · `demos/w07_d2_scaling_fit` · torch on MPS · rehearsed 2026-10-26
 :::
 
+## Demo 2: how it runs
+
+{{< include assets/w07/demo2-flow.inline.qmd >}}
+
+::: {.small}
+Three points and three parameters: the fit will be perfect. The test is the two points it never saw.
+:::
+
+::: {.footer}
+Demo 2 · `demos/w07_d2_scaling_fit` · how it runs · as rehearsed
+:::
+
 ## Replay: demo 2 — five points, one ray, the extrapolation error
 
 ![](assets/w07/scaling-fit.svg){width="100%"}
@@ -567,8 +591,8 @@ Demo 2 · replay · `w07_d2_scaling_fit/` · rehearsed 2026-10-26 · bits/byte �
 ::: {.prose}
 | what W4 left here | what this week adds | the shipped example |
 |:---|:---|:---|
-| **a spike is not dirty data** (W4 p56): the same batch at another step does not spike; the logit statistics move first (W4 p51–p53) | "stability" is **the precondition of a scaling law**: every size in the suite must train to the end at its tuned learning rate, or there is no point to fit | OLMo 2 §3: reordered norm, QK-norm, z-loss (W4 p54); repeated-$n$-gram removal, initialization, AdamW's $\epsilon$, no weight decay on embeddings |
-| **muP** (W4 p58): tune small, transfer wide | how reason 3 (p34) is met without re-sweeping | Kimi K2: MuonClip on Muon (W4 p59) — **15.5T tokens, zero loss spikes** |
+| **a spike is not dirty data** (W4 p59): the same batch at another step does not spike; the logit statistics move first (W4 p54–p56) | "stability" is **the precondition of a scaling law**: every size in the suite must train to the end at its tuned learning rate, or there is no point to fit | OLMo 2 §3: reordered norm, QK-norm, z-loss (W4 p57); repeated-$n$-gram removal, initialization, AdamW's $\epsilon$, no weight decay on embeddings |
+| **muP** (W4 p61): tune small, transfer wide | how reason 3 (p35) is met without re-sweeping | Kimi K2: MuonClip on Muon (W4 p62) — **15.5T tokens, zero loss spikes** |
 
 : {tbl-colwidths="[30,34,36]"}
 :::
@@ -590,7 +614,7 @@ Everything so far treated $D$ as **a count**. The second half opens the count: w
 :::
 
 ::: {.footer}
-p5's route · first half: p14–p38 · second half: p40–p60
+p5's route · first half: p15–p40 · second half: p42–p64
 :::
 
 # Compute bought the tokens. Which tokens — who decides, and how? {.section-title}
@@ -617,8 +641,8 @@ Outline W7 · W1's compressor eats what it is fed · commoncrawl.org (a website)
 | **Name** | *The FineWeb Datasets: Decanting the Web for the Finest Text Data at Scale*, Penedo et al., NeurIPS 2024 Datasets & Benchmarks (arXiv:2406.17557). Data, pipeline code and ablations are public. |
 | **The question** | Which processing decisions, applied to Common Crawl, actually improve a model trained on the result — measured, not assumed? |
 | **The idea** | Build the pipeline stage by stage, ablating each with small models: 96 snapshots → 15T tokens (FineWeb). Then Llama-3-70B-Instruct scores 460k pages for "educational value" (0–5); a small classifier learns the scores; keep $\geq 3$: 1.3T tokens (FineWeb-Edu). |
-| **What it added** | The first **public, reproducible, ablated** pipeline; FineWeb-Edu "dramatically" better on MMLU and ARC — **MMLU's first appearance here, so in the same breath: 6.49% of its questions are wrong, and its contamination is detectable only above a floor (p53)**; **per-snapshot deduplication beats global**. |
-| **What it leaves open** | "Educational" is one judge's taste (p45, demo 3); English only — FineWeb2 extends it to 1000+ languages (p44); every number is small-model, extrapolated. |
+| **What it added** | The first **public, reproducible, ablated** pipeline; FineWeb-Edu "dramatically" better on MMLU and ARC — **MMLU's first appearance here, so in the same breath: 6.49% of its questions are wrong, and its contamination is detectable only above a floor (p57)**; **per-snapshot deduplication beats global**. |
+| **What it leaves open** | "Educational" is one judge's taste (p47, demo 3); English only — FineWeb2 extends it to 1000+ languages (p46); every number is small-model, extrapolated. |
 :::
 
 ::: {.footer}
@@ -655,11 +679,11 @@ commoncrawl.org (a website, not a paper) · FineWeb §3.1, §3.3 · FineWeb2 (ar
 : {tbl-colwidths="[40,60]"}
 
 ::: {.claim}
-W2 p70 said "Traditional Chinese has too little data" is the wrong diagnosis. Here is the right one: **it has no subset of its own** — not a quality decision, a decision made at the sieve. Hakka and Taiwanese are the other case: the sieve has a slot, and the raw water is nearly empty.
+W2 p73 said "Traditional Chinese has too little data" is the wrong diagnosis. Here is the right one: **it has no subset of its own** — not a quality decision, a decision made at the sieve. Hakka and Taiwanese are the other case: the sieve has a slot, and the raw water is nearly empty.
 :::
 
 ::: {.footer}
-`fineweb-2` dataset card (not a paper) · W2 p70 · Misconception 8 begins: "more data is better"
+`fineweb-2` dataset card (not a paper) · W2 p73 · Misconception 8 begins: "more data is better"
 :::
 
 ## Quality: rules, then a classifier — and what "quality" means
@@ -669,7 +693,7 @@ W2 p70 said "Traditional Chinese has too little data" is the wrong diagnosis. He
 | **rules** | thresholds: repetition, symbol ratio, length, stop-words, punctuation | C4's heuristics; MassiveText's (Gopher's) repetition filters — FineWeb uses both, minus C4's punctuation rule (§3.5) | every rule has a victim: C4's punctuation rule alone removes ~30% of tokens |
 | **classifier, LLM-labelled** | an LLM scores pages; a small model learns the scores | FineWeb-Edu: Llama-3-70B-Instruct, 460k pages, 0–5, keep $\geq 3$ (§4) | "educational" is **one judge's taste** — demo 3 |
 | **classifier, reference-labelled** | positives = text you want more of; negatives = random web | DCLM-Baseline: fastText, OpenHermes 2.5 + r/ExplainLikeImFive vs. random web, top 10% (§4.4); 7B / 2.6T → 64% MMLU | the target defines quality; RegMix: web text correlates with downstream more than Wikipedia |
-| **filter less** | ensemble classifiers; rephrase instead of discard | Nemotron-CC: 6.3T tokens, DCLM's MMLU with **4$\times$ the unique real tokens** | a filter is a parameter with a cost (p54) |
+| **filter less** | ensemble classifiers; rephrase instead of discard | Nemotron-CC: 6.3T tokens, DCLM's MMLU with **4$\times$ the unique real tokens** | a filter is a parameter with a cost (p58) |
 
 : {tbl-colwidths="[18,24,36,22]"}
 
@@ -682,13 +706,25 @@ FineWeb §3.3–3.5, §4 · DCLM §4.4 · Nemotron-CC · RegMix (abstracts) · M
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p45 said "educational" is one judge's taste and that quality is relative to a target. See both: first with your own eyes and the classifier's score, then in bits/byte. |
+| **Why** | p47 said "educational" is one judge's taste and that quality is relative to a target. See both: first with your own eyes and the classifier's score, then in bits/byte. |
 | **What runs** | **Live**: three pages sampled from FineWeb and three from FineWeb-Edu (fixed seed), shuffled — you guess which is which; then the FineWeb-Edu classifier (`HuggingFaceFW/fineweb-edu-classifier`, a regression head on a 110M embedding model) scores the same six pages 0–5. **Recorded**: demo 2's s4 (3.15M) trained twice on **equal bytes** of each corpus (same 7,687 steps, same seed), evaluated on **four** held-outs, reported separately: W1 demo 2's English paragraph, a Wikipedia sample, and each corpus's own tail. |
 | **Watch for** | Which pages fool you, and which the classifier scores low that you would keep. In the table: does the FineWeb-Edu model win on every held-out, or only on the one that looks like its training data? "Quality" is defined relative to the held-out — splitting the report is how you see that. |
 :::
 
 ::: {.footer}
 Demo 3 · `demos/w07_d3_quality_filter` · torch + transformers on MPS · rehearsed 2026-10-26, 21 min for the two runs
+:::
+
+## Demo 3: how it runs
+
+{{< include assets/w07/demo3-flow.inline.qmd >}}
+
+::: {.small}
+The first half uses your eyes. The second half uses bits per byte, on four different rulers.
+:::
+
+::: {.footer}
+Demo 3 · `demos/w07_d3_quality_filter` · how it runs · as rehearsed
 :::
 
 ## Live + replay: demo 3 — guess the source, score it, two curves
@@ -717,17 +753,17 @@ Demo 3 · live + replay · `w07_d3_quality_filter/` · rehearsed 2026-10-26 · t
 |:---|:---|:---|
 | Lee et al., ACL 2022 | one 61-word English sentence appears **over 60,000 times** in C4 | a duplicate is a token predicted 60,000 times: the model **memorises instead of generalising** |
 | Lee et al. | **over 1%** of unprompted output is copied verbatim from training data; deduplication cuts it **tenfold** | W1 p7's $n = 8$ — "not generation, recall" — happens in a Transformer too; the threshold is the repeat count, not $n$ |
-| Lee et al. | train–test overlap affects **over 4%** of standard validation sets | the next stage: decontamination (p53) |
+| Lee et al. | train–test overlap affects **over 4%** of standard validation sets | the next stage: decontamination (p57) |
 | Carlini et al., ICLR 2023 | memorisation grows **log-linearly** with capacity, with **how often an example is duplicated**, and with prompt length | the second factor is what deduplication controls; the first says bigger models make it worse |
 
 : {tbl-colwidths="[16,42,42]"}
 
 ::: {.claim}
-W1's $n = 8$ closes here — and near-duplicates also lie to the scaling law: $D$ up, $D_{\text{eff}}$ not (p29).
+W1's $n = 8$ closes here — and near-duplicates also lie to the scaling law: $D$ up, $D_{\text{eff}}$ not (p30).
 :::
 
 ::: {.footer}
-Lee et al. 2022 · Carlini et al. 2023 (abstracts) · W1 p7, p44 · W1's $n = 8$ closes here
+Lee et al. 2022 · Carlini et al. 2023 (abstracts) · W1 p7, p45 · W1's $n = 8$ closes here
 :::
 
 ## MinHash: one hash's collision probability is the Jaccard
@@ -760,13 +796,25 @@ LSH = locality-sensitive hashing · FineWeb §3.4: 112 hashes, 14 × 8, per snap
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p49–p50 on the board become thirty lines that run on demo 2's corpus — and the two stages that W1's $n = 8$ and MMLU's first mention need are the same code with a different threshold. |
+| **Why** | p52–p53 on the board become thirty lines that run on demo 2's corpus — and the two stages that W1's $n = 8$ and MMLU's first mention need are the same code with a different threshold. |
 | **What runs** | **(a) Live**, standard library, CPU: `shingles(text, n=5)`, `minhash(shingles, k_h=128)`, `lsh_candidates(sigs, b=16, r=8)`, a test after each (identical documents give $\widehat{J} = 1$; a known-$J$ pair is within $\pm 2/\sqrt{k_h}$; all $J > 0.9$ pairs are candidates). Then on the 200 MB FineWeb-Edu sample — **ten Common Crawl dumps**, pairs reported within and across (FineWeb deduplicated per dump); $\widehat{J}$ and exact $J$ per pair, two side by side; change $(b, r)$. **(b) Live**: MMLU's 14,042 test questions scanned for a 13-gram shared with the same corpus. |
 | **Watch for** | Within a dump or across — where do the $J \geq 0.9$ pairs sit? What the pairs are (re-crawls, mirrors, templates, copies). How the count moves with $(b, r)$ while the high-$J$ pairs stay. For (b): not how many hits, but **where** the shared 13-gram sits — a leaked question, or a famous text the question quotes. |
 :::
 
 ::: {.footer}
 Demo 4 · `demos/w07_d4_dedup_decontam` · standard library · `cais/mmlu` · built 2026-10-26
+:::
+
+## Demo 4: how it runs
+
+{{< include assets/w07/demo4-flow.inline.qmd >}}
+
+::: {.small}
+Deduplication and decontamination: one idea, two thresholds.
+:::
+
+::: {.footer}
+Demo 4 · `demos/w07_d4_dedup_decontam` · how it runs · as rehearsed
 :::
 
 ## Live: demo 4 — near-duplicates across dumps; MMLU vs. the corpus
@@ -790,20 +838,20 @@ Before (b) runs: 14,042 questions against 200 MB of FineWeb-Edu. How many hits �
 Demo 4 · live · `w07_d4_dedup_decontam/` · run 2026-10-26 · `runs/rehearsal/summary.json`
 :::
 
-## Decontamination — and what p42 promised about MMLU
+## Decontamination — and what p44 promised about MMLU
 
 ::: {.prose}
 | | |
 |:---|:-----------------|
 | **the rule** | a test example is "contaminated" if it shares a **13-gram** with anything in the pre-training set — GPT-3's convention (Brown et al. 2020 §4; details in Appendix C). Deduplication's code, another threshold, another target. |
 | **why 200 MB finds nothing** | contamination lives in the full corpus. Oren et al. (ICLR 2024 Oral) *detect* it without the data — every ordering of an exchangeable benchmark should be equally likely — but only for test sets seen **a few times or more**. Detection has a floor; a clean sample proves little. |
-| **MMLU, as promised on p42** | **6.49%** of its questions contain errors (Virology: 57%) — Gema et al., NAACL 2025, MMLU-Redux. A benchmark is a dataset: a pipeline, an error rate, a contamination history. W14. |
+| **MMLU, as promised on p44** | **6.49%** of its questions contain errors (Virology: 57%) — Gema et al., NAACL 2025, MMLU-Redux. A benchmark is a dataset: a pipeline, an error rate, a contamination history. W14. |
 
 : {tbl-colwidths="[22,78]"}
 :::
 
 ::: {.claim}
-Rule for this course: the first time MMLU is mentioned, **contamination and the error rate come in the same breath.** p42 did; this slide is the breath.
+Rule for this course: the first time MMLU is mentioned, **contamination and the error rate come in the same breath.** p44 did; this slide is the breath.
 :::
 
 ::: {.footer}
@@ -856,11 +904,11 @@ Xie · Liu · Magnusson · Shukor et al. (abstracts) · Misconception 10: "mixtu
 {{< include assets/w07/midtrain.inline.qmd >}}
 
 ::: {.claim}
-p34's schedule, second job: in the **cooldown** the learning rate is small and every step is written in, so the same tokens are worth more there. OLMo 2 calls it *mid-training*; Blakeney measures the window; the mechanism is our reading.
+p35's schedule, second job: in the **cooldown** the learning rate is small and every step is written in, so the same tokens are worth more there. OLMo 2 calls it *mid-training*; Blakeney measures the window; the mechanism is our reading.
 :::
 
 ::: {.footer}
-Team OLMo 2025 §2.3 · Blakeney et al. 2024 (abstract; a workshop paper) · p34 · W8
+Team OLMo 2025 §2.3 · Blakeney et al. 2024 (abstract; a workshop paper) · p35 · W8
 :::
 
 # The good water runs out. Make more? {.section-title}
@@ -903,10 +951,10 @@ Shumailov · Gerstgrasser · Dohmatob 2024 (abstracts) · Misconception 12: "it 
 p7 asked: (a) who decided 20, from what? (b) Llama 3 8B at $D/N \approx 1900$ — did Meta not do the arithmetic?
 :::
 
-- **(a) Nobody decided it; it is read off Hoffmann et al.'s Table 3** — Approach 1's 10B row, 205B tokens. Behind it is a first-order condition (p17) whose answer is an **exponent**, $N^{*} \propto C^{\beta/(\alpha+\beta)} \approx C^{0.5}$; $D/N$ is a constant only if $\alpha = \beta$, and the paper's own Approach 3 constants give 41 and drifting (p18–p19). The valley is flat: 20 or 59 costs 0.007 nats (p20)
-- **(b) They did a different sum.** Add inference to the bill and the tax falls on $N$ alone (p24–p25): a model served for years is cheapest small and long. Add test-time samples (p27), precision (p28), a data ceiling (p29), two $N$'s and a $V$ (p30) — every axis moves the optimum, none overturns it (p22)
-- and the method that made the first half possible also limits it: a scaling law is a **fit** — points, design, tuning, schedule, metric (p32–p35), and runs that reach the end (p38)
-- **and $D$ is not a count of the web; it is the output of a plant** (p41): language ID decided W2's gap (p43), one judge decided "quality" (p45), two integers decide what is a duplicate (p50), a 13-gram decides what is contaminated (p53), and the last 10–20% is placed by hand (p57)
+- **(a) Nobody decided it; it is read off Hoffmann et al.'s Table 3** — Approach 1's 10B row, 205B tokens. Behind it is a first-order condition (p18) whose answer is an **exponent**, $N^{*} \propto C^{\beta/(\alpha+\beta)} \approx C^{0.5}$; $D/N$ is a constant only if $\alpha = \beta$, and the paper's own Approach 3 constants give 41 and drifting (p19–p20). The valley is flat: 20 or 59 costs 0.007 nats (p21)
+- **(b) They did a different sum.** Add inference to the bill and the tax falls on $N$ alone (p25–p26): a model served for years is cheapest small and long. Add test-time samples (p28), precision (p29), a data ceiling (p30), two $N$'s and a $V$ (p31) — every axis moves the optimum, none overturns it (p23)
+- and the method that made the first half possible also limits it: a scaling law is a **fit** — points, design, tuning, schedule, metric (p33–p36), and runs that reach the end (p40)
+- **and $D$ is not a count of the web; it is the output of a plant** (p43): language ID decided W2's gap (p45), one judge decided "quality" (p47), two integers decide what is a duplicate (p53), a 13-gram decides what is contaminated (p57), and the last 10–20% is placed by hand (p61)
 
 ::: {.footer}
 compare with your two lines from p7 · W8: the compressor becomes an assistant
@@ -928,7 +976,7 @@ compare with your two lines from p7 · W8: the compressor becomes an assistant
 : {tbl-colwidths="[17,53,13,17]"}
 
 ::: {.footer}
-Same master as W1 p16, W3 p61, W4 p49, W5 p48, W6 p59 · one row added · bytes: $b$
+Same master as W1 p16, W3 p64, W4 p52, W5 p51, W6 p63 · one row added · bytes: $b$
 :::
 
 ## Twelve things this week said no to (1 of 2)
@@ -968,7 +1016,7 @@ Same master as W1 p16, W3 p61, W4 p49, W5 p48, W6 p59 · one row added · bytes:
 - the training-budget row returns in W10 (test-time compute is the next axis — Roberts already counted it) and W11 (precision and deployment); MMLU returns in W14 with its contamination history
 
 ::: {.ask}
-Before then: **Hoffmann et al. §3** (the three estimation methods, with p19 in hand), **Besiroglu et al.** (the whole paper — read it as a methods review, with p33 in hand), and **FineWeb §3** (self-study; the pipeline we walked).
+Before then: **Hoffmann et al. §3** (the three estimation methods, with p20 in hand), **Besiroglu et al.** (the whole paper — read it as a methods review, with p34 in hand), and **FineWeb §3** (self-study; the pipeline we walked).
 :::
 
 ::: {.claim}
@@ -994,23 +1042,23 @@ Part II has begun: this week decided **how much** and **which**; the next three 
 
 **Synthetic data, collapse, MMLU** · Maini et al., *Rephrasing the Web*, ACL 2024 (arXiv:2401.16380) · DatologyAI, *BeyondWeb*, arXiv:2508.10975 — **a company lab's preprint** · Qin et al., COLM 2025 (arXiv:2503.19551) · Niklaus et al., COLM 2026 (arXiv:2604.13977) · Gunasekar et al., *Textbooks Are All You Need*, arXiv:2306.11644 — a preprint · Shumailov et al., Nature 631, 755–759 (2024) · Gerstgrasser et al., COLM 2024 (arXiv:2404.01413) · Dohmatob, Feng & Kempe, NeurIPS 2024 (arXiv:2402.07712) · Gema et al., *Are We Done with MMLU?*, NAACL 2025 (arXiv:2406.04127) · Oren et al., ICLR 2024 Oral (arXiv:2310.17623)
 
-**Data and figures** · Every number on these slides is one of: arithmetic on Hoffmann et al.'s Eq. (10) constants and Eq. (4) (p9, p13, p16, p18–p20, p25–p26), arithmetic on W4's parameter accounting (p21), a curve drawn from a paper's stated equation and constant (p29, p50), a toy formula labelled as such (p35), this week's rehearsal records (demo 2's five runs and fits, p36–p37; demo 3's two runs, p46–p47; demo 4's pairs and MMLU hits, p52), a number from an earlier week's rehearsal (W4 demo 1's tiny GPT), or a number copied from an abstract or a cited section (all others). The plant, the ray, the two schedules, the shingles and the two collapse loops are schematics. **All four demos were built and rehearsed on the M5 Max (2026-10-26)**; their records are checked in under `demos/w07_d*/runs/rehearsal/`, and the table and curves on p37, the figure on p47 and the table on p52 are those records. The tables on p13, p25 and p47 are blank on purpose: they are filled in class.
+**Data and figures** · Every number on these slides is one of: arithmetic on Hoffmann et al.'s Eq. (10) constants and Eq. (4) (p9, p14, p17, p19–p21, p26–p27), arithmetic on W4's parameter accounting (p22), a curve drawn from a paper's stated equation and constant (p30, p53), a toy formula labelled as such (p36), this week's rehearsal records (demo 2's five runs and fits, p37–p39; demo 3's two runs, p48–p50; demo 4's pairs and MMLU hits, p56), a number from an earlier week's rehearsal (W4 demo 1's tiny GPT), or a number copied from an abstract or a cited section (all others). The plant, the ray, the two schedules, the shingles and the two collapse loops are schematics. **All four demos were built and rehearsed on the M5 Max (2026-10-26)**; their records are checked in under `demos/w07_d*/runs/rehearsal/`, and the table and curves on p39, the figure on p50 and the table on p56 are those records. The tables on p14, p26 and p50 are blank on purpose: they are filled in class.
 :::
 
 ## Acronyms in this deck, A–F
 
 | | |
 |:----|:----------------|
-| ARC | AI2 Reasoning Challenge: a benchmark named with MMLU in FineWeb-Edu's abstract (p42) |
-| BPE | byte pair encoding (W2); GPT-2's tokenizer on p21 |
-| C4 | Colossal Clean Crawled Corpus: the T5 corpus audited by Dodge et al. (p45, p54) |
-| CC | Common Crawl (p41); CC-MAIN-2026-43 is a snapshot name (p43) |
+| ARC | AI2 Reasoning Challenge: a benchmark named with MMLU in FineWeb-Edu's abstract (p44) |
+| BPE | byte pair encoding (W2); GPT-2's tokenizer on p22 |
+| C4 | Colossal Clean Crawled Corpus: the T5 corpus audited by Dodge et al. (p47, p58) |
+| CC | Common Crawl (p43); CC-MAIN-2026-43 is a snapshot name (p45) |
 | CPU, GPU | central / graphics processing unit (W1) |
-| D&B | the Datasets & Benchmarks track of NeurIPS (p42) |
-| DCLM | DataComp for Language Models, Li et al. 2024 (p45) |
-| DRO | distributionally robust optimization, as in DoReMi's Group DRO (p56) |
-| ELI5 | r/ExplainLikeImFive: a subreddit used as positives by DCLM's classifier (p45) |
-| FAQ | frequently asked questions: one of Niklaus et al.'s structured formats (p59) |
+| D&B | the Datasets & Benchmarks track of NeurIPS (p44) |
+| DCLM | DataComp for Language Models, Li et al. 2024 (p47) |
+| DRO | distributionally robust optimization, as in DoReMi's Group DRO (p60) |
+| ELI5 | r/ExplainLikeImFive: a subreddit used as positives by DCLM's classifier (p47) |
+| FAQ | frequently asked questions: one of Niklaus et al.'s structured formats (p63) |
 | FLOPs | floating-point operations (W1) |
 
 ## Acronyms in this deck, G–N
@@ -1018,15 +1066,15 @@ Part II has begun: this week decided **how much** and **which**; the next three 
 | | |
 |:----|:----------------|
 | GQA | grouped-query attention (W3) |
-| HTML | HyperText Markup Language: what extraction strips (p41) |
-| ID | identification, as in language ID (p41) |
+| HTML | HyperText Markup Language: what extraction strips (p43) |
+| ID | identification, as in language ID (p43) |
 | KV | key–value (cache) (W3) |
 | LLM, LM | large language model (W1); language model |
 | LO | learning objective: the seven of p6 |
 | LR | learning rate (W4) |
-| LSH | locality-sensitive hashing (p50) |
+| LSH | locality-sensitive hashing (p53) |
 | MLX | Apple's array framework; not used this week (W3) |
-| MMLU | Massive Multitask Language Understanding: first mentioned on p42 (with its error rate), taken apart on p53 |
+| MMLU | Massive Multitask Language Understanding: first mentioned on p44 (with its error rate), taken apart on p57 |
 | MoE | mixture of experts (W6) |
 | MPS | Metal Performance Shaders: PyTorch's backend for the Apple GPU (W4 demos) |
 | muP | maximal update parametrization (W4) |
@@ -1035,13 +1083,13 @@ Part II has begun: this week decided **how much** and **which**; the next three 
 
 | | |
 |:----|:----------------|
-| ODC-By | Open Data Commons Attribution License: FineWeb's licence (p42) |
-| OH-2.5 | OpenHermes 2.5: an instruction dataset used as positives by DCLM's classifier (p45) |
-| PEFT | parameter-efficient fine-tuning (W8, previewed on p66) |
-| PII | personally identifiable information: the last filtering stage (p41) |
+| ODC-By | Open Data Commons Attribution License: FineWeb's licence (p44) |
+| OH-2.5 | OpenHermes 2.5: an instruction dataset used as positives by DCLM's classifier (p47) |
+| PEFT | parameter-efficient fine-tuning (W8, previewed on p70) |
+| PII | personally identifiable information: the last filtering stage (p43) |
 | QK-norm | normalization of queries and keys before the dot product (W4) |
-| SFT | supervised fine-tuning (W8, previewed on p66) |
-| SWA | stochastic weight averaging: Hägele et al.'s free addition to the cooldown (p34, notes) |
-| TPP | tokens per parameter: Kricheli et al.'s term for $D/N$ (p33) |
-| $T^{2}$ | Train-to-Test: Roberts et al.'s scaling law (p27) |
-| WSD | Warmup-Stable-Decay: MiniCPM's name for constant + cooldown (p34) |
+| SFT | supervised fine-tuning (W8, previewed on p70) |
+| SWA | stochastic weight averaging: Hägele et al.'s free addition to the cooldown (p35, notes) |
+| TPP | tokens per parameter: Kricheli et al.'s term for $D/N$ (p34) |
+| $T^{2}$ | Train-to-Test: Roberts et al.'s scaling law (p28) |
+| WSD | Warmup-Stable-Decay: MiniCPM's name for constant + cooldown (p35) |

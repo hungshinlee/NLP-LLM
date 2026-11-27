@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 452" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-half-time" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="40" font-size="27" fill="#0b5cad" text-anchor="start" font-weight="700">First half — where a token's time goes, and how to save it</text><text x="796.387" y="40" font-size="23" fill="#6b7280" text-anchor="start" font-weight="400">answered</text><rect x="20" y="58" width="386" height="154" rx="7" fill="#f0fdf4" stroke="#15803d" stroke-width="1.8"/><circle cx="54" cy="93" r="18" fill="#15803d"/><text x="54" y="101" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">✓</text><text x="84" y="102" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">Compute, or move?</text><text x="40" y="140" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">reading computes, writing</text><text x="40" y="170" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">moves: one FLOP per byte,</text><text x="40" y="200" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">far below the ridge</text><line x1="408" y1="135" x2="424" y2="135" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-half-time)"/><rect x="427" y="58" width="386" height="154" rx="7" fill="#f0fdf4" stroke="#15803d" stroke-width="1.8"/><circle cx="461" cy="93" r="18" fill="#15803d"/><text x="461" y="101" font-size="23" fill="#fff" text-anchor="middle" font-weight="700">✓</text><text x="491" y="102" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">One formula</text><text x="447" y="140" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">batch, bits per weight, the</text><text x="447" y="170" font-size="23" fill="#15803d" text-anchor="start" font-weight="400" textLength="39.3" lengthAdjust="spacing">KV,</text><svg x="492.511" y="149.36" width="14.352" height="26.7116" viewBox="0 0 14.352 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t223-figure_1">
-  <g id="t223-patch_1">
+ <g id="t217-figure_1">
+  <g id="t217-patch_1">
    <path d="M 0 26.711625 
 L 14.352 26.711625 
 L 14.352 0 
@@ -11,11 +11,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t223-text_1">
+  <g id="t217-text_1">
    <!-- $\gamma$ -->
    <g style="fill: #15803d" transform="translate(0 20.639625) scale(0.276 -0.276)">
     <defs>
-     <path id="t223-Cmmi10-b0" d="M 1888 -1253 
+     <path id="t217-Cmmi10-b0" d="M 1888 -1253 
 Q 1888 -1109 1952 -834 
 Q 2016 -559 2108 -248 
 Q 2200 63 2266 263 
@@ -53,7 +53,7 @@ Q 1888 -1381 1888 -1253
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t223-Cmmi10-b0" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t217-Cmmi10-b0" transform="translate(0 0.8125)"/>
    </g>
   </g>
  </g>

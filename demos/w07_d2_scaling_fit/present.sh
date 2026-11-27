@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W7 demo 2（投影片 p37「Replay: demo 2 — five points, one ray, the extrapolation error」；p36 前導頁）課前與課堂的入口。
+# W7 demo 2（投影片 p39「Replay: demo 2 — five points, one ray, the extrapolation error」；p37 前導頁）課前與課堂的入口。
 # 純 torch（訓練走 MPS，沒有就退 CPU）。模型來自 ../w04_d1_block_scratch（從檔案路徑載入）；語料是 FineWeb-Edu 的抽樣，fetch 一次，之後離線。
 #
 #   ./present.sh fetch [--corpus edu|web|both] [--mb 200]   只有這一步需要網路：串流 parquet shard → ../w07_corpus/*.jsonl（demo 3、4 共用）
@@ -9,7 +9,7 @@
 #   ./present.sh rehearse            課前彩排：五個尺寸各訓到 D = 20N → runs/rehearsal/{s1..s5}.json + fit.json + summary.json + curves.svg；權重 → runs/weights/
 #   ./present.sh train s3            只訓一個尺寸 → runs/rehearsal/s3.json；之後 ./present.sh fit
 #   ./present.sh fit                 只從 json 重做擬合、envelope、summary.json 與 curves.svg
-#   ./present.sh replay              課堂（p37）：Enter 一步——五個點 → 三點擬合與外插 → 五點擬合 → envelope → p37 的表
+#   ./present.sh replay              課堂（p39）：Enter 一步——五個點 → 三點擬合與外插 → 五點擬合 → envelope → p39 的表
 #   ./present.sh show                同 replay，不等 Enter
 #
 # macOS 內建的是 bash 3.2：不要用 ${var,,} 這類 4.x 語法；$變數 後面不要緊接中文或全形標點，一律 ${var}。

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W9 demo 2 (a)：課堂上現場寫的骨架（投影片 p52 的五行）。寫完 `./present.sh live`；寫錯了 `./present.sh live --ref` 用 advantage_final.py。
+"""W9 demo 2 (a)：課堂上現場寫的骨架（投影片 p54 的五行）。寫完 `./present.sh live`；寫錯了 `./present.sh live --ref` 用 advantage_final.py。
 上完課 `git checkout -- advantage_live.py` 還原成這個骨架。
 
 r：一題 G 段回答的 reward，mx.array，形狀 (G,)。回傳同形狀的 advantage。

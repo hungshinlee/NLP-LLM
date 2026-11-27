@@ -1,0 +1,459 @@
+<!-- 由 scripts/make_figs_w06.py 產生，勿手改；投影片用 {{< include assets/w06/demo4-flow.inline.qmd >}} 貼入 -->
+```{=html}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 358" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-demo4-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="28" font-size="23" fill="#0b5cad" text-anchor="start" font-weight="700">(a) the cache against the context length: W3 demo 2's method</text><text x="950" y="28" font-size="19" fill="#6b7280" text-anchor="end" font-weight="400">mlx-lm, both 4-bit</text><rect x="20" y="42" width="310" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">two models</text><text x="38" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Falcon-H1-7B, a parallel</text><text x="38" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">hybrid; Qwen3-8B, full</text><text x="38" y="168" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">attention</text><line x1="334" y1="112" x2="355" y2="112" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo4-flow)"/><rect x="360" y="42" width="300" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="378" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">prompts, 1k to 32k</text><text x="378" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">tokens; the cache's</text><text x="378" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">bytes and the prefill</text><text x="378" y="168" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">time</text><line x1="664" y1="112" x2="685" y2="112" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo4-flow)"/><rect x="690" y="42" width="260" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="708" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">one line per model</text><text x="708" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">drawn over the</text><text x="708" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">formula lines</text><line x1="954" y1="112" x2="975" y2="112" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo4-flow)"/><rect x="980" y="42" width="240" height="140" rx="8" fill="#fff" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/><text x="998" y="78" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">the hybrid's line</text><text x="998" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">its slope: ?</text><text x="998" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">starts above</text><text x="998" y="168" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">zero: ?</text><g class="fragment" data-fragment-index="1"><text x="20" y="226" font-size="23" fill="#b45309" text-anchor="start" font-weight="700">(b) recall: W5 demo 3's task, the same questions</text><text x="950" y="226" font-size="19" fill="#6b7280" text-anchor="end" font-weight="400">recorded; a few live</text><rect x="20" y="240" width="470" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="276" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">key–value retrieval</text><svg x="38" y="285.028" width="82.248" height="26.7116" viewBox="0 0 82.248 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t577-figure_1">
+  <g id="t577-patch_1">
+   <path d="M 0 26.711625 
+L 82.248 26.711625 
+L 82.248 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t577-text_1">
+   <!-- $K = 81$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t577-Cmmi10-4b" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 709 225 863 269 
+Q 947 297 984 441 
+L 1863 3956 
+Q 1875 4019 1875 4044 
+Q 1875 4113 1797 4122 
+Q 1678 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1297 4313 1309 4342 
+Q 1322 4372 1381 4372 
+L 3103 4372 
+Q 3169 4372 3169 4288 
+Q 3166 4272 3156 4234 
+Q 3147 4197 3131 4172 
+Q 3116 4147 3084 4147 
+Q 2694 4147 2541 4103 
+Q 2456 4072 2419 3928 
+L 1900 1856 
+L 4409 3794 
+Q 4416 3806 4489 3879 
+Q 4563 3953 4563 4025 
+Q 4563 4147 4347 4147 
+Q 4281 4147 4281 4231 
+Q 4294 4281 4301 4309 
+Q 4309 4338 4329 4355 
+Q 4350 4372 4391 4372 
+L 5631 4372 
+Q 5666 4372 5681 4347 
+Q 5697 4322 5697 4288 
+Q 5694 4272 5683 4231 
+Q 5672 4191 5655 4169 
+Q 5638 4147 5606 4147 
+Q 5138 4147 4581 3713 
+Q 4578 3709 4572 3707 
+Q 4566 3706 4559 3704 
+Q 4553 3703 4550 3700 
+L 3231 2675 
+L 4191 428 
+Q 4278 288 4378 256 
+Q 4478 225 4684 225 
+Q 4750 225 4750 141 
+Q 4731 66 4712 33 
+Q 4694 0 4641 0 
+L 3156 0 
+Q 3097 0 3097 84 
+Q 3106 150 3118 187 
+Q 3131 225 3181 225 
+Q 3344 225 3458 258 
+Q 3572 291 3572 409 
+Q 3572 453 3566 475 
+L 2772 2322 
+L 1838 1600 
+L 1544 416 
+Q 1528 338 1528 325 
+Q 1528 259 1606 250 
+Q 1728 225 2069 225 
+Q 2131 225 2131 141 
+Q 2109 50 2096 25 
+Q 2084 0 2022 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t577-Cmr10-3d" d="M 481 850 
+Q 428 850 393 890 
+Q 359 931 359 978 
+Q 359 1031 393 1068 
+Q 428 1106 481 1106 
+L 4500 1106 
+Q 4547 1106 4581 1068 
+Q 4616 1031 4616 978 
+Q 4616 931 4581 890 
+Q 4547 850 4500 850 
+L 481 850 
+z
+M 481 2094 
+Q 428 2094 393 2131 
+Q 359 2169 359 2222 
+Q 359 2269 393 2309 
+Q 428 2350 481 2350 
+L 4500 2350 
+Q 4547 2350 4581 2309 
+Q 4616 2269 4616 2222 
+Q 4616 2169 4581 2131 
+Q 4547 2094 4500 2094 
+L 481 2094 
+z
+" transform="scale(0.015625)"/>
+     <path id="t577-Cmr10-38" d="M 269 972 
+Q 269 1356 522 1651 
+Q 775 1947 1172 2144 
+L 934 2297 
+Q 716 2441 578 2680 
+Q 441 2919 441 3181 
+Q 441 3488 602 3734 
+Q 763 3981 1030 4122 
+Q 1297 4263 1600 4263 
+Q 1884 4263 2148 4147 
+Q 2413 4031 2583 3815 
+Q 2753 3600 2753 3303 
+Q 2753 3088 2651 2903 
+Q 2550 2719 2373 2572 
+Q 2197 2425 1997 2322 
+L 2363 2088 
+Q 2616 1922 2770 1653 
+Q 2925 1384 2925 1088 
+Q 2925 741 2739 456 
+Q 2553 172 2247 15 
+Q 1941 -141 1600 -141 
+Q 1269 -141 961 -6 
+Q 653 128 461 383 
+Q 269 638 269 972 
+z
+M 616 972 
+Q 616 719 755 509 
+Q 894 300 1122 181 
+Q 1350 63 1600 63 
+Q 1972 63 2275 280 
+Q 2578 497 2578 856 
+Q 2578 978 2529 1098 
+Q 2481 1219 2395 1317 
+Q 2309 1416 2203 1478 
+L 1344 2034 
+Q 1144 1928 976 1765 
+Q 809 1603 712 1400 
+Q 616 1197 616 972 
+z
+M 1056 2925 
+L 1831 2425 
+Q 2100 2581 2272 2803 
+Q 2444 3025 2444 3303 
+Q 2444 3519 2323 3698 
+Q 2203 3878 2009 3978 
+Q 1816 4078 1594 4078 
+Q 1400 4078 1203 4003 
+Q 1006 3928 878 3779 
+Q 750 3631 750 3431 
+Q 750 3131 1056 2925 
+z
+" transform="scale(0.015625)"/>
+     <path id="t577-Cmr10-31" d="M 594 0 
+L 594 225 
+Q 1394 225 1394 428 
+L 1394 3788 
+Q 1063 3628 556 3628 
+L 556 3853 
+Q 1341 3853 1741 4263 
+L 1831 4263 
+Q 1853 4263 1873 4245 
+Q 1894 4228 1894 4206 
+L 1894 428 
+Q 1894 225 2694 225 
+L 2694 0 
+L 594 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t577-Cmmi10-4b" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t577-Cmr10-3d" transform="translate(102.470703 0.6875)"/>
+    <use xlink:href="#t577-Cmr10-38" transform="translate(197.714844 0.6875)"/>
+    <use xlink:href="#t577-Cmr10-31" transform="translate(247.714844 0.6875)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="126.458" y="306" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="40.7" lengthAdjust="spacing">and</text><svg x="173.334" y="285.028" width="96.048" height="26.7116" viewBox="0 0 96.048 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t578-figure_1">
+  <g id="t578-patch_1">
+   <path d="M 0 26.711625 
+L 96.048 26.711625 
+L 96.048 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t578-text_1">
+   <!-- $K = 326$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t578-Cmmi10-4b" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 709 225 863 269 
+Q 947 297 984 441 
+L 1863 3956 
+Q 1875 4019 1875 4044 
+Q 1875 4113 1797 4122 
+Q 1678 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1297 4313 1309 4342 
+Q 1322 4372 1381 4372 
+L 3103 4372 
+Q 3169 4372 3169 4288 
+Q 3166 4272 3156 4234 
+Q 3147 4197 3131 4172 
+Q 3116 4147 3084 4147 
+Q 2694 4147 2541 4103 
+Q 2456 4072 2419 3928 
+L 1900 1856 
+L 4409 3794 
+Q 4416 3806 4489 3879 
+Q 4563 3953 4563 4025 
+Q 4563 4147 4347 4147 
+Q 4281 4147 4281 4231 
+Q 4294 4281 4301 4309 
+Q 4309 4338 4329 4355 
+Q 4350 4372 4391 4372 
+L 5631 4372 
+Q 5666 4372 5681 4347 
+Q 5697 4322 5697 4288 
+Q 5694 4272 5683 4231 
+Q 5672 4191 5655 4169 
+Q 5638 4147 5606 4147 
+Q 5138 4147 4581 3713 
+Q 4578 3709 4572 3707 
+Q 4566 3706 4559 3704 
+Q 4553 3703 4550 3700 
+L 3231 2675 
+L 4191 428 
+Q 4278 288 4378 256 
+Q 4478 225 4684 225 
+Q 4750 225 4750 141 
+Q 4731 66 4712 33 
+Q 4694 0 4641 0 
+L 3156 0 
+Q 3097 0 3097 84 
+Q 3106 150 3118 187 
+Q 3131 225 3181 225 
+Q 3344 225 3458 258 
+Q 3572 291 3572 409 
+Q 3572 453 3566 475 
+L 2772 2322 
+L 1838 1600 
+L 1544 416 
+Q 1528 338 1528 325 
+Q 1528 259 1606 250 
+Q 1728 225 2069 225 
+Q 2131 225 2131 141 
+Q 2109 50 2096 25 
+Q 2084 0 2022 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t578-Cmr10-3d" d="M 481 850 
+Q 428 850 393 890 
+Q 359 931 359 978 
+Q 359 1031 393 1068 
+Q 428 1106 481 1106 
+L 4500 1106 
+Q 4547 1106 4581 1068 
+Q 4616 1031 4616 978 
+Q 4616 931 4581 890 
+Q 4547 850 4500 850 
+L 481 850 
+z
+M 481 2094 
+Q 428 2094 393 2131 
+Q 359 2169 359 2222 
+Q 359 2269 393 2309 
+Q 428 2350 481 2350 
+L 4500 2350 
+Q 4547 2350 4581 2309 
+Q 4616 2269 4616 2222 
+Q 4616 2169 4581 2131 
+Q 4547 2094 4500 2094 
+L 481 2094 
+z
+" transform="scale(0.015625)"/>
+     <path id="t578-Cmr10-33" d="M 609 494 
+Q 759 275 1012 169 
+Q 1266 63 1556 63 
+Q 1928 63 2084 380 
+Q 2241 697 2241 1100 
+Q 2241 1281 2208 1462 
+Q 2175 1644 2097 1800 
+Q 2019 1956 1883 2050 
+Q 1747 2144 1550 2144 
+L 1125 2144 
+Q 1069 2144 1069 2203 
+L 1069 2259 
+Q 1069 2309 1125 2309 
+L 1478 2338 
+Q 1703 2338 1851 2506 
+Q 2000 2675 2069 2917 
+Q 2138 3159 2138 3378 
+Q 2138 3684 1994 3881 
+Q 1850 4078 1556 4078 
+Q 1313 4078 1091 3986 
+Q 869 3894 738 3706 
+Q 750 3709 759 3711 
+Q 769 3713 781 3713 
+Q 925 3713 1022 3613 
+Q 1119 3513 1119 3372 
+Q 1119 3234 1022 3134 
+Q 925 3034 781 3034 
+Q 641 3034 541 3134 
+Q 441 3234 441 3372 
+Q 441 3647 606 3850 
+Q 772 4053 1033 4158 
+Q 1294 4263 1556 4263 
+Q 1750 4263 1965 4205 
+Q 2181 4147 2356 4039 
+Q 2531 3931 2642 3762 
+Q 2753 3594 2753 3378 
+Q 2753 3109 2633 2881 
+Q 2513 2653 2303 2487 
+Q 2094 2322 1844 2241 
+Q 2122 2188 2372 2031 
+Q 2622 1875 2773 1631 
+Q 2925 1388 2925 1106 
+Q 2925 753 2731 467 
+Q 2538 181 2222 20 
+Q 1906 -141 1556 -141 
+Q 1256 -141 954 -26 
+Q 653 88 461 316 
+Q 269 544 269 863 
+Q 269 1022 375 1128 
+Q 481 1234 641 1234 
+Q 744 1234 830 1186 
+Q 916 1138 964 1050 
+Q 1013 963 1013 863 
+Q 1013 706 903 600 
+Q 794 494 641 494 
+L 609 494 
+z
+" transform="scale(0.015625)"/>
+     <path id="t578-Cmr10-32" d="M 319 0 
+L 319 172 
+Q 319 188 331 206 
+L 1325 1306 
+Q 1550 1550 1690 1715 
+Q 1831 1881 1968 2097 
+Q 2106 2313 2186 2536 
+Q 2266 2759 2266 3009 
+Q 2266 3272 2169 3511 
+Q 2072 3750 1880 3894 
+Q 1688 4038 1416 4038 
+Q 1138 4038 916 3870 
+Q 694 3703 603 3438 
+Q 628 3444 672 3444 
+Q 816 3444 917 3347 
+Q 1019 3250 1019 3097 
+Q 1019 2950 917 2848 
+Q 816 2747 672 2747 
+Q 522 2747 420 2851 
+Q 319 2956 319 3097 
+Q 319 3338 409 3548 
+Q 500 3759 670 3923 
+Q 841 4088 1055 4175 
+Q 1269 4263 1509 4263 
+Q 1875 4263 2190 4108 
+Q 2506 3953 2690 3670 
+Q 2875 3388 2875 3009 
+Q 2875 2731 2753 2481 
+Q 2631 2231 2440 2026 
+Q 2250 1822 1953 1562 
+Q 1656 1303 1563 1216 
+L 838 519 
+L 1453 519 
+Q 1906 519 2211 526 
+Q 2516 534 2534 550 
+Q 2609 631 2688 1141 
+L 2875 1141 
+L 2694 0 
+L 319 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t578-Cmr10-36" d="M 1600 -141 
+Q 1203 -141 937 70 
+Q 672 281 526 617 
+Q 381 953 325 1322 
+Q 269 1691 269 2069 
+Q 269 2575 466 3084 
+Q 663 3594 1045 3928 
+Q 1428 4263 1953 4263 
+Q 2172 4263 2361 4180 
+Q 2550 4097 2658 3936 
+Q 2766 3775 2766 3547 
+Q 2766 3416 2677 3327 
+Q 2588 3238 2456 3238 
+Q 2331 3238 2240 3328 
+Q 2150 3419 2150 3547 
+Q 2150 3672 2240 3762 
+Q 2331 3853 2456 3853 
+L 2491 3853 
+Q 2409 3969 2261 4023 
+Q 2113 4078 1953 4078 
+Q 1759 4078 1595 3993 
+Q 1431 3909 1300 3765 
+Q 1169 3622 1081 3448 
+Q 994 3275 945 3053 
+Q 897 2831 884 2637 
+Q 872 2444 872 2150 
+Q 984 2413 1190 2580 
+Q 1397 2747 1656 2747 
+Q 1941 2747 2175 2631 
+Q 2409 2516 2578 2311 
+Q 2747 2106 2836 1843 
+Q 2925 1581 2925 1313 
+Q 2925 938 2758 598 
+Q 2591 259 2287 59 
+Q 1984 -141 1600 -141 
+z
+M 1600 63 
+Q 1847 63 1997 175 
+Q 2147 288 2217 473 
+Q 2288 659 2305 848 
+Q 2322 1038 2322 1313 
+Q 2322 1675 2287 1931 
+Q 2253 2188 2100 2383 
+Q 1947 2578 1631 2578 
+Q 1372 2578 1205 2403 
+Q 1038 2228 961 1961 
+Q 884 1694 884 1447 
+Q 884 1363 891 1319 
+Q 891 1309 889 1303 
+Q 888 1297 884 1288 
+Q 884 1013 940 731 
+Q 997 450 1156 256 
+Q 1316 63 1600 63 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t578-Cmmi10-4b" transform="translate(0 0.6875)"/>
+    <use xlink:href="#t578-Cmr10-3d" transform="translate(102.470703 0.6875)"/>
+    <use xlink:href="#t578-Cmr10-33" transform="translate(197.714844 0.6875)"/>
+    <use xlink:href="#t578-Cmr10-32" transform="translate(247.714844 0.6875)"/>
+    <use xlink:href="#t578-Cmr10-36" transform="translate(297.714844 0.6875)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="275.592" y="306" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="189.7" lengthAdjust="spacing">pairs; five answer</text><text x="38" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">positions</text><line x1="494" y1="295" x2="525" y2="295" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo4-flow)"/><rect x="530" y="240" width="420" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="548" y="276" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">each model</text><text x="548" y="306" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">twenty questions per position;</text><text x="548" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">exact match</text><line x1="954" y1="295" x2="975" y2="295" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo4-flow)"/><rect x="980" y="240" width="240" height="110" rx="8" fill="#fff" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/><text x="998" y="276" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">Falcon-H1</text><text x="998" y="306" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">loses recall: ?</text><text x="998" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">if so, where: ?</text></g></svg>
+```

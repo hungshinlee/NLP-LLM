@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W7 demo 4 的參考實作：MinHash 去重的三個函數（投影片 p49–p50 黑板上的三行，p52 現場寫）。
+"""W7 demo 4 的參考實作：MinHash 去重的三個函數（投影片 p52–p53 黑板上的三行，p56 現場寫）。
 
     shingles(text, n=5)                 -> set[str]        小寫、\\w+ 切詞、連續 n 個詞接成一個 shingle
     minhash(shingles, k_h=128, seed=0)  -> list[int]       k_h 個「隨機排列的最小值」：排列用 (a·h + b) mod p 代替

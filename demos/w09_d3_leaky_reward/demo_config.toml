@@ -1,5 +1,5 @@
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W9 demo 3（投影片 p59 前導頁、p60「Replay: demo 3」）的設定
+# W9 demo 3（投影片 p61 前導頁、p63「Replay: demo 3」）的設定
 #
 # 模型、adapter、旁路、題目的級別、prompt、取樣、eval 的題目都讀 demo 2 的 demo_config.toml
 #（../w09_d2_grpo_scratch/）——同一個任務、同一個迴圈，這裡只決定「用哪個 verifier 訓練」與每批更新幾步。
@@ -28,7 +28,7 @@ count  = { reward = "count" }
 [rehearse]
 runs = ["leaky", "strict", "coin_1", "coin_k"]
 
-# p60 的表各自用哪個 run。
+# p63 的表各自用哪個 run。
 [tables]
 main = "leaky"
 control = "strict"

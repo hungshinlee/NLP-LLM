@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W8 demo 4 (a)：課堂上現場寫的骨架（投影片 p59 的五行）。寫完 `./present.sh intruders`；寫錯了 `--ref` 用 intruders_final.py。
+"""W8 demo 4 (a)：課堂上現場寫的骨架（投影片 p63 的五行）。寫完 `./present.sh intruders`；寫錯了 `--ref` 用 intruders_final.py。
 上完課 `git checkout -- intruders_live.py` 還原成這個骨架。
 
 W0、W1：d_out × d_in 的 numpy 陣列（float64）；W0 是預訓練的矩陣，W1 是微調後的（LoRA 的 s·B·A 已經加回去了）。

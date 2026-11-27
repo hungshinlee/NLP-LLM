@@ -1,0 +1,693 @@
+<!-- 由 scripts/make_figs_w08.py 產生，勿手改；投影片用 {{< include assets/w08/demo4-flow.inline.qmd >}} 貼入 -->
+```{=html}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 388" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-demo4-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="28" font-size="23" fill="#0b5cad" text-anchor="start" font-weight="700">(a) five lines, written live</text><text x="950" y="28" font-size="19" fill="#6b7280" text-anchor="end" font-weight="400">numpy, float64, CPU</text><rect x="20" y="42" width="290" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">weight files</text><text x="38" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="93.5" lengthAdjust="spacing">the base</text><svg x="137.732" y="87.0283" width="41.4" height="26.7116" viewBox="0 0 41.4 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t184-figure_1">
+  <g id="t184-patch_1">
+   <path d="M 0 26.711625 
+L 41.4 26.711625 
+L 41.4 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t184-text_1">
+   <!-- $\mathbf{W}_0$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t184-Cmb10-57" d="M 1966 63 
+L 622 4063 
+L 134 4063 
+L 134 4391 
+L 2100 4391 
+L 2100 4063 
+L 1569 4063 
+L 2484 1356 
+L 3128 3291 
+L 2869 4063 
+L 2381 4063 
+L 2381 4391 
+L 4347 4391 
+L 4347 4063 
+L 3822 4063 
+L 4728 1356 
+L 5619 4013 
+Q 5603 4028 5459 4044 
+Q 5259 4063 5050 4063 
+L 5050 4391 
+L 6472 4391 
+L 6472 4063 
+Q 6316 4063 6147 4053 
+Q 5978 4044 5966 4006 
+L 4641 63 
+Q 4600 -50 4481 -50 
+L 4378 -50 
+Q 4250 -50 4219 63 
+L 3303 2778 
+L 2388 63 
+Q 2356 -50 2228 -50 
+L 2125 -50 
+Q 2006 -50 1966 63 
+z
+" transform="scale(0.015625)"/>
+     <path id="t184-Cmr10-30" d="M 1600 -141 
+Q 816 -141 533 504 
+Q 250 1150 250 2041 
+Q 250 2597 351 3087 
+Q 453 3578 754 3920 
+Q 1056 4263 1600 4263 
+Q 2022 4263 2290 4056 
+Q 2559 3850 2700 3523 
+Q 2841 3197 2892 2823 
+Q 2944 2450 2944 2041 
+Q 2944 1491 2842 1011 
+Q 2741 531 2444 195 
+Q 2147 -141 1600 -141 
+z
+M 1600 25 
+Q 1956 25 2131 390 
+Q 2306 756 2347 1200 
+Q 2388 1644 2388 2144 
+Q 2388 2625 2347 3031 
+Q 2306 3438 2132 3767 
+Q 1959 4097 1600 4097 
+Q 1238 4097 1063 3765 
+Q 888 3434 847 3029 
+Q 806 2625 806 2144 
+Q 806 1788 823 1472 
+Q 841 1156 916 820 
+Q 991 484 1158 254 
+Q 1325 25 1600 25 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t184-Cmb10-57" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t184-Cmr10-30" transform="translate(107.784453 -16.615625) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="179.132" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="111.7" lengthAdjust="spacing">; demo 3's</text><text x="38" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="191.1" lengthAdjust="spacing">two runs, each as</text><svg x="235.276" y="117.028" width="36.984" height="26.7116" viewBox="0 0 36.984 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t185-figure_1">
+  <g id="t185-patch_1">
+   <path d="M 0 26.711625 
+L 36.984 26.711625 
+L 36.984 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t185-text_1">
+   <!-- $\mathbf{W}'$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t185-Cmb10-57" d="M 1966 63 
+L 622 4063 
+L 134 4063 
+L 134 4391 
+L 2100 4391 
+L 2100 4063 
+L 1569 4063 
+L 2484 1356 
+L 3128 3291 
+L 2869 4063 
+L 2381 4063 
+L 2381 4391 
+L 4347 4391 
+L 4347 4063 
+L 3822 4063 
+L 4728 1356 
+L 5619 4013 
+Q 5603 4028 5459 4044 
+Q 5259 4063 5050 4063 
+L 5050 4391 
+L 6472 4391 
+L 6472 4063 
+Q 6316 4063 6147 4053 
+Q 5978 4044 5966 4006 
+L 4641 63 
+Q 4600 -50 4481 -50 
+L 4378 -50 
+Q 4250 -50 4219 63 
+L 3303 2778 
+L 2388 63 
+Q 2356 -50 2228 -50 
+L 2125 -50 
+Q 2006 -50 1966 63 
+z
+" transform="scale(0.015625)"/>
+     <path id="t185-Cmsy10-30" d="M 225 347 
+Q 184 359 184 409 
+L 966 3316 
+Q 1003 3434 1093 3506 
+Q 1184 3578 1300 3578 
+Q 1450 3578 1564 3479 
+Q 1678 3381 1678 3231 
+Q 1678 3166 1644 3084 
+L 488 319 
+Q 466 275 428 275 
+Q 394 275 320 306 
+Q 247 338 225 347 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t185-Cmb10-57" transform="translate(0 0.601562)"/>
+    <use xlink:href="#t185-Cmsy10-30" transform="translate(107.784453 38.865625) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><line x1="314" y1="112" x2="335" y2="112" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo4-flow)"/><rect x="340" y="42" width="250" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="358" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">two SVDs</text><text x="358" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="20.3" lengthAdjust="spacing">of</text><svg x="384.543" y="87.0283" width="41.4" height="26.7116" viewBox="0 0 41.4 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t186-figure_1">
+  <g id="t186-patch_1">
+   <path d="M 0 26.711625 
+L 41.4 26.711625 
+L 41.4 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t186-text_1">
+   <!-- $\mathbf{W}_0$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t186-Cmb10-57" d="M 1966 63 
+L 622 4063 
+L 134 4063 
+L 134 4391 
+L 2100 4391 
+L 2100 4063 
+L 1569 4063 
+L 2484 1356 
+L 3128 3291 
+L 2869 4063 
+L 2381 4063 
+L 2381 4391 
+L 4347 4391 
+L 4347 4063 
+L 3822 4063 
+L 4728 1356 
+L 5619 4013 
+Q 5603 4028 5459 4044 
+Q 5259 4063 5050 4063 
+L 5050 4391 
+L 6472 4391 
+L 6472 4063 
+Q 6316 4063 6147 4053 
+Q 5978 4044 5966 4006 
+L 4641 63 
+Q 4600 -50 4481 -50 
+L 4378 -50 
+Q 4250 -50 4219 63 
+L 3303 2778 
+L 2388 63 
+Q 2356 -50 2228 -50 
+L 2125 -50 
+Q 2006 -50 1966 63 
+z
+" transform="scale(0.015625)"/>
+     <path id="t186-Cmr10-30" d="M 1600 -141 
+Q 816 -141 533 504 
+Q 250 1150 250 2041 
+Q 250 2597 351 3087 
+Q 453 3578 754 3920 
+Q 1056 4263 1600 4263 
+Q 2022 4263 2290 4056 
+Q 2559 3850 2700 3523 
+Q 2841 3197 2892 2823 
+Q 2944 2450 2944 2041 
+Q 2944 1491 2842 1011 
+Q 2741 531 2444 195 
+Q 2147 -141 1600 -141 
+z
+M 1600 25 
+Q 1956 25 2131 390 
+Q 2306 756 2347 1200 
+Q 2388 1644 2388 2144 
+Q 2388 2625 2347 3031 
+Q 2306 3438 2132 3767 
+Q 1959 4097 1600 4097 
+Q 1238 4097 1063 3765 
+Q 888 3434 847 3029 
+Q 806 2625 806 2144 
+Q 806 1788 823 1472 
+Q 841 1156 916 820 
+Q 991 484 1158 254 
+Q 1325 25 1600 25 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t186-Cmb10-57" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t186-Cmr10-30" transform="translate(107.784453 -16.615625) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="425.943" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="81.3" lengthAdjust="spacing">, and of</text><svg x="513.485" y="87.0283" width="36.984" height="26.7116" viewBox="0 0 36.984 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t187-figure_1">
+  <g id="t187-patch_1">
+   <path d="M 0 26.711625 
+L 36.984 26.711625 
+L 36.984 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t187-text_1">
+   <!-- $\mathbf{W}'$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t187-Cmb10-57" d="M 1966 63 
+L 622 4063 
+L 134 4063 
+L 134 4391 
+L 2100 4391 
+L 2100 4063 
+L 1569 4063 
+L 2484 1356 
+L 3128 3291 
+L 2869 4063 
+L 2381 4063 
+L 2381 4391 
+L 4347 4391 
+L 4347 4063 
+L 3822 4063 
+L 4728 1356 
+L 5619 4013 
+Q 5603 4028 5459 4044 
+Q 5259 4063 5050 4063 
+L 5050 4391 
+L 6472 4391 
+L 6472 4063 
+Q 6316 4063 6147 4053 
+Q 5978 4044 5966 4006 
+L 4641 63 
+Q 4600 -50 4481 -50 
+L 4378 -50 
+Q 4250 -50 4219 63 
+L 3303 2778 
+L 2388 63 
+Q 2356 -50 2228 -50 
+L 2125 -50 
+Q 2006 -50 1966 63 
+z
+" transform="scale(0.015625)"/>
+     <path id="t187-Cmsy10-30" d="M 225 347 
+Q 184 359 184 409 
+L 966 3316 
+Q 1003 3434 1093 3506 
+Q 1184 3578 1300 3578 
+Q 1450 3578 1564 3479 
+Q 1678 3381 1678 3231 
+Q 1678 3166 1644 3084 
+L 488 319 
+Q 466 275 428 275 
+Q 394 275 320 306 
+Q 247 338 225 347 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t187-Cmb10-57" transform="translate(0 0.601562)"/>
+    <use xlink:href="#t187-Cmsy10-30" transform="translate(107.784453 38.865625) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><line x1="594" y1="112" x2="615" y2="112" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo4-flow)"/><rect x="620" y="42" width="330" height="140" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><text x="638" y="78" font-size="23" fill="#0b5cad" text-anchor="start" font-weight="700">compare</text><text x="638" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="222.3" lengthAdjust="spacing">each of the top 10 of</text><svg x="866.507" y="87.0283" width="36.984" height="26.7116" viewBox="0 0 36.984 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t188-figure_1">
+  <g id="t188-patch_1">
+   <path d="M 0 26.711625 
+L 36.984 26.711625 
+L 36.984 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t188-text_1">
+   <!-- $\mathbf{W}'$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t188-Cmb10-57" d="M 1966 63 
+L 622 4063 
+L 134 4063 
+L 134 4391 
+L 2100 4391 
+L 2100 4063 
+L 1569 4063 
+L 2484 1356 
+L 3128 3291 
+L 2869 4063 
+L 2381 4063 
+L 2381 4391 
+L 4347 4391 
+L 4347 4063 
+L 3822 4063 
+L 4728 1356 
+L 5619 4013 
+Q 5603 4028 5459 4044 
+Q 5259 4063 5050 4063 
+L 5050 4391 
+L 6472 4391 
+L 6472 4063 
+Q 6316 4063 6147 4053 
+Q 5978 4044 5966 4006 
+L 4641 63 
+Q 4600 -50 4481 -50 
+L 4378 -50 
+Q 4250 -50 4219 63 
+L 3303 2778 
+L 2388 63 
+Q 2356 -50 2228 -50 
+L 2125 -50 
+Q 2006 -50 1966 63 
+z
+" transform="scale(0.015625)"/>
+     <path id="t188-Cmsy10-30" d="M 225 347 
+Q 184 359 184 409 
+L 966 3316 
+Q 1003 3434 1093 3506 
+Q 1184 3578 1300 3578 
+Q 1450 3578 1564 3479 
+Q 1678 3381 1678 3231 
+Q 1678 3166 1644 3084 
+L 488 319 
+Q 466 275 428 275 
+Q 394 275 320 306 
+Q 247 338 225 347 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t188-Cmb10-57" transform="translate(0 0.601562)"/>
+    <use xlink:href="#t188-Cmsy10-30" transform="translate(107.784453 38.865625) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="903.491" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="6.8" lengthAdjust="spacing">:</text><text x="638" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="104.3" lengthAdjust="spacing">its largest</text><svg x="748.532" y="117.3" width="52.44" height="27.6" viewBox="0 0 52.44 27.6"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t189-figure_1">
+  <g id="t189-patch_1">
+   <path d="M 0 27.6 
+L 52.44 27.6 
+L 52.44 0 
+L 0 0 
+L 0 27.6 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t189-text_1">
+   <!-- $|\cos|$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.7) scale(0.276 -0.276)">
+    <defs>
+     <path id="t189-Cmsy10-6a" d="M 763 -1484 
+L 763 4684 
+Q 763 4734 800 4767 
+Q 838 4800 891 4800 
+Q 938 4800 978 4767 
+Q 1019 4734 1019 4684 
+L 1019 -1484 
+Q 1019 -1534 978 -1567 
+Q 938 -1600 891 -1600 
+Q 838 -1600 800 -1567 
+Q 763 -1534 763 -1484 
+z
+" transform="scale(0.015625)"/>
+     <path id="t189-Cmr10-63" d="M 1594 -72 
+Q 1206 -72 890 129 
+Q 575 331 394 667 
+Q 213 1003 213 1381 
+Q 213 1759 392 2106 
+Q 572 2453 889 2661 
+Q 1206 2869 1594 2869 
+Q 1969 2869 2276 2722 
+Q 2584 2575 2584 2241 
+Q 2584 2116 2495 2023 
+Q 2406 1931 2278 1931 
+Q 2150 1931 2061 2023 
+Q 1972 2116 1972 2241 
+Q 1972 2353 2044 2436 
+Q 2116 2519 2222 2541 
+Q 2000 2681 1600 2681 
+Q 1294 2681 1106 2478 
+Q 919 2275 844 1975 
+Q 769 1675 769 1381 
+Q 769 1072 861 783 
+Q 953 494 1158 305 
+Q 1363 116 1672 116 
+Q 1975 116 2187 302 
+Q 2400 488 2478 788 
+Q 2478 825 2528 825 
+L 2606 825 
+Q 2625 825 2640 808 
+Q 2656 791 2656 769 
+L 2656 750 
+Q 2559 372 2271 150 
+Q 1984 -72 1594 -72 
+z
+" transform="scale(0.015625)"/>
+     <path id="t189-Cmr10-6f" d="M 1600 -72 
+Q 1216 -72 887 123 
+Q 559 319 368 647 
+Q 178 975 178 1363 
+Q 178 1656 283 1928 
+Q 388 2200 583 2414 
+Q 778 2628 1037 2748 
+Q 1297 2869 1600 2869 
+Q 1994 2869 2317 2661 
+Q 2641 2453 2828 2104 
+Q 3016 1756 3016 1363 
+Q 3016 978 2825 648 
+Q 2634 319 2307 123 
+Q 1981 -72 1600 -72 
+z
+M 1600 116 
+Q 2113 116 2284 487 
+Q 2456 859 2456 1434 
+Q 2456 1756 2422 1967 
+Q 2388 2178 2272 2350 
+Q 2200 2456 2089 2536 
+Q 1978 2616 1854 2658 
+Q 1731 2700 1600 2700 
+Q 1400 2700 1220 2609 
+Q 1041 2519 922 2350 
+Q 803 2169 770 1951 
+Q 738 1734 738 1434 
+Q 738 1075 800 789 
+Q 863 503 1052 309 
+Q 1241 116 1600 116 
+z
+" transform="scale(0.015625)"/>
+     <path id="t189-Cmr10-73" d="M 213 -19 
+L 213 1025 
+Q 213 1075 269 1075 
+L 347 1075 
+Q 384 1075 397 1025 
+Q 575 97 1259 97 
+Q 1563 97 1767 234 
+Q 1972 372 1972 659 
+Q 1972 866 1812 1011 
+Q 1653 1156 1434 1209 
+L 1006 1294 
+Q 791 1341 614 1437 
+Q 438 1534 325 1695 
+Q 213 1856 213 2069 
+Q 213 2350 361 2529 
+Q 509 2709 746 2789 
+Q 984 2869 1259 2869 
+Q 1588 2869 1831 2694 
+L 2016 2853 
+Q 2016 2869 2047 2869 
+L 2094 2869 
+Q 2113 2869 2128 2851 
+Q 2144 2834 2144 2816 
+L 2144 1978 
+Q 2144 1919 2094 1919 
+L 2016 1919 
+Q 1959 1919 1959 1978 
+Q 1959 2313 1773 2516 
+Q 1588 2719 1253 2719 
+Q 966 2719 755 2612 
+Q 544 2506 544 2247 
+Q 544 2069 695 1955 
+Q 847 1841 1050 1791 
+L 1484 1709 
+Q 1703 1659 1892 1540 
+Q 2081 1422 2192 1240 
+Q 2303 1059 2303 831 
+Q 2303 600 2223 429 
+Q 2144 259 2001 146 
+Q 1859 34 1665 -19 
+Q 1472 -72 1259 -72 
+Q 859 -72 575 197 
+L 341 -56 
+Q 341 -72 306 -72 
+L 269 -72 
+Q 213 -72 213 -19 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t189-Cmsy10-6a"/>
+    <use xlink:href="#t189-Cmr10-63" transform="translate(27.685547 0)"/>
+    <use xlink:href="#t189-Cmr10-6f" transform="translate(72.070312 0)"/>
+    <use xlink:href="#t189-Cmr10-73" transform="translate(122.070312 0)"/>
+    <use xlink:href="#t189-Cmsy10-6a" transform="translate(161.474609 0)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="807.182" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="109.8" lengthAdjust="spacing">against all</text><text x="638" y="168" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="20.3" lengthAdjust="spacing">of</text><svg x="664.543" y="147.028" width="41.4" height="26.7116" viewBox="0 0 41.4 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t190-figure_1">
+  <g id="t190-patch_1">
+   <path d="M 0 26.711625 
+L 41.4 26.711625 
+L 41.4 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t190-text_1">
+   <!-- $\mathbf{W}_0$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t190-Cmb10-57" d="M 1966 63 
+L 622 4063 
+L 134 4063 
+L 134 4391 
+L 2100 4391 
+L 2100 4063 
+L 1569 4063 
+L 2484 1356 
+L 3128 3291 
+L 2869 4063 
+L 2381 4063 
+L 2381 4391 
+L 4347 4391 
+L 4347 4063 
+L 3822 4063 
+L 4728 1356 
+L 5619 4013 
+Q 5603 4028 5459 4044 
+Q 5259 4063 5050 4063 
+L 5050 4391 
+L 6472 4391 
+L 6472 4063 
+Q 6316 4063 6147 4053 
+Q 5978 4044 5966 4006 
+L 4641 63 
+Q 4600 -50 4481 -50 
+L 4378 -50 
+Q 4250 -50 4219 63 
+L 3303 2778 
+L 2388 63 
+Q 2356 -50 2228 -50 
+L 2125 -50 
+Q 2006 -50 1966 63 
+z
+" transform="scale(0.015625)"/>
+     <path id="t190-Cmr10-30" d="M 1600 -141 
+Q 816 -141 533 504 
+Q 250 1150 250 2041 
+Q 250 2597 351 3087 
+Q 453 3578 754 3920 
+Q 1056 4263 1600 4263 
+Q 2022 4263 2290 4056 
+Q 2559 3850 2700 3523 
+Q 2841 3197 2892 2823 
+Q 2944 2450 2944 2041 
+Q 2944 1491 2842 1011 
+Q 2741 531 2444 195 
+Q 2147 -141 1600 -141 
+z
+M 1600 25 
+Q 1956 25 2131 390 
+Q 2306 756 2347 1200 
+Q 2388 1644 2388 2144 
+Q 2388 2625 2347 3031 
+Q 2306 3438 2132 3767 
+Q 1959 4097 1600 4097 
+Q 1238 4097 1063 3765 
+Q 888 3434 847 3029 
+Q 806 2625 806 2144 
+Q 806 1788 823 1472 
+Q 841 1156 916 820 
+Q 991 484 1158 254 
+Q 1325 25 1600 25 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t190-Cmb10-57" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t190-Cmr10-30" transform="translate(107.784453 -16.615625) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><line x1="954" y1="112" x2="975" y2="112" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo4-flow)"/><rect x="980" y="42" width="240" height="140" rx="8" fill="#fff" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/><text x="998" y="78" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">intruders</text><text x="998" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="62.3" lengthAdjust="spacing">under</text><svg x="1066.55" y="87.0283" width="11.316" height="26.7116" viewBox="0 0 11.316 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t191-figure_1">
+  <g id="t191-patch_1">
+   <path d="M 0 26.711625 
+L 11.316 26.711625 
+L 11.316 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t191-text_1">
+   <!-- $\epsilon$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t191-Cmmi10-b2" d="M 788 903 
+Q 788 688 866 503 
+Q 944 319 1101 208 
+Q 1259 97 1472 97 
+Q 1616 97 1778 159 
+Q 1941 222 2080 297 
+Q 2219 372 2222 372 
+Q 2256 372 2276 333 
+Q 2297 294 2297 256 
+Q 2297 222 2278 213 
+Q 1878 -72 1466 -72 
+Q 1128 -72 856 86 
+Q 584 244 436 525 
+Q 288 806 288 1141 
+Q 288 1472 422 1770 
+Q 556 2069 793 2291 
+Q 1031 2513 1331 2636 
+Q 1631 2759 1959 2759 
+L 2322 2759 
+Q 2419 2759 2419 2663 
+Q 2419 2609 2383 2571 
+Q 2347 2534 2297 2534 
+L 1947 2534 
+Q 1691 2534 1483 2421 
+Q 1275 2309 1134 2109 
+Q 994 1909 916 1656 
+L 2047 1656 
+Q 2091 1656 2117 1629 
+Q 2144 1603 2144 1563 
+Q 2144 1509 2109 1471 
+Q 2075 1434 2022 1434 
+L 856 1434 
+Q 788 1103 788 903 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t191-Cmmi10-b2" transform="translate(0 0.890625)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="1077.87" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="101.6" lengthAdjust="spacing">: LoRA: ?</text><text x="998" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">full fine-tuning: ?</text><g class="fragment" data-fragment-index="1"><text x="20" y="226" font-size="23" fill="#b45309" text-anchor="start" font-weight="700">(b) later: what was forgotten</text><text x="950" y="226" font-size="19" fill="#6b7280" text-anchor="end" font-weight="400">replay</text><rect x="20" y="240" width="440" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="276" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">W1's ruler</text><text x="38" y="306" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">bits per byte on four held-out texts</text><line x1="464" y1="310" x2="495" y2="310" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo4-flow)"/><rect x="500" y="240" width="450" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="518" y="276" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">three models</text><text x="518" y="306" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the base, the LoRA run, the full run</text><line x1="954" y1="310" x2="975" y2="310" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo4-flow)"/><rect x="980" y="240" width="240" height="140" rx="8" fill="#fff" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/><text x="998" y="276" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">forgetting</text><text x="998" y="306" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">which text rises</text><text x="998" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">most: ?</text><text x="998" y="366" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">which run more: ?</text></g></svg>
+```

@@ -4,7 +4,7 @@
 """W4 demo 1 的訓練（彩排用，不在課堂從頭跑）、課堂上的短跑、MPS 探針、以及 replay。
 
     ./present.sh rehearse-train     訓到 [train].steps（彩排）：loss 曲線、held-out 的 nats/char 與 bits-per-byte、步數與秒數
-                                    → runs/rehearsal/train.json 與 loss.svg；p25 的 replay 與講稿裡的數字從這裡抄
+                                    → runs/rehearsal/train.json 與 loss.svg；p26 的 replay 與講稿裡的數字從這裡抄
     ./present.sh peek               課堂（有時間才做）：現場跑最初 [train].live_steps 步，看 loss 開始掉；不存檔
     ./present.sh probe              課前：torch 版本、MPS 可不可用、內建 F.scaled_dot_product_attention 在 MPS 上
                                     dropout_p > 0 是報錯還是靜默接受、手刻的 attention dropout 在 MPS 上前向＋反向能不能跑

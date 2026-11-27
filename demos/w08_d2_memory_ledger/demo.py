@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W8 demo 2 (b)：實測的峰值記憶體對公式（投影片 p43 replay）。(a) 的算術在 ledger.py。
+"""W8 demo 2 (b)：實測的峰值記憶體對公式（投影片 p45 replay）。(a) 的算術在 ledger.py。
 
     ./present.sh inspect      課前：版本、機器的記憶體、三個模型在不在本機、權重檔依 dtype 的大小、每個設定的公式值、要跑哪幾個 run
     ./present.sh fetch        下載缺的模型並把 revision 寫進 ../versions.lock（Qwen/Qwen3-8B 的 bf16 約 16.4 GB；需要網路）
@@ -10,7 +10,7 @@
                               已完成的 run 會跳過（--redo 重跑）；--setting lora_8b 只做一個設定
     ./present.sh run ...      一個 run（rehearse 在子行程裡呼叫的就是它）：--setting qlora_8b --seq 1024 [--grad-checkpoint]
     ./present.sh aggregate    只重算 peaks.json
-    ./present.sh replay       課堂：Enter 一列，印 p43 的表（公式兩種、三個峰值），再印拆解；讀彩排紀錄，不載模型
+    ./present.sh replay       課堂：Enter 一列，印 p45 的表（公式兩種、三個峰值），再印拆解；讀彩排紀錄，不載模型
     ./present.sh tiny [...]   不下載任何東西：亂數權重的小 Qwen3 走一遍真的 mlx 訓練流程（檢查程式用，數字沒有意義）→ runs/tiny/
     ./present.sh fake [...]   連 mlx 都沒有也能演練流程（數字是假的，畫面會標明）→ runs/fake/
 

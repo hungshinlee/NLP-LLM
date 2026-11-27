@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W9 · Demo 2 — GRPO by hand: the advantage, the identity, and how large $G$ should be (slides p51–p53)
+# W9 · Demo 2 — GRPO by hand: the advantage, the identity, and how large $G$ should be (slides p52–p55)
 
 GRPO replaces the critic with the other $G - 1$ answers to the same prompt. This demo writes that out in full, with no RL library: the pinned version of `mlx-lm` has no reinforcement-learning command, and the few lines that make up the method are the point.
 

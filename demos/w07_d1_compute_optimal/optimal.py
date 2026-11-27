@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W7 demo 1 — compute-optimal training, numerically (slides p12–p13 and p25).
+"""W7 demo 1 — compute-optimal training, numerically (slides p12–p14 and p26).
 
 Everything here is arithmetic on one fitted equation, Hoffmann et al. 2022 Eq. (10):
 
@@ -206,7 +206,7 @@ def cmd_table(cfg: dict, res: dict | None = None, title: str = "demo 1 (a) · N*
         star = "★ " if r["on_slide"] else "  "
         row([f"{star}10^{r['log10_C']}", f"{sci(r['N'])}  ({human(r['N'])})", f"{sci(r['D'])}  ({human(r['D'])})",
              f"{r['ratio']:.1f}", f"{r['loss']:.3f}"], W, BOLD if r["on_slide"] else "")
-    note("  ★ = the five rows on slide p13.  N in parameters, D in tokens; L* in nats per token under this fit.")
+    note("  ★ = the five rows on slide p14.  N in parameters, D in tokens; L* in nats per token under this fit.")
     return res
 
 

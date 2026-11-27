@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-# W8 demo 1（投影片 p9 前導頁、p10「Live: demo 1 (a)」、p17「Live + replay: demo 1 (b) and (c)」、p44「Live: demo 1 (d)」）課前與課堂的入口。
+# W8 demo 1（投影片 p9 前導頁、p11「Live: demo 1 (a)」、p18「Live + replay: demo 1 (b) and (c)」、p46「Live: demo 1 (d)」）課前與課堂的入口。
 # 一律離線（HF_HUB_OFFLINE=1）。
 #
 #   ./present.sh                      課堂 (a)：載 base 與 base+adapter C（demo_config 的 show_adapter；--adapter A 換）；三題，每題 Enter 印 base 的原文續寫、再 Enter 印 SFT 後的回答，標有沒有自己停

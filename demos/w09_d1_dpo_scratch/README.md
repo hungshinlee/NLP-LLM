@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W9 · Demo 1 — DPO: a few lines of loss, five tests, one real run (slides p33–p35)
+# W9 · Demo 1 — DPO: a few lines of loss, five tests, one real run (slides p33–p36)
 
 The derivation of DPO takes four boards. The result is a function of five lines. This demo writes that function, checks it, and then uses it to train a real model.
 

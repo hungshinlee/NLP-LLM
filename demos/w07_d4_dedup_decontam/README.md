@@ -1,12 +1,12 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W7 · Demo 4 — Near-duplicates across Common Crawl dumps, and MMLU against the corpus (slides p51–p52)
+# W7 · Demo 4 — Near-duplicates across Common Crawl dumps, and MMLU against the corpus (slides p54–p56)
 
 Two halves, both standard-library Python on the CPU. **(a) Live.** The instructor writes three functions from scratch in `dedup_live.py`, running the tests after each one, then runs them on demo 2's 200 MB sample of FineWeb-Edu (41,829 documents from ten Common Crawl dumps): MinHash signatures for every document, locality-sensitive hashing to find candidate near-duplicate pairs, the estimated and exact Jaccard of each pair, what the pairs are, and how the count moves when the LSH parameters $(b, r)$ change. **(b) Live.** The 14,042 questions of MMLU's test split are scanned for a 13-gram shared with the same corpus — GPT-3's decontamination rule — and the hits are printed; then two questions that MMLU-Redux marks as having a wrong answer key.
 
 | Function | Signature | What it does |
 |---|---|---|
-| `shingles(text, n=5)` | → `set[str]` | lower-case, split on `\w+`, every run of 5 consecutive words joined by a space — the set $A$ on slide p49 (FineWeb also uses word 5-grams) |
-| `minhash(shingles, k_h=128, seed=0)` | → `list[int]` | hash each shingle to a 64-bit integer $h$ (`blake2b`); the $i$-th signature is $\min_x (a_i h(x) + b_i) \bmod p$ with $p = 2^{61} - 1$ and $(a_i, b_i)$ drawn once from `random.Random(seed)`. A hash followed by a random linear map stands in for the random permutation $\pi$ of p49; the collision probability of one signature is the Jaccard similarity |
+| `shingles(text, n=5)` | → `set[str]` | lower-case, split on `\w+`, every run of 5 consecutive words joined by a space — the set $A$ on slide p52 (FineWeb also uses word 5-grams) |
+| `minhash(shingles, k_h=128, seed=0)` | → `list[int]` | hash each shingle to a 64-bit integer $h$ (`blake2b`); the $i$-th signature is $\min_x (a_i h(x) + b_i) \bmod p$ with $p = 2^{61} - 1$ and $(a_i, b_i)$ drawn once from `random.Random(seed)`. A hash followed by a random linear map stands in for the random permutation $\pi$ of p52; the collision probability of one signature is the Jaccard similarity |
 | `lsh_candidates(sigs, b=16, r=8)` | → `set[(i, j)]` | cut each signature into $b$ bands of $r$ rows; a band's key is `(band, tuple(sig[band*r:(band+1)*r]))`; any two documents sharing a key are a candidate pair. $\Pr[\text{candidate}] = 1 - (1 - J^{r})^{b}$, threshold about $(1/b)^{1/r}$ |
 
 `dedup_final.py` is the finished reference implementation; `tests.py` holds the three tests and is shared by both files, so you can write your own version in `dedup_live.py` and test it step by step — functions you have not written yet are reported as `skip`, not as failures.

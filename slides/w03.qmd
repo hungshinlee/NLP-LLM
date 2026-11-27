@@ -62,7 +62,7 @@ format:
 :::
 
 ::: {.footer}
-Token counts: W2 demo 1 rehearsal · pipeline W2 p20 · ledger W2 p48 · schematic
+Token counts: W2 demo 1 rehearsal · pipeline W2 p21 · ledger W2 p50 · schematic
 :::
 
 ## Last week ended with a number. Derive it before you trust it
@@ -82,14 +82,14 @@ Multiply it out yourself — first **per token**, then for the whole context. Yo
 :::
 
 ::: {.footer}
-Configuration: W1 p16 · the answer was announced on W2 p75
+Configuration: W1 p16 · the answer was announced on W2 p78
 :::
 
 ## Now guess three variants — before computing them
 
 | change one thing | your guess | computed |
 |:---|:---|---:|
-| keep everything, but only **8 KV heads** (GQA, grouped-query attention — p33) | | **4 GiB** |
+| keep everything, but only **8 KV heads** (GQA, grouped-query attention — p35) | | **4 GiB** |
 | keep everything, but context **128k** | | **64 GiB** |
 | **64 GB** unified memory, minus 14 GB of FP16 weights: how long a context fits? | | $\approx 95\text{k}$ tokens |
 
@@ -115,7 +115,7 @@ Recurrence lost on **parallelism** and **path length** — not on quality. This 
 :::
 
 ::: {.footer}
-W1 p59–p67: BPTT, backpropagation through time · Jacobian chain · seq2seq · Bahdanau
+W1 p60–p68: BPTT, backpropagation through time · Jacobian chain · seq2seq · Bahdanau
 :::
 
 ## Today's route: two halves, six questions
@@ -123,7 +123,7 @@ W1 p59–p67: BPTT, backpropagation through time · Jacobian chain · seq2seq ·
 {{< include assets/w03/route.inline.qmd >}}
 
 ::: {.footer}
-First half p11–p38 (demo 1: p23–p27) · half-time p39 · second half p40–p57
+First half p11–p40 (demo 1: p23–p28) · half-time p41 · second half p42–p60
 :::
 
 ## What you should be able to do by the end of today
@@ -165,7 +165,7 @@ bold capital: a matrix · bold lower-case: a vector, one row · italic: a scalar
 | **The question** | Can a sequence model do without recurrence? W1's two losses — nothing runs in parallel along the sequence, a gradient from $i$ to $j$ crosses $\lvert i - j\rvert$ Jacobians — belong to the recurrence, not to the task. |
 | **The idea** | Every row reads every row at once: compare a query with all keys, turn the scores into weights that sum to one, blend the values — $\mathrm{softmax}(\mathbf{Q}\mathbf{K}^\top/\sqrt{d_k})\,\mathbf{V}$; several heads of width $d/n_{\text{head}}$, each with its own softmax. |
 | **What it added** | "dispensing with recurrence and convolutions entirely": one step between any two positions (its Table 1), the whole sequence computed in parallel — "more parallelizable and requiring significantly less time to train", the abstract's claim. |
-| **What it leaves open** | What one read costs as $L$ grows — the state this week derives (p18, p29); why the $\sqrt{d_k}$, and what it does not fix (p20–p22); whether a weight that sums to one is an explanation (p53). |
+| **What it leaves open** | What one read costs as $L$ grows — the state this week derives (p18, p30); why the $\sqrt{d_k}$, and what it does not fix (p20–p22); whether a weight that sums to one is an explanation (p55). |
 :::
 
 ::: {.footer}
@@ -297,11 +297,23 @@ Misconception 2: "$1/\sqrt{d_k}$ fixes the numerics" · Zhai et al. 2023 · Wort
 |:---|:-----------------|
 | **Why** | Every claim so far is on paper: the one-line formula (p16), the causal mask that makes the KV cache *correct* (p18), the $1/\sqrt{d_k}$ (p20). Written as code, each claim becomes a test that either passes or fails. |
 | **What runs** | An editor and a terminal; plain `torch` on the CPU, no model. Three functions, written live in order; after each one, `tests.py` runs all five tests and marks what is not written yet as *skip*. Typos are expected: after two minutes, the finished `attention_final.py` takes over. |
-| **Expect** | By the end, all five pass — and each prints a number next to `ok`: an error no larger than floating-point rounding, a gradient that is exactly zero, an entropy for each $d_k$ value. Read the number, not the `ok`. Which test fails first along the way is the prediction on the next slide. |
+| **Expect** | By the end, all five pass — and each prints a number next to `ok`: an error no larger than floating-point rounding, a gradient that is exactly zero, an entropy for each $d_k$ value. Read the number, not the `ok`. Which test fails first along the way is the prediction you make two slides on. |
 :::
 
 ::: {.footer}
 Demo 1 · code: `demos/w03_d1_attention_scratch` · plain torch, CPU, no model
+:::
+
+## Demo 1: how it runs
+
+{{< include assets/w03/demo1-flow.inline.qmd >}}
+
+::: {.small}
+Each claim on paper becomes one test. A test prints a number, not only ok.
+:::
+
+::: {.footer}
+Demo 1 · `demos/w03_d1_attention_scratch` · how it runs · as rehearsed
 :::
 
 ## Live: attention and a KV cache, from scratch, in this order
@@ -349,7 +361,7 @@ Schematic: two layers, five tokens · next slide: what each side costs
 | **with cache** — the new token only | $O(d^2)$ | $O(L\,d)$ | $O(L\,d^2 + L^2 d)$ |
 
 ::: {.claim}
-The cache cuts **both** sides by a factor of $L$ — and for the 7B shape at 32k, most of the cut is on the weight side, not attention (p42). The whole generation stays quadratic, and the price moves to memory: the cache is the state.
+The cache cuts **both** sides by a factor of $L$ — and for the 7B shape at 32k, most of the cut is on the weight side, not attention (p44). The whole generation stays quadratic, and the price moves to memory: the cache is the state.
 :::
 
 ::: {.footer}
@@ -382,6 +394,18 @@ Ledger row filled today: KV cache · W5 changes $L$, W6 the mechanism, W11 $b$
 
 ::: {.footer}
 Demo 2 · code: `demos/w03_d2_kv_memory` · MLX, Apple silicon only
+:::
+
+## Demo 2: how it runs
+
+{{< include assets/w03/demo2-flow.inline.qmd >}}
+
+::: {.small}
+If the two columns disagree, either the formula or the meter is wrong.
+:::
+
+::: {.footer}
+Demo 2 · `demos/w03_d2_kv_memory` · how it runs · as rehearsed
 :::
 
 ## Live: predict the curve from `config.json`, then measure it
@@ -432,14 +456,14 @@ MHA multi-head · MQA multi-query, Shazeer 2019 · GQA grouped-query, Ainslie et
 | | |
 |:---|:-----------------|
 | **Name** | **MLA** — *Multi-head Latent Attention*, DeepSeek-AI, *DeepSeek-V2* (arXiv:2405.04434, 2024), §2.1. A technical report with a team byline; no venue. |
-| **The question** | The cache is the state (p27); MQA and GQA shrink it by making heads **share** keys and values, paying in expressiveness (p33). Can the cache shrink without sharing heads at all? |
+| **The question** | The cache is the state (p28); MQA and GQA shrink it by making heads **share** keys and values, paying in expressiveness (p35). Can the cache shrink without sharing heads at all? |
 | **The idea** | Cache neither $\mathbf{k}_t$ nor $\mathbf{v}_t$ but one low-rank latent $\mathbf{c}_t = \mathbf{W}^{DKV}\mathbf{x}_t \in \mathbb{R}^{d_c}$, re-expanded on the way out; at inference fold the up-projection into the query, so $\mathbf{K}$ is never built. |
 | **What it added** | "significantly compressing the Key-Value (KV) cache into a latent vector" — the abstract's words; its number: against DeepSeek 67B (MHA) it "reduces the KV cache by 93.3%". For this course, the first low-rank factorization used *as a design* — W1's SGNS was one that training produced; LoRA (W8) is the next. |
-| **What it leaves open** | Rotation and low rank do not commute: RoPE forces a separate position key (p36; W5). $d_c$ and that key's width: its Table 1, not quoted here. What the latent costs in quality: the report's own benchmarks, not re-measured. |
+| **What it leaves open** | Rotation and low rank do not commute: RoPE forces a separate position key (p38; W5). $d_c$ and that key's width: its Table 1, not quoted here. What the latent costs in quality: the report's own benchmarks, not re-measured. |
 :::
 
 ::: {.footer}
-DeepSeek-AI 2024, §2.1 · the mathematics: p35 · LoRA and RoPE: p36 · the ledger: p61
+DeepSeek-AI 2024, §2.1 · the mathematics: p37 · LoRA and RoPE: p38 · the ledger: p64
 :::
 
 ## MLA: cache a latent, re-expand on the way out
@@ -510,7 +534,7 @@ So far: **what the operation is, and the state it leaves behind.** From here: wh
 :::
 
 ::: {.footer}
-p8's picture · first half: p11–p38 · second half: p40–p57
+p8's picture · first half: p11–p40 · second half: p42–p60
 :::
 
 # When is $O(n^2)$ the bill? Which quantity, which phase {.section-title}
@@ -526,7 +550,7 @@ Training and prefill run **all $L$ queries at once** and build an $L \times L$ m
 :::
 
 ::: {.footer}
-Schematic · FLOPs p42 · the matrix p43 · the cache p18, p27 · decode's bytes p37
+Schematic · FLOPs p44 · the matrix p45 · the cache p18, p28 · decode's bytes p39
 :::
 
 ## Per layer, per token: the two sides of the bill
@@ -566,14 +590,14 @@ Misconception 4: "attention is $O(n^2)$, so it is the bottleneck" · which quant
 | | |
 |:---|:-----------------|
 | **Name** | **FlashAttention** — Dao, Fu, Ermon, Rudra & Ré, *Fast and Memory-Efficient Exact Attention with IO-Awareness*, NeurIPS 2022 (arXiv:2205.14135). The word in its title: *exact*. |
-| **The question** | At training length the $L \times L$ score matrix dominates the activations from a few thousand tokens (p43), and the time goes to writing and reading it. The abstract: "a missing principle is making attention algorithms IO-aware". |
-| **The idea** | Tiling, "to reduce the number of memory reads/writes between GPU high bandwidth memory (HBM) and GPU on-chip SRAM": a tile of $\mathbf{Q}$ against streamed tiles of $\mathbf{K}, \mathbf{V}$ with an online softmax (p46); $\mathbf{S}, \mathbf{P}$ never touch HBM. |
+| **The question** | At training length the $L \times L$ score matrix dominates the activations from a few thousand tokens (p45), and the time goes to writing and reading it. The abstract: "a missing principle is making attention algorithms IO-aware". |
+| **The idea** | Tiling, "to reduce the number of memory reads/writes between GPU high bandwidth memory (HBM) and GPU on-chip SRAM": a tile of $\mathbf{Q}$ against streamed tiles of $\mathbf{K}, \mathbf{V}$ with an online softmax (p48); $\mathbf{S}, \mathbf{P}$ never touch HBM. |
 | **What it added** | "fewer HBM accesses than standard attention": the same FLOPs (slightly more, the backward pass recomputes), $O(L)$ extra memory instead of $O(L^2)$, and so longer contexts in training. FA-2, -3, -4 redo the engineering, not the argument. |
-| **What it leaves open** | Exact in arithmetic, not bitwise (p47; W11). Nothing changes at decode (p41): one query, no $L \times L$ — there the bill is the cache's bandwidth (p37). Sparse attention is the other road, and an approximation (p62; W5). |
+| **What it leaves open** | Exact in arithmetic, not bitwise (p49; W11). Nothing changes at decode (p43): one query, no $L \times L$ — there the bill is the cache's bandwidth (p39). Sparse attention is the other road, and an approximation (p65; W5). |
 :::
 
 ::: {.footer}
-Dao et al. 2022 · the IO picture: p45 · online softmax: p46 · four misreadings: p47
+Dao et al. 2022 · the IO picture: p47 · online softmax: p48 · four misreadings: p49
 :::
 
 ## FlashAttention: change the cost model, not the mathematics
@@ -710,6 +734,18 @@ Misconception 7: "a high attention weight means the token mattered" · W3 → W1
 Demo 3 · code: `demos/w03_d3_attn_vs_gradient` · torch + transformers, CPU, eager attention
 :::
 
+## Demo 3: how it runs
+
+{{< include assets/w03/demo3-flow.inline.qmd >}}
+
+::: {.small}
+Three methods, one question. If attention were an explanation, what should the three columns look like?
+:::
+
+::: {.footer}
+Demo 3 · `demos/w03_d3_attn_vs_gradient` · how it runs · as rehearsed
+:::
+
 ## Live: the same sentence, three rankings
 
 *The keys that the old man who lives next door lost last week* → the model predicts **were**
@@ -816,13 +852,13 @@ Same master as W1 p16 · prefill's $L^2$ term is the attention side: $2Ld$ per l
 | addition | what it does to the cache | evidence, as of this deck |
 |:---|:---|:---|
 | **TPA** | *tensor product attention*: factorizes $\mathbf{Q}, \mathbf{K}, \mathbf{V}$ per token and caches the factors | NeurIPS 2025 (spotlight); one group's results |
-| **gated attention** | a gate after the attention output (Qwen); the title claims *attention-sink-free* (p50, row three) | NeurIPS 2025, oral and best paper; shipped in Qwen3-Next (Sept 2025 — a model blog, not a paper); only the abstract read here |
+| **gated attention** | a gate after the attention output (Qwen); the title claims *attention-sink-free* (p52, row three) | NeurIPS 2025, oral and best paper; shipped in Qwen3-Next (Sept 2025 — a model blog, not a paper); only the abstract read here |
 | **sparse attention** | *NSA, native sparse attention*; *DSA, DeepSeek sparse attention*: each query reads a **subset** of keys — an **approximation**, unlike everything above | NSA: ACL 2025, best paper · W5 (the budget view), W11 (serving) |
 
 : {tbl-colwidths="[18,44,38]"}
 
 ::: {.claim}
-Everything on this slide is the part of this week that will be rewritten next year. The formula it hangs from (p29) will not.
+Everything on this slide is the part of this week that will be rewritten next year. The formula it hangs from (p30) will not.
 :::
 
 ::: {.footer}
@@ -876,37 +912,37 @@ Three weeks in: the unit (W2), what it is allowed to attend to (W3) — and next
 | | |
 |:----|:----------------|
 | BPTT | backpropagation through time: how W1 trained the recurrence (p7; W1) |
-| BW | memory bandwidth, bytes per second: the denominator of decode's time bound (p37) |
-| DSA | DeepSeek Sparse Attention, the name on the DeepSeek-V3.2-Exp model card (p62) |
-| FA-2, -3, -4 | FlashAttention-2, -3, -4: later versions of the same argument (p45) |
-| FFN | feed-forward network: the other sub-layer of the block, opened next week (p63; W4) |
+| BW | memory bandwidth, bytes per second: the denominator of decode's time bound (p39) |
+| DSA | DeepSeek Sparse Attention, the name on the DeepSeek-V3.2-Exp model card (p65) |
+| FA-2, -3, -4 | FlashAttention-2, -3, -4: later versions of the same argument (p47) |
+| FFN | feed-forward network: the other sub-layer of the block, opened next week (p66; W4) |
 | FLOPs | floating-point operations (W1) |
 | FP16 | 16-bit floating point, $b = 2$ bytes per element (p5) |
-| GQA | grouped-query attention, Ainslie et al. 2023: several query heads share one KV head (p6; p33) |
-| HBM | high-bandwidth memory, the GPU's large, slow memory in FlashAttention's cost model (p44) |
+| GQA | grouped-query attention, Ainslie et al. 2023: several query heads share one KV head (p6; p35) |
+| HBM | high-bandwidth memory, the GPU's large, slow memory in FlashAttention's cost model (p46) |
 
 ## Acronyms in this deck, I–M
 
 | | |
 |:----|:----------------|
-| IO | input/output — here, memory reads and writes, the cost FlashAttention counts (p9; p44) |
+| IO | input/output — here, memory reads and writes, the cost FlashAttention counts (p9; p46) |
 | KV | key–value: the two projections every layer stores per token, hence the KV cache (p5) |
 | LM | language model (W1) |
-| LoRA | Low-Rank Adaptation, Hu et al. 2021: the same low-rank factorization as MLA, used on the fine-tuning update (p36; W8) |
-| MHA | multi-head attention: every query head has its own KV head, $n_{\text{kv}} = n_{\text{head}}$ (p33) |
-| MLA | Multi-head Latent Attention, DeepSeek-V2 2024: cache one latent $\mathbf{c}_t$ instead of $\mathbf{k}_t, \mathbf{v}_t$ (p34) |
-| MLX | Apple's array framework for Apple silicon, demo 2's runtime; its authors do not expand the name (p30) |
+| LoRA | Low-Rank Adaptation, Hu et al. 2021: the same low-rank factorization as MLA, used on the fine-tuning update (p38; W8) |
+| MHA | multi-head attention: every query head has its own KV head, $n_{\text{kv}} = n_{\text{head}}$ (p35) |
+| MLA | Multi-head Latent Attention, DeepSeek-V2 2024: cache one latent $\mathbf{c}_t$ instead of $\mathbf{k}_t, \mathbf{v}_t$ (p36) |
+| MLX | Apple's array framework for Apple silicon, demo 2's runtime; its authors do not expand the name (p31) |
 | MoE | mixture of experts: the ledger's last row (W1; W6) |
-| MQA | multi-query attention, Shazeer 2019: one KV head for all query heads (p33) |
+| MQA | multi-query attention, Shazeer 2019: one KV head for all query heads (p35) |
 
 ## Acronyms in this deck, N–T
 
 | | |
 |:----|:----------------|
-| NaN | not a number: what a fully masked softmax row returns, demo 1's test (e) (p25) |
-| NSA | Native Sparse Attention, Yuan et al. 2025: each query reads a chosen subset of keys (p62; W5) |
+| NaN | not a number: what a fully masked softmax row returns, demo 1's test (e) (p26) |
+| NSA | Native Sparse Attention, Yuan et al. 2025: each query reads a chosen subset of keys (p65; W5) |
 | QK, OV | the query–key and output–value halves of a head: who reads whom, and what is read (p15; W14) |
 | QK-norm | query–key normalization: normalize $\mathbf{q}$ and $\mathbf{k}$ before the dot product (p22; W4) |
-| RoPE | rotary position embedding: the rotation $\mathbf{R}_t$ that MLA has to work around (p36; W5) |
-| SRAM | static random-access memory, the GPU's small, fast on-chip memory where FlashAttention computes (p44) |
-| TPA | tensor product attention, Zhang et al. 2025: factorize $\mathbf{Q}, \mathbf{K}, \mathbf{V}$ per token, cache the factors (p62) |
+| RoPE | rotary position embedding: the rotation $\mathbf{R}_t$ that MLA has to work around (p38; W5) |
+| SRAM | static random-access memory, the GPU's small, fast on-chip memory where FlashAttention computes (p46) |
+| TPA | tensor product attention, Zhang et al. 2025: factorize $\mathbf{Q}, \mathbf{K}, \mathbf{V}$ per token, cache the factors (p65) |

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
-"""W9 demo 3：刻意留漏洞的 verifier——proxy 與 gold 對 √KL（投影片 p59 前導頁、p60 replay）。
+"""W9 demo 3：刻意留漏洞的 verifier——proxy 與 gold 對 √KL（投影片 p61 前導頁、p63 replay）。
 
     ./present.sh test         不載權重：verifier 的性質、硬幣、clip 的目標函數、亂數小模型上的梯度與 KL
     ./present.sh inspect      課前：沿用了 demo 2 的哪些設定；π_ref 在兩個 verifier 下各幾分（訓練前漏洞有多寬）；B = 0 時 KL 是 0
     ./present.sh rehearse     彩排：[rehearse] runs 的每個 run 各一個子行程（做過的跳過）→ 彙整
                               --only count 只跑一個；--force 重跑
-    ./present.sh replay       課堂：讀 runs/rehearsal/summary.json，Enter 逐段印 p60 的表（不載模型）
+    ./present.sh replay       課堂：讀 runs/rehearsal/summary.json，Enter 逐段印 p63 的表（不載模型）
     ./present.sh tiny         亂數權重的小模型走一遍真的流程（不下載任何東西；寫到 runs/smoke/）
 
 任務、模型（Qwen3-1.7B-Base 加上週的 adapter C ＝ π_ref）、旁路、取樣、advantage、loss 都是 demo 2 的：

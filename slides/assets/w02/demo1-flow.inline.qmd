@@ -1,0 +1,208 @@
+<!-- 由 scripts/make_figs_w02.py 產生，勿手改；投影片用 {{< include assets/w02/demo1-flow.inline.qmd >}} 貼入 -->
+```{=html}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 418" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-demo1-flow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="28" font-size="23" fill="#0b5cad" text-anchor="start" font-weight="700">Tokenizers only: no model weights, a few seconds on the CPU</text><text x="950" y="28" font-size="19" fill="#6b7280" text-anchor="end" font-weight="400">one row per Enter</text><rect x="20" y="42" width="300" height="200" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">eight texts</text><text x="38" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">a Chinese paragraph;</text><text x="38" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">English; Simplified;</text><text x="38" y="168" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Taiwanese, two scripts;</text><text x="38" y="198" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Hakka; Python;</text><text x="38" y="228" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">numbers</text><line x1="324" y1="142" x2="345" y2="142" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo1-flow)"/><rect x="350" y="42" width="270" height="200" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="368" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">nine tokenizers</text><text x="368" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">GPT-2 to ByT5; one</text><text x="368" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">extended for</text><text x="368" y="168" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Traditional Chinese</text><line x1="624" y1="142" x2="645" y2="142" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo1-flow)"/><rect x="650" y="42" width="300" height="200" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="668" y="78" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">one row at a time</text><text x="668" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">token counts in nine</text><text x="668" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">columns; two</text><text x="668" y="168" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">tokenizers' cuts painted</text><text x="668" y="198" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">underneath</text><line x1="954" y1="142" x2="975" y2="142" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-demo1-flow)"/><rect x="980" y="42" width="240" height="200" rx="8" fill="#fff" stroke="#dc2626" stroke-width="2" stroke-dasharray="8 6"/><text x="998" y="78" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">the table</text><text x="998" y="108" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">cheapest column</text><text x="998" y="138" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">for Chinese: ?</text><text x="998" y="168" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Mistral against</text><text x="998" y="198" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Breeze: ?</text><g class="fragment" data-fragment-index="1"><text x="20" y="286" font-size="23" fill="#b45309" text-anchor="start" font-weight="700">After the eight rows</text><text x="1220" y="286" font-size="19" fill="#6b7280" text-anchor="end" font-weight="400">then c, then l</text><rect x="20" y="300" width="380" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">relative cost</text><text x="38" y="366" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Chinese tokens ÷ English</text><text x="38" y="396" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">tokens, per tokenizer</text><rect x="430" y="300" width="380" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="448" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">key c</text><text x="448" y="366" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="244.5" lengthAdjust="spacing">Qwen3.8's config.json:</text><svg x="698.717" y="345.3" width="80.316" height="27.6" viewBox="0 0 80.316 27.6"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t132-figure_1">
+  <g id="t132-patch_1">
+   <path d="M 0 27.6 
+L 80.316 27.6 
+L 80.316 0 
+L 0 0 
+L 0 27.6 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t132-text_1">
+   <!-- $2Vd/N$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.7) scale(0.276 -0.276)">
+    <defs>
+     <path id="t132-Cmr10-32" d="M 319 0 
+L 319 172 
+Q 319 188 331 206 
+L 1325 1306 
+Q 1550 1550 1690 1715 
+Q 1831 1881 1968 2097 
+Q 2106 2313 2186 2536 
+Q 2266 2759 2266 3009 
+Q 2266 3272 2169 3511 
+Q 2072 3750 1880 3894 
+Q 1688 4038 1416 4038 
+Q 1138 4038 916 3870 
+Q 694 3703 603 3438 
+Q 628 3444 672 3444 
+Q 816 3444 917 3347 
+Q 1019 3250 1019 3097 
+Q 1019 2950 917 2848 
+Q 816 2747 672 2747 
+Q 522 2747 420 2851 
+Q 319 2956 319 3097 
+Q 319 3338 409 3548 
+Q 500 3759 670 3923 
+Q 841 4088 1055 4175 
+Q 1269 4263 1509 4263 
+Q 1875 4263 2190 4108 
+Q 2506 3953 2690 3670 
+Q 2875 3388 2875 3009 
+Q 2875 2731 2753 2481 
+Q 2631 2231 2440 2026 
+Q 2250 1822 1953 1562 
+Q 1656 1303 1563 1216 
+L 838 519 
+L 1453 519 
+Q 1906 519 2211 526 
+Q 2516 534 2534 550 
+Q 2609 631 2688 1141 
+L 2875 1141 
+L 2694 0 
+L 319 0 
+z
+" transform="scale(0.015625)"/>
+     <path id="t132-Cmmi10-56" d="M 1409 -72 
+L 897 4006 
+Q 850 4147 416 4147 
+Q 353 4147 353 4231 
+Q 366 4300 384 4336 
+Q 403 4372 459 4372 
+L 2022 4372 
+Q 2056 4372 2072 4347 
+Q 2088 4322 2088 4288 
+Q 2063 4147 2003 4147 
+Q 1503 4147 1472 3975 
+L 1894 628 
+L 3866 3775 
+Q 3922 3881 3922 3944 
+Q 3922 4056 3820 4101 
+Q 3719 4147 3584 4147 
+Q 3519 4147 3519 4231 
+Q 3531 4281 3540 4309 
+Q 3550 4338 3569 4355 
+Q 3588 4372 3628 4372 
+L 4863 4372 
+Q 4922 4372 4922 4288 
+Q 4897 4147 4838 4147 
+Q 4356 4147 4084 3725 
+Q 4072 3713 4063 3713 
+L 1703 -72 
+Q 1656 -141 1581 -141 
+L 1491 -141 
+Q 1419 -141 1409 -72 
+z
+" transform="scale(0.015625)"/>
+     <path id="t132-Cmmi10-64" d="M 1113 -72 
+Q 709 -72 476 233 
+Q 244 538 244 953 
+Q 244 1363 456 1803 
+Q 669 2244 1030 2536 
+Q 1391 2828 1806 2828 
+Q 1994 2828 2145 2723 
+Q 2297 2619 2381 2444 
+L 2741 3872 
+Q 2766 3981 2772 4044 
+Q 2772 4147 2356 4147 
+Q 2291 4147 2291 4231 
+Q 2294 4247 2305 4287 
+Q 2316 4328 2333 4350 
+Q 2350 4372 2381 4372 
+L 3244 4441 
+Q 3322 4441 3322 4359 
+L 2400 678 
+Q 2356 572 2356 372 
+Q 2356 97 2541 97 
+Q 2741 97 2845 351 
+Q 2950 606 3022 941 
+Q 3034 978 3072 978 
+L 3150 978 
+Q 3175 978 3190 956 
+Q 3206 934 3206 916 
+Q 3094 469 2961 198 
+Q 2828 -72 2528 -72 
+Q 2313 -72 2147 54 
+Q 1981 181 1941 391 
+Q 1528 -72 1113 -72 
+z
+M 1119 97 
+Q 1350 97 1567 270 
+Q 1784 444 1941 678 
+Q 1947 684 1947 703 
+L 2297 2113 
+Q 2259 2338 2131 2500 
+Q 2003 2663 1791 2663 
+Q 1575 2663 1389 2486 
+Q 1203 2309 1075 2069 
+Q 950 1813 836 1366 
+Q 722 919 722 672 
+Q 722 450 817 273 
+Q 913 97 1119 97 
+z
+" transform="scale(0.015625)"/>
+     <path id="t132-Cmmi10-3d" d="M 359 -1472 
+Q 359 -1453 366 -1447 
+L 2591 4722 
+Q 2603 4759 2634 4779 
+Q 2666 4800 2706 4800 
+Q 2763 4800 2798 4765 
+Q 2834 4731 2834 4672 
+L 2834 4647 
+L 609 -1522 
+Q 572 -1600 488 -1600 
+Q 434 -1600 396 -1562 
+Q 359 -1525 359 -1472 
+z
+" transform="scale(0.015625)"/>
+     <path id="t132-Cmmi10-4e" d="M 300 0 
+Q 238 0 238 84 
+Q 241 100 250 139 
+Q 259 178 276 201 
+Q 294 225 319 225 
+Q 931 225 1031 616 
+L 1900 4116 
+Q 1722 4147 1338 4147 
+Q 1275 4147 1275 4231 
+Q 1278 4247 1287 4286 
+Q 1297 4325 1314 4348 
+Q 1331 4372 1356 4372 
+L 2463 4372 
+Q 2509 4372 2522 4331 
+L 3944 947 
+L 4653 3781 
+Q 4666 3850 4666 3878 
+Q 4666 4147 4172 4147 
+Q 4109 4147 4109 4231 
+Q 4131 4313 4143 4342 
+Q 4156 4372 4219 4372 
+L 5588 4372 
+Q 5650 4372 5650 4288 
+Q 5647 4272 5637 4233 
+Q 5628 4194 5611 4170 
+Q 5594 4147 5569 4147 
+Q 4956 4147 4856 3756 
+L 3938 56 
+Q 3916 0 3872 0 
+L 3794 0 
+Q 3750 0 3738 44 
+L 2106 3916 
+L 2094 3956 
+Q 2081 3969 2081 3975 
+L 1234 588 
+Q 1228 572 1225 548 
+Q 1222 525 1216 494 
+Q 1216 328 1359 276 
+Q 1503 225 1716 225 
+Q 1778 225 1778 141 
+Q 1756 53 1740 26 
+Q 1725 0 1672 0 
+L 300 0 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t132-Cmr10-32"/>
+    <use xlink:href="#t132-Cmmi10-56" transform="translate(50 0)"/>
+    <use xlink:href="#t132-Cmmi10-64" transform="translate(108.300781 0)"/>
+    <use xlink:href="#t132-Cmmi10-3d" transform="translate(160.302734 0)"/>
+    <use xlink:href="#t132-Cmmi10-4e" transform="translate(210.302734 0)"/>
+   </g>
+  </g>
+ </g>
+</svg><rect x="840" y="300" width="380" height="110" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="858" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">key l</text><text x="858" y="366" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the longest tokens containing</text><text x="858" y="396" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Han characters in o200k</text></g></svg>
+```

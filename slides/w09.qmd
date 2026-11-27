@@ -62,7 +62,7 @@ format:
 :::
 
 ::: {.footer}
-W1 p20 · W8 p15, p18, p72, p76 · w09-data.json lastweek — no new numbers
+W1 p20 · W8 p16, p19, p76, p80 · w09-data.json lastweek — no new numbers
 :::
 
 ## The problem this week handles, in one picture
@@ -76,7 +76,7 @@ W1 p20 · W8 p15, p18, p72, p76 · w09-data.json lastweek — no new numbers
 :::
 
 ::: {.footer}
-half-time: p40 · board: p12, p18, p20, p22, p28–p30, p32, p46 · live: p34, p52 · replay: p35, p53, p60
+half-time: p41 · board: p12, p18, p20, p22, p28–p30, p32, p47 · live: p35, p54 · replay: p36, p55, p63
 :::
 
 ## What you should be able to do by the end of today
@@ -104,12 +104,12 @@ Outline W9 · Learning objectives 1–8
 **(b)** For a maths problem a **program** can tell whether the answer is right. **Does training still need a person?**
 :::
 
-- Keep your two lines: p69 comes back to both
+- Keep your two lines: p72 comes back to both
 - **(a)** is parts 1–3: a comparison becomes a number, then a gradient — and then the number disappears
 - **(b)** is parts 4–5: a program as the examiner, and what a program does not check
 
 ::: {.footer}
-W8 p76 · parts 1–3 answer (a) · parts 4–5 answer (b)
+W8 p80 · parts 1–3 answer (a) · parts 4–5 answer (b)
 :::
 
 ## Notation for today: one model, four names
@@ -147,7 +147,7 @@ most papers write $\sigma$ for the group's deviation and $r_{i,t}$ for the ratio
 - where the metaphor stops: it suggests **one correct answer** exists — for writing and conversation it does not, and people disagree; and at inference **the examiner is not in the room**
 
 ::: {.footer}
-W8 p13: the library and one shelf · the metaphor returns at p21, p36, p42, p56 · W10, W13, W14
+W8 p14: the library and one shelf · the metaphor returns at p21, p37, p43, p58 · W10, W13, W14
 :::
 
 ## Preference data: one prompt, two answers, one choice
@@ -184,7 +184,7 @@ $$\mathcal{L}_{\text{RM}}(\boldsymbol{\phi}) = -\,\mathbb{E}_{(x,\,y_w,\,y_l)}\B
 - it needs comparisons to be **consistent** — not annotators to agree on a mark out of ten
 
 ::: {.footer}
-Bradley & Terry 1952 · JM3 §8.3.2–8.3.3 (writes $o$ for $y$) · W1 p47: SGNS
+Bradley & Terry 1952 · JM3 §8.3.2–8.3.3 (writes $o$ for $y$) · W1 p48: SGNS
 :::
 
 ## Only differences count — the first of three times
@@ -201,7 +201,7 @@ $$\big(r(x, y_w) + c(x)\big) - \big(r(x, y_l) + c(x)\big) = r(x, y_w) - r(x, y_l
 :::
 
 ::: {.footer}
-Misconception 1: "a reward value has an absolute meaning" · p20 · p29 · p37 is its price
+Misconception 1: "a reward value has an absolute meaning" · p20 · p29 · p38 is its price
 :::
 
 ## At a glance: RLHF (reinforcement learning from human feedback)
@@ -231,7 +231,7 @@ Ouyang et al. 2022, §3 · Christiano et al. 2017 · Stiennon et al. 2020 · JM3
 :::
 
 ::: {.footer}
-Ouyang et al. 2022, §3.2, §3.5 · W8 p32: training and use differ (also W5, W6)
+Ouyang et al. 2022, §3.2, §3.5 · W8 p33: training and use differ (also W5, W6)
 :::
 
 # A score cannot be differentiated. How does the model follow it? {.section-title}
@@ -245,7 +245,7 @@ This week is last week's fine-tuning with two changes: **the model writes the an
 :::
 
 ::: {.footer}
-p18 derives the third box · p19 reads it · p20–p21 repair it · SFT's row: W8 p15
+p18 derives the third box · p19 reads it · p20–p21 repair it · SFT's row: W8 p16
 :::
 
 ## Policy gradient in three lines
@@ -277,7 +277,7 @@ $$\nabla_{\boldsymbol{\theta}}\log\pi_{\boldsymbol{\theta}}(y \mid x) = \sum_{t}
 | **SFT** (W8) | someone else's, fixed | $1$ |
 | **REINFORCE** (this slide) | the model's own, re-sampled every step | $r(x, y) - b(x)$ |
 | **DPO** (p32) | a fixed pile of pairs | $+w$ on $y_w$, $-w$ on $y_l$; $w$ = how wrong the model has the pair |
-| **GRPO**, binary reward (p46) | the model's own, $G$ per prompt | $+$ on the correct, $-$ on the wrong; size $s_r$ |
+| **GRPO**, binary reward (p47) | the model's own, $G$ per prompt | $+$ on the correct, $-$ on the wrong; size $s_r$ |
 
 : {tbl-colwidths="[24,30,46]"}
 
@@ -304,7 +304,7 @@ Scores run from 0 to 10 and nothing is subtracted. **What happens to an answer t
 :::
 
 ::: {.footer}
-p13 · p29 · the critic: p24 · the group mean: p44
+p13 · p29 · the critic: p24 · the group mean: p45
 :::
 
 ## The examiner was learned from a sample: tie the model to $\pi_{\text{ref}}$
@@ -314,10 +314,10 @@ $$\max_{\pi}\;\; \mathbb{E}_{y \sim \pi(\cdot \mid x)}\big[r(x, y)\big] \;-\; \b
 - $D_{\mathrm{KL}}(\pi \,\Vert\, \pi_{\text{ref}})$: how far the answers $\pi$ writes have moved from the answers $\pi_{\text{ref}}$ writes — W1's cross-entropy minus the entropy; zero only when the two agree
 - **a rope**: $\beta$ large, a short rope; $\beta$ small, a long one
 - why: the reward model was trained on answers **like the ones $\pi_{\text{ref}}$ writes**. Far from them, its marks mean nothing — and the optimiser goes exactly where the marks are highest
-- with a **program** as the examiner this reason disappears, and so, often, does the term (p49) — but the rope does a second job: last week, forgetting grew with the KL from the base model
+- with a **program** as the examiner this reason disappears, and so, often, does the term (p50) — but the rope does a second job: last week, forgetting grew with the KL from the base model
 
 ::: {.footer}
-Misconception 2: "the KL term is just a regulariser — optional" · W8 p66: Shenfeld et al.
+Misconception 2: "the KL term is just a regulariser — optional" · W8 p70: Shenfeld et al.
 :::
 
 ## The closed form, in one line: $\pi^{*} \propto \pi_{\text{ref}}\,e^{r/\beta}$
@@ -337,7 +337,7 @@ The best policy is $\pi_{\text{ref}}$ **re-weighted**. An answer $\pi_{\text{ref
 :::
 
 ::: {.footer}
-Misconception 3: "preference training teaches new knowledge" · W8 p19 · Kirk et al., ICLR 2024
+Misconception 3: "preference training teaches new knowledge" · W8 p20 · Kirk et al., ICLR 2024
 :::
 
 ## The closed form, drawn: $\pi_{\text{ref}}$, re-weighted
@@ -394,11 +394,11 @@ Misconception 4: "reward going up is progress" · Gao et al., ICML 2023, §1, §
 | **The question** | RLHF trains a reward model, then a critic, then samples. The preference data were there from the start — can the policy be trained on them **directly**? |
 | **The idea** | The KL-regularised objective has a closed form (p22). Solve it for the reward; put that into Bradley–Terry (p12); $Z(x)$ cancels. What is left is a logistic loss in $\pi_{\boldsymbol{\theta}}$ and $\pi_{\text{ref}}$ only. |
 | **What it added** | No reward model, no sampling, no critic: preference training with **an SFT training loop**. |
-| **What it leaves open** | The derivation (p28–p30); what training looks like (p31); what the gradient does (p32); and three limits — the data are fixed (p36), only a difference is held (p37), it over-optimises anyway (p38). |
+| **What it leaves open** | The derivation (p28–p30); what training looks like (p31); what the gradient does (p32); and three limits — the data are fixed (p37), only a difference is held (p38), it over-optimises anyway (p39). |
 :::
 
 ::: {.footer}
-Rafailov et al. 2023, §4 and the appendix · JM3 §8.4.2 · demo 1: p33–p35
+Rafailov et al. 2023, §4 and the appendix · JM3 §8.4.2 · demo 1: p33–p36
 :::
 
 ## DPO, steps 1 and 2: solve the closed form for the reward
@@ -460,7 +460,7 @@ Rafailov et al. 2023, §4, appendix · the same shape as $\mathcal{L}_{\text{RM}
 :::
 
 ::: {.footer}
-Rafailov et al. 2023, §4 · TRL: `precompute_ref_log_probs` · compare p15, p66
+Rafailov et al. 2023, §4 · TRL: `precompute_ref_log_probs` · compare p15, p69
 :::
 
 ## Reading the gradient: a contrast, weighted by how wrong the pair is
@@ -475,7 +475,7 @@ Four properties you can check in code:
 4. $\beta \to 0$: loss $\to \log 2$, gradient $\to \mathbf{0}$ · $\beta$ large: a hard verdict — zero if the pair is ordered right, large if not
 
 ::: {.footer}
-Rafailov et al. 2023, §4 · p19's table, third row · property 3 returns at p37
+Rafailov et al. 2023, §4 · p19's table, third row · property 3 returns at p38
 :::
 
 ## Before Demo 1: six lines of loss, four tests, one real run
@@ -491,6 +491,18 @@ Rafailov et al. 2023, §4 · p19's table, third row · property 3 returns at p37
 
 ::: {.footer}
 Demo 1 · `demos/w09_d1_dpo_scratch` · built 2026-11-15, **not rehearsed**
+:::
+
+## Demo 1: how it runs
+
+{{< include assets/w09/demo1-flow.inline.qmd >}}
+
+::: {.small}
+Green: what the loss must do. Red: what we do not know until a real model is trained.
+:::
+
+::: {.footer}
+Demo 1 · `demos/w09_d1_dpo_scratch` · how it runs · as built · not rehearsed
 :::
 
 ## Live: demo 1 (a) — `dpo_loss`, written and tested
@@ -562,7 +574,7 @@ Misconception 5: "DPO is an equivalent replacement for PPO" · both abstracts ·
 :::
 
 ::: {.footer}
-Misconception 6: "the DPO loss fell, so $y_w$ became more likely" · Razin et al., abstract · p34, p35
+Misconception 6: "the DPO loss fell, so $y_w$ became more likely" · Razin et al., abstract · p35, p36
 :::
 
 ## Limit 3: no reward model, and it still over-optimises
@@ -606,7 +618,7 @@ So far the examiner **was a person, or had learned from people**. From here it i
 :::
 
 ::: {.footer}
-p5's route · first half: p9–p39 · second half: p41–p67
+p5's route · first half: p9–p40 · second half: p42–p70
 :::
 
 # Some answers need no person: a program can check them {.section-title}
@@ -644,7 +656,7 @@ Lambert et al., *Tülu 3*, COLM 2025 · W1 p20: the fourth entry, "a verifiable 
 | **The question** | PPO needs a critic to supply the baseline — a second network to train and to hold. Can the baseline come from somewhere cheaper? |
 | **The idea** | Answer the same prompt $G$ times. Each answer's advantage is its reward **relative to the group**: $\hat{A}_i = (r_i - \bar{r})/s_r$. The other $G-1$ answers are the baseline. |
 | **What it added** | One network fewer (the abstract: *optimizing the memory usage of PPO*); and comparing within a group subtracts each prompt's difficulty for free. |
-| **What it leaves open** | What the update really is (p46); three biases and the variants that fix them (p47–p49); how large $G$ should be (p47, p66). |
+| **What it leaves open** | What the update really is (p47); three biases and the variants that fix them (p48–p50); how large $G$ should be (p48, p69). |
 :::
 
 ::: {.footer}
@@ -671,7 +683,7 @@ $$\mathcal{J}_{\text{GRPO}}(\boldsymbol{\theta}) = \mathbb{E}\left[\frac{1}{G}\s
 
 $$\hat{A}_i = \frac{r_i - \bar{r}}{s_r}$$
 
-Five places where a choice was made — each is a switch on p49:
+Five places where a choice was made — each is a switch on p50:
 
 1. **$\div\, s_r$** in the advantage
 2. **$1/\lvert y_i \rvert$**: each answer's tokens averaged over its own length
@@ -712,14 +724,14 @@ three lines of algebra, done on the board · also Theorem 1 of Bay & Yearick 202
 - **$k = 0$ or $k = G$**: no update. A prompt answered correctly with probability $p$ is silent with probability $p^{G} + (1-p)^{G}$ — at $p = 0.3$: $0.58$ for $G = 2$, $0.25$ for $G = 4$, $0.06$ for $G = 8$
 
 ::: {.footer}
-Misconception 8 (first half): "a larger $G$ is always better" · Liu et al., COLM 2025 · p66
+Misconception 8 (first half): "a larger $G$ is always better" · Liu et al., COLM 2025 · p69
 :::
 
 ## Entropy collapse: exploration stops early
 
 - **entropy**: how spread out the model's next-token distribution is. High: it still tries different things. Low: it writes the same answer every time
 - **Cui et al.** 2025 (a preprint): in RL for reasoning models the policy's entropy **drops sharply early in training**, and performance saturates with it
-- why it matters here: with $G$ identical answers, $k$ is $0$ or $G$ — **every group is silent** (p47), however large $G$ is. The update that sharpened the model is the one that ends its learning
+- why it matters here: with $G$ identical answers, $k$ is $0$ or $G$ — **every group is silent** (p48), however large $G$ is. The update that sharpened the model is the one that ends its learning
 - two switches on the next slide aim at this: DAPO's **clip-higher** ($\epsilon_{\text{high}} > \epsilon_{\text{low}}$: let unlikely tokens rise) — and a KL to $\pi_{\text{ref}}$ does it bluntly
 
 ::: {.footer}
@@ -750,7 +762,7 @@ Misconception 9: "four algorithms" · DAPO, Dr. GRPO: published · GSPO, SAPO: p
 
 | The reason | What it is | How strong |
 |:---|:---|:---|
-| **the algebra** (p46) | with binary rewards the update is $s_r \times$ a contrast; dividing by $s_r$, dropping $s_r = 0$, re-weighting tokens all act on that one line | exact — for binary rewards, the first step, no clip, no KL |
+| **the algebra** (p47) | with binary rewards the update is $s_r \times$ a contrast; dividing by $s_r$, dropping $s_r = 0$, re-weighting tokens all act on that one line | exact — for binary rewards, the first step, no clip, no KL |
 | **the code** | TRL 1.13.0's `GRPOTrainer` covers them with three arguments; the default `loss_type` is already `"dapo"`, and the docs advise against `"grpo"` for its length bias | source code, not literature |
 | **the measurement** | ScaleRL (ICLR 2026 oral; more than 400,000 GPU-hours): loss aggregation, normalisation, curriculum, off-policy algorithm mainly change **efficiency**; they barely move the asymptote | one large study's abstract |
 
@@ -769,7 +781,7 @@ Bay & Yearick 2026 states the identity as a theorem: a two-author preprint · Sc
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Why** | p46 is three lines of algebra about gradients nobody has seen. Check it on real gradients; then find out how often a group is silent, and what each switch on p49 does to a small model. |
+| **Why** | p47 is three lines of algebra about gradients nobody has seen. Check it on real gradients; then find out how often a group is silent, and what each switch on p50 does to a small model. |
 | **What runs** | The task: integer arithmetic **generated on the spot** (a few two- or three-digit numbers; difficulty set so that $\pi_{\text{ref}}$ is right three to five times in ten). Nothing can have been memorised. The verifier: the last number in the answer equals the result. **(a) live**: five lines for the advantage; the update computed two ways. **(b) replay**: a hand-written loop — sample, verify, advantage, **one** update per batch — at $G \in \{2, 4, 8, 16\}$ with the total number of rollouts per step held fixed; then each switch once; then LoRA rank 1 against rank 16. |
 | **Expect** (a) | The two ways agree to floating-point error. `std` dividing by $G$ and by $G-1$ differ by $\sqrt{G/(G-1)}$. |
 | **Watch for** (b) | How many groups are silent at each $G$ — and is it $p^{G} + (1-p)^{G}$? Which takes longer on this machine: sampling, or updating? |
@@ -777,6 +789,18 @@ Bay & Yearick 2026 states the identity as a theorem: a two-author preprint · Sc
 
 ::: {.footer}
 Demo 2 · `demos/w09_d2_grpo_scratch` · the loop is written by hand · built 2026-11-14, **not rehearsed yet**
+:::
+
+## Demo 2: how it runs
+
+{{< include assets/w09/demo2-flow.inline.qmd >}}
+
+::: {.small}
+The task is generated on the spot, so nothing in it can have been memorised.
+:::
+
+::: {.footer}
+Demo 2 · `demos/w09_d2_grpo_scratch` · how it runs · as built · not rehearsed
 :::
 
 ## Live: demo 2 (a) — the advantage, and the identity checked in numbers
@@ -851,7 +875,7 @@ Lightman et al., ICLR 2024 · Math-Shepherd, ACL 2024 · Zhang et al., Findings 
 |:---|:---|:---|:---|
 | **a person** | fluent, confident agreement | to agree with the user | Sharma et al., ICLR 2024 · one deployment post-mortem (a blog post) |
 | **a learned examiner** | answers unlike any it has seen | to go where its marks are wrong | Gao et al., ICML 2023 (p25) — a synthetic setup |
-| **a program** | everything it does not check | to satisfy the check, not the task | a workshop paper · EMNLP 2026 · ICLR 2026 · ICML 2026 (p58) |
+| **a program** | everything it does not check | to satisfy the check, not the task | a workshop paper · EMNLP 2026 · ICLR 2026 · ICML 2026 (p60) |
 
 : {tbl-colwidths="[18,24,26,32]"}
 
@@ -874,7 +898,7 @@ What you want is the person's considered judgement. What you can collect is whic
 :::
 
 ::: {.footer}
-Misconception 10: "human preference is the gold standard" · W1 p41
+Misconception 10: "human preference is the gold standard" · W1 p42
 :::
 
 ## Programs: a verifier checks only what it checks
@@ -893,7 +917,7 @@ An outcome reward going up is not evidence that the reasoning got better — W3'
 :::
 
 ::: {.footer}
-Misconception 11: "a verifiable reward cannot be hacked" · the four abstracts · W3 p52 · W10
+Misconception 11: "a verifiable reward cannot be hacked" · the four abstracts · W3 p54 · W10
 :::
 
 ## Before Demo 3: a verifier with a hole in it
@@ -912,6 +936,18 @@ One of the three failure-case high points of the course — and the failure is o
 
 ::: {.footer}
 Demo 3 · `demos/w09_d3_leaky_reward` · after Helff et al., Moya et al. · built 2026-11-15, **not rehearsed**
+:::
+
+## Demo 3: how it runs
+
+{{< include assets/w09/demo3-flow.inline.qmd >}}
+
+::: {.small}
+The model is trained on the leaky score only. The strict score is recorded, never rewarded.
+:::
+
+::: {.footer}
+Demo 3 · `demos/w09_d3_leaky_reward` · how it runs · as built · not rehearsed
 :::
 
 ## Replay: demo 3 — proxy and gold against $\sqrt{\mathrm{KL}}$
@@ -971,7 +1007,7 @@ If **the clip** is the cause, what should happen when you (i) take one update pe
 :::
 
 ::: {.footer}
-Shao et al. in full; Wu et al. §4.1, §4.3 · demo 3's random-reward runs (p60)
+Shao et al. in full; Wu et al. §4.1, §4.3 · demo 3's random-reward runs (p63)
 :::
 
 # What does it cost? {.section-title}
@@ -991,7 +1027,7 @@ Sampling is **19%** of the FLOPs (**26%** with LoRA) — but it is decoding, one
 :::
 
 ::: {.footer}
-this course's bookkeeping, not a paper's claim · W8 p28: LoRA $\approx 4N$ · W3 p37 · W11
+this course's bookkeeping, not a paper's claim · W8 p29: LoRA $\approx 4N$ · W3 p39 · W11
 :::
 
 ## One score per episode: three hooks from W8, closed
@@ -1009,7 +1045,7 @@ A signal this thin cannot carry much — which is why it changes little, and for
 :::
 
 ::: {.footer}
-W8 Misconceptions 8 and 11 return here · W8 p66 · ISO (Zhu et al. 2026, a preprint)
+W8 Misconceptions 8 and 11 return here · W8 p70 · ISO (Zhu et al. 2026, a preprint)
 :::
 
 ## How many networks at once — and how large should $G$ be?
@@ -1060,8 +1096,8 @@ p7 asked: (a) you think A is better than B — how does that sentence train a mo
 :::
 
 - **(a) Three ways, in order of how much machinery they need.** Train an examiner on such sentences and follow its marks (p12, p18). Or skip the examiner: push A up **and B down**, weighted by how wrong the model has the pair (p32). Either way the sentence says only which is better — never by how much, never why (p13)
-- **(b) Not to mark the answers — and yes, for everything the program does not check.** One score times the gradient of the model's own answer is the whole method (p18, p46); the program sees the final number and nothing else (p44, p58)
-- and whoever the examiner is: pushed hard enough, its score and the score you wanted **part company** (p25, p60) — and training shows you only the first
+- **(b) Not to mark the answers — and yes, for everything the program does not check.** One score times the gradient of the model's own answer is the whole method (p18, p47); the program sees the final number and nothing else (p45, p60)
+- and whoever the examiner is: pushed hard enough, its score and the score you wanted **part company** (p25, p63) — and training shows you only the first
 
 ::: {.footer}
 compare with your two lines from p7 · W10: spend the compute at answer time
@@ -1082,7 +1118,7 @@ Four entries ticked. The fifth and sixth — retrieved knowledge, compute at tes
 :::
 
 ::: {.footer}
-W1 p19–p20 · W8 p72 · the ledger, next slide
+W1 p19–p20 · W8 p76 · the ledger, next slide
 :::
 
 ## The ledger, week 9: one new row
@@ -1101,7 +1137,7 @@ W1 p19–p20 · W8 p72 · the ledger, next slide
 : {tbl-colwidths="[17,50,16,17]"}
 
 ::: {.footer}
-Same master as W8 p73 · one row added, two merged · $\alpha$, $\beta$ (W7), $\rho$ (W6) are not today's
+Same master as W8 p77 · one row added, two merged · $\alpha$, $\beta$ (W7), $\rho$ (W6) are not today's
 :::
 
 ## Thirteen things this week said no to (1 of 2)
@@ -1142,7 +1178,7 @@ Same master as W8 p73 · one row added, two merged · $\alpha$, $\beta$ (W7), $\
 - one question carried over, undecided: does RL push a model **beyond what its base model could already do**? Two papers, two answers — next week
 
 ::: {.ask}
-Before then: **Shao et al., *Spurious Rewards***, in full (§2–§5; the derivation in Appendix B is titled a *Conjecture* — watch how the main text cites it), with **Wu et al., §4.1 and §4.3**. One sentence for each of the four questions (p62).
+Before then: **Shao et al., *Spurious Rewards***, in full (§2–§5; the derivation in Appendix B is titled a *Conjecture* — watch how the main text cites it), with **Wu et al., §4.1 and §4.3**. One sentence for each of the four questions (p65).
 :::
 
 ::: {.claim}
@@ -1172,24 +1208,24 @@ This week the examiner trained the model. Next week the examiner sits in the exa
 
 **On-policy distillation** · Agarwal et al., *GKD*, ICLR 2024 (arXiv:2306.13649) · Gu et al., *MiniLLM*, ICLR 2024 (arXiv:2306.08543) · Yang et al., *Qwen3 Technical Report*, arXiv:2505.09388 · Lu & Thinking Machines Lab, *On-Policy Distillation*, 2025-10-27 — **a blog post**; it cites the three above · **next week** · Yue et al., NeurIPS 2025 Oral (arXiv:2504.13837)
 
-**Numbers and demos** · every computed number is in `assets/w09/w09-data.json` (`scripts/make_demo_w09.py`); the curves on p25 are a schematic of Gao et al.'s functional form, not their data · **Demos 1–3 were built on 2026-11-14 and 11-15 and have not been rehearsed**: the tables on p34, p35, p52, p53, p60 are empty on purpose
+**Numbers and demos** · every computed number is in `assets/w09/w09-data.json` (`scripts/make_demo_w09.py`); the curves on p25 are a schematic of Gao et al.'s functional form, not their data · **Demos 1–3 were built on 2026-11-14 and 11-15 and have not been rehearsed**: the tables on p35, p36, p54, p55, p63 are empty on purpose
 :::
 
 ## Acronyms in this deck, A–L
 
 | | |
 |:----|:----------------|
-| CoT | chain of thought (p74) |
-| DAPO | Decoupled Clip and Dynamic sAmpling Policy Optimization, Yu et al. 2025 (p45) |
+| CoT | chain of thought (p77) |
+| DAPO | Decoupled Clip and Dynamic sAmpling Policy Optimization, Yu et al. 2025 (p46) |
 | DPO | direct preference optimization, Rafailov et al. 2023 (p27) |
-| Dr. GRPO | Group Relative Policy Optimization Done Right, Liu et al. 2025 (p45) |
+| Dr. GRPO | Group Relative Policy Optimization Done Right, Liu et al. 2025 (p46) |
 | FLOPs | floating-point operations (W1) |
-| GKD | Generalized Knowledge Distillation, Agarwal et al. 2024 (p67) |
-| GRPO | group relative policy optimization, DeepSeekMath §4.1 (p43) |
-| GSPO | Group Sequence Policy Optimization, Zheng et al. 2025 (p45) |
-| IPO | Azar et al.'s $\Psi$PO with $\Psi$ the identity map (p39) |
+| GKD | Generalized Knowledge Distillation, Agarwal et al. 2024 (p70) |
+| GRPO | group relative policy optimization, DeepSeekMath §4.1 (p44) |
+| GSPO | Group Sequence Policy Optimization, Zheng et al. 2025 (p46) |
+| IPO | Azar et al.'s $\Psi$PO with $\Psi$ the identity map (p40) |
 | KL | Kullback–Leibler (divergence) (W8) |
-| KTO | Kahneman–Tversky Optimization, Ethayarajh et al. 2024 (p39) |
+| KTO | Kahneman–Tversky Optimization, Ethayarajh et al. 2024 (p40) |
 | LoRA | low-rank adaptation (W8) |
 
 ## Acronyms in this deck, M–Z
@@ -1197,15 +1233,15 @@ This week the examiner trained the model. Next week the examiner sits in the exa
 | | |
 |:----|:----------------|
 | MoE | mixture of experts (W6) |
-| ORM, PRM | outcome / process reward model (p54) |
+| ORM, PRM | outcome / process reward model (p56) |
 | PPO | proximal policy optimization, Schulman et al. 2017 (p24) |
 | REINFORCE | Williams 1992: REward Increment = Nonnegative Factor $\times$ Offset Reinforcement $\times$ Characteristic Eligibility (p18) |
 | RL | reinforcement learning (p14) |
 | RLAIF | reinforcement learning from AI feedback (p11) |
 | RLHF | reinforcement learning from human feedback (p14) |
-| RLVR | reinforcement learning with verifiable rewards (p42) |
+| RLVR | reinforcement learning with verifiable rewards (p43) |
 | RM | reward model (p12) |
-| SAPO | Soft Adaptive Policy Optimization, Gao et al. 2025 (p45) |
+| SAPO | Soft Adaptive Policy Optimization, Gao et al. 2025 (p46) |
 | SFT | supervised fine-tuning (W8) |
 | SGNS | skip-gram with negative sampling (W1) |
-| SimPO | Simple Preference Optimization, Meng et al. 2024 (p39) |
+| SimPO | Simple Preference Optimization, Meng et al. 2024 (p40) |

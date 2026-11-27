@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 384" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-last-week" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="34" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">W10 p42: the same 4,096 tokens, spent two ways</text><text x="20" y="78" font-size="23" fill="#0b5cad" text-anchor="start" font-weight="700">one chain of 4,096, batch 1</text><rect x="20" y="90" width="330" height="36" rx="4" fill="#c7d7f5" stroke="#0b5cad" stroke-width="1.6"/><svg x="362" y="96.0283" width="49.128" height="26.7116" viewBox="0 0 49.128 26.711625"><defs>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 384" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-last-week" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="34" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">W10 p44: the same 4,096 tokens, spent two ways</text><text x="20" y="78" font-size="23" fill="#0b5cad" text-anchor="start" font-weight="700">one chain of 4,096, batch 1</text><rect x="20" y="90" width="330" height="36" rx="4" fill="#c7d7f5" stroke="#0b5cad" stroke-width="1.6"/><svg x="362" y="96.0283" width="49.128" height="26.7116" viewBox="0 0 49.128 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t218-figure_1">
-  <g id="t218-patch_1">
+ <g id="t212-figure_1">
+  <g id="t212-patch_1">
    <path d="M 0 26.711625 
 L 49.128 26.711625 
 L 49.128 0 
@@ -11,11 +11,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t218-text_1">
+  <g id="t212-text_1">
    <!-- $16.7$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t218-Cmr10-31" d="M 594 0 
+     <path id="t212-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -31,7 +31,7 @@ L 2694 0
 L 594 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t218-Cmr10-36" d="M 1600 -141 
+     <path id="t212-Cmr10-36" d="M 1600 -141 
 Q 1203 -141 937 70 
 Q 672 281 526 617 
 Q 381 953 325 1322 
@@ -86,7 +86,7 @@ Q 997 450 1156 256
 Q 1316 63 1600 63 
 z
 " transform="scale(0.015625)"/>
-     <path id="t218-Cmmi10-3a" d="M 538 353 
+     <path id="t212-Cmmi10-3a" d="M 538 353 
 Q 538 497 644 600 
 Q 750 703 891 703 
 Q 978 703 1062 656 
@@ -98,7 +98,7 @@ Q 750 0 644 106
 Q 538 213 538 353 
 z
 " transform="scale(0.015625)"/>
-     <path id="t218-Cmr10-37" d="M 1113 166 
+     <path id="t212-Cmr10-37" d="M 1113 166 
 Q 1113 522 1175 862 
 Q 1238 1203 1358 1536 
 Q 1478 1869 1648 2189 
@@ -127,18 +127,18 @@ Q 1113 41 1113 166
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t218-Cmr10-31" transform="translate(0 0.421875)"/>
-    <use xlink:href="#t218-Cmr10-36" transform="translate(50 0.421875)"/>
-    <use xlink:href="#t218-Cmmi10-3a" transform="translate(100 0.421875)"/>
-    <use xlink:href="#t218-Cmr10-37" transform="translate(127.685547 0.421875)"/>
+    <use xlink:href="#t212-Cmr10-31" transform="translate(0 0.421875)"/>
+    <use xlink:href="#t212-Cmr10-36" transform="translate(50 0.421875)"/>
+    <use xlink:href="#t212-Cmmi10-3a" transform="translate(100 0.421875)"/>
+    <use xlink:href="#t212-Cmr10-37" transform="translate(127.685547 0.421875)"/>
    </g>
   </g>
  </g>
 </svg><text x="417.338" y="117" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700" textLength="148.0" lengthAdjust="spacing">GB per token</text><text x="20" y="182" font-size="23" fill="#b45309" text-anchor="start" font-weight="700">16 chains of 256, one batch</text><rect x="20" y="194" width="21.1709" height="36" rx="4" fill="#fde9c8" stroke="#b45309" stroke-width="1.6"/><svg x="53.1709" y="200.028" width="35.328" height="26.7116" viewBox="0 0 35.328 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t219-figure_1">
-  <g id="t219-patch_1">
+ <g id="t213-figure_1">
+  <g id="t213-patch_1">
    <path d="M 0 26.711625 
 L 35.328 26.711625 
 L 35.328 0 
@@ -147,11 +147,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t219-text_1">
+  <g id="t213-text_1">
    <!-- $1.1$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t219-Cmr10-31" d="M 594 0 
+     <path id="t213-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -167,7 +167,7 @@ L 2694 0
 L 594 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t219-Cmmi10-3a" d="M 538 353 
+     <path id="t213-Cmmi10-3a" d="M 538 353 
 Q 538 497 644 600 
 Q 750 703 891 703 
 Q 978 703 1062 656 
@@ -180,17 +180,17 @@ Q 538 213 538 353
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t219-Cmr10-31" transform="translate(0 0.390625)"/>
-    <use xlink:href="#t219-Cmmi10-3a" transform="translate(50 0.390625)"/>
-    <use xlink:href="#t219-Cmr10-31" transform="translate(77.685547 0.390625)"/>
+    <use xlink:href="#t213-Cmr10-31" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t213-Cmmi10-3a" transform="translate(50 0.390625)"/>
+    <use xlink:href="#t213-Cmr10-31" transform="translate(77.685547 0.390625)"/>
    </g>
   </g>
  </g>
 </svg><text x="94.7089" y="221" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700" textLength="148.0" lengthAdjust="spacing">GB per token</text><text x="20" y="292" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="61.0" lengthAdjust="spacing">about</text><svg x="87.2088" y="271.028" width="58.788" height="26.7116" viewBox="0 0 58.788 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t220-figure_1">
-  <g id="t220-patch_1">
+ <g id="t214-figure_1">
+  <g id="t214-patch_1">
    <path d="M 0 26.711625 
 L 58.788 26.711625 
 L 58.788 0 
@@ -199,11 +199,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t220-text_1">
+  <g id="t214-text_1">
    <!-- $16\times$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t220-Cmr10-31" d="M 594 0 
+     <path id="t214-Cmr10-31" d="M 594 0 
 L 594 225 
 Q 1394 225 1394 428 
 L 1394 3788 
@@ -219,7 +219,7 @@ L 2694 0
 L 594 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t220-Cmr10-36" d="M 1600 -141 
+     <path id="t214-Cmr10-36" d="M 1600 -141 
 Q 1203 -141 937 70 
 Q 672 281 526 617 
 Q 381 953 325 1322 
@@ -274,7 +274,7 @@ Q 997 450 1156 256
 Q 1316 63 1600 63 
 z
 " transform="scale(0.015625)"/>
-     <path id="t220-Cmsy10-a3" d="M 941 184 
+     <path id="t214-Cmsy10-a3" d="M 941 184 
 Q 941 234 972 275 
 L 2303 1600 
 L 972 2931 
@@ -302,17 +302,17 @@ Q 941 138 941 184
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t220-Cmr10-31" transform="translate(0 0.390625)"/>
-    <use xlink:href="#t220-Cmr10-36" transform="translate(50 0.390625)"/>
-    <use xlink:href="#t220-Cmsy10-a3" transform="translate(117.558594 0.390625)"/>
+    <use xlink:href="#t214-Cmr10-31" transform="translate(0 0.390625)"/>
+    <use xlink:href="#t214-Cmr10-36" transform="translate(50 0.390625)"/>
+    <use xlink:href="#t214-Cmsy10-a3" transform="translate(117.558594 0.390625)"/>
    </g>
   </g>
  </g>
 </svg><text x="152.207" y="292" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="142.3" lengthAdjust="spacing">in bytes; only</text><svg x="300.698" y="271.028" width="36.984" height="26.7116" viewBox="0 0 36.984 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t221-figure_1">
-  <g id="t221-patch_1">
+ <g id="t215-figure_1">
+  <g id="t215-patch_1">
    <path d="M 0 26.711625 
 L 36.984 26.711625 
 L 36.984 0 
@@ -321,11 +321,11 @@ L 0 26.711625
 z
 " style="fill: none"/>
   </g>
-  <g id="t221-text_1">
+  <g id="t215-text_1">
    <!-- $7\%$ -->
    <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
     <defs>
-     <path id="t221-Cmr10-37" d="M 1113 166 
+     <path id="t215-Cmr10-37" d="M 1113 166 
 Q 1113 522 1175 862 
 Q 1238 1203 1358 1536 
 Q 1478 1869 1648 2189 
@@ -353,7 +353,7 @@ Q 1294 -141 1203 -50
 Q 1113 41 1113 166 
 z
 " transform="scale(0.015625)"/>
-     <path id="t221-Cmr10-25" d="M 891 -231 
+     <path id="t215-Cmr10-25" d="M 891 -231 
 Q 891 -194 909 -166 
 L 3809 4153 
 Q 3425 3938 2963 3938 
@@ -421,16 +421,16 @@ Q 3828 -191 4141 -191
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t221-Cmr10-37"/>
-    <use xlink:href="#t221-Cmr10-25" transform="translate(50 0)"/>
+    <use xlink:href="#t215-Cmr10-37"/>
+    <use xlink:href="#t215-Cmr10-25" transform="translate(50 0)"/>
    </g>
   </g>
  </g>
-</svg><text x="343.892" y="292" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="164.0" lengthAdjust="spacing">apart in FLOPs</text><text x="20" y="374" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">W10 p42 · no new numbers</text><text x="660" y="34" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">W10 left three things on the ledger</text><rect x="660" y="50" width="560" height="78" rx="7" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><text x="678" y="81" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">a new row: test time</text><text x="678" y="114" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="166.7" lengthAdjust="spacing">bytes per token</text><svg x="850.896" y="93.3" width="182.712" height="27.6" viewBox="0 0 182.712 27.6"><defs>
+</svg><text x="343.892" y="292" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="164.0" lengthAdjust="spacing">apart in FLOPs</text><text x="20" y="374" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">W10 p44 · no new numbers</text><text x="660" y="34" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">W10 left three things on the ledger</text><rect x="660" y="50" width="560" height="78" rx="7" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><text x="678" y="81" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">a new row: test time</text><text x="678" y="114" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="166.7" lengthAdjust="spacing">bytes per token</text><svg x="850.896" y="93.3" width="182.712" height="27.6" viewBox="0 0 182.712 27.6"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
- <g id="t222-figure_1">
-  <g id="t222-patch_1">
+ <g id="t216-figure_1">
+  <g id="t216-patch_1">
    <path d="M 0 27.6 
 L 182.712 27.6 
 L 182.712 0 
@@ -439,11 +439,11 @@ L 0 27.6
 z
 " style="fill: none"/>
   </g>
-  <g id="t222-text_1">
+  <g id="t216-text_1">
    <!-- $\geq N b / k + M_{\mathrm{KV}}$ -->
    <g style="fill: #1f2328" transform="translate(0 20.7) scale(0.276 -0.276)">
     <defs>
-     <path id="t222-Cmsy10-b8" d="M 653 -878 
+     <path id="t216-Cmsy10-b8" d="M 653 -878 
 Q 600 -878 565 -837 
 Q 531 -797 531 -750 
 Q 531 -697 565 -659 
@@ -472,7 +472,7 @@ Q 606 366 568 403
 Q 531 441 531 494 
 z
 " transform="scale(0.015625)"/>
-     <path id="t222-Cmmi10-4e" d="M 300 0 
+     <path id="t216-Cmmi10-4e" d="M 300 0 
 Q 238 0 238 84 
 Q 241 100 250 139 
 Q 259 178 276 201 
@@ -517,7 +517,7 @@ Q 1725 0 1672 0
 L 300 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t222-Cmmi10-62" d="M 1106 -72 
+     <path id="t216-Cmmi10-62" d="M 1106 -72 
 Q 719 -72 503 231 
 Q 288 534 288 941 
 Q 288 1000 317 1173 
@@ -556,7 +556,7 @@ Q 691 475 795 286
 Q 900 97 1119 97 
 z
 " transform="scale(0.015625)"/>
-     <path id="t222-Cmmi10-3d" d="M 359 -1472 
+     <path id="t216-Cmmi10-3d" d="M 359 -1472 
 Q 359 -1453 366 -1447 
 L 2591 4722 
 Q 2603 4759 2634 4779 
@@ -570,7 +570,7 @@ Q 434 -1600 396 -1562
 Q 359 -1525 359 -1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t222-Cmmi10-6b" d="M 341 116 
+     <path id="t216-Cmmi10-6b" d="M 341 116 
 Q 341 153 347 172 
 L 1275 3872 
 Q 1300 3981 1306 4044 
@@ -629,7 +629,7 @@ Q 456 -72 398 -17
 Q 341 38 341 116 
 z
 " transform="scale(0.015625)"/>
-     <path id="t222-Cmr10-2b" d="M 481 1472 
+     <path id="t216-Cmr10-2b" d="M 481 1472 
 Q 428 1472 393 1512 
 Q 359 1553 359 1600 
 Q 359 1647 393 1687 
@@ -656,7 +656,7 @@ L 2363 1472
 L 481 1472 
 z
 " transform="scale(0.015625)"/>
-     <path id="t222-Cmmi10-4d" d="M 325 0 
+     <path id="t216-Cmmi10-4d" d="M 325 0 
 Q 263 0 263 84 
 Q 266 100 275 137 
 Q 284 175 300 200 
@@ -714,7 +714,7 @@ Q 1756 0 1697 0
 L 325 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t222-Cmr10-4b" d="M 197 0 
+     <path id="t216-Cmr10-4b" d="M 197 0 
 L 197 225 
 Q 856 225 856 428 
 L 856 3944 
@@ -750,7 +750,7 @@ L 2113 0
 L 197 0 
 z
 " transform="scale(0.015625)"/>
-     <path id="t222-Cmr10-56" d="M 2253 -72 
+     <path id="t216-Cmr10-56" d="M 2253 -72 
 L 744 3944 
 Q 688 4078 528 4112 
 Q 369 4147 122 4147 
@@ -777,16 +777,16 @@ Q 2272 -141 2253 -72
 z
 " transform="scale(0.015625)"/>
     </defs>
-    <use xlink:href="#t222-Cmsy10-b8" transform="translate(17.558594 0)"/>
-    <use xlink:href="#t222-Cmmi10-4e" transform="translate(112.802734 0)"/>
-    <use xlink:href="#t222-Cmmi10-62" transform="translate(193.125 0)"/>
-    <use xlink:href="#t222-Cmmi10-3d" transform="translate(236.044922 0)"/>
-    <use xlink:href="#t222-Cmmi10-6b" transform="translate(286.044922 0)"/>
-    <use xlink:href="#t222-Cmr10-2b" transform="translate(355.605469 0)"/>
-    <use xlink:href="#t222-Cmmi10-4d" transform="translate(450.849609 0)"/>
-    <use xlink:href="#t222-Cmr10-4b" transform="translate(547.871094 -17.00625) scale(0.7)"/>
-    <use xlink:href="#t222-Cmr10-56" transform="translate(602.250977 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t216-Cmsy10-b8" transform="translate(17.558594 0)"/>
+    <use xlink:href="#t216-Cmmi10-4e" transform="translate(112.802734 0)"/>
+    <use xlink:href="#t216-Cmmi10-62" transform="translate(193.125 0)"/>
+    <use xlink:href="#t216-Cmmi10-3d" transform="translate(236.044922 0)"/>
+    <use xlink:href="#t216-Cmmi10-6b" transform="translate(286.044922 0)"/>
+    <use xlink:href="#t216-Cmr10-2b" transform="translate(355.605469 0)"/>
+    <use xlink:href="#t216-Cmmi10-4d" transform="translate(450.849609 0)"/>
+    <use xlink:href="#t216-Cmr10-4b" transform="translate(547.871094 -17.00625) scale(0.7)"/>
+    <use xlink:href="#t216-Cmr10-56" transform="translate(602.250977 -17.00625) scale(0.7)"/>
    </g>
   </g>
  </g>
-</svg><rect x="660" y="138" width="560" height="78" rx="7" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="678" y="169" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">what binds it</text><text x="678" y="202" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">"bandwidth": defined in W3, never measured</text><rect x="660" y="226" width="560" height="78" rx="7" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="678" y="257" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">one question</text><text x="678" y="290" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">what does each of these tokens cost?</text><text x="660" y="374" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">W10 p73, p77 · W3 p37–p38</text></svg>
+</svg><rect x="660" y="138" width="560" height="78" rx="7" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="678" y="169" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">what binds it</text><text x="678" y="202" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">"bandwidth": defined in W3, never measured</text><rect x="660" y="226" width="560" height="78" rx="7" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="678" y="257" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">one question</text><text x="678" y="290" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">what does each of these tokens cost?</text><text x="660" y="374" font-size="19" fill="#6b7280" text-anchor="start" font-weight="400">W10 p76, p80 · W3 p39–p40</text></svg>

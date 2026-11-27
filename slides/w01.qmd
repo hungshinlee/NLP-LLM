@@ -334,7 +334,7 @@ You already used question 3 today: the $n = 4$ sample read best, and scored wors
 | $C(\cdot)$ · $c$, $N_c$, $c^{*}$ · $\beta_n$ | a **count** in the training text (**not** compute) · a count, how many types were seen $c$ times, the adjusted count · Heaps' exponent for $n$-grams |
 | $\mathbf{v}_c$, $\mathbf{u}_o$ · $K$, $P_n$ · $\sigma(\cdot)$ · $\mathrm{PMI}$ | word2vec: a centre and a context vector · negatives per pair, their distribution · the sigmoid · pointwise mutual information |
 | $\mathbf{x}_t$, $\mathbf{h}_t$ · $\mathbf{W}$, $\mathbf{U}$ · $\phi$, $\gamma$, $\sigma_{\max}$ | an RNN at step $t$: input, hidden state · its two matrices · the nonlinearity, the bound on its slope, $\mathbf{W}$'s largest singular value (**not** the sigmoid) |
-| $\mathbf{c}_t$ · $\alpha_{ti}$ | the LSTM's cell state — and, from p64, attention's context vector · the weight output step $t$ puts on input $i$ |
+| $\mathbf{c}_t$ · $\alpha_{ti}$ | the LSTM's cell state — and, from p65, attention's context vector · the weight output step $t$ puts on input $i$ |
 
 : {tbl-colwidths="[30,70]"}
 
@@ -353,7 +353,7 @@ One thread: **a model that only counts cannot share what it has seen.** Every st
 :::
 
 ::: {.footer}
-the cold open (p3–p10) is why question 1 comes first · half-time: p56
+the cold open (p3–p10) is why question 1 comes first · half-time: p57
 :::
 
 # What does the training loss actually measure? A language model is a compressor {.section-title}
@@ -390,7 +390,7 @@ Bigram counts, training split · sub-intervals in alphabetical order · Shannon 
 
 1. **What gets compressed is a distribution over strings, not a set of propositions.** A fluent string that fits the distribution and is false is exactly what a compressor produces — later today, a theorem says how often
 2. **A compression rate that ignores the model's own size is not a compression ratio.** Count the weights, and a large model only pays for itself on terabytes of text
-3. **Bits-per-byte comparisons come with conditions.** Four of them, right after Demo 2 (p32)
+3. **Bits-per-byte comparisons come with conditions.** Four of them, right after Demo 2 (p33)
 
 ::: {.claim .warn}
 So "the model knows X" is a badly posed sentence. It has a distribution, not a knowledge base.
@@ -436,6 +436,18 @@ Misconception 2 of 10
 
 ::: {.footer}
 Demo 2 · code: `demos/w01_d2_bpb` · MLX, Apple silicon only
+:::
+
+## Demo 2: how it runs
+
+{{< include assets/w01/demo2-flow.inline.qmd >}}
+
+::: {.small}
+The red boxes are the questions. Answer them in your head before each Enter.
+:::
+
+::: {.footer}
+Demo 2 · `demos/w01_d2_bpb` · how it runs · as rehearsed
 :::
 
 ## Live: the same paragraph, two tokenizers
@@ -491,12 +503,12 @@ The MLE assigns zero to 95% of the 4-grams you will actually meet. Any usable mo
 | **Name** | **Good–Turing frequency estimation** — Good, *The Population Frequencies of Species and the Estimation of Population Parameters*, Biometrika 1953; it credits Turing for "the most interesting formula in this part of the work". |
 | **The question** | A sample from "a population of animals of various species" — or "literary vocabulary". Seen $r$ times, "$r/N$ is not a good estimate of the population frequency, $p$, when $r$ is small"; and how much is never seen at all? (His $r, N$: our $c, D$.) |
 | **The idea** | Use the *frequencies of frequencies*: how many types were seen once, twice, three times. A type seen $c$ times is re-counted as $c^* = (c+1)\,N_{c+1}/N_c$; everything never seen shares $N_1/D$, the singletons' mass. |
-| **What it added** | An estimate of the unseen that never asks *what* is unseen — only how many singletons the sample has. The floor under every smoothing method (p36–p38) and, over facts instead of words, under hallucination (p41). |
-| **What it leaves open** | Splitting the unseen share among the unseen (backoff, Kneser–Ney); $N_{c+1} = 0$ (p36's footer); whether the new text is from the same population (p36). |
+| **What it added** | An estimate of the unseen that never asks *what* is unseen — only how many singletons the sample has. The floor under every smoothing method (p37–p39) and, over facts instead of words, under hallucination (p42). |
+| **What it leaves open** | Splitting the unseen share among the unseen (backoff, Kneser–Ney); $N_{c+1} = 0$ (p37's footer); whether the new text is from the same population (p37). |
 :::
 
 ::: {.footer}
-Good (1953) · the derivation and the held-out check: p36 · the same count over facts: p41
+Good (1953) · the derivation and the held-out check: p37 · the same count over facts: p42
 :::
 
 ## Good–Turing: count $c$ borrows its mass from count $c+1$
@@ -670,11 +682,11 @@ So "just a bigger n-gram" is wrong about the mechanism — and still a surprisin
 | **The question** | Skip-gram is "an efficient method for learning high-quality distributed vector representations" — but its softmax over the whole vocabulary is paid at every step. How do you fit it to billions of words? |
 | **The idea** | Two vectors per word, $\mathbf{v}$ as centre, $\mathbf{u}$ as context. Pull the centre toward a word that really appears in its window; push it from $K$ words drawn from the corpus — "a simple alternative to the hierarchical softmax called negative sampling". |
 | **What it added** | A vector for every word from raw text alone, at a cost that no longer depends on $V$. Phrase vectors too, since "Canada" and "Air" cannot be combined into "Air Canada" — a stated limit, with "indifference to word order". |
-| **What it leaves open** | What the objective converges to — a probability, or something else (p49–p50); what "similar" therefore means (p51–p53); one vector per word, and nothing for a word never seen (p54–p55). |
+| **What it leaves open** | What the objective converges to — a probability, or something else (p50–p51); what "similar" therefore means (p52–p54); one vector per word, and nothing for a word never seen (p55–p56). |
 :::
 
 ::: {.footer}
-Mikolov et al. 2013 · the loss: p48 · what it optimizes: p49–p50 · what the space looks like: p51–p54
+Mikolov et al. 2013 · the loss: p49 · what it optimizes: p50–p51 · what the space looks like: p52–p55
 :::
 
 ## The hypothesis becomes a loss function
@@ -815,7 +827,7 @@ So far: **what is learned, and from what.** From here: how a model carries **mor
 :::
 
 ::: {.footer}
-p23's route · first half: p24–p55 · second half: p57–p71
+p23's route · first half: p24–p56 · second half: p58–p72
 :::
 
 # What does one cell carry, and what does its gradient do? Recurrence and the additive path {.section-title}
@@ -890,14 +902,14 @@ Jacobians ignore the gates' own dependencies · our framing, not the papers' cla
 | | |
 |:---|:-----------------|
 | **Name** | **Attention**, in its first working form — Bahdanau, Cho & Bengio, *Neural Machine Translation by Jointly Learning to Align and Translate*, ICLR 2015 (arXiv:1409.0473). The title says *align*; *attention* is the field's word. |
-| **The question** | The 2014 encoder–decoder "encodes a source sentence into a fixed-length vector"; the authors "conjecture that the use of a fixed-length vector is a bottleneck". Cho et al. had measured the symptom: quality collapses with length (p65). |
+| **The question** | The 2014 encoder–decoder "encodes a source sentence into a fixed-length vector"; the authors "conjecture that the use of a fixed-length vector is a bottleneck". Cho et al. had measured the symptom: quality collapses with length (p66). |
 | **The idea** | Let the decoder "(soft-)search for parts of a source sentence" at every output step: a weight $\alpha_{ti}$ over every encoder state, and $\mathbf{c}_t = \sum_i \alpha_{ti}\mathbf{h}_i$ rebuilt for each target word. No hard alignment is ever chosen. |
 | **What it added** | One neural model "comparable to the existing state-of-the-art phrase-based system" on English-to-French; and "(soft-)alignments found by the model agree well with our intuition" — the sentence a decade of misreading grew from (W3). |
-| **What it leaves open** | Who asks and who answers — attention *between two sequences* (p67–p68); the dot-product form that is one matrix multiply (Luong, p69); and what is left once the recurrence is removed (p69–p71). |
+| **What it leaves open** | Who asks and who answers — attention *between two sequences* (p68–p69); the dot-product form that is one matrix multiply (Luong, p70); and what is left once the recurrence is removed (p70–p72). |
 :::
 
 ::: {.footer}
-Bahdanau, Cho & Bengio (2015) · the symptom: p65 · the two pictures: p66, p68 · cross vs. self: p67 · older than the Transformer: p69
+Bahdanau, Cho & Bengio (2015) · the symptom: p66 · the two pictures: p67, p69 · cross vs. self: p68 · older than the Transformer: p70
 :::
 
 ## Then seq2seq squeezed everything through one vector
@@ -1080,14 +1092,14 @@ Nothing to install. Every demo in this course runs at the front of the room.
 | | |
 |:----|:----------------|
 | BPB | bits per byte: total code length in bits over the UTF-8 bytes of the same text (p29) |
-| BPE | Byte Pair Encoding: next week's dictionary-building algorithm (p76; W2) |
-| BPTT | backpropagation through time: the gradient product across the unrolled chain (p59) |
+| BPE | Byte Pair Encoding: next week's dictionary-building algorithm (p77; W2) |
+| BPTT | backpropagation through time: the gradient product across the unrolled chain (p60) |
 | DPO | Direct Preference Optimization, W9: the loss whose partition function cancels (p12) |
-| ELMo | Embeddings from Language Models, Peters et al. 2018: one vector per word *in context* (p55) |
+| ELMo | Embeddings from Language Models, Peters et al. 2018: one vector per word *in context* (p56) |
 | FLOPs | floating-point operations: a multiply-add counts as 2 (p16–p17) |
 | GPU | graphics processing unit: the one 16 GB card of the in-class estimate (p18) |
-| GRU | gated recurrent unit: the LSTM's lighter sibling, minimal versions of both train in parallel (p71) |
-| GT | Good–Turing, the frequency-of-frequencies estimate (p35–p36) |
+| GRU | gated recurrent unit: the LSTM's lighter sibling, minimal versions of both train in parallel (p72) |
+| GT | Good–Turing, the frequency-of-frequencies estimate (p36–p37) |
 
 ## Acronyms in this deck, K–P
 
@@ -1096,14 +1108,14 @@ Nothing to install. Every demo in this course runs at the front of the room.
 | KL | Kullback–Leibler divergence $D_{\mathrm{KL}}(p\,\|\,q)$: the part of the loss training can shrink (p25) |
 | KV | key–value: the cache a Transformer carries at inference, W3's first number (p14, p16) |
 | LLM, LM | (large) language model (p9, p27) |
-| LSTM | Long Short-Term Memory, Hochreiter & Schmidhuber 1997; the forget gate is Gers et al. 2000 (p61) |
-| MLE | maximum likelihood estimate: for an n-gram, a count ratio (p34) |
+| LSTM | Long Short-Term Memory, Hochreiter & Schmidhuber 1997; the forget gate is Gers et al. 2000 (p62) |
+| MLE | maximum likelihood estimate: for an n-gram, a count ratio (p35) |
 | MoE | mixture of experts, W6: memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ (p9, p16) |
-| NCE | noise-contrastive estimation: the method negative sampling is *not* (p49) |
+| NCE | noise-contrastive estimation: the method negative sampling is *not* (p50) |
 | NLP | natural language processing (title) |
-| NPLM | neural probabilistic language model, Bengio et al. 2003 (p43) |
+| NPLM | neural probabilistic language model, Bengio et al. 2003 (p44) |
 | PEFT | parameter-efficient fine-tuning, W8 (p13) |
-| PMI, PPMI | pointwise mutual information, and its positive part with negatives set to zero (p49, p51) |
+| PMI, PPMI | pointwise mutual information, and its positive part with negatives set to zero (p50, p52) |
 | PPL | perplexity, $\exp$ of the mean negative log-likelihood per token (p29) |
 
 ## Acronyms in this deck, R–Z
@@ -1111,14 +1123,14 @@ Nothing to install. Every demo in this course runs at the front of the room.
 | | |
 |:----|:----------------|
 | RAG | retrieval-augmented generation, W12: refuses to compress, looks things up (p25) |
-| ResNet | residual network, He et al. 2015: $\mathbf{x}_{l+1} = \mathbf{x}_l + F(\mathbf{x}_l)$ (p61) |
+| ResNet | residual network, He et al. 2015: $\mathbf{x}_{l+1} = \mathbf{x}_l + F(\mathbf{x}_l)$ (p62) |
 | RL | reinforcement learning, W9 (p13) |
-| RNN | recurrent neural network: one cell applied once per token (p58) |
-| seq2seq | sequence to sequence, Sutskever, Vinyals & Le 2014: encoder, one vector, decoder (p65) |
+| RNN | recurrent neural network: one cell applied once per token (p59) |
+| seq2seq | sequence to sequence, Sutskever, Vinyals & Le 2014: encoder, one vector, decoder (p66) |
 | SFT | supervised fine-tuning, W8: human demonstrations (p13, p20) |
-| SGNS | skip-gram with negative sampling, the word2vec objective (p47–p48) |
+| SGNS | skip-gram with negative sampling, the word2vec objective (p48–p49) |
 | SSM | state-space model, W6 (p13) |
-| SVD | singular value decomposition: how demo 3 reduces PPMI to 200 dimensions (p51) |
+| SVD | singular value decomposition: how demo 3 reduces PPMI to 200 dimensions (p52) |
 | TTC | test-time compute, W10 (p13) |
-| `UNK` | the unknown-word token: a vocabulary's single id for everything it cannot represent (p32) |
-| UTF-8 | Unicode Transformation Format, 8-bit: 1 byte for a Latin letter, 3 for a common Chinese character (p32) |
+| `UNK` | the unknown-word token: a vocabulary's single id for everything it cannot represent (p33) |
+| UTF-8 | Unicode Transformation Format, 8-bit: 1 byte for a Latin letter, 3 for a common Chinese character (p33) |

@@ -1047,7 +1047,7 @@
   "flops_seq_over_par": 1.0651783883168,
   "weights_GB": 16.38147072,
   "kv_KiB_per_token": 144.0,
-  "note": "W10 p42 and p73, copied from w10-data.json bill — no new numbers"
+  "note": "W10 p44 and p76, copied from w10-data.json bill — no new numbers"
  },
  "ledger": {
   "I_star": 124.62455685622025,

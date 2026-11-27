@@ -62,7 +62,7 @@ format:
 :::
 
 ::: {.footer}
-W10 p42, p73, p77 · W3 p37–p38 — no new numbers
+W10 p44, p76, p80 · W3 p39–p40 — no new numbers
 :::
 
 ## Today's route: two halves, seven questions
@@ -164,7 +164,7 @@ Williams, Waterman & Patterson, *CACM* 2009: the roofline model · the numbers: 
 :::
 
 ::: {.footer}
-Misconception 1: "the bottleneck of inference is FLOPs" · the two formulas: W3 p37
+Misconception 1: "the bottleneck of inference is FLOPs" · the two formulas: W3 p39
 :::
 
 ## On the board: this machine's two roofs
@@ -267,7 +267,7 @@ This machine has room for the bf16 model almost four times over. At batch 1 it s
 :::
 
 ::: {.footer}
-Misconception 2 · W3 p5 planted it; W3 p37 gave the formula
+Misconception 2 · W3 p5 planted it; W3 p39 gave the formula
 :::
 
 # Decode sits two orders of magnitude left of the ridge. What moves it right? {.section-title}
@@ -284,7 +284,7 @@ $$I(B, L, \gamma) \;=\; \frac{B\,(\gamma + 1)\,\big(2N + 4\,n_{\text{layer}}\,L\
 :::
 
 ::: {.footer}
-our derivation, on W3 p37's bookkeeping · FLOPs above, bytes below · $\gamma = 0$: plain decoding
+our derivation, on W3 p39's bookkeeping · FLOPs above, bytes below · $\gamma = 0$: plain decoding
 :::
 
 ## Knob one, the batch: where the roof bends
@@ -334,7 +334,7 @@ $$\lim_{B \to \infty} I = \frac{2N}{M_{\text{KV}}(L)} + \frac{2\,n_{\text{head}}
 :::
 
 ::: {.footer}
-Misconception 4: "long context is slow because of $O(L^{2})$" · W3 p43 · W5 p46 · W10 p42
+Misconception 4: "long context is slow because of $O(L^{2})$" · W3 p45 · W5 p49 · W10 p44
 :::
 
 ## Five ways to shrink the KV — and the factor each one changes
@@ -354,7 +354,7 @@ Each one makes $M_{\text{KV}}$ smaller, and $L_c$ longer by the same factor. **T
 :::
 
 ::: {.footer}
-W3 p33 · W5 p49, p52 · W6 p54 · KIVI: ICML 2024 · KVQuant: NeurIPS 2024 · NSA: ACL 2025
+W3 p35 · W5 p52, p55 · W6 p57 · KIVI: ICML 2024 · KVQuant: NeurIPS 2024 · NSA: ACL 2025
 :::
 
 ## Replay: demo 1 (b), (c) — the batch sweep, and a long context
@@ -780,7 +780,7 @@ W4 showed a model survives the loss of a middle layer. That makes the pruned mod
 :::
 
 ::: {.footer}
-Misconception 9: "middle layers can be removed, so they are redundant" · W4 p38–p39
+Misconception 9: "middle layers can be removed, so they are redundant" · W4 p41–p42
 :::
 
 ## "Lossless" is a property of the implementation
@@ -842,7 +842,7 @@ Multiplying *in* low precision — INT8, FP8, NVFP4 — needs hardware that has 
 :::
 
 ::: {.footer}
-Misconception 10 · W8 p40 · $4{,}517{,}404{,}672 \times 8 \,/\, (8.03 \times 10^{9}) = 4.50$ bits
+Misconception 10 · W8 p42 · $4{,}517{,}404{,}672 \times 8 \,/\, (8.03 \times 10^{9}) = 4.50$ bits
 :::
 
 ## On the board: the step, the error, and one outlier
@@ -880,7 +880,7 @@ AWQ, Fig. 2: OPT-6.7B at 3 bits, perplexity 43.2 → 13.0 with 1% protected · G
 
 - **fix the total number of bits** a model may use, and compare (parameters $\times$ bits per weight): across more than 35,000 experiments, **4-bit is almost universally the best split** (Dettmers & Zettlemoyer, ICML 2023)
 - the same bits buy twice the parameters at half the precision — and the parameters win
-- as a scaling law (W7 p28): precision lowers the *effective* parameter count, $N_{\text{eff}} = N\,g(P)$. And **the longer a model was trained, the more quantization hurts it** (Kumar et al., ICLR 2025)
+- as a scaling law (W7 p29): precision lowers the *effective* parameter count, $N_{\text{eff}} = N\,g(P)$. And **the longer a model was trained, the more quantization hurts it** (Kumar et al., ICLR 2025)
 - towards 2 bits, post-training quantization does not degrade gracefully — **it breaks**
 
 ::: {.claim}
@@ -986,7 +986,7 @@ $$a' - a \;=\; n_{01} - n_{10}, \qquad \text{answers that changed sides} \;=\; n
 :::
 
 ::: {.footer}
-our arithmetic · W10 p27 counted flips the same way · W1 p21, question 3
+our arithmetic · W10 p28 counted flips the same way · W1 p21, question 3
 :::
 
 ## Dutta et al.: accuracy within 2%, more than 5% of answers changed
@@ -1067,7 +1067,7 @@ StreamingLLM made a long conversation **stable** (W5). Stable was never the same
 :::
 
 ::: {.footer}
-Misconception 12: "KV eviction is nearly free" · Ai, He & Guo, Findings of EMNLP 2026 · W5 p55
+Misconception 12: "KV eviction is nearly free" · Ai, He & Guo, Findings of EMNLP 2026 · W5 p59
 :::
 
 ## The cache carries position stamps
@@ -1099,7 +1099,7 @@ The same request, merged into batches of different sizes, is not the same comput
 :::
 
 ::: {.footer}
-Misconception 14: "temperature 0 is deterministic" · W6 p21: the second mechanism, MoE
+Misconception 14: "temperature 0 is deterministic" · W6 p23: the second mechanism, MoE
 :::
 
 ## A thousand requests, eighty outputs
@@ -1167,7 +1167,7 @@ W1 p21, question 3 · Leviathan et al.: in full · Chen et al.: §3–§4 · bri
 
 - a **student** $\pi_{\boldsymbol{\theta}}$ learns a **teacher**'s output distribution — every token's probability, not only the answer
 - **Hinton et al. (2015)**: on fixed data, minimise $D_{\mathrm{KL}}(\pi_{\text{teacher}} \,\Vert\, \pi_{\boldsymbol{\theta}})$, with a temperature that flattens both
-- **on-policy distillation** (W9 p67): on sequences **the student itself wrote**, token by token, minimise $D_{\mathrm{KL}}(\pi_{\boldsymbol{\theta}} \,\Vert\, \pi_{\text{teacher}})$ — GKD and MiniLLM, both ICLR 2024
+- **on-policy distillation** (W9 p70): on sequences **the student itself wrote**, token by token, minimise $D_{\mathrm{KL}}(\pi_{\boldsymbol{\theta}} \,\Vert\, \pi_{\text{teacher}})$ — GKD and MiniLLM, both ICLR 2024
 - in the ledger: $N$ itself gets smaller — so $2N$, $N\,b_{\text{w}}$ and $M_{\text{KV}}$ all shrink together. **The cost moves to a training run**
 
 ::: {.claim}
@@ -1175,7 +1175,7 @@ A distilled model is not the large model made cheap. It is a **smaller** model t
 :::
 
 ::: {.footer}
-Misconception 15 · Hinton et al., arXiv:1503.02531 · W9 p67: who proposed on-policy distillation
+Misconception 15 · Hinton et al., arXiv:1503.02531 · W9 p70: who proposed on-policy distillation
 :::
 
 ## Five ways to be "smaller": what each one reduces
@@ -1195,12 +1195,12 @@ Only distillation makes **every** cell smaller — and it is the only one that n
 :::
 
 ::: {.footer}
-"—": unchanged · merged LoRA costs what the original costs (W8 p32) · MoE holds $N_{\text{total}}$
+"—": unchanged · merged LoRA costs what the original costs (W8 p33) · MoE holds $N_{\text{total}}$
 :::
 
 ## Efficiency meets oversight: four collisions
 
-- **shorter reasoning**: a length penalty to save tokens makes chain-of-thought less monitorable (W10 p65)
+- **shorter reasoning**: a length penalty to save tokens makes chain-of-thought less monitorable (W10 p68)
 - **KV eviction**: the instruction that fails first can be the one **guarding against a leak** (Chen et al., p71)
 - **KV eviction again**: the answer survives, the evidence for it does not (Ai et al., p72)
 - **batching**: whether one prompt is refused can change with the batch it lands in — for about 0.16% of prompts; with batch-invariant kernels, 0 of 55 re-tested cases (Kadadekar, an ICML 2026 workshop paper)
@@ -1244,7 +1244,7 @@ compare with your guess from p7 · the route's stations: p37 for the first three
 : {tbl-colwidths="[20,16,40,24]"}
 
 ::: {.footer}
-W10 p72–p73's rows, a unit each · last week's test-time row: decode at $B = k$ · MoE: p26
+W10 p75–p76's rows, a unit each · last week's test-time row: decode at $B = k$ · MoE: p26
 :::
 
 ## The ledger on one roofline
@@ -1274,7 +1274,7 @@ The compute axis closes here. What stays open is on the first axis: **what a mod
 :::
 
 ::: {.footer}
-W1 p19–p20 · W10 p71 · the criticism line has no station this week; part 6 is its systems version
+W1 p19–p20 · W10 p74 · the criticism line has no station this week; part 6 is its systems version
 :::
 
 ## Sixteen things this week said no to (1 of 3)
@@ -1323,7 +1323,7 @@ W1 p19–p20 · W10 p71 · the criticism line has no station this week; part 6 i
 ## Next week: the context can be long, and now it has a price
 
 - **W12 — retrieval-augmented generation and context engineering.** If a model can take 100,000 tokens of context, is retrieval still needed?
-- two things to have ready: **W5's lost-in-the-middle result** (W5 p39–p42) — can it use what it takes in; and today's **$L_c$** (p23) — what taking it in costs, per token, for everyone in the batch
+- two things to have ready: **W5's lost-in-the-middle result** (W5 p41–p45) — can it use what it takes in; and today's **$L_c$** (p23) — what taking it in costs, per token, for everyone in the batch
 - today the KV cache became something to ship, store and reuse (p36). Next week: **what to put in the context in the first place**
 
 ::: {.ask}

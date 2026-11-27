@@ -1,5 +1,5 @@
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
-# W8 · Demo 1 — SFT turns a base model into an assistant (slides p9–p10, p17, p44)
+# W8 · Demo 1 — SFT turns a base model into an assistant (slides p9–p11, p18, p46)
 
 One model before and after supervised fine-tuning (SFT), on one small dataset, through one tool. `Qwen/Qwen3-1.7B-Base` is a *base* model: pre-trained only. LoRA adapters ($r = 16$, every linear layer of every block; one of them also on the embedding rows) are trained on 1,000 human-written instruction–answer pairs from `databricks/databricks-dolly-15k` with `mlx_lm.lora`, and the same three questions are put to the base model and the fine-tuned one. Four parts:
 

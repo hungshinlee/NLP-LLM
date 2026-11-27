@@ -530,7 +530,7 @@ z
    </g>
   </g>
  </g>
-</svg><line x1="564" y1="68" x2="586" y2="68" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-mamba-block)"/><rect x="588" y="44" width="240" height="48" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.6"/><text x="708" y="76" font-size="23" fill="#6d28d9" text-anchor="middle" font-weight="400">selective SSM (p42)</text><rect x="320" y="148" width="60" height="48" rx="7" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="341.996" y="159.028" width="16.008" height="26.7116" viewBox="0 0 16.008 26.711625"><defs>
+</svg><line x1="564" y1="68" x2="586" y2="68" stroke="#6b7280" stroke-width="1.8" marker-end="url(#ah-mamba-block)"/><rect x="588" y="44" width="240" height="48" rx="7" fill="#f5f3ff" stroke="#6d28d9" stroke-width="1.6"/><text x="708" y="76" font-size="23" fill="#6d28d9" text-anchor="middle" font-weight="400">selective SSM (p45)</text><rect x="320" y="148" width="60" height="48" rx="7" fill="#fff" stroke="#1f2328" stroke-width="1.6"/><svg x="341.996" y="159.028" width="16.008" height="26.7116" viewBox="0 0 16.008 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t449-figure_1">
@@ -1726,4 +1726,4 @@ z
    </g>
   </g>
  </g>
-</svg><text x="525.217" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="330.6" lengthAdjust="spacing">→ SSM, gated, projected back</text><text x="20" y="378" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Fig. 3: H3's SSM branch and the gated MLP “combined into one”: no separate FFN sublayer</text></g><g class="fragment" data-fragment-index="2"><text x="20" y="414" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">in a hybrid this block (or its Mamba-2 version) fills the sequence-side slot of p56:</text><text x="20" y="444" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">beside attention in every layer (Falcon-H1, demo 4), or replacing most attention layers (Nemotron-H)</text></g></svg>
+</svg><text x="525.217" y="336" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="330.6" lengthAdjust="spacing">→ SSM, gated, projected back</text><text x="20" y="378" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">Fig. 3: H3's SSM branch and the gated MLP “combined into one”: no separate FFN sublayer</text></g><g class="fragment" data-fragment-index="2"><text x="20" y="414" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">in a hybrid this block (or its Mamba-2 version) fills the sequence-side slot of p59:</text><text x="20" y="444" font-size="23" fill="#15803d" text-anchor="start" font-weight="400">beside attention in every layer (Falcon-H1, demo 4), or replacing most attention layers (Nemotron-H)</text></g></svg>

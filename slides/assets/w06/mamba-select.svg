@@ -4569,7 +4569,7 @@ z
    </g>
   </g>
  </g>
-</svg><text x="395.721" y="418" font-size="23" fill="#dc2626" text-anchor="start" font-weight="400" textLength="511.5" lengthAdjust="spacing">, so p41's kernel does not exist: no convolution,</text><text x="20" y="448" font-size="23" fill="#6b7280" text-anchor="start" font-weight="400">only the recurrence, as a parallel scan (hardware-aware: kernel fusion, recomputation; §3.3)</text></g><g class="fragment" data-fragment-index="3"><svg x="20" y="465.028" width="20.976" height="26.7116" viewBox="0 0 20.976 26.711625"><defs>
+</svg><text x="395.721" y="418" font-size="23" fill="#dc2626" text-anchor="start" font-weight="400" textLength="511.5" lengthAdjust="spacing">, so p44's kernel does not exist: no convolution,</text><text x="20" y="448" font-size="23" fill="#6b7280" text-anchor="start" font-weight="400">only the recurrence, as a parallel scan (hardware-aware: kernel fusion, recomputation; §3.3)</text></g><g class="fragment" data-fragment-index="3"><svg x="20" y="465.028" width="20.976" height="26.7116" viewBox="0 0 20.976 26.711625"><defs>
   <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
  </defs>
  <g id="t444-figure_1">
@@ -4896,4 +4896,4 @@ z
    </g>
   </g>
  </g>
-</svg><text x="562.02" y="486" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="558.0" lengthAdjust="spacing">(§3.5.2); Mamba-2 makes it a scalar per head (p47)</text></g><g class="fragment" data-fragment-index="4"><text x="20" y="524" font-size="23" fill="#b45309" text-anchor="start" font-weight="400">Misconception 6, “Mamba is the RNN revived”: half right. New: selection (S4 lacks it) and parallel training</text><text x="20" y="553" font-size="23" fill="#b45309" text-anchor="start" font-weight="400">(S4: convolution; here: a scan; Mamba-2: matmuls, p48–p51). W1's RNN died of the loop, not of quality</text></g></svg>
+</svg><text x="562.02" y="486" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="558.0" lengthAdjust="spacing">(§3.5.2); Mamba-2 makes it a scalar per head (p50)</text></g><g class="fragment" data-fragment-index="4"><text x="20" y="524" font-size="23" fill="#b45309" text-anchor="start" font-weight="400">Misconception 6, “Mamba is the RNN revived”: half right. New: selection (S4 lacks it) and parallel training</text><text x="20" y="553" font-size="23" fill="#b45309" text-anchor="start" font-weight="400">(S4: convolution; here: a scan; Mamba-2: matmuls, p51–p54). W1's RNN died of the loop, not of quality</text></g></svg>
