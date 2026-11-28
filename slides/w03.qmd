@@ -913,6 +913,7 @@ Three weeks in: the unit (W2), what it is allowed to attend to (W3) — and next
 |:----|:----------------|
 | BPTT | backpropagation through time: how W1 trained the recurrence (p7; W1) |
 | BW | memory bandwidth, bytes per second: the denominator of decode's time bound (p39) |
+| CPU | central processing unit (W2) |
 | DSA | DeepSeek Sparse Attention, the name on the DeepSeek-V3.2-Exp model card (p65) |
 | FA-2, -3, -4 | FlashAttention-2, -3, -4: later versions of the same argument (p47) |
 | FFN | feed-forward network: the other sub-layer of the block, opened next week (p66; W4) |

@@ -933,6 +933,7 @@ Four weeks in: the unit (W2), what it may attend to (W3), what carries the resul
 | fp32 | 32-bit IEEE single precision: the master weights and the two moments of p47 and p51 |
 | GLU | gated linear unit; SwiGLU is the variant with a Swish gate (p15) |
 | GPT | generative pre-trained Transformer: demo 1's class, and GPT-2's name (p20) |
+| GPU | graphics processing unit (W1) |
 | GQA | grouped-query attention (W3) |
 
 ## Acronyms in this deck, K–P

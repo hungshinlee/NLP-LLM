@@ -4,7 +4,7 @@
 <!-- summary: The LaTeX project for both reports, in ACL Rolling Review long-paper format, with guidance written from an ARR reviewer's point of view. Download the ZIP and import it into Prism. -->
 <!-- 此檔由 bin/publish_report_template.py 從 private repo 的 nlp_llm/report-template/README.md 產生，請勿在公開 repo 直接編輯；zip 也是同一支腳本的產物。 -->
 
-**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (38 files, 480 KB; version `97bb109`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
+**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (38 files, 483 KB; version `f92468b`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
 
 This is the Prism project template for the midterm report and the final paper.
 Both use the ACL Rolling Review (ARR) long-paper format, the format of ACL, EMNLP, NAACL
@@ -59,15 +59,17 @@ about large language models.
    (Problem Discovery Log) where you can include it.
    For the final paper, start with the box "What the final paper is" after the abstract.
    Sections 3 to 6 carry guidance for each kind of contribution (method, resource,
-   analysis): follow the parts for yours and delete the others. The last box, before the
-   Acknowledgments, is the checklist to go through before the deadline.
+   analysis): follow the parts for yours and delete the others. The checklist to go through
+   before the deadline is the box between the Ethical Considerations and the Acknowledgments.
 5. Fill in the authors in `main.tex`. For each group member: the English name exactly as it
    appears on the passport, given name first (e.g. `Hung-Shin Lee`), the student ID, and an
    email address.
 
-**If you imported the template before 2026-11-28:** the `final/` folder was rewritten on that
-date (guidance for all three contribution types, the appendix on changes since the midterm,
-the checklist before the deadline). Download the zip again and, in your existing Prism
+**If you imported the template before 2026-11-29:** the `final/` folder was rewritten on
+2026-11-28 (guidance for all three contribution types, the appendix on changes since the
+midterm, the checklist before the deadline) and revised on 2026-11-29 (a code repository is
+recommended, not required; the page limit applies to the main text only; which prompts must
+be included). Download the zip again and, in your existing Prism
 project, replace the whole `final/` folder and this `README.md` with the new ones. Do not
 touch `midterm/` or `midterm/references.bib`; the three files in the project root
 (`acl.sty`, `acl_natbib.bst`, `report-guide.sty`) have not changed. If you had already
@@ -114,8 +116,9 @@ started writing in the old `final/`, keep your text and copy the new boxes aroun
 - The 8-page limit applies to the final paper, and there it is enforced: ARR desk rejects a
   paper that is over length, and in this course whatever part of the main text (Sections 1–7)
   runs past page 8 is not graded. The sections after the conclusion and the appendices may run
-  past page 8 as long as they need. Check the length with `\showguidesfalse`. The appendices are for detail a reader
-  may skip: reviewers are not required to read them, and the paper must stand without them.
+  past page 8 as long as they need. Check the length with `\showguidesfalse`. The appendices
+  are for detail a reader may skip: reviewers are not required to read them, and the paper
+  must stand without them.
 - The midterm report has no length limit, in either direction; it keeps the same layout.
   The 200-word limit for the abstract applies to both.
 - An accepted paper gets one more page (9) for the camera-ready version. (ARR also has short
@@ -123,23 +126,32 @@ started writing in the old `final/`, keep your text and copy the new boxes aroun
 
 ## What goes with the final paper
 
-There is nothing to hand in besides the Prism project, so the evidence is linked from the
-paper: in a footnote of the Experimental Setup section, or in the appendix
-(Reproducibility Details). Make sure the instructor can open every link.
+There is nothing to hand in besides the Prism project. A code repository is not required,
+but it is recommended: put your code in a GitHub repository and give its link in the paper,
+in a footnote of the Experimental Setup section or in the appendix (Reproducibility
+Details). If you give links, make sure the instructor can open them. With or without a
+repository, the paper and its appendices must contain what a reader needs to judge the
+claims and to redo the work.
 
-- **Code repository (required):** an environment file with pinned versions, the
+- **Code repository (recommended):** an environment file with pinned versions, the
   configuration files, and the script that produces the numbers of the main table; for a
   resource, the collection, annotation and scoring scripts; for an analysis, the measurement
   and statistics scripts.
+- **Reproducibility Details (required):** the appendix of that name, with or without a
+  repository: hyperparameters and how they were searched, software versions, models and API
+  versions, hardware, seeds, preprocessing.
 - **Prompts (required if you used any):** every prompt exactly as the models saw it, for
-  your system and for every baseline, in the appendix (Prompts and Judge Details) or in the
-  repository. Prompts that generated or labelled data count too. The prompts you gave an AI
+  your system, for every baseline and for an LLM judge, in the appendix (Prompts and Judge
+  Details); if they are too long, give one in full there and the path of the rest in the
+  repository. Prompts that generated or labeled data count too. The prompts you gave an AI
   assistant while coding or writing do not: those go in the disclosure of AI assistance
   (Acknowledgments).
-- **Model outputs, checkpoints, adapters and data (encouraged):** the outputs you scored let
+- **Demo (even better):** a page that shows your system's outputs next to the strongest
+  baseline's on the same inputs, including failures. GitHub Pages of the same repository is
+  the simplest place for it; link it from the repository's README and from the paper.
+- **Model outputs, checkpoints, adapters and data (optional):** the outputs you scored let
   a reader re-score them without rerunning anything. Release what is small enough and what
-  the licenses, the API terms and the consent of the people involved allow. If something
-  cannot be released, say so and say why.
+  the licenses, the API terms and the consent of the people involved allow.
 - **Changes since the midterm (required):** the first appendix of the final paper lists what
   changed since the midterm report (question, hypothesis, contribution type, data, models,
   measures) and why. Changing is fine; the paper states the question as it is now. For a
@@ -242,8 +254,9 @@ entries, numbers or paragraphs, and say in the Acknowledgments what you used it 
 
 **My final paper is a resource or an analysis paper. Which sections do I use?**
 The same files. The skeleton has the titles of a method paper; the first box of Sections 3
-and 6 says what to rename the section and its subsections to, and each box has a part for
-your type.
+and 6 says what to rename the section and its subsections to (Section 6: *What the Data
+Reveals* and *Data Quality* for a resource, *Alternative Explanations* and *Robustness* for
+an analysis), and each box has a part for your type.
 
 **The question changed after the midterm. Is that a problem?**
 No, as long as the paper states the question as it is now and the appendix "Changes Since

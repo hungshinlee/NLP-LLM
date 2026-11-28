@@ -1045,7 +1045,7 @@ Part II has begun: this week decided **how much** and **which**; the next three 
 **Data and figures** · Every number on these slides is one of: arithmetic on Hoffmann et al.'s Eq. (10) constants and Eq. (4) (p9, p14, p17, p19–p21, p26–p27), arithmetic on W4's parameter accounting (p22), a curve drawn from a paper's stated equation and constant (p30, p53), a toy formula labelled as such (p36), this week's rehearsal records (demo 2's five runs and fits, p37–p39; demo 3's two runs, p48–p50; demo 4's pairs and MMLU hits, p56), a number from an earlier week's rehearsal (W4 demo 1's tiny GPT), or a number copied from an abstract or a cited section (all others). The plant, the ray, the two schedules, the shingles and the two collapse loops are schematics. **All four demos were built and rehearsed on the M5 Max (2026-10-26)**; their records are checked in under `demos/w07_d*/runs/rehearsal/`, and the table and curves on p39, the figure on p50 and the table on p56 are those records. The tables on p14, p26 and p50 are blank on purpose: they are filled in class.
 :::
 
-## Acronyms in this deck, A–F
+## Acronyms in this deck, A–G
 
 | | |
 |:----|:----------------|
@@ -1058,17 +1058,18 @@ Part II has begun: this week decided **how much** and **which**; the next three 
 | DCLM | DataComp for Language Models, Li et al. 2024 (p47) |
 | DRO | distributionally robust optimization, as in DoReMi's Group DRO (p60) |
 | FLOPs | floating-point operations (W1) |
+| GQA | grouped-query attention (W3) |
 
-## Acronyms in this deck, G–N
+## Acronyms in this deck, H–N
 
 | | |
 |:----|:----------------|
-| GQA | grouped-query attention (W3) |
 | HTML | HyperText Markup Language: what extraction strips (p43) |
 | ID | identification, as in language ID (p43) |
 | KV | key–value (cache) (W3) |
 | LLM, LM | large language model (W1); language model |
 | LO | learning objective: the seven of p6 |
+| LoRA | low-rank adaptation (W8, previewed on p70) |
 | LR | learning rate (W4) |
 | LSH | locality-sensitive hashing (p53) |
 | MLX | Apple's array framework; not used this week (W3) |

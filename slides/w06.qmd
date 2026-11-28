@@ -1049,6 +1049,7 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 | | |
 |:----|:----------------|
 | A3B, A4B | a model-name suffix: 3 B (4 B) *active* parameters per token (p13) |
+| CPU | central processing unit (W2) |
 | CSA | Compressed Sparse Attention, DeepSeek-V4 (p65) |
 | DPLR | diagonal-plus-low-rank: the structure of KDA's transition matrix (p38) |
 | DSA | DeepSeek Sparse Attention, DeepSeek-V3.2 (p65) |
@@ -1061,7 +1062,7 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 | GRU | gated recurrent unit (W1) |
 | H3 | Hungry Hungry Hippos, Fu et al. 2023: an earlier SSM layer (p47) |
 
-## Acronyms in this deck, H–N
+## Acronyms in this deck, H–M
 
 | | |
 |:----|:----------------|
@@ -1075,14 +1076,15 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 | MHA | multi-head attention (W3) |
 | MLA | multi-head latent attention (W3) |
 | MLP | multilayer perceptron: the Mamba paper's name for W4's FFN sublayer (p47) |
+| MLX | Apple's array framework for Apple silicon; its authors do not expand the name (W2) |
 | MoE | mixture of experts (p12) |
 | MPS | Metal Performance Shaders: PyTorch's backend for the Apple GPU (W4 demos) |
-| NTK | neural tangent kernel, as in NTK-aware scaling (W5) |
 
-## Acronyms in this deck, P–Z
+## Acronyms in this deck, N–Z
 
 | | |
 |:----|:----------------|
+| NTK | neural tangent kernel, as in NTK-aware scaling (W5) |
 | PI | position interpolation (W5) |
 | RNN | recurrent neural network (W1) |
 | S4 | Structured State Space sequence model, Gu, Goel & Ré 2022 (p44) |

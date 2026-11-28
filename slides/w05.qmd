@@ -991,6 +991,7 @@ Five weeks in: the unit (W2), what it may attend to (W3), what carries the resul
 |:----|:----------------|
 | ALiBi | Attention with Linear Biases, Press et al. 2021 (p16) |
 | BOS, `<bos>` | beginning-of-sequence token: the anchor of p11 (W1) |
+| CPU | central processing unit (W2) |
 | DSA | DeepSeek Sparse Attention, DeepSeek-V3.2 (p52) |
 | FFN | feed-forward network: the block's weight-side sublayer (W4) |
 | FLOPs | floating-point operations (W1) |
@@ -1007,6 +1008,7 @@ Five weeks in: the unit (W2), what it may attend to (W3), what carries the resul
 | KV | key–value, as in the KV cache (W3) |
 | MLA | multi-head latent attention, DeepSeek-V2 (W3) |
 | MLP | multi-layer perceptron: the layer that inverts $1/t$ in p11's construction (W1) |
+| MLX | Apple's array framework for Apple silicon; its authors do not expand the name (W2) |
 | MoBA | Mixture of Block Attention, Lu et al. 2025 (p52) |
 | MoE | mixture of experts: the ledger's last row (W1; W6) |
 | MPS | Metal Performance Shaders: `torch`'s backend on Apple silicon, where demo 2 trained (W4) |

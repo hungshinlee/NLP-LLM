@@ -1147,7 +1147,7 @@ Two weeks in, two things the model never chose: the unit, and — next week — 
 **Search terms, not citations** · token healing · prompt boundary problem tokenization · SolidGoldMagikarp · language models over characters from tokens
 :::
 
-## Acronyms in this deck, A–D
+## Acronyms in this deck, A–C
 
 | | |
 |:----|:----------------|
@@ -1161,13 +1161,14 @@ Two weeks in, two things the model never chose: the unit, and — next week — 
 | CJK | Chinese, Japanese, Korean — the ideograph blocks of Unicode (p7) |
 | CPT | continued pre-training: the compute that fills new embedding rows (p72) |
 | CPU | central processing unit: demos 1 and 2 need nothing else (p13) |
+| CUDA | NVIDIA's GPU computing platform (W1) |
 | CUTE | Edman, Schmid & Fraser 2024: a benchmark that separates knowing a spelling from operating on it; the title does not expand the name (p62) |
-| DP | dynamic programming: the exact count of segmentations (p41) |
 
-## Acronyms in this deck, E–O
+## Acronyms in this deck, D–O
 
 | | |
 |:----|:----------------|
+| DP | dynamic programming: the exact count of segmentations (p41) |
 | EM | expectation–maximization: how the Unigram LM fits its $p(t_i)$ (p37) |
 | FLOPs | floating-point operations (W1) |
 | FP16 | 16-bit floating point, 2 bytes per element: next week's cache number (p78; W3) |

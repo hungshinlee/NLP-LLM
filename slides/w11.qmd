@@ -1372,10 +1372,12 @@ This week: what a token costs. Next week: which tokens are worth paying for.
 |:----|:----------------|
 | AWQ | activation-aware weight quantization, Lin et al. 2024 (p56) |
 | bf16 | bfloat16, a 16-bit floating-point format (W8) |
+| CUDA | NVIDIA's GPU computing platform (W1) |
 | EAGLE | Extrapolation Algorithm for Greater Language-model Efficiency, Li et al. 2024 (named p41) |
 | FLOPs | floating-point operations (W1) |
 | GKD | Generalized Knowledge Distillation, Agarwal et al. 2024 (W9) |
 | GPTQ | a method name, Frantar et al. 2023; the paper does not expand it (p56) |
+| GPU | graphics processing unit (W1) |
 | GQA | grouped-query attention (W3) |
 | H$_2$O | Heavy-Hitter Oracle, Zhang et al. 2023 (W5) |
 | INT8, FP8 | 8-bit integer, 8-bit floating point (p58) |
@@ -1388,6 +1390,7 @@ This week: what a token costs. Next week: which tokens are worth paying for.
 | KV | key–value (cache) (W3) |
 | LoRA | low-rank adaptation (W8) |
 | MLA | multi-head latent attention (W3) |
+| MLX | Apple's array framework for Apple silicon; its authors do not expand the name (W2) |
 | MoE | mixture of experts (W6) |
 | MXFP4, MXFP8 | microscaling block floating-point formats, 4- and 8-bit (p62) |
 | NSA | native sparse attention, Yuan et al. 2025 (W5) |

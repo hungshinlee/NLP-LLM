@@ -1094,6 +1094,7 @@ Nothing to install. Every demo in this course runs at the front of the room.
 | BPB | bits per byte: total code length in bits over the UTF-8 bytes of the same text (p29) |
 | BPE | Byte Pair Encoding: next week's dictionary-building algorithm (p77; W2) |
 | BPTT | backpropagation through time: the gradient product across the unrolled chain (p60) |
+| CUDA | NVIDIA's GPU computing platform; first expanded as Compute Unified Device Architecture, a name NVIDIA no longer uses (p9) |
 | DPO | Direct Preference Optimization, W9: the loss whose partition function cancels (p12) |
 | ELMo | Embeddings from Language Models, Peters et al. 2018: one vector per word *in context* (p56) |
 | FLOPs | floating-point operations: a multiply-add counts as 2 (p16–p17) |
@@ -1110,6 +1111,7 @@ Nothing to install. Every demo in this course runs at the front of the room.
 | LLM, LM | (large) language model (p9, p27) |
 | LSTM | Long Short-Term Memory, Hochreiter & Schmidhuber 1997; the forget gate is Gers et al. 2000 (p62) |
 | MLE | maximum likelihood estimate: for an n-gram, a count ratio (p35) |
+| MLX | Apple's array framework for Apple silicon; its authors do not expand the name: demo 2's runtime (p30) |
 | MoE | mixture of experts, W6: memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ (p9, p16) |
 | NCE | noise-contrastive estimation: the method negative sampling is *not* (p50) |
 | NLP | natural language processing (title) |

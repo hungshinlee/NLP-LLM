@@ -1226,7 +1226,7 @@ This week the question was what a token buys. Next week: what a token costs.
 **Numbers and demos** · every computed number is in `assets/w10/w10-data.json` (`scripts/make_demo_w10.py`); the figures on p20, p33, p44, p51 are **our arithmetic** — the $p(x)$ values on p33 and p51 are made up, the lengths on p44 are assumed · **demo 1 was rehearsed on 2026-11-25** (p19, p28: Qwen3-8B, 50 problems per cell); **demo 3 was rehearsed on 2026-11-25** (p60, p63, p70: Qwen3-8B, 200 MMLU questions; "mentions the hint" is judged by string rules; thirty cases read by hand agreed with them); **demo 2 is not built**: the tables on p41, p47, p54 are empty on purpose
 :::
 
-## Acronyms in this deck, A–S
+## Acronyms in this deck, A–K
 
 | | |
 |:----|:----------------|
@@ -1234,10 +1234,17 @@ This week the question was what a token buys. Next week: what a token costs.
 | Coconut | Chain of Continuous Thought, Hao et al. 2025 (p69) |
 | CoT | chain of thought (p12) |
 | FLOPs | floating-point operations (W1) |
+| GPU | graphics processing unit (W1) |
 | GRPO | group relative policy optimization (W9) |
 | KL | Kullback–Leibler (divergence) (W8) |
 | KV | key–value (cache) (W3) |
+
+## Acronyms in this deck, L–S
+
+| | |
+|:----|:----------------|
 | LIMO | Less Is More for Reasoning, Ye et al. 2025 (p26) |
+| LoRA | low-rank adaptation (W8) |
 | MoE | mixture of experts (W6) |
 | PRM, ORM | process / outcome reward model (W9; p37) |
 | RL | reinforcement learning (W9) |

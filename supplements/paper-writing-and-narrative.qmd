@@ -143,7 +143,7 @@ AI 在寫作裡的角色是**結構審計與英文編修**，不是代筆。本�
 - [ ] 摘要不超過 200 字。
 - [ ] 每個歸給論文的主張都有 `\src{}`，每一筆 BibTeX 都從官方來源匯出、有 `doi` 或 `url`；有同儕審查版本的，引正式版。
 - [ ] Limitations 一節寫了；需要時，Ethical Considerations 也寫了；Acknowledgments 寫明 AI 的使用。
-- [ ] 期末：附錄 A 列了和期中不一樣的地方；附錄 B 的程式碼連結，老師打得開。
+- [ ] 期末：附錄 A 列了和期中不一樣的地方；附錄 B 寫了重做需要的細節；有程式碼 repo 或 demo 的話（建議放 GitHub，不是必交），連結老師打得開；有用 prompt 的話，逐字的 prompt 在附錄的 Prompts and Judge Details 那一節（太長的放 repo、寫路徑）。
 - [ ] PDF 裡有中文、台語或客語的話，用 XeLaTeX 編譯、每段都包在 `\zh{...}` 裡，編譯紀錄裡沒有 `Missing character`（範本 README）。
 - [ ] Prism 專案已改名為 `[NLP-LLM] <題目>`（報告的英文標題），並以可編輯權限分享給授課老師。分享就是交件，不用另交 PDF；期限以老師的公告為準。期限當下，老師把 `midterm/main.tex`（期末是 `final/main.tex`）編譯成 PDF 打分數，所以要編譯得過。
 
