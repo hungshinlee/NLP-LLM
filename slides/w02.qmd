@@ -1186,9 +1186,11 @@ Two weeks in, two things the model never chose: the unit, and — next week — 
 |:----|:----------------|
 | PPL | perplexity, $2^{\text{bits}/T}$: stage 2's score (W1; p27) |
 | SFT | supervised fine-tuning, W8: the chat template is its data format (p24) |
+| SIP | Supplementary Ideographic Plane, U+20000–U+2FFFF (plane 2): four UTF-8 bytes per character (p38) |
 | SSM | state-space model, W6: the "hide the length" half of tokenizer-free (p70) |
 | TMLU | *Measuring Taiwanese Mandarin Language Understanding*, Chen et al. 2024 — an evaluation suite, not a tokenizer study (p74) |
 | TMMLU+ | Tam et al. 2024, *An Improved Traditional Chinese Evaluation Suite for Foundation Model*; the title does not expand the name (p74) |
+| ULP | unit in the last place: the smallest step between two floating-point numbers (p28) |
 | `[UNK]` | the unknown-word token of a character vocabulary: one id, and the bytes are gone (p18) |
 | UTF-8 | Unicode Transformation Format, 8-bit: 1 byte for a Latin letter, 3 for a BMP ideograph, 4 beyond it (p10) |
 | ZeTT | Zero-Shot Tokenizer Transfer, Minixhofer, Ponti & Vulić 2024 (p72) |

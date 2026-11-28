@@ -1086,6 +1086,7 @@ Part I is done: the unit (W2), what it may attend to (W3), what carries the resu
 |:----|:----------------|
 | NTK | neural tangent kernel, as in NTK-aware scaling (W5) |
 | PI | position interpolation (W5) |
+| QR | QR decomposition, not an acronym: the factors $\mathbf{Q}$ (orthogonal) and $\mathbf{R}$ (upper triangular); how demo 3 (d) makes orthogonal keys (p35) |
 | RNN | recurrent neural network (W1) |
 | S4 | Structured State Space sequence model, Gu, Goel & Ré 2022 (p44) |
 | SiLU | sigmoid linear unit, also called Swish: the activation in the Mamba block (p47) |

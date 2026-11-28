@@ -936,7 +936,7 @@ Four weeks in: the unit (W2), what it may attend to (W3), what carries the resul
 | GPU | graphics processing unit (W1) |
 | GQA | grouped-query attention (W3) |
 
-## Acronyms in this deck, K–P
+## Acronyms in this deck, K–Q
 
 | | |
 |:----|:----------------|
@@ -952,16 +952,18 @@ Four weeks in: the unit (W2), what it may attend to (W3), what carries the resul
 | NS | Newton–Schulz, the iteration that orthogonalizes $\mathbf{M}_t$ (p64) |
 | PEFT | parameter-efficient fine-tuning (p51; W8) |
 | Peri-LN | the paper's name for a Norm on both the input and the output of the sub-layer, Kim et al. 2025 (p31) |
+| QA | question answering, the kind of benchmark Gromov et al. score (p42) |
 
 ## Acronyms in this deck, Q–Z
 
 | | |
 |:----|:----------------|
-| QA | question answering, the kind of benchmark Gromov et al. score (p42) |
 | QK-norm | query–key normalization: an RMSNorm on $\mathbf{q}$ and on $\mathbf{k}$ before the dot product, Henry et al. 2020 (W3; the formula p32) |
+| QK, OV | query–key and output–value: the two halves of a head (W3) |
 | ReLU | rectified linear unit, the gate-free FFN's nonlinearity (p15) |
 | RMSNorm | root-mean-square layer normalization, Zhang & Sennrich 2019 (p14) |
 | ROME | Rank-One Model Editing, Meng et al. 2022: the intervention experiment of W14 (p38) |
+| SD | standard deviation (p63) |
 | SGD | stochastic gradient descent (p48) |
 | SiLU | sigmoid linear unit, $z \cdot \mathrm{sigmoid}(z)$, also called Swish (p15) |
 | SOAP | ShampoO with Adam in the Preconditioner's eigenbasis, Vyas et al. 2024: the Shampoo line named on p64 |
