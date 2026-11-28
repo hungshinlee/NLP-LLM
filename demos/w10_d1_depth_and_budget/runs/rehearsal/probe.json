@@ -1,0 +1,160 @@
+{
+ "date": "2026-11-23T13:29:46",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "tiny": false,
+ "model": "Qwen/Qwen3-8B",
+ "speed": [
+  {
+   "batch_size": 1,
+   "sequences": 2,
+   "generation_tokens": 2968,
+   "seconds": 210.2,
+   "tokens_per_second": 14.12,
+   "peak_gb": 16.74
+  },
+  {
+   "batch_size": 8,
+   "sequences": 8,
+   "generation_tokens": 14044,
+   "seconds": 199.7,
+   "tokens_per_second": 70.32,
+   "peak_gb": 19.39
+  },
+  {
+   "batch_size": 16,
+   "sequences": 16,
+   "generation_tokens": 25955,
+   "seconds": 249.6,
+   "tokens_per_second": 104.0,
+   "peak_gb": 22.62
+  },
+  {
+   "batch_size": 32,
+   "sequences": 16,
+   "generation_tokens": 25896,
+   "seconds": 257.7,
+   "tokens_per_second": 100.5,
+   "peak_gb": 22.62
+  }
+ ],
+ "levels": {
+  "2": {
+   "n": 16,
+   "direct": 0.625,
+   "dots": 0.6875,
+   "think": 1.0,
+   "think_len_mean": 671.8,
+   "think_len_max": 1139,
+   "capped_share": 0.0,
+   "direct_multi_number_share": 0.0,
+   "direct_cut_share": 0.0,
+   "think_answer_cut_share": 0.0,
+   "tokens_per_problem": 697.2,
+   "example": {
+    "expr": "58 + 39 × 7",
+    "answer": 331,
+    "direct": "**341**.",
+    "think": "The final number is 331."
+   }
+  },
+  "4": {
+   "n": 16,
+   "direct": 0.0,
+   "dots": 0.0625,
+   "think": 0.8125,
+   "think_len_mean": 1116.0,
+   "think_len_max": 1747,
+   "capped_share": 0.0,
+   "direct_multi_number_share": 0.0625,
+   "direct_cut_share": 0.0625,
+   "think_answer_cut_share": 0.1875,
+   "tokens_per_problem": 1145.0,
+   "example": {
+    "expr": "43 + 69 × 5 - 61 × 2",
+    "answer": 266,
+    "direct": "**212**.",
+    "think": "The final number is $\\boxed{266}$."
+   }
+  },
+  "6": {
+   "n": 16,
+   "direct": 0.0,
+   "dots": 0.0,
+   "think": 0.9375,
+   "think_len_mean": 1802.0,
+   "think_len_max": 3489,
+   "capped_share": 0.0,
+   "direct_multi_number_share": 0.0,
+   "direct_cut_share": 0.0,
+   "think_answer_cut_share": 0.0625,
+   "tokens_per_problem": 1831.0,
+   "example": {
+    "expr": "83 - 49 - 92 + 12 - 13 + 67 × 4",
+    "answer": 209,
+    "direct": "**110**.",
+    "think": "The final number is $\\boxed{209}$."
+   }
+  },
+  "8": {
+   "n": 16,
+   "direct": 0.0,
+   "dots": 0.0,
+   "think": 0.8125,
+   "think_len_mean": 1908.0,
+   "think_len_max": 2697,
+   "capped_share": 0.0,
+   "direct_multi_number_share": 0.0,
+   "direct_cut_share": 0.0,
+   "think_answer_cut_share": 0.1875,
+   "tokens_per_problem": 1940.0,
+   "example": {
+    "expr": "10 - 95 × 5 × 4 + 42 + 28 + 94 + 75 × 5",
+    "answer": -1351,
+    "direct": "**10**.",
+    "think": "The final number is $\\boxed{-1351}$."
+   }
+  },
+  "12": {
+   "n": 16,
+   "direct": 0.0,
+   "dots": 0.0,
+   "think": 0.8125,
+   "think_len_mean": 2803.0,
+   "think_len_max": 4097,
+   "capped_share": 0.125,
+   "direct_multi_number_share": 0.0,
+   "direct_cut_share": 0.0,
+   "think_answer_cut_share": 0.1875,
+   "tokens_per_problem": 2837.0,
+   "example": {
+    "expr": "61 × 5 + 61 × 8 × 5 × 2 + 80 × 7 - 63 - 46 + 50 × 4 × 2",
+    "answer": 6036,
+    "direct": "**760**.",
+    "think": "The final number is $\\boxed{6036}$."
+   }
+  }
+ },
+ "estimate": {
+  "chain_tokens": 422510,
+  "tokens_per_second": 153.5,
+  "chain_minutes": 45.87,
+  "n": 50
+ }
+}

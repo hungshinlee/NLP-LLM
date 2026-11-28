@@ -314,7 +314,7 @@ Everything today learns to **match a distribution in text**. Even seq2seq, train
 
 ## Four questions to ask of every paper in this course
 
-1. **Was the baseline actually tuned?** The most common source of illusory progress. W8 and W9 both have cases where the gain vanishes after a learning-rate sweep
+1. **Was the baseline actually tuned?** The most common source of illusory progress. W8 and W9 both have cases where the gain vanishes once the baseline is tuned
 2. **Is the comparison at equal compute?** Iso-FLOPs, iso-parameter and iso-latency are three different comparisons, and they often disagree
 3. **What is the metric rewarding?** In W11, a quantized model keeps its accuracy while a block of its answers changes; evicting part of the KV cache quietly drops an instruction
 4. **Is the claim mechanistic, or correlational?** "The attention weight is high", "the chain of thought wrote this step", "the reward went up" — all three are correlations

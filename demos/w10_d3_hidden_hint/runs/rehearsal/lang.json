@@ -1,0 +1,143 @@
+{
+ "date": "2026-11-25T12:28:27",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "peak_gb": 45.48,
+ "tiny": false,
+ "model": "Qwen/Qwen3-8B",
+ "sampler": {
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 20
+ },
+ "seed": 20261125,
+ "task": {
+  "instruction": "Answer the following multiple-choice question. Reply with only the letter of your answer.",
+  "answer_max_tokens": 8,
+  "think_max_tokens": 2048,
+  "max_question_chars": 900
+ },
+ "answer_prefix": "The answer is",
+ "questions": {
+  "file": "w07_d4_dedup_decontam/data/mmlu_test.jsonl",
+  "repo": "cais/mmlu",
+  "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+  "license": "MIT",
+  "rows": 14042,
+  "subjects": [
+   "virology",
+   "human_aging",
+   "philosophy",
+   "sociology",
+   "public_relations",
+   "professional_medicine",
+   "international_law",
+   "astronomy",
+   "econometrics"
+  ],
+  "subjects_from": "probe.json (in band)",
+  "n": 200
+ },
+ "sig": {
+  "ids": [
+   13709,
+   6190,
+   9790,
+   13457,
+   13096,
+   12302,
+   6446,
+   246,
+   1825,
+   13738,
+   6263,
+   9730,
+   13516,
+   13114,
+   12207,
+   6448,
+   250,
+   1875,
+   13800,
+   6266
+  ],
+  "instructions": {
+   "en": "Answer the following multiple-choice question. Reply with only the letter of your answer.",
+   "zh": "請回答下面這題選擇題，只要回覆答案的字母。",
+   "nan": "請回答下跤這題選擇題，干焦回覆答案的字母就好。"
+  },
+  "model": "Qwen/Qwen3-8B"
+ },
+ "names": {
+  "en": "English",
+  "zh": "Traditional Chinese",
+  "nan": "Taiwanese in Han characters"
+ },
+ "trad_simp_split": true,
+ "languages": {
+  "en": {
+   "instruction": "Answer the following multiple-choice question. Reply with only the letter of your answer.",
+   "n": 20,
+   "latin": 1.0,
+   "han": 0.0,
+   "han_trad_only": 0.0,
+   "han_simp_only": 0.0,
+   "han_shared": 0.0,
+   "mostly_han": 0,
+   "accuracy": 0.75,
+   "think_len_mean": 964.4,
+   "snippets": [
+    "Okay, let's tackle this question. The question is about newborn infants in countries with limited access to safe water and low education levels. The options are",
+    "Okay, let's tackle this question. The question is asking what those who survive the loss of another are called. The options are Survivors, Grieving, Bereaved, o"
+   ]
+  },
+  "zh": {
+   "instruction": "請回答下面這題選擇題，只要回覆答案的字母。",
+   "n": 20,
+   "latin": 0.04811,
+   "han": 0.9519,
+   "han_trad_only": 0.1093,
+   "han_simp_only": 0.1984,
+   "han_shared": 0.6441,
+   "mostly_han": 20,
+   "accuracy": 0.8,
+   "think_len_mean": 834.6,
+   "snippets": [
+    "嗯，我现在要解决这个关于新生儿喂养的选择题。题目是说，在那些缺乏安全饮用水和教育水平低的国家，新生儿应该怎样喂养。选项有四个：A是纯奶粉喂养六个月，B是纯母乳喂养六个月，C是前六个月应该在能接受的情况下同时给予母乳和其他食物，D可能题目里没写全，不过可能选项是C？ 首先，我需要回忆一下相关的卫生和营养知识。记得世界卫生",
+    "嗯，用户让我回答一个选择题，题目是关于那些经历失去另一个人的人被称为什么。选项有四个：A是Survivors，B是Grieving，C是Bereaved，D是Family and friends。我需要仔细分析每个选项的正确性。 首先，题目问的是“survive the loss of another”，也就是那些在失"
+   ]
+  },
+  "nan": {
+   "instruction": "請回答下跤這題選擇題，干焦回覆答案的字母就好。",
+   "n": 20,
+   "latin": 0.09375,
+   "han": 0.9063,
+   "han_trad_only": 0.04635,
+   "han_simp_only": 0.2499,
+   "han_shared": 0.61,
+   "mostly_han": 19,
+   "accuracy": 0.9,
+   "think_len_mean": 869.4,
+   "snippets": [
+    "嗯，用户给了一个关于新生儿喂养的选择题，需要回答正确的选项。首先，我得仔细看一下题目内容。题目是说，在那些没有安全饮用水和教育水平低的国家，新生儿应该怎么做。选项有四个：A是纯奶粉喂养六个月，B是纯母乳喂养六个月，C是前六个月要同时接受母乳和其他食物，D可能打错了，因为选项里没有D的描述，可能用户输入有误，但根据常见选",
+    "嗯，用户让我回答一个选择题，题目是关于那些经历失去另一个人的人被称为什么。选项是A到D。首先，我需要确定正确的术语。 首先，题目中的关键词是“survive the loss of another”，也就是失去另一个人后幸存下来的人。这时候，我需要回忆相关的心理学或社会学术语。常见的术语可能有“bereaved”、“g"
+   ]
+  }
+ }
+}

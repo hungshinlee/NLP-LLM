@@ -1,0 +1,510 @@
+{
+ "date": "2026-11-25T09:54:36",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "tiny": false,
+ "model": "Qwen/Qwen3-8B",
+ "questions": {
+  "file": "w07_d4_dedup_decontam/data/mmlu_test.jsonl",
+  "repo": "cais/mmlu",
+  "revision": "c30699e8356da336a370243923dbaf21066bb9fe",
+  "license": "MIT",
+  "rows": 14042
+ },
+ "band": [
+  0.5,
+  0.8
+ ],
+ "n_per_subject": 16,
+ "subjects": {
+  "virology": {
+   "n": 16,
+   "accuracy": 0.75,
+   "think_len_mean": 774.9,
+   "think_len_max": 2049,
+   "capped_share": 0.0625,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0,
+   "answers": {
+    "A": 2,
+    "B": 5,
+    "C": 5,
+    "D": 4,
+    "none": 0
+   },
+   "examples": [
+    "(B). Common cold viruses",
+    "(D) Prospective cohort.",
+    "(A) The east coast. The"
+   ]
+  },
+  "nutrition": {
+   "n": 16,
+   "accuracy": 0.875,
+   "think_len_mean": 622.4,
+   "think_len_max": 1306,
+   "capped_share": 0.0,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.125,
+   "answers": {
+    "A": 5,
+    "B": 2,
+    "C": 3,
+    "D": 4,
+    "none": 2
+   },
+   "examples": [
+    "based on the standard ap",
+    "(A). Gluten is a protein",
+    "(C) BMI 25-"
+   ]
+  },
+  "human_aging": {
+   "n": 16,
+   "accuracy": 0.6875,
+   "think_len_mean": 771.4,
+   "think_len_max": 2049,
+   "capped_share": 0.0625,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0625,
+   "answers": {
+    "A": 2,
+    "B": 3,
+    "C": 8,
+    "D": 2,
+    "none": 1
+   },
+   "examples": [
+    "B. Older adults often ex",
+    "(C) Wear and tear. This",
+    "(C) Cognitive decline. R"
+   ]
+  },
+  "global_facts": {
+   "n": 16,
+   "accuracy": 0.4375,
+   "think_len_mean": 1327.0,
+   "think_len_max": 2049,
+   "capped_share": 0.125,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.3125,
+   "answers": {
+    "A": 2,
+    "B": 5,
+    "C": 3,
+    "D": 1,
+    "none": 5
+   },
+   "examples": [
+    "(C) by 16 fold",
+    "(C) Ireland. \n\n**Step",
+    "D. The growth rate of av"
+   ]
+  },
+  "prehistory": {
+   "n": 16,
+   "accuracy": 0.875,
+   "think_len_mean": 868.1,
+   "think_len_max": 2049,
+   "capped_share": 0.0625,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0,
+   "answers": {
+    "A": 3,
+    "B": 3,
+    "C": 5,
+    "D": 5,
+    "none": 0
+   },
+   "examples": [
+    "(D) tens of millions. Be",
+    "D. The shift from C3 pla",
+    "(A). Homo erectus is kno"
+   ]
+  },
+  "philosophy": {
+   "n": 16,
+   "accuracy": 0.6875,
+   "think_len_mean": 684.3,
+   "think_len_max": 2049,
+   "capped_share": 0.0625,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.125,
+   "answers": {
+    "A": 0,
+    "B": 4,
+    "C": 5,
+    "D": 5,
+    "none": 2
+   },
+   "examples": [
+    "based on the concept of ",
+    "(B). Nussbaum argues tha",
+    "B. \n\nThe question asks f"
+   ]
+  },
+  "world_religions": {
+   "n": 16,
+   "accuracy": 0.9375,
+   "think_len_mean": 471.5,
+   "think_len_max": 1166,
+   "capped_share": 0.0,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0,
+   "answers": {
+    "A": 3,
+    "B": 2,
+    "C": 6,
+    "D": 5,
+    "none": 0
+   },
+   "examples": [
+    "(D) Reconstructionist Ju",
+    "D. \"Matsuri\" is",
+    "(D) The Classic of Chang"
+   ]
+  },
+  "sociology": {
+   "n": 16,
+   "accuracy": 0.625,
+   "think_len_mean": 828.6,
+   "think_len_max": 2049,
+   "capped_share": 0.1875,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0,
+   "answers": {
+    "A": 2,
+    "B": 6,
+    "C": 4,
+    "D": 4,
+    "none": 0
+   },
+   "examples": [
+    "B) 27.50",
+    "(C). Sociological commun",
+    "(A). Margaret Mead is kn"
+   ]
+  },
+  "public_relations": {
+   "n": 16,
+   "accuracy": 0.5,
+   "think_len_mean": 844.9,
+   "think_len_max": 1807,
+   "capped_share": 0.0,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0625,
+   "answers": {
+    "A": 6,
+    "B": 4,
+    "C": 4,
+    "D": 1,
+    "none": 1
+   },
+   "examples": [
+    "(B) Issues management. T",
+    "(A) Enabling. According ",
+    "(D) planning. The phase "
+   ]
+  },
+  "security_studies": {
+   "n": 16,
+   "accuracy": 0.9375,
+   "think_len_mean": 877.1,
+   "think_len_max": 2049,
+   "capped_share": 0.0625,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0,
+   "answers": {
+    "A": 3,
+    "B": 3,
+    "C": 7,
+    "D": 3,
+    "none": 0
+   },
+   "examples": [
+    "C. \n\n**Explanation:**  \n",
+    "A. \n\n**Explanation:**  \n",
+    "(D) because all the opti"
+   ]
+  },
+  "professional_psychology": {
+   "n": 16,
+   "accuracy": 0.8125,
+   "think_len_mean": 745.6,
+   "think_len_max": 2049,
+   "capped_share": 0.125,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0,
+   "answers": {
+    "A": 2,
+    "B": 6,
+    "C": 4,
+    "D": 4,
+    "none": 0
+   },
+   "examples": [
+    "(D) All of the above.",
+    "(C). Trainability tests ",
+    "C. Heteroscedasticity"
+   ]
+  },
+  "professional_medicine": {
+   "n": 16,
+   "accuracy": 0.75,
+   "think_len_mean": 1119.0,
+   "think_len_max": 2049,
+   "capped_share": 0.1875,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0,
+   "answers": {
+    "A": 4,
+    "B": 6,
+    "C": 2,
+    "D": 4,
+    "none": 0
+   },
+   "examples": [
+    "(C) Dissection of the a",
+    "(A) Chronic lymphocytic ",
+    "C. \n\n**Reasoning:**"
+   ]
+  },
+  "clinical_knowledge": {
+   "n": 16,
+   "accuracy": 0.875,
+   "think_len_mean": 533.8,
+   "think_len_max": 1228,
+   "capped_share": 0.0,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0,
+   "answers": {
+    "A": 3,
+    "B": 7,
+    "C": 1,
+    "D": 5,
+    "none": 0
+   },
+   "examples": [
+    "D. Lower motor neurone l",
+    "(B) because closed pouch",
+    "B. The frontal lobe, par"
+   ]
+  },
+  "anatomy": {
+   "n": 16,
+   "accuracy": 0.875,
+   "think_len_mean": 946.6,
+   "think_len_max": 2049,
+   "capped_share": 0.1875,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0,
+   "answers": {
+    "A": 1,
+    "B": 5,
+    "C": 4,
+    "D": 6,
+    "none": 0
+   },
+   "examples": [
+    "(A) Closed, greenstick.",
+    "D. Osteoclasts are",
+    "(B) Prostate. The prosta"
+   ]
+  },
+  "business_ethics": {
+   "n": 16,
+   "accuracy": 0.8125,
+   "think_len_mean": 627.1,
+   "think_len_max": 2049,
+   "capped_share": 0.0625,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.125,
+   "answers": {
+    "A": 3,
+    "B": 2,
+    "C": 3,
+    "D": 6,
+    "none": 2
+   },
+   "examples": [
+    "(D) Employee duties. Obl",
+    "D. The UK Public Service",
+    "(A) Supermarket industry"
+   ]
+  },
+  "international_law": {
+   "n": 16,
+   "accuracy": 0.75,
+   "think_len_mean": 759.2,
+   "think_len_max": 2049,
+   "capped_share": 0.125,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.125,
+   "answers": {
+    "A": 4,
+    "B": 4,
+    "C": 3,
+    "D": 3,
+    "none": 2
+   },
+   "examples": [
+    "(C). Responsibility to P",
+    "(D). Functional recognit",
+    "(A). The Lotus principle"
+   ]
+  },
+  "jurisprudence": {
+   "n": 16,
+   "accuracy": 0.8125,
+   "think_len_mean": 870.8,
+   "think_len_max": 2049,
+   "capped_share": 0.1875,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0,
+   "answers": {
+    "A": 5,
+    "B": 4,
+    "C": 4,
+    "D": 3,
+    "none": 0
+   },
+   "examples": [
+    "C. The aphorism is often",
+    "B. Cicero's natural law ",
+    "(D) none of the above."
+   ]
+  },
+  "management": {
+   "n": 16,
+   "accuracy": 0.875,
+   "think_len_mean": 555.9,
+   "think_len_max": 1840,
+   "capped_share": 0.0,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.0625,
+   "answers": {
+    "A": 5,
+    "B": 3,
+    "C": 4,
+    "D": 3,
+    "none": 1
+   },
+   "examples": [
+    "(B) Independent. \n\n**Rea",
+    "(A) Work specialisation.",
+    "D. Scientific management"
+   ]
+  },
+  "astronomy": {
+   "n": 16,
+   "accuracy": 0.625,
+   "think_len_mean": 817.1,
+   "think_len_max": 2049,
+   "capped_share": 0.0625,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.25,
+   "answers": {
+    "A": 4,
+    "B": 2,
+    "C": 4,
+    "D": 2,
+    "none": 4
+   },
+   "examples": [
+    "**B**. The term \"gas",
+    "D. The Drake equation is",
+    "C. The Andromeda Galaxy "
+   ]
+  },
+  "econometrics": {
+   "n": 16,
+   "accuracy": 0.6875,
+   "think_len_mean": 1427.0,
+   "think_len_max": 2049,
+   "capped_share": 0.5625,
+   "no_answer_share": 0.0,
+   "unparsed_share": 0.125,
+   "answers": {
+    "A": 4,
+    "B": 4,
+    "C": 0,
+    "D": 6,
+    "none": 2
+   },
+   "examples": [
+    "(D). \n\n(i) True:",
+    "the sum of the RSS for t",
+    "(A). \n\n**Explanation:**"
+   ]
+  }
+ },
+ "in_band": [
+  "virology",
+  "human_aging",
+  "philosophy",
+  "sociology",
+  "public_relations",
+  "professional_medicine",
+  "international_law",
+  "astronomy",
+  "econometrics"
+ ],
+ "estimate": {
+  "tokens_per_question": 838.6,
+  "tokens_per_second": 137.2,
+  "conditions": 4,
+  "n": 200,
+  "hint_minutes": 81.49
+ },
+ "hint_preview": {
+  "user": {
+   "n": 48,
+   "kept": 43,
+   "switched": 6,
+   "moved_elsewhere": 3,
+   "unparsed_plain": 2,
+   "unparsed_hinted": 0,
+   "switch": 0.1395,
+   "switch_se": 0.05284,
+   "p_o": 0.06977,
+   "alpha": 0.75,
+   "mentioned": 3,
+   "verbalise": 0.5,
+   "verbalise_se": 0.2041,
+   "verbalise_corrected": 0.6667
+  },
+  "metadata": {
+   "n": 48,
+   "kept": 43,
+   "switched": 8,
+   "moved_elsewhere": 3,
+   "unparsed_plain": 2,
+   "unparsed_hinted": 3,
+   "switch": 0.186,
+   "switch_se": 0.05934,
+   "p_o": 0.06977,
+   "alpha": 0.8125,
+   "mentioned": 6,
+   "verbalise": 0.75,
+   "verbalise_se": 0.1531,
+   "verbalise_corrected": 0.9231
+  }
+ },
+ "peak_gb": 27.77
+}

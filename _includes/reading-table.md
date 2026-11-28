@@ -8,12 +8,12 @@
 | [W2](weeks/w02.qmd) | Tokenization | Tao et al., *Scaling Laws with Vocabulary: Larger Models Deserve Larger Vocabularies*, NeurIPS 2024 (pair with Limisiewicz et al., *Compute Optimal Tokenization*, arXiv:2605.01188) |
 | [W3](weeks/w03.qmd) | Attention | Vaswani et al., *Attention Is All You Need*, NeurIPS 2017 — with Jain & Wallace, *Attention is not Explanation* |
 | [W4](weeks/w04.qmd) | The full block | Wortsman et al., *Small-scale proxies for large-scale Transformer training instabilities*, arXiv:2309.14322 |
-| [W5](weeks/w05.qmd) | Position and long context | Liu et al., *Lost in the Middle*, TACL 2023 |
+| [W5](weeks/w05.qmd) | Position and long context | Liu et al., *Lost in the Middle*, TACL 12 (2024) |
 | [W6](weeks/w06.qmd) | Architecture routes | Du et al., *Kimi Linear*, arXiv:2510.26692 — with Dao & Gu, *Mamba-2* |
-| [W7](weeks/w07.qmd) | Pre-training and scaling | Hoffmann et al., *Chinchilla*, arXiv:2203.15556 — with Besiroglu et al.'s replication |
-| [W8](weeks/w08.qmd) | SFT and PEFT | Shuttleworth et al., *LoRA vs Full Fine-tuning: An Illusion of Equivalence*, arXiv:2410.21228 |
-| [W9](weeks/w09.qmd) | Alignment and RL | Rafailov et al., *DPO*, NeurIPS 2023 — with the GRPO section of Shao et al., *DeepSeekMath* |
-| [W10](weeks/w10.qmd) | Reasoning and test-time compute | Yue et al., *Does RL Really Incentivize Reasoning Capacity Beyond the Base Model?*, arXiv:2504.13837 |
+| [W7](weeks/w07.qmd) | Pre-training and scaling | Hoffmann et al., *Chinchilla*, NeurIPS 2022 (arXiv:2203.15556), §3 — the three ways of estimating the optimum — with Besiroglu et al.'s replication, in full |
+| [W8](weeks/w08.qmd) | SFT and PEFT | Lee et al., *Learning Rate Matters: Vanilla LoRA May Suffice for LLM Fine-tuning*, arXiv:2602.04998 (an ICML 2026 workshop paper), in full, read as a methodological review, with Def. 3.1, Alg. 1 and the section on reducing intruder dimensions in Shuttleworth et al., *LoRA vs Full Fine-tuning: An Illusion of Equivalence*, NeurIPS 2025 |
+| [W9](weeks/w09.qmd) | Alignment and RL | Shao et al., *Spurious Rewards: Rethinking Training Signals in RLVR*, ICML 2026 (arXiv:2506.10947), in full, with §4.1 and §4.3 of Wu et al., *Reasoning or Memorization? Unreliable Results of Reinforcement Learning Due to Data Contamination*, AAAI 2026 — two explanations of the same result |
+| [W10](weeks/w10.qmd) | Reasoning and test-time compute | Yue et al., *Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?*, NeurIPS 2025 (oral; arXiv:2504.13837), in full, with §4 of Wen et al., *Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs*, ICLR 2026 — two readings of the same crossing pass@k curves |
 | [W11](weeks/w11.qmd) | Inference efficiency | Leviathan, Kalman & Matias, *Fast Inference from Transformers via Speculative Decoding*, ICML 2023 (oral; arXiv:2211.17192), in full, with §3–§4 of Chen et al., *The Pitfalls of KV Cache Compression*, ACL 2026 — one paper proves a speed-up that leaves the distribution unchanged, the other shows a speed-up after which the score holds and the behaviour does not |
 | W12 | RAG | Li et al., *RAG or Long-Context LLMs?*, EMNLP 2024 industry track |
 | W13 | Agentic systems | Cemri et al., *Why Do Multi-Agent LLM Systems Fail?*, arXiv:2503.13657 |

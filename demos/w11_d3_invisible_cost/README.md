@@ -122,7 +122,7 @@ A last measurement gives (a) its noise floor: the bf16 model answers the 200 que
 | Platform | Apple silicon, macOS; tested only on a MacBook Pro M5 Max with 64 GB. |
 | Software | Python 3.12, `mlx`, `mlx-lm` at the commit pinned in `../versions.lock`, `opencc-python-reimplemented` (to tell Traditional from Simplified characters), `huggingface_hub`. |
 | Models | `Qwen/Qwen3-8B` (16.4 GB) and `mlx-community/Qwen3-8B-4bit` (4.6 GB). |
-| Data | The MMLU test split and the week-10 choice of subjects (`../w10_d3_hidden_hint` — **that folder is not in this repository yet**; until it is, part (a) and the noise floor in (c) cannot be re-run from the published code, while the three `replay-*` commands work as they are), the week-1 and week-2 paragraphs, a Wikipedia sample from week 7's corpus (optional; that text is skipped if absent), and the prompts of this week's demo 2 as batch companions. |
+| Data | The MMLU test split and the week-10 choice of subjects (`../w10_d3_hidden_hint`, published 2026-11-28; it reads the MMLU file that W7 demo 4's `fetch` writes), the week-1 and week-2 paragraphs, a Wikipedia sample from week 7's corpus (optional; that text is skipped if absent), and the prompts of this week's demo 2 as batch companions. |
 | Memory | About 17 GB for (b) and for bf16 rows; up to about 25 GB while a row is being quantised; more for batches of 16. |
 | Time | About 2 h 40 min for everything on the lecture machine: (c) 90 min, (a) 40 min, (b) 32 min. `./present.sh probe` prints an estimate; each part can be run and resumed separately. |
 

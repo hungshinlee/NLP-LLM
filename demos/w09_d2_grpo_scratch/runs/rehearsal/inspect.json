@@ -1,0 +1,38 @@
+{
+ "date": "2026-11-28T16:37:48",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "trainable": {
+  "16": 17432576,
+  "1": 1089536
+ },
+ "eos_token_ids": [
+  151643,
+  151645
+ ],
+ "task": {
+  "level": "L3",
+  "prompt": "Compute {expr}. End your answer with the final number.",
+  "max_new_tokens": 48,
+  "temperature": 1.0
+ },
+ "prompt_tokens": 29,
+ "prompt_text": "<|im_start|>user\nCompute 15 - 43 - 75. End your answer with the final number.<|im_end|>\n<|im_start|>assistant\n",
+ "bypass_on_off_max_abs_diff_at_init": 0.0
+}

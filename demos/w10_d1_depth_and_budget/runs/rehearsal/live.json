@@ -1,0 +1,38 @@
+{
+ "date": "2026-11-25T09:18:42",
+ "m": 8,
+ "expr": "10 - 95 × 5 × 4 + 42 + 28 + 94 + 75 × 5",
+ "answer": -1351,
+ "direct": {
+  "text": "{162}$.",
+  "right": 0,
+  "cut": 0
+ },
+ "dots": {
+  "n": 2343,
+  "text": "{-120}$.",
+  "right": 0,
+  "cut": 0
+ },
+ "think": {
+  "n": 2343,
+  "thinking": "Okay, let's see. I need to compute this expression: 10 minus 95 multiplied by 5 multiplied by 4, plus 42, plus 28, plus 94, plus 75 multiplied by 5. Hmm, let me write that down step by step to make sure I don't mess up the order of operations. \n\nFirst, I remember that multiplication comes before addition and subtraction, right? So I should handle all the multiplications first. Let me break it down. \n\nStarting with the first part: 10 - 95 × 5 × 4. So, the multiplication here is 95 × 5 × 4. Let me compute that. \n\nCalculating 95 × 5 first. 95 times 5... Well, 90 × 5 is 450, and 5 × 5 is 25, so adding those together gives 450 + 25 = 475. Then, multiply that by 4. So, 475 × 4. Let me do that. 400 × 4 is 1600, and 75 × 4 is 300, so adding those gives 1600 + 300 = 1900. So, 95 × 5 × 4 equals 1900. \n\nSo, the first part is 10 - 1900. That would be... 10 minus 1900. Let me calculate that. 10 - 1900 is -1890. \n\nNow, moving on to the rest of the expression: plus 42, plus 28, plus 94, plus 75 × 5. Let me handle the multiplication here too. The last term is 75 × 5. Let me compute that. 75 × 5 is 375. \n\nSo now, the entire expression becomes: -1890 + 42 + 28 + 94 + 375. \n\nLet me add these numbers step by step. Let me start with -1890 + 42. Hmm, that would be... -1890 + 40 is -1850, and then +2 more is -1848. \n\nNext, adding 28 to that. So, -1848 + 28. Let me think. 1848 - 28 is 1820, so since it's negative, it would be -1820? Wait, no. Wait, if I have -1848 + 28, that's the same as -(1848 - 28) = -1820? Wait, no. Wait, no, that's not correct. Wait, if you have -1848 + 28, you can think of it as subtracting 28 from 1848 but keeping the negative sign. Wait, actually, maybe it's better to do it step by step. \n\nStarting with -1848 + 28. Let me add 28 to -1848. So, if I have -1848 + 28, that's like moving 28 units to the right on the number line from -1848. So, -1848 + 28 = - (1848 - 28) = -1820. Wait, yes, because 1848 - 28 is 1820, so the result is -1820. \n\nOkay, so now we have -1820. Next, add 94. So, -1820 + 94. Let me calculate that. Let me think of it as -(1820 - 94). 1820 - 94. Let's do 1820 - 90 = 1730, then subtract 4 more: 1730 - 4 = 1726. So, that would make it -1726. \n\nNow, adding the last term, which is 375. So, -1726 + 375. Hmm. Let me compute this. Let me think of it as 375 - 1726, but since it's negative, it's -(1726 - 375). Let me calculate 1726 - 375. \n\nBreaking it down: 1726 - 300 = 1426, then subtract 75 more: 1426 - 75. 1426 - 70 = 1356, then minus 5 is 1351. So, -(1351) = -1351? Wait, no. Wait, if it's -1726 + 375, then it's equal to -(1726 - 375) = -1351? Wait, no, that's not right. Wait, no. Wait, if you have -a + b, it's equal to b - a. So, -1726 + 375 is equal to 375 - 1726. Which is negative, right? 375 - 1726 = -(1726 - 375) = -1351. So, yes, -1351. \n\nWait, but let me check that again. Let me do 1726 - 375. Let me do 1726 minus 300 is 1426. Then minus 75 is 1426 - 75. 1426 - 70 is 1356, then minus 5 is 1351. So yes, 1726 - 375 is 1351. Therefore, -1726 + 375 is -1351. \n\nSo, putting it all together, the final result is -1351? Wait, let me check again step by step to make sure I didn't make a mistake.\n\nOriginal expression:\n\n10 - 95 × 5 × 4 + 42 + 28 + 94 + 75 × 5\n\nCompute multiplications first:\n\n95 × 5 = 475; 475 × 4 = 1900\n\n75 × 5 = 375\n\nSo substituting back:\n\n10 - 1900 + 42 + 28 + 94 + 375\n\nNow compute step by step:\n\nStart with 10 - 1900 = -1890\n\nThen, -1890 + 42 = -1848\n\nThen, -1848 + 28 = -1820\n\nThen, -1820 + 94 = -1726\n\nThen, -1726 + 375 = -1351\n\nYes, seems consistent. \n\nBut let me verify once more by adding all the numbers together in a different order. Maybe group the positive numbers and the negative numbers.\n\nNegative part: -1900 + 10 = -1890\n\nPositive parts: 42 + 28 + 94 + 375\n\nLet me compute the positive parts:\n\n42 + 28 = 70\n\n70 + 94 = 164\n\n164 + 375 = 539\n\nSo total positive is 539. Then total expression is -1890 + 539.\n\nCompute -1890 + 539. That's equal to -(1890 - 539). Let me calculate 1890 - 539.\n\n1890 - 500 = 1390\n\n1390 - 39 = 1351\n\nTherefore, -1351. \n\nYes, same result. So that seems to confirm it. \n\nAlternatively, maybe I can check using another grouping. Let me see:\n\nOriginal expression after substitutions:\n\n10 - 1900 + 42 + 28 + 94 + 375\n\nLet me add 10 and 42 first: 10 + 42 = 52\n\nThen, 52 + 28 = 80\n\n80 + 94 = 174\n\n174 + 375 = 549\n\nThen, subtract 1900 from that: 549 - 1900 = -1351. \n\nSame answer again. Okay, so that seems correct. \n\nTherefore, the final answer is -1351. \n\nBut just to be absolutely sure, let me do all the arithmetic once again:\n\nStart with 10 - (95×5×4) + 42 + 28 + 94 + (75×5)\n\nCompute 95×5×4:\n\n95×5=475, 475×4=1900. Correct.\n\n75×5=375. Correct.\n\nSo expression is 10 - 1900 + 42 + 28 + 94 + 375.\n\nCompute step by step:\n\nStart with 10 - 1900 = -1890\n\nThen -1890 + 42 = -1848\n\nThen -1848 + 28 = -1820\n\nThen -1820 + 94 = -1726\n\nThen -1726 + 375 = -1351\n\nYes, same result. \n\nAlternatively, if I do all additions first:\n\n42 + 28 + 94 + 375 = ?\n\n42 + 28 = 70\n\n70 + 94 = 164\n\n164 + 375 = 539\n\nThen 10 + 539 = 549\n\nThen 549 - 1900 = -1351\n\nSame answer. \n\nSo, I think that's correct. Therefore, the answer is -1351.\n\n**Final Answer**\n\\boxed{-1351}",
+  "text": "The final number is $\\boxed{-1351}$.",
+  "right": 1,
+  "capped": 0,
+  "closed": 1,
+  "seconds": 83.3,
+  "finished_at": 1795569522.1814568
+ },
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "model": "Qwen/Qwen3-8B"
+}

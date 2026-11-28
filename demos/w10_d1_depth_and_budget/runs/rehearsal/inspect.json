@@ -1,0 +1,103 @@
+{
+ "date": "2026-11-23T10:32:41",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "tiny": false,
+ "model": "Qwen/Qwen3-8B",
+ "path": "b968826d9c46dd6066d109eabc6255188de91218",
+ "template_tail_thinking_True": " 7. Reply with only the final number.<|im_end|>\n<|im_start|>assistant\n",
+ "template_tail_thinking_False": " the final number.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+ "ids": {
+  "open": 151667,
+  "close": 151668,
+  "dot": 13,
+  "eos": [
+   151643,
+   151645
+  ],
+  "open_seq": [
+   151667,
+   198
+  ],
+  "close_seq": [
+   198,
+   151668,
+   271
+  ],
+  "wait_seq": [
+   14190
+  ],
+  "answer_prefix": []
+ },
+ "natural": {
+  "first_pieces": [
+   "<think>",
+   "\n",
+   "Okay",
+   ",",
+   " let",
+   " me",
+   " try",
+   " to"
+  ],
+  "n_think": 566,
+  "opened": 1,
+  "closed": 1,
+  "around_close": [
+   "</think>",
+   "\n\n",
+   "3",
+   "3"
+  ],
+  "answer": "331",
+  "right": 1
+ },
+ "moves": {
+  "cap8": {
+   "n_think": 9,
+   "events": [
+    [
+     "wait",
+     812
+    ],
+    [
+     "answer_cut",
+     17
+    ]
+   ],
+   "ok": true
+  },
+  "wait1": {
+   "n_think": 935,
+   "events": [
+    [
+     "wait",
+     812
+    ],
+    [
+     "answer_cut",
+     17
+    ]
+   ],
+   "ok": true,
+   "around": " So yeah, the final answer is 331.\nWait, hold on. Let me check once more. Maybe using another method for the addition. 273 +"
+  }
+ },
+ "peak_gb": 16.83
+}

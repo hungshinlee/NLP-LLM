@@ -1,0 +1,3816 @@
+{
+ "per_m": {
+  "1": {
+   "m": 1,
+   "direct": {
+    "n": 50,
+    "k": 50,
+    "acc": 1.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0
+   },
+   "dots": {
+    "n": 50,
+    "k": 50,
+    "acc": 1.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0
+   },
+   "think": {
+    "n": 50,
+    "k": 50,
+    "acc": 1.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0,
+    "think_len_mean": 496.5,
+    "think_len_median": 501.5,
+    "think_len_max": 1134,
+    "capped_share": 0.0,
+    "no_answer_share": 0.0,
+    "no_open_share": 0.0
+   },
+   "rows": [
+    {
+     "expr": "61 + 32",
+     "answer": 93,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 215,
+     "d_text": "{93}$.",
+     "t_text": "The final number is $\\boxed{93}$."
+    },
+    {
+     "expr": "52 + 57",
+     "answer": 109,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 556,
+     "d_text": "{109}$.",
+     "t_text": "The final number is $\\boxed{109}$."
+    },
+    {
+     "expr": "45 × 4",
+     "answer": 180,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 593,
+     "d_text": "{180}$.",
+     "t_text": "The final number is $\\boxed{180}$."
+    },
+    {
+     "expr": "42 × 4",
+     "answer": 168,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 1134,
+     "d_text": "{168}$.",
+     "t_text": "The final number is $\\boxed{168}$."
+    },
+    {
+     "expr": "14 + 73",
+     "answer": 87,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 340,
+     "d_text": "{87}$.",
+     "t_text": "The final number is $\\boxed{87}$."
+    },
+    {
+     "expr": "98 - 86",
+     "answer": 12,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 251,
+     "d_text": "{12}$.",
+     "t_text": "The final number is $\\boxed{12}$."
+    },
+    {
+     "expr": "19 × 2",
+     "answer": 38,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 385,
+     "d_text": "{38}$.",
+     "t_text": "The final number is $\\boxed{38}$."
+    },
+    {
+     "expr": "20 × 5",
+     "answer": 100,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 505,
+     "d_text": "{100}$.",
+     "t_text": "The final number is $\\boxed{100}$."
+    },
+    {
+     "expr": "46 × 8",
+     "answer": 368,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 686,
+     "d_text": "{368}$.",
+     "t_text": "The final number is $\\boxed{368}$."
+    },
+    {
+     "expr": "37 - 30",
+     "answer": 7,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 576,
+     "d_text": "{7}$.",
+     "t_text": "The final number is $\\boxed{7}$."
+    },
+    {
+     "expr": "38 + 55",
+     "answer": 93,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 520,
+     "d_text": "{93}$.",
+     "t_text": "The final number is $\\boxed{93}$."
+    },
+    {
+     "expr": "44 + 89",
+     "answer": 133,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 413,
+     "d_text": "{133}$.",
+     "t_text": "The final number is $\\boxed{133}$."
+    },
+    {
+     "expr": "43 × 2",
+     "answer": 86,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 318,
+     "d_text": "{86}$.",
+     "t_text": "The final number is $\\boxed{86}$."
+    },
+    {
+     "expr": "79 + 89",
+     "answer": 168,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 585,
+     "d_text": "{168}$.",
+     "t_text": "The final number is $\\boxed{168}$."
+    },
+    {
+     "expr": "15 + 81",
+     "answer": 96,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 430,
+     "d_text": "{96}$.",
+     "t_text": "The final number is $\\boxed{96}$."
+    },
+    {
+     "expr": "56 × 7",
+     "answer": 392,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 770,
+     "d_text": "{392}$.",
+     "t_text": "The final number is $\\boxed{392}$."
+    },
+    {
+     "expr": "27 + 97",
+     "answer": 124,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 240,
+     "d_text": "{124}$.",
+     "t_text": "The final number is $\\boxed{124}$."
+    },
+    {
+     "expr": "11 × 6",
+     "answer": 66,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 455,
+     "d_text": "{66}$.",
+     "t_text": "The final number is $\\boxed{66}$."
+    },
+    {
+     "expr": "74 - 61",
+     "answer": 13,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 550,
+     "d_text": "{13}$.",
+     "t_text": "The final number is $\\boxed{13}$."
+    },
+    {
+     "expr": "44 + 38",
+     "answer": 82,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 479,
+     "d_text": "{82}$.",
+     "t_text": "The final number is $\\boxed{82}$."
+    },
+    {
+     "expr": "29 × 3",
+     "answer": 87,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 326,
+     "d_text": "{87}$.",
+     "t_text": "The final number is $\\boxed{87}$."
+    },
+    {
+     "expr": "20 + 33",
+     "answer": 53,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 141,
+     "d_text": "{53}$.",
+     "t_text": "The final number is $\\boxed{53}$."
+    },
+    {
+     "expr": "21 - 39",
+     "answer": -18,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 557,
+     "d_text": "{-18}$.",
+     "t_text": "The final number is $\\boxed{-18}$."
+    },
+    {
+     "expr": "17 - 13",
+     "answer": 4,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 421,
+     "d_text": "{4}$.",
+     "t_text": "The final number is $\\boxed{4}$."
+    },
+    {
+     "expr": "64 × 3",
+     "answer": 192,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 609,
+     "d_text": "{192}$.",
+     "t_text": "The final number is $\\boxed{192}$."
+    },
+    {
+     "expr": "76 - 12",
+     "answer": 64,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 488,
+     "d_text": "{64}$.",
+     "t_text": "The final number is $\\boxed{64}$."
+    },
+    {
+     "expr": "17 × 2",
+     "answer": 34,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 162,
+     "d_text": "{34}$.",
+     "t_text": "The final number is $\\boxed{34}$."
+    },
+    {
+     "expr": "39 × 9",
+     "answer": 351,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 647,
+     "d_text": "{351}$.",
+     "t_text": "The final number is $\\boxed{351}$."
+    },
+    {
+     "expr": "89 + 34",
+     "answer": 123,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 498,
+     "d_text": "{123}$.",
+     "t_text": "The final number is $\\boxed{123}$."
+    },
+    {
+     "expr": "54 × 3",
+     "answer": 162,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 818,
+     "d_text": "{162}$.",
+     "t_text": "The final number is $\\boxed{162}$."
+    },
+    {
+     "expr": "47 - 79",
+     "answer": -32,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 422,
+     "d_text": "{-32}$.",
+     "t_text": "The final number is $\\boxed{-32}$."
+    },
+    {
+     "expr": "38 × 7",
+     "answer": 266,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 557,
+     "d_text": "{266}$.",
+     "t_text": "The final number is $\\boxed{266}$."
+    },
+    {
+     "expr": "93 - 96",
+     "answer": -3,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 684,
+     "d_text": "{-3}$.",
+     "t_text": "The final number is $\\boxed{-3}$."
+    },
+    {
+     "expr": "39 + 30",
+     "answer": 69,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 505,
+     "d_text": "{69}$.",
+     "t_text": "The final number is $\\boxed{69}$."
+    },
+    {
+     "expr": "86 - 42",
+     "answer": 44,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 494,
+     "d_text": "{44}$.",
+     "t_text": "The final number is $\\boxed{44}$."
+    },
+    {
+     "expr": "41 × 8",
+     "answer": 328,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 653,
+     "d_text": "{328}$.",
+     "t_text": "The final number is $\\boxed{328}$."
+    },
+    {
+     "expr": "20 + 38",
+     "answer": 58,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 433,
+     "d_text": "{58}$.",
+     "t_text": "The final number is $\\boxed{58}$."
+    },
+    {
+     "expr": "43 + 11",
+     "answer": 54,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 527,
+     "d_text": "{54}$.",
+     "t_text": "The final number is $\\boxed{54}$."
+    },
+    {
+     "expr": "50 × 7",
+     "answer": 350,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 325,
+     "d_text": "{350}$.",
+     "t_text": "The final number is $\\boxed{350}$."
+    },
+    {
+     "expr": "20 - 42",
+     "answer": -22,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 327,
+     "d_text": "{-22}$.",
+     "t_text": "The final number is $\\boxed{-22}$."
+    },
+    {
+     "expr": "89 - 60",
+     "answer": 29,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 558,
+     "d_text": "{29}$.",
+     "t_text": "The final number is $\\boxed{29}$."
+    },
+    {
+     "expr": "33 × 9",
+     "answer": 297,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 817,
+     "d_text": "{297}$.",
+     "t_text": "The final number is $\\boxed{297}$."
+    },
+    {
+     "expr": "94 + 15",
+     "answer": 109,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 325,
+     "d_text": "{109}$.",
+     "t_text": "The final number is $\\boxed{109}$."
+    },
+    {
+     "expr": "83 × 4",
+     "answer": 332,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 764,
+     "d_text": "{332}$.",
+     "t_text": "The final number is $\\boxed{332}$."
+    },
+    {
+     "expr": "66 - 15",
+     "answer": 51,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 291,
+     "d_text": "{51}$.",
+     "t_text": "The final number is $\\boxed{51}$."
+    },
+    {
+     "expr": "45 × 3",
+     "answer": 135,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 621,
+     "d_text": "{135}$.",
+     "t_text": "The final number is $\\boxed{135}$."
+    },
+    {
+     "expr": "53 - 85",
+     "answer": -32,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 588,
+     "d_text": "{-32}$.",
+     "t_text": "The final number is $\\boxed{-32}$."
+    },
+    {
+     "expr": "27 + 71",
+     "answer": 98,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 443,
+     "d_text": "{98}$.",
+     "t_text": "The final number is $\\boxed{98}$."
+    },
+    {
+     "expr": "61 - 99",
+     "answer": -38,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 316,
+     "d_text": "{-38}$.",
+     "t_text": "The final number is $\\boxed{-38}$."
+    },
+    {
+     "expr": "52 + 88",
+     "answer": 140,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 509,
+     "d_text": "{140}$.",
+     "t_text": "The final number is $\\boxed{140}$."
+    }
+   ],
+   "seconds": 122.8,
+   "generation_tokens": 26231
+  },
+  "2": {
+   "m": 2,
+   "direct": {
+    "n": 50,
+    "k": 32,
+    "acc": 0.64,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0
+   },
+   "dots": {
+    "n": 50,
+    "k": 32,
+    "acc": 0.64,
+    "cut_share": 0.02,
+    "multi_number_share": 0.02
+   },
+   "think": {
+    "n": 50,
+    "k": 50,
+    "acc": 1.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0,
+    "think_len_mean": 742.7,
+    "think_len_median": 703.5,
+    "think_len_max": 1773,
+    "capped_share": 0.0,
+    "no_answer_share": 0.0,
+    "no_open_share": 0.0
+   },
+   "rows": [
+    {
+     "expr": "58 + 39 × 7",
+     "answer": 331,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 850,
+     "d_text": "{341}$.",
+     "t_text": "The final number is $\\boxed{331}$."
+    },
+    {
+     "expr": "33 × 9 - 29",
+     "answer": 268,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 713,
+     "d_text": "{274}$.",
+     "t_text": "The final number is $\\boxed{268}$."
+    },
+    {
+     "expr": "12 + 38 - 47",
+     "answer": 3,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 379,
+     "d_text": "{3}$.",
+     "t_text": "The final number is $\\boxed{3}$."
+    },
+    {
+     "expr": "14 - 65 - 64",
+     "answer": -115,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 956,
+     "d_text": "{-55}$.",
+     "t_text": "The final number is $\\boxed{-115}$."
+    },
+    {
+     "expr": "83 - 57 + 52",
+     "answer": 78,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 876,
+     "d_text": "{78}$.",
+     "t_text": "The final number is $\\boxed{78}$."
+    },
+    {
+     "expr": "34 - 95 + 50",
+     "answer": -11,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 1183,
+     "d_text": "{-11}$.",
+     "t_text": "The final number is $\\boxed{-11}$."
+    },
+    {
+     "expr": "93 + 66 + 41",
+     "answer": 200,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 657,
+     "d_text": "{200}$.",
+     "t_text": "The final number is $\\boxed{200}$."
+    },
+    {
+     "expr": "29 × 4 - 66",
+     "answer": 50,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 653,
+     "d_text": "{50}$.",
+     "t_text": "The final number is $\\boxed{50}$."
+    },
+    {
+     "expr": "90 + 88 - 29",
+     "answer": 149,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 742,
+     "d_text": "{149}$.",
+     "t_text": "The final number is $\\boxed{149}$."
+    },
+    {
+     "expr": "58 × 4 + 30",
+     "answer": 262,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 908,
+     "d_text": "{262}$.",
+     "t_text": "The final number is $\\boxed{262}$."
+    },
+    {
+     "expr": "77 - 69 + 36",
+     "answer": 44,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 397,
+     "d_text": "{44}$.",
+     "t_text": "The final number is $\\boxed{44}$."
+    },
+    {
+     "expr": "65 - 35 × 8",
+     "answer": -215,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 522,
+     "d_text": "{-115}$.",
+     "t_text": "The final number is $\\boxed{-215}$."
+    },
+    {
+     "expr": "52 + 62 - 69",
+     "answer": 45,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 626,
+     "d_text": "{45}$.",
+     "t_text": "The final number is $\\boxed{45}$."
+    },
+    {
+     "expr": "66 × 9 × 9",
+     "answer": 5346,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 1104,
+     "d_text": "{5346}$.",
+     "t_text": "The final number is $\\boxed{5346}$."
+    },
+    {
+     "expr": "74 + 34 + 25",
+     "answer": 133,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 656,
+     "d_text": "{133}$.",
+     "t_text": "The final number is $\\boxed{133}$."
+    },
+    {
+     "expr": "41 × 9 + 96",
+     "answer": 465,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 578,
+     "d_text": "{453}$.",
+     "t_text": "The final number is $\\boxed{465}$."
+    },
+    {
+     "expr": "77 + 23 + 77",
+     "answer": 177,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 445,
+     "d_text": "{177}$.",
+     "t_text": "The final number is $\\boxed{177}$."
+    },
+    {
+     "expr": "97 - 82 + 70",
+     "answer": 85,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 896,
+     "d_text": "{85}$.",
+     "t_text": "The final number is $\\boxed{85}$."
+    },
+    {
+     "expr": "61 × 2 × 9",
+     "answer": 1098,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1041,
+     "d_text": "{1116}$.",
+     "t_text": "The final number is $\\boxed{1098}$."
+    },
+    {
+     "expr": "69 × 2 × 3",
+     "answer": 414,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 689,
+     "d_text": "{414}$.",
+     "t_text": "The final number is $\\boxed{414}$."
+    },
+    {
+     "expr": "34 × 8 + 93",
+     "answer": 365,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1292,
+     "d_text": "{341}$.",
+     "t_text": "The final number is $\\boxed{365}$."
+    },
+    {
+     "expr": "14 × 3 × 8",
+     "answer": 336,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 538,
+     "d_text": "{336}$.",
+     "t_text": "The final number is $\\boxed{336}$."
+    },
+    {
+     "expr": "86 - 34 + 86",
+     "answer": 138,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 1210,
+     "d_text": "{138}$.",
+     "t_text": "The final number is $\\boxed{138}$."
+    },
+    {
+     "expr": "46 + 91 + 13",
+     "answer": 150,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 785,
+     "d_text": "{150}$.",
+     "t_text": "The final number is $\\boxed{150}$."
+    },
+    {
+     "expr": "37 × 5 + 12",
+     "answer": 197,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 531,
+     "d_text": "{197}$.",
+     "t_text": "The final number is $\\boxed{197}$."
+    },
+    {
+     "expr": "13 - 44 - 67",
+     "answer": -98,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 756,
+     "d_text": "{-98}$.",
+     "t_text": "The final number is $\\boxed{-98}$."
+    },
+    {
+     "expr": "35 + 54 - 92",
+     "answer": -3,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 572,
+     "d_text": "{-5}$.",
+     "t_text": "The final number is $\\boxed{-3}$."
+    },
+    {
+     "expr": "25 - 53 + 36",
+     "answer": 8,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 806,
+     "d_text": "{8}$.",
+     "t_text": "The final number is $\\boxed{8}$."
+    },
+    {
+     "expr": "55 - 40 - 88",
+     "answer": -73,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 735,
+     "d_text": "{-73}$.",
+     "t_text": "The final number is $\\boxed{-73}$."
+    },
+    {
+     "expr": "87 - 98 × 2",
+     "answer": -109,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 581,
+     "d_text": "{-109}$.",
+     "t_text": "The final number is $\\boxed{-109}$."
+    },
+    {
+     "expr": "25 + 10 + 15",
+     "answer": 50,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 398,
+     "d_text": "{50}$.",
+     "t_text": "The final number is $\\boxed{50}$."
+    },
+    {
+     "expr": "62 × 6 + 10",
+     "answer": 382,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 623,
+     "d_text": "{372}$.",
+     "t_text": "The final number is $\\boxed{382}$."
+    },
+    {
+     "expr": "86 × 7 × 8",
+     "answer": 4816,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 1773,
+     "d_text": "{4816}$.",
+     "t_text": "The final number is $\\boxed{4816}$."
+    },
+    {
+     "expr": "62 + 99 + 97",
+     "answer": 258,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 939,
+     "d_text": "{258}$.",
+     "t_text": "The final number is $\\boxed{258}$."
+    },
+    {
+     "expr": "32 × 7 + 74",
+     "answer": 298,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 808,
+     "d_text": "{302}$.",
+     "t_text": "The final number is $\\boxed{298}$."
+    },
+    {
+     "expr": "76 + 64 - 62",
+     "answer": 78,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 885,
+     "d_text": "{78}$.",
+     "t_text": "The final number is $\\boxed{78}$."
+    },
+    {
+     "expr": "35 - 99 × 9",
+     "answer": -856,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 764,
+     "d_text": "{-886}$.",
+     "t_text": "The final number is $\\boxed{-856}$."
+    },
+    {
+     "expr": "12 - 87 - 14",
+     "answer": -89,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 533,
+     "d_text": "{-89}$.",
+     "t_text": "The final number is $\\boxed{-89}$."
+    },
+    {
+     "expr": "51 - 46 - 45",
+     "answer": -40,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 757,
+     "d_text": "{0}$.",
+     "t_text": "The final number is $\\boxed{-40}$."
+    },
+    {
+     "expr": "73 - 83 × 8",
+     "answer": -591,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 573,
+     "d_text": "{-123}$.",
+     "t_text": "The final number is $\\boxed{-591}$."
+    },
+    {
+     "expr": "46 × 7 - 32",
+     "answer": 290,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 933,
+     "d_text": "{304}$.",
+     "t_text": "The final number is $\\boxed{290}$."
+    },
+    {
+     "expr": "92 - 52 × 5",
+     "answer": -168,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 662,
+     "d_text": "{12}$.",
+     "t_text": "The final number is $\\boxed{-168}$."
+    },
+    {
+     "expr": "57 + 37 - 96",
+     "answer": -2,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 848,
+     "d_text": "{0}$.",
+     "t_text": "The final number is $\\boxed{-2}$."
+    },
+    {
+     "expr": "81 - 36 × 7",
+     "answer": -171,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 694,
+     "d_text": "{117}$.",
+     "t_text": "The final number is $\\boxed{-171}$."
+    },
+    {
+     "expr": "17 × 5 + 82",
+     "answer": 167,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 532,
+     "d_text": "{167}$.",
+     "t_text": "The final number is $\\boxed{167}$."
+    },
+    {
+     "expr": "56 - 86 + 54",
+     "answer": 24,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 546,
+     "d_text": "{-16}$.",
+     "t_text": "The final number is $\\boxed{24}$."
+    },
+    {
+     "expr": "99 + 64 + 20",
+     "answer": 183,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 605,
+     "d_text": "{183}$.",
+     "t_text": "The final number is $\\boxed{183}$."
+    },
+    {
+     "expr": "18 - 11 + 38",
+     "answer": 45,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 284,
+     "d_text": "{45}$.",
+     "t_text": "The final number is $\\boxed{45}$."
+    },
+    {
+     "expr": "57 + 86 + 74",
+     "answer": 217,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 754,
+     "d_text": "{217}$.",
+     "t_text": "The final number is $\\boxed{217}$."
+    },
+    {
+     "expr": "58 × 2 × 7",
+     "answer": 812,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 549,
+     "d_text": "{812}$.",
+     "t_text": "The final number is $\\boxed{812}$."
+    }
+   ],
+   "seconds": 191.0,
+   "generation_tokens": 38582
+  },
+  "3": {
+   "m": 3,
+   "direct": {
+    "n": 50,
+    "k": 9,
+    "acc": 0.18,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0
+   },
+   "dots": {
+    "n": 50,
+    "k": 12,
+    "acc": 0.24,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0
+   },
+   "think": {
+    "n": 50,
+    "k": 50,
+    "acc": 1.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0,
+    "think_len_mean": 973.7,
+    "think_len_median": 873.5,
+    "think_len_max": 2481,
+    "capped_share": 0.0,
+    "no_answer_share": 0.0,
+    "no_open_share": 0.0
+   },
+   "rows": [
+    {
+     "expr": "98 × 6 - 12 + 29",
+     "answer": 605,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 712,
+     "d_text": "{590}$.",
+     "t_text": "The final number is $\\boxed{605}$."
+    },
+    {
+     "expr": "31 + 13 × 6 × 6",
+     "answer": 499,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1086,
+     "d_text": "{481}$.",
+     "t_text": "The final number is $\\boxed{499}$."
+    },
+    {
+     "expr": "96 + 13 - 78 × 3",
+     "answer": -125,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 547,
+     "d_text": "{-63}$.",
+     "t_text": "The final number is $\\boxed{-125}$."
+    },
+    {
+     "expr": "82 - 99 + 48 + 57",
+     "answer": 88,
+     "d": 0,
+     "o": 1,
+     "t": 1,
+     "L": 1536,
+     "d_text": "{98}$.",
+     "t_text": "The final number is $\\boxed{88}$."
+    },
+    {
+     "expr": "96 × 7 × 9 + 80",
+     "answer": 6128,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2481,
+     "d_text": "{6832}$.",
+     "t_text": "The final number is $\\boxed{6128}$."
+    },
+    {
+     "expr": "29 - 61 - 33 - 74",
+     "answer": -139,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1470,
+     "d_text": "{-89}$.",
+     "t_text": "The final number is $\\boxed{-139}$."
+    },
+    {
+     "expr": "37 - 88 - 19 - 22",
+     "answer": -92,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 557,
+     "d_text": "{-94}$.",
+     "t_text": "The final number is $\\boxed{-92}$."
+    },
+    {
+     "expr": "83 + 38 + 30 + 28",
+     "answer": 179,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 908,
+     "d_text": "{179}$.",
+     "t_text": "The final number is $\\boxed{179}$."
+    },
+    {
+     "expr": "20 × 8 + 83 × 5",
+     "answer": 575,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 954,
+     "d_text": "{640}$.",
+     "t_text": "The final number is $\\boxed{575}$."
+    },
+    {
+     "expr": "98 × 4 + 56 × 9",
+     "answer": 896,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1378,
+     "d_text": "{692}$.",
+     "t_text": "The final number is $\\boxed{896}$."
+    },
+    {
+     "expr": "83 × 2 × 4 + 63",
+     "answer": 727,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1776,
+     "d_text": "{706}$.",
+     "t_text": "The final number is $\\boxed{727}$."
+    },
+    {
+     "expr": "96 - 29 - 37 - 79",
+     "answer": -49,
+     "d": 0,
+     "o": 1,
+     "t": 1,
+     "L": 1567,
+     "d_text": "{-5}$.",
+     "t_text": "The final number is $\\boxed{-49}$."
+    },
+    {
+     "expr": "40 + 38 - 60 × 6",
+     "answer": -282,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 858,
+     "d_text": "{-62}$.",
+     "t_text": "The final number is $\\boxed{-282}$."
+    },
+    {
+     "expr": "51 - 68 + 50 + 29",
+     "answer": 62,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 762,
+     "d_text": "{-1}$.",
+     "t_text": "The final number is $\\boxed{62}$."
+    },
+    {
+     "expr": "56 + 20 + 32 + 43",
+     "answer": 151,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 1014,
+     "d_text": "{151}$.",
+     "t_text": "The final number is $\\boxed{151}$."
+    },
+    {
+     "expr": "93 + 12 × 8 + 16",
+     "answer": 205,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 956,
+     "d_text": "{217}$.",
+     "t_text": "The final number is $\\boxed{205}$."
+    },
+    {
+     "expr": "28 - 72 × 5 + 55",
+     "answer": -277,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1100,
+     "d_text": "{-119}$.",
+     "t_text": "The final number is $\\boxed{-277}$."
+    },
+    {
+     "expr": "95 × 4 + 42 + 53",
+     "answer": 475,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 809,
+     "d_text": "{471}$.",
+     "t_text": "The final number is $\\boxed{475}$."
+    },
+    {
+     "expr": "89 + 86 × 4 + 71",
+     "answer": 504,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 847,
+     "d_text": "{493}$.",
+     "t_text": "The final number is $\\boxed{504}$."
+    },
+    {
+     "expr": "31 + 98 - 37 - 81",
+     "answer": 11,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 798,
+     "d_text": "{-1}$.",
+     "t_text": "The final number is $\\boxed{11}$."
+    },
+    {
+     "expr": "77 × 3 + 39 + 21",
+     "answer": 291,
+     "d": 0,
+     "o": 1,
+     "t": 1,
+     "L": 645,
+     "d_text": "{279}$.",
+     "t_text": "The final number is $\\boxed{291}$."
+    },
+    {
+     "expr": "39 - 56 - 65 - 11",
+     "answer": -93,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 860,
+     "d_text": "{-42}$.",
+     "t_text": "The final number is $\\boxed{-93}$."
+    },
+    {
+     "expr": "14 × 3 + 67 - 53",
+     "answer": 56,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 502,
+     "d_text": "{48}$.",
+     "t_text": "The final number is $\\boxed{56}$."
+    },
+    {
+     "expr": "73 × 9 - 92 - 49",
+     "answer": 516,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1259,
+     "d_text": "{180}$.",
+     "t_text": "The final number is $\\boxed{516}$."
+    },
+    {
+     "expr": "34 × 2 - 62 - 23",
+     "answer": -17,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 639,
+     "d_text": "{-15}$.",
+     "t_text": "The final number is $\\boxed{-17}$."
+    },
+    {
+     "expr": "70 × 2 × 6 - 76",
+     "answer": 764,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 896,
+     "d_text": "{764}$.",
+     "t_text": "The final number is $\\boxed{764}$."
+    },
+    {
+     "expr": "37 + 17 × 6 - 60",
+     "answer": 79,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1666,
+     "d_text": "{149}$.",
+     "t_text": "The final number is $\\boxed{79}$."
+    },
+    {
+     "expr": "33 + 36 + 99 - 52",
+     "answer": 116,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 794,
+     "d_text": "{116}$.",
+     "t_text": "The final number is $\\boxed{116}$."
+    },
+    {
+     "expr": "88 + 30 × 3 - 76",
+     "answer": 102,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 793,
+     "d_text": "{112}$.",
+     "t_text": "The final number is $\\boxed{102}$."
+    },
+    {
+     "expr": "10 + 95 - 86 + 95",
+     "answer": 114,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 744,
+     "d_text": "{24}$.",
+     "t_text": "The final number is $\\boxed{114}$."
+    },
+    {
+     "expr": "98 - 17 + 83 × 8",
+     "answer": 745,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 511,
+     "d_text": "{717}$.",
+     "t_text": "The final number is $\\boxed{745}$."
+    },
+    {
+     "expr": "74 + 94 + 23 × 2",
+     "answer": 214,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 550,
+     "d_text": "{265}$.",
+     "t_text": "The final number is $\\boxed{214}$."
+    },
+    {
+     "expr": "49 × 2 - 47 × 2",
+     "answer": 4,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 821,
+     "d_text": "{4}$.",
+     "t_text": "The final number is $\\boxed{4}$."
+    },
+    {
+     "expr": "49 + 24 + 23 - 34",
+     "answer": 62,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 887,
+     "d_text": "{62}$.",
+     "t_text": "The final number is $\\boxed{62}$."
+    },
+    {
+     "expr": "72 + 37 + 59 × 3",
+     "answer": 286,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1138,
+     "d_text": "{255}$.",
+     "t_text": "The final number is $\\boxed{286}$."
+    },
+    {
+     "expr": "66 × 4 + 79 + 86",
+     "answer": 429,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 919,
+     "d_text": "{433}$.",
+     "t_text": "The final number is $\\boxed{429}$."
+    },
+    {
+     "expr": "73 - 76 × 2 × 4",
+     "answer": -535,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1137,
+     "d_text": "{-110}$.",
+     "t_text": "The final number is $\\boxed{-535}$."
+    },
+    {
+     "expr": "65 - 12 + 28 × 2",
+     "answer": 109,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1031,
+     "d_text": "{71}$.",
+     "t_text": "The final number is $\\boxed{109}$."
+    },
+    {
+     "expr": "32 - 71 + 69 + 12",
+     "answer": 42,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 532,
+     "d_text": "{32}$.",
+     "t_text": "The final number is $\\boxed{42}$."
+    },
+    {
+     "expr": "40 × 7 - 13 - 75",
+     "answer": 192,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1090,
+     "d_text": "{162}$.",
+     "t_text": "The final number is $\\boxed{192}$."
+    },
+    {
+     "expr": "17 + 19 + 93 - 54",
+     "answer": 75,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 1158,
+     "d_text": "{75}$.",
+     "t_text": "The final number is $\\boxed{75}$."
+    },
+    {
+     "expr": "53 + 92 - 59 - 55",
+     "answer": 31,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 749,
+     "d_text": "{35}$.",
+     "t_text": "The final number is $\\boxed{31}$."
+    },
+    {
+     "expr": "56 + 60 - 16 + 27",
+     "answer": 127,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 733,
+     "d_text": "{127}$.",
+     "t_text": "The final number is $\\boxed{127}$."
+    },
+    {
+     "expr": "88 × 5 - 11 + 78",
+     "answer": 507,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 760,
+     "d_text": "{453}$.",
+     "t_text": "The final number is $\\boxed{507}$."
+    },
+    {
+     "expr": "41 - 64 × 2 + 42",
+     "answer": -45,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 670,
+     "d_text": "{-1}$.",
+     "t_text": "The final number is $\\boxed{-45}$."
+    },
+    {
+     "expr": "99 - 66 + 25 × 8",
+     "answer": 233,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1033,
+     "d_text": "{203}$.",
+     "t_text": "The final number is $\\boxed{233}$."
+    },
+    {
+     "expr": "54 × 6 × 3 - 49",
+     "answer": 923,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 757,
+     "d_text": "{946}$.",
+     "t_text": "The final number is $\\boxed{923}$."
+    },
+    {
+     "expr": "39 × 7 × 8 + 66",
+     "answer": 2250,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1576,
+     "d_text": "{2238}$.",
+     "t_text": "The final number is $\\boxed{2250}$."
+    },
+    {
+     "expr": "21 + 96 + 37 + 89",
+     "answer": 243,
+     "d": 1,
+     "o": 1,
+     "t": 1,
+     "L": 994,
+     "d_text": "{243}$.",
+     "t_text": "The final number is $\\boxed{243}$."
+    },
+    {
+     "expr": "33 × 6 + 17 - 75",
+     "answer": 140,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 726,
+     "d_text": "{56}$.",
+     "t_text": "The final number is $\\boxed{140}$."
+    }
+   ],
+   "seconds": 286.4,
+   "generation_tokens": 50127
+  },
+  "4": {
+   "m": 4,
+   "direct": {
+    "n": 50,
+    "k": 3,
+    "acc": 0.06,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0
+   },
+   "dots": {
+    "n": 50,
+    "k": 1,
+    "acc": 0.02,
+    "cut_share": 0.02,
+    "multi_number_share": 0.02
+   },
+   "think": {
+    "n": 50,
+    "k": 50,
+    "acc": 1.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0,
+    "think_len_mean": 1283.0,
+    "think_len_median": 1165.0,
+    "think_len_max": 2197,
+    "capped_share": 0.0,
+    "no_answer_share": 0.0,
+    "no_open_share": 0.0
+   },
+   "rows": [
+    {
+     "expr": "43 + 69 × 5 - 61 × 2",
+     "answer": 266,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 763,
+     "d_text": "{252}$.",
+     "t_text": "The final number is $\\boxed{266}$."
+    },
+    {
+     "expr": "75 + 31 + 23 - 35 - 24",
+     "answer": 70,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 706,
+     "d_text": "{74}$.",
+     "t_text": "The final number is $\\boxed{70}$."
+    },
+    {
+     "expr": "32 - 55 + 27 × 6 - 11",
+     "answer": 128,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1118,
+     "d_text": "{-10}$.",
+     "t_text": "The final number is $\\boxed{128}$."
+    },
+    {
+     "expr": "66 × 2 + 13 + 80 - 29",
+     "answer": 196,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1299,
+     "d_text": "{143}$.",
+     "t_text": "The final number is $\\boxed{196}$."
+    },
+    {
+     "expr": "24 + 95 × 3 + 65 + 18",
+     "answer": 392,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1380,
+     "d_text": "{402}$.",
+     "t_text": "The final number is $\\boxed{392}$."
+    },
+    {
+     "expr": "75 × 2 × 4 × 8 + 68",
+     "answer": 4868,
+     "d": 1,
+     "o": 0,
+     "t": 1,
+     "L": 1442,
+     "d_text": "{4868}$.",
+     "t_text": "The final number is $\\boxed{4868}$."
+    },
+    {
+     "expr": "15 × 4 × 2 - 70 - 48",
+     "answer": 2,
+     "d": 1,
+     "o": 0,
+     "t": 1,
+     "L": 1052,
+     "d_text": "{2}$.",
+     "t_text": "The final number is $\\boxed{2}$."
+    },
+    {
+     "expr": "56 + 18 × 2 × 2 + 15",
+     "answer": 143,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 883,
+     "d_text": "{107}$.",
+     "t_text": "The final number is $\\boxed{143}$."
+    },
+    {
+     "expr": "59 + 56 - 39 - 82 - 24",
+     "answer": -30,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1519,
+     "d_text": "{-26}$.",
+     "t_text": "The final number is $\\boxed{-30}$."
+    },
+    {
+     "expr": "53 + 46 - 83 - 16 × 3",
+     "answer": -32,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1438,
+     "d_text": "{-12}$.",
+     "t_text": "The final number is $\\boxed{-32}$."
+    },
+    {
+     "expr": "99 - 95 × 6 - 29 + 76",
+     "answer": -424,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1818,
+     "d_text": "{-10}$.",
+     "t_text": "The final number is $\\boxed{-424}$."
+    },
+    {
+     "expr": "31 + 69 - 76 - 92 - 22",
+     "answer": -90,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1730,
+     "d_text": "{-38}$.",
+     "t_text": "The final number is $\\boxed{-90}$."
+    },
+    {
+     "expr": "10 × 8 - 19 × 9 + 77",
+     "answer": -14,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1743,
+     "d_text": "{10}$.",
+     "t_text": "The final number is $\\boxed{-14}$."
+    },
+    {
+     "expr": "10 + 40 - 86 + 54 + 22",
+     "answer": 40,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 916,
+     "d_text": "{4}$.",
+     "t_text": "The final number is $\\boxed{40}$."
+    },
+    {
+     "expr": "84 + 97 + 23 × 5 × 9",
+     "answer": 1216,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 876,
+     "d_text": "{1239}$.",
+     "t_text": "The final number is $\\boxed{1216}$."
+    },
+    {
+     "expr": "88 × 2 + 53 + 36 × 9",
+     "answer": 553,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 980,
+     "d_text": "{430}$.",
+     "t_text": "The final number is $\\boxed{553}$."
+    },
+    {
+     "expr": "77 + 86 + 52 × 9 - 59",
+     "answer": 572,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1418,
+     "d_text": "{550}$.",
+     "t_text": "The final number is $\\boxed{572}$."
+    },
+    {
+     "expr": "75 × 4 - 69 + 75 + 26",
+     "answer": 332,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1465,
+     "d_text": "{374}$.",
+     "t_text": "The final number is $\\boxed{332}$."
+    },
+    {
+     "expr": "57 - 24 + 53 - 37 × 7",
+     "answer": -173,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2197,
+     "d_text": "{109}$.",
+     "t_text": "The final number is $\\boxed{-173}$."
+    },
+    {
+     "expr": "63 - 71 × 2 - 54 + 81",
+     "answer": -52,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1726,
+     "d_text": "{-10}$.",
+     "t_text": "The final number is $\\boxed{-52}$."
+    },
+    {
+     "expr": "58 - 13 × 8 - 51 - 63",
+     "answer": -160,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 858,
+     "d_text": "{-64}$.",
+     "t_text": "The final number is $\\boxed{-160}$."
+    },
+    {
+     "expr": "71 × 2 × 8 - 89 × 9",
+     "answer": 335,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1120,
+     "d_text": "{49}$.",
+     "t_text": "The final number is $\\boxed{335}$."
+    },
+    {
+     "expr": "21 + 45 × 3 - 87 - 87",
+     "answer": -18,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 619,
+     "d_text": "{117}$.",
+     "t_text": "The final number is $\\boxed{-18}$."
+    },
+    {
+     "expr": "95 × 2 + 22 × 6 + 46",
+     "answer": 368,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 979,
+     "d_text": "{302}$.",
+     "t_text": "The final number is $\\boxed{368}$."
+    },
+    {
+     "expr": "13 - 33 + 77 - 22 + 42",
+     "answer": 77,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1093,
+     "d_text": "{-1}$.",
+     "t_text": "The final number is $\\boxed{77}$."
+    },
+    {
+     "expr": "86 × 7 × 8 - 99 + 26",
+     "answer": 4743,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2186,
+     "d_text": "{4995}$.",
+     "t_text": "The final number is $\\boxed{4743}$."
+    },
+    {
+     "expr": "49 × 2 + 88 - 25 × 6",
+     "answer": 36,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1710,
+     "d_text": "{12}$.",
+     "t_text": "The final number is $\\boxed{36}$."
+    },
+    {
+     "expr": "51 - 41 - 42 - 61 × 3",
+     "answer": -215,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1271,
+     "d_text": "{-113}$.",
+     "t_text": "The final number is $\\boxed{-215}$."
+    },
+    {
+     "expr": "98 - 93 + 36 × 2 - 89",
+     "answer": -12,
+     "d": 1,
+     "o": 0,
+     "t": 1,
+     "L": 882,
+     "d_text": "{-12}$.",
+     "t_text": "The final number is $\\boxed{-12}$."
+    },
+    {
+     "expr": "59 + 68 - 13 + 41 - 56",
+     "answer": 99,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 902,
+     "d_text": "{101}$.",
+     "t_text": "The final number is $\\boxed{99}$."
+    },
+    {
+     "expr": "79 × 4 - 38 × 4 + 60",
+     "answer": 224,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1628,
+     "d_text": "{208}$.",
+     "t_text": "The final number is $\\boxed{224}$."
+    },
+    {
+     "expr": "36 - 72 + 53 × 5 + 33",
+     "answer": 262,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1153,
+     "d_text": "{278}$.",
+     "t_text": "The final number is $\\boxed{262}$."
+    },
+    {
+     "expr": "20 + 22 - 72 - 56 × 7",
+     "answer": -422,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1267,
+     "d_text": "{-292}$.",
+     "t_text": "The final number is $\\boxed{-422}$."
+    },
+    {
+     "expr": "27 × 2 + 99 × 5 - 58",
+     "answer": 491,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1798,
+     "d_text": "{545}$.",
+     "t_text": "The final number is $\\boxed{491}$."
+    },
+    {
+     "expr": "50 - 39 + 65 - 53 - 74",
+     "answer": -51,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1430,
+     "d_text": "{-1}$.",
+     "t_text": "The final number is $\\boxed{-51}$."
+    },
+    {
+     "expr": "69 - 21 - 79 - 31 - 78",
+     "answer": -140,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 978,
+     "d_text": "{-50}$.",
+     "t_text": "The final number is $\\boxed{-140}$."
+    },
+    {
+     "expr": "42 - 13 - 32 - 35 × 8",
+     "answer": -283,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1076,
+     "d_text": "{-63}$.",
+     "t_text": "The final number is $\\boxed{-283}$."
+    },
+    {
+     "expr": "35 + 23 + 59 × 4 + 43",
+     "answer": 337,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1074,
+     "d_text": "{355}$.",
+     "t_text": "The final number is $\\boxed{337}$."
+    },
+    {
+     "expr": "35 × 2 + 58 - 41 - 90",
+     "answer": -3,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1177,
+     "d_text": "{-33}$.",
+     "t_text": "The final number is $\\boxed{-3}$."
+    },
+    {
+     "expr": "18 × 7 × 5 - 15 × 4",
+     "answer": 570,
+     "d": 0,
+     "o": 1,
+     "t": 1,
+     "L": 1132,
+     "d_text": "{540}$.",
+     "t_text": "The final number is $\\boxed{570}$."
+    },
+    {
+     "expr": "63 × 9 + 81 + 29 + 61",
+     "answer": 738,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1332,
+     "d_text": "{800}$.",
+     "t_text": "The final number is $\\boxed{738}$."
+    },
+    {
+     "expr": "52 - 73 × 9 - 93 + 35",
+     "answer": -663,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1879,
+     "d_text": "{-349}$.",
+     "t_text": "The final number is $\\boxed{-663}$."
+    },
+    {
+     "expr": "33 + 23 - 29 - 90 × 8",
+     "answer": -693,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1011,
+     "d_text": "{-634}$.",
+     "t_text": "The final number is $\\boxed{-693}$."
+    },
+    {
+     "expr": "11 + 21 × 9 - 52 × 6",
+     "answer": -112,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1670,
+     "d_text": "{15}$.",
+     "t_text": "The final number is $\\boxed{-112}$."
+    },
+    {
+     "expr": "60 - 43 + 97 + 14 - 17",
+     "answer": 111,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1101,
+     "d_text": "{115}$.",
+     "t_text": "The final number is $\\boxed{111}$."
+    },
+    {
+     "expr": "28 × 2 - 61 × 9 - 26",
+     "answer": -519,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1061,
+     "d_text": "{-521}$.",
+     "t_text": "The final number is $\\boxed{-519}$."
+    },
+    {
+     "expr": "56 - 84 - 22 × 7 × 9",
+     "answer": -1414,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2123,
+     "d_text": "{-224}$.",
+     "t_text": "The final number is $\\boxed{-1414}$."
+    },
+    {
+     "expr": "91 - 11 - 61 - 67 + 41",
+     "answer": -7,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 970,
+     "d_text": "{-47}$.",
+     "t_text": "The final number is $\\boxed{-7}$."
+    },
+    {
+     "expr": "18 × 9 × 2 × 8 × 8",
+     "answer": 20736,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 960,
+     "d_text": "{11520}$.",
+     "t_text": "The final number is $\\boxed{20736}$."
+    },
+    {
+     "expr": "38 + 50 - 79 × 6 - 38",
+     "answer": -424,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1224,
+     "d_text": "{-316}$.",
+     "t_text": "The final number is $\\boxed{-424}$."
+    }
+   ],
+   "seconds": 405.7,
+   "generation_tokens": 65590
+  },
+  "6": {
+   "m": 6,
+   "direct": {
+    "n": 50,
+    "k": 0,
+    "acc": 0.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0
+   },
+   "dots": {
+    "n": 50,
+    "k": 0,
+    "acc": 0.0,
+    "cut_share": 0.06,
+    "multi_number_share": 0.06
+   },
+   "think": {
+    "n": 50,
+    "k": 50,
+    "acc": 1.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0,
+    "think_len_mean": 1788.0,
+    "think_len_median": 1641.0,
+    "think_len_max": 3545,
+    "capped_share": 0.0,
+    "no_answer_share": 0.0,
+    "no_open_share": 0.0
+   },
+   "rows": [
+    {
+     "expr": "83 - 49 - 92 + 12 - 13 + 67 × 4",
+     "answer": 209,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1489,
+     "d_text": "{147}$.",
+     "t_text": "The final number is $\\boxed{209}$."
+    },
+    {
+     "expr": "90 - 80 × 8 × 5 - 16 + 80 - 25",
+     "answer": -3071,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1961,
+     "d_text": "{-115}$.",
+     "t_text": "The final number is $\\boxed{-3071}$."
+    },
+    {
+     "expr": "14 - 38 + 11 × 4 × 5 + 79 - 87",
+     "answer": 188,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1463,
+     "d_text": "{-1}$.",
+     "t_text": "The final number is $\\boxed{188}$."
+    },
+    {
+     "expr": "16 + 82 - 40 + 80 - 79 × 6 - 77",
+     "answer": -413,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1216,
+     "d_text": "{-17}$.",
+     "t_text": "The final number is $\\boxed{-413}$."
+    },
+    {
+     "expr": "13 - 96 - 74 + 40 + 62 - 93 - 86",
+     "answer": -234,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1877,
+     "d_text": "{-123}$.",
+     "t_text": "The final number is $\\boxed{-234}$."
+    },
+    {
+     "expr": "18 + 14 + 41 × 2 × 7 × 4 - 85",
+     "answer": 2243,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2142,
+     "d_text": "{2413}$.",
+     "t_text": "The final number is $\\boxed{2243}$."
+    },
+    {
+     "expr": "90 × 8 + 79 + 50 - 96 × 3 + 55",
+     "answer": 616,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1620,
+     "d_text": "{575}$.",
+     "t_text": "The final number is $\\boxed{616}$."
+    },
+    {
+     "expr": "44 - 67 + 91 - 96 + 85 - 61 × 3",
+     "answer": -126,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1403,
+     "d_text": "{-64}$.",
+     "t_text": "The final number is $\\boxed{-126}$."
+    },
+    {
+     "expr": "28 + 12 + 31 - 31 - 17 - 43 - 11",
+     "answer": -31,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1541,
+     "d_text": "{-2}$.",
+     "t_text": "The final number is $\\boxed{-31}$."
+    },
+    {
+     "expr": "97 + 17 × 3 + 93 + 19 - 69 + 68",
+     "answer": 259,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1179,
+     "d_text": "{195}$.",
+     "t_text": "The final number is $\\boxed{259}$."
+    },
+    {
+     "expr": "46 × 9 × 7 × 4 + 63 + 32 - 62",
+     "answer": 11625,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3048,
+     "d_text": "{2945}$.",
+     "t_text": "The final number is $\\boxed{11625}$."
+    },
+    {
+     "expr": "34 + 48 + 12 - 93 - 61 + 36 × 3",
+     "answer": 48,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1498,
+     "d_text": "{34}$.",
+     "t_text": "The final number is $\\boxed{48}$."
+    },
+    {
+     "expr": "19 + 49 + 90 + 22 × 4 × 7 - 48",
+     "answer": 726,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1662,
+     "d_text": "{559}$.",
+     "t_text": "The final number is $\\boxed{726}$."
+    },
+    {
+     "expr": "54 - 60 × 6 - 11 + 88 × 7 × 8",
+     "answer": 4611,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2629,
+     "d_text": "{4542}$.",
+     "t_text": "The final number is $\\boxed{4611}$."
+    },
+    {
+     "expr": "90 - 75 × 8 × 8 × 2 × 2 - 50",
+     "answer": -19160,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2154,
+     "d_text": "{-1010}$.",
+     "t_text": "The final number is $\\boxed{-19160}$."
+    },
+    {
+     "expr": "35 - 52 + 58 - 89 - 47 - 55 + 58",
+     "answer": -92,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2062,
+     "d_text": "{-54}$.",
+     "t_text": "The final number is $\\boxed{-92}$."
+    },
+    {
+     "expr": "79 + 19 - 62 + 91 + 46 × 8 + 77",
+     "answer": 572,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1022,
+     "d_text": "{715}$.",
+     "t_text": "The final number is $\\boxed{572}$."
+    },
+    {
+     "expr": "80 + 52 - 32 + 44 + 85 × 3 + 94",
+     "answer": 493,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1467,
+     "d_text": "{433}$.",
+     "t_text": "The final number is $\\boxed{493}$."
+    },
+    {
+     "expr": "59 - 23 + 20 - 66 × 6 × 8 + 91",
+     "answer": -3021,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2711,
+     "d_text": "{-127}$.",
+     "t_text": "The final number is $\\boxed{-3021}$."
+    },
+    {
+     "expr": "70 × 9 - 34 × 5 × 8 + 37 + 27",
+     "answer": -666,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2297,
+     "d_text": "{169}$.",
+     "t_text": "The final number is $\\boxed{-666}$."
+    },
+    {
+     "expr": "58 + 16 - 69 + 64 - 90 + 79 + 26",
+     "answer": 84,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1151,
+     "d_text": "{54}$.",
+     "t_text": "The final number is $\\boxed{84}$."
+    },
+    {
+     "expr": "26 - 44 × 5 - 64 + 77 - 30 + 66",
+     "answer": -145,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1877,
+     "d_text": "{-3}$.",
+     "t_text": "The final number is $\\boxed{-145}$."
+    },
+    {
+     "expr": "24 - 90 + 98 × 5 × 2 + 58 - 78",
+     "answer": 894,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1155,
+     "d_text": "{634}$.",
+     "t_text": "The final number is $\\boxed{894}$."
+    },
+    {
+     "expr": "80 - 85 × 3 × 8 + 65 - 34 + 77",
+     "answer": -1852,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2427,
+     "d_text": "{-11}$.",
+     "t_text": "The final number is $\\boxed{-1852}$."
+    },
+    {
+     "expr": "70 + 95 - 61 × 4 × 9 + 81 - 41",
+     "answer": -1991,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1256,
+     "d_text": "{19}$.",
+     "t_text": "The final number is $\\boxed{-1991}$."
+    },
+    {
+     "expr": "80 + 65 + 72 × 4 + 20 × 7 + 94",
+     "answer": 667,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1819,
+     "d_text": "{513}$.",
+     "t_text": "The final number is $\\boxed{667}$."
+    },
+    {
+     "expr": "73 - 79 + 54 + 84 + 24 - 83 - 88",
+     "answer": -15,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2180,
+     "d_text": "{-14}$.",
+     "t_text": "The final number is $\\boxed{-15}$."
+    },
+    {
+     "expr": "97 × 2 × 6 × 7 × 3 - 42 + 35",
+     "answer": 24437,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2547,
+     "d_text": "{8119}$.",
+     "t_text": "The final number is $\\boxed{24437}$."
+    },
+    {
+     "expr": "41 + 60 - 19 + 19 - 84 + 44 × 5",
+     "answer": 237,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1278,
+     "d_text": "{100}$.",
+     "t_text": "The final number is $\\boxed{237}$."
+    },
+    {
+     "expr": "48 × 7 - 51 × 8 × 3 × 5 + 90",
+     "answer": -5694,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3048,
+     "d_text": "{-1362}$.",
+     "t_text": "The final number is $\\boxed{-5694}$."
+    },
+    {
+     "expr": "70 × 7 - 29 × 6 + 77 × 7 + 18",
+     "answer": 873,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1745,
+     "d_text": "{637}$.",
+     "t_text": "The final number is $\\boxed{873}$."
+    },
+    {
+     "expr": "51 - 23 × 2 - 50 × 8 + 29 × 9",
+     "answer": -134,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1487,
+     "d_text": "{-395}$.",
+     "t_text": "The final number is $\\boxed{-134}$."
+    },
+    {
+     "expr": "92 × 2 × 6 + 33 - 37 + 84 × 3",
+     "answer": 1352,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1414,
+     "d_text": "{567}$.",
+     "t_text": "The final number is $\\boxed{1352}$."
+    },
+    {
+     "expr": "15 + 18 + 29 - 11 - 34 + 43 - 52",
+     "answer": 8,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1175,
+     "d_text": "{-17}$.",
+     "t_text": "The final number is $\\boxed{8}$."
+    },
+    {
+     "expr": "66 - 78 - 22 × 8 - 59 × 4 - 77",
+     "answer": -501,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1850,
+     "d_text": "{-229}$.",
+     "t_text": "The final number is $\\boxed{-501}$."
+    },
+    {
+     "expr": "93 - 56 × 8 - 77 + 17 × 4 + 74",
+     "answer": -290,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2414,
+     "d_text": "{13}$.",
+     "t_text": "The final number is $\\boxed{-290}$."
+    },
+    {
+     "expr": "44 - 52 × 8 + 93 + 22 + 88 × 3",
+     "answer": 7,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1896,
+     "d_text": "{-25}$.",
+     "t_text": "The final number is $\\boxed{7}$."
+    },
+    {
+     "expr": "10 - 36 - 16 + 27 + 85 - 65 + 13",
+     "answer": 18,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 911,
+     "d_text": "{38}$.",
+     "t_text": "The final number is $\\boxed{18}$."
+    },
+    {
+     "expr": "50 - 70 × 5 - 54 + 39 + 85 + 85",
+     "answer": -145,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2240,
+     "d_text": "{-1}$.",
+     "t_text": "The final number is $\\boxed{-145}$."
+    },
+    {
+     "expr": "92 × 3 × 3 + 78 - 93 + 15 - 65",
+     "answer": 763,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1487,
+     "d_text": "{12}$.",
+     "t_text": "The final number is $\\boxed{763}$."
+    },
+    {
+     "expr": "39 × 5 + 64 × 4 - 33 × 6 + 76",
+     "answer": 329,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2552,
+     "d_text": "{371}$.",
+     "t_text": "The final number is $\\boxed{329}$."
+    },
+    {
+     "expr": "10 × 6 × 9 × 7 + 91 - 90 - 22",
+     "answer": 3759,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1666,
+     "d_text": "{547}$.",
+     "t_text": "The final number is $\\boxed{3759}$."
+    },
+    {
+     "expr": "54 + 32 + 73 - 76 - 20 - 54 - 22",
+     "answer": -13,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1365,
+     "d_text": "{-15}$.",
+     "t_text": "The final number is $\\boxed{-13}$."
+    },
+    {
+     "expr": "60 + 10 + 84 × 7 + 92 + 90 - 52",
+     "answer": 788,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1137,
+     "d_text": "{676}$.",
+     "t_text": "The final number is $\\boxed{788}$."
+    },
+    {
+     "expr": "21 × 2 × 9 × 3 - 38 - 53 × 8",
+     "answer": 672,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3545,
+     "d_text": "{17}$.",
+     "t_text": "The final number is $\\boxed{672}$."
+    },
+    {
+     "expr": "75 × 9 - 36 - 77 - 44 × 2 × 8",
+     "answer": -142,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1454,
+     "d_text": "{-107}$.",
+     "t_text": "The final number is $\\boxed{-142}$."
+    },
+    {
+     "expr": "83 + 27 + 74 × 5 + 42 - 18 + 17",
+     "answer": 521,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1273,
+     "d_text": "{475}$.",
+     "t_text": "The final number is $\\boxed{521}$."
+    },
+    {
+     "expr": "36 × 9 + 43 + 14 + 31 + 71 × 6",
+     "answer": 838,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1877,
+     "d_text": "{484}$.",
+     "t_text": "The final number is $\\boxed{838}$."
+    },
+    {
+     "expr": "82 + 86 - 32 × 5 - 67 - 70 - 28",
+     "answer": -157,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1216,
+     "d_text": "{-3}$.",
+     "t_text": "The final number is $\\boxed{-157}$."
+    },
+    {
+     "expr": "52 × 3 + 81 - 46 + 26 × 5 - 47",
+     "answer": 274,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1502,
+     "d_text": "{170}$.",
+     "t_text": "The final number is $\\boxed{274}$."
+    }
+   ],
+   "seconds": 587.4,
+   "generation_tokens": 90883
+  },
+  "8": {
+   "m": 8,
+   "direct": {
+    "n": 50,
+    "k": 0,
+    "acc": 0.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0
+   },
+   "dots": {
+    "n": 50,
+    "k": 0,
+    "acc": 0.0,
+    "cut_share": 0.12,
+    "multi_number_share": 0.08
+   },
+   "think": {
+    "n": 50,
+    "k": 50,
+    "acc": 1.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0,
+    "think_len_mean": 2177.0,
+    "think_len_median": 2172.0,
+    "think_len_max": 4097,
+    "capped_share": 0.02,
+    "no_answer_share": 0.0,
+    "no_open_share": 0.0
+   },
+   "rows": [
+    {
+     "expr": "10 - 95 × 5 × 4 + 42 + 28 + 94 + 75 × 5",
+     "answer": -1351,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2926,
+     "d_text": "{-13}$.",
+     "t_text": "The final number is $\\boxed{-1351}$."
+    },
+    {
+     "expr": "31 - 79 × 3 + 30 + 44 × 3 × 9 - 32 - 39",
+     "answer": 941,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1728,
+     "d_text": "{-17}$.",
+     "t_text": "The final number is $\\boxed{941}$."
+    },
+    {
+     "expr": "54 × 3 + 99 - 35 × 3 - 91 - 43 - 84 + 52",
+     "answer": -10,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2248,
+     "d_text": "{121}$.",
+     "t_text": "The final number is $\\boxed{-10}$."
+    },
+    {
+     "expr": "40 × 7 - 50 + 30 - 86 × 3 × 4 - 89 × 3",
+     "answer": -1039,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3097,
+     "d_text": "{-1002}$.",
+     "t_text": "The final number is $\\boxed{-1039}$."
+    },
+    {
+     "expr": "24 × 2 - 38 + 90 + 18 - 51 + 27 × 8 × 6",
+     "answer": 1363,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1760,
+     "d_text": "{1056}$.",
+     "t_text": "The final number is $\\boxed{1363}$."
+    },
+    {
+     "expr": "91 - 12 × 6 + 17 + 26 × 3 - 48 - 93 × 8",
+     "answer": -678,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2518,
+     "d_text": "{-539}$.",
+     "t_text": "The final number is $\\boxed{-678}$."
+    },
+    {
+     "expr": "31 + 95 + 58 × 2 × 8 × 7 + 24 - 23 × 3",
+     "answer": 6577,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2951,
+     "d_text": "{4679}$.",
+     "t_text": "The final number is $\\boxed{6577}$."
+    },
+    {
+     "expr": "18 + 14 - 46 × 5 - 75 + 17 - 98 × 5 × 8",
+     "answer": -4176,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3106,
+     "d_text": "{-479}$.",
+     "t_text": "The final number is $\\boxed{-4176}$."
+    },
+    {
+     "expr": "83 + 21 × 2 - 66 + 89 - 85 + 81 × 2 + 95",
+     "answer": 320,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2420,
+     "d_text": "{184}$.",
+     "t_text": "The final number is $\\boxed{320}$."
+    },
+    {
+     "expr": "87 - 13 + 90 × 9 × 8 + 69 - 24 - 26 - 25",
+     "answer": 6548,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1800,
+     "d_text": "{783}$.",
+     "t_text": "The final number is $\\boxed{6548}$."
+    },
+    {
+     "expr": "98 × 6 × 8 - 58 + 55 - 84 + 39 - 21 - 92",
+     "answer": 4543,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2220,
+     "d_text": "{-13}$.",
+     "t_text": "The final number is $\\boxed{4543}$."
+    },
+    {
+     "expr": "75 + 62 - 17 × 6 × 9 × 2 - 96 - 60 + 19",
+     "answer": -1836,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2751,
+     "d_text": "{-115}$.",
+     "t_text": "The final number is $\\boxed{-1836}$."
+    },
+    {
+     "expr": "94 - 27 + 45 - 92 - 11 + 46 - 38 - 14 × 2",
+     "answer": -11,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1703,
+     "d_text": "{-10}$.",
+     "t_text": "The final number is $\\boxed{-11}$."
+    },
+    {
+     "expr": "64 + 31 + 54 × 6 + 51 - 30 × 4 × 6 - 87",
+     "answer": -337,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2034,
+     "d_text": "{357}$.",
+     "t_text": "The final number is $\\boxed{-337}$."
+    },
+    {
+     "expr": "65 + 73 + 69 - 16 × 9 + 75 + 27 + 57 × 4",
+     "answer": 393,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1965,
+     "d_text": "{540}$.",
+     "t_text": "The final number is $\\boxed{393}$."
+    },
+    {
+     "expr": "21 - 14 × 3 - 13 + 34 - 73 × 7 - 59 - 88",
+     "answer": -658,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1865,
+     "d_text": "{-356}$.",
+     "t_text": "The final number is $\\boxed{-658}$."
+    },
+    {
+     "expr": "71 + 24 × 8 + 84 + 69 × 7 + 57 + 78 + 25",
+     "answer": 990,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2860,
+     "d_text": "{649}$.",
+     "t_text": "The final number is $\\boxed{990}$."
+    },
+    {
+     "expr": "51 × 6 + 85 × 7 - 37 + 89 - 62 + 38 × 2",
+     "answer": 967,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1918,
+     "d_text": "{585}$.",
+     "t_text": "The final number is $\\boxed{967}$."
+    },
+    {
+     "expr": "96 × 7 + 85 - 50 + 29 - 24 + 10 × 5 - 28",
+     "answer": 734,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1710,
+     "d_text": "{529}$.",
+     "t_text": "The final number is $\\boxed{734}$."
+    },
+    {
+     "expr": "96 - 99 × 4 - 26 - 34 + 67 - 92 × 6 + 48",
+     "answer": -797,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2826,
+     "d_text": "{-113}$.",
+     "t_text": "The final number is $\\boxed{-797}$."
+    },
+    {
+     "expr": "54 × 4 × 6 - 84 × 6 - 44 - 38 × 5 × 5",
+     "answer": -202,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1316,
+     "d_text": "{-302}$.",
+     "t_text": "The final number is $\\boxed{-202}$."
+    },
+    {
+     "expr": "69 + 19 - 59 + 76 + 23 - 46 × 3 + 34 - 20",
+     "answer": 4,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1310,
+     "d_text": "{103}$.",
+     "t_text": "The final number is $\\boxed{4}$."
+    },
+    {
+     "expr": "87 × 8 × 2 × 8 - 88 + 11 × 9 + 60 + 55",
+     "answer": 11262,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1886,
+     "d_text": "{1439}$.",
+     "t_text": "The final number is $\\boxed{11262}$."
+    },
+    {
+     "expr": "42 × 6 × 4 × 2 - 48 + 21 - 44 - 43 - 42",
+     "answer": 1860,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2603,
+     "d_text": "{-13}$.",
+     "t_text": "The final number is $\\boxed{1860}$."
+    },
+    {
+     "expr": "27 - 69 + 94 + 26 - 69 × 9 + 42 + 79 - 85",
+     "answer": -507,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1410,
+     "d_text": "{-13}$.",
+     "t_text": "The final number is $\\boxed{-507}$."
+    },
+    {
+     "expr": "36 - 96 × 6 + 42 × 2 × 6 - 42 + 62 × 8",
+     "answer": 418,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1419,
+     "d_text": "{138}$.",
+     "t_text": "The final number is $\\boxed{418}$."
+    },
+    {
+     "expr": "63 × 3 - 17 - 60 + 45 + 40 - 95 - 90 + 98",
+     "answer": 110,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2151,
+     "d_text": "{-1}$.",
+     "t_text": "The final number is $\\boxed{110}$."
+    },
+    {
+     "expr": "51 × 5 + 15 × 6 + 79 × 7 - 74 + 76 + 43",
+     "answer": 943,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2756,
+     "d_text": "{960}$.",
+     "t_text": "The final number is $\\boxed{943}$."
+    },
+    {
+     "expr": "88 + 38 - 61 × 4 - 16 + 55 + 69 + 56 + 50",
+     "answer": 96,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1636,
+     "d_text": "{224}$.",
+     "t_text": "The final number is $\\boxed{96}$."
+    },
+    {
+     "expr": "74 + 41 × 9 + 49 + 73 × 5 - 34 × 7 - 29",
+     "answer": 590,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2526,
+     "d_text": "{564}$.",
+     "t_text": "The final number is $\\boxed{590}$."
+    },
+    {
+     "expr": "77 - 75 - 14 + 51 × 7 × 8 - 19 + 12 × 2",
+     "answer": 2849,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2128,
+     "d_text": "{332}$.",
+     "t_text": "The final number is $\\boxed{2849}$."
+    },
+    {
+     "expr": "86 - 63 - 16 × 2 × 9 + 43 - 37 + 10 × 8",
+     "answer": -179,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2766,
+     "d_text": "{12}$.",
+     "t_text": "The final number is $\\boxed{-179}$."
+    },
+    {
+     "expr": "80 × 3 × 9 + 51 × 4 - 55 × 2 + 72 × 2",
+     "answer": 2398,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3126,
+     "d_text": "{1006}$.",
+     "t_text": "The final number is $\\boxed{2398}$."
+    },
+    {
+     "expr": "57 + 82 - 91 + 84 - 96 + 27 × 4 × 7 + 98",
+     "answer": 890,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1481,
+     "d_text": "{649}$.",
+     "t_text": "The final number is $\\boxed{890}$."
+    },
+    {
+     "expr": "48 × 8 + 13 + 65 × 3 × 4 - 50 + 42 + 86",
+     "answer": 1255,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2364,
+     "d_text": "{1031}$.",
+     "t_text": "The final number is $\\boxed{1255}$."
+    },
+    {
+     "expr": "25 - 20 - 58 - 87 × 7 + 88 - 83 + 82 - 53",
+     "answer": -628,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1421,
+     "d_text": "{-83}$.",
+     "t_text": "The final number is $\\boxed{-628}$."
+    },
+    {
+     "expr": "85 × 2 + 98 - 90 × 2 - 85 × 5 - 21 + 94",
+     "answer": -264,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2311,
+     "d_text": "{-151}$.",
+     "t_text": "The final number is $\\boxed{-264}$."
+    },
+    {
+     "expr": "99 + 71 - 54 - 38 × 6 × 3 × 7 × 2 - 20",
+     "answer": -9480,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2266,
+     "d_text": "{-1120}$.",
+     "t_text": "The final number is $\\boxed{-9480}$."
+    },
+    {
+     "expr": "53 + 72 + 75 × 2 + 82 + 47 - 30 + 20 - 57",
+     "answer": 337,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1092,
+     "d_text": "{229}$.",
+     "t_text": "The final number is $\\boxed{337}$."
+    },
+    {
+     "expr": "69 × 8 + 62 + 22 + 31 + 85 - 86 - 50 - 66",
+     "answer": 550,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2341,
+     "d_text": "{257}$.",
+     "t_text": "The final number is $\\boxed{550}$."
+    },
+    {
+     "expr": "19 + 86 + 53 - 25 × 8 - 15 × 7 × 4 + 43",
+     "answer": -419,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1667,
+     "d_text": "{126}$.",
+     "t_text": "The final number is $\\boxed{-419}$."
+    },
+    {
+     "expr": "18 + 30 × 8 + 40 × 9 + 52 + 80 + 67 + 93",
+     "answer": 910,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2192,
+     "d_text": "{1117}$.",
+     "t_text": "The final number is $\\boxed{910}$."
+    },
+    {
+     "expr": "56 + 15 × 7 + 77 + 23 + 16 - 70 + 86 × 7",
+     "answer": 809,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2342,
+     "d_text": "{738}$.",
+     "t_text": "The final number is $\\boxed{809}$."
+    },
+    {
+     "expr": "78 - 15 - 28 × 8 + 15 - 97 × 2 × 8 + 70",
+     "answer": -1628,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2927,
+     "d_text": "{-1154}$.",
+     "t_text": "The final number is $\\boxed{-1628}$."
+    },
+    {
+     "expr": "94 - 73 × 4 + 23 - 22 × 3 - 73 + 87 - 80",
+     "answer": -307,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2322,
+     "d_text": "{-1}$.",
+     "t_text": "The final number is $\\boxed{-307}$."
+    },
+    {
+     "expr": "13 × 3 + 27 + 80 + 77 × 8 - 83 × 2 - 72",
+     "answer": 524,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1695,
+     "d_text": "{678}$.",
+     "t_text": "The final number is $\\boxed{524}$."
+    },
+    {
+     "expr": "23 - 13 - 30 + 90 × 4 - 46 × 2 × 3 + 38",
+     "answer": 102,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1324,
+     "d_text": "{223}$.",
+     "t_text": "The final number is $\\boxed{102}$."
+    },
+    {
+     "expr": "78 - 38 × 3 × 3 + 99 + 38 × 5 × 5 + 92",
+     "answer": 877,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2115,
+     "d_text": "{1445}$.",
+     "t_text": "The final number is $\\boxed{877}$."
+    },
+    {
+     "expr": "24 × 6 × 4 × 9 × 3 × 7 × 8 - 19 × 5",
+     "answer": 870817,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 4097,
+     "d_text": "{24193}$.",
+     "t_text": "The final number is $\\boxed{870817}$."
+    },
+    {
+     "expr": "64 + 89 × 9 - 39 - 75 + 47 × 7 + 71 + 45",
+     "answer": 1196,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1438,
+     "d_text": "{1162}$.",
+     "t_text": "The final number is $\\boxed{1196}$."
+    }
+   ],
+   "seconds": 713.2,
+   "generation_tokens": 110399
+  },
+  "12": {
+   "m": 12,
+   "direct": {
+    "n": 50,
+    "k": 0,
+    "acc": 0.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0
+   },
+   "dots": {
+    "n": 50,
+    "k": 0,
+    "acc": 0.0,
+    "cut_share": 0.32,
+    "multi_number_share": 0.2
+   },
+   "think": {
+    "n": 50,
+    "k": 50,
+    "acc": 1.0,
+    "cut_share": 0.0,
+    "multi_number_share": 0.0,
+    "think_len_mean": 2732.0,
+    "think_len_median": 2528.0,
+    "think_len_max": 4097,
+    "capped_share": 0.02,
+    "no_answer_share": 0.0,
+    "no_open_share": 0.0
+   },
+   "rows": [
+    {
+     "expr": "61 × 5 + 61 × 8 × 5 × 2 + 80 × 7 - 63 - 46 + 50 × 4 × 2",
+     "answer": 6036,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3198,
+     "d_text": "{1139}$.",
+     "t_text": "The final number is $\\boxed{6036}$."
+    },
+    {
+     "expr": "68 × 2 + 23 - 35 × 7 × 6 × 6 + 46 - 10 × 4 × 9 - 77 - 38",
+     "answer": -9090,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2231,
+     "d_text": "{-5734}$.",
+     "t_text": "The final number is $\\boxed{-9090}$."
+    },
+    {
+     "expr": "80 × 7 + 96 + 47 - 70 + 62 × 5 × 9 × 6 × 4 - 88 + 26 × 4",
+     "answer": 67609,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2123,
+     "d_text": "{14534}$.",
+     "t_text": "The final number is $\\boxed{67609}$."
+    },
+    {
+     "expr": "56 × 3 - 81 + 64 - 33 × 8 × 9 × 2 + 41 - 95 - 99 - 46 + 89",
+     "answer": -4711,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3358,
+     "d_text": "{-165}$.",
+     "t_text": "The final number is $\\boxed{-4711}$."
+    },
+    {
+     "expr": "12 - 98 × 2 × 2 × 7 + 11 - 90 - 64 - 82 × 3 + 78 - 74 + 76",
+     "answer": -3041,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2529,
+     "d_text": "{-848}$.",
+     "t_text": "The final number is $\\boxed{-3041}$."
+    },
+    {
+     "expr": "12 - 13 + 94 × 7 - 89 + 76 + 64 × 3 - 59 × 8 + 30 - 50 - 36",
+     "answer": 308,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2601,
+     "d_text": "{-12}$.",
+     "t_text": "The final number is $\\boxed{308}$."
+    },
+    {
+     "expr": "45 × 9 + 48 + 44 - 67 × 7 × 9 - 20 - 77 × 3 × 6 - 50 + 69",
+     "answer": -5111,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3769,
+     "d_text": "{-1598}$.",
+     "t_text": "The final number is $\\boxed{-5111}$."
+    },
+    {
+     "expr": "83 + 37 - 13 + 86 + 76 × 2 × 4 × 3 × 7 - 56 - 72 - 81 + 39",
+     "answer": 12791,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2309,
+     "d_text": "{1389}$.",
+     "t_text": "The final number is $\\boxed{12791}$."
+    },
+    {
+     "expr": "80 + 32 + 26 + 36 + 39 - 76 + 74 - 45 + 75 + 39 × 7 × 5 - 83",
+     "answer": 1523,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2395,
+     "d_text": "{329}$.",
+     "t_text": "The final number is $\\boxed{1523}$."
+    },
+    {
+     "expr": "99 - 82 - 35 × 7 × 9 × 8 - 67 × 7 - 61 × 3 + 55 × 9 - 53",
+     "answer": -17833,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3341,
+     "d_text": "{-203}$.",
+     "t_text": "The final number is $\\boxed{-17833}$."
+    },
+    {
+     "expr": "52 × 2 - 98 + 47 × 6 + 19 + 88 - 95 + 38 - 89 + 33 × 5 + 15",
+     "answer": 429,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2662,
+     "d_text": "{367}$.",
+     "t_text": "The final number is $\\boxed{429}$."
+    },
+    {
+     "expr": "76 + 60 × 5 + 54 + 90 - 60 + 46 × 9 × 8 + 94 × 8 - 47 × 9",
+     "answer": 4101,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2855,
+     "d_text": "{4747}$.",
+     "t_text": "The final number is $\\boxed{4101}$."
+    },
+    {
+     "expr": "97 + 94 - 86 - 26 - 58 + 97 - 82 + 75 - 53 × 2 - 95 - 64 - 14",
+     "answer": -168,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1924,
+     "d_text": "{-13}$.",
+     "t_text": "The final number is $\\boxed{-168}$."
+    },
+    {
+     "expr": "80 + 49 + 41 × 8 - 94 + 67 × 7 - 12 - 77 - 74 - 47 + 70 + 82",
+     "answer": 774,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2101,
+     "d_text": "{411}$.",
+     "t_text": "The final number is $\\boxed{774}$."
+    },
+    {
+     "expr": "51 + 25 × 8 - 88 + 54 - 43 × 5 × 7 + 66 + 84 - 54 × 5 × 2",
+     "answer": -1678,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2622,
+     "d_text": "{196}$.",
+     "t_text": "The final number is $\\boxed{-1678}$."
+    },
+    {
+     "expr": "84 + 37 × 6 + 34 + 87 + 75 + 48 × 9 × 4 - 68 + 24 × 7 - 81",
+     "answer": 2249,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2785,
+     "d_text": "{1151}$.",
+     "t_text": "The final number is $\\boxed{2249}$."
+    },
+    {
+     "expr": "46 + 50 × 8 - 74 × 6 - 46 × 3 × 4 + 68 × 4 × 8 + 84 + 50",
+     "answer": 1760,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2115,
+     "d_text": "{850}$.",
+     "t_text": "The final number is $\\boxed{1760}$."
+    },
+    {
+     "expr": "74 - 41 + 64 × 4 + 32 - 23 × 6 × 3 × 9 × 3 - 67 × 4 × 9",
+     "answer": -13269,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3707,
+     "d_text": "{-1098}$.",
+     "t_text": "The final number is $\\boxed{-13269}$."
+    },
+    {
+     "expr": "80 + 78 × 6 × 5 + 38 - 60 + 27 + 85 + 10 + 69 + 10 - 37 - 57",
+     "answer": 2505,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1642,
+     "d_text": "{537}$.",
+     "t_text": "The final number is $\\boxed{2505}$."
+    },
+    {
+     "expr": "63 × 6 × 5 × 2 × 3 × 9 + 31 × 3 × 5 - 54 + 70 × 2 × 3",
+     "answer": 102891,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3507,
+     "d_text": "{1665}$.",
+     "t_text": "The final number is $\\boxed{102891}$."
+    },
+    {
+     "expr": "12 × 4 - 91 + 11 + 96 - 24 - 69 × 5 + 58 × 3 + 45 × 5 - 50",
+     "answer": 44,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1762,
+     "d_text": "{-10}$.",
+     "t_text": "The final number is $\\boxed{44}$."
+    },
+    {
+     "expr": "32 × 8 + 36 - 64 + 85 + 10 × 6 - 24 × 5 × 9 × 3 + 90 + 14",
+     "answer": -2763,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2810,
+     "d_text": "{14}$.",
+     "t_text": "The final number is $\\boxed{-2763}$."
+    },
+    {
+     "expr": "67 × 7 - 22 + 23 + 73 × 7 × 3 + 81 × 2 × 2 - 13 - 14 - 34",
+     "answer": 2266,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2394,
+     "d_text": "{1874}$.",
+     "t_text": "The final number is $\\boxed{2266}$."
+    },
+    {
+     "expr": "82 × 9 + 29 × 3 - 19 - 27 × 7 - 53 + 84 × 8 - 65 - 61 + 39",
+     "answer": 1149,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2023,
+     "d_text": "{114}$.",
+     "t_text": "The final number is $\\boxed{1149}$."
+    },
+    {
+     "expr": "53 + 93 + 50 + 43 + 28 - 31 × 8 - 30 × 9 - 33 + 98 - 67 + 59",
+     "answer": -194,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3730,
+     "d_text": "{149}$.",
+     "t_text": "The final number is $\\boxed{-194}$."
+    },
+    {
+     "expr": "16 × 4 × 8 × 8 - 50 - 12 - 30 × 4 - 13 - 85 × 3 + 68 + 18",
+     "answer": 3732,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2461,
+     "d_text": "{246}$.",
+     "t_text": "The final number is $\\boxed{3732}$."
+    },
+    {
+     "expr": "66 - 89 + 44 × 7 × 6 - 80 + 63 + 75 - 23 - 42 - 19 × 2 + 10",
+     "answer": 1790,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2252,
+     "d_text": "{-1}$.",
+     "t_text": "The final number is $\\boxed{1790}$."
+    },
+    {
+     "expr": "77 - 41 × 2 + 86 × 4 - 17 - 82 × 3 × 3 + 71 + 65 - 79 × 4",
+     "answer": -596,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3146,
+     "d_text": "{-200}$.",
+     "t_text": "The final number is $\\boxed{-596}$."
+    },
+    {
+     "expr": "96 × 5 + 53 × 8 + 74 × 4 + 89 - 62 - 96 + 74 + 62 - 15 + 52",
+     "answer": 1304,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3206,
+     "d_text": "{675}$.",
+     "t_text": "The final number is $\\boxed{1304}$."
+    },
+    {
+     "expr": "92 + 46 + 73 + 18 × 6 + 83 + 38 × 4 - 54 + 22 - 38 × 8 × 4",
+     "answer": -694,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3914,
+     "d_text": "{124}$.",
+     "t_text": "The final number is $\\boxed{-694}$."
+    },
+    {
+     "expr": "18 × 3 + 42 + 39 + 16 × 2 + 54 × 9 × 6 × 8 - 41 + 39 + 98",
+     "answer": 23591,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3066,
+     "d_text": "{24960}$.",
+     "t_text": "The final number is $\\boxed{23591}$."
+    },
+    {
+     "expr": "43 - 30 + 75 - 87 + 65 - 61 - 47 + 31 + 99 + 80 × 2 - 12 × 7",
+     "answer": 164,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2185,
+     "d_text": "{269}$.",
+     "t_text": "The final number is $\\boxed{164}$."
+    },
+    {
+     "expr": "85 × 9 × 9 - 28 - 67 + 37 - 54 × 9 × 2 + 86 - 54 × 6 - 57",
+     "answer": 5560,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3231,
+     "d_text": "{189}$.",
+     "t_text": "The final number is $\\boxed{5560}$."
+    },
+    {
+     "expr": "65 - 49 + 62 × 6 × 8 × 8 + 45 + 66 × 4 - 53 + 37 + 24 - 56",
+     "answer": 24085,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2527,
+     "d_text": "{2504}$.",
+     "t_text": "The final number is $\\boxed{24085}$."
+    },
+    {
+     "expr": "99 × 8 - 94 × 7 - 48 - 18 + 61 + 65 × 5 × 4 - 90 - 58 - 22",
+     "answer": 1259,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3127,
+     "d_text": "{685}$.",
+     "t_text": "The final number is $\\boxed{1259}$."
+    },
+    {
+     "expr": "58 × 6 + 68 × 8 × 7 - 74 - 67 - 11 - 38 + 24 - 70 - 18 × 5",
+     "answer": 3830,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2983,
+     "d_text": "{-15}$.",
+     "t_text": "The final number is $\\boxed{3830}$."
+    },
+    {
+     "expr": "89 × 2 - 96 - 82 + 36 - 80 + 27 × 4 × 9 - 31 - 42 × 6 + 35",
+     "answer": 680,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2152,
+     "d_text": "{117}$.",
+     "t_text": "The final number is $\\boxed{680}$."
+    },
+    {
+     "expr": "35 + 94 + 21 + 24 - 61 × 9 - 82 × 5 × 2 - 64 - 95 × 9 × 3",
+     "answer": -3824,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3664,
+     "d_text": "{-1349}$.",
+     "t_text": "The final number is $\\boxed{-3824}$."
+    },
+    {
+     "expr": "28 - 38 - 21 + 93 - 51 × 4 × 2 - 97 × 7 + 10 + 25 - 79 - 12",
+     "answer": -1081,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2370,
+     "d_text": "{-139}$.",
+     "t_text": "The final number is $\\boxed{-1081}$."
+    },
+    {
+     "expr": "19 - 20 + 97 + 33 + 64 - 76 - 37 + 97 - 38 × 7 - 78 + 38 × 8",
+     "answer": 137,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1755,
+     "d_text": "{-13}$.",
+     "t_text": "The final number is $\\boxed{137}$."
+    },
+    {
+     "expr": "28 + 18 - 22 - 19 + 13 + 45 + 40 - 11 + 24 - 40 + 74 - 77 - 84",
+     "answer": -11,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 1647,
+     "d_text": "{-10}$.",
+     "t_text": "The final number is $\\boxed{-11}$."
+    },
+    {
+     "expr": "65 × 8 - 60 - 29 - 59 + 78 - 26 + 61 × 8 × 4 × 4 × 7 - 93",
+     "answer": 54987,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 3990,
+     "d_text": "{1315}$.",
+     "t_text": "The final number is $\\boxed{54987}$."
+    },
+    {
+     "expr": "16 + 45 × 7 + 34 - 88 + 39 - 64 + 19 + 88 + 48 - 80 × 9 - 70",
+     "answer": -383,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2491,
+     "d_text": "{-2}$.",
+     "t_text": "The final number is $\\boxed{-383}$."
+    },
+    {
+     "expr": "54 - 51 × 9 - 93 × 8 - 92 × 2 + 10 + 61 × 5 + 61 + 11 - 11",
+     "answer": -957,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 4058,
+     "d_text": "{-419}$.",
+     "t_text": "The final number is $\\boxed{-957}$."
+    },
+    {
+     "expr": "92 × 8 - 88 - 83 × 9 × 8 + 28 - 46 + 62 - 94 × 8 - 96 × 2",
+     "answer": -6228,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 4097,
+     "d_text": "{-1170}$.",
+     "t_text": "The final number is $\\boxed{-6228}$."
+    },
+    {
+     "expr": "96 + 80 + 66 - 58 × 6 × 6 + 98 + 67 - 30 + 45 - 69 - 20 - 56",
+     "answer": -1811,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2101,
+     "d_text": "{166}$.",
+     "t_text": "The final number is $\\boxed{-1811}$."
+    },
+    {
+     "expr": "97 - 79 + 55 × 4 × 2 - 26 × 9 + 59 × 9 - 76 × 9 + 72 × 2",
+     "answer": 215,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2410,
+     "d_text": "{320}$.",
+     "t_text": "The final number is $\\boxed{215}$."
+    },
+    {
+     "expr": "14 × 6 × 9 + 13 - 24 - 94 + 58 - 89 × 9 + 59 × 9 + 51 - 78",
+     "answer": 412,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2472,
+     "d_text": "{-115}$.",
+     "t_text": "The final number is $\\boxed{412}$."
+    },
+    {
+     "expr": "32 - 76 + 91 - 79 + 66 - 78 × 6 - 69 + 34 × 8 + 48 + 12 + 68",
+     "answer": -103,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2464,
+     "d_text": "{-151}$.",
+     "t_text": "The final number is $\\boxed{-103}$."
+    },
+    {
+     "expr": "28 + 72 × 9 + 15 - 98 + 82 × 2 - 90 + 64 + 57 × 3 + 70 - 50",
+     "answer": 922,
+     "d": 0,
+     "o": 0,
+     "t": 1,
+     "L": 2350,
+     "d_text": "{525}$.",
+     "t_text": "The final number is $\\boxed{922}$."
+    }
+   ],
+   "seconds": 904.0,
+   "generation_tokens": 138307
+  }
+ },
+ "date": "2026-11-25T08:55:32",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "tiny": false,
+ "model": "Qwen/Qwen3-8B",
+ "sampler": {
+  "temperature": 0.6,
+  "top_p": 0.95,
+  "top_k": 20
+ },
+ "batch_size": 16,
+ "seed": 20261122,
+ "task": {
+  "prompt": "Compute {expr}. Reply with only the final number.",
+  "lo": 10,
+  "hi": 99,
+  "ops": [
+   "+",
+   "-",
+   "*"
+  ],
+  "mul_lo": 2,
+  "mul_hi": 9,
+  "answer_max_tokens": 16,
+  "think_max_tokens": 4096
+ },
+ "forcing": {
+  "open": "<think>",
+  "close": "</think>",
+  "dot": ".",
+  "open_text": "<think>\n",
+  "close_text": "\n</think>\n\n",
+  "wait_text": "Wait",
+  "answer_prefix": "The final number is $\\boxed"
+ },
+ "fit": {
+  "q": 1.0,
+  "half_life_steps": 693100000.0,
+  "per_m_q": {
+   "1": 1.0,
+   "2": 1.0,
+   "3": 1.0,
+   "4": 1.0,
+   "6": 1.0,
+   "8": 1.0,
+   "12": 1.0
+  },
+  "predicted": {
+   "1": 1.0,
+   "2": 1.0,
+   "3": 1.0,
+   "4": 1.0,
+   "6": 1.0,
+   "8": 1.0,
+   "12": 1.0
+  }
+ },
+ "peak_gb": 52.73
+}

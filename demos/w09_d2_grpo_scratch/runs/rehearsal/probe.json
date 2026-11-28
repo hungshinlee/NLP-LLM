@@ -1,0 +1,162 @@
+{
+ "date": "2026-11-28T16:37:49",
+ "versions": {
+  "python": "3.12.14",
+  "platform": "macOS-27.2.1-arm64-arm-64bit",
+  "mlx": "0.32.2",
+  "mlx-lm": "0.32.0",
+  "mlx-metal": "0.32.2",
+  "transformers": "5.17.0",
+  "huggingface-hub": "1.31.0",
+  "mlx_lm_commit": "872ae88d1fac77350db23c8c04fe8dd372a9e3e8"
+ },
+ "device": {
+  "device_name": "Apple M5 Max",
+  "max_recommended_working_set_size": 55662788608,
+  "memory_size": 68719476736,
+  "architecture": "applegpu_g17s",
+  "max_buffer_length": 41747087360,
+  "resource_limit": 499000
+ },
+ "tiny": false,
+ "levels": {
+  "L1": {
+   "n": 512,
+   "accuracy": 0.793,
+   "mean_len": 18.76,
+   "right_len": 16.47,
+   "wrong_len": 27.56,
+   "truncated": 0.07031,
+   "silent": {
+    "2": 0.6875,
+    "4": 0.4297,
+    "8": 0.1875,
+    "16": 0.0
+   },
+   "seconds": 28.4,
+   "per_problem_accuracy_std": 0.1384,
+   "example": {
+    "expr": "40 + 80",
+    "answer": 120,
+    "text": "<think>\n\n</think>\n\nThe answer is 60.",
+    "reward": 0.0
+   }
+  },
+  "L2": {
+   "n": 512,
+   "accuracy": 0.623,
+   "mean_len": 25.18,
+   "right_len": 24.58,
+   "wrong_len": 26.18,
+   "truncated": 0.1465,
+   "silent": {
+    "2": 0.6758,
+    "4": 0.3906,
+    "8": 0.1406,
+    "16": 0.0
+   },
+   "seconds": 37.0,
+   "per_problem_accuracy_std": 0.2574,
+   "example": {
+    "expr": "80 + 85 + 71",
+    "answer": 236,
+    "text": "<think>\n\n</think>\n\nThe total of 80 + 85 + 71 is 236.",
+    "reward": 1.0
+   }
+  },
+  "L3": {
+   "n": 512,
+   "accuracy": 0.4551,
+   "mean_len": 31.28,
+   "right_len": 31.33,
+   "wrong_len": 31.24,
+   "truncated": 0.2812,
+   "silent": {
+    "2": 0.6289,
+    "4": 0.2656,
+    "8": 0.07812,
+    "16": 0.03125
+   },
+   "seconds": 44.8,
+   "per_problem_accuracy_std": 0.2255,
+   "example": {
+    "expr": "80 + 85 + 71",
+    "answer": 236,
+    "text": "<think>\n\n</think>\n\nThe total of 80, 85, and 71 would be 236.",
+    "reward": 1.0
+   }
+  },
+  "L4": {
+   "n": 512,
+   "accuracy": 0.4473,
+   "mean_len": 26.38,
+   "right_len": 26.23,
+   "wrong_len": 26.5,
+   "truncated": 0.2129,
+   "silent": {
+    "2": 0.5508,
+    "4": 0.2344,
+    "8": 0.0625,
+    "16": 0.03125
+   },
+   "seconds": 44.6,
+   "per_problem_accuracy_std": 0.2431,
+   "example": {
+    "expr": "666 + 701 + 595",
+    "answer": 1962,
+    "text": "<think>\n\n</think>\n\nThe total of 666 + 701 + 595 = 1962.",
+    "reward": 1.0
+   }
+  },
+  "L5": {
+   "n": 512,
+   "accuracy": 0.3867,
+   "mean_len": 32.83,
+   "right_len": 30.99,
+   "wrong_len": 33.99,
+   "truncated": 0.332,
+   "silent": {
+    "2": 0.6328,
+    "4": 0.3047,
+    "8": 0.125,
+    "16": 0.03125
+   },
+   "seconds": 47.9,
+   "per_problem_accuracy_std": 0.2299,
+   "example": {
+    "expr": "666 + 701 + 595",
+    "answer": 1962,
+    "text": "<think>\n\n</think>\n\nThe total of 666, 701 and 595 is 1962.",
+    "reward": 1.0
+   }
+  },
+  "L6": {
+   "n": 512,
+   "accuracy": 0.03711,
+   "mean_len": 38.93,
+   "right_len": 33.26,
+   "wrong_len": 39.15,
+   "truncated": 0.6367,
+   "silent": {
+    "2": 0.9492,
+    "4": 0.8906,
+    "8": 0.8438,
+    "16": 0.8125
+   },
+   "seconds": 42.9,
+   "per_problem_accuracy_std": 0.1011,
+   "example": {
+    "expr": "701 + 595 + 617 × 27",
+    "answer": 17955,
+    "text": "<think>\n\n</think>\n\nThe expression given can be simplified into 701 + 595 + 1671. Therefore, the answer is 3067.",
+    "reward": 0.0
+   }
+  }
+ },
+ "sampling_logprob_vs_recomputed": {
+  "n": 64,
+  "mean_abs": 0.2467,
+  "max_abs": 1.078,
+  "mean_abs_logprob": 12.94
+ }
+}

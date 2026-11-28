@@ -2,7 +2,7 @@
 
 ## Derivations and Hand-Built Components
 
-One board derivation and one component per week. Everything is demonstrated in class. The last column says **what each component needs to run on**, not how long it takes: the demo machine has no CUDA. Measured run times for the W1–W8 demos (one Apple M5 Max, 64 GB) are in each demo's README under `demos/`, next to the rehearsal records; nothing here is an estimate.
+One board derivation and one component per week. Everything is demonstrated in class. The last column says **what each component needs to run on**, not how long it takes: the demo machine has no CUDA. Measured run times for the rehearsed demos — W1–W8, demos 1 and 3 of W10, and W11 (one Apple M5 Max, 64 GB) — are in each demo's README under `demos/`, next to the rehearsal records; nothing here is an estimate.
 
 | Week | At the board | Built by hand | Runs on |
 |:--|:--------------------------------|:----------------------------|:------|
@@ -13,9 +13,9 @@ One board derivation and one component per week. Everything is demonstrated in c
 | [W5](weeks/w05.qmd) | **RoPE's relative property** in complex form; the phase argument for extrapolation | RoPE and its extrapolation variants | MPS; the long-context demo uses a quantized mid-size model |
 | [W6](weeks/w06.qmd) | **The linear-attention associativity identity** → recurrent form; the SSD skeleton | Both algorithms for linear attention | MPS. SSM and hybrid models run on MLX's own Metal kernels |
 | [W7](weeks/w07.qmd) | **Chinchilla's first-order condition** (one of the course's three peaks) | A scaling law fitted at small scale | MPS — four or five tiny transformers |
-| [W8](weeks/w08.qmd) | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT with `mlx_lm.lora`** | MLX. Pointing it at a quantized model *is* QLoRA |
-| [W9](weeks/w09.qmd) | **DPO in four steps** (one of the three peaks); GRPO's advantage normalization | **The DPO loss, with four tests** | CPU |
-| [W10](weeks/w10.qmd) | The two crossing pass@k curves; the binomial bound behind self-consistency | Budget forcing | MLX, a mid-size model with a thinking mode |
+| [W8](weeks/w08.qmd) | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT with `mlx_lm.lora`** | MLX. Pointing it at a quantized model gives QLoRA — with MLX's affine 4-bit format, not NF4 |
+| [W9](weeks/w09.qmd) | **DPO in four steps** (one of the three peaks): the one-line proof of the closed form, and why $Z(x)$ cancels; policy gradient in three lines, with a baseline; GRPO's identity under a binary reward | **The DPO loss, with five tests; GRPO's advantage, and a numerical check of the identity** | CPU for the tests; MLX for the training runs |
+| [W10](weeks/w10.qmd) | **One question sampled $k$ times: three quantities and their three limits** (pass@1; the majority vote, which tends to the mode; pass@k, which tends to the share of questions the model can solve at all); why two pass@k curves cross; serial depth and $q^m$; Snell et al.'s conversion between test-time and pre-training compute | **Budget forcing as two logit actions**; the unbiased pass@k estimator and the majority vote (demo 2, not built yet) | MLX — Qwen3-8B with its thinking mode |
 | [W11](weeks/w11.qmd) | **The two roofs of the demo machine and the intensity of decode**, with its two boundaries (batch size and context length); the memory argument of PagedAttention; **the three-line proof that speculative sampling leaves the distribution unchanged**, and the optimal draft length; the error of uniform quantization; the arithmetic of answer flips | **The acceptance rule of speculative sampling** (ten lines and five tests, written live); a measured roofline | MLX (`mlx-lm`); plain numpy for the acceptance rule |
 | W12 | InfoNCE, and how the negatives define "similar"; RAG's three-term decomposition | **A minimal RAG, and three deliberate failures** | CPU |
 | W13 | The compound error rate $p^n$, and what a verifier does to it | **An agent broken by prompt injection** | A small local model is enough |

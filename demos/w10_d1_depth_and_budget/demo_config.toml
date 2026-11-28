@@ -1,0 +1,100 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# W10 demo 1（投影片 p17 前導頁、p19「Live: demo 1 (a)」、p28「Replay: demo 1 (b)」）的設定
+#
+# 改這個檔就能換模型、換題目、換鏈長與預算的網格，不必動程式。
+
+[demo]
+title = "W10 · Demo 1 — no thinking, dots, thinking against the length of the chain; then sweep the thinking budget"
+# 隨機種子：題目（種子與 m 算出每個 m 的題目）、取樣。
+seed = 20261122
+
+# ── 模型：thinking 與 non-thinking 是同一組權重，用 chat template 的 enable_thinking 切換 ──
+[model]
+repo = "Qwen/Qwen3-8B"
+short = "Qwen3-8B (bf16)"
+revision = ""
+# 其他已釘在 ../versions.lock 的選擇：
+#   "mlx-community/Qwen3-8B-4bit"       同一個模型的 4-bit 量化（快、省記憶體；正確率可能不同）
+#   "mlx-community/Qwen3.8-27B-4bit"    較大的模型
+# 換了之後 probe 要重跑。
+
+# ── 取樣：三種答法、所有預算用同一個 sampler ──────────────────
+[sampler]
+temperature = 0.6
+top_p = 0.95
+top_k = 20
+# 一次幾條一起生成（probe --part speed 量過再改）。
+batch_size = 16
+
+# ── 題目：上週 demo 2 的出題器（grpo.make_problem）與 verifier（reward_strict）──
+[task]
+# user 那一輪的文字；三種答法都用同一句。
+prompt = "Compute {expr}. Reply with only the final number."
+# 「m 步」＝ m 個運算子（m + 1 個運算元）；先乘後加減。乘號右邊那個數另外取 mul_lo–mul_hi。
+lo = 10
+hi = 99
+ops = ["+", "-", "*"]
+mul_lo = 2
+mul_hi = 9
+# answer_prefix 之後最多幾個 token。只夠寫一個數字：超過就切掉，照最後一個數字判。
+answer_max_tokens = 16
+# 推理的保險上限（「不限」那一欄其實是這個數）；撞到的比例每一格都記。
+think_max_tokens = 4096
+
+# ── budget forcing 的記號 ───────────────────────────────────────
+[forcing]
+open = "<think>"
+close = "</think>"
+dot = "."
+open_text = "<think>\n"
+close_text = "\n</think>\n\n"
+wait_text = "Wait"
+# </think> 之後、回答之前固定接的一句，三種答法都接（s1 的寫法是 "Final Answer:"）；空字串＝不接。
+# 不接的話，模型在回答裡會把算式重寫一遍（2026-11-23 probe：16 個 token 寫不完，被切掉判錯）。
+# 只接 "The final number is" 還不夠：m = 4 有 16% 接著寫 "calculated as follows…"。
+# **不能停在左括號之後**：這個 tokenizer 的 "{-" 是一個 token，強制送出 "{" 等於替模型決定了「不是負數」
+# （2026-11-25 彩排：結果是負數的題，回答掉了負號）。停在 \boxed，括號讓模型自己寫。
+answer_prefix = 'The final number is $\boxed'
+
+# ── (a) 鏈長 ────────────────────────────────────────────────────
+[chain]
+# 投影片的表是 2、4、6、8、12；1 與 3 是為了看清楚「不想」在哪裡掉下去（2026-11-23：m = 2 是 0.64，m = 4 是 0.02）。
+ms = [1, 2, 3, 4, 6, 8, 12]
+# 每個 m 幾題（probe 印估時；改小就快）。一格的標準誤最多 0.5 / sqrt(n)。
+n = 50
+
+# ── (b) 預算：兩個難度各用 (a) 的哪一個 m ───────────────────────
+[budget]
+easy_m = 2
+medium_m = 8
+# 推理上限。0 那一欄就是 (a) 的「不想」；最後另加一欄「不限」＝ (a) 的「想」。
+caps = [32, 64, 128, 256, 512, 1024]
+# 「不准停」幾次。只跑最大的那一個，較小的從同一段推理的第 k+1 次想停的地方截出來。
+waits = [1, 2, 4]
+
+# ── 現場那一題 ─────────────────────────────────────────────────
+[live]
+m = 8
+# 從 (a) 同一個 m 的題目裡拿第幾題（0 起算）；彩排會把這一題的三種答法存成 live.json。
+index = 0
+# 推理一行一行印的間隔（秒）。
+line_delay = 0.12
+
+# ── probe ──────────────────────────────────────────────────────
+[probe]
+# speed：幾條推理、試哪幾個 batch size。
+speed_m = 6
+speed_n = 16
+batch_sizes = [1, 8, 16, 32]
+# --batch-size N 時只量那一個（有、無 processor 各一次）。
+# levels：每個 m 幾題（三種答法都跑）。
+n = 16
+
+# ── tiny：亂數權重的小模型與字元級 tokenizer，不下載任何東西，只為了走一遍真的流程 ──
+[tiny]
+answer_prefix = "="
+n = 12
+answer_max_tokens = 6
+think_max_tokens = 40
+caps = [2, 4, 8, 16]
+batch_size = 8

@@ -1,0 +1,14 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# 由 demo.py 從 demo_config.toml [lora] 產生；mlx_lm.lora -c 讀。與 demo 1 的 lora.yaml 相同（rank 16、scale 20，不接 embedding）。
+lora_parameters:
+  rank: 16
+  dropout: 0.0
+  scale: 20.0
+  keys:  # 所有 block 的七個 Linear（mlx-lm 的預設集合，寫出來是為了跟 demo 1 的 lora_embed.yaml 對照）
+    - self_attn.q_proj
+    - self_attn.k_proj
+    - self_attn.v_proj
+    - self_attn.o_proj
+    - mlp.gate_proj
+    - mlp.up_proj
+    - mlp.down_proj

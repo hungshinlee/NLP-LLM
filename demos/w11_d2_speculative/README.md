@@ -1,4 +1,4 @@
-# W11 · Demo 2 — speculative decoding: ten lines, five tests, then a sweep of the draft length (slides p45–p47, p49)
+# W11 · Demo 2 — speculative decoding: ten lines, five tests, then a sweep of the draft length (slides p45–p50)
 <!-- 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。 -->
 
 Speculative decoding lets a small *draft* model write a few tokens ahead and has the large *target* model check all of them in one forward pass. The claim on the slides is that this changes how fast tokens come out and nothing about which tokens come out: with the acceptance rule of Leviathan et al., the output is distributed exactly as the target's own. This demo checks the claim on a toy example where the answer is known, and then measures on real models how much time the trick saves.

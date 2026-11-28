@@ -1,0 +1,15 @@
+# 此檔由 bin/publish_demos.py 從 private repo 的 <course>/demos/ 複製而來，請勿在公開 repo 直接編輯。
+# 由 demo.py prepare 從 demo_config.toml [train] 產生；mlx_lm.lora -c 讀。
+lora_parameters:
+  rank: 16
+  dropout: 0.0
+  scale: 20.0
+  keys:  # 七個 Linear 照 mlx-lm 預設，再加 embedding（Qwen3 的 LM head 與它綁在一起）
+    - self_attn.q_proj
+    - self_attn.k_proj
+    - self_attn.v_proj
+    - self_attn.o_proj
+    - mlp.gate_proj
+    - mlp.up_proj
+    - mlp.down_proj
+    - model.embed_tokens

@@ -16,7 +16,8 @@ You get this in week 1, and each week adds the layer it is responsible for. It i
 
 | Where the cost falls | Formula | What actually binds it |
 |:---------------------|:-------:|:-----------------------|
-| **Training** — one run | $C_{\text{train}} \approx 6ND$ FLOPs | **Compute.** The $6$ is $2$ forward $+\ 4$ backward, per parameter per token |
+| **Training** — one run | $C_{\text{train}} \approx 6ND$ FLOPs; LoRA $\approx 4ND$ | **Compute.** The $6$ is $2$ forward $+\ 4$ backward, per parameter per token. LoRA still runs the backward pass through every layer, but the frozen weights need no gradient of their own (W8) |
+| **Optimizer state** — bytes per parameter while training | full fine-tuning $16$ → LoRA $2 + 16N_{\text{LoRA}}/N$ → QLoRA $b_{\text{q}} + 16N_{\text{LoRA}}/N$ | **Capacity.** The $16$ is the textbook account: a bf16 weight and gradient, an fp32 master copy and Adam's two moments (W4). LoRA and QLoRA shrink the trainable part, not the frozen weights or the activations (W8) |
 | **Prefill** — once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | **Compute.** The whole prompt goes through together, so the matrices are large enough to keep the GPU busy. The second term is attention's own bill; it matters once $L_{\text{in}} > 12d$ (W3) |
 | **Decode** — per generated token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$ FLOPs | **Memory bandwidth.** One token's worth of arithmetic against a full read of all $N$ weights and the whole KV cache out of HBM — about one FLOP per byte on either road, at any $L$ (W3) |
 | **KV cache** — state carried, not FLOPs | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ bytes | **Capacity first, then bandwidth.** The leading $2$ is key $+$ value; the whole thing is re-read at every decode step |
@@ -24,12 +25,15 @@ You get this in week 1, and each week adds the layer it is responsible for. It i
 | **MoE** — the two columns come apart | memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$ | Both, but separately — which is the entire point of the architecture (W6) |
 | **Fixed state** — a memory that does not grow | per layer $n_{\text{head}}\,d_{\text{head}}^2\,b$ bytes, with no $L$ in it | **State capacity.** Linear attention and SSMs replace the KV cache with a fixed-size state: smaller than the cache past $L^{\star} = n_{\text{head}}d_{\text{head}}/2n_{\text{kv}}$, but able to hold at most about $d_{\text{head}}$ key–value pairs per head (W6) |
 | **Training budget** — how $C$ is split | $N^{*} \propto C^{\beta/(\alpha+\beta)}$, $D^{*} \propto C^{\alpha/(\alpha+\beta)}$ — a fit, not a law | **The loss surface, then the bill.** Compute-optimal is where the two marginal returns are equal; counting inference ($+\,2ND_{\text{inf}}$) moves the optimum to a smaller $N$ and a larger $D$ (W7) |
+| **RL** — per prompt, $G$ samples | $2N(L_{\text{in}} + GL_{\text{out}}) + 6NG(L_{\text{in}} + L_{\text{out}})$ FLOPs | **All three.** The first half is sampling, which is decoding and bound by bandwidth; the second is the update, which is training and bound by compute; the group size $G$ multiplies both (W9) |
+| **Test time** — per question, $k$ chains | $2N(L_{\text{in}} + L_{\text{out}}) + 4\,n_{\text{layer}}d\,L_{\text{in}}L_{\text{out}} + 2\,n_{\text{layer}}d\,L_{\text{out}}^2/k$ FLOPs; bytes per token $\geq Nb/k + M_{\text{KV}}$ when the $k$ chains share a batch | **Bandwidth, then the examiner.** One long chain costs more than $k$ short ones of the same total length, because it cannot be batched; and extra samples help only as far as something can pick the right one (W10) |
+| **Roofline** — which of the two binds | $I = \text{FLOPs}/\text{bytes}$; $I^{*} = F_{\max}/\text{BW}$; $t \geq \max(\text{bytes}/\text{BW},\ \text{FLOPs}/F_{\max})$ | **Decides between compute and bandwidth.** At short context, decoding $B$ sequences together has $I \approx 2B/b_{\text{w}}$, so it stays bandwidth-bound up to $B^{*} = I^{*}b_{\text{w}}/2$; past a context length $L_c$ no batch size gets it out (W11) |
 
 :::
 
-$N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ context length so far · $b$ bytes per element ($2$ at FP16) · $n_{\text{kv}}$ key/value heads ($=n_{\text{head}}$ for MHA, $1$ for MQA) · $\alpha, \beta$ the fitted exponents of a loss-vs-$N$, loss-vs-$D$ law (W7).
+$N$ parameters · $D$ training tokens · $L_{\text{in}}$ prompt length · $L$ context length so far · $b$ bytes per element ($2$ at FP16) · $n_{\text{kv}}$ key/value heads ($=n_{\text{head}}$ for MHA, $1$ for MQA) · $\alpha, \beta$ the fitted exponents of a loss-vs-$N$, loss-vs-$D$ law (W7) · $N_{\text{LoRA}}$ the trainable LoRA parameters, $b_{\text{q}}$ bytes per quantized weight (W8) · $G$ samples per prompt, $L_{\text{out}}$ output length (W9; in W10 the total over $k$ chains) · $I$ arithmetic intensity, $F_{\max}$ and $\text{BW}$ the machine's two ceilings, $B$ sequences decoded together, $b_{\text{w}}$ bytes per weight (W11).
 
-**The line worth memorising.** The first two rows are arithmetic problems; the last two are traffic problems. Decode is not short of FLOPs — it is short of bandwidth, and the KV cache is what fills the road. Most of Part III is an attempt to make those two rows cheaper.
+**The line worth memorising.** Training and prefill are arithmetic problems; decode and the KV cache are traffic problems. Decode is not short of FLOPs — it is short of bandwidth, and the KV cache is what fills the road. The roofline row is the test that tells the two kinds apart, and most of Part III is an attempt to make the traffic rows cheaper.
 
 Two numbers to work out for yourself, and to revisit as the course goes:
 
@@ -95,12 +99,12 @@ Goldberg, *Neural Network Methods for NLP* (2017) and Paaß & Giesselbach, *Foun
 | W2 | Tokenization | Tao et al., *Scaling Laws with Vocabulary: Larger Models Deserve Larger Vocabularies*, NeurIPS 2024 (pair with Limisiewicz et al., *Compute Optimal Tokenization*, arXiv:2605.01188) |
 | W3 | Attention | Vaswani et al., *Attention Is All You Need*, NeurIPS 2017 — with Jain & Wallace, *Attention is not Explanation* |
 | W4 | The full block | Wortsman et al., *Small-scale proxies for large-scale Transformer training instabilities*, arXiv:2309.14322 |
-| W5 | Position and long context | Liu et al., *Lost in the Middle*, TACL 2023 |
+| W5 | Position and long context | Liu et al., *Lost in the Middle*, TACL 12 (2024) |
 | W6 | Architecture routes | Du et al., *Kimi Linear*, arXiv:2510.26692 — with Dao & Gu, *Mamba-2* |
-| W7 | Pre-training and scaling | Hoffmann et al., *Chinchilla*, arXiv:2203.15556 — with Besiroglu et al.'s replication |
-| W8 | SFT and PEFT | Shuttleworth et al., *LoRA vs Full Fine-tuning: An Illusion of Equivalence*, arXiv:2410.21228 |
-| W9 | Alignment and RL | Rafailov et al., *DPO*, NeurIPS 2023 — with the GRPO section of Shao et al., *DeepSeekMath* |
-| W10 | Reasoning and test-time compute | Yue et al., *Does RL Really Incentivize Reasoning Capacity Beyond the Base Model?*, arXiv:2504.13837 |
+| W7 | Pre-training and scaling | Hoffmann et al., *Chinchilla*, NeurIPS 2022 (arXiv:2203.15556), §3 — the three ways of estimating the optimum — with Besiroglu et al.'s replication, in full |
+| W8 | SFT and PEFT | Lee et al., *Learning Rate Matters: Vanilla LoRA May Suffice for LLM Fine-tuning*, arXiv:2602.04998 (an ICML 2026 workshop paper), in full, read as a methodological review, with Def. 3.1, Alg. 1 and the section on reducing intruder dimensions in Shuttleworth et al., *LoRA vs Full Fine-tuning: An Illusion of Equivalence*, NeurIPS 2025 |
+| W9 | Alignment and RL | Shao et al., *Spurious Rewards: Rethinking Training Signals in RLVR*, ICML 2026 (arXiv:2506.10947), in full, with §4.1 and §4.3 of Wu et al., *Reasoning or Memorization? Unreliable Results of Reinforcement Learning Due to Data Contamination*, AAAI 2026 — two explanations of the same result |
+| W10 | Reasoning and test-time compute | Yue et al., *Does Reinforcement Learning Really Incentivize Reasoning Capacity in LLMs Beyond the Base Model?*, NeurIPS 2025 (oral; arXiv:2504.13837), in full, with §4 of Wen et al., *Reinforcement Learning with Verifiable Rewards Implicitly Incentivizes Correct Reasoning in Base LLMs*, ICLR 2026 — two readings of the same crossing pass@k curves |
 | W11 | Inference efficiency | Leviathan, Kalman & Matias, *Fast Inference from Transformers via Speculative Decoding*, ICML 2023 (oral; arXiv:2211.17192), in full, with §3–§4 of Chen et al., *The Pitfalls of KV Cache Compression*, ACL 2026 — one paper proves a speed-up that leaves the distribution unchanged, the other shows a speed-up after which the score holds and the behaviour does not |
 | W12 | RAG | Li et al., *RAG or Long-Context LLMs?*, EMNLP 2024 industry track |
 | W13 | Agentic systems | Cemri et al., *Why Do Multi-Agent LLM Systems Fail?*, arXiv:2503.13657 |
@@ -111,7 +115,7 @@ Goldberg, *Neural Network Methods for NLP* (2017) and Paaß & Giesselbach, *Foun
 <!-- file: derivations.md -->
 ## Derivations and Hand-Built Components
 
-One board derivation and one component per week. Everything is demonstrated in class. The last column says **what each component needs to run on**, not how long it takes: the demo machine has no CUDA. Measured run times for the W1–W8 demos (one Apple M5 Max, 64 GB) are in each demo's README under `demos/`, next to the rehearsal records; nothing here is an estimate.
+One board derivation and one component per week. Everything is demonstrated in class. The last column says **what each component needs to run on**, not how long it takes: the demo machine has no CUDA. Measured run times for the rehearsed demos — W1–W8, demos 1 and 3 of W10, and W11 (one Apple M5 Max, 64 GB) — are in each demo's README under `demos/`, next to the rehearsal records; nothing here is an estimate.
 
 | Week | At the board | Built by hand | Runs on |
 |:--|:--------------------------------|:----------------------------|:------|
@@ -122,9 +126,9 @@ One board derivation and one component per week. Everything is demonstrated in c
 | W5 | **RoPE's relative property** in complex form; the phase argument for extrapolation | RoPE and its extrapolation variants | MPS; the long-context demo uses a quantized mid-size model |
 | W6 | **The linear-attention associativity identity** → recurrent form; the SSD skeleton | Both algorithms for linear attention | MPS. SSM and hybrid models run on MLX's own Metal kernels |
 | W7 | **Chinchilla's first-order condition** (one of the course's three peaks) | A scaling law fitted at small scale | MPS — four or five tiny transformers |
-| W8 | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT with `mlx_lm.lora`** | MLX. Pointing it at a quantized model *is* QLoRA |
-| W9 | **DPO in four steps** (one of the three peaks); GRPO's advantage normalization | **The DPO loss, with four tests** | CPU |
-| W10 | The two crossing pass@k curves; the binomial bound behind self-consistency | Budget forcing | MLX, a mid-size model with a thinking mode |
+| W8 | LoRA's parameter and memory accounting; the SVD behind intruder dimensions | **LoRA SFT with `mlx_lm.lora`** | MLX. Pointing it at a quantized model gives QLoRA — with MLX's affine 4-bit format, not NF4 |
+| W9 | **DPO in four steps** (one of the three peaks): the one-line proof of the closed form, and why $Z(x)$ cancels; policy gradient in three lines, with a baseline; GRPO's identity under a binary reward | **The DPO loss, with five tests; GRPO's advantage, and a numerical check of the identity** | CPU for the tests; MLX for the training runs |
+| W10 | **One question sampled $k$ times: three quantities and their three limits** (pass@1; the majority vote, which tends to the mode; pass@k, which tends to the share of questions the model can solve at all); why two pass@k curves cross; serial depth and $q^m$; Snell et al.'s conversion between test-time and pre-training compute | **Budget forcing as two logit actions**; the unbiased pass@k estimator and the majority vote (demo 2, not built yet) | MLX — Qwen3-8B with its thinking mode |
 | W11 | **The two roofs of the demo machine and the intensity of decode**, with its two boundaries (batch size and context length); the memory argument of PagedAttention; **the three-line proof that speculative sampling leaves the distribution unchanged**, and the optimal draft length; the error of uniform quantization; the arithmetic of answer flips | **The acceptance rule of speculative sampling** (ten lines and five tests, written live); a measured roofline | MLX (`mlx-lm`); plain numpy for the acceptance rule |
 | W12 | InfoNCE, and how the negatives define "similar"; RAG's three-term decomposition | **A minimal RAG, and three deliberate failures** | CPU |
 | W13 | The compound error rate $p^n$, and what a verifier does to it | **An agent broken by prompt injection** | A small local model is enough |
