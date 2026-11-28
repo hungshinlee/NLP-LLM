@@ -262,8 +262,8 @@ def build_supplements():
         "and the final paper (60%) \u2014 from picking a topic through to the write-up. "
         "Both are written in the ACL Rolling Review long-paper format of the report template "
         "below, and held to the standard of a conference submission rather than of "
-        "coursework. The final-paper and writing guides predate the template and will be "
-        "revised; where they differ from it, the template governs.",
+        "coursework. The guides are roadmaps; the detailed guidance is in the boxes of the "
+        "template, and where a guide differs from the template, the template governs.",
         "",
         "**The guides themselves are in Chinese**, matching how the course is taught; "
         "the report template is in English, like the papers you will write.",

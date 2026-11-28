@@ -1,89 +1,167 @@
 ---
-title: "Final Paper: From PoC to a Conference-Ready Manuscript"
-subtitle: "期末完整論文（MVP）教戰守策：從 PoC 跨越至 Top Conference 錄取門檻"
+title: "Final Paper: From a Proposal to a Complete Paper"
+subtitle: "期末論文：從研究提案走到一篇完整的論文"
 toc-depth: 2
 ---
 
 <!-- 此檔由 scripts/build_weeks.py 自動產生，請勿直接編輯；請改 supplements/*.md 後重跑腳本。 -->
 
-期末報告是將期中經過概念驗證（PoC）的研究方案，全面擴展為具備完整實證、消融實驗與嚴密論證的**完整論文投稿稿件（Camera-ready Candidate / MVP）**。
+<!-- 此檔由 bin/publish_supplements.py 從 private repo 的 <course>/supplements/ 過濾產生，請勿在公開 repo 直接編輯。 -->
 
-在 ACL Rolling Review (ARR) 以及 ICLR、NeurIPS、EMNLP 等頂尖會議的審稿機制中，高分錄取（Accept）的關鍵在於**完整性（Soundness）**與**嚴謹度（Rigor）**。本指南提供完整論文寫作與實驗收斂標準。
+期末論文是一篇**完整的論文**：ACL Rolling Review（ARR）long paper 的格式，寫在期中那個 Prism 專案的 `final/` 資料夾裡（〈[報告範本](report-template.qmd)〉），標準和投稿一樣。期中報告許下的承諾，期末要換成證據：每一句「我們將會」，不是變成結果，就是變成寫明的限制。**交件方式和期中相同**：同一個 Prism 專案、已經分享給授課老師，不用另交 PDF；老師公告期限，期限當下把 `final/main.tex` 編譯成 PDF 打分數，所以期限前要確認它編譯得過。`midterm/` 資料夾保持期中期限當時的樣子，不要回頭改。
 
----
+**範本的 `final/` 在 2026-11-28 整個改寫過**（三種貢獻類型都有導引、新增記錄期中之後改了什麼的附錄 A，以及截止前的檢查清單）。在那之前匯入專案的組：重新下載 zip，把自己 Prism 專案裡的整個 `final/` 資料夾與 `README.md` 換成新的；`midterm/` 不要動，專案根目錄的三個樣式檔沒有變。已經在舊的 `final/` 裡動筆的，文字留著，把新的導引框搬過去。
 
-## 一、 論文結構與章節撰寫規範
+這一頁是路線圖：期末要回答什麼、從期中到期末什麼會變、按什麼順序做、每一步寫進範本的哪裡。**寫作與研究的細節都在範本 `final/` 的藍色導引框裡**，這裡不重複；兩者若有出入，以範本為準，並告訴授課老師。論證怎麼組織、句子怎麼寫，見〈[論文寫作與敘事](paper-writing-and-narrative.qmd)〉；期中的路線見〈[期中報告](midterm-poc.qmd)〉。
 
-稿件統一採用標準 LaTeX 模板（如 ACL 或 ICLR 雙欄格式），正文篇幅建議為 Short Paper（4 頁）或 Long Paper（8 頁），References 與 Appendix 頁數不限。
+## 期末要回答的七個問題
 
-### 1. Title & Abstract
-* **Title**：精準揭露核心創新架構與任務範疇，禁止泛泛之論（如 *A Novel Framework for LLM Reasoning*）。建議直接包含機制與目標（例如：*Context-Aware Dynamic Routing for Efficient Long-Document Summarization*）。
-* **Abstract（200 字內，五段式微縮模型）**：
-  1. *Context (1句)*：確立任務領域與核心重要性。
-  2. *Defect / Tension (1–2句)*：現有 SOTA 的核心結構性失效（Failure Mode）。
-  3. *Proposed Method (1–2句)*：提出之方法及其底層核心機理（Core Mechanism）。
-  4. *Key Results (1–2句)*：主指標數據提昇幅度（明確給出 Delta，如 *outperforms Llama-3-70B by 4.2% in Macro-F1*）。
-  5. *Significance (1句)*：本研究之方法論或實證貢獻意涵。
+問題是期中選的，論文有不有趣（ARR 審稿表的 Excitement）大半在那時就決定了。期末還能爭取的是 **Soundness**：主張有沒有足夠的證據支持。讀完你的論文，讀者應該能回答：
 
-### 2. Introduction
-* **第一頁視覺錨點（Figure 1）**：
-  * 必須置於第 1 頁或第 2 頁上方。嚴禁放通用流程方塊圖。
-  * 必須設計為「對比圖」（Baseline vs. Proposed）或「直觀現象圖」，直接呈現 Baseline 為何出錯、本研究機制如何修復該錯誤。圖說（Caption）必須自明（Self-contained）。
-* **貢獻條列（Explicit Contributions）**：
-  * 於導論結尾明確列出 3 點 Contribution：
-    1. *Conceptual / Theoretical*：揭露何種現象、機制失效或提出何種新範式。
-    2. *Methodological*：提出具備數學自洽性與泛化性的具體架構/演算法。
-    3. *Empirical / Resource*：在標準 Benchmark 上顯著提升效能、開源高品質領域資料集或診斷性評估套件。
+| 讀者的問題 | 寫在範本的哪裡 |
+|:---|:---|
+| 主張是什麼？在什麼條件下成立？ | 摘要、§1 Introduction |
+| 和最接近的前人工作比，新在哪裡？ | §2 Related Work |
+| 到底做了、蒐集了或量了什麼？ | §3 Method（資源型改名 Dataset，分析型改名 Study Design） |
+| 這個比較可以相信嗎？ | §4 Experimental Setup |
+| 發現了什麼？有多確定？ | §5 Results |
+| 為什麼會這樣？到哪裡為止？代價是什麼？ | §6 Analysis |
+| 這篇論文**沒有**證明什麼？ | Limitations |
 
-### 3. Problem Formulation & Methodology
-* **數學符號嚴格一致**：
-  * 在章節開頭集中宣告符號體系（純量 $x$、向量 $\mathbf{x}$、矩陣 $\mathbf{X}$、分佈 $\mathcal{P}$、參數集 $\Theta$）。
-* **拒絕積木式拼貼（Mechanistic Justification）**：
-  * 提出的每一個模組（Module）、損失函數項（Loss Term）或約束條件（Constraint），都必須在文中闡明其理論必要性。每個設計都必須直接對應一個後續的消融實驗變數。
+**每一個主張都要指向證據**：摘要與 introduction 裡的每一句主張，都對得上某一張表、某一張圖或某一節。對不上的，把主張改弱或刪掉。
 
-### 4. Experimental Setup
-* **Datasets**：詳述來源、規模、資料切分比例（Train/Dev/Test）、授權（License），以及針對資料洩漏（Data Contamination）所做的具體檢驗措施。
-* **Baselines 覆蓋標準**：
-  * *Naive Baselines*：Zero-shot / Few-shot Direct Prompting。
-  * *Competitive SOTA Baselines*：公認具備競爭力之開源模型（如 Llama-3、Qwen-2.5 家族）或代表性頂會專利方法。
-  * *Oracle / Upper Bound（若適用）*：完美檢索或人工黃金標註輔助時的理論極限。
-* **Evaluation Metrics & Protocol**：
-  * 客觀指標明列計算方式；若涉及 LLM-as-a-judge，必須在 Appendix 揭露完整 Prompt Template、模型具體版本編號、Temperature 參數，並提供與人類評估的一致性指標（Cohen's $\kappa$ 或 Spearman's $
-ho$）。
+## 從期中到期末，什麼會變
 
----
+期末論文不是在期中報告後面接著寫，而是**重寫**。
 
-## 二、 核心實驗驗證維度（Soundness 之基石）
+| 期中報告 | 期末論文 |
+|:---|:---|
+| §2 Problem Analysis and Significance（最長的一節） | 縮成 §1 的第二段：留下一兩個證明問題存在的數字，連同它的對照條件 |
+| §3 Related Work：為了找到缺口而寫 | §2：為了安放一個結果而寫；結尾說你的結果落在各家做法的哪裡、哪一張表看得出來 |
+| §4 Proposed Approach：要做什麼 | §3：做了什麼。資源型寫實際蒐集到的數量，不是期中的目標 |
+| §5 Evaluation Plan：計畫 | §4 Experimental Setup：實際怎麼做的。和計畫不一樣的地方，照實際的寫 |
+| §6 Proof of Concept | 併入 §5、§6；期中最早看到的失敗案例，是錯誤分析的起點 |
+| §7 Plan Toward the Final Paper | 消失。期中點名的三篇目標會議論文，是交件前自我審稿的標準 |
+| 預定結果表的 `\pending` | 全部填上自己量到的數字；量不出來的列或欄刪掉，連帶修改靠它支持的主張 |
 
-一篇頂會論文在實驗設計上必須滿足三層檢驗：
+**題目可以修正。** 計畫很少原封不動撐過實驗。問題收窄、假設被換掉、模型換了一組，甚至貢獻類型變了，都可以，條件只有一個：論文寫的是**現在**的問題，而且附錄 A〈Changes Since the Midterm Report〉列出和期中報告不一樣的地方與原因，一項一行就夠（題目、假設、貢獻類型、資料、模型、主要指標、比較對象、計畫裡沒做的實驗）。沒有任何改變，也寫一句。看到最後的結果之後才換主要指標，是唯一需要認真交代理由的改變。想整個換題目，動手前先告訴授課老師。
 
-| 實驗維度 | 核心檢驗目的 | Reviewer 審查標準 |
-| :--- | :--- | :--- |
-| **Main Results** | 證明提議方法在整體性能上超越 SOTA 與競爭基線。 | 必須包含多隨機種子（Multiple Seeds）測試並標註標準差（Standard Deviation）。關鍵指標需檢驗統計顯著性（Statistical Significance, $p < 0.05$）。 |
-| **Ablation Study** | 證明系統中「每一個元件」都是不可或缺的。 | 逐一移除或替換核心組件（如 Module A、Loss Term B、Prompt Strategy C）。若移除某組件後性能未顯著衰退，代表該設計屬於無效增量。 |
-| **In-depth Analysis** | 探討方法的行為邊界與機理魯棒性。 | 包括：序列長度變化測試、雜訊耐受度、推論延遲（Latency）與吞吐量（Throughput）之 Pareto Frontier 分析。 |
+**負面或好壞參半的結果，一樣算數。** 證據推翻了你的假設，就報告它：假設預測了什麼、你看到了什麼、憑什麼排除是管線出錯（對照條件、重現出來的 baseline）。ARR 的審稿指南明講，負面結果不是拒稿的理由。不要調到正負號翻過來為止，也不要看到結果之後換一個假設、再把它寫成原本的計畫。報告得清楚的負面結果是發現；沒有人敢相信的正面結果不是。
 
----
+## 路線：六步
 
-## 三、 質化錯誤分析（Qualitative Error Analysis）
+### 1. 對帳：期中的計畫，哪些做了、哪些改了
 
-頂會 Reviewer 普遍高度重視 Error Analysis。若缺少質化分析，論文將顯得浮於表面。
+把期中 §5 的預定結果表與 §7 的工作清單拿出來，逐項標上「做了／改了／沒做」。改了的與沒做的，就是附錄 A 的內容；沒做而會限制主張的，還要進 Limitations（「計畫承諾了、論文沒有交出來的」寫在那裡，不要悄悄拿掉）。期中有好幾個候選設計的話，現在收斂：深入比較最能檢驗假設的兩個，其餘一句帶過或移到附錄。
 
-1. **建構錯誤分類體系（Error Taxonomy）**：
-   * 從測試集中隨機抽樣至少 50–100 個預測失敗（Prediction Errors）樣本。
-   * 將錯誤分類，例如：*Context Misalignment*（檢索上下文未包含關鍵事實）、*Reasoning Drift*（推論過程中斷）、*Over-refusal*（安全邊界過激拒絕）。
-2. **量化統計分佈**：
-   * 繪製錯誤類別分佈圖，量化對比 Proposed Method 與 Baseline 在各類錯誤上的比例變化。
-3. **典型 Case Study 展示**：
-   * 使用 LaTeX Table 呈現 1–2 個典型失敗樣例（包含 Input、Gold Reference、Baseline Output、Proposed Output）。
-   * 逐句深入剖析提議方法在此案例中為何失效，並具體指出未來改進空間。
+**寫進範本**：附錄 A（`sections/appendix.tex` 的第一節）；`main.tex` 開頭的導引框〈What the final paper is〉。
 
----
+### 2. 把實驗做完：讓比較站得住
 
-## 四、 局限性與倫理聲明（Limitations & Ethics）
+所有的調整只在 dev set 上做，包括 prompt 的措辭、few-shot 範例、解碼設定與答案抽取規則；test set 每個最終設定只跑一次。每個比較對象寫明是怎麼來的：自己訓練的、跑公開的 checkpoint、呼叫 API，還是抄論文上的數字（抄來的另起一列並標明）。比較對象和你的方法拿到相同的預算：訓練資料、檢索進來的 context、生成的 token 或取樣次數。**最接近的那篇前人工作要出現在實驗裡**，做不到就寫一句為什麼。
 
-ARR 與主流會議目前將 Limitations 設為強制審查項目。缺少此節將直接面臨退稿風險。
+LLM 論文特別會被問的幾件事，照實際做的寫：模型可能看過測試集嗎，你查了什麼、查到什麼；benchmark 本身的題目與答案，你抽讀之後發現什麼；用 LLM 當評審的話，它和人的判斷一致嗎（連同兩個人之間的一致性）；模型的確切版本、精度與量化、推論引擎與版本、解碼設定，推理模型另加思考預算；種子數、prompt 變體、成對的顯著性檢定。
 
-* **Computational Overhead**：誠實揭露訓練所需的 GPU-hours、峰值顯存（Peak VRAM）、推論延遲或 API Token 成本。
-* **Generalization Bounds**：明確界定本方法的適用範圍。若僅在繁體中文或特定法律語料上驗證，需誠實說明尚未在多語言、跨領域環境中獲得泛化驗證。
-* **Risks & Biases**：評估模型是否存在潛在毒性（Toxicity）、幻覺誤導或領域特有偏見（Domain-specific Bias）。
+**寫進範本**：§4 Experimental Setup 的四個小節（Data、Models and Training、Baselines, Comparisons and Controls、Evaluation Protocol）；長的清單放附錄 B，但判斷這個比較所需要的資訊留在正文。
+
+### 3. 結果：一個研究問題，一個答案
+
+§5 照 introduction 的研究問題排：每個問題一段（通常配一張表或圖），段尾就是答案。不要逐格朗讀表格，讀者自己看得到；要說的是型態與原因：效果出現在哪個條件、沒出現在哪個條件、比種子與 prompt 格式之間的變異大嗎、兩個模型家族都成立嗎、符合你提出的機制或假設嗎。容易的條件與困難的條件分開報，全部平均會把你主張的效果蓋掉。
+
+假設不成立時，要讓讀者相信「實驗本來看得到效果」：寫出實驗之前的預測；證明管線是好的（重現的 baseline，或一個已知有效果、而你的量法也量得到的條件）；說明你的資料最小看得出多大的效果（種子之間的變異、信賴區間的寬度）。然後說這個結果排除了什麼、還留下什麼沒回答。
+
+**寫進範本**：§5 Results（〈One answer per research question〉〈Honest reporting〉〈If the hypothesis did not hold〉三個框）。
+
+### 4. 分析：為什麼、到哪裡為止、代價多少
+
+主表只說明「是這樣」，§6 要說明為什麼、到哪裡為止、代價是什麼。三個部分，內容隨貢獻類型不同（見下一節的表）；**第三部分是質性與錯誤分析，三種類型都必做**：
+
+1. 從 test set **隨機**抽 50–100 筆，比較的兩邊用同一批輸入；
+2. 遮住系統名稱，一筆一筆讀，寫下錯在哪裡；
+3. 歸成對這個任務有意義的類別（沒檢索到需要的資訊、檢索到了沒用上、某一步推理錯了、答案對但抽取失敗、標準答案本身是錯的、語言變體不對、過度拒答……）；
+4. 兩邊各自計數，做成表或圖；有第二個人標一部分的話，報告一致性；
+5. 用表格放一兩個案例（輸入、標準答案、baseline 的輸出、你的輸出），並說明你的方法、資料或解釋在哪裡失敗。
+
+三個精心挑選的例子不是證據，分類之後的計數才是。這裡的判斷來自你自己讀過的輸出，不交給 AI。attention 權重不是解釋，模型寫出來的推理過程也只是另一份輸出。
+
+**寫進範本**：§6 Analysis（三個小節；資源型與分析型照第一個框改小節名稱）。
+
+### 5. 寫作：重寫，不是增補
+
+順序建議是：先定表與圖，再寫 §5、§6，然後 §3、§4，接著 §1、§2，**摘要與 Figure 1 最後寫**。寫完之後回頭對一次：introduction 承諾了延遲，實驗就要報延遲；承諾了多語言，實驗就不能只有一種語言。實驗改變了你能主張的範圍時，改 introduction，不是改表。論證的骨架、各節要扛的責任與句子層次的檢查，見〈[論文寫作與敘事](paper-writing-and-narrative.qmd)〉。
+
+Related work 在期限前再掃一次最近六個月的 arXiv 與當年的會議論文集；期中引的 preprint，現在可能有正式版了，逐筆再查。期中之後出現了一篇做了你想做的事的論文，就引用它，並說明你的論文還多了什麼，不要當作沒看到。引用的三層查證、`\src{}`、從官方來源匯出的 BibTeX（每筆有 `doi` 或 `url`），規則和期中完全相同。
+
+**寫進範本**：摘要、§1、§2、§7 Conclusion 的導引框。
+
+### 6. Limitations、倫理、AI 使用聲明，然後自我審稿
+
+Limitations 是 ARR 的必要章節，不計頁數，不能放新的方法或結果；寫具體、會限制你主張的地方（測了哪些語言、變體、模型家族與大小；指標、評審模型或人評量不到什麼；對污染還不知道什麼；幾個種子能說明到什麼程度；依賴的閉源模型可能在同一個名字底下改變行為）。Ethical Considerations 在有適用情況時寫：有人替你寫題目、標註或評分；你釋出資料或模型；用到授權或使用條款有限制的資料、網站、模型或 API；資料可能含個資或冒犯內容；涉及社群語言，或成果可能被拿來誤導、冒充或繞過安全機制。期中寫的是打算怎麼做，現在寫實際怎麼做的。本課不要求送倫理審查，但同意與合理的報酬照樣要有。AI 的使用寫在 Acknowledgments。
+
+期限前自我審稿，依序三件事：**主張與證據對照表**（摘要與貢獻清單的每一條主張，旁邊寫支持它的表、圖或節；空格的那一條改弱或刪掉）；**Responsible NLP checklist**（期中很多項還是計畫，現在每一項都要能指到論文或附錄裡回答它的那一句）；**照 ARR 審稿表寫一份審稿意見**（三句話的摘要、優點、編號的缺點，Soundness、Excitement、Overall assessment 與 Reproducibility 各一個判斷與理由），再把期中範本 §7 那份審稿人常見問題清單對著論文重答一次。能修的修掉，修不了的寫進 Limitations。拿期中點名的那三篇論文來比：那就是標準。
+
+**寫進範本**：Limitations、Ethical Considerations、Acknowledgments；`sections/08-before-the-deadline.tex` 的兩個框（自我審稿與紅旗清單，只有導引，框關掉之後什麼都不印）。
+
+## 三種貢獻，期末各要拿出什麼
+
+範本的骨架用方法型的節名；資源型與分析型照 §3 與 §6 第一個框的說明改名。每個框裡三種類型各有一段，照自己的類型寫，其餘刪掉。
+
+| | 方法 | 資源 | 分析 |
+|:---|:---|:---|:---|
+| **§3 寫什麼** | 任務的輸入與輸出；逐個元件、每個介面的張量形狀；只在訓練時存在的元件；機制與它該有效、不該有效的條件；每個元件對應的消融 | 一筆資料是什麼；來源與**實際**蒐集到的數量；授權、條款與同意；標註規範與試標後的修訂；量到的一致性；防污染的設計；統計表與切分；data statement | 研究的模型與版本；刺激或題目怎麼來、有幾筆；測量工具與它可信的證據；相關還是因果；混淆因素與控制；哪些是事先定的、哪些是事後探索 |
+| **§4 的比較** | naive baseline、調得一樣仔細的 competitive baseline、oracle，以及預算相同但沒有你的機制的對照組 | 現有模型在你的資料**與**既有資料上，用同樣的 prompt 與評分 | 排除每個混淆因素的控制條件；現象不該出現的參照模型或條件 |
+| **§5 主表** | 你的系統對上 baseline 與對照組，容易與困難的條件分欄 | 同一批模型在兩份資料上的差距，以及差距由什麼組成（只證明「新資料上分數比較低」不夠，幾乎任何新資料都會） | 每個條件與控制之下的量測值與信賴區間，旁邊是各假設的預測 |
+| **§6 前兩小節** | Ablations；Efficiency and Robustness | 資料揭露了什麼（依你標註的現象拆解錯誤，並和既有資料對照）；Data Quality（標註者在哪裡不一致、為什麼） | Alternative Explanations（一列排除一個）；Robustness（換模型、大小、種子、prompt 格式、資料，以及測量工具的一個變體） |
+| **§6 第三小節** | 質性與錯誤分析：必做 | 同左 | 同左，對象是效果最大與最小的那些題目 |
+
+## 篇幅與格式
+
+- **長度是硬限制**：正文（§1–§7，連同正文的所有圖表）最多 8 頁。Limitations、Ethical Considerations、Acknowledgments、參考文獻與附錄不計入。ARR 對超頁的投稿直接 desk reject；在這門課，**第 8 頁之後的正文內容不評分**。不要用縮小邊界、字級或行距的方式塞進去，刪字。把導引框關掉（`\showguidesfalse`）才看得到真正的長度。
+- **附錄**：放在參考文獻之後，審稿人沒有義務讀，所以論文不靠附錄也要能成立；把判斷主張所需要的內容搬到附錄來省頁數，在 ARR 可能被視為規避頁數限制。附錄 A（和期中的差異）與附錄 B（Reproducibility Details，含程式碼連結）在本課必寫；附錄 C（Prompts and Judge Details）有用 prompt 就寫；附錄 D、E 視需要，不用的刪掉。
+- **摘要**：最多 200 字（英文字數）。
+- **紅色標記**：期限前設 `\showguidesfalse` 並編譯，PDF 裡不能有任何紅色的 `\fillin` 或 `\pending`。**期末沒有例外**：量不出來的列或欄刪掉，不能留 `\pending`，更不能填估計值。
+- **數字**：每個量測值都來自你自己的程式；引自其他論文的數字另起一列並標明。
+- **`\src{}`**：每個歸給某篇論文的主張都要有，本課一律保留。
+- **語言、作者與中文字**：和期中相同（全文英文；需要在 PDF 裡放中文、台語或客語時改用 XeLaTeX 並包在 `\zh{...}` 裡，查編譯紀錄有沒有 `Missing character`；作者寫護照上的英文姓名、學號與 email）。
+
+## 跟著論文走的東西
+
+除了 Prism 專案之外沒有別的東西要交，所以證據用連結放進論文：§4 的註腳，或附錄 B。確認授課老師打得開每一個連結（公開，或分享給老師）。
+
+- **程式碼 repo（必交）**：鎖定版本的環境檔、設定檔，以及產生主表數字的那支腳本。資源型另加蒐集、標註與評分的腳本；分析型另加測量與統計的腳本。
+- **Prompt（有用就必附）**：模型實際看到的每一個 prompt，你的系統與每個 baseline 的都要，逐字放在附錄 C 或 repo 裡。
+- **模型輸出、checkpoint、adapter 與資料（鼓勵）**：有了你評分過的模型輸出，讀者不必重跑就能重新評分。檔案夠小，而且授權、API 條款與當事人的同意都允許的，就釋出；不能釋出的，寫明是什麼、為什麼。
+
+## 用 AI 的規則
+
+和期中完全相同，見〈[期中報告](midterm-poc.qmd)〉頁的〈用 AI 的規則〉。期末最容易越線的三個地方：
+
+- **數字**：AI 不產生、不補齊，也不解讀數字。「請幫我分析這張表」得到的段落，不能放進 §5。
+- **段落**：AI 可以潤飾你寫的句子，但不從你的要點或表格生成段落。Prism 內建的 AI 也一樣。
+- **錯誤分析**：讀輸出、判斷錯在哪裡，是你自己的工作。AI 可以幫忙把你定好的類別寫成清楚的定義，不能替你標。
+
+LLM 若本身是研究的一部分（被研究的系統、資料產生器或評審），寫在正文的 §3、§4，並驗證它。自我審稿時，可以請另一個 AI 獨立寫一份審稿意見，它找到而你漏掉的缺點，再看一次。用過的工具、用途與碰過的部分，寫進 Acknowledgments。
+
+## 交件前檢查
+
+- `final/main.tex` 設為 `\showguidesfalse`，編譯出來的 PDF 裡**沒有任何紅色標記**。
+- 正文在 8 頁之內（導引框關掉之後看）；沒有動過邊界、字級或行距。
+- 摘要不超過 200 字；摘要與貢獻清單的每一條主張，都指得到支持它的表、圖或節。
+- 沒有期中留下來的「we will」「we expect」「we plan to」（明確標為未來工作的句子除外）。
+- 附錄 A 列了和期中報告不一樣的地方；附錄 B 有程式碼 repo 的連結，換一個沒登入的瀏覽器打得開（或已分享給老師）；有用 prompt 的話，附錄 C 或 repo 裡有逐字的 prompt。
+- 每個歸給論文的主張都有 `\src{}`；每一筆 BibTeX 都從官方來源匯出、有 `doi` 或 `url`；有同儕審查版本的，引的是正式版。
+- 最接近的那篇論文出現在實驗裡，或有一句話說明為什麼不能。
+- 每個數字都來自你自己的程式；主表寫明種子數、± 代表什麼、哪些差異在哪一種成對檢定下顯著。
+- §6 有錯誤分析：抽樣方式、類別、兩邊的計數，以及至少一個失敗的案例。
+- Limitations 一節寫了；需要時，Ethical Considerations 也寫了；Acknowledgments 寫明 AI 的使用。
+- PDF 裡有中文、台語或客語的話，用 XeLaTeX 編譯、每段都包在 `\zh{...}` 裡，編譯紀錄裡沒有 `Missing character`。
+- `sections/08-before-the-deadline.tex` 的紅旗清單逐條看過，自我審稿做過一次。
+- `final/main.tex` 在 Prism 上編譯得過：期限當下，老師就是把它編譯成 PDF 來打分數。`midterm/` 資料夾沒有動。
+
+## 之後真的要投稿的話
+
+課程的版面保留了作者姓名、行號與灰色的 `\src` 標記，方便老師指著行號給意見。真的投到 ARR 之前（課程交件不用做）：照範本 README 的〈Page layout〉改成匿名版；刪掉附錄 A；Acknowledgments 在審稿版不放，AI 的使用改寫在 Responsible NLP checklist 的 E1；程式碼與資料的連結也要匿名，不能用會追蹤下載的檔案分享服務；最後回 ARR 的 call for papers 再查一次規定，它在各個週期之間會改。時程見〈[選題問題卡](topics-for-acl27.qmd)〉最後的〈投稿格式備忘〉。
+
+## 版本
+
+- 2026-11-28：改寫成路線圖，對齊 ARR long paper 的 Prism 範本（`final/` 同日改為方法、資源、分析三型都有導引）。前一版的各章節撰寫規範、「ACL 或 ICLR 雙欄、Short 4 頁或 Long 8 頁」、舉例的 baseline 與只談方法型的寫法已移除。新增：從期中到期末的對照、附錄 A 記錄和期中的差異、負面結果的報告方式、8 頁硬限制、跟著論文走的程式碼與 prompt。

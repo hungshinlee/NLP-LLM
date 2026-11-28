@@ -4,7 +4,7 @@
 <!-- summary: The LaTeX project for both reports, in ACL Rolling Review long-paper format, with guidance written from an ARR reviewer's point of view. Download the ZIP and import it into Prism. -->
 <!-- 此檔由 bin/publish_report_template.py 從 private repo 的 nlp_llm/report-template/README.md 產生，請勿在公開 repo 直接編輯；zip 也是同一支腳本的產物。 -->
 
-**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (37 files, 443 KB; version `728be70`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
+**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (38 files, 479 KB; version `50f582d`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
 
 This is the Prism project template for the midterm report and the final paper.
 Both use the ACL Rolling Review (ARR) long-paper format, the format of ACL, EMNLP, NAACL
@@ -31,7 +31,7 @@ have to write.
     ├── references.bib
     ├── acl_natbib.bst
     ├── figures/
-    └── sections/
+    └── sections/          one .tex file per section; appendix.tex holds the appendices
 ```
 
 ## Getting started
@@ -46,8 +46,9 @@ about large language models.
    imports the template and shares the project with the other members too; a working title is
    fine until the topic is settled. Sharing the project is how you hand in: there is no
    separate PDF to submit. The instructor announces each deadline; at the midterm deadline,
-   the instructor compiles `midterm/main.tex` as it stands and grades that PDF, so make sure
-   it compiles.
+   the instructor compiles `midterm/main.tex` as it stands and grades that PDF, and at the
+   final deadline `final/main.tex`, so make sure they compile. The final paper is written in
+   the same project; leave the `midterm/` folder as it was at the midterm deadline.
 3. Compile `midterm/main.tex` for the midterm report and `final/main.tex` for the final paper,
    with pdfLaTeX (the default) and BibTeX. If your paper must show Chinese, Taiwanese Hokkien
    or Hakka text, read "Chinese or Taiwanese text in the PDF" below first.
@@ -56,9 +57,21 @@ about large language models.
    how to find, investigate and choose a problem. Keep a record of your candidates, searches
    and AI-assisted steps from the first day; the midterm has an optional appendix
    (Problem Discovery Log) where you can include it.
+   For the final paper, start with the box "What the final paper is" after the abstract.
+   Sections 3 to 6 carry guidance for each kind of contribution (method, resource,
+   analysis): follow the parts for yours and delete the others. The last box, before the
+   Acknowledgments, is the checklist to go through before the deadline.
 5. Fill in the authors in `main.tex`. For each group member: the English name exactly as it
    appears on the passport, given name first (e.g. `Hung-Shin Lee`), the student ID, and an
    email address.
+
+**If you imported the template before 2026-11-28:** the `final/` folder was rewritten on that
+date (guidance for all three contribution types, the appendix on changes since the midterm,
+the checklist before the deadline). Download the zip again and, in your existing Prism
+project, replace the whole `final/` folder and this `README.md` with the new ones. Do not
+touch `midterm/` or `midterm/references.bib`; the three files in the project root
+(`acl.sty`, `acl_natbib.bst`, `report-guide.sty`) have not changed. If you had already
+started writing in the old `final/`, keep your text and copy the new boxes around it.
 
 ## Four markers
 
@@ -75,7 +88,9 @@ about large language models.
   compile, and look through the PDF: no red marker may remain.** One exception: in the midterm
   report, the cells of the planned-results table (Evaluation Plan) stay `\pending` until the
   final paper. In the proof-of-concept table, delete a row you did not run, and write `--`
-  where there is no published or predicted value to expect. (Searching the source also finds
+  where there is no published or predicted value to expect. The final paper has no
+  exception: delete a row or a column you could not measure, and adjust the claim that
+  depended on it. (Searching the source also finds
   the markers that the guidance boxes mention; the PDF is what counts.)
 - **Every measured number in every table must come from your own code.** If you have not run
   it yet, write `\pending`; never fill a cell with the value you hope to get. The only other
@@ -96,11 +111,37 @@ about large language models.
 - `Limitations` (required), `Ethical Considerations`, `Acknowledgments`, the references and
   the appendices do **not** count toward the 8 pages.
 - The abstract has at most 200 words.
-- The 8-page limit applies to the final paper. The midterm report has no length limit, in
-  either direction; it keeps the same layout. The 200-word limit for the abstract applies to
-  both.
+- The 8-page limit applies to the final paper, and there it is enforced: ARR desk rejects a
+  paper that is over length, and in this course whatever content lies beyond page 8 is not
+  graded. Check the length with `\showguidesfalse`. The appendices are for detail a reader
+  may skip: reviewers are not required to read them, and the paper must stand without them.
+- The midterm report has no length limit, in either direction; it keeps the same layout.
+  The 200-word limit for the abstract applies to both.
 - An accepted paper gets one more page (9) for the camera-ready version. (ARR also has short
   papers, with 4 pages of content; the final paper of this course is a long paper.)
+
+## What goes with the final paper
+
+There is nothing to hand in besides the Prism project, so the evidence is linked from the
+paper: in a footnote of the Experimental Setup section, or in the appendix
+(Reproducibility Details). Make sure the instructor can open every link.
+
+- **Code repository (required):** an environment file with pinned versions, the
+  configuration files, and the script that produces the numbers of the main table; for a
+  resource, the collection, annotation and scoring scripts; for an analysis, the measurement
+  and statistics scripts.
+- **Prompts (required if you used any):** every prompt exactly as the models saw it, for
+  your system and for every baseline, in the appendix (Prompts and Judge Details) or in the
+  repository.
+- **Model outputs, checkpoints, adapters and data (encouraged):** the outputs you scored let
+  a reader re-score them without rerunning anything. Release what is small enough and what
+  the licenses, the API terms and the consent of the people involved allow. If something
+  cannot be released, say so and say why.
+- **Changes since the midterm (required):** the first appendix of the final paper lists what
+  changed since the midterm report (question, hypothesis, contribution type, data, models,
+  measures) and why. Changing is fine; the paper states the question as it is now. For a
+  different topic altogether, tell the instructor first. A negative or mixed result,
+  reported clearly, is a finding.
 
 ## References
 
@@ -108,7 +149,8 @@ about large language models.
   part of the sentence ("Smith et al. (2024) show"), `\citep{key}` for a parenthetical
   reference ("(Smith et al., 2024)").
 - Each report has its own `references.bib` in its folder. When you start the final paper,
-  copy the entries you still cite from `midterm/references.bib`.
+  copy the entries you still cite from `midterm/references.bib`, and check each one again: a
+  preprint you cited at the midterm may have a published version now.
 - **Export every entry from an official source**: ACL Anthology, OpenReview, the NeurIPS
   proceedings, PMLR, the publisher's page reached through the DOI (ACM, IEEE, Nature, ...), or
   DBLP; arXiv only for papers that have no published version. Do not
@@ -143,6 +185,8 @@ For a real ARR submission:
   Responsible NLP checklist instead; put the Acknowledgments back in the camera-ready version;
 - hide the guidance boxes with `\showguidesfalse` (better, delete them) and turn the grey
   source notes off with `\showsourcesfalse`;
+- delete the appendix "Changes Since the Midterm Report", and anonymize every link to code or
+  data (ARR does not accept links to services that can track downloads);
 - fill in the Responsible NLP checklist in the submission form; the midterm template's last
   section walks through it.
 
@@ -189,9 +233,18 @@ All citations in the untouched template are inside the blue boxes, so hiding the
 `\cite` at all. The message goes away once you add your own `\citet` or `\citep`.
 
 **Can I use Prism's built-in AI?**
-Yes, under the same rules as any other AI assistant (see the Acknowledgments section of the
-midterm template): use it for editing and for checking, never to produce references, BibTeX
-entries or numbers, and say in the Acknowledgments what you used it for.
+Yes, under the same rules as any other AI assistant (see the Acknowledgments section of
+either template): use it for editing and for checking, never to produce references, BibTeX
+entries, numbers or paragraphs, and say in the Acknowledgments what you used it for.
+
+**My final paper is a resource or an analysis paper. Which sections do I use?**
+The same files. The skeleton has the titles of a method paper; the first box of Sections 3
+and 6 says what to rename the section and its subsections to, and each box has a part for
+your type.
+
+**The question changed after the midterm. Is that a problem?**
+No, as long as the paper states the question as it is now and the appendix "Changes Since
+the Midterm Report" says what changed and why. Do not edit the `midterm/` folder to match.
 
 **Can I write Chinese in comments?**
 Yes. Comments starting with `%` never reach the PDF, so Chinese is fine there under any
@@ -203,5 +256,7 @@ compiler.
 (commit `d5adc82`, 2026-06-29; identical to the repository's current version on 2026-10-16).
 The page limits, section rules and reviewer guidance quoted in the boxes come from the ARR call
 for papers, the ARR reviewer guidelines, the ARR review form, the Responsible NLP checklist and
-the \*ACL formatting guidelines, as published on 2026-10-16. Check them again before a real
-submission; ARR revises them between cycles.
+the \*ACL formatting guidelines, as published on 2026-10-16; the call for papers and the
+reviewer guidelines were read again on 2026-11-28 (the guidelines then said they had been
+updated for the October 2026 cycle). Check them again before a real submission; ARR revises
+them between cycles.
