@@ -1,0 +1,247 @@
+<!-- 由 scripts/make_figs_w12.py 產生，勿手改；投影片用 {{< include assets/w12/prefix.inline.qmd >}} 貼入 -->
+```{=html}
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 344" width="100%" style="display:block;height:auto" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-prefix" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="30" font-size="27" fill="#15803d" text-anchor="start" font-weight="700">The same prefix: its KV is reused as it is</text><rect x="20" y="46" width="216" height="52" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/><text x="130" y="80" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400">system prompt</text><rect x="240" y="46" width="116" height="52" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/><text x="300" y="80" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400">tools</text><rect x="360" y="46" width="396" height="52" rx="6" fill="#f0fdf4" stroke="#15803d" stroke-width="1.6"/><text x="560" y="80" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400">documents</text><rect x="760" y="46" width="196" height="52" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="860" y="80" font-size="23" fill="#1f2328" text-anchor="middle" font-weight="400">this question</text><text x="20" y="130" font-size="23" fill="#6b7280" text-anchor="start" font-weight="400">positions 0, 1, 2, … — identical every time</text><text x="976" y="68" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">only this part</text><text x="976" y="98" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">is computed</text><g class="fragment" data-fragment-index="1"><text x="20" y="196" font-size="27" fill="#dc2626" text-anchor="start" font-weight="700">Two passages, each cached on its own, then stitched</text><rect x="20" y="212" width="296" height="52" rx="6" fill="#fde9c8" stroke="#b45309" stroke-width="1.6"/><text x="30.5019" y="246" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="59.6" lengthAdjust="spacing">KV of</text><svg x="96.3453" y="225.028" width="24.84" height="26.7116" viewBox="0 0 24.84 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t73-figure_1">
+  <g id="t73-patch_1">
+   <path d="M 0 26.711625 
+L 24.84 26.711625 
+L 24.84 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t73-text_1">
+   <!-- $z_a$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t73-Cmmi10-7a" d="M 313 -72 
+Q 263 -72 263 -13 
+Q 263 19 275 31 
+Q 447 328 689 598 
+Q 931 869 1239 1145 
+Q 1547 1422 1858 1700 
+Q 2169 1978 2363 2194 
+L 2338 2194 
+Q 2197 2194 1925 2284 
+Q 1653 2375 1497 2375 
+Q 1328 2375 1168 2301 
+Q 1009 2228 966 2075 
+Q 956 2028 916 2028 
+L 838 2028 
+Q 788 2028 788 2094 
+L 788 2113 
+Q 838 2300 952 2462 
+Q 1066 2625 1233 2726 
+Q 1400 2828 1581 2828 
+Q 1709 2828 1793 2770 
+Q 1878 2713 1990 2591 
+Q 2103 2469 2173 2416 
+Q 2244 2363 2350 2363 
+Q 2491 2363 2602 2491 
+Q 2713 2619 2822 2809 
+Q 2841 2828 2869 2828 
+L 2944 2828 
+Q 2966 2828 2980 2812 
+Q 2994 2797 2994 2772 
+Q 2994 2750 2981 2731 
+Q 2809 2434 2579 2176 
+Q 2350 1919 1979 1586 
+Q 1609 1253 1354 1023 
+Q 1100 794 878 550 
+Q 928 563 1013 563 
+Q 1169 563 1439 473 
+Q 1709 384 1856 384 
+Q 2016 384 2178 453 
+Q 2341 522 2459 647 
+Q 2578 772 2619 934 
+Q 2634 978 2669 978 
+L 2747 978 
+Q 2772 978 2787 958 
+Q 2803 938 2803 916 
+Q 2803 909 2797 897 
+Q 2738 653 2591 433 
+Q 2444 213 2230 70 
+Q 2016 -72 1772 -72 
+Q 1650 -72 1565 -15 
+Q 1481 41 1367 164 
+Q 1253 288 1181 342 
+Q 1109 397 1006 397 
+Q 688 397 434 -50 
+Q 413 -72 391 -72 
+L 313 -72 
+z
+" transform="scale(0.015625)"/>
+     <path id="t73-Cmmi10-61" d="M 1113 -72 
+Q 709 -72 476 233 
+Q 244 538 244 953 
+Q 244 1363 456 1803 
+Q 669 2244 1030 2536 
+Q 1391 2828 1806 2828 
+Q 1997 2828 2147 2725 
+Q 2297 2622 2381 2444 
+Q 2453 2700 2663 2700 
+Q 2744 2700 2798 2651 
+Q 2853 2603 2853 2522 
+Q 2853 2503 2851 2493 
+Q 2850 2484 2847 2472 
+L 2400 684 
+Q 2356 494 2356 372 
+Q 2356 97 2541 97 
+Q 2741 97 2845 351 
+Q 2950 606 3022 941 
+Q 3034 978 3072 978 
+L 3150 978 
+Q 3175 978 3190 956 
+Q 3206 934 3206 916 
+Q 3094 469 2961 198 
+Q 2828 -72 2528 -72 
+Q 2313 -72 2147 54 
+Q 1981 181 1941 391 
+Q 1528 -72 1113 -72 
+z
+M 1119 97 
+Q 1350 97 1567 270 
+Q 1784 444 1941 678 
+Q 1947 684 1947 697 
+L 2291 2088 
+L 2297 2106 
+Q 2259 2334 2132 2498 
+Q 2006 2663 1791 2663 
+Q 1575 2663 1389 2486 
+Q 1203 2309 1075 2069 
+Q 950 1813 836 1366 
+Q 722 919 722 672 
+Q 722 450 817 273 
+Q 913 97 1119 97 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t73-Cmmi10-7a" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t73-Cmmi10-61" transform="translate(46.484375 -16.19375) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="121.185" y="246" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="184.3" lengthAdjust="spacing">: positions 0–199</text><rect x="324" y="212" width="296" height="52" rx="6" fill="#fde9c8" stroke="#b45309" stroke-width="1.6"/><text x="335.468" y="246" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="59.6" lengthAdjust="spacing">KV of</text><svg x="401.311" y="225.028" width="22.908" height="26.7116" viewBox="0 0 22.908 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t74-figure_1">
+  <g id="t74-patch_1">
+   <path d="M 0 26.711625 
+L 22.908 26.711625 
+L 22.908 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t74-text_1">
+   <!-- $z_b$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t74-Cmmi10-7a" d="M 313 -72 
+Q 263 -72 263 -13 
+Q 263 19 275 31 
+Q 447 328 689 598 
+Q 931 869 1239 1145 
+Q 1547 1422 1858 1700 
+Q 2169 1978 2363 2194 
+L 2338 2194 
+Q 2197 2194 1925 2284 
+Q 1653 2375 1497 2375 
+Q 1328 2375 1168 2301 
+Q 1009 2228 966 2075 
+Q 956 2028 916 2028 
+L 838 2028 
+Q 788 2028 788 2094 
+L 788 2113 
+Q 838 2300 952 2462 
+Q 1066 2625 1233 2726 
+Q 1400 2828 1581 2828 
+Q 1709 2828 1793 2770 
+Q 1878 2713 1990 2591 
+Q 2103 2469 2173 2416 
+Q 2244 2363 2350 2363 
+Q 2491 2363 2602 2491 
+Q 2713 2619 2822 2809 
+Q 2841 2828 2869 2828 
+L 2944 2828 
+Q 2966 2828 2980 2812 
+Q 2994 2797 2994 2772 
+Q 2994 2750 2981 2731 
+Q 2809 2434 2579 2176 
+Q 2350 1919 1979 1586 
+Q 1609 1253 1354 1023 
+Q 1100 794 878 550 
+Q 928 563 1013 563 
+Q 1169 563 1439 473 
+Q 1709 384 1856 384 
+Q 2016 384 2178 453 
+Q 2341 522 2459 647 
+Q 2578 772 2619 934 
+Q 2634 978 2669 978 
+L 2747 978 
+Q 2772 978 2787 958 
+Q 2803 938 2803 916 
+Q 2803 909 2797 897 
+Q 2738 653 2591 433 
+Q 2444 213 2230 70 
+Q 2016 -72 1772 -72 
+Q 1650 -72 1565 -15 
+Q 1481 41 1367 164 
+Q 1253 288 1181 342 
+Q 1109 397 1006 397 
+Q 688 397 434 -50 
+Q 413 -72 391 -72 
+L 313 -72 
+z
+" transform="scale(0.015625)"/>
+     <path id="t74-Cmmi10-62" d="M 1106 -72 
+Q 719 -72 503 231 
+Q 288 534 288 941 
+Q 288 1000 317 1173 
+Q 347 1347 347 1388 
+L 966 3872 
+Q 991 3981 997 4044 
+Q 997 4147 581 4147 
+Q 519 4147 519 4231 
+Q 522 4247 533 4287 
+Q 544 4328 561 4350 
+Q 578 4372 609 4372 
+L 1472 4441 
+Q 1550 4441 1550 4359 
+L 1075 2472 
+Q 1438 2828 1806 2828 
+Q 2078 2828 2273 2684 
+Q 2469 2541 2566 2306 
+Q 2663 2072 2663 1806 
+Q 2663 1497 2542 1167 
+Q 2422 838 2209 555 
+Q 1997 272 1712 100 
+Q 1428 -72 1106 -72 
+z
+M 1119 97 
+Q 1338 97 1528 280 
+Q 1719 463 1838 691 
+Q 1966 947 2077 1386 
+Q 2188 1825 2188 2088 
+Q 2188 2316 2092 2489 
+Q 1997 2663 1791 2663 
+Q 1559 2663 1348 2492 
+Q 1138 2322 978 2088 
+L 800 1363 
+Q 697 959 691 716 
+Q 691 475 795 286 
+Q 900 97 1119 97 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t74-Cmmi10-7a" transform="translate(0 0.8125)"/>
+    <use xlink:href="#t74-Cmmi10-62" transform="translate(46.484375 -16.19375) scale(0.7)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="424.219" y="246" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="184.3" lengthAdjust="spacing">: positions 0–199</text><line x1="332" y1="220" x2="612" y2="256" stroke="#dc2626" stroke-width="2.4"/><line x1="332" y1="256" x2="612" y2="220" stroke="#dc2626" stroke-width="2.4"/><rect x="660" y="206" width="384.06" height="36" rx="6" fill="#fff5f5" stroke="#dc2626" stroke-width="1.4"/><text x="674" y="232" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">wrong position stamps (RoPE)</text><rect x="660" y="252" width="463.319" height="36" rx="6" fill="#fff5f5" stroke="#dc2626" stroke-width="1.4"/><text x="674" y="278" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">the second never attended to the first</text><text x="20" y="326" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the repairs: adapt the model (TurboRAG), or recompute part of the tokens (CacheBlend)</text></g></svg>
+```

@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 396" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-openbook" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><rect x="20" y="40" width="230" height="150" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="80" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">the shelf</text><text x="38" y="112" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the corpus:</text><svg x="38" y="121.028" width="16.836" height="26.7116" viewBox="0 0 16.836 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t1-figure_1">
+  <g id="t1-patch_1">
+   <path d="M 0 26.711625 
+L 16.836 26.711625 
+L 16.836 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t1-text_1">
+   <!-- $n$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t1-Cmmi10-6e" d="M 494 109 
+Q 494 147 500 166 
+L 978 2075 
+Q 1025 2253 1025 2388 
+Q 1025 2663 838 2663 
+Q 638 2663 541 2423 
+Q 444 2184 353 1819 
+Q 353 1800 334 1789 
+Q 316 1778 300 1778 
+L 225 1778 
+Q 203 1778 187 1801 
+Q 172 1825 172 1844 
+Q 241 2122 305 2315 
+Q 369 2509 505 2668 
+Q 641 2828 844 2828 
+Q 1084 2828 1268 2676 
+Q 1453 2525 1453 2291 
+Q 1644 2541 1900 2684 
+Q 2156 2828 2444 2828 
+Q 2672 2828 2837 2750 
+Q 3003 2672 3095 2514 
+Q 3188 2356 3188 2138 
+Q 3188 1875 3070 1503 
+Q 2953 1131 2778 672 
+Q 2688 463 2688 288 
+Q 2688 97 2834 97 
+Q 3084 97 3251 365 
+Q 3419 634 3488 941 
+Q 3500 978 3541 978 
+L 3616 978 
+Q 3641 978 3658 962 
+Q 3675 947 3675 922 
+Q 3675 916 3669 903 
+Q 3581 541 3364 234 
+Q 3147 -72 2822 -72 
+Q 2597 -72 2437 83 
+Q 2278 238 2278 459 
+Q 2278 578 2328 709 
+Q 2409 919 2514 1209 
+Q 2619 1500 2686 1765 
+Q 2753 2031 2753 2234 
+Q 2753 2413 2679 2538 
+Q 2606 2663 2431 2663 
+Q 2197 2663 2000 2559 
+Q 1803 2456 1656 2286 
+Q 1509 2116 1388 1881 
+L 953 141 
+Q 931 53 854 -9 
+Q 778 -72 684 -72 
+Q 606 -72 550 -22 
+Q 494 28 494 109 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t1-Cmmi10-6e" transform="translate(0 0.8125)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="61.046" y="142" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="104.3" lengthAdjust="spacing">passages</text><line x1="253" y1="115" x2="296" y2="115" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-openbook)"/><rect x="300" y="40" width="230" height="150" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="318" y="80" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">the assistant</text><text x="318" y="112" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the retriever:</text><text x="318" y="142" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">turns the pages</text><line x1="533" y1="115" x2="576" y2="115" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-openbook)"/><rect x="580" y="40" width="230" height="150" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><text x="598" y="80" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">the desk</text><text x="598" y="112" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400" textLength="126.0" lengthAdjust="spacing">the context:</text><svg x="730.255" y="91.0283" width="14.628" height="26.7116" viewBox="0 0 14.628 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t2-figure_1">
+  <g id="t2-patch_1">
+   <path d="M 0 26.711625 
+L 14.628 26.711625 
+L 14.628 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t2-text_1">
+   <!-- $k$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t2-Cmmi10-6b" d="M 341 116 
+Q 341 153 347 172 
+L 1275 3872 
+Q 1300 3981 1306 4044 
+Q 1306 4147 891 4147 
+Q 825 4147 825 4231 
+Q 828 4247 839 4287 
+Q 850 4328 867 4350 
+Q 884 4372 916 4372 
+L 1778 4441 
+L 1797 4441 
+Q 1797 4434 1819 4423 
+Q 1841 4413 1844 4409 
+Q 1856 4378 1856 4359 
+L 1184 1684 
+Q 1416 1781 1767 2145 
+Q 2119 2509 2317 2668 
+Q 2516 2828 2816 2828 
+Q 2994 2828 3119 2706 
+Q 3244 2584 3244 2406 
+Q 3244 2294 3197 2198 
+Q 3150 2103 3065 2043 
+Q 2981 1984 2869 1984 
+Q 2766 1984 2695 2048 
+Q 2625 2113 2625 2216 
+Q 2625 2369 2733 2473 
+Q 2841 2578 2994 2578 
+Q 2931 2663 2803 2663 
+Q 2613 2663 2436 2553 
+Q 2259 2444 2054 2239 
+Q 1850 2034 1681 1864 
+Q 1513 1694 1369 1606 
+Q 1747 1563 2025 1408 
+Q 2303 1253 2303 934 
+Q 2303 869 2278 769 
+Q 2222 528 2222 384 
+Q 2222 97 2419 97 
+Q 2650 97 2770 350 
+Q 2891 603 2969 941 
+Q 2981 978 3022 978 
+L 3097 978 
+Q 3122 978 3139 962 
+Q 3156 947 3156 922 
+Q 3156 916 3150 903 
+Q 2909 -72 2406 -72 
+Q 2225 -72 2086 12 
+Q 1947 97 1872 242 
+Q 1797 388 1797 569 
+Q 1797 672 1825 781 
+Q 1844 856 1844 922 
+Q 1844 1169 1625 1297 
+Q 1406 1425 1125 1453 
+L 800 147 
+Q 775 50 703 -11 
+Q 631 -72 538 -72 
+Q 456 -72 398 -17 
+Q 341 38 341 116 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t2-Cmmi10-6b" transform="translate(0 0.609375)"/>
+   </g>
+  </g>
+ </g>
+</svg><text x="598" y="142" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">passages laid out</text><line x1="813" y1="115" x2="856" y2="115" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-openbook)"/><rect x="860" y="40" width="230" height="150" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="878" y="80" font-size="27" fill="#1f2328" text-anchor="start" font-weight="700">the examinee</text><text x="878" y="112" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the LLM: reads</text><text x="878" y="142" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the desk, writes</text><line x1="1093" y1="115" x2="1126" y2="115" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-openbook)"/><text x="1132" y="109" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">an</text><text x="1132" y="139" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">answer</text><g class="fragment" data-fragment-index="1"><line x1="415" y1="194" x2="415" y2="224" stroke="#dc2626" stroke-width="1.8"/><rect x="312.341" y="230" width="205.318" height="36" rx="6" fill="#fff5f5" stroke="#dc2626" stroke-width="1.4"/><text x="326.341" y="256" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">(1) wrong page</text><line x1="695" y1="194" x2="695" y2="224" stroke="#dc2626" stroke-width="1.8"/><rect x="554.228" y="230" width="281.545" height="36" rx="6" fill="#fff5f5" stroke="#dc2626" stroke-width="1.4"/><text x="568.228" y="256" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">(2) right page, unread</text><line x1="975" y1="194" x2="975" y2="224" stroke="#dc2626" stroke-width="1.8"/><rect x="848.189" y="230" width="253.622" height="36" rx="6" fill="#fff5f5" stroke="#dc2626" stroke-width="1.4"/><text x="862.189" y="256" font-size="23" fill="#dc2626" text-anchor="start" font-weight="700">(3) read, miswritten</text></g><g class="fragment" data-fragment-index="2"><path d="M 975 274 C 975 376, 1180 376, 1180 159" stroke="#b45309" stroke-width="2.2" fill="none" stroke-dasharray="7 6" marker-end="url(#ah-openbook)"/><rect x="208.136" y="348" width="823.729" height="36" rx="6" fill="#fffbeb" stroke="#b45309" stroke-width="1.4"/><text x="222.136" y="374" font-size="23" fill="#b45309" text-anchor="start" font-weight="700">(4) the examinee also remembers — and does not say which it used</text></g></svg>

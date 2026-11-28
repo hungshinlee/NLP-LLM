@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1240 452" width="100%" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,PingFang TC,Noto Sans TC,sans-serif"><defs><marker id="ah-loop" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#6b7280"/></marker></defs><text x="20" y="30" font-size="27" fill="#0b5cad" text-anchor="start" font-weight="700">Use — a loop, and the model decides how many turns</text><rect x="20" y="46" width="190" height="120" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="82" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">question</text><svg x="38" y="93.0283" width="16.008" height="26.7116" viewBox="0 0 16.008 26.711625"><defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="t75-figure_1">
+  <g id="t75-patch_1">
+   <path d="M 0 26.711625 
+L 16.008 26.711625 
+L 16.008 0 
+L 0 0 
+L 0 26.711625 
+z
+" style="fill: none"/>
+  </g>
+  <g id="t75-text_1">
+   <!-- $x$ -->
+   <g style="fill: #1f2328" transform="translate(0 20.971687) scale(0.276 -0.276)">
+    <defs>
+     <path id="t75-Cmmi10-78" d="M 500 184 
+Q 613 97 819 97 
+Q 1019 97 1172 289 
+Q 1325 481 1381 709 
+L 1672 1844 
+Q 1741 2153 1741 2266 
+Q 1741 2425 1652 2544 
+Q 1563 2663 1403 2663 
+Q 1200 2663 1022 2536 
+Q 844 2409 722 2214 
+Q 600 2019 550 1819 
+Q 538 1778 500 1778 
+L 422 1778 
+Q 372 1778 372 1838 
+L 372 1856 
+Q 434 2094 584 2320 
+Q 734 2547 951 2687 
+Q 1169 2828 1416 2828 
+Q 1650 2828 1839 2703 
+Q 2028 2578 2106 2363 
+Q 2216 2559 2386 2693 
+Q 2556 2828 2759 2828 
+Q 2897 2828 3040 2779 
+Q 3184 2731 3275 2631 
+Q 3366 2531 3366 2381 
+Q 3366 2219 3261 2101 
+Q 3156 1984 2994 1984 
+Q 2891 1984 2822 2050 
+Q 2753 2116 2753 2216 
+Q 2753 2350 2845 2451 
+Q 2938 2553 3066 2572 
+Q 2950 2663 2747 2663 
+Q 2541 2663 2389 2472 
+Q 2238 2281 2175 2047 
+L 1894 916 
+Q 1825 659 1825 494 
+Q 1825 331 1917 214 
+Q 2009 97 2163 97 
+Q 2463 97 2698 361 
+Q 2934 625 3009 941 
+Q 3022 978 3059 978 
+L 3138 978 
+Q 3163 978 3178 961 
+Q 3194 944 3194 922 
+Q 3194 916 3188 903 
+Q 3097 522 2806 225 
+Q 2516 -72 2150 -72 
+Q 1916 -72 1727 54 
+Q 1538 181 1459 397 
+Q 1359 209 1182 68 
+Q 1006 -72 806 -72 
+Q 669 -72 523 -23 
+Q 378 25 287 125 
+Q 197 225 197 378 
+Q 197 528 301 651 
+Q 406 775 563 775 
+Q 669 775 741 711 
+Q 813 647 813 544 
+Q 813 409 723 309 
+Q 634 209 500 184 
+z
+" transform="scale(0.015625)"/>
+    </defs>
+    <use xlink:href="#t75-Cmmi10-78" transform="translate(0 0.8125)"/>
+   </g>
+  </g>
+ </g>
+</svg><line x1="213" y1="106" x2="246" y2="106" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-loop)"/><rect x="250" y="46" width="270" height="120" rx="8" fill="#eef2ff" stroke="#0b5cad" stroke-width="1.6"/><text x="268" y="82" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">the LLM reasons</text><text x="268" y="114" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">search, or</text><text x="268" y="144" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">answer now?</text><line x1="523" y1="106" x2="556" y2="106" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-loop)"/><rect x="560" y="46" width="230" height="120" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="578" y="82" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">a query</text><text x="578" y="114" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">written by</text><text x="578" y="144" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the model</text><line x1="793" y1="106" x2="826" y2="106" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-loop)"/><rect x="830" y="46" width="250" height="120" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="848" y="82" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">the retriever</text><text x="848" y="114" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">passages are</text><text x="848" y="144" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">appended</text><path d="M 955 170 C 955 214, 385 214, 385 172" stroke="#6b7280" stroke-width="2" fill="none" marker-end="url(#ah-loop)"/><text x="670" y="226" font-size="23" fill="#6b7280" text-anchor="middle" font-weight="400">each turn: one prefill and some decoding (W11)</text><line x1="1084" y1="106" x2="1116" y2="106" stroke="#6b7280" stroke-width="2" marker-end="url(#ah-loop)"/><text x="1124" y="100" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">the</text><text x="1124" y="130" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">answer</text><text x="20" y="286" font-size="27" fill="#b45309" text-anchor="start" font-weight="700">Training — two roads</text><g class="fragment" data-fragment-index="1"><rect x="20" y="302" width="590" height="140" rx="8" fill="#fff" stroke="#d1d5db" stroke-width="1.6"/><text x="38" y="338" font-size="23" fill="#1f2328" text-anchor="start" font-weight="700">Self-RAG: supervised (W8)</text><text x="38" y="370" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">a critic labels the corpus offline: retrieve here?</text><text x="38" y="400" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">is this passage useful? is this sentence supported?</text><text x="38" y="430" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the labels become tokens, trained in by SFT</text></g><g class="fragment" data-fragment-index="2"><rect x="630" y="302" width="590" height="140" rx="8" fill="#fffbeb" stroke="#b45309" stroke-width="1.6"/><text x="648" y="338" font-size="23" fill="#b45309" text-anchor="start" font-weight="700">Search-R1: reinforcement learning (W9)</text><text x="648" y="370" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">run the whole trajectory; reward only whether</text><text x="648" y="400" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">the final answer is right; retrieved tokens are</text><text x="648" y="430" font-size="23" fill="#1f2328" text-anchor="start" font-weight="400">masked out of the loss</text></g></svg>

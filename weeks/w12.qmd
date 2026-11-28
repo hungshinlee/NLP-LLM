@@ -6,6 +6,10 @@ toc-depth: 2
 
 <!-- 此檔由 scripts/build_weeks.py 從課程大綱過濾產生，請勿直接編輯。大綱正本在 private repo（$COURSE_OUTLINE），改完請重跑腳本。 -->
 
+::: {.callout-note appearance="minimal"}
+[**▶ Slides for this week**](../slides/w12.qmd)
+:::
+
 ## Where This Fits
 The second week of Part III. Of the six places a capability can come from (the table from W1), five have been ticked; the remaining one — **knowledge retrieved from outside the model** — opens this week. Three earlier results are used directly. W1: a language model compresses a distribution, not a set of propositions, and even perfectly clean training data leaves a floor under the hallucination rate (Kalai & Vempala). W5: not every token placed in the context is actually used. W11: every token in the context has a price — compute to read it, and then its KV entries are read again for every token written.
 

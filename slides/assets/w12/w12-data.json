@@ -1,0 +1,477 @@
+{
+ "bm25": {
+  "k1": 1.2,
+  "b": 0.75,
+  "limit": 2.2,
+  "sat": {
+   "1": 1.0,
+   "2": 1.375,
+   "3": 1.5714285714285714,
+   "5": 1.7741935483870968,
+   "10": 1.9642857142857144,
+   "20": 2.0754716981132075,
+   "50": 2.1484375,
+   "100": 2.173913043478261
+  },
+  "curve": [
+   {
+    "tf": 0,
+    "bm25": 0.0,
+    "linear": 0.0
+   },
+   {
+    "tf": 1,
+    "bm25": 1.0,
+    "linear": 1.0
+   },
+   {
+    "tf": 2,
+    "bm25": 1.375,
+    "linear": 2.0
+   },
+   {
+    "tf": 3,
+    "bm25": 1.5714285714285714,
+    "linear": 3.0
+   },
+   {
+    "tf": 4,
+    "bm25": 1.6923076923076923,
+    "linear": 4.0
+   },
+   {
+    "tf": 5,
+    "bm25": 1.7741935483870968,
+    "linear": 5.0
+   },
+   {
+    "tf": 6,
+    "bm25": 1.8333333333333335,
+    "linear": 6.0
+   },
+   {
+    "tf": 7,
+    "bm25": 1.8780487804878052,
+    "linear": 7.0
+   },
+   {
+    "tf": 8,
+    "bm25": 1.9130434782608698,
+    "linear": 8.0
+   },
+   {
+    "tf": 9,
+    "bm25": 1.9411764705882355,
+    "linear": 9.0
+   },
+   {
+    "tf": 10,
+    "bm25": 1.9642857142857144,
+    "linear": 10.0
+   },
+   {
+    "tf": 11,
+    "bm25": 1.9836065573770496,
+    "linear": 11.0
+   },
+   {
+    "tf": 12,
+    "bm25": 2.0000000000000004,
+    "linear": 12.0
+   },
+   {
+    "tf": 13,
+    "bm25": 2.0140845070422535,
+    "linear": 13.0
+   },
+   {
+    "tf": 14,
+    "bm25": 2.0263157894736845,
+    "linear": 14.0
+   },
+   {
+    "tf": 15,
+    "bm25": 2.037037037037037,
+    "linear": 15.0
+   },
+   {
+    "tf": 16,
+    "bm25": 2.046511627906977,
+    "linear": 16.0
+   },
+   {
+    "tf": 17,
+    "bm25": 2.054945054945055,
+    "linear": 17.0
+   },
+   {
+    "tf": 18,
+    "bm25": 2.0625,
+    "linear": 18.0
+   },
+   {
+    "tf": 19,
+    "bm25": 2.06930693069307,
+    "linear": 19.0
+   },
+   {
+    "tf": 20,
+    "bm25": 2.0754716981132075,
+    "linear": 20.0
+   }
+  ],
+  "length": {
+   "same_tf_3_len_1x": 1.5714285714285714,
+   "same_tf_3_len_2x": 1.2941176470588238
+  },
+  "src": "our arithmetic; k1 = 1.2 and b = 0.75 are Lucene's defaults; Robertson & Zaragoza 2009 §3.4: 1.2 < k1 < 2 and 0.5 < b < 0.8 'reasonably good in many circumstances'"
+ },
+ "index": {
+  "n_passages": 8800000.0,
+  "single_768_float32_GB": 27.0336,
+  "single_1024_float32_GB": 36.0448,
+  "colbert_GiB": 154,
+  "colbert_src": "Khattab & Zaharia, SIGIR 2020, Table 4 (end-to-end L2, 128 dims, 2 bytes per dim) — a quote",
+  "ratio": 6.116693333333333
+ },
+ "rerank": {
+  "candidates": 100,
+  "tokens_each": 300,
+  "N": 600000000.0,
+  "flops": 36000000000000.0,
+  "seconds_at_Fmax": 0.5262827652770554,
+  "equiv_8B_prefill_tokens": 2197.604880253389,
+  "src": "our arithmetic; to be measured in demo 1"
+ },
+ "bound": {
+  "gamma": 0.1,
+  "table": [
+   {
+    "n": 1000000.0,
+    "k": 10,
+    "d_min": 51.31610600488837,
+    "d_ceil": 52
+   },
+   {
+    "n": 1000000.0,
+    "k": 100,
+    "d_min": 424.4583746515663,
+    "d_ceil": 425
+   },
+   {
+    "n": 1000000000.0,
+    "k": 10,
+    "d_min": 80.12370042685808,
+    "d_ceil": 81
+   },
+   {
+    "n": 1000000000.0,
+    "k": 100,
+    "d_min": 712.5362060415819,
+    "d_ceil": 713
+   }
+  ],
+  "paper_table1": {
+   "1e6,10": 52,
+   "1e6,100": 425,
+   "1e9,100": 713
+  },
+  "limit_small": {
+   "docs": 46,
+   "k": 2,
+   "subsets": 1035,
+   "d_min": 2.8951042126197173,
+   "free_embedding_dims": 12,
+   "best_single_vector_recall2": 54.3
+  },
+  "src": "our arithmetic from the theorem; paper_table1 and the 12 dimensions are quotes (Weller et al. v2, Table 1 and §5.2)"
+ },
+ "three_terms": {
+  "same_P": [
+   {
+    "r": 0.9,
+    "a_plus": 0.6,
+    "a0": 0.0,
+    "P": 0.54
+   },
+   {
+    "r": 0.6,
+    "a_plus": 0.9,
+    "a0": 0.0,
+    "P": 0.54
+   }
+  ],
+  "multi": {
+   "r1": 0.9,
+   "m": [
+    1,
+    2,
+    3,
+    4
+   ],
+   "r": [
+    0.9,
+    0.81,
+    0.7290000000000001,
+    0.6561
+   ]
+  },
+  "worse": {
+   "a0": 0.8,
+   "a_plus": 0.7,
+   "r": [
+    0.2,
+    0.9
+   ],
+   "P": [
+    0.7800000000000001,
+    0.71
+   ]
+  },
+  "src": "our arithmetic; made-up inputs"
+ },
+ "chunk": {
+  "c200_l30_o0": 0.145,
+  "c200_l30_o29": 0.0,
+  "c200_l5_o0": 0.02,
+  "index_factor_o29": 1.1695906432748537,
+  "grid": [
+   {
+    "c": 64,
+    "o": 0,
+    "l": 30,
+    "p": 0.453125
+   },
+   {
+    "c": 64,
+    "o": 32,
+    "l": 30,
+    "p": 0.0
+   },
+   {
+    "c": 128,
+    "o": 0,
+    "l": 30,
+    "p": 0.2265625
+   },
+   {
+    "c": 128,
+    "o": 32,
+    "l": 30,
+    "p": 0.0
+   },
+   {
+    "c": 256,
+    "o": 0,
+    "l": 30,
+    "p": 0.11328125
+   },
+   {
+    "c": 256,
+    "o": 32,
+    "l": 30,
+    "p": 0.0
+   },
+   {
+    "c": 512,
+    "o": 0,
+    "l": 30,
+    "p": 0.056640625
+   },
+   {
+    "c": 512,
+    "o": 32,
+    "l": 30,
+    "p": 0.0
+   }
+  ],
+  "src": "our arithmetic; uniform position of the answer span"
+ },
+ "bill": {
+  "model": "Qwen/Qwen3-8B, bf16",
+  "N": 8190735360.0,
+  "n_layer": 36,
+  "d": 4096,
+  "F_max": 68404292093905.484,
+  "BW_eff": 548882931417.9527,
+  "kv_bytes_per_token": 147456,
+  "rows": [
+   {
+    "L": 1000,
+    "read_s": 0.24379146701944732,
+    "kv_GB": 0.147456,
+    "per_token_ms": 30.113756092396823,
+    "attn_share_of_read": 0.01768441063938355
+   },
+   {
+    "L": 30000,
+    "read_s": 11.064582330023605,
+    "kv_GB": 4.42368,
+    "per_token_ms": 37.9045321490562,
+    "attn_share_of_read": 0.35068450449375405
+   },
+   {
+    "L": 100000,
+    "read_s": 67.06109999212615,
+    "kv_GB": 14.7456,
+    "per_token_ms": 56.70985366513058,
+    "attn_share_of_read": 0.6428925880511716
+   }
+  ],
+  "time_ratio_30k_over_1k": 45.385437256263685,
+  "L_c": 920.9895665420183,
+  "twelve_d": 49152,
+  "native_window": 32768,
+  "yarn_window": 131072,
+  "window_src": "Qwen3-8B model card: 32,768 tokens natively, 131,072 with YaRN — the 100,000-token row is past the native window",
+  "src": "our arithmetic: lower bounds from W11's two roofs (w11-data.json measured, 2026-11-27)"
+ },
+ "route": {
+  "c_rag": 0.24379146701944732,
+  "c_lc": 11.064582330023605,
+  "rho": [
+   0.2,
+   0.4
+  ],
+  "expected": [
+   2.4567079330241683,
+   4.669624399028889
+  ],
+  "src": "our arithmetic; rho is made up"
+ },
+ "topk": {
+  "weak": [
+   {
+    "k": 1,
+    "r": 0.35,
+    "a_plus": 0.92,
+    "P": 0.322
+   },
+   {
+    "k": 2,
+    "r": 0.5154272091334173,
+    "a_plus": 0.8437538101384061,
+    "P": 0.43489367155532593
+   },
+   {
+    "k": 3,
+    "r": 0.625428546532494,
+    "a_plus": 0.799152648246508,
+    "P": 0.49981287925040696
+   },
+   {
+    "k": 5,
+    "r": 0.7631692418169098,
+    "a_plus": 0.742961829632249,
+    "P": 0.5670056162193475
+   },
+   {
+    "k": 10,
+    "r": 0.9112977797563374,
+    "a_plus": 0.6667156397706551,
+    "P": 0.607576482251824
+   },
+   {
+    "k": 20,
+    "r": 0.9829923711884236,
+    "a_plus": 0.590469449909061,
+    "P": 0.5804269646804321
+   },
+   {
+    "k": 50,
+    "r": 0.9996964662750473,
+    "a_plus": 0.48967746940290396,
+    "P": 0.4895288357765907
+   }
+  ],
+  "strong": [
+   {
+    "k": 1,
+    "r": 0.75,
+    "a_plus": 0.92,
+    "P": 0.6900000000000001
+   },
+   {
+    "k": 2,
+    "r": 0.9028461930390884,
+    "a_plus": 0.8437538101384061,
+    "P": 0.7617799153456858
+   },
+   {
+    "k": 3,
+    "r": 0.9575771344043789,
+    "a_plus": 0.799152648246508,
+    "P": 0.7652503028595617
+   },
+   {
+    "k": 5,
+    "r": 0.9902973338383245,
+    "a_plus": 0.742961829632249,
+    "P": 0.7357531190284596
+   },
+   {
+    "k": 10,
+    "r": 0.9995885018696515,
+    "a_plus": 0.6667156397706551,
+    "P": 0.6664412875314154
+   },
+   {
+    "k": 20,
+    "r": 0.9999979766633379,
+    "a_plus": 0.590469449909061,
+    "P": 0.5904682551905752
+   },
+   {
+    "k": 50,
+    "r": 0.9999999999952197,
+    "a_plus": 0.48967746940290396,
+    "P": 0.48967746940056317
+   }
+  ],
+  "note": "made-up functions, for the shape only; a0 = 0"
+ },
+ "lastweek": {
+  "read_1k_s": 0.2438949384213629,
+  "write_1k_s": 29.862302078981884,
+  "F_max": 68404292093905.484,
+  "BW_eff_GBps": 548.8829314179527,
+  "kv_KiB_per_token": 144.0,
+  "L_c": 920.9895665420183,
+  "src": "W11 p7, p17, p23 (w11-data.json opening, measured, intensity)"
+ },
+ "quotes": {
+  "weller_table4_recall2": {
+   "BM25": 97.8,
+   "GTE-ModernColBERT": 83.5,
+   "Promptriever Llama3 8B (4096)": 54.3,
+   "GritLM 7B (4096)": 38.4,
+   "E5-Mistral 7B (4096)": 29.5,
+   "Qwen3 Embed (4096)": 19.0,
+   "src": "Weller et al., arXiv:2508.21038v2, Table 4 (LIMIT small, 46 documents); read from the PDF text 2026-11-29"
+  },
+  "weller_critical_n": {
+   "512": "500k",
+   "1024": "4M",
+   "4096": "250M",
+   "src": "Weller et al. v2, §4"
+  },
+  "weller_synonym": "BM25 drops more than 89% on the synonym version; Qwen3 embedding drops 38.9% (§5.2, Figure 6)",
+  "liu_2023": {
+   "sentences_fully_supported": 51.5,
+   "citations_supporting": 74.5
+  },
+  "rocketqa": "70% of top-retrieved passages not labelled positive are positives (manual check, MS MARCO)",
+  "rteb": "20 models, 48 datasets (20 public, 28 private); rho = 0.38 against BEIR and MTEB (NeurIPS 2026 poster abstract, read 2026-11-29)",
+  "rat": "27 RAG configurations: three datasets, three retrievers, three generators (EMNLP 2026 abstract, read 2026-11-29)",
+  "joren": "35–62% correct with insufficient context; categories correct / abstain / hallucinate (ICLR 2025, §1 and §4)",
+  "cuconasu": "related passages without the answer hurt; random documents improve accuracy by up to 35% (SIGIR 2024 abstract)",
+  "self_route": {
+   "gemini_1_5_pro_cost_saved": 0.65,
+   "gpt_4o_cost_saved": 0.39,
+   "identical_answers": "over 60%"
+  },
+  "search_r1": "average relative improvement of 41% and 20% for two LLMs over RAG baselines (COLM 2025, §1)",
+  "rrf_k": 60,
+  "bm25_ranges": "0.5 < b < 0.8 and 1.2 < k1 < 2 (Robertson & Zaragoza 2009, §3.4)"
+ }
+}
