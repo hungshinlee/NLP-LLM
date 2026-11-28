@@ -11,7 +11,7 @@
 | Tokenizer experiments | `tokenizers`, `sentencepiece`, `tiktoken` | Pure CPU, hardware-independent. The W2 fertility table |
 | Fine-tuning demos | **`mlx_lm.lora`** | W8. QLoRA is not a flag: point `--model` at an already-quantized model and that *is* QLoRA. Adapters are merged back with `mlx_lm.fuse` |
 | Evaluation | **`mlx_lm.evaluate`** | W14. The harness itself has **no MLX backend** — the integration lives on the MLX side and registers itself into lm-eval. The workshop looks at per-item results, not just aggregate scores |
-| RAG | `sentence-transformers` + `faiss-cpu`, or plain numpy | W12. Brute-force search on CPU is enough; no vector database needed |
+| RAG | BM25 written by hand; a small embedding model and re-ranker (backend not yet tested on this machine); plain numpy for the index | W12. The corpus is a few thousand passages — the course's own published slides and pages — so brute-force search is enough: no approximate index and no vector database |
 | Interpretability | `transformer-lens` (**runs on CPU in practice**) | Activation patching in W14. The library declines to auto-select MPS unless `TRANSFORMERLENS_ALLOW_MPS=1`, and currently marks no torch version as MPS-safe. CPU is fine at these model sizes |
 
 ### What cannot be demonstrated on this hardware
