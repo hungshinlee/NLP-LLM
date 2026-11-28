@@ -289,7 +289,7 @@ Before the table appears: which column falls first? Does the dots column follow 
 :::
 
 ::: {.footer}
-Demo 1 (a) · 50 problems per row, one sampled answer each (±0.07) · rehearsed 2026-11-25
+Demo 1 (a) · 50 problems per row, one sampled answer each ($\pm 0.07$) · rehearsed 2026-11-25
 :::
 
 ## The price of serial work: $q^{m}$
@@ -929,7 +929,7 @@ arXiv:2305.04388 · 2505.05410 · 2503.08679 · 2604.22074 · 2603.05488
 
 | | The correction | Evidence |
 |:---|:---|:---|
-| **silent ≠ unfaithful** | not mentioning a hint often means the chain is **incomplete**, not false; with a larger inference budget, verbalisation rises sharply | Zaman & Srivastava, ACL 2026 |
+| **silent $\neq$ unfaithful** | not mentioning a hint often means the chain is **incomplete**, not false; with a larger inference budget, verbalisation rises sharply | Zaman & Srivastava, ACL 2026 |
 | **the hints are easy** | usable in a single forward pass. Make the bad behaviour hard enough that it **must** be written out, and it shows | Emmons et al., a preprint |
 | | with clues too complex to use unwritten: 3 of 21,272 trajectories plausibly hid them | METR, 2025 — **a blog post**, not a paper |
 | **it is not a property of the model** | across 15 open-weight models, a hint arriving in a **tool result** is mentioned less often than one in the user's message | Gema et al., 2026, a preprint |

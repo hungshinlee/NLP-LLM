@@ -788,7 +788,7 @@ Cut the $k_h$ signatures into $b$ bands of $r$ rows; a **candidate pair** is any
 :::
 
 ::: {.footer}
-LSH = locality-sensitive hashing · FineWeb §3.4: 112 hashes, 14 × 8, per snapshot · demo 4
+LSH = locality-sensitive hashing · FineWeb §3.4: 112 hashes, $14 \times 8$, per snapshot · demo 4
 :::
 
 ## Before Demo 4: three functions live, then a 13-gram scan
@@ -825,7 +825,7 @@ Demo 4 · `demos/w07_d4_dedup_decontam` · how it runs · as rehearsed
 | candidate pairs, $(b, r) = (16, 8)$ | **13** — 12 across dumps, 1 within a dump |
 | candidate pairs at $(32, 4)$ / $(8, 16)$ / FineWeb's $(14, 8)$ | 74 / 8 / 13 |
 | pairs with exact $J \geq 0.9$ | **8** (six with $J = 1$) — the same 8 under every setting |
-| what the near-duplicates are | 5 × one URL re-crawled in a later dump · 2 × http/www/case variants of one page · 2 × copies across sites · 4 × same-site templates or moved pages |
+| what the near-duplicates are | $5\times$ one URL re-crawled in a later dump · $2\times$ http/www/case variants of one page · $2\times$ copies across sites · $4\times$ same-site templates or moved pages |
 | **MMLU test questions with a 13-gram hit in the corpus** | **37** of 14,042 — **34 quote a famous text** as their stimulus; 1 question + answer found verbatim on a revision-card site |
 
 : {tbl-colwidths="[42,58]"}
@@ -886,7 +886,7 @@ Dodge et al. 2021 · FineWeb §3.4 · Nemotron-CC (abstracts) · Misconception 8
 |:---|:---|:---|:---|
 | **DoReMi**, NeurIPS 2023 | a 280M model, Group DRO over domains | domain weights for an 8B model (30$\times$) | one proxy → one target |
 | **RegMix**, ICLR 2025 | 512 models of 1M parameters, 1B tokens each | a regression from mixture to downstream; web beats Wikipedia as a predictor | many tiny proxies → a regression |
-| **DataDecide**, ICML 2025 | 25 corpora × sizes to 1B × 3 seeds | the ranking at 150M predicts the best at 1B about **80%** of the time | the honest number: not 100% |
+| **DataDecide**, ICML 2025 | 25 corpora $\times$ sizes to 1B $\times$ 3 seeds | the ranking at 150M predicts the best at 1B about **80%** of the time | the honest number: not 100% |
 | **Shukor et al.**, NeurIPS 2025 | a few small runs | the domain-weight vector enters the law; extrapolates to larger sizes and unseen mixtures | mixture as a variable of the law |
 
 : {tbl-colwidths="[22,26,34,18]"}

@@ -587,7 +587,7 @@ W1 p17 · W3 p44 · the formula is W7's whole week
 {{< include assets/w04/flops.inline.qmd >}}
 
 ::: {.claim}
-$6ND$ keeps the blue and drops the red. At $4\text{k}$ the red is noise; at $32\text{k}$ it is $38\%$; at $128\text{k}$ it is most of the bill — and in decode, without the causal average, it passes the weights at $L = 6d$.
+$6ND$ drops the red: noise at $4\text{k}$, $38\%$ at $32\text{k}$, most of the bill at $128\text{k}$. In decode (no causal average) it passes the weights at $L = 6d$.
 :::
 
 ::: {.footer}
@@ -664,7 +664,7 @@ Freeze the weights and $14$ of the $16$ disappear (no gradient, no master copy, 
 :::
 
 ::: {.footer}
-Rajbhandari 2019 (ZeRO, Zero Redundancy Optimizer) §3 · bf16 = bfloat16, fp32 = IEEE single · $N = 8 \times 10^9$ nominal · no activations
+ZeRO (Zero Redundancy Optimizer), Rajbhandari 2019 §3 · bf16 = bfloat16 · fp32 = IEEE single
 :::
 
 ## The ledger, week 4: the optimizer row gets its number
@@ -721,7 +721,7 @@ Demo 2 (ii)/(iii) · rehearsed, replayed · "stuck at" = char n-gram cross-entro
 {{< include assets/w04/instability.inline.qmd >}}
 
 ::: {.claim}
-Push the LR and $\max|s_{ij}|$ climbs two orders of magnitude while the loss sits on the **bigram line** — saturation, not a spike. QK-norm (dashed) holds the logits near $10^2$ and the same LR trains.
+Push the LR: $\max|s_{ij}|$ climbs $100\times$, the loss sits on the **bigram line** — saturation, not a spike. With QK-norm the same LR trains.
 :::
 
 ::: {.footer}
@@ -802,7 +802,7 @@ $$\mathbf{M}_t = \mu\,\mathbf{M}_{t-1} + \mathbf{G}_t = \sum\nolimits_{k=0}^{t-1
 {{< include assets/w04/momentum.inline.qmd >}}
 
 ::: {.claim}
-Same sum as Adam's $\mathbf{m}_t$. **What differs is the step**: Adam equalizes every **entry**, Muon every **singular direction**.
+Same sum as Adam's $\mathbf{m}_t$; Adam equalizes **entries**, Muon **singular directions**.
 :::
 
 ::: {.footer}

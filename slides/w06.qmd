@@ -165,7 +165,7 @@ Shazeer et al. 2017 · Fedus et al., JMLR 2022 · mechanism: p16–p19 · number
 | | |
 |:---|:-----------------|
 | **Why** | The ledger's MoE row has said "memory $\propto N_{\text{total}}$, FLOPs $\propto N_{\text{active}}$" since W1 without a number. The numbers live in a `config.json` — and reading one is the ticket to reading any 2026 open-weight model. W4's `count_params.py` gets an MoE branch. |
-| **What runs** | An editor and a terminal; pure standard library, no model loaded. The script prints every key whose name contains `expert`, we decide what each means, then it computes $N_{\text{total}}$, $N_{\text{active}}$, $\rho$ for the MoE on this machine (Gemma 4 26B-A4B, W1 demo 1) and for three configs fetched without weights: Qwen3-30B-A3B, Qwen3-Next-80B-A3B, Kimi Linear 48B-A3B (the suffix A3B: 3 B *active* parameters). |
+| **What runs** | An editor and a terminal; pure standard library, no model loaded. The script prints every key whose name contains `expert`, `moe`, `shared` or `router`, we decide what each means, then it computes $N_{\text{total}}$, $N_{\text{active}}$, $\rho$ for the MoE on this machine (Gemma 4 26B-A4B, W1 demo 1) and for three configs fetched without weights: Qwen3-30B-A3B, Qwen3-Next-80B-A3B, Kimi Linear 48B-A3B (the suffix A3B: 3 B *active* parameters). |
 | **Watch for** | The key names are **not standardised** — Qwen, DeepSeek, Kimi and Google each name the shared expert, the top-$k$ and the expert width differently; that is part of the lesson. Then: is each $\rho$ above or below the ratio of experts chosen to experts present, $k/n_E$? |
 :::
 
@@ -705,7 +705,7 @@ $$\mathbf{A} = a\mathbf{I},\ a < 0 \;\Rightarrow\; \bar{\mathbf{A}}_t = \exp(\De
 {{< include assets/w06/ssm-merge.inline.qmd >}}
 
 ::: {.claim}
-Two literatures, one recurrence: Mamba-2 is linear attention with a scalar, input-dependent decay — row 3 of p38. The next slides unroll that row.
+Mamba-2 is linear attention with a scalar, input-dependent decay (p38, row 3).
 :::
 
 ::: {.footer}
@@ -856,7 +856,7 @@ Demo 4 · `demos/w06_d4_hybrid_vs_full` · how it runs · as rehearsed
 {{< include assets/w06/hybrid-measured.inline.qmd >}}
 
 ::: {.fragment fragment-index=2}
-| exact match / 20 · $K = 81$ (≈ 5.6k tok) · $K = 326$ (≈ 22k tok) | first | ⌊K/4⌋ | ⌊K/2⌋ | ⌊3K/4⌋ | last |
+| exact match / 20 · $K = 81$ ($\approx$ 5.6k tok) · $K = 326$ ($\approx$ 22k tok) | first | $\lfloor K/4 \rfloor$ | $\lfloor K/2 \rfloor$ | $\lfloor 3K/4 \rfloor$ | last |
 |:---|:---|:---|:---|:---|:---|
 | Qwen3-8B (full attention) | 15 · 16 | 16 · 5 | 17 · 3 | 17 · 3 | 20 · 19 |
 | Falcon-H1-7B (parallel hybrid) — no reply was a UUID | 0 · 0 | 0 · 0 | 0 · 0 | 0 · 0 | 0 · 0 |
@@ -944,7 +944,7 @@ Clark 2022 · Abnar 2025 · W2 p73 · W4 p61 · Misconception 10: "results compa
 
 - fixed (§5.4): **same architecture, parameter count, training setup** — 48B/3B, 1.4T tokens, a 4k pre-training window; iso-*active* and iso-*total* at once
 - varied: the attention layer type (KDA hybrid · all-MLA · GDN hybrid)
-- throughput at *which* $L$? the abstract's 6× decode is at 1M; training saw 4k
+- throughput at *which* $L$? the abstract's $6\times$ decode is at 1M; training saw 4k
 - the ratio (§5.2): 0:1 … 15:1 judged by **perplexity**; 0:1 "performed poorly" — on perplexity, which hides recall (p67)
 :::
 ::: {.column width="50%"}

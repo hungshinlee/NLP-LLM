@@ -331,7 +331,7 @@ Normalization is the one stage where the model is allowed to see **less** than y
 :::
 
 ::: {.footer}
-NFKC = Normalization Form KC (compatibility composition) · Python `unicodedata.normalize` · Qwen3.8 applies NFC (`inspect`, 2026-09-20)
+NFKC = Normalization Form KC (compatibility composition) · Qwen3.8 applies NFC (`inspect`)
 :::
 
 ## The pre-tokenizer decides how digits split. Three generations, three rules
@@ -429,7 +429,7 @@ The decoder never sees the tokens. It runs the LM, cuts the interval the way the
 :::
 
 ::: {.footer}
-Toy vocabulary {a, b, c} · same four chosen probabilities as p28 · 5 bits, bound ≤ 6
+Toy vocabulary {a, b, c} · same four chosen probabilities as p28 · 5 bits, bound $\leq 6$
 :::
 
 # How is the dictionary built? BPE, by hand {.section-title}
@@ -676,11 +676,11 @@ p5's picture · part 1: p9–p44 · part 2: p46–p55, p71–p74 · part 3: p56�
 ::: {.prose}
 | | |
 |:---|:-----------------|
-| **Name** | **Scaling laws with vocabulary** — Tao et al., *Scaling Laws with Vocabulary: Larger Models Deserve Larger Vocabularies*, NeurIPS 2024 (arXiv:2407.13623). This week's derivation paper. |
+| **Name** | **Scaling laws with vocabulary** — Tao et al., *Scaling Laws with Vocabulary: Larger Models Deserve Larger Vocabularies*, NeurIPS 2024 (arXiv:2407.13623). |
 | **The question** | Scaling laws fit $N$ and $D$ (W1's $6ND$; W7) and leave $V$ to habit — 32K for Llama 2. "We investigate how vocabulary size impacts LLM scaling laws": is there a compute-optimal $V$, and does it move with $N$? |
 | **The idea** | Split $N$ into $N_{\text{nv}}$ and $N_{\text{v}} = Vd$; count data in **characters**, so the same text is $D(V)$ tokens; at fixed compute, find the $V$ where shorter sequences stop paying for more embedding rows — "three complementary approaches" to one optimum. |
 | **What it added** | $V^*$ exists and grows with the model — "with larger models requiring larger vocabularies" — but more slowly than $N$. The abstract's one number: Llama2-70B's optimal $V$ "should have been at least 216K", seven times its 32K. |
-| **What it leaves open** | The exponent and the fitted form stay in the paper (p49); whether compression moves the *whole* compute-optimal curve is a 2026 claim with one source (p54); whether fewer tokens is even the right target (p55). |
+| **What it leaves open** | The fitted form stays in the paper (p49); whether compression moves the *whole* curve is a one-source 2026 claim (p54); whether fewer tokens is the right target (p55). |
 :::
 
 ::: {.footer}
@@ -973,10 +973,10 @@ Same root cause each time: token boundaries are frequency boundaries, and freque
 ::: {.prose}
 | failure | mechanism | evidence | strength |
 |:---|:---|:---|:---|
-| multi-digit arithmetic | grouping direction vs. carry direction | intervention: change grouping, accuracy moves | **mechanistic**, partial |
+| multi-digit arithmetic | grouping direction vs. carry direction | change the grouping: accuracy moves | **mechanistic**, partial |
 | character-level tasks | letters absent from the input; present in embeddings | probes + a benchmark separating knowing from doing | mechanistic, with a caveat |
-| glitch tokens | embedding never updated | detectable from the embedding matrix alone | **mechanistic** |
-| cross-language cost | token count per unit of content | measured on parallel text | mechanistic (cost); ability is a separate question |
+| glitch tokens | embedding never updated | visible in the embedding matrix alone | **mechanistic** |
+| cross-language cost | token count per unit of content | measured on parallel text | mechanistic (cost); ability is separate |
 | code, morphology | boundaries follow frequency | mostly downstream numbers | **correlational** |
 :::
 

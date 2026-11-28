@@ -86,7 +86,7 @@ half-time: p47 · board: p16, p27–p30, p41, p49 · live: p11, p37, p46, p63 ·
 3. **Write LoRA** $\mathbf{h} = \mathbf{W}_0\mathbf{x} + s\,\mathbf{B}\mathbf{A}\mathbf{x}$, count $r(d_{\text{in}} + d_{\text{out}})$, split W4's 16 bytes into **14 saved and 2 kept**; compute full / LoRA / QLoRA for an 8B model; FLOPs $6N \to \approx 4N$
 4. **Explain $\mathbf{B} = \mathbf{0}$**, why "the same learning rate" differs across three ways of writing $s$, and LoRA as the course's third low-rank factorization
 5. **Explain QLoRA's three parts** — stored in 4 bits, computed in bf16 — and what "QLoRA" is on the demo machine
-6. **Weigh the evidence that LoRA ≠ full fine-tuning** (intruder dimensions; learns less, forgets less; tune the learning rate first) — and say how strong each source is
+6. **Weigh the evidence that LoRA $\neq$ full fine-tuning** (intruder dimensions; learns less, forgets less; tune the learning rate first) — and say how strong each source is
 7. **Measure forgetting** with W1's ruler; separate three readings of it; give the two explanations of why RL forgets less
 8. **Write task arithmetic, TIES and DARE**, their shared precondition, and when they fail
 
@@ -136,7 +136,7 @@ bold capital: a matrix · bold lower-case: a vector · italic: a scalar or a tok
 | | |
 |:---|:-----------------|
 | **Why** | Question (b) has an answer you can watch. Before any definition, see what a thousand written answers change: the same model before and after supervised fine-tuning (SFT), the same three questions. |
-| **What runs** | `Qwen/Qwen3-1.7B-Base` (pre-trained only) and the same model with a LoRA (low-rank adaptation) adapter trained on 1,000 human-written English instruction–answer pairs. Three questions: a fact, an instruction, one in Traditional Chinese. Base: the raw text; fine-tuned: the chat template. Each output in full (≤ 200 tokens), then: did it stop by itself, on which token? |
+| **What runs** | `Qwen/Qwen3-1.7B-Base` (pre-trained only) and the same model with a LoRA (low-rank adaptation) adapter trained on 1,000 human-written English instruction–answer pairs. Three questions: a fact, an instruction, one in Traditional Chinese. Base: the raw text; fine-tuned: the chat template. Each output in full ($\leq 200$ tokens), then: did it stop by itself, on which token? |
 | **Watch for** | Does the base model answer, or continue a document? Does it stop by itself? What changes after fine-tuning — the facts, or the shape of the reply? And the Chinese question: the training answers were English. |
 :::
 
@@ -393,7 +393,7 @@ W4 p47 (corrected) · W1 p17 · the blog: "slightly more than ⅔" · Hu §4.2: 
 
 ## $s$ and $\eta$ are tangled: three ways to write the scale
 
-- Adam moves each entry of $\mathbf{B}$ by about $\eta$ per step, so $\Delta\mathbf{W} = s\,\mathbf{B}\mathbf{A}$ moves by about $s\,\eta$ — **early in training, doubling $s$ ≈ doubling $\eta$** (our derivation; idealised)
+- Adam moves each entry of $\mathbf{B}$ by about $\eta$ per step, so $\Delta\mathbf{W} = s\,\mathbf{B}\mathbf{A}$ moves by about $s\,\eta$ — **early in training, doubling $s \approx$ doubling $\eta$** (our derivation; idealised)
 
 | who | the scale $s$ | mlx-lm's default ($r = 8$), written their way |
 |:---|:---|:---|
@@ -414,7 +414,7 @@ Kalajdzievski 2023 (no venue found) · mlx-lm 872ae88 `lora_parameters` · LoRA+
 ## Why a narrow road is enough — mostly
 
 - **intrinsic dimension**: train only inside a random low-dimensional slice of the weights and see how far it gets (Li et al., ICLR 2018). Aghajanyan et al. (ACL 2021): RoBERTa on MRPC (Microsoft Research Paraphrase Corpus) reaches 90% of full fine-tuning with **200** parameters, projected back; larger and longer-pre-trained models have **lower** intrinsic dimension
-- an **empirical observation, not a theorem** — and full fine-tuning learns perturbations of **10–100× higher rank** than typical LoRA settings (Biderman et al.): low rank is a **constraint**, not free
+- an **empirical observation, not a theorem** — and full fine-tuning learns perturbations of **$10$–$100\times$ higher rank** than typical LoRA settings (Biderman et al.): low rank is a **constraint**, not free
 - theory, in one setting: LoRA training converges to a low-rank, small-norm global minimum — or **fails loudly** at a high-rank, large-norm one; zero initialisation and weight decay favour the first (Kim et al., ICML 2025 Oral)
 
 ::: {.claim}

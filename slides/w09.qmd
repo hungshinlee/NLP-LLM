@@ -88,7 +88,7 @@ half-time: p41 · board: p12, p18, p20, p22, p28–p30, p32, p47 · live: p35, p
 5. **Write PPO's surrogate and GRPO's advantage**; derive the binary-reward identity and use it to fill in the table of variants
 6. **Tell three examiners apart** by how each is fooled; read *Spurious Rewards* and Wu et al. as two explanations of one phenomenon
 7. **Do the compute accounting**: sampling plus updating; how many networks at once; what "one score per episode" explains
-8. **Place on-policy distillation** in a 2×2 — and attribute it correctly
+8. **Place on-policy distillation** in a $2 \times 2$ — and attribute it correctly
 
 ::: {.footer}
 Outline W9 · Learning objectives 1–8
@@ -782,13 +782,13 @@ Bay & Yearick 2026 states the identity as a theorem: a two-author preprint · Sc
 | | |
 |:---|:-----------------|
 | **Why** | p47 is three lines of algebra about gradients nobody has seen. Check it on real gradients; then find out how often a group is silent, and what each switch on p50 does to a small model. |
-| **What runs** | The task: integer arithmetic **generated on the spot** (a few two- or three-digit numbers; difficulty set so that $\pi_{\text{ref}}$ is right three to five times in ten). Nothing can have been memorised. The verifier: the last number in the answer equals the result. **(a) live**: five lines for the advantage; the update computed two ways. **(b) replay**: a hand-written loop — sample, verify, advantage, **one** update per batch — at $G \in \{2, 4, 8, 16\}$ with the total number of rollouts per step held fixed; then each switch once; then LoRA rank 1 against rank 16. |
+| **What runs** | The task: integer arithmetic **generated on the spot** (difficulty set so that $\pi_{\text{ref}}$ is right three to five times in ten). Nothing can have been memorised. The verifier: the last number in the answer equals the result. **(a) live**: five lines for the advantage; the update computed two ways. **(b) replay**: a hand-written loop — sample, verify, advantage, **one** update per batch — at $G \in \{2, 4, 8, 16\}$ with rollouts per step held fixed; then each switch once; then LoRA rank 1 vs. 16. |
 | **Expect** (a) | The two ways agree to floating-point error. `std` dividing by $G$ and by $G-1$ differ by $\sqrt{G/(G-1)}$. |
 | **Watch for** (b) | How many groups are silent at each $G$ — and is it $p^{G} + (1-p)^{G}$? Which takes longer on this machine: sampling, or updating? |
 :::
 
 ::: {.footer}
-Demo 2 · `demos/w09_d2_grpo_scratch` · the loop is written by hand · built 2026-11-14, **not rehearsed yet**
+Demo 2 · `demos/w09_d2_grpo_scratch` · built 2026-11-14, **not rehearsed**
 :::
 
 ## Demo 2: how it runs
@@ -1077,7 +1077,7 @@ Misconception 8 (second half): "a larger $G$ is always better" · both: abstract
 :::
 
 - where it comes from: **GKD** (Generalized Knowledge Distillation; Agarwal et al.) and **MiniLLM** (Gu et al.), both ICLR 2024; the Qwen3 technical report used it for shipped small models
-- the account everyone has read is a **Thinking Machines blog post** of October 2025 — and that post **cites all three**. The 2×2 above is its table
+- the account everyone has read is a **Thinking Machines blog post** of October 2025 — and that post **cites all three**. The $2 \times 2$ above is its table
 
 ::: {.claim .warn}
 The blog did not drop the sources. The people who retold it did.
@@ -1132,7 +1132,7 @@ W1 p19–p20 · W8 p76 · the ledger, next slide
 | **Prefill**, once per request | $C_{\text{pre}} \approx 2NL_{\text{in}} + 2\,n_{\text{layer}}L_{\text{in}}^2 d$ FLOPs | compute | W3 · W5 · W11 |
 | **Decode**, per token | $C_{\text{dec}} \approx 2N + 4\,n_{\text{layer}}Ld$; $t_{\text{step}} \geq (Nb + M_{\text{KV}})/\text{BW}$ | bandwidth | W3 · W5 · W11 |
 | **KV cache** · **Long context** | $M_{\text{KV}} = 2\,n_{\text{layer}}\,n_{\text{kv}}\,d_{\text{head}}\,L\,b$ = 128 KiB/token (GQA-8); prefill $\propto L^2$ past $12d$ | all three | W3 · W5 · W6 · W11 |
-| **MoE** · **Fixed state** | $6N_{\text{active}}D$, $N_{\text{total}}b$, $\rho$ floored · $n_{\text{head}}d_{\text{head}}^2\,b$, no $L$ | both · state capacity | W6 · W7 · W11 |
+| **MoE** · **Fixed state** | $6N_{\text{active}}D$, $N_{\text{total}}b$, $\rho$ floored · $n_{\text{head}}d_{\text{head}}^2\,b$, no $L$ | both · capacity | W6 · W7 · W11 |
 
 : {tbl-colwidths="[17,50,16,17]"}
 

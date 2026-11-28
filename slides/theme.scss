@@ -92,7 +92,7 @@ $c-muted: #6b7280;
 .reveal .claim {
   border-left: 6px solid $link-color;
   background: #f8fafc;
-  padding: .7em .95em;             // T2 放大後把內距收一點，淨高度幾乎不變
+  padding: .5em .95em;             // T2 放大後把內距收一點；2026-11-28 .7 → .5em：claim 框壓到 footer（decisions 一百八十五；Speech-AI 4.172 同一步）
   margin: .78em 0;
   font-size: $fs-lead;             // T2
   line-height: $lh-lead;

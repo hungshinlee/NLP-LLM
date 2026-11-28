@@ -837,7 +837,7 @@ p23's route · first half: p24–p56 · second half: p58–p72
 {{< include assets/w01/rnn.inline.qmd >}}
 
 ::: {.claim}
-Two consequences: any length fits, because nothing in the weights depends on $t$ — and everything the model knows about the past sits in one fixed-size $\mathbf{h}_t$.
+Any length fits — and the whole past sits in one fixed-size $\mathbf{h}_t$.
 :::
 
 ::: {.footer}
@@ -902,14 +902,14 @@ Jacobians ignore the gates' own dependencies · our framing, not the papers' cla
 | | |
 |:---|:-----------------|
 | **Name** | **Attention**, in its first working form — Bahdanau, Cho & Bengio, *Neural Machine Translation by Jointly Learning to Align and Translate*, ICLR 2015 (arXiv:1409.0473). The title says *align*; *attention* is the field's word. |
-| **The question** | The 2014 encoder–decoder "encodes a source sentence into a fixed-length vector"; the authors "conjecture that the use of a fixed-length vector is a bottleneck". Cho et al. had measured the symptom: quality collapses with length (p66). |
+| **The question** | The 2014 encoder–decoder "encodes a source sentence into a fixed-length vector"; the authors "conjecture that the use of a fixed-length vector is a bottleneck". Cho et al. measured it: quality collapses with length (p66). |
 | **The idea** | Let the decoder "(soft-)search for parts of a source sentence" at every output step: a weight $\alpha_{ti}$ over every encoder state, and $\mathbf{c}_t = \sum_i \alpha_{ti}\mathbf{h}_i$ rebuilt for each target word. No hard alignment is ever chosen. |
 | **What it added** | One neural model "comparable to the existing state-of-the-art phrase-based system" on English-to-French; and "(soft-)alignments found by the model agree well with our intuition" — the sentence a decade of misreading grew from (W3). |
-| **What it leaves open** | Who asks and who answers — attention *between two sequences* (p68–p69); the dot-product form that is one matrix multiply (Luong, p70); and what is left once the recurrence is removed (p70–p72). |
+| **What it leaves open** | Attention *between two sequences* (p68–p69); the dot-product form, one matrix multiply (Luong, p70); what is left once the recurrence is removed (p70–p72). |
 :::
 
 ::: {.footer}
-Bahdanau, Cho & Bengio (2015) · the symptom: p66 · the two pictures: p67, p69 · cross vs. self: p68 · older than the Transformer: p70
+Bahdanau et al. 2015 · symptom p66 · pictures p67, p69 · cross vs. self p68 · lineage p70
 :::
 
 ## Then seq2seq squeezed everything through one vector

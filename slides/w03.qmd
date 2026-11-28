@@ -346,7 +346,7 @@ Demo 1 · live coding, CPU · skeleton: Raschka ch 3 · reference implementation
 {{< include assets/w03/kvchain.inline.qmd >}}
 
 ::: {.claim}
-Layer 2's $\mathbf{k}_j, \mathbf{v}_j$ are made from layer 1's row $j$ — so without a cache, every earlier row is re-run at every step. The cache stores the end of that chain.
+No cache: every earlier row re-runs. The cache stores the chain's end.
 :::
 
 ::: {.footer}
@@ -577,7 +577,7 @@ Multiply-add $= 2$ FLOPs · same convention as W1 p17 ($d_{\text{model}} \gg L/1
 {{< include assets/w03/crossover.inline.qmd >}}
 
 ::: {.claim}
-Memory bites first: the score matrix overtakes the other activations at a few thousand tokens. FLOPs cross near $50\text{k}$. **Ask which quantity, and which phase, before you say "bottleneck".**
+Memory bites at a few thousand tokens, FLOPs near $50\text{k}$. **Which quantity, which phase — before you say "bottleneck".**
 :::
 
 ::: {.footer}
@@ -726,7 +726,7 @@ Misconception 7: "a high attention weight means the token mattered" · W3 → W1
 | | |
 |:---|:-----------------|
 | **Why** | The three papers disagree on paper. Instead of choosing a side from the abstracts, ask one model about one sentence — which input tokens matter for its next word? — in three different ways, and compare the answers. |
-| **What runs** | Qwen3-0.6B on the CPU (28 layers, 16 heads each); an English sentence whose next word must agree with a subject across a relative clause. Three rankings, revealed one column at a time: one head's attention row in layer 14; gradient × input, from one backward pass; attention rollout, every layer's attention multiplied through. Then another head of the same layer. |
+| **What runs** | Qwen3-0.6B on the CPU (28 layers, 16 heads each); an English sentence whose next word must agree with a subject across a relative clause. Three rankings, revealed one column at a time: one head's attention row in layer 14; gradient $\times$ input, from one backward pass; attention rollout, every layer's attention multiplied through. Then another head of the same layer. |
 | **Watch for** | Where the subject, *keys*, lands in each column — and how much the first column changes when only the head changes. |
 :::
 
@@ -755,7 +755,7 @@ Before the numbers: if attention were an explanation, what should the three rank
 :::
 
 ::: {.fragment}
-| rank | attention (layer 14, head 0) | gradient × input | attention rollout |
+| rank | attention (layer 14, head 0) | gradient $\times$ input | attention rollout |
 |:---|---:|---:|---:|
 | 1 | lost · 0.29 | man · 0.22 | The · 1.00 |
 | 2 | The · 0.24 | that · 0.18 | keys · $<10^{-5}$ |
