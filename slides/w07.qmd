@@ -1057,8 +1057,6 @@ Part II has begun: this week decided **how much** and **which**; the next three 
 | D&B | the Datasets & Benchmarks track of NeurIPS (p44) |
 | DCLM | DataComp for Language Models, Li et al. 2024 (p47) |
 | DRO | distributionally robust optimization, as in DoReMi's Group DRO (p60) |
-| ELI5 | r/ExplainLikeImFive: a subreddit used as positives by DCLM's classifier (p47) |
-| FAQ | frequently asked questions: one of Niklaus et al.'s structured formats (p63) |
 | FLOPs | floating-point operations (W1) |
 
 ## Acronyms in this deck, G–N
@@ -1084,7 +1082,6 @@ Part II has begun: this week decided **how much** and **which**; the next three 
 | | |
 |:----|:----------------|
 | ODC-By | Open Data Commons Attribution License: FineWeb's licence (p44) |
-| OH-2.5 | OpenHermes 2.5: an instruction dataset used as positives by DCLM's classifier (p47) |
 | PEFT | parameter-efficient fine-tuning (W8, previewed on p70) |
 | PII | personally identifiable information: the last filtering stage (p43) |
 | QK-norm | normalization of queries and keys before the dot product (W4) |

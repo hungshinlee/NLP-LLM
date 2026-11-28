@@ -944,5 +944,6 @@ Three weeks in: the unit (W2), what it is allowed to attend to (W3) — and next
 | QK, OV | the query–key and output–value halves of a head: who reads whom, and what is read (p15; W14) |
 | QK-norm | query–key normalization: normalize $\mathbf{q}$ and $\mathbf{k}$ before the dot product (p22; W4) |
 | RoPE | rotary position embedding: the rotation $\mathbf{R}_t$ that MLA has to work around (p38; W5) |
+| SGNS | skip-gram with negative sampling (W1) |
 | SRAM | static random-access memory, the GPU's small, fast on-chip memory where FlashAttention computes (p46) |
 | TPA | tensor product attention, Zhang et al. 2025: factorize $\mathbf{Q}, \mathbf{K}, \mathbf{V}$ per token, cache the factors (p65) |

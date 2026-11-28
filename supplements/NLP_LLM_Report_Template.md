@@ -4,7 +4,7 @@
 <!-- summary: The LaTeX project for both reports, in ACL Rolling Review long-paper format, with guidance written from an ARR reviewer's point of view. Download the ZIP and import it into Prism. -->
 <!-- 此檔由 bin/publish_report_template.py 從 private repo 的 nlp_llm/report-template/README.md 產生，請勿在公開 repo 直接編輯；zip 也是同一支腳本的產物。 -->
 
-**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (38 files, 479 KB; version `50f582d`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
+**Download: [nlp-llm-report-template.zip](nlp-llm-report-template.zip)** (38 files, 480 KB; version `97bb109`). Import the ZIP into Prism as a new project; the file layout and the instructions below are the template's own `README.md`.
 
 This is the Prism project template for the midterm report and the final paper.
 Both use the ACL Rolling Review (ARR) long-paper format, the format of ACL, EMNLP, NAACL
@@ -112,8 +112,9 @@ started writing in the old `final/`, keep your text and copy the new boxes aroun
   the appendices do **not** count toward the 8 pages.
 - The abstract has at most 200 words.
 - The 8-page limit applies to the final paper, and there it is enforced: ARR desk rejects a
-  paper that is over length, and in this course whatever content lies beyond page 8 is not
-  graded. Check the length with `\showguidesfalse`. The appendices are for detail a reader
+  paper that is over length, and in this course whatever part of the main text (Sections 1–7)
+  runs past page 8 is not graded. The sections after the conclusion and the appendices may run
+  past page 8 as long as they need. Check the length with `\showguidesfalse`. The appendices are for detail a reader
   may skip: reviewers are not required to read them, and the paper must stand without them.
 - The midterm report has no length limit, in either direction; it keeps the same layout.
   The 200-word limit for the abstract applies to both.
@@ -132,7 +133,9 @@ paper: in a footnote of the Experimental Setup section, or in the appendix
   and statistics scripts.
 - **Prompts (required if you used any):** every prompt exactly as the models saw it, for
   your system and for every baseline, in the appendix (Prompts and Judge Details) or in the
-  repository.
+  repository. Prompts that generated or labelled data count too. The prompts you gave an AI
+  assistant while coding or writing do not: those go in the disclosure of AI assistance
+  (Acknowledgments).
 - **Model outputs, checkpoints, adapters and data (encouraged):** the outputs you scored let
   a reader re-score them without rerunning anything. Release what is small enough and what
   the licenses, the API terms and the consent of the people involved allow. If something

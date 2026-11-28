@@ -1134,7 +1134,7 @@ Two entries ticked. Next week the model is told not what to write, but **which o
 **Software, data and figures** · mlx-lm at commit 872ae88 and bitsandbytes `functional.py` (main), both read 2026-11-08, and mlx 0.32.2 `optimizers.py`, read 2026-11-10 — **software, not papers** · the `config.json` of Qwen/Qwen3-8B and Qwen/Qwen3-1.7B-Base (2026-11-08). Every number on these slides is arithmetic on those two configs (p28–p29, p37, p43, p45), W4's ledger (p4, p28), the NF4 table and a labelled toy (p40), a paper's stated formula (p41, p72), or copied from an abstract or a cited section (all others). The curves on p49, the matrices on p59 and the eight values on p72 are sketches. **Demo 1 was rehearsed on 2026-11-08** (`demos/w08_d1_sft_base_to_assistant/runs/rehearsal/`: the outputs on p11, the losses and probes on p18, the twelve steps on p46); **Demo 3 was rehearsed on 2026-11-08** (`demos/w08_d3_lr_sweep/runs/rehearsal/curves.json`: the curves and the table on p55); **Demo 4 was rehearsed on 2026-11-08** (`demos/w08_d4_intruders_forgetting/runs/rehearsal/`: `scan.json` and `intruders.json` behind p63 — the table there is empty on purpose, it is filled live — and `forgetting.json` for the twelve values on p66); **Demo 2 was rehearsed on 2026-11-10** (`demos/w08_d2_memory_ledger/runs/rehearsal/`: `ledger.json` behind p37 — the table there is empty on purpose, it is filled live — and `peaks.json` for the nine measured peaks on p45).
 :::
 
-## Acronyms in this deck, A–K
+## Acronyms in this deck, A–F
 
 | | |
 |:----|:----------------|
@@ -1143,22 +1143,28 @@ Two entries ticked. Next week the model is told not what to write, but **which o
 | D&B | the Datasets & Benchmarks track of NeurIPS (W7) |
 | DARE | Drop And REscale, Yu et al. 2024 (p72) |
 | DoRA | Weight-Decomposed Low-Rank Adaptation, Liu et al. 2024 (p44) |
-| ECE | expected calibration error (p69) |
+| DQ | double quantization: QLoRA's second part, Dettmers et al. 2023 (p39) |
 | EWC | elastic weight consolidation, Kirkpatrick et al. 2017 (p65) |
 | FFN | feed-forward network: the MLP sub-layer (W4) |
 | FLOPs | floating-point operations (W1) |
+
+## Acronyms in this deck, G–L
+
+| | |
+|:----|:----------------|
 | GaLore | Gradient Low-Rank Projection, Zhao et al. 2024 (p32) |
 | GPT | generative pre-trained Transformer (W4) |
 | KL | Kullback–Leibler (divergence) (p70) |
 | KV | key–value (cache) (W3) |
-
-## Acronyms in this deck, L–P
-
-| | |
-|:----|:----------------|
 | LIMA | *Less Is More for Alignment*, Zhou et al. 2023 (p19) |
 | LLM, LM | large language model (W1); language model — *LM head*: the output layer (W4) |
 | LoRA | low-rank adaptation, Hu et al. 2022 (p9) |
+| LR | learning rate (W4) |
+
+## Acronyms in this deck, M–P
+
+| | |
+|:----|:----------------|
 | MLA | multi-head latent attention (W3) |
 | MLP | multilayer perceptron: the feed-forward sub-layer (W4) |
 | MLX, mlx-lm | Apple's array framework and its language-model package (W3) |
